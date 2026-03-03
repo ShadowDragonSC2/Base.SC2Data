@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CButton id="Wrathwalker">
+        <Icon value="Assets\Textures\btn-unit-protoss-colossus-taldarimex3.dds"/>
+    </CButton>
+
+    <CUnit id="Wrathwalker" parent="Generic_Protoss_Unit_Colossus">
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+
+        <!-- Wrathwalker Properties -->
+        <CardLayouts index="0">
+            <LayoutButtons Face="ChargedBlast" Type="Passive" Row="2" Column="1"/>
+        </CardLayouts>
+        <WeaponArray index="0" Link="ChargedBlast"/>
+        <LifeStart value="200"/>
+        <LifeMax value="200"/>
+        <LifeArmor value="1"/>
+        <ShieldsStart value="150"/>
+        <ShieldsMax value="150"/>
+        <RepairTime value="75"/>
+        <Sight value="10"/>
+        <LateralAcceleration value="46.0625"/>
+        <Food value="-6"/>
+        <Radius value="1"/>
+        <HotkeyCategory value="Unit/Category/ProtossFaction/Taldarim"/>
+        <GlossaryCategory value="Unit/Category/ProtossFaction/Taldarim"/>
+        <GlossaryStrongArray value="Thor"/>
+        <GlossaryStrongArray value="Carrier"/>
+        <GlossaryStrongArray value="Ultralisk"/>
+        <GlossaryWeakArray value="Corruptor"/>
+        <GlossaryWeakArray value="VikingFighter"/>
+    </CUnit>
+    
+    <CActorUnit id="Wrathwalker" parent="GenericUnitStandard" unitName="Wrathwalker">
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-colossus-taldarimex3.dds"/>
+        <HeroIcon value="Assets\Textures\btn-unit-protoss-colossus-taldarimex3.dds"/>
+        <ModelFlags index="OutlineEmitter" value="1"/>
+        <Macros value="TerrainSquibAnimations"/>
+        <BuildModel value="Wrathwalker@WarpIn"/>
+        <PortraitModel value="Wrathwalker@Portrait"/>
+        <DeathArray index="Normal" ModelLink="Wrathwalker@Death" SoundLink=""/>
+        <DeathCustoms ModelLink="ProtossLargeUnitDeathLow" Name="AntiGravProtoss"/>
+        <DeathCustoms ModelLink="HallucinationColossusDeath" SoundLink="Sentry_HallucinationDeathLarge" Name="Hallucination"/>
+        <WalkAnimMoveSpeed value="2.1445"/>
+        <BarWidth value="140"/>
+        <BarOffset value="250"/>
+        <WireframeShield>
+            <Image value="Assets\Textures\wireframe-protoss-colossus-taldarim-shield01.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-colossus-taldarim-shield02.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-colossus-taldarim-shield03.dds"/>
+        </WireframeShield>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-protoss-colossus-taldarim.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-protoss-colossus-taldarim.dds"/>
+        </Wireframe>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
+        <SoundArray index="Ready" value="Wrathwalker@Ready"/>
+        <SoundArray index="Help" value="Wrathwalker@Help"/>
+        <SoundArray index="What" value="Wrathwalker@What"/>
+        <SoundArray index="Yes" value="Wrathwalker@Yes"/>
+        <SoundArray index="Pissed" value="Wrathwalker@Pissed"/>
+        <PlacementModel value="Wrathwalker@Placement"/>
+        <TerrainSquibs>
+            <MovementDistance value="0.150000,0.150000"/>
+            <IdlePeriod value="0.250000,0.500000"/>
+            <RangeUp value="2.750000"/>
+            <RangeDown value="0.100000"/>
+            <AttachQuery Methods="AMFilterHardpoint"/>
+            <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleMedium"/>
+        </TerrainSquibs>
+        <TerrainSquibs>
+            <MovementDistance value="0.150000,0.150000"/>
+            <IdlePeriod value="0.250000,0.500000"/>
+            <RangeUp value="3.000000"/>
+            <RangeDown value="0.250000"/>
+            <AttachQuery Methods="AMFilterCenter"/>
+            <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleLargeVehicle"/>
+        </TerrainSquibs>
+        <Aliases value="_UnitHuge"/>
+    </CActorUnit>
+    
+    <CModel id="Wrathwalker">
+        <Model value="Assets\Units\Protoss\Colossus_TaldarimEx3\Colossus_TaldarimEx3.m3"/>
+        <RequiredAnims value="Assets\Units\Protoss\Colossus_SwarmAnims\Colossus_SwarmAnims.m3a"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.750000,0.750000,0.750000"/>
+        <ScaleMin value="0.750000,0.750000,0.750000"/>
+        <SelectionRadius value="1.333200"/>
+        <SquibTypeDefault value="Metal"/>
+        <AttachProps Id="Ref_Target 02">
+            <Keys index="Ground" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Target 03">
+            <Keys index="Ground" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Target 04">
+            <Keys index="Ground" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Target 05">
+            <Keys index="Ground" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Weapon 02">
+            <Keys index="CustomA" value="2"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Weapon 03">
+            <Keys index="CustomA" value="3"/>
+        </AttachProps>
+        <Radius value="1.000000"/>
+        <TechPurchaseCamera value="Star2CameraHigher22"/>
+        <UnitGlossaryCamera value="Star2CameraHigher22"/>
+        <PlanetPanelCamera value="Star2CameraHigher22"/>
+        <ShadowRadius value="1.333200"/>
+    </CModel>
+    <CModel id="Wrathwalker@Death">
+        <Occlusion value="Show"/>
+        <LowQualityModel value="ProtossLargeTaldarimUnitDeathLow"/>
+        <Model value="Assets\Units\Protoss\Colossus_Taldarim_Death\Colossus_Taldarim_Death.m3"/>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Time value="0.200000"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Time value="0.400000"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Colossus_Explode_Large"/>
+            <Type value="Sound"/>
+            <Time value="1.200000"/>
+            <Payload value="Colossus_Explode_Large"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Colossus_Explode_Vocalize"/>
+            <Type value="Sound"/>
+            <Payload value="Colossus_Explode_Vocalize"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Time value="0.200000"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Time value="0.400000"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Colossus_Explode_Large"/>
+            <Type value="Sound"/>
+            <Time value="1.200000"/>
+            <Payload value="Colossus_Explode_Large"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Colossus_Explode_Vocalize"/>
+            <Type value="Sound"/>
+            <Payload value="Colossus_Explode_Vocalize"/>
+        </Events>
+        <Events>
+            <Anim value="Death,02"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,02"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Time value="0.200000"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,02"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Time value="0.400000"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,02"/>
+            <Name value="Colossus_Explode_Large"/>
+            <Type value="Sound"/>
+            <Time value="1.200000"/>
+            <Payload value="Colossus_Explode_Large"/>
+        </Events>
+        <Events>
+            <Anim value="Death,02"/>
+            <Name value="Colossus_Explode_Vocalize"/>
+            <Type value="Sound"/>
+            <Payload value="Colossus_Explode_Vocalize"/>
+        </Events>
+        <Events>
+            <Anim value="Death,03"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,03"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Time value="0.200000"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,03"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Time value="0.400000"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,03"/>
+            <Name value="Colossus_Explode_Large"/>
+            <Type value="Sound"/>
+            <Time value="1.200000"/>
+            <Payload value="Colossus_Explode_Large"/>
+        </Events>
+        <Events>
+            <Anim value="Death,03"/>
+            <Name value="Colossus_Explode_Vocalize"/>
+            <Type value="Sound"/>
+            <Payload value="Colossus_Explode_Vocalize"/>
+        </Events>
+        <Events>
+            <Anim value="Death,04"/>
+            <Name value="Colossus_Explode_Large"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Colossus_Explode_Large"/>
+        </Events>
+        <Events>
+            <Anim value="Death,04"/>
+            <Name value="Colossus_Explode_Legs_Whoosh"/>
+            <Type value="Sound"/>
+            <Time value="0.437000"/>
+            <Payload value="Colossus_Explode_Legs_Whoosh"/>
+        </Events>
+        <Events>
+            <Anim value="Death,04"/>
+            <Name value="Colossus_Explode_Legs_Impact"/>
+            <Type value="Sound"/>
+            <Time value="2.000000"/>
+            <Payload value="Colossus_Explode_Legs_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Death,04"/>
+            <Name value="Colossus_Explode_Legs_Spark_A"/>
+            <Type value="Sound"/>
+            <Time value="2.981000"/>
+            <Payload value="Colossus_Explode_Legs_Spark_A"/>
+        </Events>
+        <Events>
+            <Anim value="Death,04"/>
+            <Name value="Colossus_Explode_Legs_Spark_B"/>
+            <Type value="Sound"/>
+            <Time value="4.445000"/>
+            <Payload value="Colossus_Explode_Legs_Spark_B"/>
+        </Events>
+    </CModel>
+    <CModel id="Wrathwalker@Portrait">
+        <Model value="Assets\Portraits\Protoss\Taldarim_Colossus_Portrait\Taldarim_Colossus_Portrait.m3"/>
+        <Image value="Assets\Textures\taldarimcolossusportrait_static.dds"/>
+        <Lighting value="PortraitTaldarimColossus"/>
+    </CModel>
+    <CModel id="Wrathwalker@WarpIn">
+        <Model value="Assets\Units\Protoss\Colossus_Taldarim_WarpIn\Colossus_Taldarim_WarpIn.m3"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.750000,0.750000,0.750000"/>
+        <ScaleMin value="0.750000,0.750000,0.750000"/>
+        <EditorCategories value="Race:Protoss"/>
+        <LowQualityModel value="ColossusWarpInLow"/>
+        <SelectionRadius value="0.555400"/>
+        <ShadowRadius value="0.555400"/>
+    </CModel>
+    <CModel id="Wrathwalker@Placement">
+        <Model value="Assets\Units\Protoss\Colossus_Taldarim_Placement\Colossus_Taldarim_Placement.m3"/>
+        <Radius value="-1.000000"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.850000,0.850000,0.850000"/>
+        <ScaleMin value="0.850000,0.850000,0.850000"/>
+        <SelectionRadius value="0.588100"/>
+        <ShadowRadius value="0.588100"/>
+    </CModel>
+    
+    <CSound id="Wrathwalker@Help" parent="ProtossHelp">
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Executor\Alert_ProtossForcesUnderAttack.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="Wrathwalker@Pissed" parent="ProtossPissed">
+        <AssetArray File="Assets\Sounds\Wrathwalker_Pissed00.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Wrathwalker_Pissed01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Wrathwalker_Pissed02.ogg" FacialGroup=""/>
+        <Volume value="-7.000000,-7.000000"/>
+        <Pitch value="-0.300000,0.000000"/>
+    </CSound>
+    <CSound id="Wrathwalker@Ready" parent="ProtossReady">
+        <AssetArray File="Assets\Sounds\Wrathwalker_Ready00.ogg" FacialGroup=""/>
+        <Volume value="-4.000000,-4.000000"/>
+        <Pitch value="-0.300000,0.000000"/>
+    </CSound>
+    <CSound id="Wrathwalker@What" parent="ProtossAck_Void">
+        <AssetArray File="Assets\Sounds\Wrathwalker_What00.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Wrathwalker_What01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Wrathwalker_What02.ogg" FacialGroup=""/>
+        <Volume value="-7.000000,-7.000000"/>
+        <Pitch value="-0.300000,0.000000"/>
+    </CSound>
+    <CSound id="Wrathwalker@Yes" parent="ProtossAck_Void">
+        <AssetArray File="Assets\Sounds\Wrathwalker_Yes00.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Wrathwalker_Yes01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Wrathwalker_Yes02.ogg" FacialGroup=""/>
+        <Volume value="-7.000000,-7.000000"/>
+        <Pitch value="-0.300000,0.000000"/>
+    </CSound>
+
+    <CRequirement id="Wrathwalker">
+        <NodeArray index="Use" Link="Wrathwalker@Requirement@AllowUnit"/>
+    </CRequirement>
+
+    <!-- Requirement Nodes -->
+    <CRequirementCountUnit id="Wrathwalker@Requirement@AllowUnit">
+        <Count Link="RoboticsBay" State="CompleteOnly"/>
+    </CRequirementCountUnit>
+
+    <CDataCollectionUnit id="Wrathwalker">
+        <DataRecord Entry="Button,Wrathwalker"/>
+        <DataRecord Entry="Unit,Wrathwalker"/>
+        <DataRecord Entry="Actor,Wrathwalker"/>
+        <DataRecord Entry="Model,Wrathwalker"/>
+        <DataRecord Entry="Model,Wrathwalker@Death"/>
+        <DataRecord Entry="Model,Wrathwalker@Portrait"/>
+        <DataRecord Entry="Model,Wrathwalker@WarpIn"/>
+        <DataRecord Entry="Model,Wrathwalker@Placement"/>
+        <DataRecord Entry="Sound,Wrathwalker@Help"/>
+        <DataRecord Entry="Sound,Wrathwalker@Pissed"/>
+        <DataRecord Entry="Sound,Wrathwalker@Ready"/>
+        <DataRecord Entry="Sound,Wrathwalker@What"/>
+        <DataRecord Entry="Sound,Wrathwalker@Yes"/>
+        <DataRecord Entry="Requirement,Wrathwalker"/>
+        <DataRecord Entry="RequirementNode,Wrathwalker@Requirement@AllowUnit"/>
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Protoss,ObjectType:Unit"/>
+        <Pattern value="UnitPattern"/>
+    </CDataCollectionUnit>
+    <!-- ============ Weapons ============ -->
+    <CButton id="ChargedBlast">
+        <Icon value="Assets\Textures\btn-ability-protoss-chargedblast.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-chargedblast.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    
+    <CWeaponLegacy id="ChargedBlast">
+        <EditorCategories value="Race:Protoss"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
+        <Effect value="ChargedBlast@LM"/>
+        <DisplayEffect value="ChargedBlast@Damage"/>
+        <DisplayAttackCount value="1"/>
+        <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AcquirePrioritization value="ByDistanceFromTarget"/>
+        <Range value="10"/>
+        <RangeSlop value="0"/>
+        <Arc value="90"/>
+        <Period value="3"/>
+        <DamagePoint value="2"/>
+        <AllowedMovement value="Moving"/>
+        <Options index="OnlyFireWhileInAttackOrder" value="0"/>
+        <Options index="OnlyFireAtAttackOrderTarget" value="0"/>
+    </CWeaponLegacy>
+
+    <CEffectDamage id="ChargedBlast@Damage" parent="DU_WEAP">
+        <EditorCategories value="Race:Protoss"/>
+        <Kind value="Ranged"/>
+        <Amount value="100"/>
+        <Death value="Fire"/>
+        <AttributeBonus index="Structure" value="75"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="ChargedBlast@LM">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactEffect value="ChargedBlast@Damage"/>
+        <AmmoUnit value="ChargedBlast@AttackMissile"/>
+        <LaunchLocation Value="CasterUnit"/>
+    </CEffectLaunchMissile>
+
+    <CActorMissile id="ChargedBlast@AttackMissile" parent="GenericAttackMissileWithDeathAnim" unitName="ChargedBlast@AttackMissile"/>
+    <CActorAction id="ChargedBlast@Attack" parent="GenericAttack" effectImpact="ChargedBlast@Damage" effectLaunch="ChargedBlast@LM">
+        <LaunchAttachQuery Methods="Head"/>
+        <ImpactPhysics Name="ChargedBlastImpulse" MatchKeys="Basic" Physics="ChargedBlast@PhysicsForce"/>
+    </CActorAction>
+    <CActorModel id="ChargedBlast@Charge" parent="ModelAnimationStyleOneShot">
+        <On Terms="WeaponStart.ChargedBlast" Send="Create"/>
+        <On Terms="WeaponStop.ChargedBlast" Send="AnimBracketStop BSD"/>
+        <On Terms="WeaponStop.ChargedBlast" Target="GenericAttackSound" Send="Destroy"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachHead"/>
+        <EventDataSound Name="ChargedBlast_Charge" Sound="ChargedBlast@Charge"/>
+        <EventDataSoundActor value="GenericAttackSound"/>
+    </CActorModel>
+    <CActorForceSphere id="ChargedBlast@PhysicsForce">
+        <HostSiteOps Ops="SOpIncomingDirectDot25 SOpMoveDownByDot35 SOpRandomPointInCircleDot35"/>
+        <Field value="Directional"/>
+        <Magnitude value="150.000000,10.000000"/>
+        <Radius value="25.000000"/>
+        <Flags index="VisionTestCenterOnly" value="1"/>
+    </CActorForceSphere>
+
+    <CModel id="ChargedBlast@AttackImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Protoss\ColossusTaldarim_Beam_Impact\ColossusTaldarim_Beam_Impact.m3"/>
+    </CModel>
+    <CModel id="ChargedBlast@AttackMissile" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\ColossusTaldarim_Missile\ColossusTaldarim_Missile.m3"/>
+    </CModel>
+    <CModel id="ChargedBlast@Charge" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\ColossusTaldarim_Powerup\ColossusTaldarim_Powerup.m3"/>
+        <Events Anim="Birth" Name="ChargedBlast_Charge" Type="Sound"/>
+    </CModel>
+
+    <CSound id="ChargedBlast@AttackLaunch" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_Launch01_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_Launch02_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_Launch03_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_Launch04_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_Launch05_1ch.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="6"/>
+        <Pitch value="-2.000000,1.000000"/>
+        <SustainFade index="1" Time="2500"/>
+        <Volume value="-2.200000,-1.200000"/>
+    </CSound>
+    <CSound id="ChargedBlast@AttackImpact" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_Impact01_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_Impact02_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_Impact03_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_Impact04_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_Impact05_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_Impact06_1ch.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="4"/>
+        <Pitch value="-2.000000,1.000000"/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
+    <CSound id="ChargedBlast@Charge" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_PowerUpPreLaunch01_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_PowerUpPreLaunch02_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_PowerUpPreLaunch03_1ch.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="4"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-8.000000,-8.000000"/>
+    </CSound>
+
+    <CMoverMissile id="ChargedBlast@AttackMissile" parent="MissileDefault"/>
+
+    <CUnit id="ChargedBlast@AttackMissile" parent="MISSILE_INVULNERABLE">
+        <Race value="Prot"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
+    </CUnit>
+
+    <CDataCollectionUnit id="ChargedBlast">
+        <DataRecord Entry="Button,ChargedBlast"/>
+        <DataRecord Entry="Weapon,ChargedBlast"/>
+        <DataRecord Entry="Effect,ChargedBlast@Damage"/>
+        <DataRecord Entry="Effect,ChargedBlast@LM"/>
+        <DataRecord Entry="Actor,ChargedBlast@AttackMissile"/>
+        <DataRecord Entry="Actor,ChargedBlast@Attack"/>
+        <DataRecord Entry="Actor,ChargedBlast@Charge"/>
+        <DataRecord Entry="Actor,ChargedBlast@PhysicsForce"/>
+        <DataRecord Entry="Model,ChargedBlast@AttackImpact"/>
+        <DataRecord Entry="Model,ChargedBlast@AttackMissile"/>
+        <DataRecord Entry="Model,ChargedBlast@Charge"/>
+        <DataRecord Entry="Sound,ChargedBlast@AttackLaunch"/>
+        <DataRecord Entry="Sound,ChargedBlast@AttackImpact"/>
+        <DataRecord Entry="Sound,ChargedBlast@Charge"/>
+        <DataRecord Entry="Mover,ChargedBlast@AttackMissile"/>
+        <DataRecord Entry="Unit,ChargedBlast@AttackMissile"/>
+    </CDataCollectionUnit>
+</Catalog>

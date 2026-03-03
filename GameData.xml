@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Includes>
+    <Catalog path="GameData/basestats/protoss.xml"/>
+    <Catalog path="GameData/basestats/terran.xml"/>
+    <Catalog path="GameData/basestats/zerg.xml"/>
+
+    <Catalog path="GameData/Khalai/Arbiter/Arbiter.xml"/>
+    <Catalog path="GameData/Marauders Mira's/Assault Galleon/Assault Galleon.xml"/>
+    <Catalog path="GameData/Nerazim/Carrier/Carrier.xml"/>
+    <Catalog path="GameData/Nerazim/Annihilator/Annihilator.xml"/>
+    <Catalog path="GameData/Taldarim/Alarak/Alarak.xml"/>
+    <Catalog path="GameData/Taldarim/Ascendant/Ascendant.xml"/>
+    <Catalog path="GameData/Taldarim/Destroyer/Destroyer.xml"/>
+    <Catalog path="GameData/Taldarim/Vanguard/Vanguard.xml"/>
+    <Catalog path="GameData/Taldarim/Wrathwalker/Wrathwalker.xml"/>
+</Includes>

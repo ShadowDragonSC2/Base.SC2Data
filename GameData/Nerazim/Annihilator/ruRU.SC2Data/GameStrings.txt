@@ -1,0 +1,2 @@
+Unit/Name/Annihilator=Аннигилятор
+Button/Tooltip/Annihilator=Тяжело-бронированный робот, с сверхпрочными щитами

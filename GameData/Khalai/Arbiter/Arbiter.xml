@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    <CButton id="Arbiter">
+
+    </CButton>
+
+    <CUnit id="Arbiter">
+        <DeathRevealRadius value="3"/>
+        <Race value="Prot"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="ArmySelect" value="1"/>
+        <PlaneArray index="Air" value="1"/>
+        <Collide index="Flying" value="1"/>
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Mechanical" value="1"/>
+        <LifeStart value="150"/>
+        <LifeMax value="150"/>
+        <LifeArmorName value="Unit/LifeArmorName/ProtossPlating"/>
+        <EnergyStart value="250"/>
+        <EnergyMax value="250"/>
+        <EnergyRegenRate value="0.5625"/>
+        <ShieldsStart value="150"/>
+        <ShieldsMax value="150"/>
+        <ShieldRegenDelay value="10"/>
+        <ShieldRegenRate value="2"/>
+        <ShieldArmorName value="Unit/ShieldArmorName/ProtossPlasmaShields"/>
+        <Mover value="Fly"/>
+        <Speed value="2.25"/>
+        <Acceleration value="1.875"/>
+        <StationaryTurningRate value="539.4726"/>
+        <TurningRate value="539.4726"/>
+        <Sight value="9"/>
+        <Height value="3.75"/>
+        <VisionHeight value="4"/>
+        <Food value="-4"/>
+        <CostCategory value="Army"/>
+        <CostResource index="Minerals" value="150"/>
+        <CostResource index="Vespene" value="350"/>
+        <AttackTargetPriority value="20"/>
+        <DamageDealtXP value="1"/>
+        <DamageTakenXP value="1"/>
+        <KillXP value="350"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="attack"/>
+        <AbilArray Link="move"/>
+        <AbilArray Link="Warpable"/>
+        <AbilArray Link="ArbiterMPRecall"/>
+        <AbilArray Link="ArbiterMPStasisField"/>
+        <BehaviorArray Link="ArbiterMPCloakField"/>
+        <WeaponArray Link="ArbiterMPWeapon"/>
+        <CardLayouts>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="ArbiterMPStasisField" Type="AbilCmd" AbilCmd="ArbiterMPStasisField,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="ArbiterMPRecall" Type="AbilCmd" AbilCmd="ArbiterMPRecall,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="ArbiterCloakField" Type="Passive" Row="2" Column="2"/>
+        </CardLayouts>
+        <Radius value="1"/>
+        <SeparationRadius value="1"/>
+        <SubgroupPriority value="30"/>
+        <MinimapRadius value="0.75"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+        <GlossaryCategory value="Unit/Category/ProtossUnits"/>
+        <HotkeyCategory value="Unit/Category/ProtossUnits"/>
+        <GlossaryStrongArray value="SiegeTank"/>
+        <GlossaryStrongArray value="Carrier"/>
+        <GlossaryStrongArray value="BroodLord"/>
+        <GlossaryWeakArray value="Battlecruiser"/>
+        <GlossaryWeakArray value="VikingFighter"/>
+        <GlossaryWeakArray value="Corruptor"/>
+    </CUnit>
+
+    <CActorUnit id="Arbiter" parent="GenericUnitStandard" unitName="Arbiter">
+        <PortraitModel />
+        <PlacementModel />
+        <DeathArray index="Normal" ModelLink="Arbiter@Death" SoundLink="Arbiter@Death" VoiceLink="Arbiter@DeathVoice"/>
+    </CActorUnit>
+
+    <CModel id="Arbiter" parent="Unit">
+        <Occlusion value="Show"/>
+        <SelectionRadius value="1.000000"/>
+        <Radius value="1.000000"/>
+        <TechPurchaseCamera value="Star2CameraLow05"/>
+        <UnitGlossaryCamera value="Star2CameraLow05"/>
+        <PlanetPanelCamera value="Star2CameraLow05"/>
+        <ShadowRadius value="1.000000"/>
+        <Model value="Assets\Units\Protoss\Arbiter_EX2\Arbiter_EX2.m3"/>
+        <SelectionOffset value="0.000000,0.000000,-0.750000"/>
+    </CModel>
+    <CModel id="Arbiter@Death" parent="UnitDeath">
+        <Occlusion value="Show"/>
+        <SelectionRadius value="0.750000"/>
+        <Radius value="0.750000"/>
+        <ShadowRadius value="0.750000"/>
+        <LowQualityModel value="ProtossMediumUnitDeathLow"/>
+        <Model value="Assets\Units\Protoss\ArbiterEX2_Death\ArbiterEX2_Death.m3"/>
+    </CModel>
+    <CModel id="Arbiter@Portrait" parent="Portrait">
+        <Model value="Assets\Portraits\Protoss\ArbiterEx2Portrait\ArbiterEx2Portrait.m3"/>
+        <Image value="Assets\Textures\arbiterportrait_static.dds"/>
+    </CModel>
+    <CModel id="Arbiter@WarpIn" parent="OneShotSpellFX">
+        <Model value="Assets\Units\Protoss\ArbiterEX2_WarpIn\ArbiterEX2_WarpIn.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Occlusion value="Show"/>
+        <LowQualityModel value="ProtossUnitBirth"/>
+        <SelectionRadius value="0.666500"/>
+        <ShadowRadius value="0.666500"/>
+    </CModel>
+    <CModel id="Arbiter@Placement" parent="Placement">
+        <Model value="Assets\Units\Protoss\ArbiterEX2_Placement\ArbiterEX2_Placement.m3"/>
+        <Radius value="-1.000000"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.850000,0.850000,0.850000"/>
+        <ScaleMin value="0.850000,0.850000,0.850000"/>
+        <SelectionRadius value="0.588100"/>
+        <ShadowRadius value="0.588100"/>
+    </CModel>
+
+    <CSound id="Arbiter@Attack" parent="ProtossAck_Void">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray TemplateParam="Arbiter_Attack00"/>
+        <AssetArray TemplateParam="Arbiter_Attack01"/>
+        <AssetArray TemplateParam="Arbiter_Attack02"/>
+        <AssetArray TemplateParam="Arbiter_Attack03"/>
+        <AssetArray TemplateParam="Arbiter_Attack04"/>
+        <AssetArray TemplateParam="Arbiter_Attack05"/>
+        <AssetArray TemplateParam="Arbiter_Attack06"/>
+    </CSound>
+    <CSound id="Arbiter@Help" parent="ProtossHelp">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray TemplateParam="Arbiter_Help00"/>
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="Arbiter@Pissed" parent="ProtossPissed">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray TemplateParam="Arbiter_Pissed00"/>
+        <AssetArray TemplateParam="Arbiter_Pissed01"/>
+        <AssetArray TemplateParam="Arbiter_Pissed02"/>
+        <AssetArray TemplateParam="Arbiter_Pissed03"/>
+        <AssetArray TemplateParam="Arbiter_Pissed04"/>
+        <AssetArray TemplateParam="Arbiter_Pissed05"/>
+        <AssetArray TemplateParam="Arbiter_Pissed06"/>
+    </CSound>
+    <CSound id="Arbiter@Ready" parent="ProtossReady">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray TemplateParam="Arbiter_Ready00"/>
+    </CSound>
+    <CSound id="Arbiter@What" parent="ProtossAck_Void">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray TemplateParam="Arbiter_What00"/>
+        <AssetArray TemplateParam="Arbiter_What01"/>
+        <AssetArray TemplateParam="Arbiter_What02"/>
+        <AssetArray TemplateParam="Arbiter_What03"/>
+        <AssetArray TemplateParam="Arbiter_What04"/>
+        <AssetArray TemplateParam="Arbiter_What05"/>
+        <AssetArray TemplateParam="Arbiter_What06"/>
+        <AssetArray TemplateParam="Arbiter_What07"/>
+    </CSound>
+    <CSound id="Arbiter@Yes" parent="ProtossAck_Void">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray TemplateParam="Arbiter_Yes00"/>
+        <AssetArray TemplateParam="Arbiter_Yes01"/>
+        <AssetArray TemplateParam="Arbiter_Yes02"/>
+        <AssetArray TemplateParam="Arbiter_Yes03"/>
+        <AssetArray TemplateParam="Arbiter_Yes04"/>
+        <AssetArray TemplateParam="Arbiter_Yes05"/>
+        <AssetArray TemplateParam="Arbiter_Yes06"/>
+    </CSound>
+    <CSound id="Arbiter@RecallVO" parent="ProtossAck_Void">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray TemplateParam="Arbiter_Yes00"/>
+        <AssetArray TemplateParam="Arbiter_Yes01"/>
+        <AssetArray TemplateParam="Arbiter_Yes02"/>
+        <AssetArray TemplateParam="Arbiter_Yes03"/>
+        <AssetArray TemplateParam="Arbiter_Yes04"/>
+        <AssetArray TemplateParam="Arbiter_Yes05"/>
+        <AssetArray TemplateParam="Arbiter_Yes06"/>
+    </CSound>
+    <CSound id="Arbiter@StasisFieldVO" parent="ProtossAck_Void">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray TemplateParam="Arbiter_Yes00"/>
+        <AssetArray TemplateParam="Arbiter_Yes01"/>
+        <AssetArray TemplateParam="Arbiter_Yes02"/>
+        <AssetArray TemplateParam="Arbiter_Yes03"/>
+        <AssetArray TemplateParam="Arbiter_Yes04"/>
+        <AssetArray TemplateParam="Arbiter_Yes05"/>
+        <AssetArray TemplateParam="Arbiter_Yes06"/>
+    </CSound>
+    <CSound id="Arbiter@MoveStart" parent="Movement">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\ArbiterMP_MoveStart00.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ArbiterMP_MoveStart01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ArbiterMP_MoveStart02.wav" FacialGroup=""/>
+        <DupeMuteCount value="3"/>
+        <Pitch value="-0.500000,0.500000"/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+
+    <CRequirement id="Arbiter"/>
+
+    <CDataCollectionUnit id="Arbiter">
+        <DataRecord Entry="Button,Arbiter"/>
+        <DataRecord Entry="Unit,Arbiter"/>
+        <DataRecord Entry="Actor,Arbiter"/>
+        <DataRecord Entry="Model,Arbiter"/>
+        <DataRecord Entry="Model,Arbiter@Death"/>
+        <DataRecord Entry="Model,Arbiter@Portrait"/>
+        <DataRecord Entry="Model,Arbiter@WarpIn"/>
+        <DataRecord Entry="Model,Arbiter@Placement"/>
+        <DataRecord Entry="Sound,Arbiter@Attack"/>
+        <DataRecord Entry="Sound,Arbiter@Help"/>
+        <DataRecord Entry="Sound,Arbiter@Pissed"/>
+        <DataRecord Entry="Sound,Arbiter@Ready"/>
+        <DataRecord Entry="Sound,Arbiter@What"/>
+        <DataRecord Entry="Sound,Arbiter@Yes"/>
+        <DataRecord Entry="Sound,Arbiter@RecallVO"/>
+        <DataRecord Entry="Sound,Arbiter@StasisFieldVO"/>
+        <DataRecord Entry="Sound,Arbiter@MoveStart"/>
+        <DataRecord Entry="Requirement,Arbiter"/>
+    </CDataCollectionUnit>
+</Catalog>

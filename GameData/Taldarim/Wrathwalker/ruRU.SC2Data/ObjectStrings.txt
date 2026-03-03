@@ -1,0 +1,31 @@
+Actor/Name/Wrathwalker=Unit
+Actor/Name/ChargedBlast@Attack=Attack
+Actor/Name/ChargedBlast@AttackMissile=Missile
+Actor/Name/ChargedBlast@Charge=Charge Model
+Actor/Name/ChargedBlast@PhysicsForce=Physics
+
+Effect/Name/ChargedBlast@Damage=Damage
+Effect/Name/ChargedBlast@LM=LM
+
+Model/Name/ChargedBlast@AttackImpact=Impact
+Model/Name/ChargedBlast@AttackMissile=Missile
+Model/Name/ChargedBlast@Charge=Charge Model
+Model/Name/Wrathwalker=Unit
+Model/Name/Wrathwalker@Death=Death
+Model/Name/Wrathwalker@Placement=Placement
+Model/Name/Wrathwalker@Portrait=Portrait
+Model/Name/Wrathwalker@WarpIn=WarpIn
+
+Mover/Name/ChargedBlast@AttackMissile=Missile
+
+Requirement/Name/Wrathwalker=Requirement
+RequirementNode/Name/Wrathwalker@Requirement@AllowUnit=Requirement @ Allow Unit
+
+Sound/Name/ChargedBlast@AttackImpact=Impact
+Sound/Name/ChargedBlast@AttackLaunch=Launch
+Sound/Name/ChargedBlast@Charge=Charge Sound
+Sound/Name/Wrathwalker@Help=Help
+Sound/Name/Wrathwalker@Pissed=Pissed
+Sound/Name/Wrathwalker@Ready=Ready
+Sound/Name/Wrathwalker@What=What
+Sound/Name/Wrathwalker@Yes=Yes

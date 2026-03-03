@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    <const id="$weapicon" value="123" type="CImagePath"/>
+
+    <CButton id="Vanguard">
+        <Icon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-immortal.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-immortal.dds"/>
+    </CButton>
+
+    <CUnit id="Vanguard" parent="Generic_Protoss_Unit_Immortal">
+        <WeaponArray index="0" Link="ScatterCannon"/>
+        <LifeMax value="200"/>
+        <LifeStart value="200"/>
+        <ShieldsMax value="100"/>
+        <ShieldsStart value="100"/>
+        <Sight value="9"/>
+        <Food value="-4"/>
+        <RepairTime value="55"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ImmortalTaldarimScatterCannon" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CostResource index="Minerals" value="250"/>
+        <CostResource index="Vespene" value="100"/>
+        <HotkeyCategory value="Unit/Category/ProtossFaction/Taldarim"/>
+        <GlossaryCategory value="Unit/Category/ProtossFaction/Taldarim"/>
+    </CUnit>
+
+    <CActorUnit id="Vanguard" parent="GenericUnitStandard" unitName="Vanguard">
+        <DeathArray index="Normal">
+            <ModelLink value="Vanguard@Death"/>
+            <VoiceLink value="Vanguard@Death"/>
+        </DeathArray>
+        <SoundArray index="Attack" value="Vanguard@Attack"/>
+        <SoundArray index="Ready" value="Vanguard@Ready"/>
+        <SoundArray index="Yes" value="Vanguard@Yes"/>
+        <SoundArray index="What" value="Vanguard@What"/>
+        <SoundArray index="Pissed" value="Vanguard@Pissed"/>
+        <SoundArray index="Help" value="Vanguard@Help"/>
+        <WalkAnimMoveSpeed value="1.25"/>
+        <PortraitModel value="Vanguard@Portrait"/>
+        <PlacementModel value="Vanguard@Placement"/>
+    </CActorUnit>
+
+    <CModel id="Vanguard" parent="Unit">
+        <AttachProps Id="Ref_Weapon Right">
+            <Keys index="Weapon" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Weapon Left">
+            <Keys index="Weapon" value="1"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Hardpoint">
+            <Keys index="Turret" value="0"/>
+        </AttachProps>
+        <Model value="Assets\Units\Protoss\Immortal_Taldarim\Immortal_Taldarim.m3"/>
+        <RequiredAnims value="Assets\Units\Protoss\Immortal_SwarmAnims\Immortal_SwarmAnims.m3a"/>
+        <Occlusion value="Show"/>
+        <Tipability value="0.750000"/>
+        <TipabilityWidth value="0.800000"/>
+        <TipabilityLength value="0.800000"/>
+        <ScaleMax value="0.750000,0.750000,0.750000"/>
+        <ScaleMin value="0.750000,0.750000,0.750000"/>
+        <SelectionRadius value="0.866400"/>
+        <SquibTypeDefault value="Metal"/>
+        <Radius value="0.650000"/>
+        <TechPurchaseCamera value="Star2CameraHigh08"/>
+        <UnitGlossaryCamera value="Star2CameraHigh08"/>
+        <PlanetPanelCamera value="Star2CameraHigh08"/>
+        <ShadowRadius value="0.866400"/>
+    </CModel>
+    <CModel id="Vanguard@Death" parent="UnitDeath">
+        <Model value="Assets\Units\Protoss\Immortal_Taldarim_Death\Immortal_Taldarim_Death.m3"/>
+        <Occlusion value="Show"/>
+        <LowQualityModel value="ProtossLargeTaldarimUnitDeathLow"/>
+        <Events>
+            <Variation value="0"/>
+            <Anim value="Death,00"/>
+            <Name value="Uni_DeathFXincidentallFire"/>
+            <Type value="Sound"/>
+            <Time value="0.450000"/>
+            <Payload value="Uni_DeathFXincidentallFire"/>
+        </Events>
+        <Events>
+            <Variation value="0"/>
+            <Anim value="Death,02"/>
+            <Name value="Uni_DeathFXincidentallFire"/>
+            <Type value="Sound"/>
+            <Time value="0.450000"/>
+            <Payload value="Uni_DeathFXincidentallFire"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Immortal_Explode_Legs_Start"/>
+            <Type value="Sound"/>
+            <Time value="0.160000"/>
+            <Payload value="Immortal_Explode_Legs_Start"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Immortal_Explode_Legs_Mech"/>
+            <Type value="Sound"/>
+            <Time value="0.703000"/>
+            <Payload value="Immortal_Explode_Legs_Mech"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Immortal_Explode_Legs_Impact"/>
+            <Type value="Sound"/>
+            <Time value="1.050000"/>
+            <Payload value="Immortal_Explode_Legs_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Immortal_Explode_Var"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Immortal_Explode_Var"/>
+        </Events>
+        <Events>
+            <Anim value="Death,02"/>
+            <Name value="Immortal_Explode_Legs_Impact"/>
+            <Type value="Sound"/>
+            <Time value="0.800000"/>
+            <Payload value="Immortal_Explode_Legs_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Death,03"/>
+            <Name value="Immortal_Explode_Body_Start"/>
+            <Type value="Sound"/>
+            <Time value="0.187000"/>
+            <Payload value="Immortal_Explode_Body_Start"/>
+        </Events>
+        <Events>
+            <Anim value="Death,03"/>
+            <Name value="Immortal_Explode_Body_Impact"/>
+            <Type value="Sound"/>
+            <Time value="0.887000"/>
+            <Payload value="Immortal_Explode_Body_Impact"/>
+        </Events>
+        <Events>
+            <Variation value="1"/>
+            <Anim value="Death,03"/>
+            <Name value="Immortal_Explode_Var"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Immortal_Explode_Var"/>
+        </Events>
+        <Events>
+            <Variation value="1"/>
+            <Anim value="Death,00"/>
+            <Name value="Uni_DeathFXincidentallFire"/>
+            <Type value="Sound"/>
+            <Time value="0.450000"/>
+            <Payload value="Uni_DeathFXincidentallFire"/>
+        </Events>
+        <Events>
+            <Variation value="1"/>
+            <Anim value="Death,03"/>
+            <Name value="Uni_DeathFXincidentallFire"/>
+            <Type value="Sound"/>
+            <Time value="0.450000"/>
+            <Payload value="Uni_DeathFXincidentallFire"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Immortal_Explode"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Immortal_Explode"/>
+        </Events>
+        <Events>
+            <Anim value="Death,02"/>
+            <Name value="Immortal_Explode"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Immortal_Explode"/>
+        </Events>
+    </CModel>
+    <CModel id="Vanguard@Portrait" parent="Portrait" Race="Protoss">
+        <Model value="Assets\Portraits\Protoss\Immortal_TalDarim_Portrait\Immortal_TalDarim_Portrait.m3"/>
+        <Image value="Assets\Textures\taldarimimmortalportrait_static.dds"/>
+    </CModel>
+    <CModel id="Vanguard@Placement" parent="Placement" Race="Protoss">
+        <Model value="Assets\Units\Protoss\ImmortalTaldarim_Placement\ImmortalTaldarim_Placement.m3"/>
+        <Radius value="-1.000000"/>
+        <Lighting value="Immortal"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.750000,0.750000,0.750000"/>
+        <ScaleMin value="0.750000,0.750000,0.750000"/>
+        <SelectionRadius value="0.866400"/>
+        <ShadowRadius value="0.866400"/>
+    </CModel>
+    <CModel id="Vanguard@WarpIn" parent="OneShotSpellFX">
+        <Model value="Assets\Units\Protoss\Immortal_Taldarim_WarpIn\Immortal_Taldarim_WarpIn.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.750000,0.750000,0.750000"/>
+        <ScaleMin value="0.750000,0.750000,0.750000"/>
+        <LowQualityModel value="ProtossUnitBirth"/>
+        <SelectionRadius value="0.666500"/>
+        <ShadowRadius value="0.666500"/>
+    </CModel>
+
+    <CSound id="Vanguard@Attack" parent="ProtossAck_Void">
+        <AssetArray TemplateParam="Vanguard_Attack00"/>
+        <AssetArray TemplateParam="Vanguard_Attack01"/>
+        <AssetArray TemplateParam="Vanguard_Attack02"/>
+        <AssetArray TemplateParam="Vanguard_Attack03"/>
+        <AssetArray TemplateParam="Vanguard_Attack04"/>
+        <AssetArray TemplateParam="Vanguard_Attack05"/>
+        <AssetArray TemplateParam="Vanguard_Attack06"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+    <CSound id="Vanguard@Death" parent="ProtossDeath">
+        <AssetArray TemplateParam="Vanguard_Death00"/>
+        <AssetArray TemplateParam="Vanguard_Death01"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+    <CSound id="Vanguard@Help" parent="ProtossHelp">
+        <AssetArray TemplateParam="Vanguard_Help00"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Vanguard@Pissed" parent="ProtossPissed">
+        <AssetArray TemplateParam="Vanguard_Pissed00"/>
+        <AssetArray TemplateParam="Vanguard_Pissed01"/>
+        <AssetArray TemplateParam="Vanguard_Pissed02"/>
+        <AssetArray TemplateParam="Vanguard_Pissed03"/>
+        <AssetArray TemplateParam="Vanguard_Pissed04"/>
+        <AssetArray TemplateParam="Vanguard_Pissed05"/>
+        <AssetArray TemplateParam="Vanguard_Pissed06"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+    <CSound id="Vanguard@Ready" parent="ProtossReady">
+        <AssetArray TemplateParam="Vanguard_Ready00"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="2.000000,2.000000"/>
+    </CSound>
+    <CSound id="Vanguard@What" parent="ProtossAck_Void">
+        <AssetArray TemplateParam="Vanguard_What00"/>
+        <AssetArray TemplateParam="Vanguard_What01"/>
+        <AssetArray TemplateParam="Vanguard_What02"/>
+        <AssetArray TemplateParam="Vanguard_What03"/>
+        <AssetArray TemplateParam="Vanguard_What04"/>
+        <AssetArray TemplateParam="Vanguard_What05"/>
+        <AssetArray TemplateParam="Vanguard_What06"/>
+        <AssetArray TemplateParam="Vanguard_What07"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+    <CSound id="Vanguard@Yes" parent="ProtossAck_Void">
+        <AssetArray TemplateParam="Vanguard_Yes00"/>
+        <AssetArray TemplateParam="Vanguard_Yes01"/>
+        <AssetArray TemplateParam="Vanguard_Yes02"/>
+        <AssetArray TemplateParam="Vanguard_Yes03"/>
+        <AssetArray TemplateParam="Vanguard_Yes04"/>
+        <AssetArray TemplateParam="Vanguard_Yes05"/>
+        <AssetArray TemplateParam="Vanguard_Yes06"/>
+        <AssetArray TemplateParam="Vanguard_Yes07"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+
+    <CLight id="Vanguard" parent="Default">
+        <ToDInfoArray index="0" Id="PortraitTalDarimImmortal" AmbientColor="0.000000,0.000000,0.000000" Colorize="1">
+            <Param index="HDRExposure" value="2.075000"/>
+            <Param index="HDRSpecMultiplier" value="2.000000"/>
+            <Param index="ColorizationHue" value="0.024000"/>
+            <Param index="ColorizationSaturation" value="0.786000"/>
+            <Param index="ColorizationLightness" value="-0.480000"/>
+            <Param index="ColorizationBlend" value="0.417000"/>
+            <DirectionalLight index="Key">
+                <Color value="0.509804,0.760784,0.858824"/>
+                <ColorMultiplier value="2.000000"/>
+                <SpecColorMultiplier value="0.500000"/>
+                <Direction value="-0.049811,-0.029882,-0.998312"/>
+            </DirectionalLight>
+            <DirectionalLight index="Fill" ColorMultiplier="0.000000"/>
+            <DirectionalLight index="Back" Color="0.729412,0.113725,0.113725" ColorMultiplier="1.500000" Direction="0.044508,0.467357,0.882948"/>
+        </ToDInfoArray>
+        <EditorCategories value="LightGroup:PortraitsUnitsProtoss"/>
+    </CLight>
+
+    <CTurret id="Vanguard" parent="FreeRotate">
+        <Idle value="FollowMovement"/>
+        <YawIdleRate value="360"/>
+    </CTurret>
+
+    <CDataCollectionUnit id="Vanguard">
+        <DataRecord Entry="Button,Vanguard"/>
+        <DataRecord Entry="Unit,Vanguard"/>
+        <DataRecord Entry="Actor,Vanguard"/>
+        <DataRecord Entry="Model,Vanguard"/>
+        <DataRecord Entry="Model,Vanguard@Death"/>
+        <DataRecord Entry="Model,Vanguard@Portrait"/>
+        <DataRecord Entry="Model,Vanguard@Placement"/>
+        <DataRecord Entry="Model,Vanguard@WarpIn"/>
+        <DataRecord Entry="Sound,Vanguard@Attack"/>
+        <DataRecord Entry="Sound,Vanguard@Death"/>
+        <DataRecord Entry="Sound,Vanguard@Help"/>
+        <DataRecord Entry="Sound,Vanguard@Pissed"/>
+        <DataRecord Entry="Sound,Vanguard@Ready"/>
+        <DataRecord Entry="Sound,Vanguard@What"/>
+        <DataRecord Entry="Sound,Vanguard@Yes"/>
+        <DataRecord Entry="Light,Vanguard"/>
+        <DataRecord Entry="Turret,Vanguard"/>
+    </CDataCollectionUnit>
+
+    <!-- ============================= -->
+    <!--            Weapons            -->
+    <!-- ============================= -->
+
+    <CWeaponLegacy id="ScatterCannon">
+        <Arc value="360"/>
+        <DisplayEffect value="ScatterCannon@Damage"/>
+        <Effect value="ScatterCannon@CP"/>
+        <DisplayAttackCount value="8"/>
+        <Icon value=""/>
+        <MinScanRange value="6.5"/>
+        <Period value="3.75"/>
+        <Range value="6"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+
+    <CEffectDamage id="ScatterCannon@Damage">
+        <Amount value="8"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="ScatterCannon@LM">
+        <AmmoUnit value="ScatterCannon@AttackMissile"/>
+        <ImpactEffect value="ScatterCannon@Search"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <ValidatorArray value="TargetRadiusLE0Dot125"/>
+    </CEffectLaunchMissile>
+    <CEffectCreatePersistent id="ScatterCannon@CP">
+        <EditorCategories value="Race:Protoss"/>
+
+        <PeriodicOffsetArray value="-0.75,0,0"/>
+        <PeriodicOffsetArray value="0.75,0,0"/>
+        <PeriodicOffsetArray value="0,-0.75,0"/>
+        <PeriodicOffsetArray value="0,0.75,0"/>
+        
+        <PeriodicEffectArray value="ScatterCannon@Set@LM"/>
+
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0.0625"/>
+        <PeriodicPeriodArray value="0.0625"/>
+        <PeriodicPeriodArray value="0.0625"/>
+        <!--Flags index="RandomOffset" value="1"/-->
+        <PeriodCount value="4"/>
+        <!--OffsetRandMode value="RandomNoRepeat"/-->
+        <WhichLocation Value="TargetUnit"/>
+        <ExpireEffect value="ScatterCannon@RB"/>
+        <FinalEffect value="ScatterCannon@RB"/>
+        <InitialEffect value="ScatterCannon@LM@2"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="ScatterCannon@Search">
+        <AreaArray>
+            <Effect value="ScatterCannon@Set"/>
+            <Radius value="1.2"/>
+        </AreaArray>
+        <IncludeArray Effect="ScatterCannon@CP" Value="Target"/>
+        <SearchFilters value="Ground;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectEnumArea>
+    <CEffectRemoveBehavior id="ScatterCannon@RB">
+
+    </CEffectRemoveBehavior>
+    <CEffectSet id="ScatterCannon@Set">
+        <EffectArray value="ScatterCannon@Damage"/>
+        <EffectArray value="ScatterCannon@Damage"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="ScatterCannon@LM@2">
+        <AmmoUnit value="ScatterCannon@AttackMissile"/>
+        <ImpactEffect value="ScatterCannon@Damage"/>
+    </CEffectLaunchMissile>
+    <CEffectSet id="ScatterCannon@Set@LM">
+        <EffectArray value="ScatterCannon@LM"/>
+    </CEffectSet>
+
+    <!-- Actors -->
+
+    <CActorAction id="ScatterCannon@Attack" parent="GenericAttack" effectImpact="ScatterCannon@Search" effectLaunch="ScatterCannon@LM">
+        <LaunchAttachQuery Methods="AMPatternScatterCannon"/>
+    </CActorAction>
+    <CActorSimple id="ScatterCannon@Animation">
+        <On Terms="Effect.ScatterCannon@CP.Start" Send="Create"/>
+        <On Terms="Effect.ScatterCannon@LM.Start" Target="_Unit" Send="AnimPlay Attack Attack,Superior"/>
+        <On Terms="Effect.ScatterCannon@CP.Stop" Send="Destroy"/>
+        <On Terms="ActorDestruction" Target="_Unit" Send="AnimClear Attack"/>
+    </CActorSimple>
+
+    <CModel id="ScatterCannon@AttackLaunch">
+        <Model value="Assets\Effects\Protoss\ScatterCannonLaunch\ScatterCannonLaunch.m3"/>
+    </CModel>
+    <CModel id="ScatterCannon@AttackImpact">
+        <Model value="Assets\Effects\Protoss\ScatterCannonMissileImpact\ScatterCannonMissileImpact.m3"/>
+    </CModel>
+    
+    <CSound id="ScatterCannon@AttackLaunch" parent="Combat">
+        <AssetArray File="Assets\Sounds\Vanguard_ScatterCannon_LaunchAttack01_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Vanguard_ScatterCannon_LaunchAttack02_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Vanguard_ScatterCannon_LaunchAttack03_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Vanguard_ScatterCannon_LaunchAttack04_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Vanguard_ScatterCannon_LaunchAttack05_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Vanguard_ScatterCannon_LaunchAttack06_1ch.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <OverlapTimeDelta value="160"/>
+        <Pitch value="-0.500000,0.500000"/>
+        <PlayDelay value="0,150"/>
+        <Volume value="-1.940000,-1.940000"/>
+        <DupeMuteCount value="3"/>
+        <DupePrioritization value="Oldest"/>
+    </CSound>
+    <CSound id="ScatterCannon@AttackImpact" parent="Combat">
+        <AssetArray File="Assets\Sounds\Vanguard_ScatterCannon_Impact01_1ch.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Vanguard_ScatterCannon_Impact02_1ch.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Vanguard_ScatterCannon_Impact03_1ch.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Vanguard_ScatterCannon_Impact04_1ch.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Vanguard_ScatterCannon_Impact05_1ch.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Vanguard_ScatterCannon_Impact06_1ch.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Vanguard_ScatterCannon_Impact07_1ch.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
+    </CSound>
+    
+    <!-- Missile -->
+    <CUnit id="ScatterCannon@AttackMissile" parent="MISSILE">
+        <Race value="Prot"/>
+    </CUnit>
+    <CActorUnit id="ScatterCannon@AttackMissile" parent="GenericUnitStandard" unitName="ScatterCannon@AttackMissile"/>
+    <CModel id="ScatterCannon@AttackMissile" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\ScatterCannonMissile\ScatterCannonMissile.m3"/>
+    </CModel>
+    <CMoverMissile id="ScatterCannon@AttackMissile">
+        <MotionPhases>
+            <Driver value="Ballistic"/>
+            <Acceleration value="-1"/>
+            <Speed value="10"/>
+            <MaxSpeed value="20"/>
+            <Gravity value="60"/>
+            <ClearanceLookahead value="3"/>
+            <YawPitchRoll value="MAX"/>
+        </MotionPhases>
+    </CMoverMissile>
+
+    <CDataCollectionUnit id="ScatterCannon">
+        <DataRecord Entry="Weapon,ScatterCannon"/>
+        <DataRecord Entry="Effect,ScatterCannon@Damage"/>
+        <DataRecord Entry="Effect,ScatterCannon@LM"/>
+        <DataRecord Entry="Effect,ScatterCannon@CP"/>
+        <DataRecord Entry="Effect,ScatterCannon@Search"/>
+        <DataRecord Entry="Effect,ScatterCannon@RB"/>
+        <DataRecord Entry="Effect,ScatterCannon@Set"/>
+        <DataRecord Entry="Effect,ScatterCannon@LM@2"/>
+        <DataRecord Entry="Effect,ScatterCannon@Set@LM"/>
+        <DataRecord Entry="Actor,ScatterCannon@Attack"/>
+        <DataRecord Entry="Model,ScatterCannon@AttackLaunch"/>
+        <DataRecord Entry="Model,ScatterCannon@AttackImpactModel"/>
+        <DataRecord Entry="Unit,ScatterCannon@AttackMissile"/>
+        <DataRecord Entry="Actor,ScatterCannon@AttackMissile"/>
+        <DataRecord Entry="Model,ScatterCannon@AttackMissile"/>
+        <DataRecord Entry="Mover,ScatterCannon@AttackMissile"/>
+    </CDataCollectionUnit>
+
+    <!-- Other Data -->
+
+    <CAttachMethodPattern id="AMPatternScatterCannon">
+        <Base value="::RollingIndex"/>
+        <Driver value="ScatterCannon@LM"/>
+        <Keyword value="Weapon"/>
+    </CAttachMethodPattern>
+</Catalog>

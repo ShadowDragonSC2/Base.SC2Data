@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    <CButton id="AssaultGalleon"></CButton>
+
+    <CUnit id="AssaultGalleon">
+        <DeathRevealRadius value="3"/>
+        <Facing value="45"/>
+        <Race value="Terr"/>
+        <FlagArray index="PreventDefeat" value="1"/>
+        <FlagArray index="PreventDestroy" value="1"/>
+        <FlagArray index="PenaltyRevealed" value="1"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="ArmorDisabledWhileConstructing" value="1"/>
+        <FlagArray index="ArmySelect" value="1"/>
+        <FlagArray index="TreatStructureAsUnitForSelection" value="1"/>
+        <PlaneArray index="Air" value="1"/>
+        <Collide index="Flying" value="1"/>
+        <Collide index="FlyingEscorts" value="1"/>
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Mechanical" value="1"/>
+        <LifeStart value="500"/>
+        <LifeMax value="500"/>
+        <LifeArmor value="1"/>
+        <LifeArmorName value="Unit/LifeArmorName/TerranShipPlating"/>
+        <Mover value="Fly"/>
+        <Speed value="1.879"/>
+        <Acceleration value="1.3125"/>
+        <Sight value="12"/>
+        <Height value="4"/>
+        <VisionHeight value="4"/>
+        <CostCategory value="Technology"/>
+        <CostResource index="Minerals" value="150"/>
+        <RepairTime value="80"/>
+        <AttackTargetPriority value="11"/>
+        <AbilArray Link="move"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="attack"/>
+        <AbilArray Link="BuildInProgress"/>
+        <AbilArray Link="que5Passive"/>
+        <AbilArray Link="SummonHornerMercenaries"/>
+        <AbilArray Link="HHMercStarportHangar"/>
+        <!-- <WeaponArray Link="HHMercStarportLaunch"/> -->
+        <WeaponArray Link="TyphoonMissilePodAssaultGalleon"/>
+        <!-- <WeaponArray Link="HHMercStarportLaunchDummy"/> -->
+        <!-- <EffectArray index="Create" value="TheHornersStatUpdate"/> -->
+        <!-- <EffectArray index="Death" value="TheHornersStatUpdate"/> -->
+        <CardLayouts>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+            <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="que5Passive,CancelLast" Row="2" Column="4"/>
+            <LayoutButtons Face="CancelBuilding" Type="AbilCmd" AbilCmd="BuildInProgress,Cancel" Row="2" Column="4"/>
+            <LayoutButtons Face="HHArmyOOCRegen" Type="Passive" Requirements="HaveHHArmyOOCRegenAtUnit" Row="2" Column="4"/>
+            <LayoutButtons Face="SelectBuilder" Type="SelectBuilder" AbilCmd="StarportTrain,Train5" Row="1" Column="3"/>
+            <LayoutButtons Face="ResearchHHMercStarportHangarBay" Type="AbilCmd" AbilCmd="HHMercStarportHangar,Ammo2" Row="1" Column="0"/>
+            <LayoutButtons Face="UnlockHHMercStarportHangarLocked" Type="Passive" Requirements="HornerHanLevel03" Row="1" Column="0"/>
+            <LayoutButtons Face="HHMercStarportHangarPassive" Type="Passive" Row="1" Column="0"/>
+            <LayoutButtons Face="AttackWorker" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="HHMSOAttackSpeed" Type="Passive" Requirements="HaveHHSOBuff" Row="1" Column="4"/>
+        </CardLayouts>
+        <Radius value="1.625"/>
+        <SeparationRadius value="1.625"/>
+        <PlacementFootprint value="Footprint3x3CreepNormalBuildable"/>
+        <SubgroupPriority value="190"/>
+        <MinimapRadius value="1.625"/>
+        <EditorCategories value="ObjectType:Structure,ObjectFamily:FactionMarauder"/>
+        <TechAliasArray value="Alias_MercStarport"/>
+        <HotkeyCategory value="Unit/Category/Marauder/HornerHan"/>
+        <GlossaryPriority value="40"/>
+    </CUnit>
+
+    <CActorUnit id="AssaultGalleon" parent="GenericUnitStandard" unitName="AssaultGalleon">
+        <PortraitModel value="AssaultGalleon@Portrait"/>
+        <PlacementModel value="AssaultGalleon@Placement"/>
+        <PlacementSound value="Terran_BuildingPlacement"/>
+        <DeathArray index="Normal">
+            <ModelLink value="AssaultGalleon@Death"/>
+            <SoundLink value="AssaultGalleon@Death"/>
+            <VoiceLink value="AssaultGalleon@DeathVoice"/>
+        </DeathArray>
+        <SoundArray index="Attack" value="AssaultGalleon@Attack"/>
+        <SoundArray index="Pissed" value="AssaultGalleon@Pissed"/>
+        <SoundArray index="Help" value="AssaultGalleon@Help"/>
+        <SoundArray index="Yes" value="AssaultGalleon@Yes"/>
+        <SoundArray index="What" value="AssaultGalleon@What"/>
+        <SoundArray index="Ready" value="AssaultGalleon@Ready"/>
+        <AcceptedHostedPropTransfers index="CreepEngulfment" value="0"/>
+        <Macros value="QueueAnim"/>
+        <BarWidth value="160"/>
+        <BarOffset value="120"/>
+        <NameOffset value="110"/>
+        <UnitIcon value="Assets\Textures\btn-building-hornerhan-assaultgalleon.dds"/>
+        <HeroIcon value="Assets\Textures\btn-building-hornerhan-assaultgalleon.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-shipplatinglevel0.dds"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-hornerhan-assaultgalleon.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-hornerhan-assaultgalleon.dds"/>
+        </Wireframe>
+    </CActorUnit>
+
+    <CModel id="AssaultGalleon" parent="Building">
+        <Model value="Assets\Buildings\Terran\COOP_AssaultGalleon\COOP_AssaultGalleon.m3"/>
+        <SelectionRadius value="3.000000"/>
+        <SquibTypeDefault value="Metal"/>
+        <Radius value="2.500000"/>
+        <ShadowRadius value="3.000000"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.500000,0.500000,0.500000"/>
+        <ScaleMin value="0.500000,0.500000,0.500000"/>
+        <AttachProps Id="Ref_Weapon Left">
+            <Keys index="SetA" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Weapon Right">
+            <Keys index="SetA" value="1"/>
+        </AttachProps>
+    </CModel>
+    <CModel id="AssaultGalleon@Death" parent="BuildingDeath">
+        <Model value="Assets\Buildings\Terran\COOP_AssaultGalleon_Death\COOP_AssaultGalleon_Death.m3"/>
+        <LowQualityModel value="TerranLargeUnitDeath"/>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="HH_AssaultGalleon_DeathExplosion2"/>
+            <Type value="Sound"/>
+            <Time value="0.450000"/>
+            <Payload value="HH_AssaultGalleon_DeathExplosion2"/>
+        </Events>
+    </CModel>
+    <CModel id="AssaultGalleon@Portrait" parent="FXAPortrait">
+        <Model value="Assets\Portraits\Terran\SMX1_HanPortrait\SMX1_HanPortrait.m3"/>
+        <FacialController value="LocalizedData\Facial\HanPortrait.fxa"/>
+        <Image value="Assets\Textures\SMX1_HanPortrait_Static.dds"/>
+    </CModel>
+    <CModel id="AssaultGalleon@Placement" parent="Placement">
+        <Model value="Assets\Buildings\Terran\COOP_AssaultGalleon_Placement\COOP_AssaultGalleon_Placement.m3"/>
+    </CModel>
+
+    <CSound id="AssaultGalleon@DeathVoice" parent="DeathVoice">
+        <AssetArray />
+    </CSound>
+    <CSound id="AssaultGalleon@Attack" parent="TerranAck_Void">
+        <AssetArray TemplateParam="Han_Attack00"/>
+        <AssetArray TemplateParam="Han_Attack01"/>
+        <AssetArray TemplateParam="Han_Attack02"/>
+        <AssetArray TemplateParam="Han_Attack03"/>
+        <AssetArray TemplateParam="Han_Attack04"/>
+        <AssetArray TemplateParam="Han_Attack05"/>
+        <AssetArray TemplateParam="Han_Attack06"/>
+    </CSound>
+    <CSound id="AssaultGalleon@Help" parent="TerranHelp">
+        <AssetArray TemplateParam="Han_Help00"/>
+    </CSound>
+    <CSound id="AssaultGalleon@Pissed" parent="TerranPissed">
+        <AssetArray TemplateParam="Han_Pissed00"/>
+        <AssetArray TemplateParam="Han_Pissed01"/>
+        <AssetArray TemplateParam="Han_Pissed02"/>
+        <AssetArray TemplateParam="Han_Pissed03"/>
+        <AssetArray TemplateParam="Han_Pissed04"/>
+        <AssetArray TemplateParam="Han_Pissed05"/>
+        <AssetArray TemplateParam="Han_Pissed06"/>
+    </CSound>
+    <CSound id="AssaultGalleon@Yes" parent="TerranAck_Void">
+        <AssetArray TemplateParam="Han_Yes00"/>
+        <AssetArray TemplateParam="Han_Yes01"/>
+        <AssetArray TemplateParam="Han_Yes02"/>
+        <AssetArray TemplateParam="Han_Yes03"/>
+        <AssetArray TemplateParam="Han_Yes04"/>
+        <AssetArray TemplateParam="Han_Yes05"/>
+    </CSound>
+    <CSound id="AssaultGalleon@What" parent="TerranAck_Void">
+        <AssetArray TemplateParam="Han_What00"/>
+        <AssetArray TemplateParam="Han_What01"/>
+        <AssetArray TemplateParam="Han_What02"/>
+        <AssetArray TemplateParam="Han_What03"/>
+        <AssetArray TemplateParam="Han_What04"/>
+        <AssetArray TemplateParam="Han_What05"/>
+        <AssetArray TemplateParam="Han_What06"/>
+        <AssetArray TemplateParam="Han_What07"/>
+    </CSound>
+    <CSound id="AssaultGalleon@Ready" parent="TerranReady">
+        <AssetArray TemplateParam="Han_Ready00"/>
+    </CSound>
+
+    <CRequirement id="AssaultGalleon@Use"/>
+
+    <CDataCollectionUnit id="AssaultGalleon">
+        <DataRecord Entry="Button,AssaultGalleon"/>
+        <DataRecord Entry="Unit,AssaultGalleon"/>
+        <DataRecord Entry="Actor,AssaultGalleon"/>
+        <DataRecord Entry="Model,AssaultGalleon"/>
+        <DataRecord Entry="Model,AssaultGalleon@Death"/>
+        <DataRecord Entry="Model,AssaultGalleon@Portrait"/>
+        <DataRecord Entry="Model,AssaultGalleon@Placement"/>
+        <DataRecord Entry="Sound,AssaultGalleon@DeathVoice"/>
+        <DataRecord Entry="Sound,AssaultGalleon@Attack"/>
+        <DataRecord Entry="Sound,AssaultGalleon@Help"/>
+        <DataRecord Entry="Sound,AssaultGalleon@Pissed"/>
+        <DataRecord Entry="Sound,AssaultGalleon@Yes"/>
+        <DataRecord Entry="Sound,AssaultGalleon@What"/>
+        <DataRecord Entry="Sound,AssaultGalleon@Ready"/>
+        <DataRecord Entry="Requirement,AssaultGalleon@Use"/>
+    </CDataCollectionUnit>
+    
+    <!-- =========== Weapons =========== -->
+
+    <CWeaponLegacy id="TyphoonMissilePodAssaultGalleon">
+        <Arc value="360"/>
+        <Effect value="TyphoonMissilePodAssaultGalleon@LM"/>
+        <DisplayEffect value="TyphoonMissilePodAssaultGalleon@Damage"/>
+        <Range value="9"/>
+    </CWeaponLegacy>
+
+    <CEffectLaunchMissile id="TyphoonMissilePodAssaultGalleon@LM">
+        <LaunchLocation Value="CasterUnit"/>
+        <ImpactEffect value="TyphoonMissilePodAssaultGalleon@Damage"/>
+        <AmmoUnit value="TyphoonMissilePodAssaultGalleon@AttackMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="TyphoonMissilePodAssaultGalleon@Damage" parent="DU_WEAP_MISSILE">
+        <Amount value="20"/>
+        <Death value="Blast"/>
+    </CEffectDamage>
+
+    <CActorAction id="TyphoonMissilePodAssaultGalleon@Attack" parent="GenericAttack" effectImpact="TyphoonMissilePodAssaultGalleon@Damage" effectLaunch="TyphoonMissilePodAssaultGalleon@LM">
+        <LaunchAttachQuery Methods="TyphoonMissilePodAssaultGalleon@AM"/>
+    </CActorAction>
+    <CActorMissile id="TyphoonMissilePodAssaultGalleon@AttackMissile" parent="GenericAttackMissile" unitName="TyphoonMissilePodAssaultGalleon@AttackMissile"/>
+
+    <CModel id="TyphoonMissilePodAssaultGalleon@AttackMissile" parent="MissileFX">
+        <Model value="Assets\Effects\Terran\MiraHorner_Carrier_Coop_Missile\MiraHorner_Carrier_Coop_Missile.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+    <CModel id="TyphoonMissilePodAssaultGalleon@AttackImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Terran\MiraHorner_Carrier_Coop_Missile_Burst\MiraHorner_Carrier_Coop_Missile_Burst.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+    <CModel id="TyphoonMissilePodAssaultGalleon@AttackLaunch" parent="LaunchFX">
+        <Model value="Assets\Effects\Terran\MiraHorner_Carrier_Coop_Missile_Burst\MiraHorner_Carrier_Coop_Missile_Burst.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+    
+    <CSound id="TyphoonMissilePodAssaultGalleon@AttackImpact" parent="Combat">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Cyclone_Missile_Impact_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Cyclone_Missile_Impact_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Cyclone_Missile_Impact_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Cyclone_Missile_Impact_04.wav" FacialGroup=""/>
+        <DupeDestroyCount value="3"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="3"/>
+        <DupePrioritization value="Oldest"/>
+        <Pitch value="-4.000000,-2.000000"/>
+        <Volume value="-13.000000,-11.000000"/>
+    </CSound>
+    <CSound id="TyphoonMissilePodAssaultGalleon@AttackLaunch" parent="Combat">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\AssaultGalleon_AttackLaunch01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\AssaultGalleon_AttackLaunch02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\AssaultGalleon_AttackLaunch03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\AssaultGalleon_AttackLaunch04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\AssaultGalleon_AttackLaunch05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\AssaultGalleon_AttackLaunch06.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\AssaultGalleon_AttackLaunch07.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\AssaultGalleon_AttackLaunch08.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\AssaultGalleon_AttackLaunch09.wav" FacialGroup=""/>
+        <DupeDestroyCount value="3"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="3"/>
+        <DupePrioritization value="Oldest"/>
+        <Pitch value="-3.000000,-1.000000"/>
+    </CSound>
+
+    <CMoverMissile id="TyphoonMissilePodAssaultGalleon@AttackMissile">
+        <MotionPhases>
+            <Driver value="Throw"/>
+            <Acceleration value="100"/>
+            <Speed value="20"/>
+            <MaxSpeed value="30"/>
+            <ClearanceAcceleration value="75"/>
+            <ArrivalTestType value="3D"/>
+            <Outro value="0.5,1.5"/>
+            <ThrowVector value="0,-1,0"/>
+            <ThrowBandYaw value="-360,-360,-360,-360"/>
+            <ThrowBandPitch value="-360,-360,-360,-360"/>
+            <YawPitchRoll value="719.2968"/>
+        </MotionPhases>
+        <MotionPhases>
+            <Driver value="Guidance"/>
+            <Acceleration value="3"/>
+            <AccelerationRange value="7"/>
+            <MaxSpeed value="30"/>
+            <ActorTracking value="Actual"/>
+            <Outro value="2,3"/>
+            <YawPitchRoll value="9.8437"/>
+        </MotionPhases>
+        <MotionPhases>
+            <Driver value="Guidance"/>
+            <Acceleration value="3"/>
+            <AccelerationRange value="7"/>
+            <MaxSpeed value="30"/>
+            <ActorTracking value="Actual"/>
+            <Outro value="-2.5,-1.5"/>
+            <YawPitchRoll value="359.2968"/>
+        </MotionPhases>
+        <MotionPhases YawPitchRoll="MAX"/>
+    </CMoverMissile>
+
+    <CAttachMethodPattern id="TyphoonMissilePodAssaultGalleon@AM">
+        <Keyword value="SetA"/>
+        <Driver value="TyphoonMissilePodAssaultGalleon@AttackLaunch"/>
+        <Base value="::RollingIndex"/>
+    </CAttachMethodPattern>
+
+    <CUnit id="TyphoonMissilePodAssaultGalleon@AttackMissile" parent="MISSILE">
+        <Race value="Terr"/>
+        <EditorCategories value="ObjectFamily:Melee,ObjectType:Projectile"/>
+    </CUnit>
+
+    <CDataCollection id="TyphoonMissilePodAssaultGalleon">
+        <DataRecord Entry="Weapon,TyphoonMissilePodAssaultGalleon"/>
+        <DataRecord Entry="Effect,TyphoonMissilePodAssaultGalleon@LM"/>
+        <DataRecord Entry="Effect,TyphoonMissilePodAssaultGalleon@Damage"/>
+        <DataRecord Entry="Actor,TyphoonMissilePodAssaultGalleon@Attack"/>
+        <DataRecord Entry="Actor,TyphoonMissilePodAssaultGalleon@AttackMissile"/>
+        <DataRecord Entry="Model,TyphoonMissilePodAssaultGalleon@AttackMissile"/>
+        <DataRecord Entry="Model,TyphoonMissilePodAssaultGalleon@AttackLaunch"/>
+        <DataRecord Entry="Sound,TyphoonMissilePodAssaultGalleon@AttackImpact"/>
+        <DataRecord Entry="Sound,TyphoonMissilePodAssaultGalleon@AttackLaunch"/>
+        <DataRecord Entry="Mover,TyphoonMissilePodAssaultGalleon@AttackMissile"/>
+        <DataRecord Entry="AttachMethod,TyphoonMissilePodAssaultGalleon@AM"/>
+        <DataRecord Entry="Unit,TyphoonMissilePodAssaultGalleon@AttackMissile"/>
+    </CDataCollection>
+
+    <!-- =========== Abilities =========== -->
+
+    <CAbilTrain id="AssaultGalleonTrain"></CAbilTrain>
+    
+</Catalog>

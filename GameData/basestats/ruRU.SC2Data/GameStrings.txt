@@ -1,0 +1,5 @@
+Unit/Category/ProtossFaction/Taldarim=Тал'даримы
+Unit/Category/ProtossFaction/Nerazim=Неразимы
+
+UI/HelpMenuDialogTechGlossary_Control_Unit/Category/ProtossFaction/Taldarim=Тал'даримы
+UI/HelpMenuDialogTechGlossary_Control_Unit/Category/ProtossFaction/Nerazim=Неразимы

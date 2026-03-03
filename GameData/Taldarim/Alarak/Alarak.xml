@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    <CButton id="DestructionWave"></CButton>
+
+    <CAbilEffectTarget id="DestructionWave">
+        <CmdButtonArray index="Execute" DefaultButtonFace="DestructionWave"/>
+        <Arc value="360"/>
+    </CAbilEffectTarget>
+
+</Catalog>

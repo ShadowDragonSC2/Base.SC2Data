@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+
+    <CButton id="Annihilator">
+        <Icon value="Assets\Textures\BTN-Unit-Protoss-Immortal-Nerazim.dds"/>
+        <AlertIcon value="Assets\Textures\BTN-Unit-Protoss-Immortal-Nerazim.dds"/>
+    </CButton>
+    
+    <CUnit id="Annihilator" parent="Generic_Protoss_Unit_Immortal">
+        <LifeMax value="200"/>
+        <LifeStart value="200"/>
+        <ShieldsMax value="100"/>
+        <ShieldsStart value="100"/>
+        <Sight value="9"/>
+        <Food value="-4"/>
+        <RepairTime value="55"/>
+        <WeaponArray index="0" Link="AnnihilatorParticleDisruptors"/>
+        <AbilArray Link="ShadowCannon"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ShadowCannon" Type="AbilCmd" AbilCmd="ShadowCannon,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+        <CostResource index="Minerals" value="250"/>
+        <CostResource index="Vespene" value="100"/>
+        <HotkeyCategory value="Unit/Category/ProtossFaction/Nerazim"/>
+        <GlossaryCategory value="Unit/Category/ProtossFaction/Nerazim"/>
+    </CUnit>
+    
+    <CActorUnit id="Annihilator" parent="GenericUnitStandard" unitName="Annihilator">
+        <DeathArray index="Normal">
+            <ModelLink value="Annihilator@Death"/>
+        </DeathArray>
+        <PortraitModel value="Annihilator@Portrait"/>
+        <PlacementModel value="Annihilator@Placement"/>
+        <SoundArray index="Attack" value="Annihilator@Attack"/>
+        <SoundArray index="Help" value="Annihilator@Help"/>
+        <SoundArray index="Pissed" value="Annihilator@Pissed"/>
+        <SoundArray index="Yes" value="Annihilator@Yes"/>
+        <SoundArray index="What" value="Annihilator@What"/>
+        <SoundArray index="Ready" value="Annihilator@Ready"/>
+        <BarOffset value="80"/>
+        <BarWidth value="90"/>
+        <WalkAnimMoveSpeed value="1.25"/>
+    </CActorUnit>
+    
+    <CModel id="Annihilator" parent="Unit">
+        <EditorCategories value="Race:Protoss"/>
+        <Model value="Assets\Units\Protoss\Immortal_Nerazim\Immortal_Nerazim.m3"/>
+        <RequiredAnims value="Assets\Units\Protoss\Immortal_SwarmAnims\Immortal_SwarmAnims.m3a"/>
+        <Occlusion value="Show"/>
+        <Tipability value="0.750000"/>
+        <TipabilityWidth value="0.800000"/>
+        <TipabilityLength value="0.800000"/>
+        <ScaleMax value="0.750000,0.750000,0.750000"/>
+        <ScaleMin value="0.750000,0.750000,0.750000"/>
+        <SelectionRadius value="0.866400"/>
+        <SquibTypeDefault value="Metal"/>
+        <Radius value="0.650000"/>
+        <TechPurchaseCamera value="Star2CameraHigh08"/>
+        <UnitGlossaryCamera value="Star2CameraHigh08"/>
+        <PlanetPanelCamera value="Star2CameraHigh08"/>
+        <ShadowRadius value="0.866400"/>
+        <AttachProps Id="Ref_Weapon Right">
+            <Keys index="Weapon" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Weapon Left">
+            <Keys index="Weapon" value="1"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Hardpoint">
+            <Keys index="Turret" value="0"/>
+        </AttachProps>
+    </CModel>
+    <CModel id="Annihilator@Death" parent="UnitDeath">
+        <EditorCategories value="Race:Protoss"/>
+        <Model value="Assets\Units\Protoss\Immortal_Nerazim_Death\Immortal_Nerazim_Death.m3"/>
+        <Occlusion value="Show"/>
+        <LowQualityModel value="ProtossMediumUnitDeathLow"/>
+        <Events>
+            <Variation value="0"/>
+            <Anim value="Death,00"/>
+            <Name value="Uni_DeathFXincidentallFire"/>
+            <Type value="Sound"/>
+            <Time value="0.450000"/>
+            <Payload value="Uni_DeathFXincidentallFire"/>
+        </Events>
+        <Events>
+            <Variation value="0"/>
+            <Anim value="Death,02"/>
+            <Name value="Uni_DeathFXincidentallFire"/>
+            <Type value="Sound"/>
+            <Time value="0.450000"/>
+            <Payload value="Uni_DeathFXincidentallFire"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Immortal_Explode_Legs_Start"/>
+            <Type value="Sound"/>
+            <Time value="0.160000"/>
+            <Payload value="Immortal_Explode_Legs_Start"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Immortal_Explode_Legs_Mech"/>
+            <Type value="Sound"/>
+            <Time value="0.703000"/>
+            <Payload value="Immortal_Explode_Legs_Mech"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Immortal_Explode_Legs_Impact"/>
+            <Type value="Sound"/>
+            <Time value="1.050000"/>
+            <Payload value="Immortal_Explode_Legs_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Immortal_Explode_Var"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Immortal_Explode_Var"/>
+        </Events>
+        <Events>
+            <Anim value="Death,02"/>
+            <Name value="Immortal_Explode_Legs_Impact"/>
+            <Type value="Sound"/>
+            <Time value="0.800000"/>
+            <Payload value="Immortal_Explode_Legs_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Death,03"/>
+            <Name value="Immortal_Explode_Body_Start"/>
+            <Type value="Sound"/>
+            <Time value="0.187000"/>
+            <Payload value="Immortal_Explode_Body_Start"/>
+        </Events>
+        <Events>
+            <Anim value="Death,03"/>
+            <Name value="Immortal_Explode_Body_Impact"/>
+            <Type value="Sound"/>
+            <Time value="0.887000"/>
+            <Payload value="Immortal_Explode_Body_Impact"/>
+        </Events>
+        <Events>
+            <Variation value="1"/>
+            <Anim value="Death,03"/>
+            <Name value="Immortal_Explode_Var"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Immortal_Explode_Var"/>
+        </Events>
+        <Events>
+            <Variation value="1"/>
+            <Anim value="Death,00"/>
+            <Name value="Uni_DeathFXincidentallFire"/>
+            <Type value="Sound"/>
+            <Time value="0.450000"/>
+            <Payload value="Uni_DeathFXincidentallFire"/>
+        </Events>
+        <Events>
+            <Variation value="1"/>
+            <Anim value="Death,03"/>
+            <Name value="Uni_DeathFXincidentallFire"/>
+            <Type value="Sound"/>
+            <Time value="0.450000"/>
+            <Payload value="Uni_DeathFXincidentallFire"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Immortal_Explode"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Immortal_Explode"/>
+        </Events>
+        <Events>
+            <Anim value="Death,02"/>
+            <Name value="Immortal_Explode"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Immortal_Explode"/>
+        </Events>
+    </CModel>
+    <CModel id="Annihilator@Portrait" parent="Portrait">
+        <EditorCategories value="Race:Protoss"/>
+        <Model value="Assets\Portraits\Protoss\Immortal_Nerazim_Portrait\Immortal_Nerazim_Portrait.m3"/>
+        <Image value="Assets\Textures\nerazimimmortalportrait_static.dds"/>
+    </CModel>
+    <CModel id="Annihilator@Placement" parent="Placement">
+        <EditorCategories value="Race:Protoss"/>
+        <Model value="Assets\Units\Protoss\ImmortalNerazim_Placement\ImmortalNerazim_Placement.m3"/>
+        <Radius value="-1.000000"/>
+        <Lighting value="Immortal"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.750000,0.750000,0.750000"/>
+        <ScaleMin value="0.750000,0.750000,0.750000"/>
+        <SelectionRadius value="0.866400"/>
+        <ShadowRadius value="0.866400"/>
+    </CModel>
+    <CModel id="Annihilator@WarpIn" parent="OneShotSpellFX">
+        <EditorCategories value="Race:Protoss"/>
+        <Model value="Assets\Units\Protoss\ImmortalNerazim_WarpIn\ImmortalNerazim_WarpIn.m3"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.750000,0.750000,0.750000"/>
+        <ScaleMin value="0.750000,0.750000,0.750000"/>
+        <LowQualityModel value="ProtossUnitBirth"/>
+        <SelectionRadius value="0.666500"/>
+        <ShadowRadius value="0.666500"/>
+    </CModel>
+
+    <CSound id="Annihilator@Attack" parent="ProtossAck">
+        <AssetArray TemplateParam="Annihilator_Attack00"/>
+        <AssetArray TemplateParam="Annihilator_Attack01"/>
+        <AssetArray TemplateParam="Annihilator_Attack02"/>
+        <AssetArray TemplateParam="Annihilator_Attack03"/>
+        <AssetArray TemplateParam="Annihilator_Attack04"/>
+        <AssetArray TemplateParam="Annihilator_Attack05"/>
+        <AssetArray TemplateParam="Annihilator_Attack06"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Annihilator@Help" parent="ProtossHelp">
+        <AssetArray TemplateParam="Annihilator_Help00"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="Annihilator@Pissed" parent="ProtossPissed">
+        <AssetArray TemplateParam="Annihilator_Pissed00"/>
+        <AssetArray TemplateParam="Annihilator_Pissed01"/>
+        <AssetArray TemplateParam="Annihilator_Pissed02"/>
+        <AssetArray TemplateParam="Annihilator_Pissed03"/>
+        <AssetArray TemplateParam="Annihilator_Pissed04"/>
+        <AssetArray TemplateParam="Annihilator_Pissed05"/>
+        <AssetArray TemplateParam="Annihilator_Pissed06"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Annihilator@Yes" parent="ProtossAck">
+        <AssetArray TemplateParam="Annihilator_Yes00"/>
+        <AssetArray TemplateParam="Annihilator_Yes01"/>
+        <AssetArray TemplateParam="Annihilator_Yes02"/>
+        <AssetArray TemplateParam="Annihilator_Yes03"/>
+        <AssetArray TemplateParam="Annihilator_Yes04"/>
+        <AssetArray TemplateParam="Annihilator_Yes05"/>
+        <AssetArray TemplateParam="Annihilator_Yes06"/>
+        <AssetArray TemplateParam="Annihilator_Yes07"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Annihilator@What" parent="ProtossAck">
+        <AssetArray TemplateParam="Annihilator_What00"/>
+        <AssetArray TemplateParam="Annihilator_What01"/>
+        <AssetArray TemplateParam="Annihilator_What02"/>
+        <AssetArray TemplateParam="Annihilator_What03"/>
+        <AssetArray TemplateParam="Annihilator_What04"/>
+        <AssetArray TemplateParam="Annihilator_What05"/>
+        <AssetArray TemplateParam="Annihilator_What06"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Annihilator@Ready" parent="ProtossReady">
+        <AssetArray TemplateParam="Annihilator_Ready00"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    
+    <CRequirement id="Annihilator"/>
+
+    <CLight id="Annihilator@Portrait" parent="default">
+        <ToDInfoArray index="0" Id="PortraitNerazimImmortal" AmbientColor="0.000000,0.000000,0.000000" Colorize="1">
+            <Param index="HDRExposure" value="1.875000"/>
+            <Param index="HDRSpecMultiplier" value="2.000000"/>
+            <Param index="HDREmisMultiplier" value="6.000000"/>
+            <Param index="ColorizationContrast" value="0.900000"/>
+            <Param index="ColorizationHue" value="-0.468000"/>
+            <Param index="ColorizationSaturation" value="0.638000"/>
+            <Param index="ColorizationLightness" value="-0.080000"/>
+            <Param index="ColorizationBlend" value="0.400000"/>
+            <DirectionalLight index="Key">
+                <Color value="0.803922,0.796079,0.996078"/>
+                <ColorMultiplier value="0.250000"/>
+                <SpecularColor value="0.207843,0.639216,0.992157"/>
+                <SpecColorMultiplier value="0.750000"/>
+                <Direction value="-0.017107,0.263824,-0.964419"/>
+            </DirectionalLight>
+            <DirectionalLight index="Fill" Color="0.062745,0.113725,0.082353" ColorMultiplier="0.000000"/>
+            <DirectionalLight index="Back" Color="0.227451,0.894118,0.972549" ColorMultiplier="2.344000" Direction="-0.021676,-0.596812,-0.802088"/>
+        </ToDInfoArray>
+        <EditorCategories value="LightGroup:PortraitsUnitsProtoss"/>
+    </CLight>
+
+    <CDataCollectionUnit id="Annihilator">
+        <DataRecord Entry="Button,Annihilator"/>
+        <DataRecord Entry="Unit,Annihilator"/>
+        <DataRecord Entry="Actor,Annihilator"/>
+        <DataRecord Entry="Model,Annihilator"/>
+        <DataRecord Entry="Model,Annihilator"/>
+        <DataRecord Entry="Model,Annihilator"/>
+        <DataRecord Entry="Model,Annihilator"/>
+        <DataRecord Entry="Model,Annihilator"/>
+        <DataRecord Entry="Sound,Annihilator"/>
+        <DataRecord Entry="Sound,Annihilator"/>
+        <DataRecord Entry="Sound,Annihilator"/>
+        <DataRecord Entry="Sound,Annihilator"/>
+        <DataRecord Entry="Sound,Annihilator"/>
+        <DataRecord Entry="Sound,Annihilator"/>
+        <DataRecord Entry="Requirement,Annihilator"/>
+        <DataRecord Entry="Light,Annihilator"/>
+    </CDataCollectionUnit>
+    
+    <CAttachMethodPattern id="AMPatternAnnihilator">
+        <Keyword value="Weapon"/>
+        <Base value="::RollingIndex"/>
+        <Driver value="ShadowCannon@LM"/>
+    </CAttachMethodPattern>
+
+    <!-- =========== Weapons =========== -->
+    
+    <CWeaponLegacy id="AnnihilatorParticleDisruptors">
+        <Arc value="360"/>
+        <Period value="1.45"/>
+        <MinScanRange value="6.5"/>
+        <Range value="6"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Effect value="AnnihilatorParticleDisruptors@Damage"/>
+        <DisplayEffect value="AnnihilatorParticleDisruptors@Damage"/>
+    </CWeaponLegacy>
+    <CEffectDamage id="AnnihilatorParticleDisruptors@Damage" parent="DU_WEAP">
+        <Amount value="20"/>
+    </CEffectDamage>
+
+    <CActorAction id="AnnihilatorParticleDisruptors@Attack" parent="GenericAttack" effectAttack="AnnihilatorParticleDisruptors@Damage">
+        <LaunchAttachQuery Methods="AMFilterWeaponLeft"/>
+    </CActorAction>
+    
+    <CModel id="AnnihilatorParticleDisruptors@AttackImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Protoss\ImmortalMissileImpact\ImmortalMissileImpact.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <LowQualityModel value="ImmortalAttackImpactLow"/>
+    </CModel>
+    
+    <CSound id="AnnihilatorParticleDisruptors@AttackLaunch" parent="Combat">
+        <Volume value="-1.940000,-1.940000"/>
+        <AssetArray File="Assets\Sounds\Protoss\Immortal\Immortal_AttackLaunch0.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Immortal\Immortal_AttackLaunch1.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Immortal\Immortal_AttackLaunch2.wav"/>
+        <EditorCategories value="Race:Protoss"/>
+        <DupeMaximumMethod value="Replace"/>
+    </CSound>
+    <CSound id="AnnihilatorParticleDisruptors@AttackImpact" parent="Protoss_ExplosionSmall"/>
+
+    <CDataCollectionUnit id="AnnihilatorParticleDisruptors">
+        <DataRecord Entry="Weapon,AnnihilatorParticleDisruptors"/>
+        <DataRecord Entry="Effect,AnnihilatorParticleDisruptors@Damage"/>
+        <DataRecord Entry="Actor,AnnihilatorParticleDisruptors@Attack"/>
+        <DataRecord Entry="Model,AnnihilatorParticleDisruptors@AttackImpact"/>
+        <DataRecord Entry="Sound,AnnihilatorParticleDisruptors@AttackLaunch"/>
+        <DataRecord Entry="Sound,AnnihilatorParticleDisruptors@AttackImpact"/>
+    </CDataCollectionUnit>
+
+    <!-- =========== Abilities =========== -->
+
+    <CButton id="ShadowCannon">
+        <EditorCategories value="Race:Protoss"/>
+        <Icon value="Assets\Textures\BTN-Ability-Protoss-ShadowCannon.dds"/>
+        <AlertIcon value="Assets\Textures\BTN-Ability-Protoss-ShadowCannon.dds"/>
+    </CButton>
+
+    <CAbilEffectTarget id="ShadowCannon">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="ShadowCannon"/>
+        <Effect index="0" value="ShadowCannon@CP"/>
+        <Cost>
+            <Cooldown TimeUse="45"/>
+        </Cost>
+        <TargetFilters value="-;Self,Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="13"/>
+        <Arc value="360"/>
+        <PrepEffect value="ShadowCannon@AB@DisableWeapon"/>
+        <PrepTime value="0.0625"/>
+    </CAbilEffectTarget>
+
+    <CBehaviorBuff id="ShadowCannon">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="2"/>
+        <InitialEffect value="ShadowCannon@Turret"/>
+        <PeriodicEffect value="ShadowCannon@LM"/>
+        <FinalEffect value="ShadowCannon@Turret@Clear"/>
+        <Period value="0.25"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <RemoveValidatorArray value="ImmortalShakurasShadowCannonValidators"/>
+        <Modification>
+            <StateFlags index="SuppressAttack" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ShadowCannon@DisableWeapon">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Duration value="0.125"/>
+        <Modification>
+            <StateFlags index="Passive" value="1"/>
+            <StateFlags index="SuppressAttack" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+
+    <CEffectApplyBehavior id="ShadowCannon@AB">
+        <Behavior value="ShadowCannon"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ShadowCannon@AB@DisableWeapon">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="ShadowCannon@DisableWeapon"/>
+    </CEffectApplyBehavior>
+    <CEffectLaunchMissile id="ShadowCannon@LM">
+        <AmmoUnit value="ShadowCannon@AttackMissile"/>
+        <ImpactEffect value="ShadowCannon@Damage"/>
+        <ImpactLocation Effect="ShadowCannon@CP"/>
+        <LaunchLocation Value="CasterUnit"/>
+    </CEffectLaunchMissile>
+    <CEffectModifyUnit id="ShadowCannon@Turret">
+        <ImpactUnit Value="Caster"/>
+        <ModifyTurret>
+            <Flags index="Tracking" value="1"/>
+            <Target Effect="ShadowCannon@CP" Value="TargetUnit"/>
+            <Turret value="Immortal"/>
+        </ModifyTurret>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="ShadowCannon@Turret@Clear">
+        <ImpactUnit Value="Caster"/>
+        <ModifyTurret Action="ClearTarget" Turret="Immortal"/>
+    </CEffectModifyUnit>
+    <CEffectCreatePersistent id="ShadowCannon@CP">
+        <WhichLocation Value="TargetUnit"/>
+        <!-- <InitialEffect value="ShadowCannon@AB"/> -->
+        <InitialEffect value="ShadowCannon@Turret"/>
+        <PeriodicEffectArray value="ShadowCannon@LM"/>
+        <FinalEffect value="ShadowCannon@Turret@Clear"/>
+        <PeriodCount value="8"/>
+        <PeriodicPeriodArray value="0.25"/>
+        <PeriodicValidator value="NotDead"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="ShadowCannon@Damage" parent="DU_WEAP_MISSILE">
+        <Amount value="40"/>
+    </CEffectDamage>
+
+    <CActorAction id="ShadowCannon@Attack" parent="GenericAttack" effectImpact="ShadowCannon@Damage" effectLaunch="ShadowCannon@LM">
+        <LaunchAttachQuery Methods="AMPatternAnnihilator"/>
+        <LaunchAssets Sound="ShadowCannon@AttackLaunch"/>
+        <ImpactMap index="None" Sound="ShadowCannon@AttackImpact"/>
+        <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeNoVizEnhance SOpForwardLaunchGuide"/>
+    </CActorAction>
+    <CActorRange id="ShadowCannon@Range" parent="RangeAbil" abil="ShadowCannon">
+        <Icon value="Assets\Textures\RadarIcon2.dds"/>
+        <IconArcLength value="3.250000"/>
+    </CActorRange>
+    <CActorMissile id="ShadowCannon@AttackMissile" parent="GenericAttackMissileWithDeathAnim" unitName="ShadowCannon@AttackMissile"/>
+    <CActorSimple id="ShadowCannon@Animation">
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <!-- <On Terms="Behavior.ShadowCannon.On" Send="Create"/> -->
+        <!-- <On Terms="Behavior.ShadowCannon.Off" Send="Destroy"/> -->
+        <On Terms="Effect.ShadowCannon@CP.Start; At Caster" Send="Create"/>
+        <On Terms="Effect.ShadowCannon@CP.Stop; At Caster" Send="Destroy"/>
+        <On Terms="Effect.ShadowCannon@LM.Start; At Caster" Target="_Unit" Send="AnimPlay Spell Attack"/>
+    </CActorSimple>
+
+    <CModel id="ShadowCannon@AttackMissile" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\ShadowCannonMissile\ShadowCannonMissile.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+
+    <CSound id="ShadowCannon@AttackImpact" parent="Protoss_ExplosionSmall">
+        <AssetArray index="0" File="Assets\Sounds\ImmortalShakuras_ShadowCannon_Impact01_1ch.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
+        <AssetArray index="1" File="Assets\Sounds\ImmortalShakuras_ShadowCannon_Impact02_1ch.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
+        <AssetArray index="2" File="Assets\Sounds\ImmortalShakuras_ShadowCannon_Impact03_1ch.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
+        <AssetArray index="3" File="Assets\Sounds\ImmortalShakuras_ShadowCannon_Impact04_1ch.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
+        <AssetArray index="4" File="Assets\Sounds\ImmortalShakuras_ShadowCannon_Impact05_1ch.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
+        <AssetArray index="5" File="Assets\Sounds\ImmortalShakuras_ShadowCannon_Impact06_1ch.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
+        <AssetArray index="6" File="Assets\Sounds\ImmortalShakuras_ShadowCannon_Impact07_1ch.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
+        <AssetArray index="7" File="Assets\Sounds\ImmortalShakuras_ShadowCannon_Impact08_1ch.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
+        <AssetArray index="8" File="Assets\Sounds\ImmortalShakuras_ShadowCannon_Impact09_1ch.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
+        <AssetArray index="9" removed="1"/>
+        <Pitch value="-4.000000,0.000000"/>
+        <Volume value="-2.000000,-1.000000"/>
+        <DupeDestroyCount value="4"/>
+        <DupeHistoryCount value="4"/>
+        <DupeMuteCount value="6"/>
+    </CSound>
+    <CSound id="ShadowCannon@AttackLaunch" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\ImmortalShakuras_ShadowCannon_AttackLaunch01_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ImmortalShakuras_ShadowCannon_AttackLaunch02_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ImmortalShakuras_ShadowCannon_AttackLaunch03_1ch.wav" Weight="17" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ImmortalShakuras_ShadowCannon_AttackLaunch04_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ImmortalShakuras_ShadowCannon_AttackLaunch05_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ImmortalShakuras_ShadowCannon_AttackLaunch06_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ImmortalShakuras_ShadowCannon_AttackLaunch07_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ImmortalShakuras_ShadowCannon_AttackLaunch08_1ch.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <Volume value="-1.940000,-1.940000"/>
+        <Pitch value="-6.000000,-5.000000"/>
+        <DupeDestroyCount value="8"/>
+        <DupeHistoryCount value="8"/>
+        <DupeMuteCount value="8"/>
+    </CSound>
+
+    <CUnit id="ShadowCannon@AttackMissile" parent="MISSILE_INVULNERABLE">
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
+        <Race value="Prot"/>
+        <Mover value="MissileDefault"/>
+    </CUnit>
+
+    <!-- Requirements -->
+    <CRequirement id="ShadowCannon@Have">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="ShadowCannon@HaveUpgrade"/>
+    </CRequirement>
+    <CRequirementCountUpgrade id="ShadowCannon@HaveUpgrade">
+        <Count Link="ResearchShadowCannon" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+
+    <CRequirement id="ShadowCannon@Learn">
+        <NodeArray index="Show" Link="ShadowCannon@LearnUpgrade"/>
+    </CRequirement>
+    <CRequirementCountUpgrade id="ShadowCannon@LearnUpgrade">
+        <Count Link="ResearchShadowCannon" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+
+    <CDataCollectionUnit id="ShadowCannon">
+        <DataRecord Entry="Button,ShadowCannon"/>
+        <DataRecord Entry="Abil,ShadowCannon"/>
+        <DataRecord Entry="Behavior,ShadowCannon"/>
+        <DataRecord Entry="Behavior,ShadowCannon@DisableWeapon"/>
+        <DataRecord Entry="Effect,ShadowCannon@AB"/>
+        <DataRecord Entry="Effect,ShadowCannon@AB@DisableWeapon"/>
+        <DataRecord Entry="Effect,ShadowCannon@LM"/>
+        <DataRecord Entry="Effect,ShadowCannon@Turret"/>
+        <DataRecord Entry="Effect,ShadowCannon@Turret@Clear"/>
+        <DataRecord Entry="Effect,ShadowCannon@CP"/>
+        <DataRecord Entry="Effect,ShadowCannon@Damage"/>
+        <DataRecord Entry="Actor,ShadowCannon@Attack"/>
+        <DataRecord Entry="Actor,ShadowCannon@Range"/>
+        <DataRecord Entry="Actor,ShadowCannon@AttackMissile"/>
+        <DataRecord Entry="Actor,ShadowCannon@Animation"/>
+        <DataRecord Entry="Model,ShadowCannon@AttackMissile"/>
+        <DataRecord Entry="Sound,ShadowCannon@AttackImpact"/>
+        <DataRecord Entry="Sound,ShadowCannon@AttackLaunch"/>
+        <DataRecord Entry="Unit,ShadowCannon@AttackMissile"/>
+        <DataRecord Entry="Requirement,ShadowCannon@Have"/>
+        <DataRecord Entry="Requirement,ShadowCannon@Learn"/>
+    </CDataCollectionUnit>
+
+    <!-- =========== Upgrades =========== -->
+    <CUpgrade id="ResearchShadowCannon">
+        <Icon value="Assets\Textures\BTN-Ability-Protoss-ShadowCannon.dds"/>
+        <AffectedUnitArray value="ImmortalShakuras"/>
+    </CUpgrade>
+
+</Catalog>

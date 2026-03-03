@@ -1,0 +1,19 @@
+Actor/Name/Arbiter=Unit
+
+Model/Name/Arbiter=Unit
+Model/Name/Arbiter@Death=Death
+Model/Name/Arbiter@Placement=Placement
+Model/Name/Arbiter@Portrait=Portrait
+Model/Name/Arbiter@WarpIn=WarpIn
+
+Sound/Name/Arbiter@Attack=Attack
+Sound/Name/Arbiter@Help=Help
+Sound/Name/Arbiter@MoveStart=Move Start
+Sound/Name/Arbiter@Pissed=Pissed
+Sound/Name/Arbiter@Ready=Ready
+Sound/Name/Arbiter@RecallVO=Recall VO
+Sound/Name/Arbiter@StasisFieldVO=Stasis Field VO
+Sound/Name/Arbiter@What=What
+Sound/Name/Arbiter@Yes=Yes
+
+Requirement/Name/Arbiter=Requirement

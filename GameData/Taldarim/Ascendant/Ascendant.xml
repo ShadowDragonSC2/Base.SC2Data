@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    <CButton id="Ascendant">
+        <Icon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-hightemplar.dds"/>
+    </CButton>
+    <CUnit id="Ascendant" parent="Generic_Protoss_Unit_HighTemplar">
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
+        <AbilArray Link="attack"/>
+        <AbilArray Link="PsiOrb"/>
+        <AbilArray Link="ArchonWarp"/>
+        <AbilArray Link="Warpable"/>
+        <AbilArray Link="ProgressRally"/>
+        <AbilArray Link="MindBlast"/>
+        <AbilArray Link="BuildInProgress"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Rally" Type="AbilCmd" AbilCmd="ProgressRally,Rally1" Row="2" Column="4"/>
+            <LayoutButtons Face="AWrp" Type="AbilCmd" AbilCmd="ArchonWarp,SelectedUnits" Row="2" Column="3"/>
+            <LayoutButtons Face="PsiOrb" Type="AbilCmd" AbilCmd="PsiOrb,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="MindBlast" Type="AbilCmd" AbilCmd="MindBlast,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+        <WeaponArray Link="HighTemplarWeapon"/>
+        <LifeStart value="40"/>
+        <LifeMax value="40"/>
+        <EnergyStart value="50"/>
+        <EnergyMax value="200"/>
+        <EnergyRegenRate value="0.5625"/>
+        <ShieldsStart value="40"/>
+        <ShieldsMax value="40"/>
+        <ShieldRegenRate value="2"/>
+        <LateralAcceleration value="46"/>
+        <Food value="-2"/>
+        <Sight value="10"/>
+        <GlossaryCategory value="Unit/Category/ProtossFaction/Taldarim"/>
+        <HotkeyCategory value="Unit/Category/ProtossFaction/Taldarim"/>
+        <CostResource index="Minerals" value="50"/>
+        <CostResource index="Vespene" value="150"/>
+        <GlossaryStrongArray value="Marine"/>
+        <GlossaryStrongArray value="Hydralisk"/>
+        <GlossaryStrongArray value="Sentry"/>
+        <GlossaryWeakArray value="Ghost"/>
+        <GlossaryWeakArray value="Roach"/>
+        <GlossaryWeakArray value="Colossus"/>
+    </CUnit>
+    <CActorUnit id="Ascendant" parent="GenericUnitStandard" unitName="Ascendant">
+        <Aliases value="_UnitSmall"/>
+        <AnimBlendTime value="0.450000"/>
+        <WalkAnimMoveSpeed value="2.25"/>
+        <BarWidth value="42"/>
+        <BarOffset value="70"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-hightemplar-taldarim.dds"/>
+        <HeroIcon value="Assets\Textures\btn-unit-protoss-hightemplar-taldarim.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
+        <PortraitModel value="Ascendant@Portrait"/>
+        <PlacementModel value="Ascendant@Placement"/>
+        <DeathArray index="Normal" ModelLink="Ascendant@Death" SoundLink="Ascendant@Death" VoiceLink="Ascendant@DeathVoice"/>
+        <WireframeShield>
+            <Image value="Assets\Textures\wireframe-protoss-hightemplar-taldarim-shield01.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-hightemplar-taldarim-shield02.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-hightemplar-taldarim-shield03.dds"/>
+        </WireframeShield>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-protoss-hightemplar-taldarim.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-protoss-hightemplar-taldarim.dds"/>
+        </Wireframe>
+        <AbilSoundArray AbilCmd="" Sound="Ascendant@AbilSound"/>
+        <SoundArray index="Attack" value="Ascendant@Attack"/>
+        <SoundArray index="What" value="Ascendant@What"/>
+        <SoundArray index="Yes" value="Ascendant@Yes"/>
+        <SoundArray index="Ready" value="Ascendant@Ready"/>
+        <SoundArray index="Pissed" value="Ascendant@Pissed"/>
+    </CActorUnit>
+    
+    <CModel id="Ascendant" parent="Unit">
+        <Model value="Assets\Units\Protoss\HighTemplar_TaldarimEx3\HighTemplar_TaldarimEx3.m3"/>
+    </CModel>
+    <CModel id="Ascendant@Death" parent="UnitDeath">
+        <Model value="Assets\Units\Protoss\HighTemplar_Taldarim_Death\HighTemplar_Taldarim_Death.m3"/>
+    </CModel>
+    <CModel id="Ascendant@Placement" parent="Placement">
+        <Model value="Assets\Units\Protoss\HighTemplar_Taldarim_HoloUnit\HighTemplar_Taldarim_HoloUnit.m3"/>
+    </CModel>
+    <CModel id="Ascendant@Portrait" parent="Portrait">
+        <Model value="Assets\Portraits\Protoss\HighTemplar_TalDarim_Portrait\HighTemplar_TalDarim_Portrait.m3"/>
+    </CModel>
+    <CModel id="Ascendant@WarpIn" parent="OneShotSpellFX">
+        <Model value="Assets\Units\Protoss\HighTemplarTaldarim_WarpIn\HighTemplarTaldarim_WarpIn.m3"/>
+    </CModel>
+
+    <CSound id="Ascendant@Death" parent="Protoss_DeathFX">
+        <AssetArray index="0" File="Assets\Sounds\HighTemplarTaldarim_Death_01.wav" FacialGroup=""/>
+        <AssetArray index="1" File="Assets\Sounds\HighTemplarTaldarim_Death_02.wav" FacialGroup=""/>
+        <AssetArray index="2" File="Assets\Sounds\HighTemplar_Taldarim_Death_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HighTemplar_Taldarim_Death_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HighTemplar_Taldarim_Death_05.wav" FacialGroup=""/>
+        <Category value="Combat"/>
+        <SustainFade index="1" Time="1000"/>
+        <Volume value="-1.000000,1.000000"/>
+    </CSound>
+    <CSound id="Ascendant@DeathVoice" parent="ProtossDeath">
+        <AssetArray TemplateParam="Ascendant_Death00"/>
+        <AssetArray TemplateParam="Ascendant_Death01"/>
+        <AssetArray TemplateParam="Ascendant_Death02"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="-5.000000,-5.000000"/>
+    </CSound>
+    <CSound id="Ascendant@Pissed" parent="ProtossPissed">
+        <AssetArray TemplateParam="Ascendant_Pissed00"/>
+        <AssetArray TemplateParam="Ascendant_Pissed01"/>
+        <AssetArray TemplateParam="Ascendant_Pissed02"/>
+        <AssetArray TemplateParam="Ascendant_Pissed03"/>
+        <AssetArray TemplateParam="Ascendant_Pissed04"/>
+        <AssetArray TemplateParam="Ascendant_Pissed05"/>
+        <AssetArray TemplateParam="Ascendant_Pissed06"/>
+        <AssetArray TemplateParam="Ascendant_Pissed07"/>
+        <AssetArray TemplateParam="Ascendant_Pissed08"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="-5.000000,-5.000000"/>
+    </CSound>
+    <CSound id="Ascendant@Ready" parent="ProtossReady">
+        <AssetArray TemplateParam="Ascendant_Ready00"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="Ascendant@Attack" parent="ProtossAck_Void">
+        <AssetArray TemplateParam="Ascendant_Attack00"/>
+        <AssetArray TemplateParam="Ascendant_Attack01"/>
+        <AssetArray TemplateParam="Ascendant_Attack02"/>
+        <AssetArray TemplateParam="Ascendant_Attack03"/>
+        <AssetArray TemplateParam="Ascendant_Attack04"/>
+        <AssetArray TemplateParam="Ascendant_Attack05"/>
+        <AssetArray TemplateParam="Ascendant_Attack06"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="-5.000000,-5.000000"/>
+    </CSound>
+    <CSound id="Ascendant@Yes" parent="ProtossAck_Void">
+        <AssetArray TemplateParam="Ascendant_Yes00"/>
+        <AssetArray TemplateParam="Ascendant_Yes01"/>
+        <AssetArray TemplateParam="Ascendant_Yes02"/>
+        <AssetArray TemplateParam="Ascendant_Yes03"/>
+        <AssetArray TemplateParam="Ascendant_Yes04"/>
+        <AssetArray TemplateParam="Ascendant_Yes05"/>
+        <AssetArray TemplateParam="Ascendant_Yes06"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="-5.000000,-5.000000"/>
+    </CSound>
+    <CSound id="Ascendant@What" parent="ProtossAck_Void">
+        <AssetArray TemplateParam="Ascendant_What00"/>
+        <AssetArray TemplateParam="Ascendant_What01"/>
+        <AssetArray TemplateParam="Ascendant_What02"/>
+        <AssetArray TemplateParam="Ascendant_What03"/>
+        <AssetArray TemplateParam="Ascendant_What04"/>
+        <AssetArray TemplateParam="Ascendant_What05"/>
+        <AssetArray TemplateParam="Ascendant_What06"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="-5.000000,-5.000000"/>
+    </CSound>
+
+    <!-- Ability Sounds -->
+    <CSound id="Ascendant@AbilSound" parent="ProtossAck_Void">
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Ascendant_Attack00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Ascendant_Attack01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Ascendant_Attack02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Ascendant_Attack03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Ascendant_Attack04.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Ascendant_Attack05.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Ascendant_Attack06.ogg" FacialGroup=""/>
+        <Chance value="25"/>
+        <DupeDestroyCount value="1"/>
+        <DupeMuteCount value="1"/>
+        <DupeWait value="4000,4000"/>
+    </CSound>
+
+    <CRequirement id="Ascendant@Portrait"/>
+
+    <CLight id="Ascendant@Portrait" parent="default">
+        <ToDInfoArray index="0" Id="PsionicWaveUp" AmbientColor="0.235294,0.309804,0.392157" Colorize="1">
+            <Param index="HDRExposure" value="1.500000"/>
+            <Param index="HDRWhitePoint" value="1.850000"/>
+            <Param index="HDRSpecMultiplier" value="4.000000"/>
+            <Param index="TerrainSpecularExp" value="11.210000"/>
+            <Param index="TerrainHDRSpecular" value="3.750000"/>
+            <Param index="CreepSpecularExp" value="30.000000"/>
+            <Param index="CreepHDRSpecMultiplier" value="3.000000"/>
+            <Param index="ColorizationContrast" value="1.066000"/>
+            <Param index="ColorizationHue" value="0.009000"/>
+            <Param index="ColorizationSaturation" value="0.088000"/>
+            <Param index="ColorizationLightness" value="0.040000"/>
+            <Param index="ColorizationBlend" value="0.286000"/>
+            <DirectionalLight index="Key">
+                <Color value="0.772549,0.803922,0.870588"/>
+                <ColorMultiplier value="1.500000"/>
+                <SpecularColor value="0.756863,0.894118,0.933333"/>
+                <SpecColorMultiplier value="1.000000"/>
+                <Direction value="0.624465,-0.021479,-0.780757"/>
+            </DirectionalLight>
+            <DirectionalLight index="Fill" Color="0.003922,0.109804,0.082353" ColorMultiplier="0.209000" Direction="-0.463854,-0.769851,0.438371"/>
+            <DirectionalLight index="Back" Color="0.156863,0.505882,0.690196" ColorMultiplier="1.000000" Direction="-0.585935,0.595628,0.549460"/>
+        </ToDInfoArray>
+        <EditorCategories value="LightGroup:PortraitsUnitsProtoss"/>
+    </CLight>
+
+    <CDataCollectionUnit id="Ascendant">
+        <DataRecord Entry="Button,Ascendant"/>
+        <DataRecord Entry="Unit,Ascendant"/>
+        <DataRecord Entry="Actor,Ascendant"/>
+        <DataRecord Entry="Model,Ascendant"/>
+        <DataRecord Entry="Model,Ascendant@Death"/>
+        <DataRecord Entry="Model,Ascendant@Placement"/>
+        <DataRecord Entry="Model,Ascendant@Portrait"/>
+        <DataRecord Entry="Model,Ascendant@WarpIn"/>
+        <DataRecord Entry="Sound,Ascendant@Death"/>
+        <DataRecord Entry="Sound,Ascendant@DeathVoice"/>
+        <DataRecord Entry="Sound,Ascendant@Pissed"/>
+        <DataRecord Entry="Sound,Ascendant@Ready"/>
+        <DataRecord Entry="Sound,Ascendant@Attack"/>
+        <DataRecord Entry="Sound,Ascendant@Yes"/>
+        <DataRecord Entry="Sound,Ascendant@What"/>
+        <DataRecord Entry="Sound,Ascendant@AbilSound"/>
+        <DataRecord Entry="Requirement,Ascendant"/>
+        <DataRecord Entry="Light,Ascendant@Portrait"/>
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Protoss,ObjectType:Unit"/>
+    </CDataCollectionUnit>
+
+    <!-- ============== Abils ============== -->
+
+    <!-- Psi Orb-->
+    <CButton id="PsiOrb">
+        <Icon value="Assets\Textures\btn-ability-protoss-psionicorb.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-psionicorb.dds"/>
+    </CButton>
+    <CAbilEffectTarget id="PsiOrb">
+        <CmdButtonArray index="Execute" DefaultButtonFace="PsiOrb"/>
+        <Effect index="0" value="PsiOrb@CP"/>
+        <Range value="13"/>
+    </CAbilEffectTarget>
+
+    <CEffectSet id="PsiOrb@Set">
+        <EffectArray value="PsiOrb@DP"/>
+    </CEffectSet>
+    <CEffectEnumArea id="PsiOrb@Search">
+        <AreaArray Radius="5" Effect="PsiOrb@Damage"/>
+        <SearchFilters value="-;Self,Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <TargetSorts>
+            <SortArray value="TSRandom"/>
+        </TargetSorts>
+    </CEffectEnumArea>
+    <CEffectLaunchMissile id="PsiOrb@LM">
+        <AmmoUnit value="PsiOrb@Missile"/>
+        <ImpactEffect value="PsiOrb@Set"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <LaunchEffect value="PsiOrb@AB"/>
+    </CEffectLaunchMissile>
+    <CEffectCreatePersistent id="PsiOrb@CP">
+        <InitialEffect value="PsiOrb@LM"/>
+        <InitialOffset value="0,-13,0"/>
+        <WhichLocation Value="SourcePoint"/>
+        <PeriodCount value="1"/>
+    </CEffectCreatePersistent>
+    <CEffectDestroyPersistent id="PsiOrb@DP">
+        <Effect value="PsiOrb@CP"/>
+    </CEffectDestroyPersistent>
+    <CEffectApplyBehavior id="PsiOrb@AB">
+        <WhichUnit Value="Source"/>
+        <Behavior value="PsiOrb@AuraDamage"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="PsiOrb@Damage">
+        <Amount value="5"/>
+    </CEffectDamage>
+
+    <CBehaviorBuff id="PsiOrb@AuraDamage">
+        <Period value="0.5"/>
+        <PeriodicEffect value="PsiOrb@Search"/>
+    </CBehaviorBuff>
+
+    <CActorMissile id="PsiOrb@Missile" parent="GenericAttackMissile" unitName="PsiOrb@Missile"/>
+    <CActorSplat id="PsiOrb@Splat" parent="ProtossCursorSplat" abil="PsiOrb">
+        <Model value="PsiOrb@Splat"/>
+    </CActorSplat>
+    <CActorRange id="PsiOrb@Range" parent="RangeAbil" abil="PsiOrb"/>
+    <CActorAction id="PsiOrb@Attack" parent="GenericAttack" effectLaunch="PsiOrb@LM" effectImpact="PsiOrb@DP">
+        <Missile value="PsiOrb@Missile"/>
+        <ImpactMap index="None" Model="PsiOrb@Impact"/>
+    </CActorAction>
+    <CActorSimple id="PsiOrb@Animation">
+        <On Terms="Abil.PsiOrb.SourceCastStart" Send="Create"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="AnimPlay Spell Spell,B"/>
+        <On Terms="AnimDone; AnimName Spell" Send="Destroy"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+    </CActorSimple>
+    <CActorBeamSimple id="PsiOrb@Beam" parent="BeamSimpleAnimationStyleOneShot">
+        <On Terms="ActorCreation" Send="TimerSet 1 Death"/>
+        <On Terms="TimerExpired; TimerName Death" Send="AnimBracketStop BSD"/>
+        <Scale value="0.5"/>
+    </CActorBeamSimple>
+    <CActorAction id="PsiOrb@BeamAttack" parent="GenericAttack" effectAttack="PsiOrb@Damage">
+        <Beam value="PsiOrb@Beam"/>
+    </CActorAction>
+    
+    <CModel id="PsiOrb@Missile">
+        <Model value="Assets\Effects\Protoss\HighTemplarTaldarim_PsionicOrb_Missile\HighTemplarTaldarim_PsionicOrb_Missile.m3"/>
+    </CModel>
+    <CModel id="PsiOrb@Splat" parent="UI">
+        <Model value="Assets\UI\Cursors\ProtossCursor1\ProtossCursor1.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.250000,0.250000,0.250000"/>
+        <ScaleMin value="0.250000,0.250000,0.250000"/>
+        <SelectionRadius value="2.500000"/>
+        <ShadowRadius value="2.500000"/>
+    </CModel>
+    <CModel id="PsiOrb@Impact">
+        <Model value="Assets\Effects\Protoss\HighTemplarTaldarim_PsionicOrb_Impact\HighTemplarTaldarim_PsionicOrb_Impact.m3"/>
+    </CModel>
+    <CModel id="PsiOrb@Beam">
+        <Model value="Assets\Effects\Protoss\HighTemplarTaldarim_PsionicOrb_Beam\HighTemplarTaldarim_PsionicOrb_Beam.m3"/>
+        <RadiusLoose value="1"/>
+    </CModel>
+
+    <CSound id="PsiOrb@BeamAttackImpact" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\PsionicOrb_Electric_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PsionicOrb_Electric_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PsionicOrb_Electric_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PsionicOrb_Electric_Impact_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PsionicOrb_Electric_Impact_02.wav" FacialGroup=""/>
+        <DupeMuteCount value="3"/>
+        <Pitch value="-3.000000,0.000000"/>
+        <Volume value="-8.000000,-6.000000"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupePrioritization value="Oldest"/>
+    </CSound>
+    <CSound id="PsiOrb@AttackImpact" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\PsionicOrb_Impact_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PsionicOrb_Impact_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PsionicOrb_Impact_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PsionicOrb_Impact_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PsionicOrb_Impact_05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PsionicOrb_Impact_06.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PsionicOrb_Impact_07.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PsionicOrb_Impact_08.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="3"/>
+        <Pitch value="-3.000000,0.000000"/>
+        <Volume value="-6.000000,-4.000000"/>
+        <DupePrioritization value="Oldest"/>
+    </CSound>
+    <CSound id="PsiOrb@AttackLaunch" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\PsionicOrb_Launch_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PsionicOrb_Launch_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PsionicOrb_Launch_02f.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PsionicOrb_Launch_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PsionicOrb_Launch_05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PsionicOrb_Launch_06.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PsionicOrb_Launch_07.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PsionicOrb_Launch_08.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="3"/>
+        <Pitch value="-2.000000,0.000000"/>
+        <Volume value="-4.000000,-2.000000"/>
+        <DupePrioritization value="Oldest"/>
+    </CSound>
+
+    <CMoverMissile id="PsiOrb@Missile" parent="MissileDefault">
+        <MotionPhases index="0">
+            <Driver value="Guidance"/>
+            <Acceleration value="3200"/>
+            <MaxSpeed value="4"/>
+            <ClearanceAcceleration value="75"/>
+            <Outro value="-1"/>
+            <YawPitchRoll value="719.2968"/>
+        </MotionPhases>
+    </CMoverMissile>
+
+    <CUnit id="PsiOrb@Missile" parent="MISSILE">
+        <Race value="Prot"/>
+        <Sight value="5"/>
+        <Mover value="PsiOrb@Missile"/>
+    </CUnit>
+
+    <CDataCollectionUnit id="PsiOrb">
+        <DataRecord Entry="Button,PsiOrb"/>
+        <DataRecord Entry="Abil,PsiOrb"/>
+        <DataRecord Entry="Effect,PsiOrb@Set"/>
+        <DataRecord Entry="Effect,PsiOrb@Search"/>
+        <DataRecord Entry="Effect,PsiOrb@LM"/>
+        <DataRecord Entry="Effect,PsiOrb@CP"/>
+        <DataRecord Entry="Effect,PsiOrb@DP"/>
+        <DataRecord Entry="Effect,PsiOrb@AB"/>
+        <DataRecord Entry="Effect,PsiOrb@Damage"/>
+        <DataRecord Entry="Behavior,PsiOrb@AuraDamage"/>
+        <DataRecord Entry="Actor,PsiOrb@Missile"/>
+        <DataRecord Entry="Actor,PsiOrb@Splat"/>
+        <DataRecord Entry="Actor,PsiOrb@Range"/>
+        <DataRecord Entry="Actor,PsiOrb@Attack"/>
+        <DataRecord Entry="Actor,PsiOrb@Animation"/>
+        <DataRecord Entry="Actor,PsiOrb@Beam"/>
+        <DataRecord Entry="Actor,PsiOrb@BeamAttack"/>
+        <DataRecord Entry="Model,PsiOrb@Missile"/>
+        <DataRecord Entry="Model,PsiOrb@Splat"/>
+        <DataRecord Entry="Model,PsiOrb@Impact"/>
+        <DataRecord Entry="Model,PsiOrb@Beam"/>
+        <DataRecord Entry="Mover,PsiOrb@Missile"/>
+        <DataRecord Entry="Unit,PsiOrb@Missile"/>
+    </CDataCollectionUnit>
+
+    <!-- Mind Blast -->
+    <CAbilEffectTarget id="MindBlast">
+        <CmdButtonArray index="Execute" DefaultButtonFace="MindBlast"/>
+        <Effect index="0" value="MindBlast@Damage"/>
+        <Cost>
+            <Vital index="Energy" value="100"/>
+            <Cooldown TimeUse="8"/>
+        </Cost>
+        <TargetFilters value="Visible;Player,Ally,Structure,Missile,Stasis,Dead,Invulnerable"/>
+        <Range value="13"/>
+        <AINotifyEffect value="MindBlast@Damage"/>
+    </CAbilEffectTarget>
+
+    <CButton id="MindBlast">
+        <Icon value="Assets\Textures\btn-ability-protoss-mindblast.dds"/>
+    </CButton>
+
+    <CEffectDamage id="MindBlast@Damage">
+        <Amount value="200"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <Flags index="Notification" value="1"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+    </CEffectDamage>
+
+    <CActorAction id="MindBlast@Attack" parent="GenericAttack" effectAttack="MindBlast@Damage">
+        <ImpactMap index="None" Model="MindBlast@Impact" Sound="MindBlast@Impact"/>
+        <LaunchAssets Sound="MindBlast@Launch"/>
+    </CActorAction>
+    <CActorRange id="MindBlast@Range" parent="RangeAbil" abil="MindBlast"></CActorRange>
+    <CActorSimple id="MindBlast@Animation">
+        <On Terms="Abil.MindBlast.SourceCastStart" Send="Create"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="AnimPlay Spell Spell,A"/>
+        <On Terms="AnimDone; AnimName Spell" Send="Destroy"/>
+    </CActorSimple>
+
+    <CModel id="MindBlast@Impact">
+        <Model value="Assets\Effects\Protoss\HighTemplarTaldarim_MindBlast\HighTemplarTaldarim_MindBlast.m3"/>
+        <SelectionRadius value="0.2"/>
+        <ShadowRadius value="0.2"/>
+    </CModel>
+
+    <CSound id="MindBlast@Impact" parent="Spell">
+        <AssetArray File="Assets\Sounds\Ascendant_MindBlast_Impact_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Ascendant_MindBlast_Impact_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Ascendant_MindBlast_Impact_04a.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Ascendant_MindBlast_Impact_05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Ascendant_MindBlast_Impact_06a.wav" FacialGroup=""/>
+        <DupeMuteCount value="3"/>
+        <Pitch value="-4.000000,-2.000000"/>
+        <Volume value="-3.000000,0.000000"/>
+    </CSound>
+    <CSound id="MindBlast@Launch" parent="Spell">
+        <AssetArray File="Assets\Sounds\Ascendant_MindBlast_Launch_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Ascendant_MindBlast_Launch_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Ascendant_MindBlast_Launch_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Ascendant_MindBlast_Launch_04.wav" FacialGroup=""/>
+        <DupeMuteCount value="3"/>
+        <Pitch value="-2.000000,1.000000"/>
+        <Volume value="-3.000000,0.000000"/>
+    </CSound>
+
+    <CRequirement id="MindBlast@Use"></CRequirement>
+    <CRequirement id="MindBlast@Learn"></CRequirement>
+
+    <CDataCollectionUnit id="MindBlast">
+
+    </CDataCollectionUnit>
+
+</Catalog>

@@ -1,0 +1,4 @@
+Button/Name/Arbiter=Вызвать арбитра
+Button/Tooltip/Arbiter=Судно поддержки. Может использовать способность <d stringref="Abil,StasisField,Name"/>, а также генерирует <d stringref="Button,CloakingField,Name"/>.
+DataCollection/Name/Arbiter=Арбитр
+Unit/Name/Arbiter=Арбитр

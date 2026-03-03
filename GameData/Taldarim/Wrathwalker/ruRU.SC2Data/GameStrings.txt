@@ -1,0 +1,10 @@
+Button/Name/ChargedBlast=Charged Blast
+Button/Name/Wrathwalker=Wrathwalker
+
+Unit/Name/Wrathwalker=Wrathwalker
+Unit/Name/ChargedBlast=Missile
+
+Weapon/Name/ChargedBlast=Charged Blast
+
+DataCollection/Name/Wrathwalker=Wrathwalker
+DataCollection/Name/ChargedBlast=Charged Blast
