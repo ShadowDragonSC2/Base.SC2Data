@@ -172,6 +172,22 @@
 
     <CRequirement id="SovereignBattlecruiser@Use"/>
     <CRequirement id="SovereignBattlecruiser@Show"/>
+
+    <CDataCollectionUnit id="SovereignBattlecruiser">
+        <DataRecord Entry="Button,SovereignBattlecruiser"/>
+        <DataRecord Entry="Unit,SovereignBattlecruiser"/>
+        <DataRecord Entry="Actor,SovereignBattlecruiser"/>
+        <DataRecord Entry="Model,SovereignBattlecruiser"/>
+        <DataRecord Entry="Model,SovereignBattlecruiser@Death"/>
+        <DataRecord Entry="Model,SovereignBattlecruiser@Portrait"/>
+        <DataRecord Entry="Sound,SovereignBattlecruiser@Movement"/>
+        <DataRecord Entry="Sound,SovereignBattlecruiser@Attack"/>
+        <DataRecord Entry="Sound,SovereignBattlecruiser@Help"/>
+        <DataRecord Entry="Sound,SovereignBattlecruiser@Pissed"/>
+        <DataRecord Entry="Sound,SovereignBattlecruiser@Yes"/>
+        <DataRecord Entry="Sound,SovereignBattlecruiser@What"/>
+        <DataRecord Entry="Sound,SovereignBattlecruiser@Ready"/>
+    </CDataCollectionUnit>
     
     
 </Catalog>
