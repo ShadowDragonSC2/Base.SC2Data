@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    <CButton id="InfestedBanshee">
+        <Icon value="Assets\Textures\btn-unit-zerg-infestedbanshee.dds"/>
+    </CButton>
+    
+    <CUnit id="InfestedBanshee">
+        <DeathRevealRadius value="3"/>
+        <Race value="Zerg"/>
+        <Mob value="Campaign"/>
+        <FlagArray index="PreventDestroy" value="1"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="ArmySelect" value="1"/>
+        <PlaneArray index="Air" value="1"/>
+        <Collide index="Flying" value="1"/>
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <Attributes index="Mechanical" value="1"/>
+        <LifeStart value="140"/>
+        <LifeMax value="140"/>
+        <LifeArmorName value="Unit/LifeArmorName/TerranShipPlating"/>
+        <EnergyStart value="50"/>
+        <EnergyMax value="200"/>
+        <EnergyRegenRate value="0.5625"/>
+        <Mover value="Fly"/>
+        <Speed value="2.75"/>
+        <Acceleration value="3.25"/>
+        <StationaryTurningRate value="1499.9414"/>
+        <TurningRate value="1499.9414"/>
+        <Sight value="10"/>
+        <Height value="3.75"/>
+        <VisionHeight value="4"/>
+        <Food value="-3"/>
+        <CostCategory value="Army"/>
+        <CostResource index="Minerals" value="150"/>
+        <CostResource index="Vespene" value="100"/>
+        <RepairTime value="60"/>
+        <AttackTargetPriority value="20"/>
+        <DamageDealtXP value="1"/>
+        <DamageTakenXP value="1"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="attack"/>
+        <AbilArray Link="move"/>
+        <AbilArray Link="InfestedBansheeCloak"/>
+        <WeaponArray Link="InfestedBansheeWEAP"/>
+        <CardLayouts>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+            <LayoutButtons Face="InfestedBansheeCloak" Type="AbilCmd" AbilCmd="InfestedBansheeCloak,On" Row="2" Column="1"/>
+            <LayoutButtons Face="CloakOff" Type="AbilCmd" AbilCmd="InfestedBansheeCloak,Off" Row="2" Column="1"/>
+        </CardLayouts>
+        <Radius value="0.75"/>
+        <SeparationRadius value="0.75"/>
+        <ScoreResult value="BuildOrder"/>
+        <SubgroupPriority value="117"/>
+        <MinimapRadius value="0.75"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:FactionInfested"/>
+        <GlossaryPriority value="210"/>
+        <GlossaryStrongArray value="SiegeTankSieged"/>
+        <GlossaryStrongArray value="Hellion"/>
+        <GlossaryStrongArray value="Marauder"/>
+        <GlossaryWeakArray value="Liberator"/>
+        <GlossaryWeakArray value="Goliath"/>
+        <GlossaryCategory value="Unit/Category/InfestedTerranUnits"/>
+        <HotkeyCategory value="Unit/Category/InfestedTerranUnits"/>
+        <AIEvaluateAlias value="Banshee"/>
+        <LifeRegenRate value="0.2734"/>
+    </CUnit>
+    
+    <CActorUnit id="InfestedBanshee" parent="GenericUnitStandard" unitName="InfestedBanshee">
+        <ModelFlags index="OutlineEmitter" value="1"/>
+        <Macros value="ZergBurrowStandardAnimMacro"/>
+        <!--Macros value="ZergSmallBurrowEffects"/-->
+        <Aliases value="_UnitLarge"/>
+        <Aliases value="_RapidDeploy"/>
+        <HostSiteOps Ops="SOpBanker"/>
+        <Baselines index="Walk" BlendIn="1.500000" BlendOut="2.000000"/>
+        <DeathArray index="Normal" ModelLink="InfestedBanshee@Death" SoundLink="Banshee_Explode"/>
+        <PortraitModel value="InfestedBanshee@Portrait"/>
+        <AbilSoundArray AbilCmd="InfestedBansheeCloakingField,On" Sound="Banshee_CloakOnVO"/>
+        <BarOffset value="60"/>
+        <BarWidth value="90"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\WireFrame-InfestedBanshee.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-unit-zerg-infestedbanshee.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-shipplatinglevel0.dds"/>
+        <NameOffset value="60"/>
+        <SoundArray index="Movement" value="Banshee_Movement"/>
+        <UnitIcon value="Assets\Textures\btn-unit-zerg-infestedbanshee.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\WireFrame-InfestedBanshee.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    
+    <CModel id="InfestedBanshee" parent="Unit">
+        <AttachProps Id="Ref_Hit 01">
+            <Keys index="Weapon" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Hit 04">
+            <Keys index="Weapon" value="1"/>
+        </AttachProps>
+        <EditorCategories value="Race:Terran"/>
+        <Lighting value="Banshee"/>
+        <Occlusion value="Show"/>
+        <PlanetPanelCamera value="Star2CameraLow07"/>
+        <Radius value="0.750000"/>
+        <ScaleMax value="0.800000,0.800000,0.800000"/>
+        <ScaleMin value="0.800000,0.800000,0.800000"/>
+        <SelectionOffset value="0.000000,0.000000,-0.500000"/>
+        <SelectionRadius value="0.937500"/>
+        <ShadowRadius value="0.937500"/>
+        <SquibTypeDefault value="Flesh"/>
+        <TechPurchaseCamera value="TechPurchaseStarship"/>
+        <Tipability value="0.650000"/>
+        <UnitGlossaryCamera value="Star2CameraLow07"/>
+        <Model value="Assets\Units\Zerg\InfestedBanshee\InfestedBanshee.m3"/>
+        <Events>
+            <Anim value="Burrow,00"/>
+            <Name value="BurrowDownDust"/>
+            <Type value="Custom"/>
+            <Time value="0.500000"/>
+        </Events>
+        <Events>
+            <Anim value="Burrow,00"/>
+            <Name value="StukovInfestedBanshee_Descend"/>
+            <Type value="Sound"/>
+            <Payload value="StukovInfestedBanshee_Descend"/>
+        </Events>
+        <Events>
+            <Anim value="Unburrow,00"/>
+            <Name value="StukovInfestedBanshee_Ascend"/>
+            <Type value="Sound"/>
+            <Payload value="StukovInfestedBanshee_Ascend"/>
+        </Events>
+    </CModel>
+    <CModel id="InfestedBanshee@Death" parent="UnitDeath">
+        <Model value="Assets\Units\Terran\VultureChase_Banshee_Death\VultureChase_Banshee_Death.m3"/>
+        <LowQualityModel value="TerranLargeUnitDeath"/>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="General_Explosion_Mech"/>
+            <Type value="Sound"/>
+            <Time value="0.012000"/>
+            <Payload value="General_Explosion_Mech"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="SoundFollowContinuous"/>
+            <Type value="Sound"/>
+            <Time value="0.065000"/>
+            <Payload value="Banshee_VulturePath_DeathMetal"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="General_Explosion_Mech"/>
+            <Type value="Sound"/>
+            <Time value="0.012000"/>
+            <Payload value="General_Explosion_Mech"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="SoundFollowContinuous"/>
+            <Type value="Sound"/>
+            <Time value="0.065000"/>
+            <Payload value="Banshee_VulturePath_DeathMetal"/>
+        </Events>
+        <Events>
+            <Anim value="Death,02"/>
+            <Name value="General_Explosion_Mech"/>
+            <Type value="Sound"/>
+            <Time value="0.012000"/>
+            <Payload value="General_Explosion_Mech"/>
+        </Events>
+        <Events>
+            <Anim value="Death,02"/>
+            <Name value="SoundFollowContinuous"/>
+            <Type value="Sound"/>
+            <Time value="0.065000"/>
+            <Payload value="Banshee_VulturePath_DeathMetal"/>
+        </Events>
+        <Events>
+            <Anim value="Death,03"/>
+            <Name value="General_Explosion_Mech"/>
+            <Type value="Sound"/>
+            <Time value="0.012000"/>
+            <Payload value="General_Explosion_Mech"/>
+        </Events>
+        <Events>
+            <Anim value="Death,03"/>
+            <Name value="SoundFollowContinuous"/>
+            <Type value="Sound"/>
+            <Time value="0.065000"/>
+            <Payload value="Banshee_VulturePath_DeathMetal"/>
+        </Events>
+        <Events>
+            <Anim value="Death,04"/>
+            <Name value="General_Explosion_Mech"/>
+            <Type value="Sound"/>
+            <Time value="0.012000"/>
+            <Payload value="General_Explosion_Mech"/>
+        </Events>
+        <Events>
+            <Anim value="Death,04"/>
+            <Name value="SoundFollowContinuous"/>
+            <Type value="Sound"/>
+            <Time value="0.065000"/>
+            <Payload value="Banshee_VulturePath_DeathMetal"/>
+        </Events>
+    </CModel>
+    <CModel id="InfestedBanshee@Portrait" parent="Portrait">
+        <Model value="Assets\Portraits\Zerg\InfestedBanshee_Portrait\InfestedBanshee_Portrait.m3"/>
+        <Image value="Assets\Textures\InfestedBansheePortrait_Static.dds"/>
+        <Lighting value="InfestedBansheePortrait"/>
+    </CModel>
+
+    <CSound id="InfestedBanshee@Attack" parent="TerranAck">
+        <Flags index="Download" value="0"/>
+        <AssetArray File="LocalizedData\Sounds\VO\SIBanshee_Attack00.ogg" FacialAnim="SIBanshee_Attack00"/>
+        <AssetArray File="LocalizedData\Sounds\VO\SIBanshee_Attack01.ogg" FacialAnim="SIBanshee_Attack01"/>
+        <AssetArray File="LocalizedData\Sounds\VO\SIBanshee_Attack02.ogg" FacialAnim="SIBanshee_Attack02"/>
+        <AssetArray File="LocalizedData\Sounds\VO\SIBanshee_Attack03.ogg" FacialAnim="SIBanshee_Attack03"/>
+        <AssetArray File="LocalizedData\Sounds\VO\SIBanshee_Attack04.ogg" FacialAnim="SIBanshee_Attack04"/>
+        <AssetArray File="LocalizedData\Sounds\VO\SIBanshee_Attack05.ogg" FacialAnim="SIBanshee_Attack05"/>
+        <AssetArray File="LocalizedData\Sounds\VO\SIBanshee_Attack06.ogg" FacialAnim="SIBanshee_Attack06"/>
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="InfestedBanshee@Help" parent="Alert">
+        <AssetArray File="LocalizedData\Sounds\VO\SIBanshee_Help00.ogg" FacialAnim="SIBanshee_Help00"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Mode value="3DWorld"/>
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="InfestedBanshee@Pissed" parent="Pissed">
+
+    </CSound>
+    <CSound id="InfestedBanshee@Yes" parent="TerranAck">
+        <AssetArray File="LocalizedData\Sounds\VO\SIBanshee_Yes00.ogg" FacialAnim="SIBanshee_Yes00"/>
+        <AssetArray File="LocalizedData\Sounds\VO\SIBanshee_Yes01.ogg" FacialAnim="SIBanshee_Yes01"/>
+        <AssetArray File="LocalizedData\Sounds\VO\SIBanshee_Yes02.ogg" FacialAnim="SIBanshee_Yes02"/>
+        <AssetArray File="LocalizedData\Sounds\VO\SIBanshee_Yes03.ogg" FacialAnim="SIBanshee_Yes03"/>
+        <AssetArray File="LocalizedData\Sounds\VO\SIBanshee_Yes04.ogg" FacialAnim="SIBanshee_Yes04"/>
+        <AssetArray File="LocalizedData\Sounds\VO\SIBanshee_Yes05.ogg" FacialAnim="SIBanshee_Yes05"/>
+        <AssetArray File="LocalizedData\Sounds\VO\SIBanshee_Yes06.ogg" FacialAnim="SIBanshee_Yes06"/>
+        <AssetArray File="LocalizedData\Sounds\VO\SIBanshee_Yes07.ogg" FacialAnim="SIBanshee_Yes07"/>
+        <AssetArray File="LocalizedData\Sounds\VO\SIBanshee_Yes08.ogg" FacialAnim="SIBanshee_Yes08"/>
+        <AssetArray File="LocalizedData\Sounds\VO\SIBanshee_Yes09.ogg" FacialAnim="SIBanshee_Yes09"/>
+        <AssetArray File="LocalizedData\Sounds\VO\SIBanshee_Yes10.ogg" FacialAnim="SIBanshee_Yes10"/>
+        <AssetArray File="LocalizedData\Sounds\VO\SIBanshee_Yes11.ogg" FacialAnim="SIBanshee_Yes11"/>
+        <AssetArray File="LocalizedData\Sounds\VO\SIBanshee_Yes12.ogg" FacialAnim="SIBanshee_Yes12"/>
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="InfestedBanshee@What" parent="TerranAck">
+        <AssetArray File="LocalizedData\Sounds\VO\SIBanshee_What00.ogg" FacialAnim="SIBanshee_What00"/>
+        <AssetArray File="LocalizedData\Sounds\VO\SIBanshee_What01.ogg" FacialAnim="SIBanshee_What01"/>
+        <AssetArray File="LocalizedData\Sounds\VO\SIBanshee_What02.ogg" FacialAnim="SIBanshee_What02"/>
+        <AssetArray File="LocalizedData\Sounds\VO\SIBanshee_What03.ogg" FacialAnim="SIBanshee_What03"/>
+        <AssetArray File="LocalizedData\Sounds\VO\SIBanshee_What04.ogg" FacialAnim="SIBanshee_What04"/>
+        <AssetArray File="LocalizedData\Sounds\VO\SIBanshee_What05.ogg" FacialAnim="SIBanshee_What05"/>
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="InfestedBanshee@Ready" parent="Ready">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\SIBanshee_Ready00.ogg" FacialAnim="SIBanshee_Ready00"/>
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+
+    <CAttachMethodPattern id="InfestedBanshee@AMPattern">
+        <Driver value="InfestedBansheeWEAP@LM"/>
+        <Keyword value="Weapon"/>
+    </CAttachMethodPattern>
+
+    <CRequirement id="InfestedBanshee@Use"/>
+
+    <CDataCollectionUnit id="InfestedBanshee">
+        <Name value="Unit/Name/InfestedBanshee"/>
+        <DataRecord Entry="Button,InfestedBanshee"/>
+        <DataRecord Entry="Unit,InfestedBanshee"/>
+        <DataRecord Entry="Actor,InfestedBanshee"/>
+        <DataRecord Entry="Model,InfestedBanshee"/>
+        <DataRecord Entry="Model,InfestedBanshee@Death"/>
+        <DataRecord Entry="Model,InfestedBanshee@Portrait"/>
+        <DataRecord Entry="Sound,InfestedBanshee@Attack"/>
+        <DataRecord Entry="Sound,InfestedBanshee@Help"/>
+        <DataRecord Entry="Sound,InfestedBanshee@Pissed"/>
+        <DataRecord Entry="Sound,InfestedBanshee@Yes"/>
+        <DataRecord Entry="Sound,InfestedBanshee@What"/>
+        <DataRecord Entry="Sound,InfestedBanshee@Ready"/>
+        <DataRecord Entry="Requirement,InfestedBanshee@Use"/>
+        <DataRecord Entry="AttachMethod,InfestedBanshee@AMPattern"/>
+    </CDataCollectionUnit>
+
+    <!-- ============ Weapon ============ -->
+
+    <CWeaponLegacy id="InfestedBansheeWEAP">
+        <EditorCategories value="Race:Zerg"/>
+        <Icon value="Assets\Textures\btn-upgrade-terran-shipweaponslevel0.dds"/>
+        <DisplayEffect value="StukovInfestedBacklashRocketsDamage"/>
+        <DisplayAttackCount value="2"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <MinScanRange value="6"/>
+        <Effect value="InfestedBansheeWEAP@CP"/>
+        <Range value="6"/>
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
+        <Period value="1.25"/>
+        <LegacyOptions index="KeepChanneling" value="1"/>
+        <AllowedMovement value="Slowing"/>
+    </CWeaponLegacy>
+
+    <CEffectCreatePersistent id="InfestedBansheeWEAP@CP">
+        <EditorCategories value="Race:Terran"/>
+        <ExpireDelay value="0.8"/>
+        <PeriodCount value="2"/>
+        <WhichLocation Value="TargetUnit"/>
+        <PeriodicEffectArray value="InfestedBansheeWEAP@LM"/>
+        <PeriodicPeriodArray value="0.15"/>
+    </CEffectCreatePersistent>
+    <CEffectLaunchMissile id="InfestedBansheeWEAP@LM">
+        <EditorCategories value="Race:Terran"/>
+        <AmmoUnit value="InfestedBansheeWEAP@AttackMissile"/>
+        <ImpactEffect value="InfestedBansheeWEAP@Damage"/>
+        <ValidatorArray index="0" value="RangeCheckLE15"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="InfestedBansheeWEAP@Damage" parent="DU_WEAP_MISSILE">
+        <EditorCategories value="Race:Terran"/>
+        <Visibility value="Visible"/>
+        <Amount value="12"/>
+    </CEffectDamage>
+
+    <CActorMissile id="InfestedBansheeWEAP@AttackMissile" parent="GenericAttackMissile" unitName="InfestedBansheeWEAP@AttackMissile"/>
+    <CActorAction id="InfestedBansheeWEAP@Attack" parent="GenericAttack" effectImpact="InfestedBansheeWEAP@Damage" effectLaunch="InfestedBansheeWEAP@LM">
+        <LaunchAttachQuery Methods="InfestedBanshee@AMPattern"/>
+        <ShieldRippleScaleFactor value="1.100000"/>
+        <AcquisitionYawHalfArc value="15.000000"/>
+        <AcquisitionPitchHalfArc value="30.000000"/>
+        <ImpactPhysics MatchKeys="Basic" Name="BacklashRocketsImpact" Physics="InfestedBansheeWEAP@AttackForce"/>
+    </CActorAction>
+    <CActorForceSphere id="InfestedBansheeWEAP@AttackForceUp">
+        <Host Subject="_ImpactGuide"/>
+        <HostSiteOps Ops="SOpRandomPointInCircleDot2"/>
+        <Magnitude value="11.000000,5.000000"/>
+        <Radius value="0.850000,0.250000"/>
+        <Duration value="0.150000"/>
+        <Field value="Directional"/>
+    </CActorForceSphere>
+    <CActorForceSphere id="InfestedBansheeWEAP@AttackForce">
+        <Host Subject="_ImpactGuide"/>
+        <HostSiteOps Ops="SOpRandomPointInSphereDot15"/>
+        <Magnitude value="21.500000,8.000000"/>
+        <Radius value="0.850000,0.150000"/>
+        <Duration value="0.150000"/>
+        <On Terms="ActorCreation" Send="Create InfestedBansheeWEAP@AttackForceUp"/>
+    </CActorForceSphere>
+
+    <CModel id="InfestedBansheeWEAP@AttackMissile" parent="MissileFX">
+        <Model value="Assets\Effects\Terran\BansheeMissile\BansheeMissile.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+    <CModel id="InfestedBansheeWEAP@AttackImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Terran\BansheeMissileImpact\BansheeMissileImpact.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+
+    <CSound id="InfestedBansheeWEAP@AttackLaunch" parent="Combat">
+        <DupeDestroyCount value="10"/>
+        <OverlapTimeDelta value="100"/>
+        <Pitch value="-3.860000,1.640000"/>
+        <Volume value="-5.200000,-3.100000"/>
+        <AssetArray File="Assets\Sounds\Terran\Banshee\Banshee_AttackLaunch0.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\Banshee\Banshee_AttackLaunch1.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\Banshee\Banshee_AttackLaunch2.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\Banshee\Banshee_AttackLaunch3.wav"/>
+        <EditorCategories value="Race:Terran"/>
+    </CSound>
+    <CSound id="InfestedBansheeWEAP@AttackImpact" parent="Combat">
+        <DupeDestroyCount value="8"/>
+        <Pitch value="-3.860000,3.160000"/>
+        <Volume value="-4.560000,-3.100000"/>
+        <AssetArray File="Assets\Sounds\Terran\Banshee\Banshee_AttackImpact0.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\Banshee\Banshee_AttackImpact1.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\Banshee\Banshee_AttackImpact2.wav"/>
+        <EditorCategories value="Race:Terran"/>
+    </CSound>
+
+    <CMoverMissile id="InfestedBansheeWEAP@AttackMissile">
+        <MotionPhases>
+            <Driver value="Guidance"/>
+            <Acceleration value="20"/>
+            <Speed value="10"/>
+            <MaxSpeed value="50"/>
+            <Outro value="2.5"/>
+            <YawPitchRoll value="719.2968"/>
+            <Overlays Scale="0"/>
+        </MotionPhases>
+        <MotionPhases Outro="-1">
+            <Overlays Scale="0.2,0.2"/>
+        </MotionPhases>
+        <MotionPhases YawPitchRoll="MAX">
+            <Overlays Scale="0"/>
+        </MotionPhases>
+        <MotionOverlays>
+            <Type value="Revolver"/>
+            <RevolverSpeed value="179.2968"/>
+            <RevolverSpeedRange value="179.2968"/>
+            <RevolverMaxSpeed value="719.2968"/>
+            <RevolverMaxSpeedRange value="0"/>
+            <RevolverAccel value="337.5"/>
+            <RevolverAccelRange value="337.5"/>
+        </MotionOverlays>
+    </CMoverMissile>
+
+    <CUnit id="InfestedBansheeWEAP@AttackMissile" parent="MISSILE">
+        <Race value="Zerg"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:FactionInfested"/>
+    </CUnit>
+
+    <CDataCollectionUnit id="InfestedBansheeWEAP">
+        <Name value="Weapon/Name/InfestedBansheeWEAP"/>
+        <DataRecord Entry="Weapon,InfestedBansheeWEAP"/>
+        <DataRecord Entry="Effect,InfestedBansheeWEAP@CP"/>
+        <DataRecord Entry="Effect,InfestedBansheeWEAP@LM"/>
+        <DataRecord Entry="Effect,InfestedBansheeWEAP@Damage"/>
+        <DataRecord Entry="Actor,InfestedBansheeWEAP@AttackMissile"/>
+        <DataRecord Entry="Actor,InfestedBansheeWEAP@Attack"/>
+        <DataRecord Entry="Model,InfestedBansheeWEAP@AttackMissile"/>
+        <DataRecord Entry="Model,InfestedBansheeWEAP@AttackImpact"/>
+        <DataRecord Entry="Sound,InfestedBansheeWEAP@AttackLaunch"/>
+        <DataRecord Entry="Sound,InfestedBansheeWEAP@AttackImpact"/>
+        <DataRecord Entry="Mover,InfestedBansheeWEAP@AttackMissile"/>
+        <DataRecord Entry="Unit,InfestedBansheeWEAP@AttackMissile"/>
+    </CDataCollectionUnit>
+
+    <!-- ============= Abilities ============= -->
+
+    <CButton id="InfestedBansheeCloak">
+        <EditorCategories value="Race:InfestedTerran"/>
+        <Icon value="Assets\Textures\btn-ability-terran-cloak-color.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-terran-cloak-color.dds"/>
+    </CButton>
+
+    <CAbilBehavior id="InfestedBansheeCloak">
+        <CmdButtonArray index="On" DefaultButtonFace="InfestedBansheeCloak">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Off" DefaultButtonFace="CloakOff">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <AbilSetId value="Clok"/>
+        <BehaviorArray value="InfestedBansheeCloak"/>
+        <Flags index="Toggle" value="1"/>
+        <Flags index="Transient" value="1"/>
+    </CAbilBehavior>    
+
+    <CBehaviorBuff id="InfestedBansheeCloak">
+        <EditorCategories value="Race:InfestedTerran,AbilityorEffectType:Units"/>
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-ability-terran-cloak.dds"/>
+        <RemoveValidatorArray value="CanSpendEnergy"/>
+        <RemoveValidatorArray value="hasEnergy"/>
+        <Modification WeaponRange="2" WeaponScanBonus="2">
+            <StateFlags index="Cloak" value="1"/>
+            <VitalRegenArray index="Energy" value="-1.4765"/>
+        </Modification>
+    </CBehaviorBuff>
+
+    <CActorSound id="InfestedBansheeCloak@On" parent="SoundOneShot">
+        <On Terms="Behavior.InfestedBansheeCloak.On" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="InfestedBansheeCloak@Off" parent="SoundOneShot">
+        <On Terms="Behavior.InfestedBansheeCloak.Off" Send="Create"/>
+    </CActorSound>
+
+    <CSound id="InfestedBansheeCloak@On" parent="Spell">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\Abilities\Terran_CloakOn.wav"/>
+        <DupeDestroyCount value="3"/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
+    <CSound id="InfestedBansheeCloak@Off" parent="Spell">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\Abilities\Terran_CloakOff.wav"/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
+    
+    <CDataCollectionUnit id="InfestedBansheeCloak">
+        <Name value="Button/Name/InfestedBansheeCloak"/>
+        <DataRecord Entry="Button,InfestedBansheeCloak"/>
+        <DataRecord Entry="Abil,InfestedBansheeCloak"/>
+        <DataRecord Entry="Behavior,InfestedBansheeCloak"/>
+        <DataRecord Entry="Actor,InfestedBansheeCloak@On"/>
+        <DataRecord Entry="Actor,InfestedBansheeCloak@Off"/>
+        <DataRecord Entry="Sound,InfestedBansheeCloak@On"/>
+        <DataRecord Entry="Sound,InfestedBansheeCloak@Off"/>
+    </CDataCollectionUnit>
+    
+</Catalog>
