@@ -1,0 +1,9 @@
+Button/Name/InfestedBanshee=Построить заражённую банши
+Button/Name/InfestedBansheeCloak=Замаскироваться
+Button/Tooltip/InfestedBanshee=Летающая боевая единица. Может использовать способность маскировки, скрываясь от вражеских войск. <\n><\n><c val="#ColorAttackInfo">Атакует только наземные цели.</c>
+Button/Tooltip/InfestedBansheeCloak=Банши на время входит в режим маскировки.
+Behavior/Name/InfestedBansheeCloak=Замаскирован
+Behavior/Tooltip/InfestedBansheeCloak=Эта боевая единица замаскирована. Её можно обнаружить только с помощью <c val="#ColorAttackInfo">детекторов</c>.
+Unit/Name/InfestedBanshee=Заражённая банши
+Unit/Name/InfestedBansheeWEAP@AttackMissile=Attack Missile
+Weapon/Name/InfestedBansheeWEAP=Вирусные кассетные снаряды

@@ -1,0 +1,8 @@
+{
+    "xml.fileAssociations": [
+        {
+            "pattern": "**/*.xml",
+            "systemId": "${workspaceFolder}/.vscode/schemas/catalogsData.xsd"
+        }
+    ]
+}
