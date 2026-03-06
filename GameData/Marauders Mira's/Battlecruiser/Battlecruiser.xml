@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Catalog>
-    <CButton id="SovereignBattlecruiser"></CButton>
+    <CButton id="SovereignBattlecruiser">
+        <Icon value="Assets\Textures\btn-unit-collection-battlecruiser-covertops.dds"/>
+    </CButton>
     
     <CUnit id="SovereignBattlecruiser">
         <DeathRevealRadius value="3"/>
@@ -80,16 +82,45 @@
         <EffectArray index="Death" value="TheHornersStatUpdate"/>
     </CUnit>
     
-    <CActorUnit id="SovereignBattlecruiser" parent="GenericUnitStandard" unitName="SovereignBattlecruiser"/>
+    <CActorUnit id="SovereignBattlecruiser" parent="GenericUnitStandard" unitName="SovereignBattlecruiser">
+        <DeathArray index="Normal" ModelLink="SovereignBattlecruiser@Death"/>
+        
+        <SoundArray index="Movement" value="SovereignBattlecruiser@Movement"/>
+        <SoundArray index="Attack" value="SovereignBattlecruiser@Attack"/>
+        <SoundArray index="Help" value="SovereignBattlecruiser@Help"/>
+        <SoundArray index="Pissed" value="SovereignBattlecruiser@Pissed"/>
+        <SoundArray index="Yes" value="SovereignBattlecruiser@Yes"/>
+        <SoundArray index="What" value="SovereignBattlecruiser@What"/>
+        <SoundArray index="Ready" value="SovereignBattlecruiser@Ready"/>
+
+        <PortraitModel value="SovereignBattlecruiser@Portrait"/>
+
+        <ModelFlags index="OutlineEmitter" value="1"/>
+        <BarOffset value="75"/>
+        <NameOffset value="110"/>
+        <BarWidth value="130"/>
+        <UnitIcon value="Assets\Textures\btn-unit-collection-battlecruiser-covertops.dds"/>
+        <HeroIcon value="Assets\Textures\btn-unit-collection-battlecruiser-covertops.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-shipplatinglevel0.dds"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Terran-Battlecruiser.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Terran-Battlecruiser.dds"/>
+        </Wireframe>
+    </CActorUnit>
     
     <CModel id="SovereignBattlecruiser" parent="Unit">
-        <Model value=""/>
+        <Model value="Assets\Units\Terran\BattleCruiser_CovertOps_Collection\BattleCruiser_CovertOps_Collection.m3"/>
     </CModel>
     <CModel id="SovereignBattlecruiser@Death" parent="UnitDeath">
-        <Model value=""/>
+        <Model value="Assets\Units\Terran\BattleCruiser_CovertOps_Collection_Death\BattleCruiser_CovertOps_Collection_Death.m3"/>
+    </CModel>
+    <CModel id="SovereignBattlecruiser@DeathRagdoll" parent="UnitDeathRagdoll">
+        <Model value="Assets\Units\Terran\BattleCruiser_CovertOps_Collection_DeathRagdoll\BattleCruiser_CovertOps_Collection_DeathRagdoll.m3"/>
     </CModel>
     <CModel id="SovereignBattlecruiser@Portrait" parent="Portrait">
-        <Model value=""/>
+        <Model value="Assets\Portraits\Terran\BattlecruiserPortrait\BattlecruiserPortrait.m3"/>
     </CModel>
     
     <CSound id="SovereignBattlecruiser@Movement" parent="Movement">
@@ -179,6 +210,7 @@
         <DataRecord Entry="Actor,SovereignBattlecruiser"/>
         <DataRecord Entry="Model,SovereignBattlecruiser"/>
         <DataRecord Entry="Model,SovereignBattlecruiser@Death"/>
+        <DataRecord Entry="Model,SovereignBattlecruiser@DeathRagdoll"/>
         <DataRecord Entry="Model,SovereignBattlecruiser@Portrait"/>
         <DataRecord Entry="Sound,SovereignBattlecruiser@Movement"/>
         <DataRecord Entry="Sound,SovereignBattlecruiser@Attack"/>
@@ -187,7 +219,41 @@
         <DataRecord Entry="Sound,SovereignBattlecruiser@Yes"/>
         <DataRecord Entry="Sound,SovereignBattlecruiser@What"/>
         <DataRecord Entry="Sound,SovereignBattlecruiser@Ready"/>
+        <DataRecord Entry="Requirement,SovereignBattlecruiser@Use"/>
+        <DataRecord Entry="Requirement,SovereignBattlecruiser@Show"/>
     </CDataCollectionUnit>
+
+    <!-- ================ Weapons ================ -->
+
+    <CWeaponLegacy id="SovereignATALaserBattery">
+        <DisplayEffect value="SovereignATALaserBattery@Damage"/>
+        <Effect value="SovereignATALaserBattery@LM"/>
+        
+        <Icon value="Assets\Textures\btn-upgrade-terran-shipweaponslevel0.dds"/>
+        
+        <MinScanRange value="6.5"/>
+        <Range value="6"/>
+        <Arc value="360"/>
+        <Period value="0.225"/>
+        <RandomDelayMax value="0.1875"/>
+        
+        <Options index="OnlyFireWhileInAttackOrder" value="0"/>
+        <Options index="OnlyFireAtAttackOrderTarget" value="0"/>
+        <AcquirePrioritization value="ByAngle"/>
+        <AllowedMovement value="Moving"/>
+        <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <EditorCategories value="Race:Terran"/>
+    </CWeaponLegacy>
+
+    <CEffectLaunchMissile id="SovereignATALaserBattery@LM">
+        <EditorCategories value="Race:Terran"/>
+        <ImpactEffect value="HHATALaserBatteryU"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="SovereignATALaserBattery@Damage" parent="DU_WEAP_MISSILE">
+        <EditorCategories value="Race:Terran"/>
+        <Visibility value="Visible"/>
+        <Amount value="18"/>
+    </CEffectDamage>
     
     
 </Catalog>
