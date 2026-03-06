@@ -225,9 +225,9 @@
 
     <!-- ================ Weapons ================ -->
 
-    <CWeaponLegacy id="SovereignATALaserBattery">
-        <DisplayEffect value="SovereignATALaserBattery@Damage"/>
-        <Effect value="SovereignATALaserBattery@LM"/>
+    <CWeaponLegacy id="SovereignLaserBattery">
+        <DisplayEffect value="SovereignLaserBattery@Damage"/>
+        <Effect value="SovereignLaserBattery@LM"/>
         
         <Icon value="Assets\Textures\btn-upgrade-terran-shipweaponslevel0.dds"/>
         
@@ -245,15 +245,53 @@
         <EditorCategories value="Race:Terran"/>
     </CWeaponLegacy>
 
-    <CEffectLaunchMissile id="SovereignATALaserBattery@LM">
+    <CEffectLaunchMissile id="SovereignLaserBattery@LM">
         <EditorCategories value="Race:Terran"/>
         <ImpactEffect value="HHATALaserBatteryU"/>
     </CEffectLaunchMissile>
-    <CEffectDamage id="SovereignATALaserBattery@Damage" parent="DU_WEAP_MISSILE">
+    <CEffectDamage id="SovereignLaserBattery@Damage" parent="DU_WEAP_MISSILE">
         <EditorCategories value="Race:Terran"/>
         <Visibility value="Visible"/>
         <Amount value="18"/>
     </CEffectDamage>
+
+    <CActorMissile id="SovereignLaserBattery@AttackMissile" parent="GenericAttackMissile" unitName="SovereignLaserBattery@AttackMissile">
+        <Model value="ATALaserBatteryLMWeapon"/>
+    </CActorMissile>
+    <CActorAction id="SovereignLaserBattery@Attack" parent="GenericAttack" effectImpact="SovereignLaserBattery@Damage" effectLaunch="SovereignLaserBattery@LM">
+        <LaunchAttachQuery Methods="AMFilterWeaponSetA0 AMRandomUniform"/>
+        <LaunchAssets Sound="SovereignLaserBattery@AttackLaunch"/>
+        <ImpactMap index="None" Model="SovereignLaserBattery@AttackImpact" Sound="SovereignLaserBattery@AttackImpact"/>
+        <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeStandard SOpForwardLaunchGuide"/>
+        <ImpactPhysics Name="ATAImpact" MatchKeys="BasicAir" Physics="BattlecruiserAttackAirForce"/>
+        <ActionFlags index="LaunchForceSite" value="1"/>
+    </CActorAction>
+
+    <CModel id="SovereignLaserBattery@AttackMissile" parent="MissileFX">
+        <Model value="Assets\Effects\Terran\BattleCruiserMissile\BattleCruiserMissile.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+    <CModel id="SovereignLaserBattery@AttackImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Terran\BattlecruiserMissileImpact\BattleCruiserMissileImpact.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+
+    <CSound id="SovereignLaserBattery@AttackImpact" parent="Terran_ExplosionSmall">
+        <DupeDestroyCount value="3"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="3"/>
+        <DupePrioritization value="Oldest"/>
+        <Pitch value="0.000000,2.000000"/>
+        <Volume value="-12.000000,-9.000000"/>
+    </CSound>
+    <CSound id="SovereignLaserBattery@AttackLaunch">
+        <AssetArray File="Assets\Sounds\Terran\Battlecruiser\Battlecruiser_AttackLaunch0.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\Battlecruiser\Battlecruiser_AttackLaunch1.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\Battlecruiser\Battlecruiser_AttackLaunch2.wav"/>
+        <DupeDestroyCount value="3"/>
+        <DupeMuteCount value="3"/>
+        <DupePrioritization value="Oldest"/>
+    </CSound>
     
     
 </Catalog>
