@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CButton id="Odin">
+        <Icon value="Assets\Textures\btn-unit-terran-odin.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-terran-odin.dds"/>
+    </CButton>
+
+</Catalog>
