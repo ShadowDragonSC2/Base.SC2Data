@@ -1,4 +1,3 @@
-Button/Name/ChargedBlast=Charged Blast
 Button/Name/Wrathwalker=Wrathwalker
 
 Unit/Name/Wrathwalker=Wrathwalker

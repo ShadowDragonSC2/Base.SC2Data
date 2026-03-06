@@ -340,12 +340,12 @@
         <Pitch value="-0.300000,0.000000"/>
     </CSound>
 
-    <CRequirement id="Wrathwalker">
-        <NodeArray index="Use" Link="Wrathwalker@Requirement@AllowUnit"/>
+    <CRequirement id="Wrathwalker@Use">
+        <NodeArray index="Use" Link="Wrathwalker@Use@AllowUnit"/>
     </CRequirement>
 
     <!-- Requirement Nodes -->
-    <CRequirementCountUnit id="Wrathwalker@Requirement@AllowUnit">
+    <CRequirementCountUnit id="Wrathwalker@Use@AllowUnit">
         <Count Link="RoboticsBay" State="CompleteOnly"/>
     </CRequirementCountUnit>
 
@@ -364,16 +364,12 @@
         <DataRecord Entry="Sound,Wrathwalker@What"/>
         <DataRecord Entry="Sound,Wrathwalker@Yes"/>
         <DataRecord Entry="Requirement,Wrathwalker"/>
-        <DataRecord Entry="RequirementNode,Wrathwalker@Requirement@AllowUnit"/>
+        <DataRecord Entry="RequirementNode,Wrathwalker@Use@AllowUnit"/>
         <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Protoss,ObjectType:Unit"/>
         <Pattern value="UnitPattern"/>
     </CDataCollectionUnit>
+
     <!-- ============ Weapons ============ -->
-    <CButton id="ChargedBlast">
-        <Icon value="Assets\Textures\btn-ability-protoss-chargedblast.dds"/>
-        <AlertIcon value="Assets\Textures\btn-ability-protoss-chargedblast.dds"/>
-        <EditorCategories value="Race:Protoss"/>
-    </CButton>
     
     <CWeaponLegacy id="ChargedBlast">
         <EditorCategories value="Race:Protoss"/>
@@ -485,7 +481,6 @@
     </CUnit>
 
     <CDataCollectionUnit id="ChargedBlast">
-        <DataRecord Entry="Button,ChargedBlast"/>
         <DataRecord Entry="Weapon,ChargedBlast"/>
         <DataRecord Entry="Effect,ChargedBlast@Damage"/>
         <DataRecord Entry="Effect,ChargedBlast@LM"/>
