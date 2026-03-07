@@ -1,0 +1,30 @@
+Actor/Name/SovereignBattlecruiser=Sovereign Battlecruiser
+Actor/Name/SovereignLaserBattery@AttackMissile=Attack Missile
+Actor/Name/SovereignLaserBattery@Attack=Attack
+
+Effect/Name/SovereignLaserBattery@LM=LM
+Effect/Name/SovereignLaserBattery@Damage=Damage
+
+Model/Name/SovereignBattlecruiser=Sovereign Battlecruiser
+Model/Name/SovereignBattlecruiser@Death=Death
+Model/Name/SovereignBattlecruiser@DeathRagdoll=Death Ragdoll
+Model/Name/SovereignBattlecruiser@Portrait=Portrait
+Model/Name/SovereignLaserBattery@AttackMissile=Attack Missile
+Model/Name/SovereignLaserBattery@AttackImpact=Attack Impact
+
+Mover/Name/SovereignLaserBattery@AttackMissile=Attack Missile
+
+Sound/Name/SovereignBattlecruiser@Movement=Movement
+Sound/Name/SovereignBattlecruiser@Attack=Attack
+Sound/Name/SovereignBattlecruiser@Help=Help
+Sound/Name/SovereignBattlecruiser@Pissed=Pissed
+Sound/Name/SovereignBattlecruiser@Yes=Yes
+Sound/Name/SovereignBattlecruiser@What=What
+Sound/Name/SovereignBattlecruiser@Ready=Ready
+Sound/Name/SovereignLaserBattery@AttackLaunch=Attack Launch
+Sound/Name/SovereignLaserBattery@AttackImpact=Attack Impact
+
+Requirement/Name/SovereignBattlecruiser@Use=Use
+Requirement/Name/SovereignBattlecruiser@Show=Show
+
+Unit/Name/SovereignLaserBattery@AttackMissile=Attack Missile

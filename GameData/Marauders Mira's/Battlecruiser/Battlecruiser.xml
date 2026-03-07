@@ -44,8 +44,8 @@
         <BehaviorArray Link="HHYamatoShotsActivate"/>
         <BehaviorArray Link="HHArmyOOCRegenSpeed"/>
         <!--WeaponArray Link="HHATSLaserBattery" Turret="Battlecruiser"/-->
-        <WeaponArray Link="HHATALaserBattery" Turret="Battlecruiser"/>
-        <WeaponArray Link="HHLaserBattery" Turret="Battlecruiser"/>
+        <!-- <WeaponArray Link="HHATALaserBattery" Turret="Battlecruiser"/> -->
+        <WeaponArray Link="SovereignLaserBattery" Turret="Battlecruiser"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
             <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
@@ -119,8 +119,9 @@
     <CModel id="SovereignBattlecruiser@DeathRagdoll" parent="UnitDeathRagdoll">
         <Model value="Assets\Units\Terran\BattleCruiser_CovertOps_Collection_DeathRagdoll\BattleCruiser_CovertOps_Collection_DeathRagdoll.m3"/>
     </CModel>
-    <CModel id="SovereignBattlecruiser@Portrait" parent="Portrait">
+    <CModel id="SovereignBattlecruiser@Portrait" parent="FXAPortrait">
         <Model value="Assets\Portraits\Terran\BattlecruiserPortrait\BattlecruiserPortrait.m3"/>
+        <FacialController value="LocalizedData/Facial/BattlecruiserPortrait.fxa"/>
     </CModel>
     
     <CSound id="SovereignBattlecruiser@Movement" parent="Movement">
@@ -246,6 +247,7 @@
     </CWeaponLegacy>
 
     <CEffectLaunchMissile id="SovereignLaserBattery@LM">
+        <AmmoUnit value="SovereignLaserBattery@AttackMissile"/>
         <EditorCategories value="Race:Terran"/>
         <ImpactEffect value="HHATALaserBatteryU"/>
     </CEffectLaunchMissile>
@@ -292,6 +294,22 @@
         <DupeMuteCount value="3"/>
         <DupePrioritization value="Oldest"/>
     </CSound>
+
+    <CMoverMissile id="SovereignLaserBattery@AttackMissile" parent="MissileDefault">
+        <MotionPhases index="0">
+            <Driver value="Guidance"/>
+            <Acceleration value="150"/>
+            <MaxSpeed value="18.75"/>
+            <ClearanceAcceleration value="75"/>
+            <Outro value="-1"/>
+            <YawPitchRoll value="719.2968"/>
+        </MotionPhases>
+    </CMoverMissile>
+
+    <CUnit id="SovereignLaserBattery@AttackMissile">
+        <Race value="Terr"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:FactionMarauder"/>
+    </CUnit>
     
     
 </Catalog>
