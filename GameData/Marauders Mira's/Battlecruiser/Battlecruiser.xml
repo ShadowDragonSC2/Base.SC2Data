@@ -205,7 +205,7 @@
     <CRequirement id="SovereignBattlecruiser@Use"/>
     <CRequirement id="SovereignBattlecruiser@Show"/>
 
-    <CDataCollectionUnit id="SovereignBattlecruiser">
+    <CDataCollectionUnit id="SovereignBattlecruiser" parent="UnitBase">
         <DataRecord Entry="Button,SovereignBattlecruiser"/>
         <DataRecord Entry="Unit,SovereignBattlecruiser"/>
         <DataRecord Entry="Actor,SovereignBattlecruiser"/>

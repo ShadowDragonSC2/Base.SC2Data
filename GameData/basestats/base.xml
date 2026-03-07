@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    <CDataCollectionPattern id="UnitPattern_Base">
+        <Fields Reference="Button,^ParamId^,Hotkey"/>
+        <Fields Reference="Unit,^ParamId^,LifeStart"/>
+        <Fields Reference="Unit,^ParamId^,LifeMax"/>
+        <Fields Reference="Unit,^ParamId^,LifeArmor"/>
+        <Fields Reference="Unit,^ParamId^,ShieldsStart"/>
+        <Fields Reference="Unit,^ParamId^,ShieldsMax"/>
+        <Fields Reference="Unit,^ParamId^,ShieldArmor"/>
+        <Fields Reference="Unit,^ParamId^,EnergyStart"/>
+        <Fields Reference="Unit,^ParamId^,EnergyMax"/>
+        <Fields Reference="Unit,^ParamId^,EnergyArmor"/>
+        <Fields Reference="Unit,^ParamId^,Sight"/>
+        <Fields Reference="Unit,^ParamId^,Speed"/>
+        <Fields Reference="Unit,^ParamId^,Food"/>
+        <Fields Reference="Unit,^ParamId^,CostResource[Minerals]" NameOverride="DataCollectionPattern/NameOverride/CostResource/Minerals"/>
+        <Fields Reference="Unit,^ParamId^,CostResource[Vespene]" NameOverride="DataCollectionPattern/NameOverride/CostResource/Vespene"/>
+        <Fields Reference="Unit,^ParamId^,RepairTime"/>
+        <Fields Reference="Unit,^ParamId^,AbilArray"/>
+        <Fields Reference="Unit,^ParamId^,BehaviorArray"/>
+        <Fields Reference="Unit,^ParamId^,WeaponArray"/>
+        <Fields Reference="Unit,^ParamId^,CardLayouts"/>
+        <Fields Reference="Unit,^ParamId^,Race"/>
+        <Fields Reference="Unit,^ParamId^,FlagArray[ArmySelect]" NameOverride="EDSTR_ENUMVAL_e_unitFlagArmySelect"/>
+        <Fields Reference="Actor,^ParamId^,UnitIcon"/>
+        <Fields Reference="Actor,^ParamId^,HeroIcon"/>
+        <Fields Reference="Actor,^ParamId^,LifeArmorIcon"/>
+        <Fields Reference="Actor,^ParamId^,Wireframe[0].Image[0]" NameOverride="DataCollectionPattern/NameOverride/Wireframe"/>
+        <Fields Reference="Actor,^ParamId^,GroupIcon[0].Image[0]" NameOverride="DataCollectionPattern/NameOverride/GroupIcon"/>
+        <Fields Reference="Model,^ParamId^,Model"/>
+        <Fields Reference="Model,^ParamId^@Death,Model" NameOverride="DataCollectionPattern/NameOverride/Death"/>
+        <Fields Reference="Model,^ParamId^@DeathRagdoll,Model" NameOverride="DataCollectionPattern/NameOverride/DeathRagdoll"/>
+        <Fields Reference="Model,^ParamId^@Portrait,Model" NameOverride="DataCollectionPattern/NameOverride/PortraitModel"/>
+        <Fields Reference="Sound,^ParamId^@Movement,AssetArray" NameOverride="DataCollectionPattern/NameOverride/Sounds/Movement"/>
+        <Fields Reference="Sound,^ParamId^@Attack,AssetArray" NameOverride="DataCollectionPattern/NameOverride/Sounds/Attack"/>
+        <Fields Reference="Sound,^ParamId^@Help,AssetArray" NameOverride="DataCollectionPattern/NameOverride/Sounds/Help"/>
+        <Fields Reference="Sound,^ParamId^@Pissed,AssetArray" NameOverride="DataCollectionPattern/NameOverride/Sounds/Pissed"/>
+        <Fields Reference="Sound,^ParamId^@Yes,AssetArray" NameOverride="DataCollectionPattern/NameOverride/Sounds/Yes"/>
+        <Fields Reference="Sound,^ParamId^@What,AssetArray" NameOverride="DataCollectionPattern/NameOverride/Sounds/What"/>
+        <Fields Reference="Sound,^ParamId^@Ready,AssetArray" NameOverride="DataCollectionPattern/NameOverride/Sounds/Ready"/>
+        <Fields Reference="Requirement,^ParamId^@Use,NodeArray" NameOverride="DataCollectionPattern/NameOverride/Requirement/Use"/>
+        <Fields Reference="Requirement,^ParamId^@Show,NodeArray" NameOverride="DataCollectionPattern/NameOverride/Requirement/Show"/>
+    </CDataCollectionPattern>
+    <CDataCollectionPattern id="UnitPattern_Air" parent="UnitPattern_Base">
+        <Fields Reference="Unit,^ParamId^,Height" />
+        <Fields Reference="Unit,^ParamId^,VisionHeight" />
+    </CDataCollectionPattern>
+    <!-- -->
+    <CDataCollectionUnit default="1" id="UnitBase">
+        <Name value="Unit/Name/##id##"/>
+        <Pattern value="UnitPattern_Base"/>
+    </CDataCollectionUnit>
+</Catalog>
