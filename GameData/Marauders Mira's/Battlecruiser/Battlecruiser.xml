@@ -37,14 +37,6 @@
         <AbilArray Link="move"/>
         <AbilArray Link="Yamato"/>
         <AbilArray Link="que1"/>
-        <AbilArray Link="HHBattlecruiserHyperjump"/>
-        <AbilArray Link="HHYamatoShots"/>
-        <BehaviorArray Link="MassiveVoidRayVulnerability"/>
-        <BehaviorArray Link="AllUnitBehaviorController"/>
-        <BehaviorArray Link="HHYamatoShotsActivate"/>
-        <BehaviorArray Link="HHArmyOOCRegenSpeed"/>
-        <!--WeaponArray Link="HHATSLaserBattery" Turret="Battlecruiser"/-->
-        <!-- <WeaponArray Link="HHATALaserBattery" Turret="Battlecruiser"/> -->
         <WeaponArray Link="SovereignLaserBattery" Turret="Battlecruiser"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
@@ -205,7 +197,7 @@
     <CRequirement id="SovereignBattlecruiser@Use"/>
     <CRequirement id="SovereignBattlecruiser@Show"/>
 
-    <CDataCollectionUnit id="SovereignBattlecruiser" parent="UnitBase">
+    <CDataCollectionUnit id="SovereignBattlecruiser" parent="UnitAir">
         <DataRecord Entry="Button,SovereignBattlecruiser"/>
         <DataRecord Entry="Unit,SovereignBattlecruiser"/>
         <DataRecord Entry="Actor,SovereignBattlecruiser"/>
@@ -249,7 +241,7 @@
     <CEffectLaunchMissile id="SovereignLaserBattery@LM">
         <AmmoUnit value="SovereignLaserBattery@AttackMissile"/>
         <EditorCategories value="Race:Terran"/>
-        <ImpactEffect value="HHATALaserBatteryU"/>
+        <ImpactEffect value="SovereignLaserBattery@Damage"/>
     </CEffectLaunchMissile>
     <CEffectDamage id="SovereignLaserBattery@Damage" parent="DU_WEAP_MISSILE">
         <EditorCategories value="Race:Terran"/>
@@ -286,12 +278,10 @@
         <Pitch value="0.000000,2.000000"/>
         <Volume value="-12.000000,-9.000000"/>
     </CSound>
-    <CSound id="SovereignLaserBattery@AttackLaunch">
+    <CSound id="SovereignLaserBattery@AttackLaunch" parent="Combat">
         <AssetArray File="Assets\Sounds\Terran\Battlecruiser\Battlecruiser_AttackLaunch0.wav"/>
         <AssetArray File="Assets\Sounds\Terran\Battlecruiser\Battlecruiser_AttackLaunch1.wav"/>
         <AssetArray File="Assets\Sounds\Terran\Battlecruiser\Battlecruiser_AttackLaunch2.wav"/>
-        <DupeDestroyCount value="3"/>
-        <DupeMuteCount value="3"/>
         <DupePrioritization value="Oldest"/>
     </CSound>
 
@@ -306,10 +296,24 @@
         </MotionPhases>
     </CMoverMissile>
 
-    <CUnit id="SovereignLaserBattery@AttackMissile">
+    <CUnit id="SovereignLaserBattery@AttackMissile" parent="MISSILE">
         <Race value="Terr"/>
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:FactionMarauder"/>
     </CUnit>
+
+    <CDataCollectionUnit id="SovereignLaserBattery" parent="Weapon_Missile">
+        <DataRecord Entry="Weapon,SovereignLaserBattery"/>
+        <DataRecord Entry="Effect,SovereignLaserBattery@LM"/>
+        <DataRecord Entry="Effect,SovereignLaserBattery@Damage"/>
+        <DataRecord Entry="Actor,SovereignLaserBattery@AttackMissile"/>
+        <DataRecord Entry="Actor,SovereignLaserBattery@Attack"/>
+        <DataRecord Entry="Model,SovereignLaserBattery@AttackMissile"/>
+        <DataRecord Entry="Model,SovereignLaserBattery@AttackImpact"/>
+        <DataRecord Entry="Sound,SovereignLaserBattery@AttackImpact"/>
+        <DataRecord Entry="Sound,SovereignLaserBattery@AttackLaunch"/>
+        <DataRecord Entry="Mover,SovereignLaserBattery@AttackMissile"/>
+        <DataRecord Entry="Unit,SovereignLaserBattery@AttackMissile"/>
+    </CDataCollectionUnit>
     
     
 </Catalog>

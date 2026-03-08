@@ -22,7 +22,7 @@
         <Fields Reference="Unit,^ParamId^,WeaponArray"/>
         <Fields Reference="Unit,^ParamId^,CardLayouts"/>
         <Fields Reference="Unit,^ParamId^,Race"/>
-        <Fields Reference="Unit,^ParamId^,FlagArray[ArmySelect]" NameOverride="EDSTR_ENUMVAL_e_unitFlagArmySelect"/>
+        <Fields Reference="Unit,^ParamId^,FlagArray[ArmySelect]" NameOverride="DataCollectionPattern/NameOverride/UnitFlags/ArmySelect"/>
         <Fields Reference="Actor,^ParamId^,UnitIcon"/>
         <Fields Reference="Actor,^ParamId^,HeroIcon"/>
         <Fields Reference="Actor,^ParamId^,LifeArmorIcon"/>
@@ -46,9 +46,46 @@
         <Fields Reference="Unit,^ParamId^,Height" />
         <Fields Reference="Unit,^ParamId^,VisionHeight" />
     </CDataCollectionPattern>
+
+    <CDataCollectionPattern id="WeaponPattern_Base">
+        <Fields Reference="Weapon,^ParamId^,Period"/>
+        <Fields Reference="Weapon,^ParamId^,Icon"/>
+        <Fields Reference="Weapon,^ParamId^,Range"/>
+        <Fields Reference="Weapon,^ParamId^,Arc"/>
+        <Fields Reference="Weapon,^ParamId^,AllowedMovement"/>
+        <Fields Reference="Weapon,^ParamId^,TargetFilters"/>
+        <Fields Reference="Effect,^ParamId^@Damage,Amount"/>
+        <Fields Reference="Actor,^ParamId^@Attack,LaunchAttachQuery"/>
+        <Fields Reference="Model,^ParamId^@AttackImpact,Model"/>
+        <Fields Reference="Model,^ParamId^@AttackLaunch,Model"/>
+        <Fields Reference="Sound,^ParamId^@AttackImpact,AssetArray"/>
+        <Fields Reference="Sound,^ParamId^@AttackLaunch,AssetArray"/>
+    </CDataCollectionPattern>
+    <CDataCollectionPattern id="WeaponPattern_Missile" parent="WeaponPattern_Base">
+        <Fields Reference="Model,^ParamId^@AttackMissile,Model"/>
+    </CDataCollectionPattern>
     <!-- -->
     <CDataCollectionUnit default="1" id="UnitBase">
         <Name value="Unit/Name/##id##"/>
         <Pattern value="UnitPattern_Base"/>
+    </CDataCollectionUnit>
+    <CDataCollectionUnit default="1" id="UnitGround" parent="UnitBase">
+        <Name value="Unit/Name/##id##"/>
+    </CDataCollectionUnit>
+    <CDataCollectionUnit default="1" id="UnitAir" parent="UnitBase">
+        <Name value="Unit/Name/##id##"/>
+        <Pattern value="UnitPattern_Air"/>
+    </CDataCollectionUnit>
+    
+    <CDataCollectionUnit default="1" id="WeaponBase">
+        <Name value="Weapon/Name/##id##"/>
+    </CDataCollectionUnit>
+    <CDataCollectionUnit default="1" id="Weapon_Instant" parent="WeaponBase">
+        <Name value="Weapon/Name/##id##"/>
+        <Pattern value="WeaponPattern_Base"/>
+    </CDataCollectionUnit>
+    <CDataCollectionUnit default="1" id="Weapon_Missile" parent="WeaponBase">
+        <Name value="Weapon/Name/##id##"/>
+        <Pattern value="WeaponPattern_Missile"/>
     </CDataCollectionUnit>
 </Catalog>
