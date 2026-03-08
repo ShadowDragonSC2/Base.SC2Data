@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    <CButton id="HHReaper"></CButton>
+    
+    <CUnit id="HHReaper"></CUnit>
+    
+    <CActorUnit id="HHReaper" parent="GenericUnitStandard" unitName="HHReaper"/>
+    
+    <CModel id="HHReaper" parent="Unit">
+        <Model value=""/>
+    </CModel>
+    <CModel id="HHReaper@Death" parent="UnitDeath">
+        <Model value=""/>
+    </CModel>
+    <CModel id="HHReaper@Portrait" parent="Portrait">
+        <Model value=""/>
+    </CModel>
+
+    <CSound id="HHReaper@DeathVoice" parent="DeathVoice">
+
+    </CSound>
+    <CSound id="HHReaper@Attack" parent="TerranAck">
+
+    </CSound>
+    <CSound id="HHReaper@Help" parent="Alert">
+
+    </CSound>
+    <CSound id="HHReaper@Pissed" parent="Pissed">
+
+    </CSound>
+    <CSound id="HHReaper@Yes" parent="TerranAck">
+
+    </CSound>
+    <CSound id="HHReaper@What" parent="TerranAck">
+
+    </CSound>
+    <CSound id="HHReaper@Ready" parent="Ready">
+
+    </CSound>
+    
+    <CRequirement id="HHReaper@Use"/>
+    <CRequirement id="HHReaper@Show"/>
+
+    <CDataCollectionUnit id="HHReaper">
+
+    </CDataCollectionUnit>
+
+    <!-- Weapons -->
+
+    <CWeaponLegacy id="HHPistols">
+        <Period value="1"/>
+        <Effect value="HHPistols@CP"/>
+    </CWeaponLegacy>
+
+    <CEffectCreatePersistent id="HHPistols@CP">
+        <PeriodCount value="1"/>
+        <PeriodicPeriodArray value="0.2"/>
+        <InitialEffect value="HHPistols@Damage"/>
+        <PeriodicEffectArray value="HHPistols@Damage"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="HHPistols@Damage" Amount="5"/>
+
+    <!-- Abilities -->
+
+    <CAbilMorph id="HHReaperToFlying">
+        
+    </CAbilMorph>
+    
+</Catalog>
