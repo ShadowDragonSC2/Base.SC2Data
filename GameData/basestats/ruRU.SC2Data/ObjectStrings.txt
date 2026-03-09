@@ -32,3 +32,13 @@ DataCollectionPattern/NameOverride/Sounds/Ready=Sounds - Ready
 DataCollectionPattern/NameOverride/Requirement/Use=Requirement - Use
 DataCollectionPattern/NameOverride/Requirement/Show=Requirement - Show
 DataCollectionPattern/NameOverride/UnitFlags/ArmySelect=Army Select
+
+DataCollectionPattern/NameOverride/ReaperPattern/JumpAccelsLaunch=Acceleration Jump Launch
+DataCollectionPattern/NameOverride/ReaperPattern/JumpAccelsAscent=Acceleration Jump Ascent
+DataCollectionPattern/NameOverride/ReaperPattern/JumpAccelsApex=Acceleration Jump Apex
+DataCollectionPattern/NameOverride/ReaperPattern/JumpAccelsDescent=Acceleration Jump Descent
+DataCollectionPattern/NameOverride/ReaperPattern/JumpAccelsLand=Acceleration Jump Land
+DataCollectionPattern/NameOverride/ReaperPattern/SpeedJump=Speed Jump
+DataCollectionPattern/NameOverride/ReaperPattern/MinSpeedJump=Min Speed Jump
+DataCollectionPattern/NameOverride/ReaperPattern/LandModel=Land Model
+DataCollectionPattern/NameOverride/ReaperPattern/LaunchModel=Launch Model

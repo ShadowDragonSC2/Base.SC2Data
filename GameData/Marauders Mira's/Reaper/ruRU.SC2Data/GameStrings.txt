@@ -1,0 +1,3 @@
+Button/Name/HHReaper=Обучить головореза
+Unit/Name/HHReaper=Головорез
+Weapon/Name/HHPistols=Пистолеты

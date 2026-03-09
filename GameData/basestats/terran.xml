@@ -1,2 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Catalog/>
+<Catalog>
+    <!-- Patterns -->
+    <CDataCollectionPattern id="Reaper_Pattern" parent="UnitPattern_Base">
+        <Fields Reference="Behavior,^ParamId^@Jump,DurationPreLaunch"/>
+        <Fields Reference="Behavior,^ParamId^@Jump,DurationPostLand"/>
+        <Fields Reference="Behavior,^ParamId^@Jump,DurationMoveOut"/>
+        <Fields Reference="Model,^ParamId^@JumpLandModel,Model" NameOverride="DataCollectionPattern/NameOverride/ReaperPattern/LandModel"/>
+        <Fields Reference="Model,^ParamId^@JumpLaunchModel,Model" NameOverride="DataCollectionPattern/NameOverride/ReaperPattern/LaunchModel"/>
+        <Fields Reference="Sound,^ParamId^@JumpLandSound,AssetArray"/>
+        <Fields Reference="Sound,^ParamId^@JumpLaunchSound,AssetArray"/>
+        <Fields Reference="Mover,^ParamId^@Jump,MotionPhases[0].MinSpeed" NameOverride="DataCollectionPattern/NameOverride/ReaperPattern/MinSpeedJump"/>
+        <Fields Reference="Mover,^ParamId^@Jump,MotionPhases[0].Speed" NameOverride="DataCollectionPattern/NameOverride/ReaperPattern/SpeedJump"/>
+        <Fields Reference="Mover,^ParamId^@Jump,MotionPhases[0].AdaptableParabolaAccels[Launch]" NameOverride="DataCollectionPattern/NameOverride/ReaperPattern/JumpAccelsLaunch"/>
+        <Fields Reference="Mover,^ParamId^@Jump,MotionPhases[0].AdaptableParabolaAccels[Ascent]" NameOverride="DataCollectionPattern/NameOverride/ReaperPattern/JumpAccelsAscent"/>
+        <Fields Reference="Mover,^ParamId^@Jump,MotionPhases[0].AdaptableParabolaAccels[Apex]" NameOverride="DataCollectionPattern/NameOverride/ReaperPattern/JumpAccelsApex"/>
+        <Fields Reference="Mover,^ParamId^@Jump,MotionPhases[0].AdaptableParabolaAccels[Descent]" NameOverride="DataCollectionPattern/NameOverride/ReaperPattern/JumpAccelsDescent"/>
+        <Fields Reference="Mover,^ParamId^@Jump,MotionPhases[0].AdaptableParabolaAccels[Land]" NameOverride="DataCollectionPattern/NameOverride/ReaperPattern/JumpAccelsLand"/>
+    </CDataCollectionPattern>
+
+    <!-- Data Collections -->
+
+    <CDataCollectionUnit default="1" id="Generic_Reaper_Collection">
+        <Name value="Unit/Name/##id##"/>
+        <Pattern value="Reaper_Pattern"/>
+    </CDataCollectionUnit>
+
+
+</Catalog>

@@ -40,7 +40,7 @@
         <Height value="3.75"/>
         <Sight value="10"/>
         <VisionHeight value="4"/>
-        <PlaneArray value="1"/>
+        <PlaneArray index="Air" value="1"/>
         <Mover value="Fly"/>
         <Collide index="Flying" value="1"/>
     </CUnit>

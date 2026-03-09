@@ -1,11 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Catalog>
-    <CButton id="HHReaper"></CButton>
+    <CButton id="HHReaper">
+        <Icon value="Assets\Textures\btn-unit-collection-reaper-junker.dds"/>
+    </CButton>
     
-    <CUnit id="HHReaper"></CUnit>
+    <CUnit id="HHReaper">
+        <DeathRevealRadius value="3"/>
+        <Race value="Terr"/>
+        <FlagArray index="PreventDestroy" value="1"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="AIPressForwardDisabled" value="1"/>
+        <FlagArray index="ArmySelect" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <Collide index="Locust" value="1"/>
+        <Collide index="Small" value="1"/>
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="60"/>
+        <LifeMax value="60"/>
+        <LifeArmorName value="Unit/LifeArmorName/TerranInfantryArmor"/>
+        <Mover value="CliffJumper"/>
+        <Speed value="2.9531"/>
+        <Acceleration value="1000"/>
+        <LateralAcceleration value="46.0625"/>
+        <StationaryTurningRate value="999.8437"/>
+        <TurningRate value="999.8437"/>
+        <Sight value="9"/>
+        <Food value="-1"/>
+        <CostCategory value="Army"/>
+        <CostResource index="Minerals" value="50"/>
+        <RepairTime value="14"/>
+        <AttackTargetPriority value="20"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="attack"/>
+        <AbilArray Link="move"/>
+        <BehaviorArray Link="HHReaper@Jump"/>
+        <BehaviorArray Link="ReaperRegen"/>
+        <WeaponArray Link="HHPistols"/>
+        <WeaponArray Link="HHReaperD8Charge"/>
+        <EffectArray index="Create" value="TheHornersStatUpdate"/>
+        <EffectArray index="Death" value="TheHornersStatUpdate"/>
+        <CardLayouts>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+            <LayoutButtons Face="HHKD8Charge" Type="AbilCmd" AbilCmd="HHD8SingleCharge,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="HHReaperFly" Type="AbilCmd" AbilCmd="HHReaperFly,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="JetPack" Type="Passive" AbilCmd="255,255" Row="2" Column="2"/>
+            <LayoutButtons Face="CombatDrugs" Type="Passive" Row="2" Column="3"/>
+            <LayoutButtons Face="HHReaperClusterBombs" Type="Passive" Requirements="HaveHHReaperClusterBomb" Row="2" Column="4"/>
+            <LayoutButtons Face="HHMSOAttackSpeed" Type="Passive" Requirements="HaveHHSOBuff" Row="1" Column="4"/>
+        </CardLayouts>
+        <Radius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+        <CargoSize value="1"/>
+        <ScoreResult value="BuildOrder"/>
+        <SubgroupPriority value="150"/>
+        <MinimapRadius value="0.375"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:FactionMarauder"/>
+        <AIEvalFactor value="1.5"/>
+        <Fidget>
+            <ChanceArray index="Anim" value="33"/>
+            <ChanceArray index="Idle" value="33"/>
+            <ChanceArray index="Turn" value="33"/>
+        </Fidget>
+        <Height value="0.5"/>
+        <HotkeyCategory value="Unit/Category/TerranMarauder"/>
+        <GlossaryPriority value="20"/>
+    </CUnit>
     
     <CActorUnit id="HHReaper" parent="GenericUnitStandard" unitName="HHReaper">
+        <WalkAnimMoveSpeed value="2"/>
+        <BarWidth value="36"/>
+        <BarOffset value="40"/>
         <PortraitModel value="HHReaper@Portrait"/>
+        <UnitIcon value="Assets\Textures\btn-unit-collection-reaper-junker.dds"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-terran-reaper-mercenary.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-terran-reaper-mercenary.dds"/>
+        </Wireframe>
         <DeathArray index="Normal" ModelLink="HHReaper@Death" SoundLink="HHReaper@Death"/>
         <SoundArray index="Attack" value="HHReaper@Attack"/>
         <SoundArray index="Help" value="HHReaper@Help"/>
@@ -13,6 +93,35 @@
         <SoundArray index="Yes" value="HHReaper@Yes"/>
         <SoundArray index="What" value="HHReaper@What"/>
         <SoundArray index="Ready" value="HHReaper@Ready"/>
+        <DeathCustoms Name="RagdollSiegeTank" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollNuke" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Fire"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollFire" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Fire"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollAcid" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Acid"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollBaneling" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Acid"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollUltraUnburrow" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms ActorModel="SpineCrawlerHurlDeathRagdollBloodPrevent" ModelLink="ReaperDeathRagdoll" Name="RagdollSpineCrawlerHurl">
+            <BodySquibs Name="None"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollOverkillDPRH" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollOverkillDOI" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollMidair" InheritsFrom="RagdollBasic"/>
+        <TerrainSquibs>
+            <MovementDistance value="0.150000,0.150000"/>
+            <IdlePeriod value="0.250000,0.500000"/>
+            <RangeUp value="0.600000"/>
+            <RangeDown value="1.000000"/>
+            <AttachQuery Methods="AMFilterCenter"/>
+            <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleReaper"/>
+        </TerrainSquibs>
+        <ModelFlags index="OutlineEmitter" value="1"/>
     </CActorUnit>
     
     <CModel id="HHReaper" parent="Unit">
@@ -167,33 +276,77 @@
         <On Terms="Behavior.HHReaper@Jump.LandDown" Send="TimerSet 0.300000 TriggerSound"/>
         <On Terms="TimerExpired; TimerName TriggerSound" Send="Create HHReaper@JumpLandSound"/>
         <Inherits index="CloakEffect" value="1"/>
+        <EventDataSound Name="Reaper_Jump" Sound="HHReaper@JumpLandSound"/>
     </CActorModel>
     <CActorModel id="HHReaper@JumpLaunchModel" parent="ModelAnimationStyleOneShot">
         <On Terms="Behavior.HHReaper@Jump.Launch" Send="Create"/>
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachCenter SOpShadow" HoldPosition="1" HoldRotation="1"/>
         <Inherits index="CloakEffect" value="1"/>
+        <EventDataSound Name="Reaper_Jump" Sound="HHReaper@JumpLandSound"/>
     </CActorModel>
-    <CActorSound id="HHReaper@JumpLandSound" parent="SoundOneShot">
-        <On Terms="Behavior.HHReaper@Jump.LandUp" Send="Create"/>
-    </CActorSound>
-    <CActorSound id="HHReaper@JumpLaunchSound" parent="SoundOneShot">
+    <CActorSimple id="HHReaper@AnimationJump">
         <On Terms="Behavior.HHReaper@Jump.Launch" Send="Create"/>
-    </CActorSound>
+        <On Terms="Behavior.HHReaper@Jump.LandDown" Send="Destroy"/>
+        <On Terms="Behavior.HHReaper@Jump.LandUp" Send="Destroy"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="AnimBracketStart Jump Jump,Start Jump"/>
+        <On Terms="ActorDestruction" Target="_Unit" Send="AnimBracketStop Jump"/>
+    </CActorSimple>
 
-    <CModel id="HHReaper@JumpLandModel"></CModel>
-    <CModel id="HHReaper@JumpLaunchModel"></CModel>
+    <CModel id="HHReaper@JumpLandModel" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Terran\ReaperJumpLandDown\ReaperJumpLandDown.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <Events Name="Reaper_Jump" Type="Sound" Anim="Stand"/>
+    </CModel>
+    <CModel id="HHReaper@JumpLaunchModel" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Terran\ReaperJumpLaunch\ReaperJumpLaunch.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <Events Name="Reaper_Jump" Type="Sound" Anim="Stand"/>
+    </CModel>
 
-    <CSound id="HHReaper@JumpLandSound" parent="Movement"></CSound>
-    <CSound id="HHReaper@JumpLaunchSound" parent="Movement"></CSound>
+    <CSound id="HHReaper@JumpLandSound" parent="Movement">
+        <Pitch value="-0.890000,0.840000"/>
+        <Volume value="-6.000000,-6.000000"/>
+        <AssetArray File="Assets\Sounds\Terran\Reaper\Reaper_JumpLand0.wav"/>
+        <DupeDestroyCount value="4"/>
+        <EditorCategories value="Race:Terran"/>
+    </CSound>
+    <CSound id="HHReaper@JumpLaunchSound" parent="Movement">
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-7.000000,-7.000000"/>
+        <AssetArray File="Assets\Sounds\Terran\Reaper\Reaper_JumpLaunch0.wav"/>
+        <DupeDestroyCount value="4"/>
+        <EditorCategories value="Race:Terran"/>
+    </CSound>
 
-    <CMoverMissile id="HHReaper@Jump"></CMoverMissile>
+    <CMoverMissile id="HHReaper@Jump">
+        <PathMode value="Jumper"/>
+        <MotionPhases>
+            <Driver value="AdaptableParabola"/>
+            <Speed value="7"/>
+            <MinSpeed value="7"/>
+            <MaxSpeed value="7"/>
+            <ActorTracking value="Actual"/>
+            <AdaptableParabolaIsUpright value="1"/>
+            <AdaptableParabolaClearance value="1.25,0.5"/>
+            <AdaptableParabolaDistances index="Launch" value="1"/>
+            <AdaptableParabolaDistances index="PreApex" value="0.9"/>
+            <AdaptableParabolaDistances index="PostApex" value="0.1"/>
+            <AdaptableParabolaDistances index="Land" value="3"/>
+            <AdaptableParabolaAccels index="Launch" value="15"/>
+            <AdaptableParabolaAccels index="Ascent" value="1"/>
+            <AdaptableParabolaAccels index="Apex" value="-13"/>
+            <AdaptableParabolaAccels index="Descent" value="12"/>
+            <AdaptableParabolaAccels index="Land" value="-6"/>
+        </MotionPhases>
+        <RespectUnitHeightAtDestination value="1"/>
+    </CMoverMissile>
     <!-- -->
     
     <CRequirement id="HHReaper@Use"/>
     <CRequirement id="HHReaper@Show"/>
 
-    <CDataCollectionUnit id="HHReaper">
+    <CDataCollectionUnit id="HHReaper" parent="Generic_Reaper_Collection">
         <DataRecord Entry="Button,HHReaper"/>
         <DataRecord Entry="Unit,HHReaper"/>
         <DataRecord Entry="Actor,HHReaper"/>
@@ -210,6 +363,11 @@
         <DataRecord Entry="Requirement,HHReaper@Use"/>
         <DataRecord Entry="Requirement,HHReaper@Show"/>
         <DataRecord Entry="Behavior,HHReaper@Jump"/>
+        <DataRecord Entry="Model,HHReaper@JumpLandModel"/>
+        <DataRecord Entry="Model,HHReaper@JumpLaunchModel"/>
+        <DataRecord Entry="Sound,HHReaper@JumpLandSound"/>
+        <DataRecord Entry="Sound,HHReaper@JumpLaunchSound"/>
+        <DataRecord Entry="Mover,HHReaper@Jump"/>
     </CDataCollectionUnit>
 
     <!-- Weapons -->
@@ -224,8 +382,11 @@
         <PeriodicPeriodArray value="0.2"/>
         <InitialEffect value="HHPistols@Damage"/>
         <PeriodicEffectArray value="HHPistols@Damage"/>
+        <WhichLocation Value="TargetUnit"/>
     </CEffectCreatePersistent>
-    <CEffectDamage id="HHPistols@Damage" Amount="5"/>
+    <CEffectDamage id="HHPistols@Damage">
+        <Amount value="5"/>
+    </CEffectDamage>
 
     <!-- Abilities -->
 
