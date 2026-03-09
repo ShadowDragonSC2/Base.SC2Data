@@ -388,6 +388,44 @@
         <Amount value="5"/>
     </CEffectDamage>
 
+    <CActorAction id="HHPistols@Attack" parent="GenericAttack" effectAttack="HHPistols@Damage">
+        <LaunchAttachQuery Methods="AMPatternReaper"/>
+    </CActorAction>
+
+    <CModel id="HHPistols@AttackImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Terran\ReaperWeaponImpact\ReaperWeaponImpact.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+    <CModel id="HHPistols@AttackLaunch" parent="LaunchFX">
+        <Model value="Assets\Effects\Terran\ReaperFireSprite\ReaperFireSprite.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+
+    <CSound id="HHPistols@AttackImpact" parent="Terran_SingleBulletAttackImpact"/>
+    <CSound id="HHPistols@AttackLaunch" parent="Combat">
+        <DupeDestroyCount value="8"/>
+        <Pitch value="1.640000,4.540000"/>
+        <Volume value="-7.960000,-5.200000"/>
+        <AssetArray File="Assets\Sounds\Terran\Reaper\Reaper_AttackLaunch0.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\Reaper\Reaper_AttackLaunch1.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\Reaper\Reaper_AttackLaunch2.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\Reaper\Reaper_AttackLaunch3.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\Reaper\Reaper_AttackLaunch4.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\Reaper\Reaper_AttackLaunch5.wav"/>
+        <EditorCategories value="Race:Terran"/>
+    </CSound>
+
+    <CDataCollectionUnit id="HHPistols">
+        <DataRecord Entry="Weapon,HHPistols"/>
+        <DataRecord Entry="Effect,HHPistols@CP"/>
+        <DataRecord Entry="Effect,HHPistols@Damage"/>
+        <DataRecord Entry="Actor,HHPistols@Attack"/>
+        <DataRecord Entry="Model,HHPistols@AttackImpact"/>
+        <DataRecord Entry="Model,HHPistols@AttackLaunch"/>
+        <DataRecord Entry="Sound,HHPistols@AttackImpact"/>
+        <DataRecord Entry="Sound,HHPistols@AttackLaunch"/>
+    </CDataCollectionUnit>
+
     <!-- Abilities -->
 
     <CAbilMorph id="HHReaperFlying">
