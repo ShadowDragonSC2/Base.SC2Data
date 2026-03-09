@@ -19,6 +19,7 @@
 
 - [Sovereign Battlecruiser](https://github.com/ShadowDragonSC2/Base.SC2Data/tree/main/GameData/Marauders%20Mira's/Battlecruiser) [❌]
 - [Assault Galleon](https://github.com/ShadowDragonSC2/Base.SC2Data/tree/main/GameData/Marauders%20Mira's/Assault%20Galleon) [❌]
+- [Reaper](https://github.com/ShadowDragonSC2/Base.SC2Data/tree/main/GameData/Marauders%20Mira's/Reaper) [❌]
 
 ---
 

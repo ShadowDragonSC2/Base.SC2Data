@@ -4,45 +4,159 @@
     
     <CUnit id="HHReaper"></CUnit>
     
-    <CActorUnit id="HHReaper" parent="GenericUnitStandard" unitName="HHReaper"/>
+    <CActorUnit id="HHReaper" parent="GenericUnitStandard" unitName="HHReaper">
+        <PortraitModel value="HHReaper@Portrait"/>
+        <DeathArray index="Normal" ModelLink="HHReaper@Death" SoundLink="HHReaper@Death"/>
+        <SoundArray index="Attack" value="HHReaper@Attack"/>
+        <SoundArray index="Help" value="HHReaper@Help"/>
+        <SoundArray index="Pissed" value="HHReaper@Pissed"/>
+        <SoundArray index="Yes" value="HHReaper@Yes"/>
+        <SoundArray index="What" value="HHReaper@What"/>
+        <SoundArray index="Ready" value="HHReaper@Ready"/>
+    </CActorUnit>
     
     <CModel id="HHReaper" parent="Unit">
-        <Model value=""/>
+        <Model value="Assets\Units\Terran\Reaper_Junker_Collection\Reaper_Junker_Collection.m3"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.900000,0.900000,0.900000"/>
+        <ScaleMin value="0.900000,0.900000,0.900000"/>
+        <SelectionOffset value="0.000000,0.000000,-0.500000"/>
+        <SelectionRadius value="0.468700"/>
+        <SquibTypeDefault value="Flesh"/>
+        <Radius value="0.375000"/>
+        <TechPurchaseCamera value="TechPurchaseReaper"/>
+        <UnitGlossaryCamera value="Star2CameraLow04"/>
+        <PlanetPanelCamera value="Star2CameraLow04"/>
+        <ShadowRadius value="0.468700"/>
+        <RequiredAnims value="Assets\Units\Terran\Reaper_SwarmAnims\Reaper_SwarmAnims.m3a"/>
+        <Events>
+            <Anim value="Unload,00"/>
+            <Name value="HH_Reaper_Drop_Land"/>
+            <Type value="Sound"/>
+            <Time value="0.030000"/>
+            <Payload value="HH_Reaper_Drop_Land"/>
+        </Events>
     </CModel>
     <CModel id="HHReaper@Death" parent="UnitDeath">
-        <Model value=""/>
+        <Model value="Assets\Units\Terran\Reaper_Junker_Collection_Death\Reaper_Junker_Collection_Death.m3"/>
+        <Occlusion value="Show"/>
+        <LowQualityModel value="TerranSmallUnitDeathLow"/>
+        <SelectionRadius value="0.625000"/>
+        <ShadowRadius value="0.625000"/>
+        <Events>
+            <Anim value="Death,03"/>
+            <Name value="Reaper_Explode_Var1"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Reaper_Explode_Var1"/>
+        </Events>
+        <Events>
+            <Anim value="Death,04"/>
+            <Name value="Reaper_Explode_Var2"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Reaper_Explode_Var2"/>
+        </Events>
+        <Events>
+            <Anim value="Death,05"/>
+            <Name value="Reaper_Explode_Var3"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Reaper_Explode_Var3"/>
+        </Events>
+        <Events>
+            <Anim value="Death,06"/>
+            <Name value="Reaper_Explode_Va4"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Reaper_Explode_Var4"/>
+        </Events>
+        <VariationCount value="2"/>
     </CModel>
-    <CModel id="HHReaper@Portrait" parent="Portrait">
-        <Model value=""/>
-    </CModel>
+    <CModel id="HHReaper@Portrait" parent="ReaperPortraitBase"/>
 
-    <CSound id="HHReaper@DeathVoice" parent="DeathVoice">
-
+    <CSound id="HHReaper@Death" parent="Terran_ExplosionSmall">
+        <DupeMaximumMethod value="Prevent"/>
+        <DupeMuteCount value="10"/>
+        <Volume value="0.000000,0.000000"/>
     </CSound>
     <CSound id="HHReaper@Attack" parent="TerranAck">
-
+        <Flags index="Download" value="0"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_Attack00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_Attack01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_Attack02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_Attack04.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_Attack05.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_Attack06.ogg"/>
     </CSound>
     <CSound id="HHReaper@Help" parent="Alert">
-
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_Help00.ogg" FacialAnim="Reaper_Help00"/>
+        <EditorCategories value="Race:Terran"/>
+        <Volume value="-4.500000,-4.500000"/>
+        <Mode value="3DWorld"/>
     </CSound>
     <CSound id="HHReaper@Pissed" parent="Pissed">
-
+        <Flags index="Download" value="0"/>
+        <Select value="Sequential"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_Pissed01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_Pissed02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_Pissed03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_Pissed04.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_Pissed05.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_Pissed06.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_Pissed07.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_Pissed08.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_Pissed09.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_Pissed10.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_Pissed11.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_Pissed12.ogg"/>
     </CSound>
     <CSound id="HHReaper@Yes" parent="TerranAck">
-
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_Yes00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_Yes01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_Yes02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_Yes03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_Yes04.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_Yes05.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_Yes06.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_Yes07.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_Yes08.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_Yes09.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_Yes10.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_Yes11.ogg"/>
     </CSound>
     <CSound id="HHReaper@What" parent="TerranAck">
-
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_What01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_What02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_What03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_What04.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\ReaperWhat05.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\ReaperWhat06.ogg"/>
     </CSound>
     <CSound id="HHReaper@Ready" parent="Ready">
-
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_Ready00.ogg" FacialAnim="Reaper_Ready00"/>
+        <EditorCategories value="Race:Terran"/>
     </CSound>
     
     <CRequirement id="HHReaper@Use"/>
     <CRequirement id="HHReaper@Show"/>
 
     <CDataCollectionUnit id="HHReaper">
-
+        <DataRecord Entry="Button,HHReaper"/>
+        <DataRecord Entry="Unit,HHReaper"/>
+        <DataRecord Entry="Actor,HHReaper"/>
+        <DataRecord Entry="Model,HHReaper"/>
+        <DataRecord Entry="Model,HHReaper@Death"/>
+        <DataRecord Entry="Model,HHReaper@Portrait"/>
+        <DataRecord Entry="Sound,HHReaper@Death"/>
+        <DataRecord Entry="Sound,HHReaper@Attack"/>
+        <DataRecord Entry="Sound,HHReaper@Help"/>
+        <DataRecord Entry="Sound,HHReaper@Pissed"/>
+        <DataRecord Entry="Sound,HHReaper@Yes"/>
+        <DataRecord Entry="Sound,HHReaper@What"/>
+        <DataRecord Entry="Sound,HHReaper@Ready"/>
+        <DataRecord Entry="Requirement,HHReaper@Use"/>
+        <DataRecord Entry="Requirement,HHReaper@Show"/>
     </CDataCollectionUnit>
 
     <!-- Weapons -->
