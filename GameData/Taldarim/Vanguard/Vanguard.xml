@@ -472,7 +472,7 @@
 
     <CAttachMethodPattern id="AMPatternScatterCannon">
         <Base value="::RollingIndex"/>
-        <Driver value="ScatterCannon@LM"/>
+        <Driver value="ScatterCannon@LM@2"/>
         <Keyword value="Weapon"/>
     </CAttachMethodPattern>
 </Catalog>

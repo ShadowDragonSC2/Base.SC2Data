@@ -348,6 +348,15 @@
     <CRequirement id="HHReaper@Use"/>
     <CRequirement id="HHReaper@Show"/>
 
+    <CCharacter id="HHReaper">
+        <Race value="Terran"/>
+        <Unit value="HHReaper"/>
+        <Variations Name="Character/Name/HHReaper/var1" Model="HHReaper@Portrait">
+            <DefaultCategories value="ConversationType:Mission"/>
+            <DefaultCategories value="ConversationType:UnitVO"/>
+        </Variations>
+    </CCharacter>
+
     <CDataCollectionUnit id="HHReaper" parent="UnitGround">
         <EditorCategories value="DataGroup:Unit,DataFamily:Coop,Race:Terran,ObjectType:Unit"/>
         <DataRecord Entry="Button,HHReaper"/>
@@ -371,6 +380,7 @@
         <DataRecord Entry="Sound,HHReaper@JumpLandSound"/>
         <DataRecord Entry="Sound,HHReaper@JumpLaunchSound"/>
         <DataRecord Entry="Mover,HHReaper@Jump"/>
+        <DataRecord Entry="Character,HHReaper"/>
         <Pattern value="Reaper_Pattern"/>
     </CDataCollectionUnit>
 
