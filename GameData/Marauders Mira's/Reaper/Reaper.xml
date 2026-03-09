@@ -182,7 +182,9 @@
         </Events>
         <VariationCount value="2"/>
     </CModel>
-    <CModel id="HHReaper@Portrait" parent="ReaperPortraitBase"/>
+    <CModel id="HHReaper@Portrait" parent="ReaperPortraitBase">
+        <Model value="Assets\Portraits\Terran\Reaper_HornerHan_Portrait\Reaper_HornerHan_Portrait.m3"/>
+    </CModel>
 
     <CSound id="HHReaper@Death" parent="Terran_ExplosionSmall">
         <DupeMaximumMethod value="Prevent"/>
@@ -346,7 +348,8 @@
     <CRequirement id="HHReaper@Use"/>
     <CRequirement id="HHReaper@Show"/>
 
-    <CDataCollectionUnit id="HHReaper" parent="Generic_Reaper_Collection">
+    <CDataCollectionUnit id="HHReaper" parent="UnitGround">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Coop,Race:Terran,ObjectType:Unit"/>
         <DataRecord Entry="Button,HHReaper"/>
         <DataRecord Entry="Unit,HHReaper"/>
         <DataRecord Entry="Actor,HHReaper"/>
@@ -368,6 +371,7 @@
         <DataRecord Entry="Sound,HHReaper@JumpLandSound"/>
         <DataRecord Entry="Sound,HHReaper@JumpLaunchSound"/>
         <DataRecord Entry="Mover,HHReaper@Jump"/>
+        <Pattern value="Reaper_Pattern"/>
     </CDataCollectionUnit>
 
     <!-- Weapons -->
@@ -416,6 +420,7 @@
     </CSound>
 
     <CDataCollectionUnit id="HHPistols">
+        <EditorCategories value="DataGroup:Weapon,DataFamily:Coop,Race:Terran,ObjectType:Projectile"/>
         <DataRecord Entry="Weapon,HHPistols"/>
         <DataRecord Entry="Effect,HHPistols@CP"/>
         <DataRecord Entry="Effect,HHPistols@Damage"/>
