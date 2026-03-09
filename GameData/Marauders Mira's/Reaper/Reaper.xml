@@ -137,6 +137,58 @@
         <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Reaper\Reaper_Ready00.ogg" FacialAnim="Reaper_Ready00"/>
         <EditorCategories value="Race:Terran"/>
     </CSound>
+
+    <!-- Data Jump -->
+    <CBehaviorJump id="HHReaper@Jump">  
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <TriggerHeightDeltaMin value="1.5"/>
+        <TriggerHeightDeltaMax value="4.5"/>
+        <InitiateRangeUp value="1.5"/>
+        <InitiateRangeDown value="0.5"/>
+        <JumpRangeMax value="12"/>
+        <Mover value="CliffJumper"/>
+        <MoverUp value="HHReaper@Jump"/>
+        <MoverDown value="HHReaper@Jump"/>
+        <DurationPreLaunch value="0.05"/>
+        <DurationPostLand value="0.075"/>
+        <DurationMoveOut value="0.08"/>
+        <Placeholder value="HHReaper"/>
+        <LandAdjustmentDown value="1"/>
+        <LandArrivalRange value="0.05"/>
+        <LandCheckRadius value="5"/>
+    </CBehaviorJump>
+
+    <CActorModel id="HHReaper@JumpLandModel" parent="ModelAnimationStyleOneShot">
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachCenter SOpShadow"/>
+        <On Terms="Behavior.HHReaper@Jump.LandDown" Send="Create"/>
+        <On Terms="Behavior.HHReaper@Jump.LandUp" Send="Create"/>
+        <On Terms="Behavior.HHReaper@Jump.LandDown" Send="TimerSet 0.300000 TriggerSound"/>
+        <On Terms="TimerExpired; TimerName TriggerSound" Send="Create HHReaper@JumpLandSound"/>
+        <Inherits index="CloakEffect" value="1"/>
+    </CActorModel>
+    <CActorModel id="HHReaper@JumpLaunchModel" parent="ModelAnimationStyleOneShot">
+        <On Terms="Behavior.HHReaper@Jump.Launch" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachCenter SOpShadow" HoldPosition="1" HoldRotation="1"/>
+        <Inherits index="CloakEffect" value="1"/>
+    </CActorModel>
+    <CActorSound id="HHReaper@JumpLandSound" parent="SoundOneShot">
+        <On Terms="Behavior.HHReaper@Jump.LandUp" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="HHReaper@JumpLaunchSound" parent="SoundOneShot">
+        <On Terms="Behavior.HHReaper@Jump.Launch" Send="Create"/>
+    </CActorSound>
+
+    <CModel id="HHReaper@JumpLandModel"></CModel>
+    <CModel id="HHReaper@JumpLaunchModel"></CModel>
+
+    <CSound id="HHReaper@JumpLandSound" parent="Movement"></CSound>
+    <CSound id="HHReaper@JumpLaunchSound" parent="Movement"></CSound>
+
+    <CMoverMissile id="HHReaper@Jump"></CMoverMissile>
+    <!-- -->
     
     <CRequirement id="HHReaper@Use"/>
     <CRequirement id="HHReaper@Show"/>
@@ -157,6 +209,7 @@
         <DataRecord Entry="Sound,HHReaper@Ready"/>
         <DataRecord Entry="Requirement,HHReaper@Use"/>
         <DataRecord Entry="Requirement,HHReaper@Show"/>
+        <DataRecord Entry="Behavior,HHReaper@Jump"/>
     </CDataCollectionUnit>
 
     <!-- Weapons -->
