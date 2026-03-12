@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    <CSound id="InfestedCivilianConvo@Line01" parent="VO"/>
+    <CSound id="InfestedCivilianConvo@Line02" parent="VO"/>
+    <CSound id="InfestedCivilianConvo@Line03" parent="VO"/>
+    <CSound id="InfestedCivilianConvo@Line04" parent="VO"/>
+    <CSound id="InfestedCivilianConvo@Line05" parent="VO"/>
+    <CSound id="InfestedCivilianConvo@Line06" parent="VO"/>
+    <CSound id="InfestedCivilianConvo@Line07" parent="VO"/>
+    <CSound id="InfestedCivilianConvo@Line08" parent="VO"/>
+    <CSound id="InfestedCivilianConvo@Line09" parent="VO"/>
+    <CSound id="InfestedCivilianConvo@Line10" parent="VO"/>
+    <CSound id="InfestedCivilianConvo@Line11" parent="VO"/>
+    <CSound id="InfestedCivilianConvo@Line12" parent="VO"/>
+    <CSound id="InfestedCivilianConvo@Line13" parent="VO"/>
+    <CSound id="InfestedCivilianConvo@Line14" parent="VO"/>
+    <CSound id="InfestedCivilianConvo@Line15" parent="VO"/>
+</Catalog>

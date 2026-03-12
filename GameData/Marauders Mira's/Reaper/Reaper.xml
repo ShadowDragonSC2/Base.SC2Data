@@ -36,6 +36,7 @@
         <AbilArray Link="stop"/>
         <AbilArray Link="attack"/>
         <AbilArray Link="move"/>
+        <AbilArray Link="HHReaperFlying"/>
         <BehaviorArray Link="HHReaper@Jump"/>
         <BehaviorArray Link="ReaperRegen"/>
         <WeaponArray Link="HHPistols"/>
@@ -49,7 +50,7 @@
             <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
             <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
             <LayoutButtons Face="HHKD8Charge" Type="AbilCmd" AbilCmd="HHD8SingleCharge,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="HHReaperFly" Type="AbilCmd" AbilCmd="HHReaperFly,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="HHReaperFlying" Type="AbilCmd" AbilCmd="HHReaperFlying,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="JetPack" Type="Passive" AbilCmd="255,255" Row="2" Column="2"/>
             <LayoutButtons Face="CombatDrugs" Type="Passive" Row="2" Column="3"/>
             <LayoutButtons Face="HHReaperClusterBombs" Type="Passive" Requirements="HaveHHReaperClusterBomb" Row="2" Column="4"/>
@@ -73,8 +74,31 @@
         <HotkeyCategory value="Unit/Category/TerranMarauder"/>
         <GlossaryPriority value="20"/>
     </CUnit>
+
+    <CUnit id="HHReaper@Flying" parent="HHReaper">
+        <PlaneArray index="Air" value="1"/>
+        <PlaneArray index="Ground" value="0"/>
+        <Collide index="Ground" value="0"/>
+        <Collide index="ForceField" value="0"/>
+        <Collide index="Locust" value="0"/>
+        <Collide index="Small" value="0"/>
+        <Collide index="Flying" value="1"/>
+        <Mover value="Fly"/>
+        <VisionHeight value="4"/>
+        <Speed value="3.4"/>
+        <Height value="3.75"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Face="HHReaperFlying@Down" Type="AbilCmd" AbilCmd="HHReaperFlying,Unmorph"/>
+        </CardLayouts>
+    </CUnit>
     
     <CActorUnit id="HHReaper" parent="GenericUnitStandard" unitName="HHReaper">
+        <On Terms="Behavior.HHReaperFlying@Duration.On" Send="AnimPlay Jump Jump,Start"/>
+        <On Terms="Behavior.HHReaperFlying@Duration.On" Send="AnimBracketStart Morph Cover,Start Cover Cover,End"/>
+        <On Terms="Behavior.HHReaperFlying@Duration.Off" Send="AnimPlay Jump Jump,End"/>
+        <On Terms="Behavior.HHReaperFlying@Duration.Off" Send="AnimBracketStop Morph"/>
+        <!-- <On Terms="AnimBracketState.*.AfterClosing; AnimPlayingName Morph" Send="AnimPlay Jump Jump,End"/> -->
+        <!-- <On Terms="AnimBracketState.*.BeforeClosing; AnimPlayingName Morph" Send="AnimPlay Jump Jump,Start"/> -->
         <WalkAnimMoveSpeed value="2"/>
         <BarWidth value="36"/>
         <BarOffset value="40"/>
@@ -361,6 +385,7 @@
         <EditorCategories value="DataGroup:Unit,DataFamily:Coop,Race:Terran,ObjectType:Unit"/>
         <DataRecord Entry="Button,HHReaper"/>
         <DataRecord Entry="Unit,HHReaper"/>
+        <DataRecord Entry="Unit,HHReaper@Flying"/>
         <DataRecord Entry="Actor,HHReaper"/>
         <DataRecord Entry="Model,HHReaper"/>
         <DataRecord Entry="Model,HHReaper@Death"/>
@@ -443,8 +468,103 @@
 
     <!-- Abilities -->
 
+    <CButton id="HHReaperFlying">
+        <Icon value="Assets\Textures\btn-ability-hornerhan-reaper-flightmode.dds"/>
+    </CButton>
+    <CButton id="HHReaperFlying@Down">
+        <Icon value="Assets\Textures\btn-ability-terran-land.dds"/>
+    </CButton>
+
     <CAbilMorph id="HHReaperFlying">
-        
+        <InfoArray Unit="HHReaper@Flying">
+            <CollideRange value="2.25"/>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0.5"/>
+            </SectionArray>
+            <SectionArray index="Collide">
+                <DurationArray index="Duration" value="0.5"/>
+            </SectionArray>
+            <SectionArray index="Mover">
+                <DurationArray index="Duration" value="0.5"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Duration" value="0.5"/>
+                <EffectArray index="Start" value="HHReaperFlying@Duration"/>
+            </SectionArray>
+        </InfoArray>
+        <InfoArrayUnmorph Unit="HHReaper">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0.5"/>
+            </SectionArray>
+            <SectionArray index="Collide">
+                <DurationArray index="Duration" value="0.5"/>
+            </SectionArray>
+            <SectionArray index="Mover">
+                <DurationArray index="Duration" value="0.5"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Duration" value="0.5"/>
+            </SectionArray>
+        </InfoArrayUnmorph>
+        <Flags index="IgnoreFacing" value="1"/>
+        <Flags index="IgnorePlacement" value="0"/>
+        <Flags index="WaitUntilStopped" value="1"/>
+        <Flags index="DisableAbils" value="1"/>
+        <Flags index="Toggle" value="1"/>
+        <AbilSetId value="ReaperFly"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="HHReaperFlying">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Unmorph" DefaultButtonFace="HHReaperFlying@Down">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
     </CAbilMorph>
+
+    <CBehaviorBuff id="HHReaperFlying@Duration">
+        <Duration value="10"/>
+        <ExpireEffect value="HHReaperFlying@Issue"/>
+        <BuffFlags index="Countdown" value="1"/>
+        <DisplayDuration index="Ally" value="1"/>
+        <DisplayDuration index="Self" value="1"/>
+    </CBehaviorBuff>
+
+    <CEffectApplyBehavior id="HHReaperFlying@Duration">
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectIssueOrder id="HHReaperFlying@Issue">
+        <Abil value="HHReaperFlying"/>
+        <AbilCmdIndex value="2"/>
+        <WhichUnit Value="Caster"/>
+        <Target Value="CasterUnit"/>
+    </CEffectIssueOrder>
+
+    <CActorSound id="HHReaperFlying@Rise" parent="SoundOneShot">
+        <On Terms="Behavior.HHReaperFlying@Duration.On" Send="Create"/>
+        <Host Subject="_Unit"/>
+    </CActorSound>
+    
+    <CSound id="HHReaperFlying@Rise" parent="Spell">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Medivac_AfterburnerOn_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Medivac_AfterburnerOn_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Medivac_AfterburnerOn_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Medivac_AfterburnerOn_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Medivac_AfterburnerOn_05.wav" FacialGroup=""/>
+        <DupeDestroyCount value="3"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="3"/>
+        <DupePrioritization value="Oldest"/>
+        <Pitch value="5.000000,7.000000"/>
+        <PlayDelay value="0,100"/>
+        <Volume value="-11.000000,-11.000000"/>
+    </CSound>
+
+    <CDataCollectionUnit id="HHReaperFlying">
+        <DataRecord Entry="Button,HHReaperFlying"/>
+        <DataRecord Entry="Button,HHReaperFlying@Down"/>
+        <DataRecord Entry="Abil,HHReaperFlying"/>
+        <DataRecord Entry="Actor,HHReaperFlying@Rise"/>
+        <DataRecord Entry="Sound,HHReaperFlying@Rise"/>
+    </CDataCollectionUnit>
     
 </Catalog>

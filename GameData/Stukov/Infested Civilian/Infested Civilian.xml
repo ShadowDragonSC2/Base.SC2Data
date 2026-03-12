@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    <CButton id="InfestedCivilian">
+        <Icon value="Assets\Textures\btn-unit-zerg-infestedcolonist.dds"/>
+    </CButton>
+    
+    <CUnit id="InfestedCivilian">
+        <DeathRevealRadius value="3"/>
+        <Race value="Zerg"/>
+        <Mob value="Campaign"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="ArmySelect" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="Small" value="1"/>
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="35"/>
+        <LifeMax value="35"/>
+        <LifeRegenRate value="0.2734"/>
+        <LifeArmorName value="Unit/LifeArmorName/ZergGroundArmor"/>
+        <Speed value="1.25"/>
+        <Acceleration value="1000"/>
+        <LateralAcceleration value="46.0625"/>
+        <Sight value="6"/>
+        <AttackTargetPriority value="20"/>
+        <DamageDealtXP value="1"/>
+        <DamageTakenXP value="1"/>
+        <KillXP value="30"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="attack"/>
+        <AbilArray Link="move"/>
+        <AbilArray Link="BurrowInfestedCivilianDown"/>
+        <CardLayouts>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowInfestedCivilianDown,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+        <Radius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <CargoSize value="1"/>
+        <SubgroupPriority value="57"/>
+        <MinimapRadius value="0.375"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+        <WeaponArray Link="InfestedClaws"/>
+        <GlossaryWeakArray value="Bunker"/>
+        <GlossaryWeakArray value="Firebat"/>
+        <GlossaryWeakArray value="Hellion"/>
+        <CostCategory value="Army"/>
+    </CUnit>
+    <CUnit id="InfestedCivilian@Burrowed" parent="InfestedCivilian">
+        <FlagArray index="Movable" value="0"/>
+        <TurningRate value="0"/>
+        <WeaponArray index="0" removed="1"/>
+    </CUnit>
+    
+    <CActorUnit id="InfestedCivilian" parent="GenericUnitStandard" unitName="InfestedCivilian">
+        <DeathArray index="Normal" ModelLink="InfestedCivilian@Death" SoundLink="InfestedCivilian@Death"/>
+        <DeathArray index="Fire" ModelLink="InfestedCivilian@DeathFire" SoundLink="Uni_DeathFXFire"/>
+        <WalkAnimMoveSpeed value="2.25"/>
+        <PortraitModel value="InfestedCivilian@Portrait"/>
+        <BarWidth value="36"/>
+        <BarOffset value="45"/>
+        <UnitIcon value="Assets\Textures\btn-unit-zerg-infestedcolonist.dds"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Zerg-Infestedcolonist.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Zerg-Infestedcolonist.dds"/>
+        </Wireframe>
+        <SoundArray index="Ready" value="InfestedCivilian@Ready"/>
+        <SoundArray index="What" value="InfestedCivilian@What"/>
+        <SoundArray index="Yes" value="InfestedCivilian@Yes"/>
+        <SoundArray index="Pissed" value="InfestedCivilian@Pissed"/>
+    </CActorUnit>
+    
+    <CModel id="InfestedCivilian" parent="Unit">
+        <Model value="Assets\Units\Zerg\InfestedColonist\InfestedColonist.m3"/>
+        <RequiredAnims value="Assets\Units\Zerg\InfestedColonist_RequiredAnims\InfestedColonist_RequiredAnims.m3a"/>
+        <VariationCount value="3"/>
+        <TextureDeclares Prefix="infestedcolonist_">
+            <Adaptions Slot="main"/>
+        </TextureDeclares>
+        <Variations Probability="1">
+            <TextureExpressionsForEditor Slot="main.diffuse" Expression="RequireAny 06"/>
+        </Variations>
+        <ScaleMax value="0.850000,0.850000,0.850000"/>
+        <ScaleMin value="0.850000,0.850000,0.850000"/>
+        <TechPurchaseCamera value="Star2CameraMid04"/>
+        <UnitGlossaryCamera value="Star2CameraMid04"/>
+        <PlanetPanelCamera value="Star2CameraMid04"/>
+    </CModel>
+    <CModel id="InfestedCivilian@Death" parent="UnitDeath">
+        <Model value="Assets\Units\Zerg\InfestedColonistDeath\InfestedColonistDeath.m3"/>
+        <EditorCategories value="Race:Zerg"/>
+        <LowQualityModel value="ZergSmallUnitDeathLow"/>
+        <VariationCount value="3"/>
+        <TextureDeclares Prefix="infestedcolonist_">
+            <Adaptions Slot="main"/>
+        </TextureDeclares>
+    </CModel>
+    <CModel id="InfestedCivilian@DeathFire" parent="UnitDeath">
+        <Model value="Assets\Units\Zerg\InfestedColonistDeathFire\InfestedColonistDeathFire.m3"/>
+        <EditorCategories value="Race:Zerg"/>
+        <LowQualityModel value="ZergSmallUnitDeathLow"/>
+    </CModel>
+    <CModel id="InfestedCivilian@Portrait" parent="FXAPortrait">
+        <Model value="Assets\Portraits\Zerg\InfestedColonistPortrait\InfestedColonistPortrait.m3"/>
+        <FacialController value="LocalizedData\Facial\InfestedColonistPortrait.fxa"/>
+        <Flags index="Facial" value="1"/>
+    </CModel>
+    
+    <CSound id="InfestedCivilian@Death" parent="Zerg_ExplosionSmall"/>
+    <CSound id="InfestedCivilian@Pissed" parent="Pissed">
+        <AssetArray File="LocalizedData\Sounds\ZergUnitVO\InfestedTerran\InfestedTerran_Pissed00.ogg" FacialAnim="InfestedTerran_Pissed00"/>
+        <AssetArray File="LocalizedData\Sounds\ZergUnitVO\InfestedTerran\InfestedTerran_Pissed01.ogg" FacialAnim="InfestedTerran_Pissed01"/>
+        <EditorCategories value="Race:Zerg"/>
+    </CSound>
+    <CSound id="InfestedCivilian@Yes" parent="Voice">
+        <AssetArray File="LocalizedData\Sounds\ZergUnitVO\InfestedTerran\InfestedTerran_Attack00.ogg" FacialAnim="InfestedTerran_Attack00"/>
+        <AssetArray File="LocalizedData\Sounds\ZergUnitVO\InfestedTerran\InfestedTerran_Attack01.ogg" FacialAnim="InfestedTerran_Attack01"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Flags index="VariationFallback" value="0"/>
+    </CSound>
+    <CSound id="InfestedCivilian@What" parent="Voice">
+        <AssetArray File="LocalizedData\Sounds\ZergUnitVO\InfestedTerran\InfestedTerran_What00.ogg" FacialAnim="InfestedTerran_What00"/>
+        <AssetArray File="LocalizedData\Sounds\ZergUnitVO\InfestedTerran\InfestedTerran_What01.ogg" FacialAnim="InfestedTerran_What01"/>
+        <EditorCategories value="Race:Zerg"/>
+    </CSound>
+    <CSound id="InfestedCivilian@Ready" parent="Ready">
+        <AssetArray File="LocalizedData\Sounds\ZergUnitVO\InfestedTerran\InfestedTerran_Ready00.ogg" FacialAnim="InfestedTerran_Ready00"/>
+        <Category value="Voice"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Pitch value="-2.000000,1.000000"/>
+        <Volume value="-2.000000,1.000000"/>
+    </CSound>
+
+    
+    <CLight id="InfestedCivilian@Portrait" parent="default">
+        <ToDInfoArray index="0" AmbientColor="0.200000,0.184314,0.282353" OperatorHDR="3">
+            <Param index="HDRExposure" value="1.475000"/>
+            <DirectionalLight index="Key">
+                <Color value="0.647059,0.909804,0.992157"/>
+                <ColorMultiplier value="1.000000"/>
+                <SpecColorMultiplier value="1.000000"/>
+                <Direction value="0.113580,0.702039,-0.703023"/>
+            </DirectionalLight>
+            <DirectionalLight index="Fill" Color="0.313726,0.756863,1.000000" ColorMultiplier="0.933000" Direction="0.771282,-0.605415,-0.196459"/>
+            <DirectionalLight index="Back" Color="0.317647,0.874510,0.992157" ColorMultiplier="0.219000" Direction="-0.851308,0.505872,0.139173"/>
+        </ToDInfoArray>
+        <EditorCategories value="LightGroup:PortraitsUnitsZerg"/>
+    </CLight>
+
+    <CDataCollectionUnit id="InfestedCivilian" parent="UnitGround">
+        <DataRecord Entry="Button,InfestedCivilian"/>
+        <DataRecord Entry="Unit,InfestedCivilian"/>
+        <DataRecord Entry="Actor,InfestedCivilian"/>
+        <DataRecord Entry="Model,InfestedCivilian"/>
+        <DataRecord Entry="Model,InfestedCivilian@Death"/>
+        <DataRecord Entry="Model,InfestedCivilian@DeathFire"/>
+        <DataRecord Entry="Model,InfestedCivilian@Portrait"/>
+        <DataRecord Entry="Sound,InfestedCivilian@Death"/>
+        <DataRecord Entry="Sound,InfestedCivilian@Pissed"/>
+        <DataRecord Entry="Sound,InfestedCivilian@Yes"/>
+        <DataRecord Entry="Sound,InfestedCivilian@What"/>
+        <DataRecord Entry="Sound,InfestedCivilian@Ready"/>
+        <DataRecord Entry="Light,InfestedCivilian@Portrait"/>
+    </CDataCollectionUnit>
+
+    <!-- Weapons -->
+
+    <CWeaponLegacy id="InfestedClaws">
+        <EditorCategories value="Race:Zerg"/>
+        <Effect value="InfestedClaws@Damage"/>
+        <DisplayEffect value="InfestedClaws@Damage"/>
+        <Icon value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level0.dds"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="0.1"/>
+        <Period value="1.2"/>
+        <DamagePoint value="0.2666"/>
+        <Options index="Melee" value="1"/>
+    </CWeaponLegacy>
+
+    <CEffectDamage id="InfestedClaws@Damage" parent="DU_WEAP">
+        <Amount value="8"/>
+    </CEffectDamage>
+
+    <CActorAction id="InfestedClaws@Attack" parent="GenericAttack" effectAttack="InfestedClaws@Damage"/>
+
+    <CSound id="InfestedClaws@AttackImpact" parent="Zerg_AttackImpactSmallPierce"/>
+    <CSound id="InfestedClaws@AttackLaunch" parent="Zerg_AttackLaunchSmallSwing"/>
+
+    <CDataCollectionUnit id="InfestedClaws" parent="Weapon_Instant">
+        <DataRecord Entry="Weapon,InfestedClaws"/>
+        <DataRecord Entry="Effect,InfestedClaws@Damage"/>
+        <DataRecord Entry="Actor,InfestedClaws@Attack"/>
+        <DataRecord Entry="Sound,InfestedClaws@AttackLaunch"/>
+        <DataRecord Entry="Sound,InfestedClaws@AttackImpact"/>
+    </CDataCollectionUnit>
+
+    
+</Catalog>
