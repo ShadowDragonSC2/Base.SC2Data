@@ -186,6 +186,7 @@
     </CSound>
 
     <CRequirement id="AssaultGalleon@Use"/>
+    <CRequirement id="AssaultGalleon@Show"/>
 
     <CDataCollectionUnit id="AssaultGalleon" parent="UnitAir">
         <EditorCategories value="DataGroup:Unit,DataFamily:Coop,Race:Terran,ObjectType:Unit"/>
@@ -204,6 +205,7 @@
         <DataRecord Entry="Sound,AssaultGalleon@What"/>
         <DataRecord Entry="Sound,AssaultGalleon@Ready"/>
         <DataRecord Entry="Requirement,AssaultGalleon@Use"/>
+        <DataRecord Entry="Requirement,AssaultGalleon@Show"/>
     </CDataCollectionUnit>
     
     <!-- =========== Weapons =========== -->
@@ -320,7 +322,7 @@
         <EditorCategories value="ObjectFamily:Melee,ObjectType:Projectile"/>
     </CUnit>
 
-    <CDataCollection id="TyphoonMissilePodAssaultGalleon" parent="Weapon_Missile">
+    <CDataCollectionUnit id="TyphoonMissilePodAssaultGalleon" parent="Weapon_Missile">
         <EditorCategories value="DataGroup:Weapon,DataFamily:Coop,Race:Terran,ObjectType:Projectile"/>
         <DataRecord Entry="Weapon,TyphoonMissilePodAssaultGalleon"/>
         <DataRecord Entry="Effect,TyphoonMissilePodAssaultGalleon@LM"/>
@@ -334,7 +336,7 @@
         <DataRecord Entry="Mover,TyphoonMissilePodAssaultGalleon@AttackMissile"/>
         <DataRecord Entry="AttachMethod,TyphoonMissilePodAssaultGalleon@AM"/>
         <DataRecord Entry="Unit,TyphoonMissilePodAssaultGalleon@AttackMissile"/>
-    </CDataCollection>
+    </CDataCollectionUnit>
 
     <!-- =========== Abilities =========== -->
 

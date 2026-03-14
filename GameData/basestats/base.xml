@@ -56,13 +56,13 @@
         <Fields Reference="Weapon,^ParamId^,TargetFilters"/>
         <Fields Reference="Effect,^ParamId^@Damage,Amount"/>
         <Fields Reference="Actor,^ParamId^@Attack,LaunchAttachQuery"/>
-        <Fields Reference="Model,^ParamId^@AttackImpact,Model"/>
-        <Fields Reference="Model,^ParamId^@AttackLaunch,Model"/>
-        <Fields Reference="Sound,^ParamId^@AttackImpact,AssetArray"/>
-        <Fields Reference="Sound,^ParamId^@AttackLaunch,AssetArray"/>
+        <Fields Reference="Model,^ParamId^@AttackImpact,Model" NameOverride="DataCollectionPattern/NameOverride/Model/Impact"/>
+        <Fields Reference="Model,^ParamId^@AttackLaunch,Model" NameOverride="DataCollectionPattern/NameOverride/Model/Launch"/>
+        <Fields Reference="Sound,^ParamId^@AttackImpact,AssetArray" NameOverride="DataCollectionPattern/NameOverride/Sound/Impact"/>
+        <Fields Reference="Sound,^ParamId^@AttackLaunch,AssetArray" NameOverride="DataCollectionPattern/NameOverride/Sound/Launch"/>
     </CDataCollectionPattern>
     <CDataCollectionPattern id="WeaponPattern_Missile" parent="WeaponPattern_Base">
-        <Fields Reference="Model,^ParamId^@AttackMissile,Model"/>
+        <Fields Reference="Model,^ParamId^@AttackMissile,Model" NameOverride="DataCollectionPattern/NameOverride/Model/Missile"/>
     </CDataCollectionPattern>
     <!-- -->
     <CDataCollectionUnit default="1" id="UnitBase">

@@ -1,0 +1,27 @@
+Actor/Name/AssaultGalleon=Assault Galleon
+Model/Name/AssaultGalleon=Assault Galleon
+Model/Name/AssaultGalleon@Death=Death
+Model/Name/AssaultGalleon@Portrait=Portrait
+Model/Name/AssaultGalleon@Placement=Placement
+Sound/Name/AssaultGalleon@DeathVoice=Death Voice
+Sound/Name/AssaultGalleon@Attack=Attack
+Sound/Name/AssaultGalleon@Help=Help
+Sound/Name/AssaultGalleon@Pissed=Pissed
+Sound/Name/AssaultGalleon@Yes=Yes
+Sound/Name/AssaultGalleon@What=What
+Sound/Name/AssaultGalleon@Ready=Ready
+Requirement/Name/AssaultGalleon@Use=Use
+Requirement/Name/AssaultGalleon@Show=Show
+
+Effect/Name/TyphoonMissilePodAssaultGalleon@LM=LM
+Effect/Name/TyphoonMissilePodAssaultGalleon@Damage=Damage
+Model/Name/TyphoonMissilePodAssaultGalleon@AttackMissile=Attack Missile
+Model/Name/TyphoonMissilePodAssaultGalleon@AttackImpact=Attack Impact
+Model/Name/TyphoonMissilePodAssaultGalleon@AttackLaunch=Attack Launch
+Sound/Name/TyphoonMissilePodAssaultGalleon@AttackImpact=Attack Impact
+Sound/Name/TyphoonMissilePodAssaultGalleon@AttackLaunch=Attack Launch
+Mover/Name/TyphoonMissilePodAssaultGalleon@AttackMissile=Attack Missile
+AttachMethod/Name/TyphoonMissilePodAssaultGalleon@AM=AMPattern Weapon Galleon
+Unit/Name/TyphoonMissilePodAssaultGalleon@AttackMissile=Attack Missile
+
+Abil/Name/AssaultGalleonTrain=Обучение - Галлеон

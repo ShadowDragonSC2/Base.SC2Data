@@ -17,11 +17,15 @@ Unit/Name/Generic_Protoss_Unit_Carrier=Generic Protoss Unit - Carrier
 
 DataCollectionPattern/NameOverride/CostResource/Minerals=Minerals
 DataCollectionPattern/NameOverride/CostResource/Vespene=Vespene
+
 DataCollectionPattern/NameOverride/Wireframe=Wireframe
 DataCollectionPattern/NameOverride/GroupIcon=Group Icon
+
 DataCollectionPattern/NameOverride/Death=Death Model
 DataCollectionPattern/NameOverride/DeathRagdoll=Death Ragdoll
+
 DataCollectionPattern/NameOverride/PortraitModel=Portrait Model
+
 DataCollectionPattern/NameOverride/Sounds/Movement=Sounds - Movement
 DataCollectionPattern/NameOverride/Sounds/Attack=Sounds - Attack
 DataCollectionPattern/NameOverride/Sounds/Help=Sounds - Help
@@ -29,9 +33,18 @@ DataCollectionPattern/NameOverride/Sounds/Pissed=Sounds - Pissed
 DataCollectionPattern/NameOverride/Sounds/Yes=Sounds - Yes
 DataCollectionPattern/NameOverride/Sounds/What=Sounds - What
 DataCollectionPattern/NameOverride/Sounds/Ready=Sounds - Ready
+
 DataCollectionPattern/NameOverride/Requirement/Use=Requirement - Use
 DataCollectionPattern/NameOverride/Requirement/Show=Requirement - Show
+
 DataCollectionPattern/NameOverride/UnitFlags/ArmySelect=Army Select
+
+DataCollectionPattern/NameOverride/Model/Launch=Launch Model
+DataCollectionPattern/NameOverride/Model/Impact=Impact Model
+DataCollectionPattern/NameOverride/Model/Missile=Missile Model
+
+DataCollectionPattern/NameOverride/Sound/Launch=Launch Sound
+DataCollectionPattern/NameOverride/Sound/Impact=Impact Sound
 
 DataCollectionPattern/NameOverride/ReaperPattern/JumpAccelsLaunch=Acceleration Jump Launch
 DataCollectionPattern/NameOverride/ReaperPattern/JumpAccelsAscent=Acceleration Jump Ascent
