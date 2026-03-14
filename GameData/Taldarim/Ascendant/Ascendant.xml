@@ -208,6 +208,7 @@
     </CLight>
 
     <CDataCollectionUnit id="Ascendant">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Protoss,ObjectType:Unit"/>
         <DataRecord Entry="Button,Ascendant"/>
         <DataRecord Entry="Unit,Ascendant"/>
         <DataRecord Entry="Actor,Ascendant"/>
@@ -387,6 +388,7 @@
     </CUnit>
 
     <CDataCollectionUnit id="PsiOrb">
+        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Protoss,ObjectType:Projectile"/>
         <DataRecord Entry="Button,PsiOrb"/>
         <DataRecord Entry="Abil,PsiOrb"/>
         <DataRecord Entry="Effect,PsiOrb@Set"/>
@@ -413,6 +415,10 @@
     </CDataCollectionUnit>
 
     <!-- Mind Blast -->
+    <CButton id="MindBlast">
+        <Icon value="Assets\Textures\btn-ability-protoss-mindblast.dds"/>
+    </CButton>
+
     <CAbilEffectTarget id="MindBlast">
         <CmdButtonArray index="Execute" DefaultButtonFace="MindBlast"/>
         <Effect index="0" value="MindBlast@Damage"/>
@@ -424,10 +430,6 @@
         <Range value="13"/>
         <AINotifyEffect value="MindBlast@Damage"/>
     </CAbilEffectTarget>
-
-    <CButton id="MindBlast">
-        <Icon value="Assets\Textures\btn-ability-protoss-mindblast.dds"/>
-    </CButton>
 
     <CEffectDamage id="MindBlast@Damage">
         <Amount value="200"/>
@@ -479,7 +481,18 @@
     <CRequirement id="MindBlast@Learn"></CRequirement>
 
     <CDataCollectionUnit id="MindBlast">
-
+        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Protoss,ObjectType:Spell"/>
+        <DataRecord Entry="Button,MindBlast"/>
+        <DataRecord Entry="Abil,MindBlast"/>
+        <DataRecord Entry="Effect,MindBlast@Damage"/>
+        <DataRecord Entry="Actor,MindBlast@Attack"/>
+        <DataRecord Entry="Actor,MindBlast@Range"/>
+        <DataRecord Entry="Actor,MindBlast@Animation"/>
+        <DataRecord Entry="Model,MindBlast@Impact"/>
+        <DataRecord Entry="Sound,MindBlast@Impact"/>
+        <DataRecord Entry="Sound,MindBlast@Launch"/>
+        <DataRecord Entry="Requirement,MindBlast@Use"/>
+        <DataRecord Entry="Requirement,MindBlast@Learn"/>
     </CDataCollectionUnit>
 
 </Catalog>

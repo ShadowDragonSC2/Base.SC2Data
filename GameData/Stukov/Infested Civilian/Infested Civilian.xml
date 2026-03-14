@@ -175,6 +175,7 @@
     </CLight>
 
     <CDataCollectionUnit id="InfestedCivilian" parent="UnitGround">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:InfestedTerran,ObjectType:Unit"/>
         <DataRecord Entry="Button,InfestedCivilian"/>
         <DataRecord Entry="Unit,InfestedCivilian"/>
         <DataRecord Entry="Unit,InfestedCivilian@Burrowed"/>
@@ -217,6 +218,7 @@
     <CSound id="InfestedClaws@AttackLaunch" parent="Zerg_AttackLaunchSmallSwing"/>
 
     <CDataCollectionUnit id="InfestedClaws" parent="Weapon_Instant">
+        <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:InfestedTerran,ObjectType:Other"/>
         <DataRecord Entry="Weapon,InfestedClaws"/>
         <DataRecord Entry="Effect,InfestedClaws@Damage"/>
         <DataRecord Entry="Actor,InfestedClaws@Attack"/>

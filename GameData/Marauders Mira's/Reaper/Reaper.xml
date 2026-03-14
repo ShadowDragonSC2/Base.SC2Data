@@ -455,7 +455,7 @@
     </CSound>
 
     <CDataCollectionUnit id="HHPistols">
-        <EditorCategories value="DataGroup:Weapon,DataFamily:Coop,Race:Terran,ObjectType:Projectile"/>
+        <EditorCategories value="DataGroup:Weapon,DataFamily:Coop,Race:Terran,ObjectType:Other"/>
         <DataRecord Entry="Weapon,HHPistols"/>
         <DataRecord Entry="Effect,HHPistols@CP"/>
         <DataRecord Entry="Effect,HHPistols@Damage"/>
@@ -560,6 +560,7 @@
     </CSound>
 
     <CDataCollectionUnit id="HHReaperFlying">
+        <EditorCategories value="DataGroup:Ability,DataFamily:Coop,Race:Terran,ObjectType:Other"/>
         <DataRecord Entry="Button,HHReaperFlying"/>
         <DataRecord Entry="Button,HHReaperFlying@Down"/>
         <DataRecord Entry="Abil,HHReaperFlying"/>

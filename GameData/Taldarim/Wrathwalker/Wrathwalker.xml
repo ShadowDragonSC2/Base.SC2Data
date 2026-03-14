@@ -350,6 +350,7 @@
     </CRequirementCountUnit>
 
     <CDataCollectionUnit id="Wrathwalker">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Protoss,ObjectType:Unit"/>
         <DataRecord Entry="Button,Wrathwalker"/>
         <DataRecord Entry="Unit,Wrathwalker"/>
         <DataRecord Entry="Actor,Wrathwalker"/>
@@ -481,6 +482,7 @@
     </CUnit>
 
     <CDataCollectionUnit id="ChargedBlast">
+        <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:Protoss,ObjectType:Projectile"/>
         <DataRecord Entry="Weapon,ChargedBlast"/>
         <DataRecord Entry="Effect,ChargedBlast@Damage"/>
         <DataRecord Entry="Effect,ChargedBlast@LM"/>

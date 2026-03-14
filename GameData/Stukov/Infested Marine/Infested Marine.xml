@@ -37,6 +37,23 @@
     <CSound id="InfestedMarine@Ready" parent="Ready">
         <AssetArray File=""/>
     </CSound>
+
+    <CDataCollectionUnit id="InfestedMarine">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:InfestedTerran,ObjectType:Unit"/>
+        <DataRecord Entry="Button,InfestedMarine"/>
+        <DataRecord Entry="Unit,InfestedMarine"/>
+        <DataRecord Entry="Actor,InfestedMarine"/>
+        <DataRecord Entry="Model,InfestedMarine"/>
+        <DataRecord Entry="Model,InfestedMarine@Death"/>
+        <DataRecord Entry="Model,InfestedMarine@Portrait"/>
+        <DataRecord Entry="Sound,InfestedMarine@DeathVoice"/>
+        <DataRecord Entry="Sound,InfestedMarine@Attack"/>
+        <DataRecord Entry="Sound,InfestedMarine@Help"/>
+        <DataRecord Entry="Sound,InfestedMarine@Pissed"/>
+        <DataRecord Entry="Sound,InfestedMarine@Yes"/>
+        <DataRecord Entry="Sound,InfestedMarine@What"/>
+        <DataRecord Entry="Sound,InfestedMarine@Ready"/>
+    </CDataCollectionUnit>
     
 
 </Catalog>

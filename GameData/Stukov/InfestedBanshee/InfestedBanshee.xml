@@ -103,7 +103,7 @@
         <AttachProps Id="Ref_Hit 04">
             <Keys index="Weapon" value="1"/>
         </AttachProps>
-        <EditorCategories value="Race:Terran"/>
+        <EditorCategories value="Race:InfestedTerran"/>
         <Lighting value="Banshee"/>
         <Occlusion value="Show"/>
         <PlanetPanelCamera value="Star2CameraLow07"/>
@@ -276,6 +276,7 @@
     <CRequirement id="InfestedBanshee@Use"/>
 
     <CDataCollectionUnit id="InfestedBanshee">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:InfestedTerran,ObjectType:Unit"/>
         <Name value="Unit/Name/InfestedBanshee"/>
         <DataRecord Entry="Button,InfestedBanshee"/>
         <DataRecord Entry="Unit,InfestedBanshee"/>
@@ -313,7 +314,7 @@
     </CWeaponLegacy>
 
     <CEffectCreatePersistent id="InfestedBansheeWEAP@CP">
-        <EditorCategories value="Race:Terran"/>
+        <EditorCategories value="Race:InfestedTerran"/>
         <ExpireDelay value="0.8"/>
         <PeriodCount value="2"/>
         <WhichLocation Value="TargetUnit"/>
@@ -321,13 +322,13 @@
         <PeriodicPeriodArray value="0.15"/>
     </CEffectCreatePersistent>
     <CEffectLaunchMissile id="InfestedBansheeWEAP@LM">
-        <EditorCategories value="Race:Terran"/>
+        <EditorCategories value="Race:InfestedTerran"/>
         <AmmoUnit value="InfestedBansheeWEAP@AttackMissile"/>
         <ImpactEffect value="InfestedBansheeWEAP@Damage"/>
         <ValidatorArray index="0" value="RangeCheckLE15"/>
     </CEffectLaunchMissile>
     <CEffectDamage id="InfestedBansheeWEAP@Damage" parent="DU_WEAP_MISSILE">
-        <EditorCategories value="Race:Terran"/>
+        <EditorCategories value="Race:InfestedTerran"/>
         <Visibility value="Visible"/>
         <Amount value="12"/>
     </CEffectDamage>
@@ -359,11 +360,11 @@
 
     <CModel id="InfestedBansheeWEAP@AttackMissile" parent="MissileFX">
         <Model value="Assets\Effects\Terran\BansheeMissile\BansheeMissile.m3"/>
-        <EditorCategories value="Race:Terran"/>
+        <EditorCategories value="Race:InfestedTerran"/>
     </CModel>
     <CModel id="InfestedBansheeWEAP@AttackImpact" parent="ImpactFX">
         <Model value="Assets\Effects\Terran\BansheeMissileImpact\BansheeMissileImpact.m3"/>
-        <EditorCategories value="Race:Terran"/>
+        <EditorCategories value="Race:InfestedTerran"/>
     </CModel>
 
     <CSound id="InfestedBansheeWEAP@AttackLaunch" parent="Combat">
@@ -375,7 +376,7 @@
         <AssetArray File="Assets\Sounds\Terran\Banshee\Banshee_AttackLaunch1.wav"/>
         <AssetArray File="Assets\Sounds\Terran\Banshee\Banshee_AttackLaunch2.wav"/>
         <AssetArray File="Assets\Sounds\Terran\Banshee\Banshee_AttackLaunch3.wav"/>
-        <EditorCategories value="Race:Terran"/>
+        <EditorCategories value="Race:InfestedTerran"/>
     </CSound>
     <CSound id="InfestedBansheeWEAP@AttackImpact" parent="Combat">
         <DupeDestroyCount value="8"/>
@@ -384,7 +385,7 @@
         <AssetArray File="Assets\Sounds\Terran\Banshee\Banshee_AttackImpact0.wav"/>
         <AssetArray File="Assets\Sounds\Terran\Banshee\Banshee_AttackImpact1.wav"/>
         <AssetArray File="Assets\Sounds\Terran\Banshee\Banshee_AttackImpact2.wav"/>
-        <EditorCategories value="Race:Terran"/>
+        <EditorCategories value="Race:InfestedTerran"/>
     </CSound>
 
     <CMoverMissile id="InfestedBansheeWEAP@AttackMissile">
@@ -420,6 +421,7 @@
     </CUnit>
 
     <CDataCollectionUnit id="InfestedBansheeWEAP">
+        <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:InfestedTerran,ObjectType:Projectile"/>
         <Name value="Weapon/Name/InfestedBansheeWEAP"/>
         <DataRecord Entry="Weapon,InfestedBansheeWEAP"/>
         <DataRecord Entry="Effect,InfestedBansheeWEAP@CP"/>
@@ -476,18 +478,19 @@
     </CActorSound>
 
     <CSound id="InfestedBansheeCloak@On" parent="Spell">
-        <EditorCategories value="Race:Terran"/>
+        <EditorCategories value="Race:InfestedTerran"/>
         <AssetArray File="Assets\Sounds\Terran\SharedEffects\Abilities\Terran_CloakOn.wav"/>
         <DupeDestroyCount value="3"/>
         <Volume value="-6.000000,-6.000000"/>
     </CSound>
     <CSound id="InfestedBansheeCloak@Off" parent="Spell">
-        <EditorCategories value="Race:Terran"/>
+        <EditorCategories value="Race:InfestedTerran"/>
         <AssetArray File="Assets\Sounds\Terran\SharedEffects\Abilities\Terran_CloakOff.wav"/>
         <Volume value="-6.000000,-6.000000"/>
     </CSound>
     
     <CDataCollectionUnit id="InfestedBansheeCloak">
+        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:InfestedTerran,ObjectType:Other"/>
         <Name value="Button/Name/InfestedBansheeCloak"/>
         <DataRecord Entry="Button,InfestedBansheeCloak"/>
         <DataRecord Entry="Abil,InfestedBansheeCloak"/>

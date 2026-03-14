@@ -204,6 +204,7 @@
     <CRequirement id="Arbiter"/>
 
     <CDataCollectionUnit id="Arbiter">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Protoss,ObjectType:Unit"/>
         <DataRecord Entry="Button,Arbiter"/>
         <DataRecord Entry="Unit,Arbiter"/>
         <DataRecord Entry="Actor,Arbiter"/>

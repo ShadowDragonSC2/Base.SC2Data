@@ -198,6 +198,7 @@
     <CRequirement id="SovereignBattlecruiser@Show"/>
 
     <CDataCollectionUnit id="SovereignBattlecruiser" parent="UnitAir">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Coop,Race:Terran,ObjectType:Unit"/>
         <DataRecord Entry="Button,SovereignBattlecruiser"/>
         <DataRecord Entry="Unit,SovereignBattlecruiser"/>
         <DataRecord Entry="Actor,SovereignBattlecruiser"/>
@@ -302,6 +303,7 @@
     </CUnit>
 
     <CDataCollectionUnit id="SovereignLaserBattery" parent="Weapon_Missile">
+        <EditorCategories value="DataGroup:Weapon,DataFamily:Coop,Race:Terran,ObjectType:Projectile"/>
         <DataRecord Entry="Weapon,SovereignLaserBattery"/>
         <DataRecord Entry="Effect,SovereignLaserBattery@LM"/>
         <DataRecord Entry="Effect,SovereignLaserBattery@Damage"/>

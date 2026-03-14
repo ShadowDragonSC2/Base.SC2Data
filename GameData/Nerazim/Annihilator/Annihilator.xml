@@ -314,6 +314,7 @@
     </CLight>
 
     <CDataCollectionUnit id="Annihilator">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Protoss,ObjectType:Unit"/>
         <DataRecord Entry="Button,Annihilator"/>
         <DataRecord Entry="Unit,Annihilator"/>
         <DataRecord Entry="Actor,Annihilator"/>
@@ -374,6 +375,7 @@
     <CSound id="AnnihilatorParticleDisruptors@AttackImpact" parent="Protoss_ExplosionSmall"/>
 
     <CDataCollectionUnit id="AnnihilatorParticleDisruptors">
+        <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:Protoss,ObjectType:Other"/>
         <DataRecord Entry="Weapon,AnnihilatorParticleDisruptors"/>
         <DataRecord Entry="Effect,AnnihilatorParticleDisruptors@Damage"/>
         <DataRecord Entry="Actor,AnnihilatorParticleDisruptors@Attack"/>
@@ -550,6 +552,7 @@
     </CRequirementCountUpgrade>
 
     <CDataCollectionUnit id="ShadowCannon">
+        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Protoss,ObjectType:Projectile"/>
         <DataRecord Entry="Button,ShadowCannon"/>
         <DataRecord Entry="Abil,ShadowCannon"/>
         <DataRecord Entry="Behavior,ShadowCannon"/>

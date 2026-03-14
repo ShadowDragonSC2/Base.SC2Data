@@ -326,6 +326,7 @@
     </CTurret>
 
     <CDataCollectionUnit id="Vanguard">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Protoss,ObjectType:Unit"/>
         <DataRecord Entry="Button,Vanguard"/>
         <DataRecord Entry="Unit,Vanguard"/>
         <DataRecord Entry="Actor,Vanguard"/>
@@ -480,6 +481,7 @@
     </CMoverMissile>
 
     <CDataCollectionUnit id="ScatterCannon">
+        <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:Protoss,ObjectType:Projectile"/>
         <DataRecord Entry="Weapon,ScatterCannon"/>
         <DataRecord Entry="Effect,ScatterCannon@Damage"/>
         <DataRecord Entry="Effect,ScatterCannon@LM"/>

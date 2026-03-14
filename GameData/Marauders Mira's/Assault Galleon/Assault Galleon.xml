@@ -186,6 +186,7 @@
     <CRequirement id="AssaultGalleon@Use"/>
 
     <CDataCollectionUnit id="AssaultGalleon">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Coop,Race:Terran,ObjectType:Unit"/>
         <DataRecord Entry="Button,AssaultGalleon"/>
         <DataRecord Entry="Unit,AssaultGalleon"/>
         <DataRecord Entry="Actor,AssaultGalleon"/>
@@ -318,6 +319,7 @@
     </CUnit>
 
     <CDataCollection id="TyphoonMissilePodAssaultGalleon">
+        <EditorCategories value="DataGroup:Weapon,DataFamily:Coop,Race:Terran,ObjectType:Projectile"/>
         <DataRecord Entry="Weapon,TyphoonMissilePodAssaultGalleon"/>
         <DataRecord Entry="Effect,TyphoonMissilePodAssaultGalleon@LM"/>
         <DataRecord Entry="Effect,TyphoonMissilePodAssaultGalleon@Damage"/>
