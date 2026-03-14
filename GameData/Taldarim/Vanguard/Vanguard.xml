@@ -26,6 +26,8 @@
     </CUnit>
 
     <CActorUnit id="Vanguard" parent="GenericUnitStandard" unitName="Vanguard">
+        <Aliases value="_UnitLarge"/>
+
         <DeathArray index="Normal">
             <ModelLink value="Vanguard@Death"/>
             <VoiceLink value="Vanguard@Death"/>
@@ -36,9 +38,37 @@
         <SoundArray index="What" value="Vanguard@What"/>
         <SoundArray index="Pissed" value="Vanguard@Pissed"/>
         <SoundArray index="Help" value="Vanguard@Help"/>
-        <WalkAnimMoveSpeed value="1.25"/>
+        
         <PortraitModel value="Vanguard@Portrait"/>
         <PlacementModel value="Vanguard@Placement"/>
+
+        <WalkAnimMoveSpeed value="1.25"/>
+        <BarWidth value="90"/>
+        <BarOffset value="80"/>
+
+        <UnitIcon value="Assets\Textures\BTN-Unit-Protoss-Immortal-Taldarim.dds"/>
+        <HeroIcon value="Assets\Textures\BTN-Unit-Protoss-Immortal.dds"/>
+        <WireframeShield>
+            <Image value="Assets\Textures\Wireframe-Protoss-Immortal-Taldarim-Shield01.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-Immortal-Taldarim-Shield02.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-Immortal-Taldarim-Shield03.dds"/>
+        </WireframeShield>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-protoss-immortal-taldarim.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-protoss-immortal-taldarim.dds"/>
+        </Wireframe>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
+        <TerrainSquibs>
+            <MovementDistance value="0.150000,0.150000"/>
+            <IdlePeriod value="0.100000,0.250000"/>
+            <RangeUp value="0.600000"/>
+            <RangeDown value="1.000000"/>
+            <AttachQuery Methods="AMFilterCenter"/>
+            <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleImmortal"/>
+        </TerrainSquibs>
+
     </CActorUnit>
 
     <CModel id="Vanguard" parent="Unit">

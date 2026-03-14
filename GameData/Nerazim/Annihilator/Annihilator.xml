@@ -26,6 +26,8 @@
     </CUnit>
     
     <CActorUnit id="Annihilator" parent="GenericUnitStandard" unitName="Annihilator">
+        <Aliases value="_UnitLarge"/>
+        <Macros value="TerrainSquibAnimations"/>
         <DeathArray index="Normal">
             <ModelLink value="Annihilator@Death"/>
         </DeathArray>
@@ -40,6 +42,30 @@
         <BarOffset value="80"/>
         <BarWidth value="90"/>
         <WalkAnimMoveSpeed value="1.25"/>
+
+        <UnitIcon value="Assets\Textures\BTN-Unit-Protoss-Immortal-Nerazim.dds"/>
+        <HeroIcon value="Assets\Textures\BTN-Unit-Protoss-Immortal.dds"/>
+        <WireframeShield>
+            <Image value="Assets\Textures\Wireframe-Protoss-Immortal-Nerazim-Shield01.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-Immortal-Nerazim-Shield02.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-Immortal-Nerazim-Shield03.dds"/>
+        </WireframeShield>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-protoss-immortal-nerazim.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-protoss-immortal-nerazim.dds"/>
+        </Wireframe>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
+        <TerrainSquibs>
+            <MovementDistance value="0.150000,0.150000"/>
+            <IdlePeriod value="0.100000,0.250000"/>
+            <RangeUp value="0.600000"/>
+            <RangeDown value="1.000000"/>
+            <AttachQuery Methods="AMFilterCenter"/>
+            <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleImmortal"/>
+        </TerrainSquibs>
+
     </CActorUnit>
     
     <CModel id="Annihilator" parent="Unit">

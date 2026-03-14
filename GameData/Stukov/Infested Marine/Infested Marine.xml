@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    <CButton id="InfestedMarine"></CButton>
+    
+    <CUnit id="InfestedMarine"></CUnit>
+    
+    <CActorUnit id="InfestedMarine" parent="GenericBurrowerStandard" unitName="InfestedMarine"/>
+    
+    <CModel id="InfestedMarine" parent="Unit">
+        <Model value=""/>
+    </CModel>
+    <CModel id="InfestedMarine@Death" parent="UnitDeath">
+        <Model value=""/>
+    </CModel>
+    <CModel id="InfestedMarine@Portrait" parent="Portrait">
+        <Model value=""/>
+    </CModel>
+    
+    <CSound id="InfestedMarine@DeathVoice" parent="DeathVoice">
+        <AssetArray File=""/>
+    </CSound>
+    <CSound id="InfestedMarine@Attack" parent="ZergAck">
+        <AssetArray File=""/>
+    </CSound>
+    <CSound id="InfestedMarine@Help" parent="Alert">
+        <AssetArray File=""/>
+    </CSound>
+    <CSound id="InfestedMarine@Pissed" parent="Pissed">
+        <AssetArray File=""/>
+    </CSound>
+    <CSound id="InfestedMarine@Yes" parent="ZergAck">
+        <AssetArray File=""/>
+    </CSound>
+    <CSound id="InfestedMarine@What" parent="ZergAck">
+        <AssetArray File=""/>
+    </CSound>
+    <CSound id="InfestedMarine@Ready" parent="Ready">
+        <AssetArray File=""/>
+    </CSound>
+    
+
+</Catalog>

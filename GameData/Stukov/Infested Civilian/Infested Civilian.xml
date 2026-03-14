@@ -68,7 +68,7 @@
         </CardLayouts>
     </CUnit>
     
-    <CActorUnit id="InfestedCivilian" parent="c" unitName="InfestedCivilian">
+    <CActorUnit id="InfestedCivilian" parent="GenericBurrowerStandard" unitName="InfestedCivilian">
         <On Terms="AbilMorph.*.Start; MorphTo InfestedCivilian@Burrowed" Send="AnimPlay Burrow Burrow PlayForever,NonLooping"/>
         <On Terms="AbilMorph.*.Start; MorphTo InfestedCivilian" Send="AnimPlay Burrow Unburrow"/>
 
