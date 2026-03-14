@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Catalog>
+    <!-- Requires: Actor:BurrowedSplat[basestats.xml]-->
+    <!-- Requires: DataCollectionUnit:UnitGround[basestats.xml]-->
+
     <CButton id="InfestedCivilian">
         <Icon value="Assets\Textures\btn-unit-zerg-infestedcolonist.dds"/>
     </CButton>
@@ -30,14 +33,14 @@
         <AbilArray Link="stop"/>
         <AbilArray Link="attack"/>
         <AbilArray Link="move"/>
-        <AbilArray Link="BurrowInfestedCivilianDown"/>
+        <AbilArray Link="InfestedCivilianBurrowDown"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
             <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
             <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
             <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
             <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
-            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowInfestedCivilianDown,Execute" Row="2" Column="4"/>
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="InfestedCivilianBurrowDown,Execute" Row="2" Column="4"/>
         </CardLayouts>
         <Radius value="0.375"/>
         <SeparationRadius value="0.375"/>
@@ -53,11 +56,25 @@
     </CUnit>
     <CUnit id="InfestedCivilian@Burrowed" parent="InfestedCivilian">
         <FlagArray index="Movable" value="0"/>
+        <Collide index="Burrow" value="1"/>
+        <Collide index="Ground" value="0"/>
+        <Collide index="Small" value="0"/>
+        <Sight value="3"/>
         <TurningRate value="0"/>
         <WeaponArray index="0" removed="1"/>
+        <AbilArray index="3" Link="InfestedCivilianBurrowUp"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Face="BurrowUp" Type="AbilCmd" AbilCmd="InfestedCivilianBurrowUp,Execute"/>
+        </CardLayouts>
     </CUnit>
     
-    <CActorUnit id="InfestedCivilian" parent="GenericUnitStandard" unitName="InfestedCivilian">
+    <CActorUnit id="InfestedCivilian" parent="c" unitName="InfestedCivilian">
+        <On Terms="AbilMorph.*.Start; MorphTo InfestedCivilian@Burrowed" Send="AnimPlay Burrow Burrow PlayForever,NonLooping"/>
+        <On Terms="AbilMorph.*.Start; MorphTo InfestedCivilian" Send="AnimPlay Burrow Unburrow"/>
+
+        <Macros value="ZergBurrowStandardAnimMacro"/>
+        <Macros value="ZergSmallBurrowEffects"/>
+
         <DeathArray index="Normal" ModelLink="InfestedCivilian@Death" SoundLink="InfestedCivilian@Death"/>
         <DeathArray index="Fire" ModelLink="InfestedCivilian@DeathFire" SoundLink="Uni_DeathFXFire"/>
         <WalkAnimMoveSpeed value="2.25"/>
@@ -76,7 +93,8 @@
         <SoundArray index="Yes" value="InfestedCivilian@Yes"/>
         <SoundArray index="Pissed" value="InfestedCivilian@Pissed"/>
     </CActorUnit>
-    
+    <CActorSplat id="InfestedCivilian@BurrowedSplat" parent="BurrowedSplat" unitName="InfestedCivilian"/>
+
     <CModel id="InfestedCivilian" parent="Unit">
         <Model value="Assets\Units\Zerg\InfestedColonist\InfestedColonist.m3"/>
         <RequiredAnims value="Assets\Units\Zerg\InfestedColonist_RequiredAnims\InfestedColonist_RequiredAnims.m3a"/>
@@ -110,7 +128,10 @@
     <CModel id="InfestedCivilian@Portrait" parent="FXAPortrait">
         <Model value="Assets\Portraits\Zerg\InfestedColonistPortrait\InfestedColonistPortrait.m3"/>
         <FacialController value="LocalizedData\Facial\InfestedColonistPortrait.fxa"/>
-        <Flags index="Facial" value="1"/>
+    </CModel>
+    <CModel id="InfestedCivilian@BurrowedSplat" parent="Splat">
+        <Model value="Assets\Splats\Splat_ZerglingBurrowed\Splat_ZerglingBurrowed.m3"/>
+        <VariationCount value="3"/>
     </CModel>
     
     <CSound id="InfestedCivilian@Death" parent="Zerg_ExplosionSmall"/>
@@ -138,7 +159,6 @@
         <Volume value="-2.000000,1.000000"/>
     </CSound>
 
-    
     <CLight id="InfestedCivilian@Portrait" parent="default">
         <ToDInfoArray index="0" AmbientColor="0.200000,0.184314,0.282353" OperatorHDR="3">
             <Param index="HDRExposure" value="1.475000"/>
@@ -157,11 +177,14 @@
     <CDataCollectionUnit id="InfestedCivilian" parent="UnitGround">
         <DataRecord Entry="Button,InfestedCivilian"/>
         <DataRecord Entry="Unit,InfestedCivilian"/>
+        <DataRecord Entry="Unit,InfestedCivilian@Burrowed"/>
         <DataRecord Entry="Actor,InfestedCivilian"/>
+        <DataRecord Entry="Actor,InfestedCivilian@BurrowedSplat"/>
         <DataRecord Entry="Model,InfestedCivilian"/>
         <DataRecord Entry="Model,InfestedCivilian@Death"/>
         <DataRecord Entry="Model,InfestedCivilian@DeathFire"/>
         <DataRecord Entry="Model,InfestedCivilian@Portrait"/>
+        <DataRecord Entry="Model,InfestedCivilian@BurrowedSplat"/>
         <DataRecord Entry="Sound,InfestedCivilian@Death"/>
         <DataRecord Entry="Sound,InfestedCivilian@Pissed"/>
         <DataRecord Entry="Sound,InfestedCivilian@Yes"/>
@@ -200,6 +223,55 @@
         <DataRecord Entry="Sound,InfestedClaws@AttackLaunch"/>
         <DataRecord Entry="Sound,InfestedClaws@AttackImpact"/>
     </CDataCollectionUnit>
+
+
+    <!-- Abilities -->
+    <CAbilMorph id="InfestedCivilianBurrowDown">
+        <InfoArray Unit="InfestedCivilian@Burrowed">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="1.333"/>
+            </SectionArray>
+            <SectionArray index="Mover">
+                <DurationArray index="Delay" value="1.333"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="1.333"/>
+            </SectionArray>
+        </InfoArray>
+        <CmdButtonArray index="Execute" DefaultButtonFace="BurrowDown">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <AbilSetId value="BrwD"/>
+        <Flags index="SuppressMovement" value="1"/>
+        <Flags index="IgnoreFacing" value="1"/>
+        <ActorKey value="BurrowDown"/>
+    </CAbilMorph>
+    <CAbilMorph id="InfestedCivilianBurrowUp">
+        <InfoArray Unit="InfestedCivilian">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="2"/>
+            </SectionArray>
+            <SectionArray index="Mover">
+                <DurationArray index="Delay" value="2"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="0.1"/>
+            </SectionArray>
+        </InfoArray>
+        <CmdButtonArray index="Execute" DefaultButtonFace="BurrowUp">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <AbilSetId value="BrwU"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="IgnoreFacing" value="1"/>
+        <Flags index="SuppressMovement" value="1"/>
+        <ActorKey value="BurrowUp"/>
+
+        <AutoCastValidatorArray value="TargetNotChangeling"/>        
+        <AutoCastFilters value="Ground,Visible;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden"/>
+        <AutoCastRange value="1"/>
+        <AutoCastCountMin value="1"/>
+    </CAbilMorph>
 
     
 </Catalog>

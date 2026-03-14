@@ -1,0 +1,18 @@
+Actor/Name/InfestedCivilian=Infested Civilian
+Actor/Name/InfestedCivilian@BurrowedSplat=
+Model/Name/InfestedCivilian=Infested Civilian
+Model/Name/InfestedCivilian@Death=Death
+Model/Name/InfestedCivilian@DeathFire=Death Fire
+Model/Name/InfestedCivilian@Portrait=Portrait
+Model/Name/InfestedCivilian@BurrowedSplat=Burrowed Splat
+Sound/Name/InfestedCivilian@Death=Death
+Sound/Name/InfestedCivilian@Pissed=Pissed
+Sound/Name/InfestedCivilian@Yes=Yes
+Sound/Name/InfestedCivilian@What=What
+Sound/Name/InfestedCivilian@Ready=Ready
+Light/Name/InfestedCivilian@Portrait=Portrait
+
+Effect/Name/InfestedClaws@Damage
+Actor/Name/InfestedClaws@Attack
+Sound/Name/InfestedClaws@AttackImpact
+Sound/Name/InfestedClaws@AttackLaunch

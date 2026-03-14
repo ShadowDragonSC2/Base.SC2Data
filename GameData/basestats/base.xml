@@ -88,4 +88,19 @@
         <Name value="Weapon/Name/##id##"/>
         <Pattern value="WeaponPattern_Missile"/>
     </CDataCollectionUnit>
+
+    <!-- Actors -->
+     
+    <CActorSplat default="1" id="BurrowedSplat" parent="BurrowedSplatBase">
+        <On Terms="UnitBirth.##unitName##@Burrowed" Send="Create"/>
+        <On Terms="AbilMorph.*.Start; MorphTo ##unitName##@Burrowed" Send="Create"/>
+        <On Terms="AbilMorph.*.Finish; MorphFrom ##unitName##@Burrowed" Send="RefClear ::Host"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom ##unitName##@Burrowed" Send="TimerSet 4.000000,2.000000 DelayDestroy"/>
+        <On Terms="TimerExpired; TimerName DelayDestroy" Send="Destroy"/>
+    </CActorSplat>
+
+    <CActorUnit default="1" id="GenericBurrowerStandard">
+        <On Terms="UnitBirth.##unitName##@Burrowed" Send="Create"/>
+        <On Terms="UnitBirth.##unitName##@Burrowed" Send="AnimBracketStart Burrow Burrow IGNORE Unburrow ClosingFull,OpeningPlayForever,Instant,DontResetOnUnhide"/>
+    </CActorUnit>
 </Catalog>
