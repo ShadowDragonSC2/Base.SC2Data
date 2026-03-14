@@ -79,6 +79,7 @@
     
     <CDataCollectionUnit default="1" id="WeaponBase">
         <Name value="Weapon/Name/##id##"/>
+        <EditorIconSource value="Weapon"/>
     </CDataCollectionUnit>
     <CDataCollectionUnit default="1" id="Weapon_Instant" parent="WeaponBase">
         <Name value="Weapon/Name/##id##"/>

@@ -454,7 +454,7 @@
         <EditorCategories value="Race:Terran"/>
     </CSound>
 
-    <CDataCollectionUnit id="HHPistols">
+    <CDataCollectionUnit id="HHPistols" parent="Weapon_Instant">
         <EditorCategories value="DataGroup:Weapon,DataFamily:Coop,Race:Terran,ObjectType:Other"/>
         <DataRecord Entry="Weapon,HHPistols"/>
         <DataRecord Entry="Effect,HHPistols@CP"/>

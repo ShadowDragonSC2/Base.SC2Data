@@ -15,6 +15,8 @@ Requirement/Name/AssaultGalleon@Show=Show
 
 Effect/Name/TyphoonMissilePodAssaultGalleon@LM=LM
 Effect/Name/TyphoonMissilePodAssaultGalleon@Damage=Damage
+Actor/Name/TyphoonMissilePodAssaultGalleon@Attack=Attack
+Actor/Name/TyphoonMissilePodAssaultGalleon@AttackMissile=Attack Missile
 Model/Name/TyphoonMissilePodAssaultGalleon@AttackMissile=Attack Missile
 Model/Name/TyphoonMissilePodAssaultGalleon@AttackImpact=Attack Impact
 Model/Name/TyphoonMissilePodAssaultGalleon@AttackLaunch=Attack Launch

@@ -1,10 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Catalog>
-    <CButton id="InfestedMarine"></CButton>
+    <CButton id="InfestedMarine">
+        <Icon value="Assets\Textures\btn-unit-zerg-infestedmarine.dds"/>
+    </CButton>
     
     <CUnit id="InfestedMarine"></CUnit>
+    <CUnit id="InfestedMarine@Burrowed">
+        <Collide index="Ground" value="0"/>
+        <Collide index="Small" value="0"/>
+        <Collide index="ForceField" value="0"/>
+    </CUnit>
     
-    <CActorUnit id="InfestedMarine" parent="GenericBurrowerStandard" unitName="InfestedMarine"/>
+    <CActorUnit id="InfestedMarine" parent="GenericBurrowerStandard" unitName="InfestedMarine">
+        <PortraitModel value="InfestedMarine@Portrait"/>
+        <DeathArray index="Normal" ModelLink="InfestedMarine@Death" SoundLink="InfestedMarine@Death" VoiceLink="InfestedMarine@DeathVoice"/>
+        <SoundArray index="Attack" value="InfestedMarine@Attack"/>
+        <SoundArray index="Help" value="InfestedMarine@Help"/>
+        <SoundArray index="Pissed" value="InfestedMarine@Pissed"/>
+        <SoundArray index="Yes" value="InfestedMarine@Yes"/>
+        <SoundArray index="What" value="InfestedMarine@What"/>
+        <SoundArray index="Ready" value="InfestedMarine@Ready"/>
+
+        <Macros value="ZergBurrowStandardAnimMacro"/>
+        <Macros value="ZergSmallBurrowEffects"/>
+        <Macros value="UnloadDropAnim"/>
+
+        <BarWidth value="40"/>
+        <BarOffset value="40"/>
+
+        <UnitIcon value="Assets\Textures\btn-unit-zerg-infestedmarine.dds"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Zerg-InfestedMarine.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Zerg-InfestedMarine.dds"/>
+        </Wireframe>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level0.dds"/>
+        <Aliases value="_UnitSmall"/>
+    </CActorUnit>
     
     <CModel id="InfestedMarine" parent="Unit">
         <Model value=""/>
@@ -38,10 +71,11 @@
         <AssetArray File=""/>
     </CSound>
 
-    <CDataCollectionUnit id="InfestedMarine">
+    <CDataCollectionUnit id="InfestedMarine" parent="UnitGround">
         <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:InfestedTerran,ObjectType:Unit"/>
         <DataRecord Entry="Button,InfestedMarine"/>
         <DataRecord Entry="Unit,InfestedMarine"/>
+        <DataRecord Entry="Unit,InfestedMarine@Burrowed"/>
         <DataRecord Entry="Actor,InfestedMarine"/>
         <DataRecord Entry="Model,InfestedMarine"/>
         <DataRecord Entry="Model,InfestedMarine@Death"/>
