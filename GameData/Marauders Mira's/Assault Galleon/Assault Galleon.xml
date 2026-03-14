@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Catalog>
-    <CButton id="AssaultGalleon"></CButton>
+    <CButton id="AssaultGalleon">
+        <Icon value="Assets\Textures\btn-building-hornerhan-assaultgalleon.dds"/>
+    </CButton>
 
     <CUnit id="AssaultGalleon">
         <DeathRevealRadius value="3"/>
@@ -185,7 +187,7 @@
 
     <CRequirement id="AssaultGalleon@Use"/>
 
-    <CDataCollectionUnit id="AssaultGalleon">
+    <CDataCollectionUnit id="AssaultGalleon" parent="UnitAir">
         <EditorCategories value="DataGroup:Unit,DataFamily:Coop,Race:Terran,ObjectType:Unit"/>
         <DataRecord Entry="Button,AssaultGalleon"/>
         <DataRecord Entry="Unit,AssaultGalleon"/>
@@ -318,7 +320,7 @@
         <EditorCategories value="ObjectFamily:Melee,ObjectType:Projectile"/>
     </CUnit>
 
-    <CDataCollection id="TyphoonMissilePodAssaultGalleon">
+    <CDataCollection id="TyphoonMissilePodAssaultGalleon" parent="Weapon_Missile">
         <EditorCategories value="DataGroup:Weapon,DataFamily:Coop,Race:Terran,ObjectType:Projectile"/>
         <DataRecord Entry="Weapon,TyphoonMissilePodAssaultGalleon"/>
         <DataRecord Entry="Effect,TyphoonMissilePodAssaultGalleon@LM"/>
