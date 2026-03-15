@@ -331,11 +331,11 @@
     </CUpgrade>
     <CUpgrade id="ProtossShields@2" parent="ProtossShields@0">
         <Icon value="Assets\Textures\btn-upgrade-protoss-shieldslevel2.dds"/>
-        <EffectArrayTemplate Operation="Set" Reference="Actor,^ParamId^,ShieldIcon" Value="{Upgrade,ProtossShields@2,Icon}"/>
+        <EffectArrayTemplate Operation="Set" Reference="Actor,^ParamId^,ShieldArmorIcon" Value="{Upgrade,ProtossShields@2,Icon}"/>
     </CUpgrade>
     <CUpgrade id="ProtossShields@3" parent="ProtossShields@0">
         <Icon value="Assets\Textures\btn-upgrade-protoss-shieldslevel3.dds"/>
-        <EffectArrayTemplate Operation="Set" Reference="Actor,^ParamId^,ShiedArmorIcon" Value="{Upgrade,ProtossShields@3,Icon}"/>
+        <EffectArrayTemplate Operation="Set" Reference="Actor,^ParamId^,ShieldArmorIcon" Value="{Upgrade,ProtossShields@3,Icon}"/>
     </CUpgrade>
 
     <CRequirement id="ProtossShields@1">

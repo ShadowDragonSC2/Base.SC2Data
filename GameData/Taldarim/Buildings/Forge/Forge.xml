@@ -83,6 +83,8 @@
         <ModelFlags index="AutomateGlobalLoops" value="0"/>
         <CreepHeightClass value="Small"/>
         <BarWidth value="135"/>
+        <UnitIcon value="Assets\Textures\btn-building-protoss-forge-forged.dds"/>
+        <HeroIcon value="Assets\Textures\btn-building-protoss-forge-forged.dds"/>
         <GroupIcon>
             <Image value="Assets\Textures\btn-building-protoss-forge-forged.dds"/>
         </GroupIcon>
