@@ -207,7 +207,7 @@
         <EditorCategories value="LightGroup:PortraitsUnitsProtoss"/>
     </CLight>
 
-    <CDataCollectionUnit id="Ascendant">
+    <CDataCollectionUnit id="Ascendant" parent="UnitGround">
         <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Protoss,ObjectType:Unit"/>
         <DataRecord Entry="Button,Ascendant"/>
         <DataRecord Entry="Unit,Ascendant"/>
@@ -227,7 +227,9 @@
         <DataRecord Entry="Sound,Ascendant@AbilSound"/>
         <DataRecord Entry="Requirement,Ascendant"/>
         <DataRecord Entry="Light,Ascendant@Portrait"/>
-        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Protoss,ObjectType:Unit"/>
+        <TechInfoUpgradeUsed value="ProtossAirArmorsLevel@1"/>
+        <TechInfoUpgradeUsed value="ProtossAirArmorsLevel@2"/>
+        <TechInfoUpgradeUsed value="ProtossAirArmorsLevel@3"/>
     </CDataCollectionUnit>
 
     <!-- ============== Abils ============== -->

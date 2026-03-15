@@ -203,7 +203,7 @@
 
     <CRequirement id="Arbiter"/>
 
-    <CDataCollectionUnit id="Arbiter">
+    <CDataCollectionUnit id="Arbiter" parent="UnitAir">
         <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Protoss,ObjectType:Unit"/>
         <DataRecord Entry="Button,Arbiter"/>
         <DataRecord Entry="Unit,Arbiter"/>

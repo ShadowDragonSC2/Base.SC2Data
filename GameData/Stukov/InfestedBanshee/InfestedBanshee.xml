@@ -275,7 +275,7 @@
 
     <CRequirement id="InfestedBanshee@Use"/>
 
-    <CDataCollectionUnit id="InfestedBanshee">
+    <CDataCollectionUnit id="InfestedBanshee" parent="UnitAir">
         <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:InfestedTerran,ObjectType:Unit"/>
         <Name value="Unit/Name/InfestedBanshee"/>
         <DataRecord Entry="Button,InfestedBanshee"/>

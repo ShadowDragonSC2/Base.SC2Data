@@ -41,6 +41,7 @@
         <Fields Reference="Sound,^ParamId^@Ready,AssetArray" NameOverride="DataCollectionPattern/NameOverride/Sounds/Ready"/>
         <Fields Reference="Requirement,^ParamId^@Use,NodeArray" NameOverride="DataCollectionPattern/NameOverride/Requirement/Use"/>
         <Fields Reference="Requirement,^ParamId^@Show,NodeArray" NameOverride="DataCollectionPattern/NameOverride/Requirement/Show"/>
+        <Fields Reference="DataCollection,^ParamId^,TechInfoUpgradeUsed" NameOverride="DataCollectionPattern/NameOverride/Upgrades"/>
     </CDataCollectionPattern>
     <CDataCollectionPattern id="UnitPattern_Air" parent="UnitPattern_Base">
         <Fields Reference="Unit,^ParamId^,Height" />
@@ -66,7 +67,16 @@
     </CDataCollectionPattern>
 
     <CDataCollectionPattern id="UpgradePattern_Template">
-        <Fields Reference="Upgrade,^ParamId^@1,EffectArrayTemplate"/>
+        <Fields Reference="Upgrade,^ParamId^@1,EffectArrayTemplate" NameOverride="DataCollectionPattern/NameOverride/UpgradePattern/EffectArrayTemplate/1"/>
+        <Fields Reference="Upgrade,^ParamId^@2,EffectArrayTemplate" NameOverride="DataCollectionPattern/NameOverride/UpgradePattern/EffectArrayTemplate/2"/>
+        <Fields Reference="Upgrade,^ParamId^@3,EffectArrayTemplate" NameOverride="DataCollectionPattern/NameOverride/UpgradePattern/EffectArrayTemplate/3"/>
+        <Fields Reference="Upgrade,^ParamId^@4,EffectArrayTemplate" NameOverride="DataCollectionPattern/NameOverride/UpgradePattern/EffectArrayTemplate/4"/>
+        <Fields Reference="Upgrade,^ParamId^@5,EffectArrayTemplate" NameOverride="DataCollectionPattern/NameOverride/UpgradePattern/EffectArrayTemplate/5"/>
+        <Fields Reference="Upgrade,^ParamId^@6,EffectArrayTemplate" NameOverride="DataCollectionPattern/NameOverride/UpgradePattern/EffectArrayTemplate/6"/>
+        <Fields Reference="Upgrade,^ParamId^@7,EffectArrayTemplate" NameOverride="DataCollectionPattern/NameOverride/UpgradePattern/EffectArrayTemplate/7"/>
+        <Fields Reference="Upgrade,^ParamId^@8,EffectArrayTemplate" NameOverride="DataCollectionPattern/NameOverride/UpgradePattern/EffectArrayTemplate/8"/>
+        <Fields Reference="Upgrade,^ParamId^@9,EffectArrayTemplate" NameOverride="DataCollectionPattern/NameOverride/UpgradePattern/EffectArrayTemplate/9"/>
+        <Fields Reference="Upgrade,^ParamId^@10,EffectArrayTemplate" NameOverride="DataCollectionPattern/NameOverride/UpgradePattern/EffectArrayTemplate/10"/>
     </CDataCollectionPattern>
     <!-- -->
     <CDataCollectionUnit default="1" id="UnitBase">
@@ -94,10 +104,10 @@
         <Pattern value="WeaponPattern_Missile"/>
     </CDataCollectionUnit>
 
-    <CDataCollectionUnit id="UpgradeBase">
+    <CDataCollectionUnit default="1" id="UpgradeBase">
         <Name value="Button/Name/##id##"/>
-        <EditorIconSource value="Upgrade"/>
         <Pattern value="UpgradePattern_Template"/>
+        <EditorCategories value="DataGroup:Research,DataFamily:Melee,Race:Protoss,ObjectType:Unit"/>
     </CDataCollectionUnit>
 
     <!-- Actors -->

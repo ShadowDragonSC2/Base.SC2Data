@@ -39,6 +39,8 @@ DataCollectionPattern/NameOverride/Requirement/Show=Requirement - Show
 
 DataCollectionPattern/NameOverride/UnitFlags/ArmySelect=Army Select
 
+DataCollectionPattern/NameOverride/Upgrades=Upgrades
+
 DataCollectionPattern/NameOverride/Model/Launch=Launch Model
 DataCollectionPattern/NameOverride/Model/Impact=Impact Model
 DataCollectionPattern/NameOverride/Model/Missile=Missile Model
@@ -55,3 +57,14 @@ DataCollectionPattern/NameOverride/ReaperPattern/SpeedJump=Speed Jump
 DataCollectionPattern/NameOverride/ReaperPattern/MinSpeedJump=Min Speed Jump
 DataCollectionPattern/NameOverride/ReaperPattern/LandModel=Land Model
 DataCollectionPattern/NameOverride/ReaperPattern/LaunchModel=Launch Model
+
+DataCollectionPattern/NameOverride/UpgradePattern/EffectArrayTemplate/1=Список улучшений, уровень 1
+DataCollectionPattern/NameOverride/UpgradePattern/EffectArrayTemplate/2=Список улучшений, уровень 2
+DataCollectionPattern/NameOverride/UpgradePattern/EffectArrayTemplate/3=Список улучшений, уровень 3
+DataCollectionPattern/NameOverride/UpgradePattern/EffectArrayTemplate/4=Список улучшений, уровень 4
+DataCollectionPattern/NameOverride/UpgradePattern/EffectArrayTemplate/5=Список улучшений, уровень 5
+DataCollectionPattern/NameOverride/UpgradePattern/EffectArrayTemplate/6=Список улучшений, уровень 6
+DataCollectionPattern/NameOverride/UpgradePattern/EffectArrayTemplate/7=Список улучшений, уровень 7
+DataCollectionPattern/NameOverride/UpgradePattern/EffectArrayTemplate/8=Список улучшений, уровень 8
+DataCollectionPattern/NameOverride/UpgradePattern/EffectArrayTemplate/9=Список улучшений, уровень 9
+DataCollectionPattern/NameOverride/UpgradePattern/EffectArrayTemplate/10=Список улучшений, уровень 10

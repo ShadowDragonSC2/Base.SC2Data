@@ -3,3 +3,8 @@ Unit/Category/ProtossFaction/Nerazim=Неразимы
 
 UI/HelpMenuDialogTechGlossary_Control_Unit/Category/ProtossFaction/Taldarim=Тал'даримы
 UI/HelpMenuDialogTechGlossary_Control_Unit/Category/ProtossFaction/Nerazim=Неразимы
+
+Button/Name/ProtossAirArmorsLevel=Улучшить броню воздушных войск
+Upgrade/Name/ProtossAirArmorsLevel@1=Броня воздушных войск, Уровень 1
+Upgrade/Name/ProtossAirArmorsLevel@2=Броня воздушных войск, Уровень 2
+Upgrade/Name/ProtossAirArmorsLevel@3=Броня воздушных войск, Уровень 3
