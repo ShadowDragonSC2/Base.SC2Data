@@ -366,9 +366,12 @@
         <DataRecord Entry="Sound,Wrathwalker@Yes"/>
         <DataRecord Entry="Requirement,Wrathwalker"/>
         <DataRecord Entry="RequirementNode,Wrathwalker@Use@AllowUnit"/>
-        <TechInfoUpgradeUsed value="ProtossAirArmorsLevel@1"/>
-        <TechInfoUpgradeUsed value="ProtossAirArmorsLevel@2"/>
-        <TechInfoUpgradeUsed value="ProtossAirArmorsLevel@3"/>
+        <TechInfoUpgradeUsed value="ProtossGroundArmors@1"/>
+        <TechInfoUpgradeUsed value="ProtossGroundArmors@2"/>
+        <TechInfoUpgradeUsed value="ProtossGroundArmors@3"/>
+        <TechInfoUpgradeUsed value="ProtossShields@1"/>
+        <TechInfoUpgradeUsed value="ProtossShields@2"/>
+        <TechInfoUpgradeUsed value="ProtossShields@3"/>
     </CDataCollectionUnit>
 
     <!-- ============ Weapons ============ -->

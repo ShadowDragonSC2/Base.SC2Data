@@ -464,6 +464,9 @@
         <DataRecord Entry="Model,HHPistols@AttackLaunch"/>
         <DataRecord Entry="Sound,HHPistols@AttackImpact"/>
         <DataRecord Entry="Sound,HHPistols@AttackLaunch"/>
+        <TechInfoUpgradeUsed value="TerranInfantryWeapons@1"/>
+        <TechInfoUpgradeUsed value="TerranInfantryWeapons@2"/>
+        <TechInfoUpgradeUsed value="TerranInfantryWeapons@3"/>
     </CDataCollectionUnit>
 
     <!-- Abilities -->

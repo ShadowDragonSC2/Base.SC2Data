@@ -18,4 +18,130 @@
         <Fields Reference="Mover,^ParamId^@Jump,MotionPhases[0].AdaptableParabolaAccels[Land]" NameOverride="DataCollectionPattern/NameOverride/ReaperPattern/JumpAccelsLand"/>
     </CDataCollectionPattern>
 
+    <!-- Upgrades -->
+     
+    <CUpgrade default="1" id="TerranWeapons">
+        <?token id="icon" type="CImagePath" value="Bogus"?>
+        <Icon value="##icon##"/>
+        <EffectArrayTemplate Operation="Set" Reference="Weapon,^ParamId^,Icon" Value="{Upgrade,##id##,Icon}"/>
+        <EffectArrayTemplate Reference="Weapon,^ParamId^,Level" Value="1"/>
+        <EffectArrayTemplate Reference="Effect,^ParamId^@Damage,Amount" Value="{DataColecction,^ParamId^,UpgradeInfoWeapon[0].DamagePerDice}"/>
+    </CUpgrade>
+
+    <!-- Terran Infantry Weapons -->
+    <CButton id="TerranInfantryWeapons@1">
+        <Icon value="Assets\Textures\btn-upgrade-terran-infantryweaponslevel1.dds"/>
+    </CButton>
+    <CButton id="TerranInfantryWeapons@2">
+        <Icon value="Assets\Textures\btn-upgrade-terran-infantryweaponslevel2.dds"/>
+    </CButton>
+    <CButton id="TerranInfantryWeapons@3">
+        <Icon value="Assets\Textures\btn-upgrade-terran-infantryweaponslevel3.dds"/>
+    </CButton>
+
+    <CUpgrade id="TerranInfantryWeapons@1" parent="TerranWeapons" icon="Assets\Textures\btn-upgrade-terran-infantryweaponslevel1.dds"/>
+    <CUpgrade id="TerranInfantryWeapons@2" parent="TerranWeapons" icon="Assets\Textures\btn-upgrade-terran-infantryweaponslevel2.dds"/>
+    <CUpgrade id="TerranInfantryWeapons@3" parent="TerranWeapons" icon="Assets\Textures\btn-upgrade-terran-infantryweaponslevel3.dds"/>
+
+    <CRequirement id="TerranInfantryWeapons@1">
+        <NodeArray index="Show" Link="TerranInfantryWeapons@Not1"/>
+    </CRequirement>
+    <CRequirement id="TerranInfantryWeapons@2">
+        <NodeArray index="Show" Link="TerranInfantryWeapons@Not2"/>
+        <NodeArray index="Use" Link="TerranInfantryWeapons@Complete1"/>
+    </CRequirement>
+    <CRequirement id="TerranInfantryWeapons@3">
+        <NodeArray index="Show" Link="TerranInfantryWeapons@Not3"/>
+        <NodeArray index="Use" Link="TerranInfantryWeapons@Complete2"/>
+    </CRequirement>
+    
+    <CRequirementNot id="TerranInfantryWeapons@Not1">
+        <OperandArray index="0" value="TerranInfantryWeapons@Have1"/>
+    </CRequirementNot>
+    <CRequirementNot id="TerranInfantryWeapons@Not2">
+        <OperandArray index="0" value="TerranInfantryWeapons@Have2"/>
+    </CRequirementNot>
+    <CRequirementNot id="TerranInfantryWeapons@Not3">
+        <OperandArray index="0" value="TerranInfantryWeapons@Have3"/>
+    </CRequirementNot>
+
+    <CRequirementCountUpgrade id="TerranInfantryWeapons@Have1">
+        <Count Link="TerranInfantryWeapons@1" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="TerranInfantryWeapons@Have2">
+        <Count Link="TerranInfantryWeapons@2" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="TerranInfantryWeapons@Have3">
+        <Count Link="TerranInfantryWeapons@3" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+
+    <CRequirementCountUpgrade id="TerranInfantryWeapons@Complete1">
+        <Count Link="TerranInfantryWeapons@1" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="TerranInfantryWeapons@Complete2">
+        <Count Link="TerranInfantryWeapons@2" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="TerranInfantryWeapons@Complete3">
+        <Count Link="TerranInfantryWeapons@3" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+
+    <CDataCollectionUnit id="TerranInfantryWeapons" parent="UpgradeBase">
+        <DataRecord Entry="Button,TerranInfantryWeapons@1"/>
+        <DataRecord Entry="Button,TerranInfantryWeapons@2"/>
+        <DataRecord Entry="Button,TerranInfantryWeapons@3"/>
+        <DataRecord Entry="Upgrade,TerranInfantryWeapons@1"/>
+        <DataRecord Entry="Upgrade,TerranInfantryWeapons@2"/>
+        <DataRecord Entry="Upgrade,TerranInfantryWeapons@3"/>
+    </CDataCollectionUnit>
+
+    <!-- Terran Ship Weapons -->
+    <CButton id="TerranShipWeapons@1">
+        <Icon value="Assets\Textures\btn-upgrade-terran-shipweaponslevel1.dds"/>
+    </CButton>
+    <CButton id="TerranShipWeapons@2">
+        <Icon value="Assets\Textures\btn-upgrade-terran-shipweaponslevel2.dds"/>
+    </CButton>
+    <CButton id="TerranShipWeapons@3">
+        <Icon value="Assets\Textures\btn-upgrade-terran-shipweaponslevel3.dds"/>
+    </CButton>
+
+    <CUpgrade id="TerranShipWeapons@1" parent="TerranWeapons" icon="Assets\Textures\btn-upgrade-terran-shipweaponslevel1.dds"/>
+    <CUpgrade id="TerranShipWeapons@2" parent="TerranWeapons" icon="Assets\Textures\btn-upgrade-terran-shipweaponslevel2.dds"/>
+    <CUpgrade id="TerranShipWeapons@3" parent="TerranWeapons" icon="Assets\Textures\btn-upgrade-terran-shipweaponslevel3.dds"/>
+
+    <CDataCollectionUnit id="TerranShipWeapons" parent="UpgradeBase">
+        <DataRecord Entry="Button,TerranShipWeapons@1"/>
+        <DataRecord Entry="Button,TerranShipWeapons@2"/>
+        <DataRecord Entry="Button,TerranShipWeapons@3"/>
+        <DataRecord Entry="Upgrade,TerranShipWeapons@1"/>
+        <DataRecord Entry="Upgrade,TerranShipWeapons@2"/>
+        <DataRecord Entry="Upgrade,TerranShipWeapons@3"/>
+    </CDataCollectionUnit>
+
+    <!-- Terran Vehicle Weapons -->
+
+    <CButton id="TerranVehicleWeapons@1">
+        <Icon value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel1.dds"/>
+    </CButton>
+    <CButton id="TerranVehicleWeapons@2">
+        <Icon value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel2.dds"/>
+    </CButton>
+    <CButton id="TerranVehicleWeapons@3">
+        <Icon value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel3.dds"/>
+    </CButton>
+    
+    <CUpgrade id="TerranVehicleWeapons@1" parent="TerranWeapons" icon="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel1.dds"/>
+    <CUpgrade id="TerranVehicleWeapons@2" parent="TerranWeapons" icon="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel2.dds"/>
+    <CUpgrade id="TerranVehicleWeapons@3" parent="TerranWeapons" icon="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel3.dds"/>
+    
+    <CDataCollectionUnit id="TerranVehicleWeapons" parent="UpgradeBase">
+        <DataRecord Entry="Button,TerranVehicleWeapons@1"/>
+        <DataRecord Entry="Button,TerranVehicleWeapons@2"/>
+        <DataRecord Entry="Button,TerranVehicleWeapons@3"/>
+        <DataRecord Entry="Upgrade,TerranVehicleWeapons@1"/>
+        <DataRecord Entry="Upgrade,TerranVehicleWeapons@2"/>
+        <DataRecord Entry="Upgrade,TerranVehicleWeapons@3"/>
+    </CDataCollectionUnit>
+
+
 </Catalog>

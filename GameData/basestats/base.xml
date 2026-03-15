@@ -62,6 +62,7 @@
         <Fields Reference="Model,^ParamId^@AttackLaunch,Model" NameOverride="DataCollectionPattern/NameOverride/Model/Launch"/>
         <Fields Reference="Sound,^ParamId^@AttackImpact,AssetArray" NameOverride="DataCollectionPattern/NameOverride/Sound/Impact"/>
         <Fields Reference="Sound,^ParamId^@AttackLaunch,AssetArray" NameOverride="DataCollectionPattern/NameOverride/Sound/Launch"/>
+        <Fields Reference="DataCollection,^ParamId^,TechInfoUpgradeUsed" NameOverride="DataCollectionPattern/NameOverride/Upgrades"/>
         <Fields Reference="DataCollection,^ParamId^,UpgradeInfoWeapon[0]"/>
         <Fields Reference="DataCollection,^ParamId^,UpgradeInfoWeapon[1]"/>
     </CDataCollectionPattern>
