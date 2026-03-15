@@ -61,12 +61,12 @@
             <LayoutButtons Face="ProtossGroundWeapons@1" Type="AbilCmd" AbilCmd="TaldarimForgeResearch,Research1" Row="0" Column="0"/>
             <LayoutButtons Face="ProtossGroundWeapons@2" Type="AbilCmd" AbilCmd="TaldarimForgeResearch,Research2" Row="0" Column="0"/>
             <LayoutButtons Face="ProtossGroundWeapons@3" Type="AbilCmd" AbilCmd="TaldarimForgeResearch,Research3" Row="0" Column="0"/>
-            <LayoutButtons Face="ProtossGroundArmors" Type="AbilCmd" AbilCmd="TaldarimForgeResearch,Research4" Row="0" Column="1"/>
-            <LayoutButtons Face="ProtossGroundArmors" Type="AbilCmd" AbilCmd="TaldarimForgeResearch,Research5" Row="0" Column="1"/>
-            <LayoutButtons Face="ProtossGroundArmors" Type="AbilCmd" AbilCmd="TaldarimForgeResearch,Research6" Row="0" Column="1"/>
-            <LayoutButtons Face="ProtossShields" Type="AbilCmd" AbilCmd="TaldarimForgeResearch,Research7" Row="0" Column="2"/>
-            <LayoutButtons Face="ProtossShields" Type="AbilCmd" AbilCmd="TaldarimForgeResearch,Research8" Row="0" Column="2"/>
-            <LayoutButtons Face="ProtossShields" Type="AbilCmd" AbilCmd="TaldarimForgeResearch,Research9" Row="0" Column="2"/>
+            <LayoutButtons Face="ProtossGroundArmors@1" Type="AbilCmd" AbilCmd="TaldarimForgeResearch,Research4" Row="0" Column="1"/>
+            <LayoutButtons Face="ProtossGroundArmors@2" Type="AbilCmd" AbilCmd="TaldarimForgeResearch,Research5" Row="0" Column="1"/>
+            <LayoutButtons Face="ProtossGroundArmors@3" Type="AbilCmd" AbilCmd="TaldarimForgeResearch,Research6" Row="0" Column="1"/>
+            <LayoutButtons Face="ProtossShields@1" Type="AbilCmd" AbilCmd="TaldarimForgeResearch,Research7" Row="0" Column="2"/>
+            <LayoutButtons Face="ProtossShields@2" Type="AbilCmd" AbilCmd="TaldarimForgeResearch,Research8" Row="0" Column="2"/>
+            <LayoutButtons Face="ProtossShields@3" Type="AbilCmd" AbilCmd="TaldarimForgeResearch,Research9" Row="0" Column="2"/>
         </CardLayouts>
         <GlossaryPriority value="10"/>
         <HotkeyCategory value="Unit/Category/ProtossFaction/Taldarim"/>
@@ -138,47 +138,47 @@
     
     <CAbilResearch id="TaldarimForgeResearch">
         <InfoArray index="Research1">
-            <Button DefaultButtonFace="ProtossGroundWeapons@1" Requirements="ProtossGroundWeapons@Show1"/>
+            <Button DefaultButtonFace="ProtossGroundWeapons@1" Requirements="ProtossGroundWeapons@1"/>
             <Upgrade value="ProtossGroundWeapons@1"/>
             <Time value="5"/>
         </InfoArray>
         <InfoArray index="Research2">
-            <Button DefaultButtonFace="ProtossGroundWeapons@2" Requirements="ProtossGroundWeapons@Show2"/>
+            <Button DefaultButtonFace="ProtossGroundWeapons@2" Requirements="ProtossGroundWeapons@2"/>
             <Upgrade value="ProtossGroundWeapons@2"/>
             <Time value="10"/>
         </InfoArray>
         <InfoArray index="Research3">
-            <Button DefaultButtonFace="ProtossGroundWeapons@3" Requirements="ProtossGroundWeapons@Show3"/>
+            <Button DefaultButtonFace="ProtossGroundWeapons@3" Requirements="ProtossGroundWeapons@3"/>
             <Upgrade value="ProtossGroundWeapons@3"/>
             <Time value="15"/>
         </InfoArray>
         <InfoArray index="Research4">
-            <Button DefaultButtonFace="ProtossGroundArmors"/>
+            <Button DefaultButtonFace="ProtossGroundArmors@1" Requirements="ProtossGroundArmors@1"/>
             <Upgrade value="ProtossGroundArmors@1"/>
             <Time value="5"/>
         </InfoArray>
         <InfoArray index="Research5">
-            <Button DefaultButtonFace="ProtossGroundArmors"/>
+            <Button DefaultButtonFace="ProtossGroundArmors@2" Requirements="ProtossGroundArmors@2"/>
             <Upgrade value="ProtossGroundArmors@2"/>
             <Time value="10"/>
         </InfoArray>
         <InfoArray index="Research6">
-            <Button DefaultButtonFace="ProtossGroundArmors"/>
+            <Button DefaultButtonFace="ProtossGroundArmors@3" Requirements="ProtossGroundArmors@3"/>
             <Upgrade value="ProtossGroundArmors@3"/>
             <Time value="15"/>
         </InfoArray>
         <InfoArray index="Research7">
-            <Button DefaultButtonFace="ProtossShields"/>
+            <Button DefaultButtonFace="ProtossShields@1" Requirements="ProtossShields@1"/>
             <Upgrade value="ProtossShields@1"/>
             <Time value="5"/>
         </InfoArray>
         <InfoArray index="Research8">
-            <Button DefaultButtonFace="ProtossShields"/>
+            <Button DefaultButtonFace="ProtossShields@2" Requirements="ProtossShields@2"/>
             <Upgrade value="ProtossShields@2"/>
             <Time value="10"/>
         </InfoArray>
         <InfoArray index="Research9">
-            <Button DefaultButtonFace="ProtossShields"/>
+            <Button DefaultButtonFace="ProtossShields@3" Requirements="ProtossShields@3"/>
             <Upgrade value="ProtossShields@3"/>
             <Time value="15"/>
         </InfoArray>

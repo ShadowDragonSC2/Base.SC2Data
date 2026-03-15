@@ -233,8 +233,14 @@
     </CDataCollectionUnit>
 
     <!-- Protoss Ground Armors -->
-    <CButton id="ProtossGroundArmors">
+    <CButton id="ProtossGroundArmors@1">
         <Icon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel1.dds"/>
+    </CButton>
+    <CButton id="ProtossGroundArmors@2">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel2.dds"/>
+    </CButton>
+    <CButton id="ProtossGroundArmors@3">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel3.dds"/>
     </CButton>
     
     <CUpgrade default="1" id="ProtossGroundArmors@0">
@@ -244,18 +250,57 @@
     <CUpgrade id="ProtossGroundArmors@1" parent="ProtossGroundArmors@0">
         <Icon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel1.dds"/>
         <EffectArrayTemplate Operation="Set" Reference="Actor,^ParamId^,LifeArmorIcon" Value="{Upgrade,ProtossGroundArmors@1,Icon}"/>
-        <EffectArrayTemplate Operation="Set" Reference="Button,^ParamId^,Icon" Value="{Upgrade,ProtossGroundArmors@1,Icon}"/>
     </CUpgrade>
     <CUpgrade id="ProtossGroundArmors@2" parent="ProtossGroundArmors@0">
         <Icon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel2.dds"/>
         <EffectArrayTemplate Operation="Set" Reference="Actor,^ParamId^,LifeArmorIcon" Value="{Upgrade,ProtossGroundArmors@2,Icon}"/>
-        <EffectArrayTemplate Operation="Set" Reference="Button,^ParamId^,Icon" Value="{Upgrade,ProtossGroundArmors@2,Icon}"/>
     </CUpgrade>
     <CUpgrade id="ProtossGroundArmors@3" parent="ProtossGroundArmors@0">
         <Icon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel3.dds"/>
         <EffectArrayTemplate Operation="Set" Reference="Actor,^ParamId^,LifeArmorIcon" Value="{Upgrade,ProtossGroundArmors@3,Icon}"/>
-        <EffectArrayTemplate Operation="Set" Reference="Button,^ParamId^,Icon" Value="{Upgrade,ProtossGroundArmors@3,Icon}"/>
     </CUpgrade>
+
+    <CRequirement id="ProtossGroundArmors@1">
+        <NodeArray index="Show" Link="ProtossGroundArmors@Not1"/>
+    </CRequirement>
+    <CRequirement id="ProtossGroundArmors@2">
+        <NodeArray index="Show" Link="ProtossGroundArmors@Not2"/>
+        <NodeArray index="Use" Link="ProtossGroundArmors@Complete1"/>
+    </CRequirement>
+    <CRequirement id="ProtossGroundArmors@3">
+        <NodeArray index="Show" Link="ProtossGroundArmors@Not3"/>
+        <NodeArray index="Use" Link="ProtossGroundArmors@Complete2"/>
+    </CRequirement>
+    
+    <CRequirementNot id="ProtossGroundArmors@Not1">
+        <OperandArray index="0" value="ProtossGroundArmors@Have1"/>
+    </CRequirementNot>
+    <CRequirementNot id="ProtossGroundArmors@Not2">
+        <OperandArray index="0" value="ProtossGroundArmors@Have2"/>
+    </CRequirementNot>
+    <CRequirementNot id="ProtossGroundArmors@Not3">
+        <OperandArray index="0" value="ProtossGroundArmors@Have3"/>
+    </CRequirementNot>
+
+    <CRequirementCountUpgrade id="ProtossGroundArmors@Have1">
+        <Count Link="ProtossGroundArmors@1" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="ProtossGroundArmors@Have2">
+        <Count Link="ProtossGroundArmors@2" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="ProtossGroundArmors@Have3">
+        <Count Link="ProtossGroundArmors@3" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+
+    <CRequirementCountUpgrade id="ProtossGroundArmors@Complete1">
+        <Count Link="ProtossGroundArmors@1" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="ProtossGroundArmors@Complete2">
+        <Count Link="ProtossGroundArmors@2" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="ProtossGroundArmors@Complete3">
+        <Count Link="ProtossAirWeapons@3" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
     
     <CDataCollectionUnit id="ProtossGroundArmors" parent="UpgradeBase">
         <DataRecord Entry="Button,ProtossGroundArmors"/>
@@ -266,29 +311,74 @@
     </CDataCollectionUnit>
 
     <!-- Protoss Shields -->
-    <CButton id="ProtossShields">
+    <CButton id="ProtossShields@1">
         <Icon value="Assets\Textures\btn-upgrade-protoss-shieldslevel1.dds"/>
+    </CButton>
+    <CButton id="ProtossShields@2">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-shieldslevel2.dds"/>
+    </CButton>
+    <CButton id="ProtossShields@3">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-shieldslevel3.dds"/>
     </CButton>
     
     <CUpgrade default="1" id="ProtossShields@0">
-        <EffectArrayTemplate Reference="Unit,^ParamId^,ShieldsArmor" Value="{DataCollection,^ParamId^,UpgradeInfoUnitLifeArmorPerLevel}"/>
-        <EffectArrayTemplate Reference="Unit,^ParamId^,ShieldsArmorLevel" Value="1"/>
+        <EffectArrayTemplate Reference="Unit,^ParamId^,ShieldArmor" Value="{DataCollection,^ParamId^,UpgradeInfoUnitLifeArmorPerLevel}"/>
+        <EffectArrayTemplate Reference="Unit,^ParamId^,ShieldArmorLevel" Value="1"/>
     </CUpgrade>
     <CUpgrade id="ProtossShields@1" parent="ProtossShields@0">
         <Icon value="Assets\Textures\btn-upgrade-protoss-shieldslevel1.dds"/>
         <EffectArrayTemplate Operation="Set" Reference="Actor,^ParamId^,ShieldArmorIcon" Value="{Upgrade,ProtossShields@1,Icon}"/>
-        <EffectArrayTemplate Operation="Set" Reference="Button,^ParamId^,Icon" Value="{Upgrade,ProtossShields@1,Icon}"/>
     </CUpgrade>
     <CUpgrade id="ProtossShields@2" parent="ProtossShields@0">
         <Icon value="Assets\Textures\btn-upgrade-protoss-shieldslevel2.dds"/>
         <EffectArrayTemplate Operation="Set" Reference="Actor,^ParamId^,ShieldIcon" Value="{Upgrade,ProtossShields@2,Icon}"/>
-        <EffectArrayTemplate Operation="Set" Reference="Button,^ParamId^,Icon" Value="{Upgrade,ProtossShields@2,Icon}"/>
     </CUpgrade>
     <CUpgrade id="ProtossShields@3" parent="ProtossShields@0">
         <Icon value="Assets\Textures\btn-upgrade-protoss-shieldslevel3.dds"/>
         <EffectArrayTemplate Operation="Set" Reference="Actor,^ParamId^,ShiedArmorIcon" Value="{Upgrade,ProtossShields@3,Icon}"/>
-        <EffectArrayTemplate Operation="Set" Reference="Button,^ParamId^,Icon" Value="{Upgrade,ProtossShields@3,Icon}"/>
     </CUpgrade>
+
+    <CRequirement id="ProtossShields@1">
+        <NodeArray index="Show" Link="ProtossShields@Not1"/>
+    </CRequirement>
+    <CRequirement id="ProtossShields@2">
+        <NodeArray index="Show" Link="ProtossShields@Not2"/>
+        <NodeArray index="Use" Link="ProtossShields@Complete1"/>
+    </CRequirement>
+    <CRequirement id="ProtossShields@3">
+        <NodeArray index="Show" Link="ProtossShields@Not3"/>
+        <NodeArray index="Use" Link="ProtossShields@Complete2"/>
+    </CRequirement>
+    
+    <CRequirementNot id="ProtossShields@Not1">
+        <OperandArray index="0" value="ProtossShields@Have1"/>
+    </CRequirementNot>
+    <CRequirementNot id="ProtossShields@Not2">
+        <OperandArray index="0" value="ProtossShields@Have2"/>
+    </CRequirementNot>
+    <CRequirementNot id="ProtossShields@Not3">
+        <OperandArray index="0" value="ProtossShields@Have3"/>
+    </CRequirementNot>
+
+    <CRequirementCountUpgrade id="ProtossShields@Have1">
+        <Count Link="ProtossShields@1" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="ProtossShields@Have2">
+        <Count Link="ProtossShields@2" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="ProtossShields@Have3">
+        <Count Link="ProtossShields@3" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+
+    <CRequirementCountUpgrade id="ProtossShields@Complete1">
+        <Count Link="ProtossShields@1" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="ProtossShields@Complete2">
+        <Count Link="ProtossShields@2" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="ProtossShields@Complete3">
+        <Count Link="ProtossAirWeapons@3" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
     
     <CDataCollectionUnit id="ProtossShields" parent="UpgradeBase">
         <DataRecord Entry="Button,ProtossShields"/>
@@ -316,27 +406,26 @@
     <CUpgrade id="ProtossGroundWeapons@1" parent="ProtossGroundWeapons@0">
         <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel1.dds"/>
         <EffectArrayTemplate Operation="Set" Reference="Weapon,^ParamId^,Icon" Value="{Upgrade,ProtossGroundWeapons@1,Icon}"/>
-        <EffectArrayTemplate Operation="Set" Reference="Button,^ParamId^,Icon" Value="{Upgrade,ProtossGroundWeapons@1,Icon}"/>
     </CUpgrade>
     <CUpgrade id="ProtossGroundWeapons@2" parent="ProtossGroundWeapons@0">
         <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel2.dds"/>
         <EffectArrayTemplate Operation="Set" Reference="Weapon,^ParamId^,Icon" Value="{Upgrade,ProtossGroundWeapons@2,Icon}"/>
-        <EffectArrayTemplate Operation="Set" Reference="Button,^ParamId^,Icon" Value="{Upgrade,ProtossGroundWeapons@2,Icon}"/>
     </CUpgrade>
     <CUpgrade id="ProtossGroundWeapons@3" parent="ProtossGroundWeapons@0">
         <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel3.dds"/>
         <EffectArrayTemplate Operation="Set" Reference="Weapon,^ParamId^,Icon" Value="{Upgrade,ProtossGroundWeapons@3,Icon}"/>
-        <EffectArrayTemplate Operation="Set" Reference="Button,^ParamId^,Icon" Value="{Upgrade,ProtossGroundWeapons@3,Icon}"/>
     </CUpgrade>
 
-    <CRequirement id="ProtossGroundWeapons@Show1">
+    <CRequirement id="ProtossGroundWeapons@1">
         <NodeArray index="Show" Link="ProtossGroundWeapons@Not1"/>
     </CRequirement>
-    <CRequirement id="ProtossGroundWeapons@Show2">
+    <CRequirement id="ProtossGroundWeapons@2">
         <NodeArray index="Show" Link="ProtossGroundWeapons@Not2"/>
+        <NodeArray index="Use" Link="ProtossGroundWeapons@Complete1"/>
     </CRequirement>
-    <CRequirement id="ProtossGroundWeapons@Show3">
+    <CRequirement id="ProtossGroundWeapons@3">
         <NodeArray index="Show" Link="ProtossGroundWeapons@Not3"/>
+        <NodeArray index="Use" Link="ProtossGroundWeapons@Complete2"/>
     </CRequirement>
     
     <CRequirementNot id="ProtossGroundWeapons@Not1">
@@ -358,6 +447,16 @@
     <CRequirementCountUpgrade id="ProtossGroundWeapons@Have3">
         <Count Link="ProtossGroundWeapons@3" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
+
+    <CRequirementCountUpgrade id="ProtossGroundWeapons@Complete1">
+        <Count Link="ProtossGroundWeapons@1" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="ProtossGroundWeapons@Complete2">
+        <Count Link="ProtossGroundWeapons@2" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="ProtossGroundWeapons@Complete3">
+        <Count Link="ProtossGroundWeapons@3" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
     
     <CDataCollectionUnit id="ProtossGroundWeapons" parent="UpgradeBase">
         <DataRecord Entry="Button,ProtossGroundWeapons"/>
@@ -368,8 +467,14 @@
     </CDataCollectionUnit>
 
     <!-- Protoss Air Weapons -->
-    <CButton id="ProtossAirWeapons">
+    <CButton id="ProtossAirWeapons@1">
         <Icon value="Assets\Textures\btn-upgrade-protoss-airweaponslevel1.dds"/>
+    </CButton>
+    <CButton id="ProtossAirWeapons@2">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-airweaponslevel2.dds"/>
+    </CButton>
+    <CButton id="ProtossAirWeapons@3">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-airweaponslevel3.dds"/>
     </CButton>
     
     <CUpgrade default="1" id="ProtossAirWeapons@0">
@@ -379,28 +484,37 @@
     <CUpgrade id="ProtossAirWeapons@1" parent="ProtossAirWeapons@0">
         <Icon value="Assets\Textures\btn-upgrade-protoss-airweaponslevel1.dds"/>
         <EffectArrayTemplate Operation="Set" Reference="Weapon,^ParamId^,Icon" Value="{Upgrade,ProtossAirWeapons@1,Icon}"/>
-        <EffectArrayTemplate Operation="Set" Reference="Button,^ParamId^,Icon" Value="{Upgrade,ProtossAirWeapons@1,Icon}"/>
     </CUpgrade>
     <CUpgrade id="ProtossAirWeapons@2" parent="ProtossAirWeapons@0">
         <Icon value="Assets\Textures\btn-upgrade-protoss-airweaponslevel2.dds"/>
         <EffectArrayTemplate Operation="Set" Reference="Weapon,^ParamId^,Icon" Value="{Upgrade,ProtossAirWeapons@2,Icon}"/>
-        <EffectArrayTemplate Operation="Set" Reference="Button,^ParamId^,Icon" Value="{Upgrade,ProtossAirWeapons@2,Icon}"/>
     </CUpgrade>
     <CUpgrade id="ProtossAirWeapons@3" parent="ProtossAirWeapons@0">
         <Icon value="Assets\Textures\btn-upgrade-protoss-airweaponslevel3.dds"/>
         <EffectArrayTemplate Operation="Set" Reference="Weapon,^ParamId^,Icon" Value="{Upgrade,ProtossAirWeapons@3,Icon}"/>
-        <EffectArrayTemplate Operation="Set" Reference="Button,^ParamId^,Icon" Value="{Upgrade,ProtossAirWeapons@3,Icon}"/>
     </CUpgrade>
 
-    <CRequirement id="ProtossAirWeapons@Show1">
-        <NodeArray Link="ProtossAirWeapons@Have1"/>
+    <CRequirement id="ProtossAirWeapons@1">
+        <NodeArray index="Show" Link="ProtossAirWeapons@Not1"/>
     </CRequirement>
-    <CRequirement id="ProtossAirWeapons@Show2">
-        <NodeArray Link="ProtossAirWeapons@Have2"/>
+    <CRequirement id="ProtossAirWeapons@2">
+        <NodeArray index="Show" Link="ProtossAirWeapons@Not2"/>
+        <NodeArray index="Use" Link="ProtossAirWeapons@Complete1"/>
     </CRequirement>
-    <CRequirement id="ProtossAirWeapons@Show3">
-        <NodeArray Link="ProtossAirWeapons@Have3"/>
+    <CRequirement id="ProtossAirWeapons@3">
+        <NodeArray index="Show" Link="ProtossAirWeapons@Not3"/>
+        <NodeArray index="Use" Link="ProtossAirWeapons@Complete2"/>
     </CRequirement>
+    
+    <CRequirementNot id="ProtossAirWeapons@Not1">
+        <OperandArray index="0" value="ProtossAirWeapons@Have1"/>
+    </CRequirementNot>
+    <CRequirementNot id="ProtossAirWeapons@Not2">
+        <OperandArray index="0" value="ProtossAirWeapons@Have2"/>
+    </CRequirementNot>
+    <CRequirementNot id="ProtossAirWeapons@Not3">
+        <OperandArray index="0" value="ProtossAirWeapons@Have3"/>
+    </CRequirementNot>
 
     <CRequirementCountUpgrade id="ProtossAirWeapons@Have1">
         <Count Link="ProtossAirWeapons@1" State="QueuedOrBetter"/>
@@ -410,6 +524,16 @@
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="ProtossAirWeapons@Have3">
         <Count Link="ProtossAirWeapons@3" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+
+    <CRequirementCountUpgrade id="ProtossAirWeapons@Complete1">
+        <Count Link="ProtossAirWeapons@1" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="ProtossAirWeapons@Complete2">
+        <Count Link="ProtossAirWeapons@2" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="ProtossAirWeapons@Complete3">
+        <Count Link="ProtossAirWeapons@3" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     
     <CDataCollectionUnit id="ProtossAirWeapons" parent="UpgradeBase">
