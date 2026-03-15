@@ -1,18 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Catalog>
-    <CSound id="InfestedCivilianConvo@Line01" parent="VO"/>
-    <CSound id="InfestedCivilianConvo@Line02" parent="VO"/>
-    <CSound id="InfestedCivilianConvo@Line03" parent="VO"/>
-    <CSound id="InfestedCivilianConvo@Line04" parent="VO"/>
-    <CSound id="InfestedCivilianConvo@Line05" parent="VO"/>
-    <CSound id="InfestedCivilianConvo@Line06" parent="VO"/>
-    <CSound id="InfestedCivilianConvo@Line07" parent="VO"/>
-    <CSound id="InfestedCivilianConvo@Line08" parent="VO"/>
-    <CSound id="InfestedCivilianConvo@Line09" parent="VO"/>
-    <CSound id="InfestedCivilianConvo@Line10" parent="VO"/>
-    <CSound id="InfestedCivilianConvo@Line11" parent="VO"/>
-    <CSound id="InfestedCivilianConvo@Line12" parent="VO"/>
-    <CSound id="InfestedCivilianConvo@Line13" parent="VO"/>
-    <CSound id="InfestedCivilianConvo@Line14" parent="VO"/>
-    <CSound id="InfestedCivilianConvo@Line15" parent="VO"/>
+    <CCharacter id="InfestedCivilian">
+        <Unit value="InfestedCivilian"/>
+        <Variations>
+            <Name value="Unit/Name/InfestedCivilian"/>
+            <Model value="InfestedCivilian@Portrait"/>
+        </Variations>
+    </CCharacter>
+
+    <CSound default="1" id="VO">
+        <AssetArray index="0" Speaker="Unit/Name/##Speaker##"/>
+    </CSound>
+
+    <CSound id="InfestedCivilian@Line01" parent="VO" Subtitle="THanson02" Line="00005" Speaker="InfestedCivilian">
+        <AssetArray index="0" File="LocalizedData\Sounds\TerranVO\CampaignVO\THanson02InfestedRefugee00005.ogg"/>
+    </CSound>
+    <CSound id="InfestedCivilian@Line02" parent="VO"/>
+    <CSound id="InfestedCivilian@Line03" parent="VO"/>
+    <CSound id="InfestedCivilian@Line04" parent="VO"/>
+    <CSound id="InfestedCivilian@Line05" parent="VO"/>
+    <CSound id="InfestedCivilian@Line06" parent="VO"/>
+    <CSound id="InfestedCivilian@Line07" parent="VO"/>
+    <CSound id="InfestedCivilian@Line08" parent="VO"/>
+    <CSound id="InfestedCivilian@Line09" parent="VO"/>
+    <CSound id="InfestedCivilian@Line10" parent="VO"/>
+    <CSound id="InfestedCivilian@Line11" parent="VO"/>
+    <CSound id="InfestedCivilian@Line12" parent="VO"/>
+    <CSound id="InfestedCivilian@Line13" parent="VO"/>
+    <CSound id="InfestedCivilian@Line14" parent="VO"/>
+    <CSound id="InfestedCivilian@Line15" parent="VO"/>
+
 </Catalog>
