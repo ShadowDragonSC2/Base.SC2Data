@@ -288,7 +288,7 @@
         <Flags index="NeedsTTS" value="1"/>
     </CSound>
     
-    <CRequirement id="Annihilator"/>
+    <CRequirement id="Annihilator@Use"/>
 
     <CLight id="Annihilator@Portrait" parent="default">
         <ToDInfoArray index="0" Id="PortraitNerazimImmortal" AmbientColor="0.000000,0.000000,0.000000" Colorize="1">
@@ -319,21 +319,24 @@
         <DataRecord Entry="Unit,Annihilator"/>
         <DataRecord Entry="Actor,Annihilator"/>
         <DataRecord Entry="Model,Annihilator"/>
-        <DataRecord Entry="Model,Annihilator"/>
-        <DataRecord Entry="Model,Annihilator"/>
-        <DataRecord Entry="Model,Annihilator"/>
-        <DataRecord Entry="Model,Annihilator"/>
-        <DataRecord Entry="Sound,Annihilator"/>
-        <DataRecord Entry="Sound,Annihilator"/>
-        <DataRecord Entry="Sound,Annihilator"/>
-        <DataRecord Entry="Sound,Annihilator"/>
-        <DataRecord Entry="Sound,Annihilator"/>
-        <DataRecord Entry="Sound,Annihilator"/>
-        <DataRecord Entry="Requirement,Annihilator"/>
-        <DataRecord Entry="Light,Annihilator"/>
-        <TechInfoUpgradeUsed value="ProtossAirArmorsLevel@1"/>
-        <TechInfoUpgradeUsed value="ProtossAirArmorsLevel@2"/>
-        <TechInfoUpgradeUsed value="ProtossAirArmorsLevel@3"/>
+        <DataRecord Entry="Model,Annihilator@Death"/>
+        <DataRecord Entry="Model,Annihilator@Portrait"/>
+        <DataRecord Entry="Model,Annihilator@Placement"/>
+        <DataRecord Entry="Model,Annihilator@WarpIn"/>
+        <DataRecord Entry="Sound,Annihilator@Attack"/>
+        <DataRecord Entry="Sound,Annihilator@Help"/>
+        <DataRecord Entry="Sound,Annihilator@Pissed"/>
+        <DataRecord Entry="Sound,Annihilator@Yes"/>
+        <DataRecord Entry="Sound,Annihilator@What"/>
+        <DataRecord Entry="Sound,Annihilator@Ready"/>
+        <DataRecord Entry="Requirement,Annihilator@Use"/>
+        <DataRecord Entry="Light,Annihilator@Portrait"/>
+        <TechInfoUpgradeUsed value="ProtossGroundArmors@1"/>
+        <TechInfoUpgradeUsed value="ProtossGroundArmors@2"/>
+        <TechInfoUpgradeUsed value="ProtossGroundArmors@3"/>
+        <TechInfoUpgradeUsed value="ProtossShields@1"/>
+        <TechInfoUpgradeUsed value="ProtossShields@2"/>
+        <TechInfoUpgradeUsed value="ProtossShields@3"/>
     </CDataCollectionUnit>
     
     <CAttachMethodPattern id="AMPatternAnnihilator">
@@ -377,7 +380,7 @@
     </CSound>
     <CSound id="AnnihilatorParticleDisruptors@AttackImpact" parent="Protoss_ExplosionSmall"/>
 
-    <CDataCollectionUnit id="AnnihilatorParticleDisruptors">
+    <CDataCollectionUnit id="AnnihilatorParticleDisruptors" parent="Weapon_Instant">
         <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:Protoss,ObjectType:Other"/>
         <DataRecord Entry="Weapon,AnnihilatorParticleDisruptors"/>
         <DataRecord Entry="Effect,AnnihilatorParticleDisruptors@Damage"/>
@@ -385,6 +388,10 @@
         <DataRecord Entry="Model,AnnihilatorParticleDisruptors@AttackImpact"/>
         <DataRecord Entry="Sound,AnnihilatorParticleDisruptors@AttackLaunch"/>
         <DataRecord Entry="Sound,AnnihilatorParticleDisruptors@AttackImpact"/>
+        <UpgradeInfoWeapon index="0" DamagePerDice="8"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@1"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@2"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@3"/>
     </CDataCollectionUnit>
 
     <!-- =========== Abilities =========== -->
