@@ -197,4 +197,38 @@
     <CUnit default="1" id="Generic_Protoss_Unit_Carrier" parent="Generic_Protoss_Unit_Air">
         <Name value="Unit/Name/##id##"/>
     </CUnit>
+
+    <!-- Upgrades -->
+    <CButton id="ProtossAirArmorsLevel">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-airarmorlevel1.dds"/>
+    </CButton>
+
+    <CUpgrade id="ProtossAirArmorsLevel@1">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-airarmorlevel1.dds"/>
+        <EffectArrayTemplate Reference="Unit,^ParamId^,LifeArmor" Value="{DataCollection,^ParamId^,UpgradeInfoUnitLifeArmorPerLevel}"/>
+        <EffectArrayTemplate Reference="Unit,^ParamId^,LifeArmorLevel" Value="1"/>
+        <EffectArrayTemplate Operation="Set" Reference="Actor,^ParamId^,LifeArmorIcon" Value="Upgrade,^ParamId^@1,Icon"/>
+        <EffectArrayTemplate Operation="Set" Reference="Button,^ParamId^,LifeArmorIcon" Value="Upgrade,^ParamId^@1,Icon"/>
+    </CUpgrade>
+    <CUpgrade id="ProtossAirArmorsLevel@2">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-airarmorlevel2.dds"/>
+        <EffectArrayTemplate Reference="Unit,^ParamId^,LifeArmor" Value="{DataCollection,^ParamId^,UpgradeInfoUnitLifeArmorPerLevel}"/>
+        <EffectArrayTemplate Reference="Unit,^ParamId^,LifeArmorLevel" Value="1"/>
+        <EffectArrayTemplate Operation="Set" Reference="Actor,^ParamId^,LifeArmorIcon" Value="Upgrade,^ParamId^@2,Icon"/>
+        <EffectArrayTemplate Operation="Set" Reference="Button,^ParamId^,LifeArmorIcon" Value="Upgrade,^ParamId^@2,Icon"/>
+    </CUpgrade>
+    <CUpgrade id="ProtossAirArmorsLevel@3">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-airarmorlevel3.dds"/>
+        <EffectArrayTemplate Reference="Unit,^ParamId^,LifeArmor" Value="{DataCollection,^ParamId^,UpgradeInfoUnitLifeArmorPerLevel}"/>
+        <EffectArrayTemplate Reference="Unit,^ParamId^,LifeArmorLevel" Value="1"/>
+        <EffectArrayTemplate Operation="Set" Reference="Actor,^ParamId^,LifeArmorIcon" Value="Upgrade,^ParamId^@3,Icon"/>
+        <EffectArrayTemplate Operation="Set" Reference="Button,^ParamId^,LifeArmorIcon" Value="Upgrade,^ParamId^@3,Icon"/>
+    </CUpgrade>
+    
+    <CDataCollectionUnit id="ProtossAirArmorsLevel" parent="UpgradeBase">
+        <DataRecord Entry="Button,ProtossAirArmorsLevel"/>
+        <DataRecord Entry="Upgrade,ProtossAirArmorsLevel@1"/>
+        <DataRecord Entry="Upgrade,ProtossAirArmorsLevel@2"/>
+        <DataRecord Entry="Upgrade,ProtossAirArmorsLevel@3"/>
+    </CDataCollectionUnit>
 </Catalog>

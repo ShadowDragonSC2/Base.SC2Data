@@ -64,6 +64,10 @@
     <CDataCollectionPattern id="WeaponPattern_Missile" parent="WeaponPattern_Base">
         <Fields Reference="Model,^ParamId^@AttackMissile,Model" NameOverride="DataCollectionPattern/NameOverride/Model/Missile"/>
     </CDataCollectionPattern>
+
+    <CDataCollectionPattern id="UpgradePattern_Template">
+        <Fields Reference="Upgrade,^ParamId^@1,EffectArrayTemplate"/>
+    </CDataCollectionPattern>
     <!-- -->
     <CDataCollectionUnit default="1" id="UnitBase">
         <Name value="Unit/Name/##id##"/>
@@ -88,6 +92,12 @@
     <CDataCollectionUnit default="1" id="Weapon_Missile" parent="WeaponBase">
         <Name value="Weapon/Name/##id##"/>
         <Pattern value="WeaponPattern_Missile"/>
+    </CDataCollectionUnit>
+
+    <CDataCollectionUnit id="UpgradeBase">
+        <Name value="Button/Name/##id##"/>
+        <EditorIconSource value="Upgrade"/>
+        <Pattern value="UpgradePattern_Template"/>
     </CDataCollectionUnit>
 
     <!-- Actors -->
