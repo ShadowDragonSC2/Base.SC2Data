@@ -42,6 +42,7 @@
         <Fields Reference="Requirement,^ParamId^@Use,NodeArray" NameOverride="DataCollectionPattern/NameOverride/Requirement/Use"/>
         <Fields Reference="Requirement,^ParamId^@Show,NodeArray" NameOverride="DataCollectionPattern/NameOverride/Requirement/Show"/>
         <Fields Reference="DataCollection,^ParamId^,TechInfoUpgradeUsed" NameOverride="DataCollectionPattern/NameOverride/Upgrades"/>
+        <Fields Reference="DataCollection,^ParamId^,UpgradeInfoUnitLifeArmorPerLevel"/>
     </CDataCollectionPattern>
     <CDataCollectionPattern id="UnitPattern_Air" parent="UnitPattern_Base">
         <Fields Reference="Unit,^ParamId^,Height" />
@@ -67,6 +68,7 @@
     </CDataCollectionPattern>
 
     <CDataCollectionPattern id="UpgradePattern_Template">
+        <Fields Reference="Button,^ParamId^,Name"/>
         <Fields Reference="Upgrade,^ParamId^@1,EffectArrayTemplate" NameOverride="DataCollectionPattern/NameOverride/UpgradePattern/EffectArrayTemplate/1"/>
         <Fields Reference="Upgrade,^ParamId^@2,EffectArrayTemplate" NameOverride="DataCollectionPattern/NameOverride/UpgradePattern/EffectArrayTemplate/2"/>
         <Fields Reference="Upgrade,^ParamId^@3,EffectArrayTemplate" NameOverride="DataCollectionPattern/NameOverride/UpgradePattern/EffectArrayTemplate/3"/>
@@ -82,6 +84,7 @@
     <CDataCollectionUnit default="1" id="UnitBase">
         <Name value="Unit/Name/##id##"/>
         <Pattern value="UnitPattern_Base"/>
+        <UpgradeInfoUnitLifeArmorPerLevel value="1"/>
     </CDataCollectionUnit>
     <CDataCollectionUnit default="1" id="UnitGround" parent="UnitBase">
         <Name value="Unit/Name/##id##"/>
@@ -105,7 +108,7 @@
     </CDataCollectionUnit>
 
     <CDataCollectionUnit default="1" id="UpgradeBase">
-        <Name value="Button/Name/##id##"/>
+        <Name value="Upgrade/Name/##id##"/>
         <Pattern value="UpgradePattern_Template"/>
         <EditorCategories value="DataGroup:Research,DataFamily:Melee,Race:Protoss,ObjectType:Unit"/>
     </CDataCollectionUnit>
