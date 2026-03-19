@@ -131,4 +131,54 @@
         <On Terms="UnitBirth.##unitName##@Burrowed" Send="Create"/>
         <On Terms="UnitBirth.##unitName##@Burrowed" Send="AnimBracketStart Burrow Burrow IGNORE Unburrow ClosingFull,OpeningPlayForever,Instant,DontResetOnUnhide"/>
     </CActorUnit>
+
+    <!-- Units -->
+
+    <CUnit default="1" id="Generic_Unit">
+        <Name value="Unit/Name/##id##"/>
+        <Description value="Button/Tooltip/##id##"/>
+        <Acceleration value="1000"/>
+        <Mob value="Multiplayer"/>
+        <FlagArray index="ArmySelect" value="1"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="PreventDestroy" value="1"/>
+        <Speed value="2.25"/>
+        <AttackTargetPriority value="20"/>
+        <DamageDealtXP value="1"/>
+        <DamageTakenXP value="1"/>
+        <CostCategory value="Army"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="attack"/>
+        <AbilArray Link="move"/>
+        <TacticalAIThink value="AIThink##id##"/>
+        <GlossaryAlias value="##id##"/>
+        <CardLayouts>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+        </CardLayouts>
+        <ScoreResult value="BuildOrder"/>
+    </CUnit>
+    <CUnit default="1" id="Generic_Unit_Ground" parent="Generic_Unit">
+        <Name value="Unit/Name/##id##"/>
+        <PlaneArray index="Ground" value="1"/>
+    </CUnit>
+    <CUnit default="1" id="Generic_Unit_Air" parent="Generic_Unit">
+        <Name value="Unit/Name/##id##"/>
+        <Height value="3.75"/>
+        <Sight value="10"/>
+        <VisionHeight value="4"/>
+        <PlaneArray index="Air" value="1"/>
+        <Mover value="Fly"/>
+        <Collide index="Flying" value="1"/>
+    </CUnit>
+
+    <!-- Sounds -->
+
+    <CSound default="1" id="VO">
+        <AssetArray index="0" Speaker="Unit/Name/##Speaker##"/>
+    </CSound>
+    
 </Catalog>

@@ -8,10 +8,6 @@
         </Variations>
     </CCharacter>
 
-    <CSound default="1" id="VO">
-        <AssetArray index="0" Speaker="Unit/Name/##Speaker##"/>
-    </CSound>
-
     <CSound id="InfestedCivilian@Line01" parent="VO" Subtitle="THanson02" Line="00005" Speaker="InfestedCivilian">
         <AssetArray index="0" File="LocalizedData\Sounds\TerranVO\CampaignVO\THanson02InfestedRefugee00005.ogg"/>
     </CSound>

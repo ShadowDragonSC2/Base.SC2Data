@@ -1,4 +1,437 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Catalog>
+    <CButton id="Apocalisk">
+        <Icon value="Assets\Textures\btn-upgrade-zerg-stukov-apocolisk_04.dds"/>
+    </CButton>
+    
+    <CUnit id="Apocalisk" parent="Generic_Unit_Ground">
+        <DeathRevealRadius value="3"/>
+        <Facing value="135"/>
+        <Race value="InfT"/>
+        <FlagArray index="TurnBeforeMove" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Colossus" value="1"/>
+        <Collide index="Structure" value="1"/>
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <Attributes index="Mechanical" value="1"/>
+        <Attributes index="Massive" value="1"/>
+        <Attributes index="Heroic" value="1"/>
+        <LifeStart value="3000"/>
+        <LifeMax value="3000"/>
+        <LifeArmor value="5"/>
+        <LifeArmorName value="Unit/LifeArmorName/TerranVehiclePlating"/>
+        <Speed value="1.875"/>
+        <Acceleration value="1000"/>
+        <LateralAcceleration value="46.0625"/>
+        <TurningRate value="360"/>
+        <Sight value="11"/>
+        <Food value="-6"/>
+        <CostResource index="Minerals" value="300"/>
+        <CostResource index="Vespene" value="200"/>
+        <RepairTime value="60"/>
+        <AbilArray Link="ApocaliskClusterRockets"/>
+        <AbilArray Link="ApocaliskBurrowCharge"/>
+        <WeaponArray Link="ApocaliskBlades"/>
+        <CardLayouts>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+            <LayoutButtons Face="SIClusterRockets" Type="AbilCmd" AbilCmd="SIClusterRockets,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="ApocaliskBurrowCharge" Type="AbilCmd" AbilCmd="ApocaliskBurrowCharge,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="Frenzied" Type="Passive" Row="2" Column="3"/>
+        </CardLayouts>
+        <Radius value="1.375"/>
+        <SeparationRadius value="1"/>
+        <InnerRadius value="0.8125"/>
+        <CargoSize value="8"/>
+        <SubgroupPriority value="122"/>
+        <MinimapRadius value="0"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:FactionInfested"/>
+        <TacticalAIThink value="AIThinkThor"/>
+        <GlossaryCategory value="Unit/Category/TerranUnits"/>
+        <GlossaryPriority value="140"/>
+        <GlossaryStrongArray value="Marine"/>
+        <GlossaryStrongArray value="Mutalisk"/>
+        <GlossaryStrongArray value="Stalker"/>
+        <GlossaryWeakArray value="Marauder"/>
+        <GlossaryWeakArray value="Zergling"/>
+        <GlossaryWeakArray value="Immortal"/>
+        <HotkeyCategory value="Unit/Category/InfestedFaction/Stukov"/>
+        <Fidget>
+            <ChanceArray index="Anim" value="10"/>
+            <ChanceArray index="Idle" value="90"/>
+        </Fidget>
+        <TauntDuration index="Cheer" value="5"/>
+        <TauntDuration index="Dance" value="5"/>
+        <Response value="AcquireNoFlee"/>
+        <BehaviorArray Link="Frenzy"/>
+        <LifeRegenRate value="0.2734"/>
+        <LifeRegenDelay value="10"/>
+        <SpeedMultiplierCreep value="1.3"/>
+    </CUnit>
+    
+    <CActorUnit id="Apocalisk" parent="GenericUnitStandard" unitName="Apocalisk">
+        <DeathArray index="Normal" ModelLink="Apocalisk@Death"/>
+        <PortraitModel value="Apocalisk_Portrait"/>
+        <SoundArray index="Ready" value="Ultralisk@Ready"/>
+        <SoundArray index="What" value="Ultralisk@What"/>
+        <SoundArray index="Yes" value="Ultralisk@Yes"/>
+        <SoundArray index="Attack" value="Ultralisk@Attack"/>
+        <SoundArray index="Pissed" value="Ultralisk@Pissed"/>
+        <SoundArray index="Movement" value="Ultralisk@Movement"/>
+        <TerrainSquibs>
+            <GroupName value="RippleStandard"/>
+            <MovementDistance value="0.150000,0.150000"/>
+            <IdlePeriod value="0.100000,0.250000"/>
+            <RangeUp value="2.000000"/>
+            <RangeDown value="2.000000"/>
+            <AttachQuery Methods="AMFilterCenter"/>
+            <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleUltralisk"/>
+        </TerrainSquibs>
+        <WalkAnimMoveSpeed value="2.9375"/>
+        <BarOffset value="30"/>
+        <BarWidth value="160"/>
+        <NameOffset value="40"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-zerg-stukov-apocalisk.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-upgrade-zerg-stukov-apocolisk_04.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel0.dds"/>
+        <ShieldArmorIcon value="Assets\Textures\btn-upgrade-zerg-swarmfrenzy.dds"/>
+        <UnitIcon value="Assets\Textures\btn-upgrade-zerg-stukov-apocolisk_04.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-zerg-stukov-apocalisk.dds"/>
+        </Wireframe>
+        <VitalNames index="Shields" value="Vital/ZergShields"/>
+        <VitalColors index="Shields">
+            <ColorArray value="255,0,128,0"/>
+        </VitalColors>
+        <WireframeShieldColor value="255,0,128,0"/>
+        <StatusColors index="Shields">
+            <ColorArray index="0" value="255,0,128,0"/>
+        </StatusColors>
+    </CActorUnit>
+    
+    <CModel id="Apocalisk" parent="Unit">
+        <Model value="Assets\Units\Zerg\Apocalisk_Stukov_Coop\Apocalisk_Stukov_Coop.m3"/>
+        <RequiredAnims value="Assets\Units\Zerg\Ultralisk_Stukov_Anims\Ultralisk_Stukov_Anims.m3a"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="1.400000,1.400000,1.400000"/>
+        <ScaleMin value="1.400000,1.400000,1.400000"/>
+        <SelectionRadius value="1.176200"/>
+        <Tipability value="0.750000"/>
+        <TipabilityWidth value="1.000000"/>
+        <TipabilityLength value="1.000000"/>
+        <Radius value="1.250000"/>
+        <SquibTypeDefault value="Flesh"/>
+        <TechPurchaseCamera value="Star2CameraHigh13"/>
+        <UnitGlossaryCamera value="Star2CameraHigh13"/>
+        <PlanetPanelCamera value="Star2CameraHigh13"/>
+        <ShadowRadius value="1.176200"/>
+        <Events>
+            <Anim value="Attack,00"/>
+            <Name value="UltraliskAttack"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,00"/>
+            <Name value="UltraliskAttack"/>
+            <Type value="Sound"/>
+            <Time value="0.160000"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,01"/>
+            <Name value="UltraliskAttack"/>
+            <Type value="Sound"/>
+            <Time value="0.040000"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,01"/>
+            <Name value="UltraliskAttack"/>
+            <Type value="Sound"/>
+            <Time value="0.160000"/>
+        </Events>
+        <Events>
+            <Anim value="Spell,A"/>
+            <Name value="UltraliskAttack"/>
+            <Type value="Sound"/>
+            <Time value="0.020000"/>
+        </Events>
+        <Events>
+            <Anim value="Spell,A"/>
+            <Name value="UltraliskAttack"/>
+            <Type value="Sound"/>
+            <Time value="0.190000"/>
+        </Events>
+        <Events>
+            <Anim value="Spell,00"/>
+            <Name value="UltraliskHeadAttack"/>
+            <Type value="Sound"/>
+            <Time value="0.550000"/>
+        </Events>
+        <Events>
+            <Anim value="Spell,00"/>
+            <Name value="UltraliskAttack"/>
+            <Type value="Sound"/>
+            <Time value="0.350000"/>
+        </Events>
+        <Events>
+            <Anim value="Spell,00"/>
+            <Name value="UltraliskAttack"/>
+            <Type value="Sound"/>
+            <Time value="0.490000"/>
+        </Events>
+        <Events>
+            <Anim value="Spell,01"/>
+            <Name value="UltraliskHeadAttack"/>
+            <Type value="Sound"/>
+            <Time value="0.450000"/>
+        </Events>
+        <Events>
+            <Anim value="Spell,01"/>
+            <Name value="UltraliskAttack"/>
+            <Type value="Sound"/>
+            <Time value="0.400000"/>
+        </Events>
+        <Events>
+            <Anim value="Spell,01"/>
+            <Name value="UltraliskAttack"/>
+            <Type value="Sound"/>
+            <Time value="0.490000"/>
+        </Events>
+        <Events>
+            <Anim value="Spell,D"/>
+            <Name value="UltraliskAttack"/>
+            <Type value="Sound"/>
+            <Time value="0.020000"/>
+        </Events>
+        <Events>
+            <Anim value="Spell,D"/>
+            <Name value="UltraliskAttack"/>
+            <Type value="Sound"/>
+            <Time value="0.190000"/>
+        </Events>
+        <Events>
+            <Anim value="Walk,00"/>
+            <Name value="Stukov_Apocalisk_Fs"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Stukov_Apocalisk_Fs"/>
+        </Events>
+        <Events>
+            <Anim value="Walk,00"/>
+            <Name value="Stukov_Apocalisk_Fs"/>
+            <Type value="Sound"/>
+            <Time value="0.489000"/>
+            <Payload value="Stukov_Apocalisk_Fs"/>
+        </Events>
+        <AttachProps Id="Ref_Weapon">
+            <Keys index="SetA" value="0"/>
+        </AttachProps>
+        <AttachProps>
+            <Keys index="SetA" value="0"/>
+        </AttachProps>
+        <AttachProps>
+            <Keys index="SetA" value="0"/>
+        </AttachProps>
+        <AttachProps>
+            <Keys index="SetA" value="0"/>
+        </AttachProps>
+    </CModel>
+    <CModel id="Apocalisk@Death" parent="UnitDeath">
+        <LowQualityModel value="ZergLargeUnitDeathLow"/>
+        <Occlusion value="Show"/>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Stukov_Apocalisk_DeathBlow"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Stukov_Apocalisk_DeathBlow"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Stukov_Apocalisk_DeathSplatter"/>
+            <Type value="Sound"/>
+            <Time value="0.481000"/>
+            <Payload value="Stukov_Apocalisk_DeathSplatter"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Stukov_Apocalisk_DeathJuice"/>
+            <Type value="Sound"/>
+            <Time value="0.410000"/>
+            <Payload value="Stukov_Apocalisk_DeathJuice"/>
+        </Events>
+    </CModel>
+    <CModel id="Apocalisk@Portrait" parent="Portrait">
+        <Model value="Assets\Portraits\Zerg\Apocalisk_Portrait\Apocalisk_Portrait.m3"/>
+        <Image value="Assets\Textures\apocaliskportrait_static.dds"/>
+    </CModel>
+    
+    <CSound id="Apocalisk@Attack" parent="Voice">
+        <Flags index="Download" value="0"/>
+        <Spread value="130.000000"/>
+        <Volume value="-2.000000,-2.000000"/>
+        <AssetArray File="Assets\Sounds\Zerg\Ultralisk\UltraLisk_Attack0.ogg"/>
+        <AssetArray File="Assets\Sounds\Zerg\Ultralisk\UltraLisk_Attack1.ogg"/>
+        <AssetArray File="Assets\Sounds\Zerg\Ultralisk\UltraLisk_Attack2.ogg"/>
+        <AssetArray File="Assets\Sounds\Zerg\Ultralisk\UltraLisk_Attack3.ogg"/>
+        <AssetArray File="Assets\Sounds\Zerg\Ultralisk\UltraLisk_Attack4.ogg"/>
+        <EditorCategories value="Race:InfestedTerran"/>
+        <Pitch value="-1.000000,1.000000"/>
+    </CSound>
+    <CSound id="Apocalisk@Pissed" parent="Pissed">
+        <AssetArray File="Assets\Sounds\Zerg\Ultralisk\UltraLisk_Attack0.ogg"/>
+        <AssetArray File="Assets\Sounds\Zerg\Ultralisk\UltraLisk_Attack1.ogg"/>
+        <AssetArray File="Assets\Sounds\Zerg\Ultralisk\UltraLisk_Attack2.ogg"/>
+        <AssetArray File="Assets\Sounds\Zerg\Ultralisk\UltraLisk_Attack3.ogg"/>
+        <AssetArray File="Assets\Sounds\Zerg\Ultralisk\UltraLisk_Attack4.ogg"/>
+        <EditorCategories value="Race:InfestedTerran"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Spread value="45.000000"/>
+        <Volume value="-6.000000,-4.000000"/>
+        <VolumeRolloffPoints Distance="100.000000"/>
+        <VolumeRolloffPoints Distance="1000.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="Apocalisk@Yes" parent="Voice">
+        <AssetArray File="Assets\Sounds\Zerg\Ultralisk\UltraLisk_Yes0.ogg"/>
+        <AssetArray File="Assets\Sounds\Zerg\Ultralisk\UltraLisk_Yes1.ogg"/>
+        <AssetArray File="Assets\Sounds\Zerg\Ultralisk\UltraLisk_Yes2.ogg"/>
+        <AssetArray File="Assets\Sounds\Zerg\Ultralisk\UltraLisk_Yes3.ogg"/>
+        <AssetArray File="Assets\Sounds\Zerg\Ultralisk\UltraLisk_Yes4.ogg"/>
+        <EditorCategories value="Race:InfestedTerran"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Spread value="45.000000"/>
+        <Volume value="-8.000000,-6.000000"/>
+        <VolumeRolloffPoints Distance="100.000000"/>
+        <VolumeRolloffPoints Distance="1000.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="Apocalisk@What" parent="Voice">
+        <Spread value="130.000000"/>
+        <Volume value="-2.000000,-2.000000"/>
+        <AssetArray File="Assets\Sounds\Zerg\Ultralisk\UltraLisk_What0.ogg"/>
+        <AssetArray File="Assets\Sounds\Zerg\Ultralisk\UltraLisk_What1.ogg"/>
+        <AssetArray File="Assets\Sounds\Zerg\Ultralisk\UltraLisk_What2.ogg"/>
+        <AssetArray File="Assets\Sounds\Zerg\Ultralisk\UltraLisk_What3.ogg"/>
+        <AssetArray File="Assets\Sounds\Zerg\Ultralisk\UltraLisk_What4.ogg"/>
+        <AssetArray File="Assets\Sounds\Zerg\Ultralisk\UltraLisk_What5.ogg"/>
+        <EditorCategories value="Race:InfestedTerran"/>
+        <Pitch value="-1.000000,1.000000"/>
+    </CSound>
+    <CSound id="Apocalisk@Ready" parent="Ready">
+        <Spread value="130.000000"/>
+        <Volume value="-6.000000,-3.000000"/>
+        <VolumeRolloffPoints Distance="100.000000"/>
+        <VolumeRolloffPoints Distance="1000.000000" Volume="-96.000000"/>
+        <AssetArray File="Assets\Sounds\Zerg\Ultralisk\UltraLisk_Ready0.ogg"/>
+        <AssetArray File="Assets\Sounds\Zerg\Ultralisk\UltraLisk_Ready1.ogg"/>
+        <AssetArray File="Assets\Sounds\Zerg\Ultralisk\UltraLisk_Ready2.ogg"/>
+        <EditorCategories value="Race:InfestedTerran"/>
+        <Pitch value="-1.000000,1.000000"/>
+    </CSound>
+    <CSound id="Apocalisk@Movement" parent="Movement">
+        <EditorCategories value="Race:InfestedTerran"/>
+        <AssetArray File="Assets\Sounds\Ultralisk_Movement_00.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Ultralisk_Movement_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Ultralisk_Movement_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Ultralisk_Movement_03.wav" FacialGroup=""/>
+        <Volume value="-18.000000,-6.000000"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <DupeMuteCount value="2"/>
+    </CSound>
+
+    <CLight id="Apocalisk@Portrait" parent="default">
+        <ToDInfoArray index="0" AmbientColor="0.156863,0.192157,0.301961" AmbientEnvironmentMultiplier="0.750000" Colorize="1">
+            <Param index="HDRExposure" value="1.500000"/>
+            <Param index="HDRWhitePoint" value="1.850000"/>
+            <Param index="HDRSpecMultiplier" value="1.930000"/>
+            <Param index="HDREmisMultiplier" value="1.750000"/>
+            <Param index="TerrainSpecularExp" value="11.210000"/>
+            <Param index="TerrainHDRDiffuse" value="1.250000"/>
+            <Param index="TerrainHDRSpecular" value="3.750000"/>
+            <Param index="CreepSpecularExp" value="30.000000"/>
+            <Param index="CreepHDRSpecMultiplier" value="3.000000"/>
+            <Param index="ColorizationContrast" value="1.066000"/>
+            <Param index="ColorizationHue" value="0.001000"/>
+            <Param index="ColorizationBlend" value="0.300000"/>
+            <DirectionalLight index="Key">
+                <Color value="0.200000,0.376471,0.639216"/>
+                <ColorMultiplier value="0.851000"/>
+                <SpecColorMultiplier value="1.150000"/>
+                <Direction value="0.555012,-0.341579,-0.758476"/>
+            </DirectionalLight>
+            <DirectionalLight index="Fill" Color="0.250980,0.501961,0.501961" ColorMultiplier="3.000000" Direction="-0.885360,-0.121122,0.448851"/>
+            <DirectionalLight index="Back" Color="0.474510,0.384314,0.258824" ColorMultiplier="1.950000" Direction="-0.709236,0.246704,0.660395"/>
+        </ToDInfoArray>
+        <EditorCategories value="LightGroup:PortraitsUnitsZerg"/>
+    </CLight>
+
+    <CRequirement id="Apocalisk@Use"/>
+
+    <CDataCollectionUnit id="Apocalisk" parent="UnitGround">
+        <DataRecord Entry="Button,Apocalisk"/>
+        <DataRecord Entry="Unit,Apocalisk"/>
+        <DataRecord Entry="Actor,Apocalisk"/>
+        <DataRecord Entry="Model,Apocalisk"/>
+        <DataRecord Entry="Model,Apocalisk@Death"/>
+        <DataRecord Entry="Model,Apocalisk@Portrait"/>
+        <DataRecord Entry="Sound,Apocalisk@Attack"/>
+        <DataRecord Entry="Sound,Apocalisk@Pissed"/>
+        <DataRecord Entry="Sound,Apocalisk@Yes"/>
+        <DataRecord Entry="Sound,Apocalisk@What"/>
+        <DataRecord Entry="Sound,Apocalisk@Ready"/>
+        <DataRecord Entry="Sound,Apocalisk@Movement"/>
+        <DataRecord Entry="Light,Apocalisk@Portrait"/>
+        <DataRecord Entry="Requirement,Apocalisk@Use"/>
+    </CDataCollectionUnit>
+
+    <!-- ============== Weapons ==============-->
+
+    <CWeaponLegacy id="ApocaliskBlades">
+        <Options index="Melee" value="1"/>
+        <Options index="LinkedCooldown" value="0"/>
+        <Icon value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel0.dds"/>
+        <DisplayEffect value="ApocaliskBlades@Damage"/>
+        <Effect value="ApocaliskBlades@Damage"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AcquirePrioritization value="ByAngle"/>
+        <Range value="1"/>
+        <Period value="1"/>
+        <DamagePoint value="0.3332"/>
+    </CWeaponLegacy>
+    
+    <CEffectDamage id="ApocaliskBlades@Damage"></CEffectDamage>
+    
+    <CDataCollectionUnit id="ApocaliskBlades" parent="Weapon_Instant">
+        <DataRecord Entry="Weapon,ApocaliskBlades"/>
+        <DataRecord Entry="Effect,ApocaliskBlades@Damage"/>
+    </CDataCollectionUnit>
+
+    <!-- ============= Abilities =============-->
+
+    <!-- Cluster Rockets-->
+    <CButton id="ApocaliskClusterRockets"/>
+
+    <CAbilEffectTarget id="ApocaliskClusterRockets">
+        <CmdButtonArray index="Execute" DefaultButtonFace="ApocaliskClusterRockets"/>
+    </CAbilEffectTarget>
+
+    <CDataCollectionUnit id="ApocaliskClusterRockets">
+        <DataRecord Entry="Abil,ApocaliskClusterRockets"/>
+    </CDataCollectionUnit>
+
+    <!-- Burrow Charge -->
+    <CAbilEffectTarget id="ApocaliskBurrowCharge">
+
+    </CAbilEffectTarget>
+
+    <CDataCollectionUnit id="ApocaliskBurrowCharge">
+        <DataRecord Entry="Abil,ApocaliskBurrowCharge"/>
+    </CDataCollectionUnit>
+
     
 </Catalog>

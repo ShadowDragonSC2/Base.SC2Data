@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Catalog>
-    <!-- Requires: Actor:BurrowedSplat[basestats.xml]-->
-    <!-- Requires: DataCollectionUnit:UnitGround[basestats.xml]-->
+    <!-- Requires: Actor:BurrowedSplat[base.xml] -->
+    <!-- Requires: DataCollectionUnit:UnitGround[base.xml] -->
+    <!-- Requires: DataCollectionUnit:Weapon_Instant[base.xml] -->
 
     <CButton id="InfestedCivilian">
         <Icon value="Assets\Textures\btn-unit-zerg-infestedcolonist.dds"/>
@@ -48,6 +49,7 @@
         <SubgroupPriority value="57"/>
         <MinimapRadius value="0.375"/>
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+        <HotkeyCategory value="Unit/Category/InfestedFaction/Stukov"/>
         <WeaponArray Link="InfestedClaws"/>
         <GlossaryWeakArray value="Bunker"/>
         <GlossaryWeakArray value="Firebat"/>
