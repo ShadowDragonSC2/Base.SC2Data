@@ -73,15 +73,12 @@
         <SpeedMultiplierCreep value="1.3"/>
     </CUnit>
     
-    <CActorUnit id="Apocalisk" parent="GenericUnitStandard" unitName="Apocalisk">
-        <DeathArray index="Normal" ModelLink="Apocalisk@Death"/>
-        <PortraitModel value="Apocalisk_Portrait"/>
-        <SoundArray index="Ready" value="Ultralisk@Ready"/>
-        <SoundArray index="What" value="Ultralisk@What"/>
-        <SoundArray index="Yes" value="Ultralisk@Yes"/>
-        <SoundArray index="Attack" value="Ultralisk@Attack"/>
-        <SoundArray index="Pissed" value="Ultralisk@Pissed"/>
-        <SoundArray index="Movement" value="Ultralisk@Movement"/>
+    <CActorUnit id="Apocalisk" parent="AdvancedUnitStandard" unitName="Apocalisk">
+        <On Terms="UnitBirth" Send="AnimPlay Birth Stand,Work 0 0"/>
+        <On Terms="AnimDone; AnimPlayingName Birth" Target="UltraliskBurrowedSplat" Send="TimerSet 4 2 DelayDestroy"/>
+        <On Terms="WeaponStart.ApocaliskBlades.AttackStart" Send="AnimPlay Attack Spell,A"/>
+        <!-- <On Terms="WeaponStart.ApocaliskBlades.AttackStart; ValidateUnit HaveStukovApocaliskUpgrades" Send="AnimPlay Attack Spell,D"/> -->
+        <On Terms="WeaponStop.ApocaliskBlades.AttackStop" Send="AnimClear Attack"/>
         <TerrainSquibs>
             <GroupName value="RippleStandard"/>
             <MovementDistance value="0.150000,0.150000"/>
@@ -91,6 +88,8 @@
             <AttachQuery Methods="AMFilterCenter"/>
             <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleUltralisk"/>
         </TerrainSquibs>
+        <Macros value="UnloadDropAnim"/>
+        <Macros value="TerrainSquibAnimations"/>
         <WalkAnimMoveSpeed value="2.9375"/>
         <BarOffset value="30"/>
         <BarWidth value="160"/>
@@ -102,6 +101,14 @@
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel0.dds"/>
         <ShieldArmorIcon value="Assets\Textures\btn-upgrade-zerg-swarmfrenzy.dds"/>
         <UnitIcon value="Assets\Textures\btn-upgrade-zerg-stukov-apocolisk_04.dds"/>
+        <EventDataSound>
+            <Name value="ApocaliskRoar"/>
+            <Sound value="Ultralisk_Roar"/>
+        </EventDataSound>
+        <EventDataSound>
+            <Name value="ApocaliskUnburrow"/>
+            <Sound value="Zerg_UnburrowLarge"/>
+        </EventDataSound>
         <Wireframe>
             <Image value="Assets\Textures\wireframe-zerg-stukov-apocalisk.dds"/>
         </Wireframe>
@@ -228,6 +235,17 @@
             <Type value="Sound"/>
             <Time value="0.489000"/>
             <Payload value="Stukov_Apocalisk_Fs"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work"/>
+            <Name value="ApocaliskRoar"/>
+            <Type value="Sound"/>
+            <Time value="3.8"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work"/>
+            <Name value="ApocaliskUnburrow"/>
+            <Type value="Sound"/>
         </Events>
         <AttachProps Id="Ref_Weapon">
             <Keys index="SetA" value="0"/>
@@ -404,11 +422,78 @@
         <DamagePoint value="0.3332"/>
     </CWeaponLegacy>
     
-    <CEffectDamage id="ApocaliskBlades@Damage"></CEffectDamage>
+    <CEffectDamage id="ApocaliskBlades@Damage">
+        <Amount value="80"/>
+        <AreaArray>
+            <Arc value="180"/>
+            <Fraction value="0.25"/>
+            <Radius value="3"/>
+        </AreaArray>
+        <SearchFilters value="Ground,Visible;Self,Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <SearchFlags index="OffsetByUnitRadius" value="1"/>
+        <DebugTrace value="1"/>
+    </CEffectDamage>
+
+    <CActorSound id="ApocaliskBlades@Sound" parent="SoundOneShot">
+        <On Terms="WeaponStart.ApocaliskBlades.AttackStart" Send="Create"/>
+        <Layers Sound="ApocaliskBlades@FireLaunch">
+            <Chance value="100"/>
+            <Pitch value="0.000000,0.000000"/>
+            <PlayDelay value="0,0"/>
+            <Volume value="0.000000,0.000000"/>
+        </Layers>
+        <Layers Sound="ApocaliskBlades@TurretFlame">
+            <Chance value="100"/>
+            <Pitch value="0.000000,0.000000"/>
+            <PlayDelay value="0,0"/>
+            <Volume value="0.000000,0.000000"/>
+        </Layers>
+    </CActorSound>
+    <CSound id="ApocaliskBlades@Sound" parent="Spell">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Spell_Firebreath_Launch_00.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_Firebreath_Launch_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_Firebreath_Launch_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_Firebreath_Launch_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_Firebreath_Launch_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_Firebreath_Launch_05.wav" FacialGroup=""/>
+        <DupeDestroyCount value="4"/>
+        <DupeMuteCount value="4"/>
+        <Pitch value="-1.000000,1.000000"/>
+    </CSound>
+    <CSound id="ApocaliskBlades@FireLaunch" parent="Combat">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Eradicator_RailGun_Mech_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Eradicator_RailGun_Mech_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Eradicator_RailGun_Mech_03.wav" FacialGroup=""/>
+        <DupeDestroyCount value="8"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="8"/>
+        <DupeThresholdPoints/>
+        <DupeThresholdPoints Count="4" Volume="-4.000000"/>
+        <DupePrioritization value="Oldest"/>
+        <Pitch value="-6.000000,-6.000000"/>
+        <Select value="Random"/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
+    <CSound id="ApocaliskBlades@TurretFlame" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Uni\Deaths\Uni_DeathFXFire2.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Deaths\Uni_DeathFXFire3.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Deaths\Uni_DeathFXFire4.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Deaths\Uni_DeathFXFire5.wav" FacialGroup=""/>
+        <DupeDestroyCount value="3"/>
+        <DupeMuteCount value="3"/>
+        <SustainFade index="1" Time="1000"/>
+    </CSound>
     
     <CDataCollectionUnit id="ApocaliskBlades" parent="Weapon_Instant">
         <DataRecord Entry="Weapon,ApocaliskBlades"/>
         <DataRecord Entry="Effect,ApocaliskBlades@Damage"/>
+        <DataRecord Entry="Actor,ApocaliskBlades@Sound"/>
+        <DataRecord Entry="Sound,ApocaliskBlades@Sound"/>
+        <DataRecord Entry="Sound,ApocaliskBlades@FireLaunch"/>
+        <DataRecord Entry="Sound,ApocaliskBlades@TurretFlame"/>
     </CDataCollectionUnit>
 
     <!-- ============= Abilities =============-->

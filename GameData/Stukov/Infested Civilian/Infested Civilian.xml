@@ -4,7 +4,7 @@
     <!-- Requires: DataCollectionUnit:UnitGround[base.xml] -->
     <!-- Requires: DataCollectionUnit:Weapon_Instant[base.xml] -->
 
-    <CButton id="InfestedCivilian">
+    <CButton id="InfestedCivilian" parent="UnitButton_GroundAirDetector">
         <Icon value="Assets\Textures\btn-unit-zerg-infestedcolonist.dds"/>
     </CButton>
     

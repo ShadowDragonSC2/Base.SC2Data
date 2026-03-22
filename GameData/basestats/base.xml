@@ -132,6 +132,76 @@
         <On Terms="UnitBirth.##unitName##@Burrowed" Send="AnimBracketStart Burrow Burrow IGNORE Unburrow ClosingFull,OpeningPlayForever,Instant,DontResetOnUnhide"/>
     </CActorUnit>
 
+    <CActorUnit default="1" id="AdvancedUnitStandard" parent="GenericUnitStandard">
+        <PortraitModel value="##id##@Portrait"/>
+
+        <SoundArray index="Attack" value="##id##@Attack"/>
+        <SoundArray index="Birth" value="##id##@Birth"/>
+        <SoundArray index="Board" value="##id##@Board"/>
+        <SoundArray index="Click" value="##id##@Click"/>
+        <SoundArray index="ClickError" value="##id##@ClickError"/>
+        <SoundArray index="Construction" value="##id##@Construction"/>
+        <SoundArray index="Help" value="##id##@Help"/>
+        <SoundArray index="Highlight" value="##id##@Highlight"/>
+        <SoundArray index="Movement" value="##id##@Movement"/>
+        <SoundArray index="Pissed" value="##id##@Pissed"/>
+        <SoundArray index="Ready" value="##id##@Ready"/>
+        <SoundArray index="Turning" value="##id##@Turning"/>
+        <SoundArray index="Unknown" value="##id##@Unknown"/>
+        <SoundArray index="What" value="##id##@What"/>
+        <SoundArray index="Yes" value="##id##@Yes"/>
+
+        <DeathArray index="Blast" ModelLink="##id##@Blast" VoiceLink="##id##@BlastVoice" SoundLink="##id##@Blast"/>
+        <DeathArray index="Cancel" ModelLink="##id##@Cancel" VoiceLink="##id##@CancelVoice" SoundLink="##id##@Cancel"/>
+        <DeathArray index="Disintegrate" ModelLink="##id##@Disintegrate" VoiceLink="##id##@DisintegrateVoice" SoundLink="##id##@Disintegrate"/>
+        <DeathArray index="Eat" ModelLink="##id##@Eat" VoiceLink="##id##@EatVoice" SoundLink="##id##@Eat"/>
+        <DeathArray index="Electrocute" ModelLink="##id##@Electrocute" VoiceLink="##id##@ElectrocuteVoice" SoundLink="##id##@Electrocute"/>
+        <DeathArray index="Eviscerate" ModelLink="##id##@Eviscerate" VoiceLink="##id##@EviscerateVoice" SoundLink="##id##@Eviscerate"/>
+        <DeathArray index="Fire" ModelLink="##id##@Fire" VoiceLink="##id##@FireVoice" SoundLink="##id##@Fire"/>
+        <DeathArray index="Freeze" ModelLink="##id##@Freeze" VoiceLink="##id##@FreezeVoice" SoundLink="##id##@Freeze"/>
+        <DeathArray index="Impact" ModelLink="##id##@Impact" VoiceLink="##id##@ImpactVoice" SoundLink="##id##@Impact"/>
+        <DeathArray index="Morph" ModelLink="##id##@Morph" VoiceLink="##id##@MorphVoice" SoundLink="##id##@Morph"/>
+        <DeathArray index="Normal" ModelLink="##id##@Death" VoiceLink="##id##@DeathVoice" SoundLink="##id##@Death"/>
+        <DeathArray index="Reincarnation" ModelLink="##id##@Reincarnation" VoiceLink="##id##@ReincarnationVoice" SoundLink="##id##@Reincarnation"/>
+        <DeathArray index="Remove" ModelLink="##id##@Remove" VoiceLink="##id##@RemoveVoice" SoundLink="##id##@Remove"/>
+        <DeathArray index="Salvage" ModelLink="##id##@Salvage" VoiceLink="##id##@SalvageVoice" SoundLink="##id##@Salvage"/>
+        <DeathArray index="Silentkill" ModelLink="##id##@Silentkill" VoiceLink="##id##@SilentkillVoice" SoundLink="##id##@Silentkill"/>
+        <DeathArray index="Squish" ModelLink="##id##@Squish" VoiceLink="##id##@SquishVoice" SoundLink="##id##@Squish"/>
+        <DeathArray index="Timeout" ModelLink="##id##@Timeout" VoiceLink="##id##@TimeoutVoice" SoundLink="##id##@Timeout"/>
+        <DeathArray index="TrainingCancel" ModelLink="##id##@TrainingCancel" VoiceLink="##id##@TrainingCancelVoice" SoundLink="##id##@TrainingCancel"/>
+        <DeathArray index="TrainingComplete" ModelLink="##id##@TrainingComplete" VoiceLink="##id##@TrainingCompleteVoice" SoundLink="##id##@TrainingComplete"/>
+        <DeathArray index="UnderConstruction" ModelLink="##id##@UnderConstruction" VoiceLink="##id##@UnderConstruction" SoundLink="##id##@UnderConstruction"/>
+        <DeathArray index="Unknown" ModelLink="##id##@Unknown" VoiceLink="##id##@UnknownVoice" SoundLink="##id##@Unknown"/>
+        <DeathArray index="Unlink" ModelLink="##id##@Unlink" VoiceLink="##id##@UnlinkVoice" SoundLink="##id##@Unlink"/>
+    </CActorUnit>
+
+    <!-- Buttons -->
+
+    <CButton default="1" id="Button_AppenderIndent">
+        <TooltipAppender Face="##id##" Text="Button/Tooltip/Appender/Indent"/>
+    </CButton>
+    <CButton default="1" id="UnitButton_OnlyGround" parent="Button_AppenderIndent">
+        <TooltipAppender Text="Button/Tooltip/Appender/OnlyGround"/>
+    </CButton>
+    <CButton default="1" id="UnitButton_OnlyAir" parent="Button_AppenderIndent">
+        <TooltipAppender Text="Button/Tooltip/Appender/OnlyAir"/>
+    </CButton>
+    <CButton default="1" id="UnitButton_GroundAir" parent="Button_AppenderIndent">
+        <TooltipAppender Text="Button/Tooltip/Appender/GroundAir"/>
+    </CButton>
+    <CButton default="1" id="UnitButton_Detector" parent="Button_AppenderIndent">
+        <TooltipAppender Text="Button/Tooltip/Appender/Detector"/>
+    </CButton>
+    <CButton default="1" id="UnitButton_OnlyGroundDetector" parent="UnitButton_OnlyGround">
+        <TooltipAppender Text="Button/Tooltip/Appender/Detector"/>
+    </CButton>
+    <CButton default="1" id="UnitButton_OnlyAirDetector" parent="UnitButton_OnlyAir">
+        <TooltipAppender Text="Button/Tooltip/Appender/Detector"/>
+    </CButton>
+    <CButton default="1" id="UnitButton_GroundAirDetector" parent="UnitButton_GroundAir">
+        <TooltipAppender Text="Button/Tooltip/Appender/Detector"/>
+    </CButton>
+
     <!-- Units -->
 
     <CUnit default="1" id="Generic_Unit">

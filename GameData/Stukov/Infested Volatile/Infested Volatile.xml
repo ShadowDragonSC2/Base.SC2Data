@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    <CButton id="InfestedVolatile"></CButton>
+    
+    <CUnit id="InfestedVolatile"></CUnit>
+    
+    <CActorUnit id="InfestedVolatile" parent="AdvancedUnitStandard" unitName="InfestedVolatile"/>
+    
+    <CModel id="InfestedVolatile" parent="Unit">
+        <Model value="Assets\Units\Zerg\Infested_VolatileColonist\Infested_VolatileColonist.m3"/>
+        <Occlusion value="Show"/>
+        <PlanetPanelCamera value="Star2CameraMid04"/>
+        <SelectionRadius value="0.400000"/>
+        <TechPurchaseCamera value="Star2CameraMid04"/>
+        <UnitGlossaryCamera value="Star2CameraMid04"/>
+    </CModel>
+    <CModel id="InfestedVolatile@Death" parent="UnitDeath">
+        <Model value=""/>
+    </CModel>
+    <CModel id="InfestedVolatile@Portrait" parent="Portrait">
+        <Model value="Assets\Portraits\Zerg\InfestedGenericUnit_Portrait_Stukov\InfestedGenericUnit_Portrait_Stukov.m3"/>
+    </CModel>
+    
+    <CSound id="InfestedVolatile@DeathVoice" parent="DeathVoice"></CSound>
+    <CSound id="InfestedVolatile@Attack" parent="Voice"></CSound>
+    <CSound id="InfestedVolatile@Help" parent="Alert"></CSound>
+    <CSound id="InfestedVolatile@Pissed" parent="Pissed"></CSound>
+    <CSound id="InfestedVolatile@Yes" parent="Voice"></CSound>
+    <CSound id="InfestedVolatile@What" parent="Voice"></CSound>
+    <CSound id="InfestedVolatile@Ready" parent="Ready"></CSound>
+    
+</Catalog>
