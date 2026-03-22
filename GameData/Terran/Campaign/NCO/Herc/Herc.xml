@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+
+    <CButton id="Herc">
+        <Icon value="Assets\Textures\btn-unit-terran-herc.dds"/>
+    </CButton>
+    
+    <CUnit id="Herc" parent="Generic_Unit_Ground">
+        <Race value="Terr"/>
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <AbilArray Link="Herc_Grapple"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Herc_Grapple" Type="AbilCmd" AbilCmd="Herc_Grapple,Execute" Row="2"/>
+        </CardLayouts>
+        <LifeStart value="80"/>
+        <LifeMax value="80"/>
+        <LifeArmor value="1"/>
+        <LifeArmorName value="Unit/LifeArmorName/TerranInfantryArmor"/>
+        <LateralAcceleration value="46.0625"/>
+        <StationaryTurningRate value="999.8437"/>
+        <Sight value="9"/>
+        <Food value="-3"/>
+        <CostResource index="Minerals" value="200"/>
+        <CostResource index="Vespene" value="100"/>
+        <WeaponArray Link="Herc_FlashWelder"/>
+        <Radius value="0.6875"/>
+        <InnerRadius value="0.5"/>
+        <CargoSize value="2"/>
+        <ScoreMake value="250"/>
+        <ScoreKill value="250"/>
+        <SubgroupPriority value="13"/>
+        <MinimapRadius value="0.6875"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
+        <GlossaryStrongArray value="SiegeTankSieged"/>
+        <GlossaryStrongArray value="Zergling"/>
+        <GlossaryStrongArray value="Disruptor"/>
+        <GlossaryWeakArray value="Thor"/>
+        <GlossaryWeakArray value="Ultralisk"/>
+        <GlossaryWeakArray value="Archon"/>
+        <KillDisplay value="Always"/>
+        <RankDisplay value="Always"/>
+    </CUnit>
+    
+    <CActorUnit id="Herc" parent="AdvancedStandard_Ground" unitName="Herc">
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Marauder_Land"/>
+        <On Terms="Abil.Grapple.SourceCastStart" Send="AnimBracketStart Work Stand,Work,Start Stand,Work Stand,Work,End"/>
+        <On Terms="Effect.GrappleLaunchCasterImpact.Start" Send="AnimBracketStop Work"/>
+        <On Terms="Effect.GrappleCreatePlaceholderRemove.Start" Send="AnimBracketStop Work"/>
+        <TerrainSquibs>
+            <MovementDistance value="0.150000,0.150000"/>
+            <IdlePeriod value="0.100000,0.250000"/>
+            <RangeUp value="0.400000"/>
+            <RangeDown value="0.400000"/>
+            <AttachQuery Methods="AMFilterCenter"/>
+            <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleSmall"/>
+        </TerrainSquibs>
+        <BarOffset value="55"/>
+        <BarWidth value="55"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-infantryarmorlevel0.dds"/>
+        <UnitIcon value="Assets\Textures\btn-unit-terran-herc.dds"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-terran-herc.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-terran-herc.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    
+    <CModel id="Herc" parent="Unit">
+        <Model value="Assets\Units\Terran\HERC\HERC.m3"/>
+        <Occlusion value="Show"/>
+        <PlanetPanelCamera value="Star2CameraHigh04"/>
+        <Radius value="0.600000"/>
+        <SelectionRadius value="0.600000"/>
+        <ShadowRadius value="0.600000"/>
+        <SquibTypeDefault value="Flesh"/>
+        <UnitGlossaryCamera value="Star2CameraHigh04"/>
+    </CModel>
+    <CModel id="Herc@Death" parent="UnitDeath">
+        <Model value="Assets\Units\Terran\HERC_Death\HERC_Death.m3"/>
+        <Model value="Assets\Units\Terran\HERC_Death\HERC_Death.m3"/>
+        <LowQualityModel value="TerranSmallUnitDeathLow"/>
+        <Occlusion value="Show"/>
+    </CModel>
+    <CModel id="Herc@Portrait" parent="Portrait">
+        <Model value="Assets\Portraits\Terran\HercEx2_Portrait\HercEx2_Portrait.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+
+    <CSound id="Herc@Death" parent="Zerg_ExplosionSmall">
+        <EditorCategories value="Race:Terran"/>
+        <DupeMuteCount value="10"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Herc@Attack" parent="Voice">
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_019.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_020.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_021.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_022.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_023.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_024.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_045.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_046.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_053.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="Herc@Help" parent="Alert">
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_026.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_027.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="Herc@Pissed" parent="Pissed">
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_028.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_048.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_029.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_030.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_035.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_034.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_049.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_032.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_050.ogg" FacialGroup=""/>
+        <Select value="Sequential"/>
+    </CSound>
+    <CSound id="Herc@Yes" parent="Voice">
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_012.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_013.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_016.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_017.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_018.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_042.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_043.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_044.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_056.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="Herc@What" parent="Voice">
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_007.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_008.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_009.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_010.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_011.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_051.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_057.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_058.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="Herc@Ready" parent="Ready">
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_006.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\InfantryJumper_Jumper_047.ogg" FacialGroup=""/>
+    </CSound>
+    
+    <CLight id="Herc@Portrait" parent="default">
+        <ToDInfoArray index="0" AmbientColor="0.380392,0.258824,0.392157" OperatorHDR="3">
+            <Param index="HDRExposure" value="1.475000"/>
+            <DirectionalLight index="Key">
+                <Color value="0.992157,0.847059,0.647059"/>
+                <ColorMultiplier value="1.000000"/>
+                <SpecColorMultiplier value="0.708000"/>
+                <Direction value="-0.044969,0.393465,-0.918239"/>
+            </DirectionalLight>
+            <DirectionalLight index="Fill" Color="0.313726,0.756863,1.000000" ColorMultiplier="0.933000" Direction="0.771282,-0.605415,-0.196459"/>
+            <DirectionalLight index="Back" Color="0.317647,0.874510,0.992157" ColorMultiplier="0.219000" Direction="-0.851308,0.505872,0.139173"/>
+        </ToDInfoArray>
+        <EditorCategories value="LightGroup:PortraitsUnitsTerran"/>
+    </CLight>
+
+    <CRequirement id="Herc@Use"></CRequirement>
+
+    <CDataCollectionUnit id="Herc">
+        <EditorCategories value="Race:Terran,ObjectType:Unit"/>
+        <DataRecord Entry="Button,Herc"/>
+        <DataRecord Entry="Unit,Herc"/>
+        <DataRecord Entry="Actor,Herc"/>
+        <DataRecord Entry="Model,Herc"/>
+        <DataRecord Entry="Model,Herc@Death"/>
+        <DataRecord Entry="Model,Herc@Portrait"/>
+        <DataRecord Entry="Sound,Herc@Death"/>
+        <DataRecord Entry="Sound,Herc@Attack"/>
+        <DataRecord Entry="Sound,Herc@Help"/>
+        <DataRecord Entry="Sound,Herc@Pissed"/>
+        <DataRecord Entry="Sound,Herc@Yes"/>
+        <DataRecord Entry="Sound,Herc@What"/>
+        <DataRecord Entry="Sound,Herc@Ready"/>
+        <DataRecord Entry="Requirement,Herc@Use"/>
+    </CDataCollectionUnit>
+
+    <!-- Weapons -->
+
+    <CWeaponLegacy id="Herc_FlashWelder">
+        <EditorCategories value="Race:Terran"/>
+        <Icon value="Assets\Textures\btn-upgrade-terran-infantryweaponslevel0.dds"/>
+        <DisplayEffect value="HERCWeaponDamage"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="6"/>
+        <Period value="1.5"/>
+        <DamagePoint value="0.2"/>
+        <Effect value="HERCWeaponDamage"/>
+    </CWeaponLegacy>
+    <CEffectDamage id="Herc_FlashWelder@Damage" parent="DU_WEAP_SPLASH">
+        <Amount value="20"/>
+        <AreaArray Arc="39.9792" Radius="2.1" Fraction="1"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Ground;Player,Ally,Neutral,Stasis,Dead,Hidden,Invulnerable"/>
+        <SearchFlags index="CenterAtLaunch" value="1"/>
+        <SearchFlags index="OffsetByUnitRadius" value="0"/>
+    </CEffectDamage>
+
+    <CActorAction id="Herc_FlashWelder@Attack" parent="GenericAttack" effectAttack="Herc_FlashWelder@Damage"/>
+
+    <CModel id="Herc_FlashWelder@AttackLaunch" parent="LaunchFX">
+        <Model value="Assets\Effects\Terran\HERC_Gun_Launch\HERC_Gun_Launch.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+    <CModel id="Herc_FlashWelder@AttackImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Terran\GhostWeaponImpact\GhostWeaponImpact.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+
+    <CSound id="Herc_FlashWelder@AttackLaunch" parent="Combat">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Herc_Gun_Fire01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Herc_Gun_Fire02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Herc_Gun_Fire03.wav" FacialGroup=""/>
+        <DupeDestroyCount value="5"/>
+        <Pitch value="-2.000000,1.000000"/>
+        <Volume value="-10.000000,-9.000000"/>
+    </CSound>
+    <CSound id="Herc_FlashWelder@AttackImpact" parent="Terran_SingleBulletAttackImpact"/>
+
+    <CDataCollectionUnit id="Herc_FlashWelder">
+        <EditorCategories value="DataGroup:Weapon,Race:Terran"/>
+        <DataRecord Entry="Weapon,Herc_FlashWelder"/>
+        <DataRecord Entry="Effect,Herc_FlashWelder@Damage"/>
+        <DataRecord Entry="Actor,Herc_FlashWelder@Attack"/>
+        <DataRecord Entry="Model,Herc_FlashWelder@AttackLaunch"/>
+        <DataRecord Entry="Model,Herc_FlashWelder@AttackImpact"/>
+        <DataRecord Entry="Sound,Herc_FlashWelder@AttackLaunch"/>
+        <DataRecord Entry="Sound,Herc_FlashWelder@AttackImpact"/>
+    </CDataCollectionUnit>
+
+    <!-- Abilities -->
+    
+    <CButton id="Herc_Grapple">
+        <Icon value="Assets\Textures\btn-tips-terran-penetrator.dds"/>
+    </CButton>
+
+    <CAbilEffectTarget id="Herc_Grapple">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Effect index="0" value="Herc_Grapple@CU"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Cost>
+            <Cooldown TimeUse="10"/>
+        </Cost>
+        <Range value="9"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Herc_Grapple"/>
+        <AutoCastFilters value="Ground,Visible;Player,Ally,Neutral,Structure,Missile,Stasis,Dead,Hidden"/>
+    </CAbilEffectTarget>
+
+    <CBehaviorBuff id="Herc_Grapple@Precursor" parent="Precursor">
+        <Duration value="2"/>
+        <ExpireEffect value="SuicideRemove"/>
+    </CBehaviorBuff>
+
+    <CEffectCreateUnit id="Herc_Grapple@CU">
+        <EditorCategories value="Race:Terran"/>
+        <CreateFlags index="Precursor" value="1"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <SpawnEffect value="Herc_Grapple@Set"/>
+        <SpawnUnit value="Herc"/>
+    </CEffectCreateUnit>
+    <CEffectSet id="Herc_Grapple@Set">
+        <EditorCategories value="Race:Terran"/>
+        <!-- <EffectArray value="Herc_Grapple@Precursor"/> -->
+        <EffectArray value="Herc_Grapple@LM"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="Herc_Grapple@Precursor"/>
+    <CEffectLaunchMissile id="Herc_Grapple@LM">
+        <EditorCategories value="Race:Terran"/>
+        <ImpactEffect value="Herc_Grapple@ImpactSet"/>
+        <AmmoUnit value="Herc_Grapple@AttackMissile"/>
+    </CEffectLaunchMissile>
+
+    <CUnit id="Herc_Grapple@AttackMissile" parent="MISSILE">
+        <Mover value="MissileDefault"/>
+        <Race value="Terr"/>
+        <EditorCategories value="ObjectFamily:Melee,ObjectType:Projectile"/>
+    </CUnit>
+
+    <CActorMissile id="Herc_Grapple@AttackMissile" parent="GenericAttackMissile" unitName="Herc_Grapple@AttackMissile">
+        <Model value="Invisible"/>
+    </CActorMissile>
+    <CActorAction id="Herc_Grapple@Attack" parent="GenericAttack" effectLaunch="Herc_Grapple@LM">
+        <AcquisitionYawHalfArc value="7.500000"/>
+        <AcquisitionPitchHalfArc value="15.000000"/>
+        <AccuracyHalfArc value="10.000000"/>
+        <ActionFlags index="IgnoresShields" value="1"/>
+        <ShieldFlashType value="None"/>
+    </CActorAction>
+
+    <CModel id="Herc_Grapple@AttackMissile" parent="MissileFX">
+        <EditorCategories value="Race:Terran"/>
+        <Model value="Assets\Effects\Terran\AutoTurretPodMissile\AutoTurretPodMissile.m3"/>
+        <ScaleMax value="0.500000,0.500000,0.500000"/>
+        <ScaleMin value="0.500000,0.500000,0.500000"/>
+    </CModel>
+
+    <CSound id="Herc_Grapple@AttackLaunch" parent="Combat"></CSound>
+
+    <CDataCollectionUnit id="Herc_Grapple">
+        <EditorCategories value="DataGroup:Weapon,Race:Terran"/>
+    </CDataCollectionUnit>
+    
+
+</Catalog>

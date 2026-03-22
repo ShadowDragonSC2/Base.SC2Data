@@ -135,6 +135,8 @@
     <CActorUnit default="1" id="AdvancedUnitStandard" parent="GenericUnitStandard">
         <PortraitModel value="##id##@Portrait"/>
 
+        <ModelFlags index="OutlineEmitter" value="1"/>
+
         <SoundArray index="Attack" value="##id##@Attack"/>
         <SoundArray index="Birth" value="##id##@Birth"/>
         <SoundArray index="Board" value="##id##@Board"/>
@@ -173,6 +175,13 @@
         <DeathArray index="UnderConstruction" ModelLink="##id##@UnderConstruction" VoiceLink="##id##@UnderConstruction" SoundLink="##id##@UnderConstruction"/>
         <DeathArray index="Unknown" ModelLink="##id##@Unknown" VoiceLink="##id##@UnknownVoice" SoundLink="##id##@Unknown"/>
         <DeathArray index="Unlink" ModelLink="##id##@Unlink" VoiceLink="##id##@UnlinkVoice" SoundLink="##id##@Unlink"/>
+    </CActorUnit>
+
+    <CActorUnit default="1" id="AdvancedStandard_Ground" parent="AdvancedUnitStandard">
+        <Macros value="UnloadDropAnim"/>
+        <Macros value="PhysicsDeathsSwarmGround"/>
+        <Macros value="PhysicsDeathsVoidGround"/>
+        <WalkAnimMoveSpeed value="2.25"/>
     </CActorUnit>
 
     <!-- Buttons -->
@@ -232,6 +241,7 @@
         <ScoreResult value="BuildOrder"/>
     </CUnit>
     <CUnit default="1" id="Generic_Unit_Ground" parent="Generic_Unit">
+        <DeathRevealRadius value="3"/>
         <Name value="Unit/Name/##id##"/>
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
