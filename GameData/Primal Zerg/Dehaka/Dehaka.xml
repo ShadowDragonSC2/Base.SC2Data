@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    <CButton id="DehakaHero"></CButton>
+    
+    <CUnit id="DehakaHero">
+        <DeathTime value="-1"/>
+        <DeathRevealRadius value="3"/>
+        <Race value="PZrg"/>
+        <Mob value="Multiplayer"/>
+        <FlagArray index="PreventDestroy" value="1"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="ArmySelect" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <Collide index="Small" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <Attributes index="Heroic" value="1"/>
+        <LifeStart value="600"/>
+        <LifeMax value="600"/>
+        <LifeArmor value="1"/>
+        <LifeRegenRate value="2"/>
+        <LifeArmorName value="Unit/LifeArmorName/PrimalZergArmor"/>
+        <ShieldArmorName value="Unit/ShieldArmorName/ZergWildMutation"/>
+        <Speed value="3"/>
+        <Acceleration value="1000"/>
+        <Sight value="10"/>
+        <CostCategory value="Army"/>
+        <AttackTargetPriority value="20"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="attack"/>
+        <AbilArray Link="move"/>
+        <AbilArray Link="DehakaLearn"/>
+        <AbilArray Link="DehakaIntimidatingRoar"/>
+        <AbilArray Link="DehakaLeapStomp"/>
+        <AbilArray Link="DehakaConsume"/>
+        <!--AbilArray Link="DehakaPrimalMutation"/-->
+        <AbilArray Link="DehakaMendingAura"/>
+        <AbilArray Link="DehakaDetector"/>
+        <AbilArray Link="DehakaDeepTunnel"/>
+        <!--AbilArray Link="BurrowDehakaCoopDown"/-->
+        <AbilArray Link="MammothBreath"/>
+        <!--AbilArray Link="MammothBeam"/>
+        <AbilArray Link="MammothRoar"/-->
+        <!--AbilArray Link="DehakaCloakAura"/-->
+        <AbilArray Link="DehakaAirAttackUpgrade"/>
+        <AbilArray Link="DehakaArmorUpgrade"/>
+        <!--BehaviorArray Link="DehakaJump"/-->
+        <BehaviorArray Link="NoBiomassDrop"/>
+        <BehaviorArray Link="AllUnitBehaviorController"/>
+        <!--BehaviorArray Link="DehakaVeterancyCoopLow"/>
+        <BehaviorArray Link="DehakaVeterancyCoopMedium"/>
+        <BehaviorArray Link="DehakaVeterancyCoopHigh"/-->
+        <BehaviorArray Link="DehakaAttEssence"/>
+        <BehaviorArray Link="DehakaAirUnkillable"/>
+        <BehaviorArray Link="CommanderPrestigeDehakaCloneSpawnTracker"/>
+        <BehaviorArray Link="AllUnitBehaviorController"/>
+        <WeaponArray Link="DehakaCoop"/>
+        <EffectArray index="Death" value="CommanderPrestigeDehakaCloneFateIterate"/>
+        <CardLayouts>
+            <LayoutButtons Face="MoveChampions" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+            <LayoutButtons Face="AttackChampions" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="DehakaLeapStomp" Type="AbilCmd" AbilCmd="DehakaLeapStomp,Execute" Row="2" Column="0"/>
+            <!--LayoutButtons Face="MammothBeam" Type="AbilCmd" AbilCmd="MammothBeam,Execute" Row="2" Column="1"/-->
+            <LayoutButtons Face="DehakaIntimidatingRoar" Type="AbilCmd" AbilCmd="DehakaIntimidatingRoar,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="DehakaConsume" Type="AbilCmd" AbilCmd="DehakaConsume,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="DehakaDeepTunnel" Type="AbilCmd" AbilCmd="DehakaDeepTunnel,Execute" Row="2" Column="4"/>
+            <!--LayoutButtons Face="MammothRoar" Type="AbilCmd" AbilCmd="MammothRoar,Execute" Row="2" Column="2"/-->
+            <!--LayoutButtons Face="DehakaPrimalMutation" Type="AbilCmd" AbilCmd="DehakaPrimalMutation,Execute" Row="2" Column="3"/-->
+            <LayoutButtons Face="DehakaDeepTunnelLocked" Type="Passive" Requirements="DehakaLevel04" Row="2" Column="4"/>
+            <LayoutButtons Face="DehakaDetector" Type="AbilCmd" AbilCmd="DehakaDetector,Off" Row="1" Column="1"/>
+            <LayoutButtons>
+                <Face value="DehakaLearnAbilities"/>
+                <Type value="Submenu"/>
+                <SubmenuAbilState value="DehakaLearn"/>
+                <SubmenuCardId value="Lear"/>
+                <SubmenuIsSticky value="1"/>
+                <Row value="1"/>
+                <Column value="4"/>
+            </LayoutButtons>
+            <LayoutButtons Face="DehakaMendingAura" Type="AbilCmd" AbilCmd="DehakaMendingAura,Off" Row="1" Column="0"/>
+            <LayoutButtons Face="MammothBreath" Type="AbilCmd" AbilCmd="MammothBreath,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="DehakaArmorUpgrade" Type="AbilCmd" AbilCmd="DehakaArmorUpgrade,Off" Row="1" Column="2"/>
+            <LayoutButtons Face="DehakaAirAttack" Type="AbilCmd" AbilCmd="DehakaAirAttackUpgrade,Off" Row="1" Column="3"/>
+        </CardLayouts>
+        <CardLayouts CardId="Lear">
+            <LayoutButtons Face="Cancel" Type="CancelSubmenu" Row="2" Column="4"/>
+            <LayoutButtons Face="LearnDehakaLeapStomp" Type="AbilCmd" AbilCmd="DehakaLearn,Learn2" Row="2" Column="0"/>
+            <LayoutButtons Face="LearnDehakaIntimidatingRoar" Type="AbilCmd" AbilCmd="DehakaLearn,Learn8" Row="2" Column="1"/>
+            <LayoutButtons Face="LearnDehakaConsume" Type="AbilCmd" AbilCmd="DehakaLearn,Learn3" Row="2" Column="2"/>
+            <LayoutButtons Face="LearnDehakaMammothBreath" Type="AbilCmd" AbilCmd="DehakaLearn,Learn4" Row="2" Column="3"/>
+            <LayoutButtons Face="LearnDehakaMendingAura" Type="AbilCmd" AbilCmd="DehakaLearn,Learn5" Row="1" Column="0"/>
+            <LayoutButtons Face="EvolveDehakaPrimalRegenerationLocked" Type="Passive" Requirements="DehakaLevel12" Row="1" Column="0"/>
+            <LayoutButtons Face="LearnDehakaDetector" Type="AbilCmd" AbilCmd="DehakaLearn,Learn9" Row="1" Column="1"/>
+            <LayoutButtons Face="EvolveDehakaKeenSensesLocked" Type="Passive" Requirements="DehakaLevel05" Row="1" Column="1"/>
+            <LayoutButtons Face="LearnDehakaArmorUpgrade" Type="AbilCmd" AbilCmd="DehakaLearn,Learn6" Row="1" Column="2"/>
+            <LayoutButtons Face="EvolveDehakaChitinousPlatingLocked" Type="Passive" Requirements="DehakaLevel05" Row="1" Column="2"/>
+            <LayoutButtons Face="DehakaAirAttackUpgrade" Type="AbilCmd" AbilCmd="DehakaLearn,Learn11" Row="1" Column="3"/>
+            <LayoutButtons Face="EvolveDehakaReachingtheSkyLocked" Type="Passive" Requirements="DehakaLevel12" Row="1" Column="3"/>
+        </CardLayouts>
+        <Radius value="1"/>
+        <InnerRadius value="0.5"/>
+        <CargoSize value="2"/>
+        <SubgroupPriority value="199"/>
+        <EditorCategories value="ObjectType:Hero,ObjectFamily:FactionPrimal"/>
+        <HotkeyCategory value="Unit/Category/ZergPrimal"/>
+        <RankDisplay value="Never"/>
+        <AlliedPushPriority value="11"/>
+        <GlossaryPriority value="4"/>
+        <TauntDuration index="Dance" value="5"/>
+    </CUnit>
+    
+    <CActorUnit id="DehakaHero" parent="AdvancedUnitStandard" unitName="DehakaHero">
+        <Macros value="ZergLargeBurrowEffects"/>
+        <Macros value="UnloadDropAnim"/>
+        <UnitFlags index="AutomateWalkDirections" value="1"/>
+        <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
+        <WalkAnimMoveSpeed value="4"/>
+        <BarOffset value="30"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Dehaka-YoungDehaka-Primal.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Dehaka-YoungDehaka-Primal.dds"/>
+        </Wireframe>
+        <HeroIcon value="Assets\Textures\BTN-Unit-Dehaka-YoungDehaka.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-dehaka-groundcarapace-level0.dds"/>
+        <MinimapIcon value="Assets\Textures\btn-ac-zerg-dehakamapicon.dds"/>
+        <MinimapIconTintColor value="255,249,169,62"/>
+        <MinimapTooltip value="Unit/Name/DehakaCoop"/>
+        <MinimapUseSelfColor value="0"/>
+        <MinimapUseSelectionColor value="0"/>
+        <MinimapIconScale value="0.800000"/>
+        <MinimapRenderPriority value="Hero"/>
+        <NameOffset value="40"/>
+    </CActorUnit>
+    
+    <CModel id="DehakaHero" parent="Unit">
+        <Model value="Assets\Units\Zerg\Dehaka_Coop_Young\Dehaka_Coop_Young.m3"/>
+        <Lighting value="Dehaka"/>
+        <Occlusion value="Show"/>
+        <PlanetPanelCamera value="Star2CameraHigher06"/>
+        <Radius value="1.250000"/>
+        <SelectionRadius value="1.000000"/>
+        <ShadowRadius value="1.000000"/>
+        <SquibTypeDefault value="Flesh"/>
+        <TechPurchaseCamera value="Star2CameraHigher06"/>
+        <UnitGlossaryCamera value="Star2CameraHigher06"/>
+    </CModel>
+    <CModel id="DehakaHero@Portrait" parent="FXAPortrait" Race="Zerg">
+        <Model value="Assets\StoryModeCharacters\Zerg\SMX1_PrimalZergCommanderT1_Background_Portrait\SMX1_PrimalZergCommanderT1_Background_Portrait.m3"/>
+        <Image value="Assets\Textures\SMX1_PrimalZergCommanderT1Portrait_Static.dds"/>
+        <FacialController value="LocalizedData\Facial\SMX1_Dehaka.fxa"/>
+        <Flags index="Download" value="1"/>
+    </CModel>
+    
+
+</Catalog>
