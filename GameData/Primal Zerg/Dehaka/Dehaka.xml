@@ -34,9 +34,9 @@
         <AbilArray Link="DehakaArmorUpgrade"/>
         <BehaviorArray Link="DehakaAttEssence"/>
         <BehaviorArray Link="DehakaAirUnkillable"/>
-        <WeaponArray Link="DehakaCoop"/>
+        <WeaponArray Link="DehakaHero_Claws"/>
         <EffectArray index="Death" value="CommanderPrestigeDehakaCloneFateIterate"/>
-        <CardLayouts>
+        <CardLayouts index="0">
             <LayoutButtons Face="DehakaLeapStomp" Type="AbilCmd" AbilCmd="DehakaLeapStomp,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="DehakaIntimidatingRoar" Type="AbilCmd" AbilCmd="DehakaIntimidatingRoar,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="DehakaConsume" Type="AbilCmd" AbilCmd="DehakaConsume,Execute" Row="2" Column="2"/>
@@ -83,7 +83,7 @@
         <GlossaryPriority value="4"/>
         <TauntDuration index="Dance" value="5"/>
     </CUnit>
-    
+
     <CActorUnit id="DehakaHero" parent="AdvancedUnitStandard" unitName="DehakaHero">
         <Macros value="ZergLargeBurrowEffects"/>
         <Macros value="UnloadDropAnim"/>
@@ -112,7 +112,6 @@
     
     <CModel id="DehakaHero" parent="Unit">
         <Model value="Assets\Units\Zerg\Dehaka_Coop_Young\Dehaka_Coop_Young.m3"/>
-        <Lighting value="Dehaka"/>
         <Occlusion value="Show"/>
         <PlanetPanelCamera value="Star2CameraHigher06"/>
         <Radius value="1.250000"/>
@@ -128,6 +127,341 @@
         <FacialController value="LocalizedData\Facial\SMX1_Dehaka.fxa"/>
         <Flags index="Download" value="1"/>
     </CModel>
+
+    <CSound id="DehakaHero@DeathVoice" parent="VoiceDeathAlways">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_009.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="DehakaHero@Attack" parent="Voice">
+        <AssetArray index="0">
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_035.ogg"/>
+            <FacialAnim value="zUnit_HeroDehaka_PrimalZergAdvisor_035"/>
+            <FacialGroup value="zUnit_HeroDehaka_PrimalZergAdvisor_035"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_035.fxe"/>
+            <Speaker value=""/>
+            <Subtitle value=""/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_007.ogg"/>
+            <FacialAnim value="zUnit_HeroDehaka_PrimalZergAdvisor_007"/>
+            <FacialGroup value="zUnit_HeroDehaka_PrimalZergAdvisor_007"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_007.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_008.ogg"/>
+            <FacialAnim value="zUnit_HeroDehaka_PrimalZergAdvisor_008"/>
+            <FacialGroup value="zUnit_HeroDehaka_PrimalZergAdvisor_008"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_008.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_014.ogg"/>
+            <FacialAnim value="zUnit_HeroDehaka_PrimalZergAdvisor_014"/>
+            <FacialGroup value="zUnit_HeroDehaka_PrimalZergAdvisor_014"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_014.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_022.ogg"/>
+            <FacialAnim value="zUnit_HeroDehaka_PrimalZergAdvisor_022"/>
+            <FacialGroup value="zUnit_HeroDehaka_PrimalZergAdvisor_022"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_022.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_036.ogg"/>
+            <FacialAnim value="zUnit_HeroDehaka_PrimalZergAdvisor_036"/>
+            <FacialGroup value="zUnit_HeroDehaka_PrimalZergAdvisor_036"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_036.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_039.ogg"/>
+            <FacialAnim value="zUnit_HeroDehaka_PrimalZergAdvisor_039"/>
+            <FacialGroup value="zUnit_HeroDehaka_PrimalZergAdvisor_039"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_039.fxe"/>
+        </AssetArray>
+    </CSound>
+    <CSound id="DehakaHero@Help" parent="Alert">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_009.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="DehakaHero@Pissed" parent="Pissed">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_013.ogg"/>
+            <FacialAnim value="zUnit_HeroDehaka_PrimalZergAdvisor_013"/>
+            <FacialGroup value="zUnit_HeroDehaka_PrimalZergAdvisor_013"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_013.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_026.ogg"/>
+            <FacialAnim value="zUnit_HeroDehaka_PrimalZergAdvisor_026"/>
+            <FacialGroup value="zUnit_HeroDehaka_PrimalZergAdvisor_026"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_026.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_027.ogg"/>
+            <FacialAnim value="zUnit_HeroDehaka_PrimalZergAdvisor_027"/>
+            <FacialGroup value="zUnit_HeroDehaka_PrimalZergAdvisor_027"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_027.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_012.ogg"/>
+            <FacialAnim value="zUnit_HeroDehaka_PrimalZergAdvisor_012"/>
+            <FacialGroup value="zUnit_HeroDehaka_PrimalZergAdvisor_012"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_012.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_018.ogg"/>
+            <FacialAnim value="zUnit_HeroDehaka_PrimalZergAdvisor_018"/>
+            <FacialGroup value="zUnit_HeroDehaka_PrimalZergAdvisor_018"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_018.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_029.ogg"/>
+            <FacialAnim value="zUnit_HeroDehaka_PrimalZergAdvisor_029"/>
+            <FacialGroup value="zUnit_HeroDehaka_PrimalZergAdvisor_029"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_029.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_028.ogg"/>
+            <FacialAnim value="zUnit_HeroDehaka_PrimalZergAdvisor_028"/>
+            <FacialGroup value="zUnit_HeroDehaka_PrimalZergAdvisor_028"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_028.fxe"/>
+        </AssetArray>
+    </CSound>
+    <CSound id="DehakaHero@Yes" parent="Voice">
+        <AssetArray index="0">
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_031.ogg"/>
+            <FacialAnim value="zUnit_HeroDehaka_PrimalZergAdvisor_031"/>
+            <FacialGroup value="zUnit_HeroDehaka_PrimalZergAdvisor_031"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_031.fxe"/>
+            <Speaker value=""/>
+            <Subtitle value=""/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_010.ogg"/>
+            <FacialAnim value="zUnit_HeroDehaka_PrimalZergAdvisor_010"/>
+            <FacialGroup value="zUnit_HeroDehaka_PrimalZergAdvisor_010"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_010.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_017.ogg"/>
+            <FacialAnim value="zUnit_HeroDehaka_PrimalZergAdvisor_017"/>
+            <FacialGroup value="zUnit_HeroDehaka_PrimalZergAdvisor_017"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_017.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_025.ogg"/>
+            <FacialAnim value="zUnit_HeroDehaka_PrimalZergAdvisor_025"/>
+            <FacialGroup value="zUnit_HeroDehaka_PrimalZergAdvisor_025"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_025.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_024.ogg"/>
+            <FacialAnim value="zUnit_HeroDehaka_PrimalZergAdvisor_024"/>
+            <FacialGroup value="zUnit_HeroDehaka_PrimalZergAdvisor_024"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_024.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_034.ogg"/>
+            <FacialAnim value="zUnit_HeroDehaka_PrimalZergAdvisor_034"/>
+            <FacialGroup value="zUnit_HeroDehaka_PrimalZergAdvisor_034"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_034.fxe"/>
+        </AssetArray>
+    </CSound>
+    <CSound id="DehakaHero@What" parent="Voice">
+        <AssetArray index="0">
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_016.ogg"/>
+            <FacialAnim value="zUnit_HeroDehaka_PrimalZergAdvisor_016"/>
+            <FacialGroup value="zUnit_HeroDehaka_PrimalZergAdvisor_016"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_016.fxe"/>
+            <Speaker value=""/>
+            <Subtitle value=""/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_004.ogg"/>
+            <FacialAnim value="zUnit_HeroDehaka_PrimalZergAdvisor_004"/>
+            <FacialGroup value="zUnit_HeroDehaka_PrimalZergAdvisor_004"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_004.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_005.ogg"/>
+            <FacialAnim value="zUnit_HeroDehaka_PrimalZergAdvisor_005"/>
+            <FacialGroup value="zUnit_HeroDehaka_PrimalZergAdvisor_005"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_005.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_006.ogg"/>
+            <FacialAnim value="zUnit_HeroDehaka_PrimalZergAdvisor_006"/>
+            <FacialGroup value="zUnit_HeroDehaka_PrimalZergAdvisor_006"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_006.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_037.ogg"/>
+            <FacialAnim value="zUnit_HeroDehaka_PrimalZergAdvisor_037"/>
+            <FacialGroup value="zUnit_HeroDehaka_PrimalZergAdvisor_037"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_037.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_032.ogg"/>
+            <FacialAnim value="zUnit_HeroDehaka_PrimalZergAdvisor_032"/>
+            <FacialGroup value="zUnit_HeroDehaka_PrimalZergAdvisor_032"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_032.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_011.ogg"/>
+            <FacialAnim value="zUnit_HeroDehaka_PrimalZergAdvisor_011"/>
+            <FacialGroup value="zUnit_HeroDehaka_PrimalZergAdvisor_011"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_011.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_033.ogg"/>
+            <FacialAnim value="zUnit_HeroDehaka_PrimalZergAdvisor_033"/>
+            <FacialGroup value="zUnit_HeroDehaka_PrimalZergAdvisor_033"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroDehaka_PrimalZergAdvisor_033.fxe"/>
+        </AssetArray>
+    </CSound>
+    <CSound id="DehakaHero@Ready" parent="Ready"/>
+    <CSound id="Dehaka@Burrow" parent="Spell">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Dehaka_Burrow00.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Dehaka_Burrow01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Dehaka_Burrow02.wav" FacialGroup=""/>
+        <Volume value="-1.000000,1.000000"/>
+        <Pitch value="-1.000000,1.000000"/>
+    </CSound>
+    <CSound id="Dehaka@Unburrow" parent="Spell">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Dehaka_UnBurrow00.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Dehaka_UnBurrow01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Dehaka_UnBurrow02.wav" FacialGroup=""/>
+        <Volume value="-3.000000,-2.000000"/>
+        <Pitch value="-1.000000,1.000000"/>
+    </CSound>
+
+    <CDataCollectionUnit id="DehakaHero" parent="UnitGround">
+        <DataRecord Entry="Button,DehakaHero"/>
+        <DataRecord Entry="Unit,DehakaHero"/>
+        <DataRecord Entry="Actor,DehakaHero"/>
+        <DataRecord Entry="Model,DehakaHero"/>
+        <DataRecord Entry="Model,DehakaHero@Portrait"/>
+    </CDataCollectionUnit>
     
+    <!-- Weapons -->
+
+    <CWeaponLegacy id="DehakaHero_Claws">
+        <EditorCategories value="Race:Zerg"/>
+        <Options index="Melee" value="1"/>
+        <Icon value="Assets\Textures\btn-upgrade-dehaka-meleeattacks-level0.dds"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="1"/>
+        <Period value="2"/>
+        <DamagePoint value="0.25"/>
+        <Effect value="DehakaHero_Claws@Damage"/>
+    </CWeaponLegacy>
+    <CEffectDamage id="DehakaHero_Claws@Damage" parent="DU_WEAP">
+        <EditorCategories value="Race:Zerg"/>
+        <Amount value="7">
+            <AccumulatorArray value="DehakaHero_Claws@LevelDamageScaling"/>
+        </Amount>
+    </CEffectDamage>
+
+    <CActorAction id="DehakaHero_Claws@Attack" parent="GenericAttack" effectAttack="DehakaHero_Claws@Damage">
+        <AcquisitionYawHalfArc value="25.000000"/>
+        <AcquisitionPitchHalfArc value="25.000000"/>    
+        <ShieldFlashType value="Header"/>
+        <ImpactAttachQuery Methods="AMFilterTargetVolumes"/>
+    </CActorAction>
+    <CModel id="DehakaHero_Claws@AttackImpact" parent="ImpactFX">
+        <EditorCategories value="Race:Zerg"/>
+        <Model value="Assets\Effects\Zerg\DehakaAttackImpact\DehakaAttackImpact.m3"/>
+    </CModel>
+
+    <CAccumulatorVeterancyLevel id="DehakaHero_Claws@LevelDamageScaling">
+        <MinAccumulation value="0"/>
+        <Amount value="10"/>
+        <BonusPerLevel value="10"/>
+        <PreviousValueFactor value="1"/>
+    </CAccumulatorVeterancyLevel>
+
+    <CDataCollectionUnit id="DehakaHero_Claws">
+        <DataRecord Entry="Weapon,DehakaHero_Claws"/>
+        <DataRecord Entry="Effect,DehakaHero_Claws"/>
+        <DataRecord Entry="Actor,DehakaHero_Claws"/>
+        <DataRecord Entry="Model,DehakaHero_Claws"/>
+        <DataRecord Entry="Accumulator,DehakaHero_Claws"/>
+    </CDataCollectionUnit>
+
+    <!-- ============== Intimidating Roar ============== -->
+    <CButton id="DehakaIntimidatingRoar">
+        <Icon value="Assets\Textures\btn-ability-zerg-dehaka-intimidatingroar.dds"/>
+    </CButton>
+
+    <CAbilEffectInstant id="DehakaIntimidatingRoar">
+        <EditorCategories value="Race:PZrg,AbilityorEffectType:Units"/>
+        <Effect index="0" value="DehakaIntimidatingRoar@Set"/>
+        <Cost>
+            <Cooldown TimeUse="12"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="DehakaIntimidatingRoar"/>
+    </CAbilEffectInstant>
+
+    <CEffectSet id="DehakaIntimidatingRoar@Set">
+        <EffectArray value="DehakaIntimidatingRoar@Search"/>
+    </CEffectSet>
+
+    <CEffectEnumArea id="DehakaIntimidatingRoar@Search">
+        <AreaArray Effect="DehakaIntimidatingRoar@Apply" Radius="5"/>
+        <SearchFilters value="Visible;Enemy"/>
+    </CEffectEnumArea>
+
+    <CEffectApplyBehavior id="DehakaIntimidatingRoar@Apply">
+        <Behavior value="DehakaIntimidatingRoar@Slow"/>
+    </CEffectApplyBehavior>
+
+    <CBehaviorBuff id="DehakaIntimidatingRoar@Slow">
+        <InfoIcon value="Assets\Textures\btn-ability-zerg-dehaka-intimidatingroar.dds"/>
+        <Alignment value="Negative"/>
+        <EditorCategories value="Race:PZrg,AbilityorEffectType:Units"/>
+        <Duration value="4"/>
+        <Modification>
+            <AttackSpeedMultiplier value="0.5"/>
+            <MoveSpeedMultiplier value="0.5"/>
+        </Modification>
+    </CBehaviorBuff>
+
+    <!-- Visual: Roar Model -->
+    <CModel id="DehakaIntimidatingRoar@Model" parent="ModelFX">
+        <Model value="Assets\Effects\Zerg\DehakaIntimidatingRoar\DehakaIntimidatingRoar.m3"/>
+        <EditorCategories value="Race:Zerg"/>
+    </CModel>
+
+    <!-- Visual: Actor Model (oneshot) -->
+    <CActorModel id="DehakaIntimidatingRoar@Model" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.DehakaIntimidatingRoar@Set.Start; At Caster" Send="Create"/>
+    </CActorModel>
+    <CActorSound id="DehakaIntimidatingRoar@Sound" parent="SoundOneShot">
+        <On Terms="Effect.DehakaIntimidatingRoar@Set.Start; At Caster" Send="Create"/>
+    </CActorSound>
+
+    <!-- Sound: Roar (oneshot) -->
+    <CSound id="DehakaIntimidatingRoar@Sound" parent="Spell">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Primal_Ultralisk_Q_Roar_Vx_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Primal_Ultralisk_Q_Roar_Vx_02.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,2.000000"/>
+        <Volume value="-5.000000,-3.000000"/>
+    </CSound>
+
+    <CDataCollectionUnit id="DehakaIntimidatingRoar">
+        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:PZrg,ObjectType:Unit"/>
+        <DataRecord Entry="Button,DehakaIntimidatingRoar"/>
+        <DataRecord Entry="Abil,DehakaIntimidatingRoar"/>
+        <DataRecord Entry="Effect,DehakaIntimidatingRoar@Set"/>
+        <DataRecord Entry="Effect,DehakaIntimidatingRoar@Search"/>
+        <DataRecord Entry="Effect,DehakaIntimidatingRoar@Apply"/>
+        <DataRecord Entry="Behavior,DehakaIntimidatingRoar@Slow"/>
+        <DataRecord Entry="Model,DehakaIntimidatingRoar@Model"/>
+        <DataRecord Entry="Actor,DehakaIntimidatingRoar@Actor"/>
+        <DataRecord Entry="Sound,DehakaIntimidatingRoar@Sound"/>
+    </CDataCollectionUnit>
 
 </Catalog>

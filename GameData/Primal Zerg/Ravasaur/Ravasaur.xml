@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    <CButton id="Ravasaur">
+        <Icon value="Assets\Textures\btn-unit-zerg-ravasaur.dds"/>
+    </CButton>
+    
+    <CUnit id="Ravasaur" parent="Generic_Unit_Ground">
+        <Race value="PZrg"/>
+        <Attributes index="Biological" value="1"/>
+        <Attributes index="Armored" value="1"/>
+        <Name value="Unit/Name/Ravasaur"/>
+        <LifeStart value="90"/>
+        <LifeMax value="90"/>
+        <LifeArmorName value="Unit/LifeArmorName/PrimalZergArmor"/>
+        <LateralAcceleration value="46.0625"/>
+        <StationaryTurningRate value="999.8437"/>
+        <Sight value="9"/>
+        <Radius value="0.75"/>
+        <InnerRadius value="0.5"/>
+        <CargoSize value="2"/>
+        <Food value="-2"/>
+        <ScoreMake value="150"/>
+        <ScoreKill value="150"/>
+        <SubgroupPriority value="12"/>
+        <AttackTargetPriority value="15"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Ranged,Race:PZrg"/>
+        <HotkeyCategory value="Unit/Category/ZergPrimal"/>
+        <GlossaryPriority value="2"/>
+        <WeaponArray Link="Ravasaur_AcidSpit"/>
+    </CUnit>
+    
+    <CActorUnit id="Ravasaur" parent="AdvancedStandard_Ground" unitName="Ravasaur">
+        <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
+        <On Terms="WeaponStart.*.AttackStart" Send="AnimBracketStart Attack Spell"/>
+        <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack"/>
+        <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
+        <Aliases value="_UnitLarge"/>
+        <Macros value="ZergMediumBurrowEffects"/>
+        <DeathCustoms ModelLink="ZergLargeUnitDeathLow" Name="AntiGravZerg"/>
+        <BarOffset value="55"/>
+        <BarWidth value="40"/>
+        <WalkAnimMoveSpeed value="3.75"/>
+        <HeroIcon value="Assets\Textures\btn-unit-collection-primal-Ravasaur.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level0.dds"/>
+        <UnitIcon value="Assets\Textures\btn-unit-zerg-ravasaur.dds"/>
+        <VitalNames index="Shields" value="Vital/ZergShields"/>
+        <VitalColors index="Shields">
+            <ColorArray value="255,0,128,0"/>
+        </VitalColors>
+        <StatusColors index="Shields">
+            <ColorArray index="0" value="255,0,128,0"/>
+        </StatusColors>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-collection-primal-Ravasaur.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-collection-primal-Ravasaur.dds"/>
+        </Wireframe>
+        <WireframeShieldColor value="255,0,128,0"/>
+        <Baselines index="Walk" AnimProps="Walk,00"/>
+    </CActorUnit>
+    
+    <CModel id="Ravasaur" parent="Unit">
+        <Model value="Assets\Units\Zerg\Ravasaur_Primal_Collection\Ravasaur_Primal_Collection.m3"/>
+        <Occlusion value="Show"/>
+        <PlanetPanelCamera value="Star2CameraHigh04"/>
+        <Radius value="0.800000"/>
+        <SelectionRadius value="0.800000"/>
+        <ShadowRadius value="0.800000"/>
+        <SquibTypeDefault value="Flesh"/>
+        <UnitGlossaryCamera value="Star2CameraHigh04"/>
+    </CModel>
+    <CModel id="Ravasaur@Death" parent="UnitDeath">
+        <Model value="Assets\Units\Zerg\Ravasaur_Primal_Collection_Death\Ravasaur_Primal_Collection_Death.m3"/>
+        <LowQualityModel value="ZergMediumUnitDeathLow"/>
+        <Occlusion value="Show"/>
+    </CModel>
+    <CModel id="Ravasaur@Portrait" parent="Portrait">
+        <Model value="Assets\Portraits\Zerg\Ravasaur_Primal_Collection_Portrait\Ravasaur_Primal_Collection_Portrait.m3"/>
+        <EditorCategories value="Race:Zerg"/>
+    </CModel>
+    
+    <CSound id="Ravasaur@Death" parent="Zerg_ExplosionMedium">
+        <EditorCategories value="Race:Zerg"/>
+        <DupeMuteCount value="10"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Ravasaur@Attack" parent="Voice">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\zUnit_PrimalZerg_Ravasaur_Attack_001.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\zUnit_PrimalZerg_Ravasaur_Attack_002.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\zUnit_PrimalZerg_Ravasaur_Attack_003.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="Ravasaur@Help" parent="Alert">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\zUnit_PrimalZerg_Ravasaur_Help_001.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\zUnit_PrimalZerg_Ravasaur_Help_002.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="Ravasaur@Pissed" parent="Pissed">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\zUnit_PrimalZerg_Ravasaur_Pissed_001.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\zUnit_PrimalZerg_Ravasaur_Pissed_002.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\zUnit_PrimalZerg_Ravasaur_Pissed_003.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="Ravasaur@Yes" parent="Voice">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\zUnit_PrimalZerg_Ravasaur_Yes_001.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\zUnit_PrimalZerg_Ravasaur_Yes_002.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\zUnit_PrimalZerg_Ravasaur_Yes_003.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="Ravasaur@What" parent="Voice">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\zUnit_PrimalZerg_Ravasaur_What_001.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\zUnit_PrimalZerg_Ravasaur_What_002.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\zUnit_PrimalZerg_Ravasaur_What_003.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="Ravasaur@Ready" parent="Ready">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\zUnit_PrimalZerg_Ravasaur_Ready_001.ogg" FacialGroup=""/>
+    </CSound>
+    
+    <CLight id="Ravasaur@Portrait" parent="default">
+        <ToDInfoArray index="0" AmbientColor="0.156863,0.192157,0.301961" AmbientEnvironmentMultiplier="0.750000" Colorize="1">
+            <Param index="HDRExposure" value="1.500000"/>
+            <Param index="HDRWhitePoint" value="1.850000"/>
+            <Param index="HDRSpecMultiplier" value="1.930000"/>
+            <Param index="HDREmisMultiplier" value="1.750000"/>
+            <Param index="TerrainSpecularExp" value="11.210000"/>
+            <Param index="TerrainHDRDiffuse" value="1.250000"/>
+            <Param index="TerrainHDRSpecular" value="3.750000"/>
+            <Param index="CreepSpecularExp" value="30.000000"/>
+            <Param index="CreepHDRSpecMultiplier" value="3.000000"/>
+            <Param index="ColorizationContrast" value="1.066000"/>
+            <Param index="ColorizationHue" value="0.001000"/>
+            <Param index="ColorizationBlend" value="0.300000"/>
+            <DirectionalLight index="Key">
+                <Color value="0.200000,0.376471,0.639216"/>
+                <ColorMultiplier value="0.851000"/>
+                <SpecColorMultiplier value="1.150000"/>
+                <Direction value="0.555012,-0.341579,-0.758476"/>
+            </DirectionalLight>
+            <DirectionalLight index="Fill" Color="0.250980,0.501961,0.501961" ColorMultiplier="3.000000" Direction="-0.885360,-0.121122,0.448851"/>
+            <DirectionalLight index="Back" Color="0.474510,0.384314,0.258824" ColorMultiplier="1.950000" Direction="-0.709236,0.246704,0.660395"/>
+        </ToDInfoArray>
+        <EditorCategories value="LightGroup:PortraitsUnitsZerg"/>
+    </CLight>
+    
+    <CRequirement id="Ravasaur@Use"></CRequirement>
+    
+    <CDataCollectionUnit id="Ravasaur" parent="UnitGround">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:PZrg,ObjectType:Unit"/>
+        <DataRecord Entry="Button,Ravasaur"/>
+        <DataRecord Entry="Unit,Ravasaur"/>
+        <DataRecord Entry="Actor,Ravasaur"/>
+        <DataRecord Entry="Model,Ravasaur"/>
+        <DataRecord Entry="Model,Ravasaur@Death"/>
+        <DataRecord Entry="Model,Ravasaur@Portrait"/>
+        <DataRecord Entry="Sound,Ravasaur@Death"/>
+        <DataRecord Entry="Sound,Ravasaur@Attack"/>
+        <DataRecord Entry="Sound,Ravasaur@Help"/>
+        <DataRecord Entry="Sound,Ravasaur@Pissed"/>
+        <DataRecord Entry="Sound,Ravasaur@Yes"/>
+        <DataRecord Entry="Sound,Ravasaur@What"/>
+        <DataRecord Entry="Sound,Ravasaur@Ready"/>
+        <DataRecord Entry="Light,Ravasaur@Portrait"/>
+        <DataRecord Entry="Requirement,Ravasaur@Use"/>
+    </CDataCollectionUnit>
+
+    <!-- ============ Weapons ============ -->
+
+    <!-- Acid Spit (Artillery) -->
+    <CWeaponLegacy id="Ravasaur_AcidSpit">
+        <EditorCategories value="Race:Zerg"/>
+        <Icon value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level0.dds"/>
+        <DisplayEffect value="Ravasaur_AcidSpit@Damage"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="8"/>
+        <Period value="1.5"/>
+        <DamagePoint value="0.3"/>
+        <Backswing value="0.5"/>
+        <Arc value="15"/>
+        <Effect value="Ravasaur_AcidSpit@Launch"/>
+    </CWeaponLegacy>
+
+    <!-- Effects -->
+    <CEffectSet id="Ravasaur_AcidSpit@Launch">
+        <EffectArray value="Ravasaur_AcidSpit@AttackMissile"/>
+    </CEffectSet>
+    
+    <CEffectLaunchMissile id="Ravasaur_AcidSpit@AttackMissile">
+        <ImpactEffect value="Ravasaur_AcidSpit@Impact"/>
+        <AmmoUnit value="Ravasaur_AcidSpit@AttackMissile"/>
+        <ImpactLocation Value="TargetPoint"/>
+    </CEffectLaunchMissile>
+    
+    <CEffectSet id="Ravasaur_AcidSpit@Impact">
+        <EffectArray value="Ravasaur_AcidSpit@Search"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    
+    <CEffectEnumArea id="Ravasaur_AcidSpit@Search">
+        <DebugTrace value="1"/>
+        <AreaArray index="0" Effect="Ravasaur_AcidSpit@Damage" Radius="2.0" Arc="360"/>
+        <SearchFilters value="Visible;Self,Player,Ally,Neutral,Dead,Invulnerable"/>
+        <ImpactLocation Value="TargetPoint"/>
+    </CEffectEnumArea>
+    
+    <CEffectDamage id="Ravasaur_AcidSpit@Damage" parent="DU_WEAP_SPLASH">
+        <Amount value="20"/>
+        <Kind value="Ranged"/>
+        <Death value="Disintegrate"/>
+    </CEffectDamage>
+
+    <CUnit id="Ravasaur_AcidSpit@AttackMissile" parent="MISSILE">
+        <Mover value="Ravasaur_AcidSpit@Mover"/>
+        <Race value="PZrg"/>
+        <EditorCategories value="ObjectFamily:Melee,ObjectType:Projectile"/>
+    </CUnit>
+
+    <CActorAction id="Ravasaur_AcidSpit@Attack" parent="GenericAttack" effectLaunch="Ravasaur_AcidSpit@AttackMissile" effectImpact="Ravasaur_AcidSpit@Impact">
+        <AcquisitionYawHalfArc value="30.000000"/>
+        <AcquisitionPitchHalfArc value="30.000000"/>
+        <AccuracyHalfArc value="5.000000"/>
+        <ShieldFlashType value="Header"/>
+    </CActorAction>
+    
+    <CActorMissile id="Ravasaur_AcidSpit@AttackMissile" parent="GenericAttackMissile" unitName="Ravasaur_AcidSpit@AttackMissile"/>
+
+    <CModel id="Ravasaur_AcidSpit@AttackMissile" parent="MissileFX">
+        <Model value="Assets\Effects\Zerg\RavasaurMissile\RavasaurMissile.m3"/>
+    </CModel>
+    <!-- <CModel id="Ravasaur_AcidSpit@AttackLaunch" parent="LaunchFX">
+        <Model value="Assets\Effects\Zerg\RavasaurSpit_Launch\RavasaurSpit_Launch.m3"/>
+        <EditorCategories value="Race:Zerg"/>
+    </CModel> -->
+    <CModel id="Ravasaur_AcidSpit@AttackImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Zerg\RavasaurMissileImpact\RavasaurMissileImpact.m3"/>
+        <EditorCategories value="Race:Zerg"/>
+    </CModel>
+
+    <CSound id="Ravasaur_AcidSpit@AttackLaunch" parent="Combat">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Zerg_AttackLaunch_LargeSwingSingle_00.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Zerg_AttackLaunch_LargeSwingSingle_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Zerg_AttackLaunch_LargeSwingSingle_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Zerg_AttackLaunch_LargeSwingSingle_03.wav" FacialGroup=""/>
+        <DupeDestroyCount value="4"/>
+        <Pitch value="-2.000000,2.000000"/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="Ravasaur_AcidSpit@AttackImpact" parent="Combat">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Terrorzor_AntiAir_Impact_1.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Terrorzor_AntiAir_Impact_2.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Terrorzor_AntiAir_Impact_3.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Terrorzor_AntiAir_Impact_4.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Terrorzor_AntiAir_Impact_5.wav" FacialGroup=""/>
+        <Volume value="-4.000000,-2.000000"/>
+    </CSound>
+
+    <CMoverMissile id="Ravasaur_AcidSpit@Mover">
+        <MotionPhases>
+            <Driver value="Ballistic"/>
+            <Acceleration value="-1"/>
+            <MinSpeed value="7"/>
+            <MaxSpeed value="7"/>
+            <Gravity value="35"/>
+        </MotionPhases>
+    </CMoverMissile>
+
+    <CDataCollectionUnit id="Ravasaur_AcidSpit" parent="Weapon_Missile">
+        <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:PZrg,ObjectType:Projectile"/>
+        <DataRecord Entry="Weapon,Ravasaur_AcidSpit"/>
+        <DataRecord Entry="Effect,Ravasaur_AcidSpit@Launch"/>
+        <DataRecord Entry="Effect,Ravasaur_AcidSpit@AttackMissile"/>
+        <DataRecord Entry="Effect,Ravasaur_AcidSpit@Impact"/>
+        <DataRecord Entry="Effect,Ravasaur_AcidSpit@Search"/>
+        <DataRecord Entry="Effect,Ravasaur_AcidSpit@Damage"/>
+        <DataRecord Entry="Mover,Ravasaur_AcidSpit@Mover"/>
+        <DataRecord Entry="Actor,Ravasaur_AcidSpit@Attack"/>
+        <DataRecord Entry="Model,Ravasaur_AcidSpit@AttackLaunch"/>
+        <DataRecord Entry="Model,Ravasaur_AcidSpit@AttackImpact"/>
+        <DataRecord Entry="Actor,Ravasaur_AcidSpit@AttackMissile"/>
+        <DataRecord Entry="Unit,Ravasaur_AcidSpit@AttackMissile"/>
+        <DataRecord Entry="Sound,Ravasaur_AcidSpit@AttackLaunch"/>
+        <DataRecord Entry="Sound,Ravasaur_AcidSpit@AttackImpact"/>
+    </CDataCollectionUnit>
+
+</Catalog>

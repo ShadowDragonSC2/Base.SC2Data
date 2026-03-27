@@ -151,7 +151,6 @@
         <SoundArray index="Pissed" value="##id##@Pissed"/>
         <SoundArray index="Ready" value="##id##@Ready"/>
         <SoundArray index="Turning" value="##id##@Turning"/>
-        <SoundArray index="Unknown" value="##id##@Unknown"/>
         <SoundArray index="What" value="##id##@What"/>
         <SoundArray index="Yes" value="##id##@Yes"/>
 
@@ -176,7 +175,6 @@
         <DeathArray index="TrainingComplete" ModelLink="##id##@TrainingComplete" VoiceLink="##id##@TrainingCompleteVoice" SoundLink="##id##@TrainingComplete"/>
         <DeathArray index="UnderConstruction" ModelLink="##id##@UnderConstruction" VoiceLink="##id##@UnderConstruction" SoundLink="##id##@UnderConstruction"/>
         <DeathArray index="Unknown" ModelLink="##id##@Unknown" VoiceLink="##id##@UnknownVoice" SoundLink="##id##@Unknown"/>
-        <DeathArray index="Unlink" ModelLink="##id##@Unlink" VoiceLink="##id##@UnlinkVoice" SoundLink="##id##@Unlink"/>
     </CActorUnit>
 
     <CActorUnit default="1" id="AdvancedStandard_Ground" parent="AdvancedUnitStandard">
@@ -243,6 +241,9 @@
         <ScoreResult value="BuildOrder"/>
     </CUnit>
     <CUnit default="1" id="Generic_Unit_Ground" parent="Generic_Unit">
+        <Collide index="Small" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="ForceField" value="1"/>
         <DeathRevealRadius value="3"/>
         <Name value="Unit/Name/##id##"/>
         <PlaneArray index="Ground" value="1"/>

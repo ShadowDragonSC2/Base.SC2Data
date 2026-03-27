@@ -1,0 +1,29 @@
+\\\ Ravasaur
+Actor/Name/Ravasaur=Ravasaur
+Model/Name/Ravasaur=Ravasaur
+Model/Name/Ravasaur@Death=Death
+Model/Name/Ravasaur@Portrait=Portrait
+Sound/Name/Ravasaur@Death=Death
+Sound/Name/Ravasaur@Attack=Attack
+Sound/Name/Ravasaur@Help=Help
+Sound/Name/Ravasaur@Pissed=Pissed
+Sound/Name/Ravasaur@Yes=Yes
+Sound/Name/Ravasaur@What=What
+Sound/Name/Ravasaur@Ready=Ready
+Light/Name/Ravasaur@Portrait=Portrait
+Requirement/Name/Ravasaur@Use=Use
+
+\\\ Ravasaur Weapon
+Actor/Name/Ravasaur_AcidSpit@Attack=Attack
+Actor/Name/Ravasaur_AcidSpit@AttackMissile=Missile
+Effect/Name/Ravasaur_AcidSpit@Launch=Launch
+Effect/Name/Ravasaur_AcidSpit@AttackMissile=Missile
+Effect/Name/Ravasaur_AcidSpit@Impact=Impact
+Effect/Name/Ravasaur_AcidSpit@Search=Search
+Effect/Name/Ravasaur_AcidSpit@Damage=Damage
+Model/Name/Ravasaur_AcidSpit@AttackLaunch=Attack Launch
+Model/Name/Ravasaur_AcidSpit@AttackImpact=Attack Impact
+Mover/Name/Ravasaur_AcidSpit@Mover=Mover
+Unit/Name/Ravasaur_AcidSpit@AttackMissile=Missile
+Sound/Name/Ravasaur_AcidSpit@AttackLaunch=Attack Launch
+Sound/Name/Ravasaur_AcidSpit@AttackImpact=Attack Impact

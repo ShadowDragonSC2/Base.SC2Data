@@ -1,0 +1,5 @@
+\\\ Ravasaur
+Button/Name/Ravasaur=Равазавр
+Button/Tooltip/Ravasaur=Артиллерийский юнит из стаи Дехаки. Атакует наземные цели снарядами с областью поражения.
+Unit/Name/Ravasaur=Равазавр
+Weapon/Name/Ravasaur_AcidSpit=Кислотный плевок

@@ -1,0 +1,18 @@
+Actor/Name/DehakaHero=Dehaka
+Model/Name/DehakaHero=Dehaka
+Model/Name/DehakaHero@Portrait=Portrait
+
+Actor/Name/DehakaHero_Claws@Attack=Attack
+Effect/Name/DehakaHero_Claws@Damage=Damage
+Model/Name/DehakaHero_Claws@AttackImpact=Attack Impact
+
+\\\ Intimidating Roar
+Abil/Name/DehakaIntimidatingRoar=Запугивающий рык
+Actor/Name/DehakaIntimidatingRoar@Model=Model
+Actor/Name/DehakaIntimidatingRoar@Sound=Sound
+Behavior/Name/DehakaIntimidatingRoar@Slow=Замедление
+Effect/Name/DehakaIntimidatingRoar@Set=Set
+Effect/Name/DehakaIntimidatingRoar@Search=Search
+Effect/Name/DehakaIntimidatingRoar@Apply=Apply
+Model/Name/DehakaIntimidatingRoar@Model=Roar
+Sound/Name/DehakaIntimidatingRoar@Sound=Roar

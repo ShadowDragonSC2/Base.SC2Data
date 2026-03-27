@@ -1,0 +1,5 @@
+\\\ Dehaka
+Button/Name/DehakaIntimidatingRoar=Запугивающий рык
+Button/Tooltip/DehakaIntimidatingRoar=Издаёт устрашающий рык, замедляющий всех врагов поблизости на 50% в течение 4 сек.
+
+Button/Name/DehakaIntimidatingRoar@Hotkey=R
