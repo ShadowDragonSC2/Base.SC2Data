@@ -390,29 +390,46 @@
         <DataRecord Entry="Accumulator,DehakaHero_Claws"/>
     </CDataCollectionUnit>
 
-    <!-- ============== Intimidating Roar ============== -->
+    <!-- ============== Abilities ============== -->
+    <!-- Intimidating Roar -->
     <CButton id="DehakaIntimidatingRoar">
         <Icon value="Assets\Textures\btn-ability-zerg-dehaka-intimidatingroar.dds"/>
     </CButton>
 
     <CAbilEffectInstant id="DehakaIntimidatingRoar">
         <EditorCategories value="Race:PZrg,AbilityorEffectType:Units"/>
-        <Effect index="0" value="DehakaIntimidatingRoar@Set"/>
-        <Cost>
-            <Cooldown TimeUse="12"/>
-        </Cost>
         <CmdButtonArray index="Execute" DefaultButtonFace="DehakaIntimidatingRoar"/>
+        <Effect index="0" value="DehakaIntimidatingRoar@Search@1"/>
+        <Effect value="DehakaIntimidatingRoar@Search@2"/>
+        <Effect value="DehakaIntimidatingRoar@Search@3"/>
+        <CursorEffect value="DehakaIntimidatingRoar@Search@1"/>
+        <CursorEffect value="DehakaIntimidatingRoar@Search@2"/>
+        <CursorEffect value="DehakaIntimidatingRoar@Search@3"/>
+        <Cost>
+            <Cooldown TimeUse="15"/>
+        </Cost>
+        <Cost>
+            <Cooldown TimeUse="15"/>
+        </Cost>
+        <Cost>
+            <Cooldown TimeUse="15"/>
+        </Cost>
+        <Flags index="Transient" value="1"/>
     </CAbilEffectInstant>
 
-    <CEffectSet id="DehakaIntimidatingRoar@Set">
-        <EffectArray value="DehakaIntimidatingRoar@Search"/>
-    </CEffectSet>
-
-    <CEffectEnumArea id="DehakaIntimidatingRoar@Search">
+    <CEffectEnumArea id="DehakaIntimidatingRoar@Search@1">
         <AreaArray Effect="DehakaIntimidatingRoar@Apply" Radius="5"/>
-        <SearchFilters value="Visible;Enemy"/>
+        <SearchFilters value="Visible;Self,Player,Ally,Neutral,Structure,User1,Missile,Dead,Hidden"/>
     </CEffectEnumArea>
-
+    <CEffectEnumArea id="DehakaIntimidatingRoar@Search@2">
+        <AreaArray Effect="DehakaIntimidatingRoar@Apply" Radius="5"/>
+        <SearchFilters value="Visible;Self,Player,Ally,Neutral,Structure,User1,Missile,Dead,Hidden"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="DehakaIntimidatingRoar@Search@3">
+        <AreaArray Effect="DehakaIntimidatingRoar@Apply" Radius="5"/>
+        <SearchFilters value="Visible;Self,Player,Ally,Neutral,Structure,User1,Missile,Dead,Hidden"/>
+    </CEffectEnumArea>
+    
     <CEffectApplyBehavior id="DehakaIntimidatingRoar@Apply">
         <Behavior value="DehakaIntimidatingRoar@Slow"/>
     </CEffectApplyBehavior>
@@ -428,27 +445,88 @@
         </Modification>
     </CBehaviorBuff>
 
+    <CActorRange id="DehakaIntimidatingRoar@Range1">
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <Range value="10.000000"/>
+        <On Terms="Abil.DehakaIntimidatingRoar.ButtonHoverOn; AbilLevel" Send="Create"/>
+        <On Terms="Abil.DehakaIntimidatingRoar.ButtonHoverOff" Send="Destroy"/>
+    </CActorRange>
+    <CActorRange id="DehakaIntimidatingRoar@Range2">
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <Range value="10.000000"/>
+        <On Terms="Abil.DehakaIntimidatingRoar.ButtonHoverOn; AbilLevel Eq 1" Send="Create"/>
+        <On Terms="Abil.DehakaIntimidatingRoar.ButtonHoverOff" Send="Destroy"/>
+    </CActorRange>
+    <CActorRange id="DehakaIntimidatingRoar@Range3">
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <Range value="10.000000"/>
+        <On Terms="Abil.DehakaIntimidatingRoar.ButtonHoverOn; AbilLevel Eq 2" Send="Create"/>
+        <On Terms="Abil.DehakaIntimidatingRoar.ButtonHoverOff" Send="Destroy"/>
+    </CActorRange>
+
     <!-- Visual: Roar Model -->
-    <CModel id="DehakaIntimidatingRoar@Model" parent="ModelFX">
-        <Model value="Assets\Effects\Zerg\DehakaIntimidatingRoar\DehakaIntimidatingRoar.m3"/>
+    <CModel id="DehakaIntimidatingRoar@Model">
+        <Model value="Assets\Effects\Zerg\Dehaka_Coop_IntimidatingRoar\Dehaka_Coop_IntimidatingRoar.m3"/>
+        <EditorCategories value="Race:Zerg"/>
+    </CModel>
+    <CModel id="DehakaIntimidatingRoar@Impact">
+        <Model value="Assets\Effects\Zerg\Dehaka_Coop_IntimidatingRoar_Impact\Dehaka_Coop_IntimidatingRoar_Impact.m3"/>
         <EditorCategories value="Race:Zerg"/>
     </CModel>
 
     <!-- Visual: Actor Model (oneshot) -->
-    <CActorModel id="DehakaIntimidatingRoar@Model" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.DehakaIntimidatingRoar@Set.Start; At Caster" Send="Create"/>
+    <CActorModel id="DehakaIntimidatingRoar@Impact" parent="ModelAnimationStyleContinuous">
+        <On Terms="Behavior.DehakaIntimidatingRoar@Slow.On" Send="Create"/>
+        <On Terms="Behavior.DehakaIntimidatingRoar@Slow.Off" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpAttachOverhead"/>
+        <Host Subject="_Unit"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
     </CActorModel>
-    <CActorSound id="DehakaIntimidatingRoar@Sound" parent="SoundOneShot">
-        <On Terms="Effect.DehakaIntimidatingRoar@Set.Start; At Caster" Send="Create"/>
+    <CActorModel id="DehakaIntimidatingRoar@Model" parent="ModelAnimationStyleOneShot">
+        <On Terms="Abil.DehakaIntimidatingRoar.SourceCastStart" Send="Create"/>
+        <HostSiteOps Ops="SOpAttachCenterStationary"/>
+        <Host Subject="_Unit"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+    </CActorModel>
+    <CActorSound id="DehakaIntimidatingRoar@Sound1" parent="SoundOneShot">
+        <On Terms="Abil.DehakaIntimidatingRoar.SourceCastStart" Send="Create"/>
     </CActorSound>
+    <CActorSimple id="DehakaIntimidatingRoar@Animation">
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="Abil.DehakaIntimidatingRoar.SourceCastStart" Send="Create"/>
+        <On Terms="ActorCreation" Target="_Selectable" Send="AnimPlay Spell Spell,D"/>
+    </CActorSimple>
 
     <!-- Sound: Roar (oneshot) -->
-    <CSound id="DehakaIntimidatingRoar@Sound" parent="Spell">
-        <EditorCategories value="Race:Zerg"/>
-        <AssetArray File="Assets\Sounds\Primal_Ultralisk_Q_Roar_Vx_01.wav" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\Primal_Ultralisk_Q_Roar_Vx_02.wav" FacialGroup=""/>
-        <Pitch value="-2.000000,2.000000"/>
-        <Volume value="-5.000000,-3.000000"/>
+    <CSound id="DehakaIntimidatingRoar@Sound1" parent="Spell">
+        <AssetArray File="Assets\Sounds\Devourer_Yes00.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Devourer_Yes01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Devourer_Yes02.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Devourer_Yes03.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Devourer_Yes04.ogg" FacialGroup=""/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Spread value="10.000000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="DehakaIntimidatingRoar@Sound2" parent="Spell">
+        <AssetArray File="Assets\Sounds\Devourer_Yes00.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Devourer_Yes01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Devourer_Yes02.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Devourer_Yes03.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Devourer_Yes04.ogg" FacialGroup=""/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Spread value="10.000000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="DehakaIntimidatingRoar@Sound3" parent="Spell">
+        <AssetArray File="Assets\Sounds\Devourer_Yes00.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Devourer_Yes01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Devourer_Yes02.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Devourer_Yes03.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Devourer_Yes04.ogg" FacialGroup=""/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Spread value="10.000000"/>
+        <Volume value="-4.000000,-4.000000"/>
     </CSound>
 
     <CDataCollectionUnit id="DehakaIntimidatingRoar">
@@ -456,12 +534,52 @@
         <DataRecord Entry="Button,DehakaIntimidatingRoar"/>
         <DataRecord Entry="Abil,DehakaIntimidatingRoar"/>
         <DataRecord Entry="Effect,DehakaIntimidatingRoar@Set"/>
+        <DataRecord Entry="Effect,DehakaIntimidatingRoar@Set@1"/>
+        <DataRecord Entry="Effect,DehakaIntimidatingRoar@Set@2"/>
+        <DataRecord Entry="Effect,DehakaIntimidatingRoar@Set@3"/>
         <DataRecord Entry="Effect,DehakaIntimidatingRoar@Search"/>
+        <DataRecord Entry="Effect,DehakaIntimidatingRoar@Search@1"/>
+        <DataRecord Entry="Effect,DehakaIntimidatingRoar@Search@2"/>
+        <DataRecord Entry="Effect,DehakaIntimidatingRoar@Search@3"/>
         <DataRecord Entry="Effect,DehakaIntimidatingRoar@Apply"/>
         <DataRecord Entry="Behavior,DehakaIntimidatingRoar@Slow"/>
         <DataRecord Entry="Model,DehakaIntimidatingRoar@Model"/>
-        <DataRecord Entry="Actor,DehakaIntimidatingRoar@Actor"/>
-        <DataRecord Entry="Sound,DehakaIntimidatingRoar@Sound"/>
+        <DataRecord Entry="Model,DehakaIntimidatingRoar@Impact"/>
+        <DataRecord Entry="Actor,DehakaIntimidatingRoar@Model"/>
+        <DataRecord Entry="Actor,DehakaIntimidatingRoar@Impact"/>
+        <DataRecord Entry="Actor,DehakaIntimidatingRoar@Animation"/>
+        <DataRecord Entry="Actor,DehakaIntimidatingRoar@Range1"/>
+        <DataRecord Entry="Actor,DehakaIntimidatingRoar@Range2"/>
+        <DataRecord Entry="Actor,DehakaIntimidatingRoar@Range3"/>
+        <DataRecord Entry="Actor,DehakaIntimidatingRoar@Sound1"/>
+        <DataRecord Entry="Sound,DehakaIntimidatingRoar@Sound1"/>
+        <DataRecord Entry="Sound,DehakaIntimidatingRoar@Sound2"/>
+        <DataRecord Entry="Sound,DehakaIntimidatingRoar@Sound3"/>
     </CDataCollectionUnit>
+
+    <!-- DehakaLeapStomp -->
+    <CButton id="DehakaLeapStomp">
+        <Icon value="Assets\Textures\btn-ability-zerg-dehaka-leapattack.dds"/>
+    </CButton>
+
+    <!-- DehakaConsume -->
+    <CButton id="DehakaConsume">
+        <Icon value="Assets\Textures\btn-ability-zerg-dehaka-consume.dds"/>
+    </CButton>
+
+    <!-- DehakaMendingAura -->
+    <CButton id="DehakaMendingAura">
+        <Icon value="Assets\Textures\btn-ability-dehaka-thornaura.dds"/>
+    </CButton>
+
+    <!-- DehakaDeepTunnel -->
+    <CButton id="DehakaDeepTunnel">
+        <Icon value="Assets\Textures\btn-ability-zerg-dehaka-deeptunnelunlocked.dds"/>
+    </CButton>
+
+    <!-- MammothBreath -->
+    <CButton id="MammothBreath">
+        <Icon value="Assets\Textures\btn-ability-zerg-dehaka-mammothbreath.dds"/>
+    </CButton>
 
 </Catalog>

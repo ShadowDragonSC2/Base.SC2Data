@@ -1,5 +1,75 @@
 \\\ Dehaka
+Unit/Name/DehakaHero=Дехака
+Button/Name/DehakaHero=Дехака
+Button/Tooltip/DehakaHero=Герой изначальных зергов
+
+Button/Name/DehakaLeapStomp=Сокрушительный топот
+Button/Tooltip/DehakaLeapStomp=Прыгает к цели, нанося урон и оглушая её на 1,5 сек. После приземления наносит урон всем врагам в радиусе 3.
+
 Button/Name/DehakaIntimidatingRoar=Запугивающий рык
 Button/Tooltip/DehakaIntimidatingRoar=Издаёт устрашающий рык, замедляющий всех врагов поблизости на 50% в течение 4 сек.
 
-Button/Name/DehakaIntimidatingRoar@Hotkey=R
+Button/Name/DehakaConsume=Поглощение
+Button/Tooltip/DehakaConsume=Поглощает выбранное вражеское существо, восстанавливая здоровье и получая бонус к урону на 30 сек.
+
+Button/Name/DehakaMendingAura=Исцеляющая аура
+Button/Tooltip/DehakaMendingAura=Аура, которая лечит ближайших союзных биологических юнитов. При включении также увеличивает регенерацию здоровья Dehaka.
+
+Button/Name/DehakaDetector=Орган чувств
+Button/Tooltip/DehakaDetector=Позволяет обнаруживать невидимых и маскированных врагов. Деактивирует способность обнаружения.
+
+Button/Name/DehakaDeepTunnel=Глубокий туннель
+Button/Tooltip/DehakaDeepTunnel=Быстро туннелирует к выбранной области на карте. После использования Dehaka не может использовать способность 5 сек.
+
+Button/Name/DehakaMammothBreath=Дыхание мамонта
+Button/Tooltip/DehakaMammothBreath=Выдыхает конус плазмы, наносящий урон всем врагам на расстоянии до 10.
+
+Button/Name/DehakaArmorUpgrade=Хитиновая броня
+Button/Tooltip/DehakaArmorUpgrade=Пассивное увеличение брони. При активации также увеличивает регенерацию здоровья Dehaka.
+
+Button/Name/DehakaAirAttack=Атака по воздуху
+Button/Tooltip/DehakaAirAttack=Пассивная способность, позволяющая атаковать воздушные цели. При активации также увеличивает урон против воздушных юнитов.
+
+Button/Name/DehakaLearnAbilities=Изучить способности
+Button/Tooltip/DehakaLearnAbilities=Открыть меню изучения новых способностей.
+
+\\\ Learn Buttons
+Button/Name/LearnDehakaLeapStomp=Изучить: Сокрушительный топот
+Button/Tooltip/LearnDehakaLeapStomp=Dehaka изучает Сокрушительный топот. Требуется уровень 1.
+
+Button/Name/LearnDehakaIntimidatingRoar=Изучить: Запугивающий рык
+Button/Tooltip/LearnDehakaIntimidatingRoar=Dehaka изучает Запугивающий рык. Требуется уровень 1.
+
+Button/Name/LearnDehakaConsume=Изучить: Поглощение
+Button/Tooltip/LearnDehakaConsume=Dehaka изучает Поглощение. Требуется уровень 1.
+
+Button/Name/LearnDehakaMammothBreath=Изучить: Дыхание мамонта
+Button/Tooltip/LearnDehakaMammothBreath=Dehaka изучает Дыхание мамонта. Требуется уровень 1.
+
+Button/Name/LearnDehakaMendingAura=Изучить: Исцеляющая аура
+Button/Tooltip/LearnDehakaMendingAura=Dehaka изучает Исцеляющую ауру. Требуется уровень 1.
+
+Button/Name/LearnDehakaDetector=Изучить: Орган чувств
+Button/Tooltip/LearnDehakaDetector=Dehaka изучает Орган чувств. Требуется уровень 1.
+
+Button/Name/LearnDehakaArmorUpgrade=Изучить: Хитиновая броня
+Button/Tooltip/LearnDehakaArmorUpgrade=Dehaka изучает Хитиновую броню. Требуется уровень 1.
+
+Button/Name/LearnDehakaAirAttack=Изучить: Атака по воздуху
+Button/Tooltip/LearnDehakaAirAttack=Dehaka изучает Атаку по воздуху. Требуется уровень 1.
+
+\\\ Locked Abilities
+Button/Name/EvolveDehakaPrimalRegenerationLocked=Изучить: Первобытная регенерация (Dehaka)
+Button/Tooltip/EvolveDehakaPrimalRegenerationLocked=Требуется уровень 12.
+
+Button/Name/EvolveDehakaKeenSensesLocked=Изучить: Острые чувства (Dehaka)
+Button/Tooltip/EvolveDehakaKeenSensesLocked=Требуется уровень 5.
+
+Button/Name/EvolveDehakaChitinousPlatingLocked=Изучить: Хитиновое покрытие (Dehaka)
+Button/Tooltip/EvolveDehakaChitinousPlatingLocked=Требуется уровень 5.
+
+Button/Name/EvolveDehakaReachingtheSkyLocked=Изучить: Достижение небес (Dehaka)
+Button/Tooltip/EvolveDehakaReachingtheSkyLocked=Требуется уровень 12.
+
+Button/Name/DehakaDeepTunnelLocked=Глубокий туннель (Dehaka)
+Button/Tooltip/DehakaDeepTunnelLocked=Требуется уровень 4.

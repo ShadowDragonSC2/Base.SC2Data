@@ -1,0 +1,11 @@
+\\\ Dehaka
+Button/Hotkey/DehakaHero=Q
+Button/Hotkey/DehakaLeapStomp=Q
+Button/Hotkey/DehakaIntimidatingRoar=W
+Button/Hotkey/DehakaConsume=E
+Button/Hotkey/DehakaMendingAura=A
+Button/Hotkey/DehakaDetector=S
+Button/Hotkey/DehakaDeepTunnel=D
+Button/Hotkey/DehakaMammothBreath=Z
+Button/Hotkey/DehakaArmorUpgrade=R
+Button/Hotkey/DehakaAirAttack=X
