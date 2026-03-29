@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Catalog>
-    <const id="$weapicon" value="123" type="CImagePath"/>
+    <!-- Requires: Unit:UnitGround[base.xml] -->
+    <!-- Requires: Unit:Generic_Protoss_Unit_Immortal[protoss.xml] -->
 
     <CButton id="Vanguard">
         <Icon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-immortal.dds"/>
@@ -363,6 +364,7 @@
         <Period value="3.75"/>
         <Range value="6"/>
         <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <DisplayEffect value="ScatterCannon@Damage"/>
     </CWeaponLegacy>
 
     <CEffectDamage id="ScatterCannon@Damage">
@@ -372,7 +374,7 @@
         <AmmoUnit value="ScatterCannon@AttackMissile"/>
         <ImpactEffect value="ScatterCannon@Search"/>
         <ImpactLocation Value="TargetPoint"/>
-        <ValidatorArray value="TargetRadiusLE0Dot125"/>
+        <ValidatorArray index="0" value="TargetRadiusLE0Dot125"/>
     </CEffectLaunchMissile>
     <CEffectCreatePersistent id="ScatterCannon@CP">
         <EditorCategories value="Race:Protoss"/>
@@ -394,7 +396,7 @@
         <WhichLocation Value="TargetUnit"/>
         <ExpireEffect value="ScatterCannon@RB"/>
         <FinalEffect value="ScatterCannon@RB"/>
-        <InitialEffect value="ScatterCannon@LM@2"/>
+        <InitialEffect value="ScatterCannon@LM"/>
     </CEffectCreatePersistent>
     <CEffectEnumArea id="ScatterCannon@Search">
         <AreaArray>
@@ -404,17 +406,11 @@
         <IncludeArray Effect="ScatterCannon@CP" Value="Target"/>
         <SearchFilters value="Ground;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectEnumArea>
-    <CEffectRemoveBehavior id="ScatterCannon@RB">
-
-    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="ScatterCannon@RB"/>
     <CEffectSet id="ScatterCannon@Set">
         <EffectArray value="ScatterCannon@Damage"/>
         <EffectArray value="ScatterCannon@Damage"/>
     </CEffectSet>
-    <CEffectLaunchMissile id="ScatterCannon@LM@2">
-        <AmmoUnit value="ScatterCannon@AttackMissile"/>
-        <ImpactEffect value="ScatterCannon@Damage"/>
-    </CEffectLaunchMissile>
     <CEffectSet id="ScatterCannon@Set@LM">
         <EffectArray value="ScatterCannon@LM"/>
     </CEffectSet>
@@ -492,22 +488,25 @@
         <DataRecord Entry="Effect,ScatterCannon@Search"/>
         <DataRecord Entry="Effect,ScatterCannon@RB"/>
         <DataRecord Entry="Effect,ScatterCannon@Set"/>
-        <DataRecord Entry="Effect,ScatterCannon@LM@2"/>
         <DataRecord Entry="Effect,ScatterCannon@Set@LM"/>
         <DataRecord Entry="Actor,ScatterCannon@Attack"/>
+        <DataRecord Entry="Actor,ScatterCannon@Animation"/>
         <DataRecord Entry="Model,ScatterCannon@AttackLaunch"/>
-        <DataRecord Entry="Model,ScatterCannon@AttackImpactModel"/>
+        <DataRecord Entry="Model,ScatterCannon@AttackImpact"/>
+        <DataRecord Entry="Sound,ScatterCannon@AttackLaunch"/>
+        <DataRecord Entry="Sound,ScatterCannon@AttackImpact"/>
         <DataRecord Entry="Unit,ScatterCannon@AttackMissile"/>
         <DataRecord Entry="Actor,ScatterCannon@AttackMissile"/>
         <DataRecord Entry="Model,ScatterCannon@AttackMissile"/>
         <DataRecord Entry="Mover,ScatterCannon@AttackMissile"/>
+        <DataRecord Entry="AttachMethod,AMPatternScatterCannon"/>
     </CDataCollectionUnit>
 
     <!-- Other Data -->
 
     <CAttachMethodPattern id="AMPatternScatterCannon">
         <Base value="::RollingIndex"/>
-        <Driver value="ScatterCannon@LM@2"/>
+        <Driver value="ScatterCannon@LM"/>
         <Keyword value="Weapon"/>
     </CAttachMethodPattern>
 </Catalog>

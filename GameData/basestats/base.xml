@@ -83,6 +83,13 @@
         <Fields Reference="Upgrade,^ParamId^@9,EffectArrayTemplate" NameOverride="DataCollectionPattern/NameOverride/UpgradePattern/EffectArrayTemplate/9"/>
         <Fields Reference="Upgrade,^ParamId^@10,EffectArrayTemplate" NameOverride="DataCollectionPattern/NameOverride/UpgradePattern/EffectArrayTemplate/10"/>
     </CDataCollectionPattern>
+    <CDataCollectionPattern id="UpgradeStatsPattern">
+        <Fields Reference="Button,^ParamId^,Name"/>
+        <Fields Reference="Upgrade,^ParamId^,EffectArrayTemplate[1].Value"/>
+        <Fields Reference="Upgrade,^ParamId^,EffectArrayTemplate[2].Value"/>
+        <Fields Reference="RequirementNode,^ParamId^Not,EffectArrayTemplate[2].Value"/>
+        <Tokens Reference="Upgrade,^ParamId^,icon"/>
+    </CDataCollectionPattern>
     <!-- -->
     <CDataCollectionUnit default="1" id="UnitBase">
         <Name value="Unit/Name/##id##"/>
@@ -114,6 +121,11 @@
     <CDataCollectionUnit default="1" id="UpgradeBase">
         <Name value="Upgrade/Name/##id##"/>
         <Pattern value="UpgradePattern_Template"/>
+        <EditorCategories value="DataGroup:Research,DataFamily:Melee,Race:Protoss,ObjectType:Unit"/>
+    </CDataCollectionUnit>
+    <CDataCollectionUnit default="1" id="UpgradeStatsBase">
+        <Name value="Upgrade/Name/##id##"/>
+        <Pattern value="UpgradeStatsPattern"/>
         <EditorCategories value="DataGroup:Research,DataFamily:Melee,Race:Protoss,ObjectType:Unit"/>
     </CDataCollectionUnit>
 

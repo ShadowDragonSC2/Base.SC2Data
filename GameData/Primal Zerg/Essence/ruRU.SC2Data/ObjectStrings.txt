@@ -1,0 +1,10 @@
+Actor/Name/EssenceCoop=Essence
+
+Effect/Name/Essence_Pickup@LM=Launch
+Effect/Name/Essence_Pickup@Impact=Impact
+
+Model/Name/EssenceCoop=Essence
+
+Mover/Name/Essence_Pickup@Mover=Missile
+
+Validator/Name/Essence_Pickup@Check=Check

@@ -3,6 +3,8 @@ Unit/Name/DehakaHero=Дехака
 Button/Name/DehakaHero=Дехака
 Button/Tooltip/DehakaHero=Герой изначальных зергов
 
+Behavior/Name/Dehaka@Essence=<img path="Assets\Textures\btn-tips-sellzergbiosamples.dds" height="30" width="30" alignment="AbsoluteMiddle"/>Essence
+
 Button/Name/DehakaLeapStomp=Сокрушительный топот
 Button/Tooltip/DehakaLeapStomp=Прыгает к цели, нанося урон и оглушая её на 1,5 сек. После приземления наносит урон всем врагам в радиусе 3.
 
@@ -73,3 +75,27 @@ Button/Tooltip/EvolveDehakaReachingtheSkyLocked=Требуется уровен�
 
 Button/Name/DehakaDeepTunnelLocked=Глубокий туннель (Dehaka)
 Button/Tooltip/DehakaDeepTunnelLocked=Требуется уровень 4.
+
+\\\ Learn
+Button/Name/DehakaLearn=Изучение способностей
+Button/Tooltip/DehakaLearn=Выберите способность для изучения.
+
+\\\ Data Collection
+DataCollection/Name/DehakaHero=Dehaka
+DataCollection/Name/DehakaHero_Claws=Claws
+DataCollection/Name/DehakaIntimidatingRoar=Запугивающий рык
+DataCollection/Name/DehakaLeapStomp=Сокрушительный топот
+DataCollection/Name/DehakaConsume=Поглощение
+DataCollection/Name/DehakaMendingAura=Исцеляющая аура
+DataCollection/Name/DehakaDetector=Орган чувств
+DataCollection/Name/DehakaDeepTunnel=Глубокий туннель
+DataCollection/Name/MammothBreath=Дыхание мамонта
+DataCollection/Name/DehakaArmorUpgrade=Хитиновая броня
+DataCollection/Name/DehakaAirAttackUpgrade=Атака по воздуху
+
+\\\ Weapons
+Weapon/Name/DehakaHero_Claws=Когти
+
+\\\ Behaviors
+Behavior/Name/DehakaHero@Essence=Эссенция
+Behavior/Name/DehakaHero@Veterancy=Опыт

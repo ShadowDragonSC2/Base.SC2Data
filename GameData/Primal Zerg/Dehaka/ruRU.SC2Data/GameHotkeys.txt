@@ -9,3 +9,4 @@ Button/Hotkey/DehakaDeepTunnel=D
 Button/Hotkey/DehakaMammothBreath=Z
 Button/Hotkey/DehakaArmorUpgrade=R
 Button/Hotkey/DehakaAirAttack=X
+Button/Hotkey/DehakaLearnAbilities=G

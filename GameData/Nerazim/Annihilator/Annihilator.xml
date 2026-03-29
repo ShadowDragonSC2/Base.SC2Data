@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Catalog>
+    <!-- Requires: Unit:UnitGround[base.xml] -->
+    <!-- Requires: Unit:Generic_Protoss_Unit_Immortal[protoss.xml] -->
+    <!-- Requires: DataCollectionUnit:Weapon_Instant[base.xml] -->
 
     <CButton id="Annihilator">
         <Icon value="Assets\Textures\BTN-Unit-Protoss-Immortal-Nerazim.dds"/>
@@ -331,6 +334,8 @@
         <DataRecord Entry="Sound,Annihilator@Ready"/>
         <DataRecord Entry="Requirement,Annihilator@Use"/>
         <DataRecord Entry="Light,Annihilator@Portrait"/>
+        <DataRecord Entry="Turret,Immortal"/>
+        <DataRecord Entry="AttachMethod,AMPatternAnnihilator"/>
         <TechInfoUpgradeUsed value="ProtossGroundArmors@1"/>
         <TechInfoUpgradeUsed value="ProtossGroundArmors@2"/>
         <TechInfoUpgradeUsed value="ProtossGroundArmors@3"/>

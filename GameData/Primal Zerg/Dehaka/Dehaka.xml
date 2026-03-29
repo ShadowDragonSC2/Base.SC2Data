@@ -32,10 +32,9 @@
         <AbilArray Link="MammothBreath"/>
         <AbilArray Link="DehakaAirAttackUpgrade"/>
         <AbilArray Link="DehakaArmorUpgrade"/>
-        <BehaviorArray Link="DehakaAttEssence"/>
-        <BehaviorArray Link="DehakaAirUnkillable"/>
+        <BehaviorArray Link="DehakaHero@Essence"/>
+        <BehaviorArray Link="DehakaHero@Veterancy"/>
         <WeaponArray Link="DehakaHero_Claws"/>
-        <EffectArray index="Death" value="CommanderPrestigeDehakaCloneFateIterate"/>
         <CardLayouts index="0">
             <LayoutButtons Face="DehakaLeapStomp" Type="AbilCmd" AbilCmd="DehakaLeapStomp,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="DehakaIntimidatingRoar" Type="AbilCmd" AbilCmd="DehakaIntimidatingRoar,Execute" Row="2" Column="1"/>
@@ -97,6 +96,7 @@
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Dehaka-YoungDehaka-Primal.dds"/>
         </Wireframe>
+        <DeathArray index="Normal" ModelLink="DehakaHero" AnimProps="Stand,Work,Start"/>
         <PortraitActor value="DehakaHero@Portrait"/>
         <HeroIcon value="Assets\Textures\BTN-Unit-Dehaka-YoungDehaka.dds"/>
         <UnitIcon value="Assets\Textures\BTN-Unit-Dehaka-YoungDehaka.dds"/>
@@ -346,12 +346,74 @@
         <Pitch value="-1.000000,1.000000"/>
     </CSound>
 
+    <CBehaviorVeterancy id="DehakaHero@Veterancy">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <ShareFilters index="Kills" value="-;Neutral,Enemy"/>
+        <VeterancyLevelArray/>
+        <VeterancyLevelArray MinVeterancyXP="100">
+            <Modification>
+                <DamageDealtUnscaled index="Spell" value="25"/>
+                <DamageDealtUnscaled index="Melee" value="2"/>
+                <VitalMaxArray index="Life" value="25"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="100">
+            <Modification>
+                <DamageDealtUnscaled index="Spell" value="25"/>
+                <DamageDealtUnscaled index="Melee" value="2"/>
+                <VitalMaxArray index="Life" value="25"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="100">
+            <Modification>
+                <DamageDealtUnscaled index="Spell" value="25"/>
+                <DamageDealtUnscaled index="Melee" value="2"/>
+                <VitalMaxArray index="Life" value="25"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="100">
+            <Modification>
+                <DamageDealtUnscaled index="Spell" value="25"/>
+                <DamageDealtUnscaled index="Melee" value="2"/>
+                <VitalMaxArray index="Life" value="25"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="100"/>
+    </CBehaviorVeterancy>
+    <CBehaviorAttribute id="DehakaHero@Essence">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-tips-sellzergbiosamples.dds"/>
+        <EditorCategories value="Race:PrimalZerg,AbilityorEffectType:Units"/>
+        <MaxPoints value="65535"/>
+        <Modification>
+            <VitalMaxArray index="Life" value="0.75"/>
+        </Modification>
+    </CBehaviorAttribute>
+
+    <CValidatorUnitType id="DehakaHero@IsUnitType">
+        <Value value="DehakaHero"/>
+    </CValidatorUnitType>
+
     <CDataCollectionUnit id="DehakaHero" parent="UnitGround">
         <DataRecord Entry="Button,DehakaHero"/>
         <DataRecord Entry="Unit,DehakaHero"/>
         <DataRecord Entry="Actor,DehakaHero"/>
         <DataRecord Entry="Model,DehakaHero"/>
         <DataRecord Entry="Model,DehakaHero@Portrait"/>
+        <DataRecord Entry="Model,DehakaHero@PortraitAddition"/>
+        <DataRecord Entry="Sound,DehakaHero@DeathVoice"/>
+        <DataRecord Entry="Sound,DehakaHero@Attack"/>
+        <DataRecord Entry="Sound,DehakaHero@Help"/>
+        <DataRecord Entry="Sound,DehakaHero@Pissed"/>
+        <DataRecord Entry="Sound,DehakaHero@Yes"/>
+        <DataRecord Entry="Sound,DehakaHero@What"/>
+        <DataRecord Entry="Sound,DehakaHero@Ready"/>
+        <DataRecord Entry="Sound,Dehaka@Burrow"/>
+        <DataRecord Entry="Sound,Dehaka@Unburrow"/>
+        <DataRecord Entry="Behavior,DehakaHero@Veterancy"/>
+        <DataRecord Entry="Behavior,DehakaHero@Essence"/>
+        <DataRecord Entry="Actor,DehakaHero@Portrait"/>
+        <DataRecord Entry="Actor,DehakaHero@PortraitAddition"/>
     </CDataCollectionUnit>
     
     <!-- Weapons -->
@@ -393,10 +455,10 @@
 
     <CDataCollectionUnit id="DehakaHero_Claws" parent="Weapon_Instant">
         <DataRecord Entry="Weapon,DehakaHero_Claws"/>
-        <DataRecord Entry="Effect,DehakaHero_Claws"/>
-        <DataRecord Entry="Actor,DehakaHero_Claws"/>
-        <DataRecord Entry="Model,DehakaHero_Claws"/>
-        <DataRecord Entry="Accumulator,DehakaHero_Claws"/>
+        <DataRecord Entry="Effect,DehakaHero_Claws@Damage"/>
+        <DataRecord Entry="Actor,DehakaHero_Claws@Attack"/>
+        <DataRecord Entry="Model,DehakaHero_Claws@AttackImpact"/>
+        <DataRecord Entry="Accumulator,DehakaHero_Claws@LevelDamageScaling"/>
     </CDataCollectionUnit>
 
     <!-- ============== Abilities ============== -->
@@ -538,11 +600,6 @@
         <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:PZrg,ObjectType:Unit"/>
         <DataRecord Entry="Button,DehakaIntimidatingRoar"/>
         <DataRecord Entry="Abil,DehakaIntimidatingRoar"/>
-        <DataRecord Entry="Effect,DehakaIntimidatingRoar@Set"/>
-        <DataRecord Entry="Effect,DehakaIntimidatingRoar@Set@1"/>
-        <DataRecord Entry="Effect,DehakaIntimidatingRoar@Set@2"/>
-        <DataRecord Entry="Effect,DehakaIntimidatingRoar@Set@3"/>
-        <DataRecord Entry="Effect,DehakaIntimidatingRoar@Search"/>
         <DataRecord Entry="Effect,DehakaIntimidatingRoar@Search@1"/>
         <DataRecord Entry="Effect,DehakaIntimidatingRoar@Search@2"/>
         <DataRecord Entry="Effect,DehakaIntimidatingRoar@Search@3"/>

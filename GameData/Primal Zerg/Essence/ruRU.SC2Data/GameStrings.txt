@@ -1,0 +1,6 @@
+Button/Name/Essence_Pickup=Эссенция
+Button/Tooltip/Essence_Pickup=Подбор эссенции
+
+Unit/Name/EssenceCoop=Эссенция
+
+DataCollection/Name/Essence_Pickup=Подбор эссенции

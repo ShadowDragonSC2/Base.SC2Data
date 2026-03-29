@@ -178,6 +178,7 @@
         <DataRecord Entry="Sound,Herc@Yes"/>
         <DataRecord Entry="Sound,Herc@What"/>
         <DataRecord Entry="Sound,Herc@Ready"/>
+        <DataRecord Entry="Light,Herc@Portrait"/>
         <DataRecord Entry="Requirement,Herc@Use"/>
     </CDataCollectionUnit>
 
@@ -309,6 +310,18 @@
 
     <CDataCollectionUnit id="Herc_Grapple">
         <EditorCategories value="DataGroup:Weapon,Race:Terran"/>
+        <DataRecord Entry="Button,Herc_Grapple"/>
+        <DataRecord Entry="Abil,Herc_Grapple"/>
+        <DataRecord Entry="Behavior,Herc_Grapple@Precursor"/>
+        <DataRecord Entry="Effect,Herc_Grapple@CU"/>
+        <DataRecord Entry="Effect,Herc_Grapple@Set"/>
+        <DataRecord Entry="Effect,Herc_Grapple@Precursor"/>
+        <DataRecord Entry="Effect,Herc_Grapple@LM"/>
+        <DataRecord Entry="Unit,Herc_Grapple@AttackMissile"/>
+        <DataRecord Entry="Actor,Herc_Grapple@AttackMissile"/>
+        <DataRecord Entry="Actor,Herc_Grapple@Attack"/>
+        <DataRecord Entry="Model,Herc_Grapple@AttackMissile"/>
+        <DataRecord Entry="Sound,Herc_Grapple@AttackLaunch"/>
     </CDataCollectionUnit>
     
 

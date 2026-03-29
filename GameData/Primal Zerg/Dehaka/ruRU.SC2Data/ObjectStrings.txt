@@ -19,12 +19,33 @@ Sound/Name/DehakaHero@What=What
 Sound/Name/DehakaHero@Ready=Ready
 Sound/Name/Dehaka@Burrow=Burrow
 Sound/Name/Dehaka@Unburrow=Unburrow
+Sound/Name/DehakaLeapStomp@Launch=Leap Launch
+Sound/Name/DehakaLeapStomp@Impact=Leap Impact
+Sound/Name/DehakaConsume@Target=Consume Target
+Sound/Name/DehakaConsume@Loop=Consume Loop
+Sound/Name/DehakaMendingAura@Loop=Healing Loop
+Sound/Name/DehakaMendingAura@Start=Healing Start
+Sound/Name/DehakaMendingAura@Stop=Healing Stop
+Sound/Name/DehakaDeepTunnel@Tunnel=Tunnel
+Sound/Name/MammothBreath@Launch=Mammoth Breath Launch
+Sound/Name/MammothBreath@Loop=Mammoth Breath Loop
+Sound/Name/MammothBreath@Impact=Mammoth Breath Impact
 
 \\\ Behaviors
-Behavior/Name/DehakaAttEssence=Эссенция
-Behavior/Name/DehakaAirUnkillable=Неубиваемость (воздух)
+Behavior/Name/DehakaHero@Veterancy=Опыт
+Behavior/Name/DehakaHero@AirUnkillable=Неубиваемость (воздух)
 
 \\\ Leap Stomp
+Abil/Name/DehakaLeapStomp=Сокрушительный топот
+Effect/Name/DehakaLeapStomp@Search=Search
+Effect/Name/DehakaLeapStomp@Damage=Damage
+Effect/Name/DehakaLeapStomp@Stun=Stun
+Effect/Name/DehakaLeapStomp@Launch=Launch
+Effect/Name/DehakaLeapStomp@Impact=Impact
+Model/Name/DehakaLeapStomp@Launch=Launch
+Model/Name/DehakaLeapStomp@Impact=Impact
+Actor/Name/DehakaLeapStomp@Launch=Launch
+Actor/Name/DehakaLeapStomp@Impact=Impact
 
 \\\ Intimidating Roar
 Abil/Name/DehakaIntimidatingRoar=Запугивающий рык
@@ -45,14 +66,47 @@ Sound/Name/DehakaIntimidatingRoar@Sound2=Sound 2
 Sound/Name/DehakaIntimidatingRoar@Sound3=Sound 3
 
 \\\ Consume
+Abil/Name/DehakaConsume=Поглощение
+Effect/Name/DehakaConsume@Target=Target
+Effect/Name/DehakaConsume@Kill=Kill
+Effect/Name/DehakaConsume@Heal=Heal
+Effect/Name/DehakaConsume@Buff=Buff
+Behavior/Name/DehakaConsume@DamageBuff=Damage Buff
+Model/Name/DehakaConsume@Effect=Effect
+Actor/Name/DehakaConsume@Effect=Effect
+Actor/Name/DehakaConsume@Target=Target
 
 \\\ Mending Aura
+Abil/Name/DehakaMendingAura=Исцеляющая аура
+Effect/Name/DehakaMendingAura@Search=Search
+Effect/Name/DehakaMendingAura@Heal=Heal
+Behavior/Name/DehakaMendingAura@Aura=Healing Aura
+Behavior/Name/DehakaMendingAura@SelfBuff=Self Buff
+Model/Name/DehakaMendingAura@Effect=Effect
+Actor/Name/DehakaMendingAura@Effect=Effect
 
 \\\ Detector
+Abil/Name/DehakaDetector=Орган чувств
+Behavior/Name/DehakaDetector@Detect=Detection
 
 \\\ Deep Tunnel
+Abil/Name/DehakaDeepTunnel=Глубокий туннель
+Effect/Name/DehakaDeepTunnel@Teleport=Teleport
+Effect/Name/DehakaDeepTunnel@Damage=Damage
+Model/Name/DehakaDeepTunnel@Launch=Launch
+Model/Name/DehakaDeepTunnel@Arrival=Arrival
+Actor/Name/DehakaDeepTunnel@Launch=Launch
+Actor/Name/DehakaDeepTunnel@Arrival=Arrival
+Actor/Name/DehakaDeepTunnel@Marker=Marker
 
 \\\ Mammoth Breath
+Abil/Name/MammothBreath=Дыхание мамонта
+Effect/Name/MammothBreath@Damage=Damage
+Effect/Name/MammothBreath@Search=Search
+Effect/Name/MammothBreath@Apply=Apply
+Behavior/Name/MammothBreath@Slow=Slow
+Model/Name/MammothBreath@Effect=Effect
+Actor/Name/MammothBreath@Effect=Effect
 
 \\\ Learn Ability
 
@@ -61,3 +115,11 @@ Abil/Name/DehakaArmorUpgrade=Хитиновая броня
 Abil/Name/DehakaAirAttackUpgrade=Атака по воздуху
 Upgrade/Name/DehakaArmorUpgrade=Хитиновая броня
 Upgrade/Name/DehakaAirAttackUpgrade=Атака по воздуху
+
+\\\ Validators
+Validator/Name/DehakaHero@IsUnitType=Is Dehaka
+
+\\\ Requirements
+Requirement/Name/DehakaLevel04=Level 4
+Requirement/Name/DehakaLevel05=Level 5
+Requirement/Name/DehakaLevel12=Level 12

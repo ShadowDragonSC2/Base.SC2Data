@@ -1,0 +1,3 @@
+Button/Hotkey/Ascendant=A
+Button/Hotkey/PsiOrb=E
+Button/Hotkey/MindBlast=B

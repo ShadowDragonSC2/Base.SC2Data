@@ -281,6 +281,31 @@
     <CRequirementCountUpgrade id="ProtossAirArmors@Complete3">
         <Count Link="ProtossAirArmors@3" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+
+    <CDataCollectionUnit id="ProtossAirArmors@1">
+        <DataRecord Entry="Button,ProtossAirArmors@1"/>
+        <DataRecord Entry="Upgrade,ProtossAirArmors@1"/>
+        <DataRecord Entry="Requirement,ProtossAirArmors@1"/>
+        <DataRecord Entry="RequirementNode,ProtossAirArmors@Not1"/>
+        <DataRecord Entry="RequirementNode,ProtossAirArmors@Have1"/>
+        <DataRecord Entry="RequirementNode,ProtossAirArmors@Complete1"/>
+    </CDataCollectionUnit>
+    <CDataCollectionUnit id="ProtossAirArmors@2">
+        <DataRecord Entry="Button,ProtossAirArmors@2"/>
+        <DataRecord Entry="Upgrade,ProtossAirArmors@2"/>
+        <DataRecord Entry="Requirement,ProtossAirArmors@2"/>
+        <DataRecord Entry="RequirementNode,ProtossAirArmors@Not2"/>
+        <DataRecord Entry="RequirementNode,ProtossAirArmors@Have2"/>
+        <DataRecord Entry="RequirementNode,ProtossAirArmors@Complete2"/>
+    </CDataCollectionUnit>
+    <CDataCollectionUnit id="ProtossAirArmors@3">
+        <DataRecord Entry="Button,ProtossAirArmors@3"/>
+        <DataRecord Entry="Upgrade,ProtossAirArmors@3"/>
+        <DataRecord Entry="Requirement,ProtossAirArmors@3"/>
+        <DataRecord Entry="RequirementNode,ProtossAirArmors@Not3"/>
+        <DataRecord Entry="RequirementNode,ProtossAirArmors@Have3"/>
+        <DataRecord Entry="RequirementNode,ProtossAirArmors@Complete3"/>
+    </CDataCollectionUnit>
     
     <CDataCollectionUnit id="ProtossAirArmors" parent="UpgradeBase">
         <DataRecord Entry="Button,ProtossAirArmors@1"/>

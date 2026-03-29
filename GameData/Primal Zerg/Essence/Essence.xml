@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    <CButton id="EssenceCoop">
+        <Icon value="Assets\Textures\Wireframe-Pickup-DNA.dds"/>
+    </CButton>
+    
+    <CUnit id="EssenceCoop">
+        <DeathRevealRadius value="0"/>
+        <DeathRevealDuration value="0"/>
+        <!-- <FlagArray index="Uncommandable" value="1"/> -->
+        <FlagArray index="Untooltipable" value="0"/>
+        <FlagArray index="Untargetable" value="1"/>
+        <FlagArray index="KillCredit" value="0"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FogVisibility value="Snapshot"/>
+        <Collide index="Structure" value="1"/>
+        <Response value="Nothing"/>
+        <LifeStart value="10"/>
+        <LifeMax value="10"/>
+        <StationaryTurningRate value="0"/>
+        <TurningRate value="0"/>
+        <Sight value="2.5"/>
+        <CardLayouts>
+            <LayoutButtons Face="Essence_Pickup" Type="AbilCmd" AbilCmd="Essence_Pickup,Execute" Row="2"/>
+        </CardLayouts>
+        <AbilArray Link="Essence_Pickup"/>
+        <MinimapRadius value="0.375"/>
+        <EditorCategories value="ObjectType:Item,ObjectFamily:Campaign"/>
+        <LeaderAlias value=""/>
+        <Fidget DelayMax="0" DelayMin="0"/>
+    </CUnit>
+    
+    <CActorMissile id="EssenceCoop" parent="GenericAttackMissile" unitName="EssenceCoop">
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorMissile>
+    
+    <CModel id="EssenceCoop" parent="Unit">
+        <Model value="Assets\Doodads\DNAPickup\DNAPickup.m3"/>
+    </CModel>
+
+    <CDataCollectionUnit id="EssenceCoop">
+        <DataRecord Entry="Button,EssenceCoop"/>
+        <DataRecord Entry="Actor,EssenceCoop"/>
+        <DataRecord Entry="Model,EssenceCoop"/>
+    </CDataCollectionUnit>
+
+    <!-- Abilities -->
+    
+    <CButton id="Essence_Pickup" parent="UnitGround">
+        <Icon value="Assets\Textures\btn-ability-terran-salvage.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-terran-salvage.dds"/>
+        <EditorCategories value="Race:Terran"/>
+        <TintRacially value="1"/>
+    </CButton>
+
+    <CAbilEffectTarget id="Essence_Pickup">
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="ReExecutable" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Essence_Pickup"/>
+        <Range value="5"/>
+        <AutoCastRange value="5"/>
+        <AutoCastFilters value="Ground;Structure,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable,Benign"/>
+        <AutoCastValidatorArray value="Essence_Pickup@Check"/>
+        <Cost>
+            <Cooldown TimeUse="0.5"/>
+        </Cost>
+        <Arc value="360"/>
+        <Effect index="0" value="Essence_Pickup@LM"/>
+    </CAbilEffectTarget>
+
+    <CValidatorCombine id="Essence_Pickup@Check">
+        <Type value="And"/>
+        <CombineArray value="DehakaHero@IsUnitType"/>
+    </CValidatorCombine>
+
+    <CEffectLaunchMissile id="Essence_Pickup@LM">
+        <ImpactEffect value="Essence_Pickup@Impact"/>
+        <FinishEffect value="Suicide"/>
+        <Movers Link="Essence_Pickup@Mover"/>
+        <Flags index="PlacementIgnoreBlockers" value="1"/>
+    </CEffectLaunchMissile>
+    <CEffectModifyUnit id="Essence_Pickup@Impact">
+        <VeterancyBehavior value="DehakaHero@Veterancy"/>
+        <XP value="7"/>
+    </CEffectModifyUnit>
+
+    <CActorAction id="Essence_Pickup@Item" parent="GenericAttack" effectLaunch="Essence_Pickup@LM" effectImpact="Essence_Pickup@Impact">
+        <Missile value="EssenceCoop"/>
+        <ImpactMap index="None" AnimProps="Death" Model="EssenceCoop"/>
+        <ImpactSiteOps Ops="SOpAttachHead"/>
+        <LaunchSiteOps Ops="SOpAttachOrigin"/>
+    </CActorAction>
+
+    <CSound id="Essence_Pickup@ItemImpact">
+        <AssetArray File="Assets\Sounds\biomass_pickup01.wav"/>
+        <AssetArray File="Assets\Sounds\biomass_pickup02.wav"/>
+        <AssetArray File="Assets\Sounds\biomass_pickup03.wav"/>
+        <AssetArray File="Assets\Sounds\biomass_pickup04.wav"/>
+        <AssetArray File="Assets\Sounds\biomass_pickup05.wav"/>
+        <AssetArray File="Assets\Sounds\biomass_pickup06.wav"/>
+        <AssetArray File="Assets\Sounds\biomass_pickup07.wav"/>
+        <AssetArray File="Assets\Sounds\biomass_pickup08.wav"/>
+        <AssetArray File="Assets\Sounds\biomass_pickup09.wav"/>
+        <AssetArray File="Assets\Sounds\biomass_pickup10.wav"/>
+    </CSound>
+
+    <CMoverMissile id="Essence_Pickup@Mover">
+        <MotionPhases>
+            <Driver value="Guidance"/>
+            <Acceleration value="10"/>
+            <MaxSpeed value="6"/>
+            <ClearanceAcceleration value="75"/>
+            <Outro value="-1"/>
+            <YawPitchRoll value="719.2968"/>
+        </MotionPhases>
+        <MotionPhases YawPitchRoll="MAX"/>
+        <RotationIgnoredByUnit value="1"/>
+    </CMoverMissile>
+
+    <CDataCollectionUnit id="Essence_Pickup">
+        <DataRecord Entry="Button,Essence_Pickup"/>
+        <DataRecord Entry="Abil,Essence_Pickup"/>
+        <DataRecord Entry="Validator,Essence_Pickup@Check"/>
+        <DataRecord Entry="Effect,Essence_Pickup@LM"/>
+        <DataRecord Entry="Effect,Essence_Pickup@Impact"/>
+        <DataRecord Entry="Mover,Essence_Pickup@Mover"/>
+    </CDataCollectionUnit>
+
+    
+</Catalog>

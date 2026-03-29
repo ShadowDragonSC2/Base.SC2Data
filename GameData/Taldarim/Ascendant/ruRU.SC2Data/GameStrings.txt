@@ -1,0 +1,13 @@
+Button/Name/Ascendant=Вызвать посвященного
+Button/Tooltip/Ascendant=Могущественный талдаримский псионник. Использует способности <d stringref="Button,PsiOrb,Name"/> и <d stringref="Button,MindBlast,Name"/>.
+
+Unit/Name/Ascendant=Посвященный
+
+Button/Name/PsiOrb=Псионная сфера
+Button/Tooltip/PsiOrb=Запускает псионную сферу, которая наносит урон ближайшим вражеским целям.
+
+Button/Name/MindBlast=Ментальный удар
+Button/Tooltip/MindBlast=Наносит цели большой мгновенный урон.
+
+DataCollection/Name/PsiOrb=Псионная сфера
+DataCollection/Name/MindBlast=Ментальный удар
