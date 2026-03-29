@@ -1,88 +1,60 @@
 \\\ Dehaka Hero
 Actor/Name/DehakaHero=Dehaka
+Actor/Name/DehakaHero@PortraitAddition=Portrait Addition
 Model/Name/DehakaHero=Dehaka
-Model/Name/DehakaHero@Portrait=Портрет
+Model/Name/DehakaHero@Portrait=Portrait
+Model/Name/DehakaHero@PortraitAddition=Portrait Addition
 
-Actor/Name/DehakaHero_Claws@Attack=Атака
-Effect/Name/DehakaHero_Claws@Damage=Урон
-Model/Name/DehakaHero_Claws@AttackImpact=Удар
+Actor/Name/DehakaHero_Claws@Attack=Attack
+Effect/Name/DehakaHero_Claws@Damage=Damage
+Model/Name/DehakaHero_Claws@AttackImpact=Attack Impact
 
 \\\ Unit Sounds
-Sound/Name/DehakaHero@DeathVoice=Голос смерти
-Sound/Name/DehakaHero@Attack=Атака
-Sound/Name/DehakaHero@Help=Помощь
-Sound/Name/DehakaHero@Pissed=Раздражение
-Sound/Name/DehakaHero@Yes=Согласие
-Sound/Name/DehakaHero@What=Вопрос
-Sound/Name/DehakaHero@Ready=Готов
-Sound/Name/Dehaka@Burrow=Закапывание
-Sound/Name/Dehaka@Unburrow=Раскапывание
+Sound/Name/DehakaHero@DeathVoice=Death Voice
+Sound/Name/DehakaHero@Attack=Attack
+Sound/Name/DehakaHero@Help=Help
+Sound/Name/DehakaHero@Pissed=Pissed
+Sound/Name/DehakaHero@Yes=Yes
+Sound/Name/DehakaHero@What=What
+Sound/Name/DehakaHero@Ready=Ready
+Sound/Name/Dehaka@Burrow=Burrow
+Sound/Name/Dehaka@Unburrow=Unburrow
 
 \\\ Behaviors
 Behavior/Name/DehakaAttEssence=Эссенция
-Behavior/Name/DehakaAirUnkillable=Незыблемость (воздух)
+Behavior/Name/DehakaAirUnkillable=Неубиваемость (воздух)
 
 \\\ Leap Stomp
-Abil/Name/DehakaLeapStomp=Сокрушительный топот
-Actor/Name/DehakaLeapStomp@Model=Модель
-Actor/Name/DehakaLeapStomp@Sound=Звук
-Effect/Name/DehakaLeapStomp@Launch=Запуск
-Effect/Name/DehakaLeapStomp@Damage=Урон
-Effect/Name/DehakaLeapStomp@Search=Поиск
-Effect/Name/DehakaLeapStomp@Stun=Оглушение
-Behavior/Name/DehakaLeapStomp@Stun=Оглушение
 
 \\\ Intimidating Roar
 Abil/Name/DehakaIntimidatingRoar=Запугивающий рык
-Actor/Name/DehakaIntimidatingRoar@Model=Модель
-Actor/Name/DehakaIntimidatingRoar@Animation=Анимация
-Actor/Name/DehakaIntimidatingRoar@Range1=Дальность (ур. 1)
-Actor/Name/DehakaIntimidatingRoar@Range2=Дальность (ур. 2)
-Actor/Name/DehakaIntimidatingRoar@Range3=Дальность (ур. 3)
+Actor/Name/DehakaIntimidatingRoar@Model=Model
+Actor/Name/DehakaIntimidatingRoar@Animation=Animation
+Actor/Name/DehakaIntimidatingRoar@Range1=Range (ур. 1)
+Actor/Name/DehakaIntimidatingRoar@Range2=Range (ур. 2)
+Actor/Name/DehakaIntimidatingRoar@Range3=Range (ур. 3)
 Actor/Name/DehakaIntimidatingRoar@Sound1=Звук 1
 Behavior/Name/DehakaIntimidatingRoar@Slow=Замедление
-Effect/Name/DehakaIntimidatingRoar@Search@1=Поиск (ур. 1)
-Effect/Name/DehakaIntimidatingRoar@Search@2=Поиск (ур. 2)
-Effect/Name/DehakaIntimidatingRoar@Search@3=Поиск (ур. 3)
-Effect/Name/DehakaIntimidatingRoar@Apply=Применение
-Model/Name/DehakaIntimidatingRoar@Model=Модель
-Sound/Name/DehakaIntimidatingRoar@Sound1=Звук 1
-Sound/Name/DehakaIntimidatingRoar@Sound2=Звук 2
-Sound/Name/DehakaIntimidatingRoar@Sound3=Звук 3
+Effect/Name/DehakaIntimidatingRoar@Search@1=Search (ур. 1)
+Effect/Name/DehakaIntimidatingRoar@Search@2=Search (ур. 2)
+Effect/Name/DehakaIntimidatingRoar@Search@3=Search (ур. 3)
+Effect/Name/DehakaIntimidatingRoar@Apply=Apply
+Model/Name/DehakaIntimidatingRoar@Model=Model
+Sound/Name/DehakaIntimidatingRoar@Sound1=Sound 1
+Sound/Name/DehakaIntimidatingRoar@Sound2=Sound 2
+Sound/Name/DehakaIntimidatingRoar@Sound3=Sound 3
 
 \\\ Consume
-Abil/Name/DehakaConsume=Поглощение
-Actor/Name/DehakaConsume@Model=Модель
-Actor/Name/DehakaConsume@Sound=Звук
-Effect/Name/DehakaConsume@Damage=Урон
-Effect/Name/DehakaConsume@Heal=Лечение
-Effect/Name/DehakaConsume@Apply=Применение
-Behavior/Name/DehakaConsume@DamageBuff=Бонус урона
 
 \\\ Mending Aura
-Abil/Name/DehakaMendingAura=Исцеляющая аура
-Actor/Name/DehakaMendingAura@Sound=Звук
-Behavior/Name/DehakaMendingAura@Heal=Лечение
-Behavior/Name/DehakaMendingAura@Regen=Регенерация
 
 \\\ Detector
-Abil/Name/DehakaDetector=Орган чувств
-Actor/Name/DehakaDetector@Sound=Звук
 
 \\\ Deep Tunnel
-Abil/Name/DehakaDeepTunnel=Глубокий туннель
-Actor/Name/DehakaDeepTunnel@Model=Модель
-Actor/Name/DehakaDeepTunnel@Sound=Звук
-Effect/Name/DehakaDeepTunnel@Launch=Запуск
 
 \\\ Mammoth Breath
-Abil/Name/MammothBreath=Дыхание мамонта
-Actor/Name/MammothBreath@Model=Модель
-Actor/Name/MammothBreath@Sound=Звук
-Effect/Name/MammothBreath@Damage=Урон
 
 \\\ Learn Ability
-Abil/Name/DehakaLearn=Изучение способностей
 
 \\\ Upgrades
 Abil/Name/DehakaArmorUpgrade=Хитиновая броня

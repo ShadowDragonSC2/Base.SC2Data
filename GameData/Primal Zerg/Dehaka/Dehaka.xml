@@ -97,6 +97,7 @@
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Dehaka-YoungDehaka-Primal.dds"/>
         </Wireframe>
+        <PortraitActor value="DehakaHero@Portrait"/>
         <HeroIcon value="Assets\Textures\BTN-Unit-Dehaka-YoungDehaka.dds"/>
         <UnitIcon value="Assets\Textures\BTN-Unit-Dehaka-YoungDehaka.dds"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-dehaka-groundcarapace-level0.dds"/>
@@ -109,6 +110,8 @@
         <MinimapRenderPriority value="Hero"/>
         <NameOffset value="40"/>
     </CActorUnit>
+    <CActorModel id="DehakaHero@PortraitAddition" parent="CompositePortraitAddition"/>
+    <CActorPortrait id="DehakaHero@Portrait" parent="CompositePortrait"/>
     
     <CModel id="DehakaHero" parent="Unit">
         <Model value="Assets\Units\Zerg\Dehaka_Coop_Young\Dehaka_Coop_Young.m3"/>
@@ -123,6 +126,12 @@
     </CModel>
     <CModel id="DehakaHero@Portrait" parent="FXAPortrait" Race="Zerg">
         <Model value="Assets\StoryModeCharacters\Zerg\SMX1_PrimalZergCommanderT1_Background_Portrait\SMX1_PrimalZergCommanderT1_Background_Portrait.m3"/>
+        <Image value="Assets\Textures\SMX1_PrimalZergCommanderT1Portrait_Static.dds"/>
+        <FacialController value="LocalizedData\Facial\SMX1_Dehaka.fxa"/>
+        <Flags index="Download" value="1"/>
+    </CModel>
+    <CModel id="DehakaHero@PortraitAddition" parent="FXAPortrait" Race="Zerg">
+        <Model value="Assets\StoryModeCharacters\Zerg\SMX1_PrimalZergCommanderT1\SMX1_PrimalZergCommanderT1.m3"/>
         <Image value="Assets\Textures\SMX1_PrimalZergCommanderT1Portrait_Static.dds"/>
         <FacialController value="LocalizedData\Facial\SMX1_Dehaka.fxa"/>
         <Flags index="Download" value="1"/>
@@ -382,7 +391,7 @@
         <PreviousValueFactor value="1"/>
     </CAccumulatorVeterancyLevel>
 
-    <CDataCollectionUnit id="DehakaHero_Claws">
+    <CDataCollectionUnit id="DehakaHero_Claws" parent="Weapon_Instant">
         <DataRecord Entry="Weapon,DehakaHero_Claws"/>
         <DataRecord Entry="Effect,DehakaHero_Claws"/>
         <DataRecord Entry="Actor,DehakaHero_Claws"/>
@@ -464,7 +473,6 @@
         <On Terms="Abil.DehakaIntimidatingRoar.ButtonHoverOff" Send="Destroy"/>
     </CActorRange>
 
-    <!-- Visual: Roar Model -->
     <CModel id="DehakaIntimidatingRoar@Model">
         <Model value="Assets\Effects\Zerg\Dehaka_Coop_IntimidatingRoar\Dehaka_Coop_IntimidatingRoar.m3"/>
         <EditorCategories value="Race:Zerg"/>
@@ -474,7 +482,6 @@
         <EditorCategories value="Race:Zerg"/>
     </CModel>
 
-    <!-- Visual: Actor Model (oneshot) -->
     <CActorModel id="DehakaIntimidatingRoar@Impact" parent="ModelAnimationStyleContinuous">
         <On Terms="Behavior.DehakaIntimidatingRoar@Slow.On" Send="Create"/>
         <On Terms="Behavior.DehakaIntimidatingRoar@Slow.Off" Send="AnimBracketStop BSD"/>
@@ -497,7 +504,6 @@
         <On Terms="ActorCreation" Target="_Selectable" Send="AnimPlay Spell Spell,D"/>
     </CActorSimple>
 
-    <!-- Sound: Roar (oneshot) -->
     <CSound id="DehakaIntimidatingRoar@Sound1" parent="Spell">
         <AssetArray File="Assets\Sounds\Devourer_Yes00.ogg" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\Devourer_Yes01.ogg" FacialGroup=""/>
@@ -514,9 +520,9 @@
         <AssetArray File="Assets\Sounds\Devourer_Yes02.ogg" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\Devourer_Yes03.ogg" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\Devourer_Yes04.ogg" FacialGroup=""/>
-        <Pitch value="-1.000000,1.000000"/>
+        <Pitch value="-2.000000,2.000000"/>
         <Spread value="10.000000"/>
-        <Volume value="-4.000000,-4.000000"/>
+        <Volume value="-2.000000,-2.000000"/>
     </CSound>
     <CSound id="DehakaIntimidatingRoar@Sound3" parent="Spell">
         <AssetArray File="Assets\Sounds\Devourer_Yes00.ogg" FacialGroup=""/>
@@ -524,9 +530,8 @@
         <AssetArray File="Assets\Sounds\Devourer_Yes02.ogg" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\Devourer_Yes03.ogg" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\Devourer_Yes04.ogg" FacialGroup=""/>
-        <Pitch value="-1.000000,1.000000"/>
+        <Pitch value="3.000000,5.000000"/>
         <Spread value="10.000000"/>
-        <Volume value="-4.000000,-4.000000"/>
     </CSound>
 
     <CDataCollectionUnit id="DehakaIntimidatingRoar">
