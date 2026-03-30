@@ -334,7 +334,6 @@
         <DataRecord Entry="Sound,Annihilator@Ready"/>
         <DataRecord Entry="Requirement,Annihilator@Use"/>
         <DataRecord Entry="Light,Annihilator@Portrait"/>
-        <DataRecord Entry="Turret,Immortal"/>
         <DataRecord Entry="AttachMethod,AMPatternAnnihilator"/>
         <TechInfoUpgradeUsed value="ProtossGroundArmors@1"/>
         <TechInfoUpgradeUsed value="ProtossGroundArmors@2"/>
