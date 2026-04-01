@@ -342,6 +342,10 @@
         <TechInfoUpgradeUsed value="ProtossShields@2"/>
         <TechInfoUpgradeUsed value="ProtossShields@3"/>
     </CDataCollectionUnit>
+
+    <!-- Misc Data -->
+
+    <CValidatorUnitType id="Annihilator@Is"/>
     
     <CAttachMethodPattern id="AMPatternAnnihilator">
         <Keyword value="Weapon"/>

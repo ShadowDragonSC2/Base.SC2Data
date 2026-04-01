@@ -1,0 +1,24 @@
+Actor/Name/BloodHunter=Unit
+Actor/Name/BloodHunter_Weapon@Attack=Attack
+Actor/Name/BloodHunter_Weapon@PhysicsForce=Physics
+
+Effect/Name/BloodHunter_Weapon@Damage=Damage
+
+Model/Name/BloodHunter=Unit
+Model/Name/BloodHunter@Death=Death
+Model/Name/BloodHunter@Placement=Placement
+Model/Name/BloodHunter@Portrait=Portrait
+Model/Name/BloodHunter@WarpIn=WarpIn
+
+Light/Name/BloodHunter@Portrait=Portrait
+
+Requirement/Name/BloodHunter=Requirement
+RequirementNode/Name/BloodHunter@Use_AllowUnit=Requirement @ Allow Unit
+
+Sound/Name/BloodHunter_Weapon@AttackImpact=Impact
+Sound/Name/BloodHunter_Weapon@AttackLaunch=Launch
+Sound/Name/BloodHunter@Help=Help
+Sound/Name/BloodHunter@Pissed=Pissed
+Sound/Name/BloodHunter@Ready=Ready
+Sound/Name/BloodHunter@What=What
+Sound/Name/BloodHunter@Yes=Yes

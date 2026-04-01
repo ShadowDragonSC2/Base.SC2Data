@@ -1,0 +1,10 @@
+Button/Name/BloodHunter=Blood Hunter
+Button/Tooltip/BloodHunter=Палач войнов Тал-даримов
+
+Unit/Name/BloodHunter=Blood Hunter
+Unit/Name/BloodHunter_Weapon=Weapon
+
+Weapon/Name/BloodHunter_Weapon=Blood Hunter Weapon
+
+DataCollection/Name/BloodHunter=Blood Hunter
+DataCollection/Name/BloodHunter_Weapon=Blood Hunter Weapon
