@@ -176,6 +176,11 @@
         <EditorCategories value="LightGroup:PortraitsUnitsZerg"/>
     </CLight>
 
+    <CValidatorUnitType id="InfestedCivilian@Is" parent="IsUnit_Default" unit="InfestedCivilian"/>
+    <CValidatorUnitType id="InfestedCivilian@Target" parent="TargetIsUnit_Default" unit="InfestedCivilian"/>
+    <CValidatorUnitType id="InfestedCivilian@Not" parent="NotUnit_Default" unit="InfestedCivilian"/>
+    <CValidatorUnitType id="InfestedCivilian@NotTarget" parent="TargetNotUnit_Default" unit="InfestedCivilian"/>
+
     <CDataCollectionUnit id="InfestedCivilian" parent="UnitGround">
         <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:InfestedTerran,ObjectType:Unit"/>
         <DataRecord Entry="Button,InfestedCivilian"/>

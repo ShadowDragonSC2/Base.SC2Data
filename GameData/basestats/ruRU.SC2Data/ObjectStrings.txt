@@ -37,6 +37,11 @@ DataCollectionPattern/NameOverride/Sounds/Ready=Sounds - Ready
 DataCollectionPattern/NameOverride/Requirement/Use=Requirement - Use
 DataCollectionPattern/NameOverride/Requirement/Show=Requirement - Show
 
+DataCollectionPattern/NameOverride/Validator/Is=Is Unit
+DataCollectionPattern/NameOverride/Validator/Target=Is Target Unit
+DataCollectionPattern/NameOverride/Validator/Not=Not Unit
+DataCollectionPattern/NameOverride/Validator/NotTarget=Not Target Unit
+
 DataCollectionPattern/NameOverride/UnitFlags/ArmySelect=Army Select
 
 DataCollectionPattern/NameOverride/Upgrades=Upgrades
@@ -68,3 +73,8 @@ DataCollectionPattern/NameOverride/UpgradePattern/EffectArrayTemplate/7=Спис
 DataCollectionPattern/NameOverride/UpgradePattern/EffectArrayTemplate/8=Список улучшений, уровень 8
 DataCollectionPattern/NameOverride/UpgradePattern/EffectArrayTemplate/9=Список улучшений, уровень 9
 DataCollectionPattern/NameOverride/UpgradePattern/EffectArrayTemplate/10=Список улучшений, уровень 10
+
+Validator/Name/IsUnit_Default=Caster Is Unit
+Validator/Name/TargetIsUnit_Default=Target Is Unit
+Validator/Name/NotUnit_Default=Caster Not Unit
+Validator/Name/TargetNotUnit_Default=Target Not Unit

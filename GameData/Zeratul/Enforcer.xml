@@ -121,6 +121,11 @@
 
     <CRequirement id="ZeratulCommanderXelNagaEnforcer"/>
 
+    <CValidatorUnitType id="ZeratulCommanderXelNagaEnforcer@Is" parent="IsUnit_Default" unit="ZeratulCommanderXelNagaEnforcer"/>
+    <CValidatorUnitType id="ZeratulCommanderXelNagaEnforcer@Target" parent="TargetIsUnit_Default" unit="ZeratulCommanderXelNagaEnforcer"/>
+    <CValidatorUnitType id="ZeratulCommanderXelNagaEnforcer@Not" parent="NotUnit_Default" unit="ZeratulCommanderXelNagaEnforcer"/>
+    <CValidatorUnitType id="ZeratulCommanderXelNagaEnforcer@NotTarget" parent="TargetNotUnit_Default" unit="ZeratulCommanderXelNagaEnforcer"/>
+
     <CDataCollectionUnit id="ZeratulCommanderXelNagaEnforcer" parent="CommanderUnit">
         <EditorCategories value="DataGroup:Unit,Race:Zeratul,ObjectType:Unit"/>
         <DataRecord Entry="Button,ZeratulCommanderXelNagaEnforcer"/>
@@ -137,6 +142,10 @@
         <DataRecord Entry="Sound,ZeratulCommanderXelNagaEnforcer@Pissed"/>
         <DataRecord Entry="Light,ZeratulCommanderXelNagaEnforcer@Portrait"/>
         <DataRecord Entry="Requirement,ZeratulCommanderXelNagaEnforcer"/>
+        <DataRecord Entry="Validator,ZeratulCommanderXelNagaEnforcer@Is"/>
+        <DataRecord Entry="Validator,ZeratulCommanderXelNagaEnforcer@Target"/>
+        <DataRecord Entry="Validator,ZeratulCommanderXelNagaEnforcer@Not"/>
+        <DataRecord Entry="Validator,ZeratulCommanderXelNagaEnforcer@NotTarget"/>
     </CDataCollectionUnit>
 
     <!-- ============ Weapon 1: Phase Disruptors (Instant) ============ -->

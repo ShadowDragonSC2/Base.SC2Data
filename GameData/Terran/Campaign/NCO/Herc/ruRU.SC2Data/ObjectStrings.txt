@@ -1,0 +1,5 @@
+
+Validator/Name/Herc@Is=Caster Is Unit
+Validator/Name/Herc@Target=Target Is Unit
+Validator/Name/Herc@Not=Caster Not Unit
+Validator/Name/Herc@NotTarget=Target Not Unit

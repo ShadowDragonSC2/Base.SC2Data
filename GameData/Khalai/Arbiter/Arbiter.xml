@@ -201,7 +201,12 @@
         <Volume value="-3.000000,-3.000000"/>
     </CSound>
 
-    <CRequirement id="Arbiter"/>
+    <CRequirement id="Arbiter@Use"/>
+    
+    <CValidatorUnitType id="Arbiter@Is" parent="IsUnit_Default" unit="Arbiter"/>
+    <CValidatorUnitType id="Arbiter@Target" parent="TargetIsUnit_Default" unit="Arbiter"/>
+    <CValidatorUnitType id="Arbiter@Not" parent="NotUnit_Default" unit="Arbiter"/>
+    <CValidatorUnitType id="Arbiter@NotTarget" parent="TargetNotUnit_Default" unit="Arbiter"/>
 
     <CDataCollectionUnit id="Arbiter" parent="UnitAir">
         <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Protoss,ObjectType:Unit"/>
@@ -223,5 +228,9 @@
         <DataRecord Entry="Sound,Arbiter@StasisFieldVO"/>
         <DataRecord Entry="Sound,Arbiter@MoveStart"/>
         <DataRecord Entry="Requirement,Arbiter"/>
+        <DataRecord Entry="Validator,Arbiter@Is"/>
+        <DataRecord Entry="Validator,Arbiter@Target"/>
+        <DataRecord Entry="Validator,Arbiter@Not"/>
+        <DataRecord Entry="Validator,Arbiter@NotTarget"/>
     </CDataCollectionUnit>
 </Catalog>

@@ -11,6 +11,10 @@ Sound/Name/InfestedCivilian@Yes=Yes
 Sound/Name/InfestedCivilian@What=What
 Sound/Name/InfestedCivilian@Ready=Ready
 Light/Name/InfestedCivilian@Portrait=Portrait
+Validator/Name/InfestedCivilian@Is=Caster Is Unit
+Validator/Name/InfestedCivilian@Target=Target Is Unit
+Validator/Name/InfestedCivilian@Not=Caster Not Unit
+Validator/Name/InfestedCivilian@NotTarget=Target Not Unit
 
 Effect/Name/InfestedClaws@Damage
 Actor/Name/InfestedClaws@Attack

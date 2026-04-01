@@ -187,6 +187,11 @@
 
     <CRequirement id="AssaultGalleon@Use"/>
     <CRequirement id="AssaultGalleon@Show"/>
+    
+    <CValidatorUnitType id="AssaultGalleon@Is" parent="IsUnit_Default" unit="AssaultGalleon"/>
+    <CValidatorUnitType id="AssaultGalleon@Target" parent="TargetIsUnit_Default" unit="AssaultGalleon"/>
+    <CValidatorUnitType id="AssaultGalleon@Not" parent="NotUnit_Default" unit="AssaultGalleon"/>
+    <CValidatorUnitType id="AssaultGalleon@NotTarget" parent="TargetNotUnit_Default" unit="AssaultGalleon"/>
 
     <CDataCollectionUnit id="AssaultGalleon" parent="UnitAir">
         <EditorCategories value="DataGroup:Unit,DataFamily:Coop,Race:Terran,ObjectType:Unit"/>
@@ -206,6 +211,10 @@
         <DataRecord Entry="Sound,AssaultGalleon@Ready"/>
         <DataRecord Entry="Requirement,AssaultGalleon@Use"/>
         <DataRecord Entry="Requirement,AssaultGalleon@Show"/>
+        <DataRecord Entry="Validator,AssaultGalleon@Is"/>
+        <DataRecord Entry="Validator,AssaultGalleon@Target"/>
+        <DataRecord Entry="Validator,AssaultGalleon@Not"/>
+        <DataRecord Entry="Validator,AssaultGalleon@NotTarget"/>
     </CDataCollectionUnit>
     
     <!-- =========== Weapons =========== -->

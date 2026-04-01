@@ -1,0 +1,5 @@
+
+Validator/Name/Annihilator@Is=Caster Is Unit
+Validator/Name/Annihilator@Target=Target Is Unit
+Validator/Name/Annihilator@Not=Caster Not Unit
+Validator/Name/Annihilator@NotTarget=Target Not Unit

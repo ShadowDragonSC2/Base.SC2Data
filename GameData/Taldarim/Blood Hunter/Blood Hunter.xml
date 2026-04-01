@@ -177,6 +177,11 @@
         <Tooltip value="Unit/Name/DarkShrine"/>
     </CRequirementCountUnit>
 
+    <CValidatorUnitType id="BloodHunter@Is" parent="IsUnit_Default" unit="BloodHunter"/>
+    <CValidatorUnitType id="BloodHunter@Target" parent="TargetIsUnit_Default" unit="BloodHunter"/>
+    <CValidatorUnitType id="BloodHunter@Not" parent="NotUnit_Default" unit="BloodHunter"/>
+    <CValidatorUnitType id="BloodHunter@NotTarget" parent="TargetNotUnit_Default" unit="BloodHunter"/>
+
     <CDataCollectionUnit id="BloodHunter" parent="UnitGround">
         <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Protoss,ObjectType:Unit"/>
         <DataRecord Entry="Button,BloodHunter"/>
@@ -195,6 +200,10 @@
         <DataRecord Entry="Light,BloodHunter@Portrait"/>
         <DataRecord Entry="Requirement,BloodHunter"/>
         <DataRecord Entry="RequirementNode,BloodHunter@Use_AllowUnit"/>
+        <DataRecord Entry="Validator,BloodHunter@Is"/>
+        <DataRecord Entry="Validator,BloodHunter@Target"/>
+        <DataRecord Entry="Validator,BloodHunter@Not"/>
+        <DataRecord Entry="Validator,BloodHunter@NotTarget"/>
         <TechInfoUpgradeUsed value="ProtossGroundArmors@1"/>
         <TechInfoUpgradeUsed value="ProtossGroundArmors@2"/>
         <TechInfoUpgradeUsed value="ProtossGroundArmors@3"/>

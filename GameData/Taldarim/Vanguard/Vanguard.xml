@@ -326,6 +326,11 @@
         <YawIdleRate value="360"/>
     </CTurret>
 
+    <CValidatorUnitType id="Vanguard@Is" parent="IsUnit_Default" unit="Vanguard"/>
+    <CValidatorUnitType id="Vanguard@Target" parent="TargetIsUnit_Default" unit="Vanguard"/>
+    <CValidatorUnitType id="Vanguard@Not" parent="NotUnit_Default" unit="Vanguard"/>
+    <CValidatorUnitType id="Vanguard@NotTarget" parent="TargetNotUnit_Default" unit="Vanguard"/>
+
     <CDataCollectionUnit id="Vanguard" parent="UnitGround">
         <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Protoss,ObjectType:Unit"/>
         <DataRecord Entry="Button,Vanguard"/>
@@ -345,6 +350,10 @@
         <DataRecord Entry="Sound,Vanguard@Yes"/>
         <DataRecord Entry="Light,Vanguard"/>
         <DataRecord Entry="Turret,Vanguard"/>
+        <DataRecord Entry="Validator,Vanguard@Is"/>
+        <DataRecord Entry="Validator,Vanguard@Target"/>
+        <DataRecord Entry="Validator,Vanguard@Not"/>
+        <DataRecord Entry="Validator,Vanguard@NotTarget"/>
         <TechInfoUpgradeUsed value="ProtossAirArmorsLevel@1"/>
         <TechInfoUpgradeUsed value="ProtossAirArmorsLevel@2"/>
         <TechInfoUpgradeUsed value="ProtossAirArmorsLevel@3"/>

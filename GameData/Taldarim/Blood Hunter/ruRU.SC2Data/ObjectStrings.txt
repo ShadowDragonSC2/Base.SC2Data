@@ -15,6 +15,11 @@ Light/Name/BloodHunter@Portrait=Portrait
 Requirement/Name/BloodHunter=Requirement
 RequirementNode/Name/BloodHunter@Use_AllowUnit=Requirement @ Allow Unit
 
+Validator/Name/BloodHunter@Is=Caster Is Unit
+Validator/Name/BloodHunter@Target=Target Is Unit
+Validator/Name/BloodHunter@Not=Caster Not Unit
+Validator/Name/BloodHunter@NotTarget=Target Not Unit
+
 Sound/Name/BloodHunter_Weapon@AttackImpact=Impact
 Sound/Name/BloodHunter_Weapon@AttackLaunch=Launch
 Sound/Name/BloodHunter@Help=Help

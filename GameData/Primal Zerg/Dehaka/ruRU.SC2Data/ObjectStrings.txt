@@ -117,7 +117,10 @@ Upgrade/Name/DehakaArmorUpgrade=Хитиновая броня
 Upgrade/Name/DehakaAirAttackUpgrade=Атака по воздуху
 
 \\\ Validators
-Validator/Name/DehakaHero@IsUnitType=Is Dehaka
+Validator/Name/DehakaHero@Is=Caster Is Unit
+Validator/Name/DehakaHero@Target=Target Is Unit
+Validator/Name/DehakaHero@Not=Caster Not Unit
+Validator/Name/DehakaHero@NotTarget=Target Not Unit
 
 \\\ Requirements
 Requirement/Name/DehakaLevel04=Level 4

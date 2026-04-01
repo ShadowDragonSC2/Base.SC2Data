@@ -16,4 +16,8 @@ Sound/Name/Arbiter@StasisFieldVO=Stasis Field VO
 Sound/Name/Arbiter@What=What
 Sound/Name/Arbiter@Yes=Yes
 
-Requirement/Name/Arbiter=Requirement
+Requirement/Name/Arbiter@Use=Requirement
+Validator/Name/Arbiter@Is=Caster Is Unit
+Validator/Name/Arbiter@Target=Target Is Unit
+Validator/Name/Arbiter@Not=Caster Not Unit
+Validator/Name/Arbiter@NotTarget=Target Not Unit

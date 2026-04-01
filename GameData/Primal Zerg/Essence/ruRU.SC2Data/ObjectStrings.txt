@@ -8,3 +8,7 @@ Model/Name/EssenceCoop=Essence
 Mover/Name/Essence_Pickup@Mover=Missile
 
 Validator/Name/Essence_Pickup@Check=Check
+Validator/Name/Essence_Pickup@Is=Caster Is Unit
+Validator/Name/Essence_Pickup@Target=Target Is Unit
+Validator/Name/Essence_Pickup@Not=Caster Not Unit
+Validator/Name/Essence_Pickup@NotTarget=Target Not Unit

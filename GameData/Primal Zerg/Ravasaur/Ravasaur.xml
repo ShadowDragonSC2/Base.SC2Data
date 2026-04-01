@@ -147,6 +147,11 @@
     
     <CRequirement id="Ravasaur@Use"></CRequirement>
     
+    <CValidatorUnitType id="Ravasaur@Is" parent="IsUnit_Default" unit="Ravasaur"/>
+    <CValidatorUnitType id="Ravasaur@Target" parent="TargetIsUnit_Default" unit="Ravasaur"/>
+    <CValidatorUnitType id="Ravasaur@Not" parent="NotUnit_Default" unit="Ravasaur"/>
+    <CValidatorUnitType id="Ravasaur@NotTarget" parent="TargetNotUnit_Default" unit="Ravasaur"/>
+
     <CDataCollectionUnit id="Ravasaur" parent="UnitGround">
         <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:PZrg,ObjectType:Unit"/>
         <DataRecord Entry="Button,Ravasaur"/>
@@ -164,6 +169,10 @@
         <DataRecord Entry="Sound,Ravasaur@Ready"/>
         <DataRecord Entry="Light,Ravasaur@Portrait"/>
         <DataRecord Entry="Requirement,Ravasaur@Use"/>
+        <DataRecord Entry="Validator,Ravasaur@Is"/>
+        <DataRecord Entry="Validator,Ravasaur@Target"/>
+        <DataRecord Entry="Validator,Ravasaur@Not"/>
+        <DataRecord Entry="Validator,Ravasaur@NotTarget"/>
     </CDataCollectionUnit>
 
     <!-- ============ Weapons ============ -->

@@ -1,0 +1,5 @@
+
+Validator/Name/Vanguard@Is=Caster Is Unit
+Validator/Name/Vanguard@Target=Target Is Unit
+Validator/Name/Vanguard@Not=Caster Not Unit
+Validator/Name/Vanguard@NotTarget=Target Not Unit

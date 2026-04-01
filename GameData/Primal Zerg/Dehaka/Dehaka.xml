@@ -390,9 +390,10 @@
         </Modification>
     </CBehaviorAttribute>
 
-    <CValidatorUnitType id="DehakaHero@IsUnitType">
-        <Value value="DehakaHero"/>
-    </CValidatorUnitType>
+    <CValidatorUnitType id="DehakaHero@Is" parent="IsUnit_Default" unit="DehakaHero"/>
+    <CValidatorUnitType id="DehakaHero@Target" parent="TargetIsUnit_Default" unit="DehakaHero"/>
+    <CValidatorUnitType id="DehakaHero@Not" parent="NotUnit_Default" unit="DehakaHero"/>
+    <CValidatorUnitType id="DehakaHero@NotTarget" parent="TargetNotUnit_Default" unit="DehakaHero"/>
 
     <CDataCollectionUnit id="DehakaHero" parent="UnitGround">
         <DataRecord Entry="Button,DehakaHero"/>
@@ -414,6 +415,10 @@
         <DataRecord Entry="Behavior,DehakaHero@Essence"/>
         <DataRecord Entry="Actor,DehakaHero@Portrait"/>
         <DataRecord Entry="Actor,DehakaHero@PortraitAddition"/>
+        <DataRecord Entry="Validator,DehakaHero@Is"/>
+        <DataRecord Entry="Validator,DehakaHero@Target"/>
+        <DataRecord Entry="Validator,DehakaHero@Not"/>
+        <DataRecord Entry="Validator,DehakaHero@NotTarget"/>
     </CDataCollectionUnit>
     
     <!-- Weapons -->

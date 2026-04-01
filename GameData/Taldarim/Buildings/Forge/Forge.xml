@@ -123,6 +123,11 @@
         <Volume value="-6.000000,-6.000000"/>
     </CSound>
 
+    <CValidatorUnitType id="TaldarimForge@Is" parent="IsUnit_Default" unit="TaldarimForge"/>
+    <CValidatorUnitType id="TaldarimForge@Target" parent="TargetIsUnit_Default" unit="TaldarimForge"/>
+    <CValidatorUnitType id="TaldarimForge@Not" parent="NotUnit_Default" unit="TaldarimForge"/>
+    <CValidatorUnitType id="TaldarimForge@NotTarget" parent="TargetNotUnit_Default" unit="TaldarimForge"/>
+
     <CDataCollectionUnit id="TaldarimForge" parent="UnitGround">
         <EditorCategories value="DataGroup:Unit,DataFamily:Coop,Race:Terran,ObjectType:Structure"/>
         <DataRecord Entry="Button,TaldarimForge"/>
@@ -134,6 +139,10 @@
         <DataRecord Entry="Sound,TaldarimForge@Death"/>
         <DataRecord Entry="Sound,TaldarimForge@What"/>
         <DataRecord Entry="Sound,TaldarimForge@Ready"/>
+        <DataRecord Entry="Validator,TaldarimForge@Is"/>
+        <DataRecord Entry="Validator,TaldarimForge@Target"/>
+        <DataRecord Entry="Validator,TaldarimForge@Not"/>
+        <DataRecord Entry="Validator,TaldarimForge@NotTarget"/>
     </CDataCollectionUnit>
 
     <!-- Abilities -->

@@ -372,6 +372,11 @@
     <CRequirement id="HHReaper@Use"/>
     <CRequirement id="HHReaper@Show"/>
 
+    <CValidatorUnitType id="HHReaper@Is" parent="IsUnit_Default" unit="HHReaper"/>
+    <CValidatorUnitType id="HHReaper@Target" parent="TargetIsUnit_Default" unit="HHReaper"/>
+    <CValidatorUnitType id="HHReaper@Not" parent="NotUnit_Default" unit="HHReaper"/>
+    <CValidatorUnitType id="HHReaper@NotTarget" parent="TargetNotUnit_Default" unit="HHReaper"/>
+
     <CCharacter id="HHReaper">
         <Race value="Terran"/>
         <Unit value="HHReaper"/>
@@ -399,6 +404,10 @@
         <DataRecord Entry="Sound,HHReaper@Ready"/>
         <DataRecord Entry="Requirement,HHReaper@Use"/>
         <DataRecord Entry="Requirement,HHReaper@Show"/>
+        <DataRecord Entry="Validator,HHReaper@Is"/>
+        <DataRecord Entry="Validator,HHReaper@Target"/>
+        <DataRecord Entry="Validator,HHReaper@Not"/>
+        <DataRecord Entry="Validator,HHReaper@NotTarget"/>
         <DataRecord Entry="Behavior,HHReaper@Jump"/>
         <DataRecord Entry="Model,HHReaper@JumpLandModel"/>
         <DataRecord Entry="Model,HHReaper@JumpLaunchModel"/>

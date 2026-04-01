@@ -12,7 +12,10 @@ Sound/Name/AssaultGalleon@What=What
 Sound/Name/AssaultGalleon@Ready=Ready
 Requirement/Name/AssaultGalleon@Use=Use
 Requirement/Name/AssaultGalleon@Show=Show
-
+Validator/Name/AssaultGalleon@Is=Caster Is Unit
+Validator/Name/AssaultGalleon@Target=Target Is Unit
+Validator/Name/AssaultGalleon@Not=Caster Not Unit
+Validator/Name/AssaultGalleon@NotTarget=Target Not Unit
 Effect/Name/TyphoonMissilePodAssaultGalleon@LM=LM
 Effect/Name/TyphoonMissilePodAssaultGalleon@Damage=Damage
 Actor/Name/TyphoonMissilePodAssaultGalleon@Attack=Attack

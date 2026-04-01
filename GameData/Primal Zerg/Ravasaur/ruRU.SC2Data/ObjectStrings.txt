@@ -12,6 +12,10 @@ Sound/Name/Ravasaur@What=What
 Sound/Name/Ravasaur@Ready=Ready
 Light/Name/Ravasaur@Portrait=Portrait
 Requirement/Name/Ravasaur@Use=Use
+Validator/Name/Ravasaur@Is=Caster Is Unit
+Validator/Name/Ravasaur@Target=Target Is Unit
+Validator/Name/Ravasaur@Not=Caster Not Unit
+Validator/Name/Ravasaur@NotTarget=Target Not Unit
 
 \\\ Ravasaur Weapon
 Actor/Name/Ravasaur_AcidSpit@Attack=Attack

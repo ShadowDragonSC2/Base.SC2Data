@@ -28,3 +28,7 @@ Sound/Name/HHPistols@AttackImpact=Attack Impact
 Sound/Name/HHPistols@AttackLaunch=Attack Launch
 Requirement/Name/HHReaper@Use=Use
 Requirement/Name/HHReaper@Show=Show
+Validator/Name/HHReaper@Is=Caster Is Unit
+Validator/Name/HHReaper@Target=Target Is Unit
+Validator/Name/HHReaper@Not=Caster Not Unit
+Validator/Name/HHReaper@NotTarget=Target Not Unit

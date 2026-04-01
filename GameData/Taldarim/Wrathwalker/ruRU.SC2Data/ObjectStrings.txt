@@ -21,6 +21,11 @@ Mover/Name/ChargedBlast@AttackMissile=Missile
 Requirement/Name/Wrathwalker=Requirement
 RequirementNode/Name/Wrathwalker@Requirement@AllowUnit=Requirement @ Allow Unit
 
+Validator/Name/Wrathwalker@Is=Caster Is Unit
+Validator/Name/Wrathwalker@Target=Target Is Unit
+Validator/Name/Wrathwalker@Not=Caster Not Unit
+Validator/Name/Wrathwalker@NotTarget=Target Not Unit
+
 Sound/Name/ChargedBlast@AttackImpact=Impact
 Sound/Name/ChargedBlast@AttackLaunch=Launch
 Sound/Name/ChargedBlast@Charge=Charge Sound

@@ -27,4 +27,9 @@ Sound/Name/SovereignLaserBattery@AttackImpact=Attack Impact
 Requirement/Name/SovereignBattlecruiser@Use=Use
 Requirement/Name/SovereignBattlecruiser@Show=Show
 
+Validator/Name/SovereignBattlecruiser@Is=Caster Is Unit
+Validator/Name/SovereignBattlecruiser@Target=Target Is Unit
+Validator/Name/SovereignBattlecruiser@Not=Caster Not Unit
+Validator/Name/SovereignBattlecruiser@NotTarget=Target Not Unit
+
 Unit/Name/SovereignLaserBattery@AttackMissile=Attack Missile

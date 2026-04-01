@@ -1,0 +1,5 @@
+s
+Validator/Name/TaldarimForge@Is=Caster Is Unit
+Validator/Name/TaldarimForge@Target=Target Is Unit
+Validator/Name/TaldarimForge@Not=Caster Not Unit
+Validator/Name/TaldarimForge@NotTarget=Target Not Unit

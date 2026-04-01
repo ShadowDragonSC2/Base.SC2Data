@@ -1,0 +1,4 @@
+Validator/Name/Apocalisk@Is=Caster Is Unit
+Validator/Name/Apocalisk@Target=Target Is Unit
+Validator/Name/Apocalisk@Not=Caster Not Unit
+Validator/Name/Apocalisk@NotTarget=Target Not Unit

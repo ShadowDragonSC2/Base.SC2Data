@@ -270,6 +270,23 @@
         <Collide index="Flying" value="1"/>
     </CUnit>
 
+    <!-- Validators -->
+
+    <CValidatorUnitType default="1" id="IsUnit_Default">
+        <?token id="unit" type="CUnitLink"?>
+        <Value value="##unit##"/>
+        <WhichUnit Value="Caster"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType default="1" id="TargetIsUnit_Default" parent="IsUnit_Default">
+        <WhichUnit Value="Target"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType default="1" id="NotUnit_Default" parent="IsUnit_Default">
+        <Find value="0"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType default="1" id="TargetNotUnit_Default" parent="TargetIsUnit_Default">
+        <Find value="0"/>
+    </CValidatorUnitType>
+
     <!-- Sounds -->
 
     <CSound default="1" id="VO">

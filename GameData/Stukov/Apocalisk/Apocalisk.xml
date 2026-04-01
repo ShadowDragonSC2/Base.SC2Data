@@ -390,6 +390,11 @@
 
     <CRequirement id="Apocalisk@Use"/>
 
+    <CValidatorUnitType id="Apocalisk@Is" parent="IsUnit_Default" unit="Apocalisk"/>
+    <CValidatorUnitType id="Apocalisk@Target" parent="TargetIsUnit_Default" unit="Apocalisk"/>
+    <CValidatorUnitType id="Apocalisk@Not" parent="NotUnit_Default" unit="Apocalisk"/>
+    <CValidatorUnitType id="Apocalisk@NotTarget" parent="TargetNotUnit_Default" unit="Apocalisk"/>
+
     <CDataCollectionUnit id="Apocalisk" parent="UnitGround">
         <DataRecord Entry="Button,Apocalisk"/>
         <DataRecord Entry="Unit,Apocalisk"/>
@@ -405,6 +410,10 @@
         <DataRecord Entry="Sound,Apocalisk@Movement"/>
         <DataRecord Entry="Light,Apocalisk@Portrait"/>
         <DataRecord Entry="Requirement,Apocalisk@Use"/>
+        <DataRecord Entry="Validator,Apocalisk@Is"/>
+        <DataRecord Entry="Validator,Apocalisk@Target"/>
+        <DataRecord Entry="Validator,Apocalisk@Not"/>
+        <DataRecord Entry="Validator,Apocalisk@NotTarget"/>
     </CDataCollectionUnit>
 
     <!-- ============== Weapons ==============-->

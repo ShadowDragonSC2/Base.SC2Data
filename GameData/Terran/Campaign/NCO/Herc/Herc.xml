@@ -163,6 +163,11 @@
 
     <CRequirement id="Herc@Use"></CRequirement>
 
+    <CValidatorUnitType id="Herc@Is" parent="IsUnit_Default" unit="Herc"/>
+    <CValidatorUnitType id="Herc@Target" parent="TargetIsUnit_Default" unit="Herc"/>
+    <CValidatorUnitType id="Herc@Not" parent="NotUnit_Default" unit="Herc"/>
+    <CValidatorUnitType id="Herc@NotTarget" parent="TargetNotUnit_Default" unit="Herc"/>
+
     <CDataCollectionUnit id="Herc">
         <EditorCategories value="Race:Terran,ObjectType:Unit"/>
         <DataRecord Entry="Button,Herc"/>
@@ -180,6 +185,10 @@
         <DataRecord Entry="Sound,Herc@Ready"/>
         <DataRecord Entry="Light,Herc@Portrait"/>
         <DataRecord Entry="Requirement,Herc@Use"/>
+        <DataRecord Entry="Validator,Herc@Is"/>
+        <DataRecord Entry="Validator,Herc@Target"/>
+        <DataRecord Entry="Validator,Herc@Not"/>
+        <DataRecord Entry="Validator,Herc@NotTarget"/>
     </CDataCollectionUnit>
 
     <!-- Weapons -->

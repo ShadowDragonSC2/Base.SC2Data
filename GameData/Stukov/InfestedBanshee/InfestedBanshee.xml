@@ -254,6 +254,11 @@
 
     <CRequirement id="InfestedBanshee@Use"/>
 
+    <CValidatorUnitType id="InfestedBanshee@Is" parent="IsUnit_Default" unit="InfestedBanshee"/>
+    <CValidatorUnitType id="InfestedBanshee@Target" parent="TargetIsUnit_Default" unit="InfestedBanshee"/>
+    <CValidatorUnitType id="InfestedBanshee@Not" parent="NotUnit_Default" unit="InfestedBanshee"/>
+    <CValidatorUnitType id="InfestedBanshee@NotTarget" parent="TargetNotUnit_Default" unit="InfestedBanshee"/>
+
     <CDataCollectionUnit id="InfestedBanshee" parent="UnitAir">
         <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:InfestedTerran,ObjectType:Unit"/>
         <Name value="Unit/Name/InfestedBanshee"/>
@@ -270,6 +275,10 @@
         <DataRecord Entry="Sound,InfestedBanshee@What"/>
         <DataRecord Entry="Sound,InfestedBanshee@Ready"/>
         <DataRecord Entry="Requirement,InfestedBanshee@Use"/>
+        <DataRecord Entry="Validator,InfestedBanshee@Is"/>
+        <DataRecord Entry="Validator,InfestedBanshee@Target"/>
+        <DataRecord Entry="Validator,InfestedBanshee@Not"/>
+        <DataRecord Entry="Validator,InfestedBanshee@NotTarget"/>
         <DataRecord Entry="AttachMethod,InfestedBanshee@AMPattern"/>
     </CDataCollectionUnit>
 

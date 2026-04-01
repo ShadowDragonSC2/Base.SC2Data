@@ -71,6 +71,11 @@
         <AssetArray File=""/>
     </CSound>
 
+    <CValidatorUnitType id="InfestedMarine@Is" parent="IsUnit_Default" unit="InfestedMarine"/>
+    <CValidatorUnitType id="InfestedMarine@Target" parent="TargetIsUnit_Default" unit="InfestedMarine"/>
+    <CValidatorUnitType id="InfestedMarine@Not" parent="NotUnit_Default" unit="InfestedMarine"/>
+    <CValidatorUnitType id="InfestedMarine@NotTarget" parent="TargetNotUnit_Default" unit="InfestedMarine"/>
+
     <CDataCollectionUnit id="InfestedMarine" parent="UnitGround">
         <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:InfestedTerran,ObjectType:Unit"/>
         <DataRecord Entry="Button,InfestedMarine"/>
@@ -87,6 +92,10 @@
         <DataRecord Entry="Sound,InfestedMarine@Yes"/>
         <DataRecord Entry="Sound,InfestedMarine@What"/>
         <DataRecord Entry="Sound,InfestedMarine@Ready"/>
+        <DataRecord Entry="Validator,InfestedMarine@Is"/>
+        <DataRecord Entry="Validator,InfestedMarine@Target"/>
+        <DataRecord Entry="Validator,InfestedMarine@Not"/>
+        <DataRecord Entry="Validator,InfestedMarine@NotTarget"/>
     </CDataCollectionUnit>
     
 

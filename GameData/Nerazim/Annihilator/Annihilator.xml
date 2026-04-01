@@ -335,6 +335,10 @@
         <DataRecord Entry="Requirement,Annihilator@Use"/>
         <DataRecord Entry="Light,Annihilator@Portrait"/>
         <DataRecord Entry="AttachMethod,AMPatternAnnihilator"/>
+        <DataRecord Entry="Validator,Annihilator@Is"/>
+        <DataRecord Entry="Validator,Annihilator@Target"/>
+        <DataRecord Entry="Validator,Annihilator@Not"/>
+        <DataRecord Entry="Validator,Annihilator@NotTarget"/>
         <TechInfoUpgradeUsed value="ProtossGroundArmors@1"/>
         <TechInfoUpgradeUsed value="ProtossGroundArmors@2"/>
         <TechInfoUpgradeUsed value="ProtossGroundArmors@3"/>
@@ -345,7 +349,10 @@
 
     <!-- Misc Data -->
 
-    <CValidatorUnitType id="Annihilator@Is"/>
+    <CValidatorUnitType id="Annihilator@Is" parent="IsUnit_Default" unit="Annihilator"/>
+    <CValidatorUnitType id="Annihilator@Target" parent="TargetIsUnit_Default" unit="Annihilator"/>
+    <CValidatorUnitType id="Annihilator@Not" parent="NotUnit_Default" unit="Annihilator"/>
+    <CValidatorUnitType id="Annihilator@NotTarget" parent="TargetNotUnit_Default" unit="Annihilator"/>
     
     <CAttachMethodPattern id="AMPatternAnnihilator">
         <Keyword value="Weapon"/>

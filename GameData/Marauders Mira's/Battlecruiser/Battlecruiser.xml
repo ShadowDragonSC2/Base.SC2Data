@@ -197,6 +197,11 @@
     <CRequirement id="SovereignBattlecruiser@Use"/>
     <CRequirement id="SovereignBattlecruiser@Show"/>
 
+    <CValidatorUnitType id="SovereignBattlecruiser@Is" parent="IsUnit_Default" unit="SovereignBattlecruiser"/>
+    <CValidatorUnitType id="SovereignBattlecruiser@Target" parent="TargetIsUnit_Default" unit="SovereignBattlecruiser"/>
+    <CValidatorUnitType id="SovereignBattlecruiser@Not" parent="NotUnit_Default" unit="SovereignBattlecruiser"/>
+    <CValidatorUnitType id="SovereignBattlecruiser@NotTarget" parent="TargetNotUnit_Default" unit="SovereignBattlecruiser"/>
+
     <CDataCollectionUnit id="SovereignBattlecruiser" parent="UnitAir">
         <EditorCategories value="DataGroup:Unit,DataFamily:Coop,Race:Terran,ObjectType:Unit"/>
         <DataRecord Entry="Button,SovereignBattlecruiser"/>
@@ -215,6 +220,10 @@
         <DataRecord Entry="Sound,SovereignBattlecruiser@Ready"/>
         <DataRecord Entry="Requirement,SovereignBattlecruiser@Use"/>
         <DataRecord Entry="Requirement,SovereignBattlecruiser@Show"/>
+        <DataRecord Entry="Validator,SovereignBattlecruiser@Is"/>
+        <DataRecord Entry="Validator,SovereignBattlecruiser@Target"/>
+        <DataRecord Entry="Validator,SovereignBattlecruiser@Not"/>
+        <DataRecord Entry="Validator,SovereignBattlecruiser@NotTarget"/>
     </CDataCollectionUnit>
 
     <!-- ================ Weapons ================ -->

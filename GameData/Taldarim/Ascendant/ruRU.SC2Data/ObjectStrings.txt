@@ -1,0 +1,5 @@
+
+Validator/Name/Ascendant@Is=Caster Is Unit
+Validator/Name/Ascendant@Target=Target Is Unit
+Validator/Name/Ascendant@Not=Caster Not Unit
+Validator/Name/Ascendant@NotTarget=Target Not Unit

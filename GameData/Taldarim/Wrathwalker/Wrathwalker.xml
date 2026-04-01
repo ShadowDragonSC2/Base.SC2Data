@@ -349,6 +349,11 @@
         <Count Link="RoboticsBay" State="CompleteOnly"/>
     </CRequirementCountUnit>
 
+    <CValidatorUnitType id="Wrathwalker@Is" parent="IsUnit_Default" unit="Wrathwalker"/>
+    <CValidatorUnitType id="Wrathwalker@Target" parent="TargetIsUnit_Default" unit="Wrathwalker"/>
+    <CValidatorUnitType id="Wrathwalker@Not" parent="NotUnit_Default" unit="Wrathwalker"/>
+    <CValidatorUnitType id="Wrathwalker@NotTarget" parent="TargetNotUnit_Default" unit="Wrathwalker"/>
+
     <CDataCollectionUnit id="Wrathwalker" parent="UnitGround">
         <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Protoss,ObjectType:Unit"/>
         <DataRecord Entry="Button,Wrathwalker"/>
@@ -366,6 +371,10 @@
         <DataRecord Entry="Sound,Wrathwalker@Yes"/>
         <DataRecord Entry="Requirement,Wrathwalker"/>
         <DataRecord Entry="RequirementNode,Wrathwalker@Use@AllowUnit"/>
+        <DataRecord Entry="Validator,Wrathwalker@Is"/>
+        <DataRecord Entry="Validator,Wrathwalker@Target"/>
+        <DataRecord Entry="Validator,Wrathwalker@Not"/>
+        <DataRecord Entry="Validator,Wrathwalker@NotTarget"/>
         <TechInfoUpgradeUsed value="ProtossGroundArmors@1"/>
         <TechInfoUpgradeUsed value="ProtossGroundArmors@2"/>
         <TechInfoUpgradeUsed value="ProtossGroundArmors@3"/>

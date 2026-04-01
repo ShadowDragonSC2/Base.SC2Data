@@ -1,0 +1,5 @@
+
+Validator/Name/InfestedMarine@Is=Caster Is Unit
+Validator/Name/InfestedMarine@Target=Target Is Unit
+Validator/Name/InfestedMarine@Not=Caster Not Unit
+Validator/Name/InfestedMarine@NotTarget=Target Not Unit

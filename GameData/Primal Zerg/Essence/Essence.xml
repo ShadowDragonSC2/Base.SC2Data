@@ -72,8 +72,13 @@
 
     <CValidatorCombine id="Essence_Pickup@Check">
         <Type value="And"/>
-        <CombineArray value="DehakaHero@IsUnitType"/>
+        <CombineArray value="DehakaHero@Is"/>
     </CValidatorCombine>
+
+    <CValidatorUnitType id="Essence_Pickup@Is" parent="IsUnit_Default" unit="Essence_Pickup"/>
+    <CValidatorUnitType id="Essence_Pickup@Target" parent="TargetIsUnit_Default" unit="Essence_Pickup"/>
+    <CValidatorUnitType id="Essence_Pickup@Not" parent="NotUnit_Default" unit="Essence_Pickup"/>
+    <CValidatorUnitType id="Essence_Pickup@NotTarget" parent="TargetNotUnit_Default" unit="Essence_Pickup"/>
 
     <CEffectLaunchMissile id="Essence_Pickup@LM">
         <ImpactEffect value="Essence_Pickup@Impact"/>
