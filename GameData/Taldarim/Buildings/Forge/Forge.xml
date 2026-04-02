@@ -75,22 +75,19 @@
         <ShieldRegenDelay value="10"/>
     </CUnit>
     
-    <CActorUnit id="TaldarimForge" parent="GenericUnitStandard" unitName="TaldarimForge">
-
-        <PortraitModel value="TaldarimForge@Portrait"/>
-        <DeathArray index="Normal" ModelLink="TaldarimForge@Death" SoundLink="TaldarimForge@Death"/>
-
+    <CActorUnit id="TaldarimForge" parent="ProtossCollection@Building" unitName="TaldarimForge">
+        <Aliases value="_UnitHuge"/>
         <ModelFlags index="AutomateGlobalLoops" value="0"/>
         <CreepHeightClass value="Small"/>
         <BarWidth value="135"/>
+        <UnitFlags index="ShowBlobShadow" value="0"/>
         <UnitIcon value="Assets\Textures\btn-building-protoss-forge-forged.dds"/>
         <HeroIcon value="Assets\Textures\btn-building-protoss-forge-forged.dds"/>
+        <LifeArmorIcon value="Assets\Textures\protossbuildingarmor.dds"/>
         <GroupIcon>
             <Image value="Assets\Textures\btn-building-protoss-forge-forged.dds"/>
         </GroupIcon>
         <NameOffset value="110"/>
-        <SoundArray index="What" value="ForgeWhat"/>
-        <UnitFlags index="ShowBlobShadow" value="0"/>
         <Wireframe>
             <Image value="Assets\Textures\btn-building-protoss-forge-forged.dds"/>
         </Wireframe>
@@ -101,15 +98,16 @@
         </WireframeShield>
     </CActorUnit>
     
-    <CModel id="TaldarimForge" parent="Unit">
+    <CModel id="TaldarimForge" parent="ForgeBase">
         <Model value="Assets\Buildings\Protoss\Forge_Taldarim\Forge_Taldarim.m3"/>
     </CModel>
-    <CModel id="TaldarimForge@Death" parent="UnitDeath">
+    <CModel id="TaldarimForge@Death" parent="ForgeDeathBase">
         <Model value="Assets\Buildings\Protoss\Forge_Taldarim_Death\Forge_Taldarim_Death.m3"/>
     </CModel>
     <CModel id="TaldarimForge@Portrait" parent="Portrait">
         <Model value="Assets\Portraits\Protoss\Executor_Taldarim_Portrait\Executor_Taldarim_Portrait.m3"/>
     </CModel>
+    <CModel id="TaldarimForge@Placement" parent="ForgePlacementBase"/>
     
     <CSound id="TaldarimForge@Death" parent="Protoss_ExplosionLarge"/>
     <CSound id="TaldarimForge@What" parent="Voice">
@@ -143,6 +141,9 @@
         <DataRecord Entry="Validator,TaldarimForge@Target"/>
         <DataRecord Entry="Validator,TaldarimForge@Not"/>
         <DataRecord Entry="Validator,TaldarimForge@NotTarget"/>
+        <TechInfoUpgradeUsed value="ProtossShields@1"/>
+        <TechInfoUpgradeUsed value="ProtossShields@2"/>
+        <TechInfoUpgradeUsed value="ProtossShields@3"/>
     </CDataCollectionUnit>
 
     <!-- Abilities -->

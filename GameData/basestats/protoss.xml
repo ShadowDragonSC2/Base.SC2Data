@@ -198,6 +198,29 @@
         <Name value="Unit/Name/##id##"/>
     </CUnit>
 
+    <!-- Actors -->
+
+    <CActorUnit default="1" id="ProtossCollection@Building" parent="AdvancedUnitStandard">
+        <Macros value="BuildingFlattenTerrainMacro"/>
+        <Macros value="SnowVisualBuildingMacroMP"/>
+        <BuildModel value="##unitName##@Birth"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
+        <Aliases value="_CreepEngulfable"/>
+        <CreepHeightClass value="Medium"/>
+        <CreepRateGrow value="Grow"/>
+        <CreepRateShrink value="Shrink"/>
+        <On Terms="UnitDeathCustomize; CreepEngulfs" Send="CreepEngulfmentStopTransition"/>
+        <On Terms="ActorCreation; CreepIntersects" Send="CreepEngulfmentStartTransition"/>
+        <On Terms="UnitConstruction.##unitName##.Start" Send="Create ##unitName##@Build"/>
+        <EventDataSound Name="BuildingWarpIn" Actor="UnitSound" Sound="Protoss_BuildingWarpIn"/>
+        <PlacementSound value="Protoss_BuildingPlacement"/>
+        <SoundArray index="Construction" value="Protoss_ConstructionWhat"/>
+    </CActorUnit>
+
+    <CDataCollection id="ProtossCollection">
+        <DataRecord Entry="Actor,ProtossCollection@Building"/>
+    </CDataCollection>
+
     <!-- Upgrades -->
 
     <CUpgrade default="1" id="ProtossArmors">

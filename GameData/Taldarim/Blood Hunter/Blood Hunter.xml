@@ -3,18 +3,17 @@
     <!-- Requires: Unit:UnitGround[base.xml] -->
     <!-- Requires: DataCollectionUnit:Weapon_Base[base.xml] -->
 
-    <!-- ============ Button ============ -->
     <CButton id="BloodHunter">
         <Icon value="Assets\Textures\btn-unit-protoss-darktemplar-taldarim.dds"/>
     </CButton>
 
-    <!-- ============ Unit ============ -->
     <CUnit id="BloodHunter" parent="Generic_Unit_Ground">
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
 
         <!-- BloodHunter Properties -->
+        <AbilArray Link="BloodHunter_VoidStasis"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="BloodHunter_Ability" Type="AbilCmd" Row="2" Column="1"/>
+            <LayoutButtons Face="BloodHunter_VoidStasis" Type="AbilCmd" AbilCmd="BloodHunter_VoidStasis,Execute" Row="2" Column="0"/>
         </CardLayouts>
         <WeaponArray Link="BloodHunter_Weapon"/>
         <LifeStart value="90"/>
@@ -23,6 +22,7 @@
         <ShieldsStart value="200"/>
         <ShieldsMax value="200"/>
         <ShieldArmor value="0"/>
+        <Speed value="2.813"/>
         <FlagArray index="Cloaked" value="1"/>
         <Sight value="9"/>
         <LateralAcceleration value="46.0625"/>
@@ -46,6 +46,7 @@
         <WalkAnimMoveSpeed value="2.1445"/>
         <BarWidth value="40"/>
         <BarOffset value="50"/>
+        <WalkAnimMoveSpeed value="3.75"/>
         <WireframeShield>
             <Image value="Assets\Textures\wireframe-protoss-darktemplar-taldarim-shield01.dds"/>
             <Image value="Assets\Textures\wireframe-protoss-darktemplar-taldarim-shield02.dds"/>
@@ -125,31 +126,55 @@
     </CModel>
     
     <CSound id="BloodHunter@Help" parent="ProtossHelp">
-        <AssetArray File="Assets\Sounds\BloodHunter_Help00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_Help00.ogg" FacialGroup=""/>
     </CSound>
-    <CSound id="BloodHunter@Pissed" parent="ProtossPissed">
-        <AssetArray File="Assets\Sounds\BloodHunter_Pissed00.ogg" FacialGroup=""/>
+    <CSound id="BloodHunter@Attack" parent="Voice">
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_Attack00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_Attack01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_Attack02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_Attack03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_Attack04.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_Attack05.ogg" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\BloodHunter_Pissed01.ogg" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\BloodHunter_Pissed02.ogg" FacialGroup=""/>
         <Volume value="-7.000000,-7.000000"/>
         <Pitch value="-0.300000,0.000000"/>
     </CSound>
+    <CSound id="BloodHunter@Pissed" parent="ProtossPissed">
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_Pissed00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_Pissed01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_Pissed02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_Pissed03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_Pissed04.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_Pissed05.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_Pissed06.ogg" FacialGroup=""/>
+ 
+        <Volume value="-7.000000,-7.000000"/>
+        <Pitch value="-0.300000,0.000000"/>
+    </CSound>
     <CSound id="BloodHunter@Ready" parent="ProtossReady">
-        <AssetArray File="Assets\Sounds\BloodHunter_Ready00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_Ready00.ogg" FacialGroup=""/>
         <Volume value="-4.000000,-4.000000"/>
         <Pitch value="-0.300000,0.000000"/>
     </CSound>
     <CSound id="BloodHunter@What" parent="ProtossAck_Void">
-        <AssetArray File="Assets\Sounds\BloodHunter_What00.ogg" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\BloodHunter_What01.ogg" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\BloodHunter_What02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_What00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_What01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_What02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_What03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_What04.ogg" FacialGroup=""/>
         <Volume value="-7.000000,-7.000000"/>
         <Pitch value="-0.300000,0.000000"/>
     </CSound>
     <CSound id="BloodHunter@Yes" parent="ProtossAck_Void">
-        <AssetArray File="Assets\Sounds\BloodHunter_Yes00.ogg" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\BloodHunter_Yes01.ogg" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\BloodHunter_Yes02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_Yes00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_Yes01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_Yes02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_Yes03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_Yes04.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_Yes05.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_Yes06.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_Yes07.ogg" FacialGroup=""/>
         <Volume value="-7.000000,-7.000000"/>
         <Pitch value="-0.300000,0.000000"/>
     </CSound>
@@ -235,13 +260,6 @@
 
     <CActorAction id="BloodHunter_Weapon@Attack" parent="GenericAttack" effectAttack="BloodHunter_Weapon@Damage"/>
 
-    <CModel id="BloodHunter_Weapon@AttackLaunch" parent="LaunchFX">
-        <EditorCategories value="Race:Protoss"/>
-    </CModel>
-    <CModel id="BloodHunter_Weapon@AttackImpact" parent="ImpactFX">
-        <EditorCategories value="Race:Protoss"/>
-    </CModel>
-
     <CSound id="BloodHunter_Weapon@AttackLaunch" parent="Combat">
         <EditorCategories value="Race:Protoss"/>
         <AssetArray File="Assets\Sounds\DarkTemplarVoid_AttackLaunch00.wav" FacialGroup=""/>
@@ -268,12 +286,25 @@
 
     <!-- ============= Abilities ============= -->
 
+    <!-- Void Stasis -->
     <CButton id="BloodHunter_VoidStasis">
         <EditorCategories value="Race:Protoss"/>
+        <Icon value="Assets\Textures\btn-ability-protoss-voidstasis.dds"/>
     </CButton>
 
     <CAbilEffectTarget id="BloodHunter_VoidStasis">
-        <Effect value="BloodHunter_VoidStasis@AB"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="BloodHunter_VoidStasis"/>
+        <Effect index="0" value="BloodHunter_VoidStasis@AB"/>
+        <Range value="6"/>
+        <Arc value="360"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <TargetFilters value="Visible;Player,Ally,Neutral,Invulnerable,Hidden"/>
+
+        <AutoCastRange value="5"/>
+        <AutoCastFilters value="Visible"/>
+        <AutoCastAcquireLevel value="Offensive"/>
     </CAbilEffectTarget>
 
     <CEffectApplyBehavior id="BloodHunter_VoidStasis@AB">
@@ -282,24 +313,70 @@
 
     <CBehaviorBuff id="BloodHunter_VoidStasis">
         <Duration value="15"/>
+        <Modification>
+            <StateFlags index="Uncommandable" value="1"/>
+            <StateFlags index="Invulnerable" value="1"/>
+            <ModifyFlags index="SuppressMoving" value="1"/>
+            <ModifyFlags index="SuppressTurning" value="1"/>
+        </Modification>
+        <DisplayDuration index="Ally" value="1"/>
     </CBehaviorBuff>
 
-    <CActorModel id="BloodHunter_VoidStasis@AbilityImpact" parent="ModelAnimationStyleOneShot">
+    <CActorModel id="BloodHunter_VoidStasis@Impact" parent="ModelAddition">
         <On Terms="Behavior.BloodHunter_VoidStasis.On" Send="Create"/>
-        <On Terms="Behavior.BloodHunter_VoidStasis.Off" Send="Destroy"/>
-        <Host Subject="_Unit"/>
-        <HostSiteOps Ops="SOpAttachOverhead"/>
-        <EventDataSound Name="LaunchFX" Sound="BloodHunter_VoidStasis@AbilityLaunch"/>
-        <EventDataSound Name="ImpactFX" Sound="BloodHunter_VoidStasis@AbilityImpact"/>
+        <On Terms="Behavior.BloodHunter_VoidStasis.Off" Send="AnimBracketStop BSD"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <AutoScaleFactor value="1.000000"/>
     </CActorModel>
+    <CActorSimple id="BloodHunter_VoidStasis@GlazeController">
+        <On Terms="Behavior.BloodHunter_VoidStasis.On" Send="Create"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.6 DelayCreation"/>
+        <On Terms="TimerExpired; TimerName DelayCreation" Target="::Main" Send="ModelMaterialApply BloodHunter_VoidStasis@Glaze"/>
+        <On Terms="Behavior.BloodHunter_VoidStasis.Off" Target="BloodHunter_VoidStasis@Glaze" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.BloodHunter_VoidStasis.Off" Send="Destroy"/>
+        <On Terms="ActorCreation" Target="_Selectable" Send="AnimSetPausedAll"/>
+        <On Terms="Behavior.BloodHunter_VoidStasis.Off" Target="_Selectable" Send="AnimSetPausedAll 0"/>
+    </CActorSimple>
+    <CActorModelMaterial id="BloodHunter_VoidStasis@Glaze" parent="GlazeParent">
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModelMaterial>
+    <CActorSound id="BloodHunter_VoidStasis@LaunchSound" parent="SoundOneShot">
+        <On Terms="Effect.BloodHunter_VoidStasis@AB.Start; At Caster" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="BloodHunter_VoidStasis@ImpactSound" parent="SoundOneShot">
+        <On Terms="Effect.BloodHunter_VoidStasis@AB.Start; At Target" Send="Create"/>
+    </CActorSound>
 
-    <CModel id="BloodHunter_VoidStasis@AbilityImpact">
-        <Events Name="LaunchFX" Anim="Stand" Type="Sound"/>
-        <Events Name="ImpactFX" Anim="Death" Type="Sound"/>
+    <CModel id="BloodHunter_VoidStasis@Impact" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Protoss\VoidStasis\VoidStasis.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+    <CModel id="BloodHunter_VoidStasis@Glaze" parent="Glaze">
+        <Model value="Assets\Effects\Glaze\Glaze_VoidStasis\Glaze_VoidStasis.m3"/>
     </CModel>
 
-    <CSound id="BloodHunter_VoidStasis@AbilityLaunch" parent="Combat"></CSound>
-    <CSound id="BloodHunter_VoidStasis@AbilityImpact" parent="Combat"></CSound>
+    <CSound id="BloodHunter_VoidStasis@LaunchSound" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\ShadowHunter_VoidStasis_06b.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ShadowHunter_VoidStasis_06c.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ShadowHunter_VoidStasis_06d.wav" FacialGroup=""/>
+        <Pitch value="-3.000000,0.000000"/>
+        <Volume value="2.000000,2.000000"/>
+    </CSound>
+    <CSound id="BloodHunter_VoidStasis@ImpactSound" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\VoidStasis_Impact_01a.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\VoidStasis_Impact_02a.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\VoidStasis_Impact_03a.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\VoidStasis_Impact_04a.wav" FacialGroup=""/>
+        <OffsetFadeIn Volume="-12.000000"/>
+        <OffsetFadeIn Time="500" Volume="-12.000000"/>
+        <OffsetFadeIn Time="1000"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="6.000000,6.000000"/>
+        <SpeakerMix index="Center" value="2.000000"/>
+    </CSound>
 
     <CDataCollectionUnit id="BloodHunter_VoidStasis" parent="Ability_Instant">
         <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Protoss,ObjectType:Other"/>
@@ -307,10 +384,15 @@
         <DataRecord Entry="Abil,BloodHunter_VoidStasis"/>
         <DataRecord Entry="Behavior,BloodHunter_VoidStasis"/>
         <DataRecord Entry="Effect,BloodHunter_VoidStasis@AB"/>
-        <DataRecord Entry="Actor,BloodHunter_VoidStasis@AbilityImpact"/>
-        <DataRecord Entry="Model,BloodHunter_VoidStasis@AbilityImpact"/>
-        <DataRecord Entry="Sound,BloodHunter_VoidStasis@AbilityImpact"/>
-        <DataRecord Entry="Sound,BloodHunter_VoidStasis@AbilityLaunch"/>
+        <DataRecord Entry="Actor,BloodHunter_VoidStasis@Impact"/>
+        <DataRecord Entry="Actor,BloodHunter_VoidStasis@GlazeController"/>
+        <DataRecord Entry="Actor,BloodHunter_VoidStasis@Glaze"/>
+        <DataRecord Entry="Actor,BloodHunter_VoidStasis@LaunchSound"/>
+        <DataRecord Entry="Actor,BloodHunter_VoidStasis@ImpactSound"/>
+        <DataRecord Entry="Model,BloodHunter_VoidStasis@Impact"/>
+        <DataRecord Entry="Model,BloodHunter_VoidStasis@Glaze"/>
+        <DataRecord Entry="Sound,BloodHunter_VoidStasis@LaunchSound"/>
+        <DataRecord Entry="Sound,BloodHunter_VoidStasis@ImpactSound"/>
     </CDataCollectionUnit>
 
 
