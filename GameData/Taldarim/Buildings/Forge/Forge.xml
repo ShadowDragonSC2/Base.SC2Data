@@ -70,7 +70,7 @@
             <LayoutButtons Face="ProtossShields@3" Type="AbilCmd" AbilCmd="TaldarimForgeResearch,Research9" Row="0" Column="2"/>
         </CardLayouts>
         <GlossaryPriority value="10"/>
-        <HotkeyCategory value="Unit/Category/ProtossFaction/Taldarim"/>
+        <HotkeyCategory value="Unit/Category/Tald"/>
         <CostCategory value="Technology"/>
         <CostResource index="Minerals" value="150"/>
         <ShieldRegenDelay value="10"/>
@@ -109,7 +109,10 @@
     <CModel id="TaldarimForge@Portrait" parent="Portrait">
         <Model value="Assets\Portraits\Protoss\Executor_Taldarim_Portrait\Executor_Taldarim_Portrait.m3"/>
     </CModel>
-    <CModel id="TaldarimForge@Placement" parent="ForgePlacementBase"/>
+    <CModel id="TaldarimForge@Placement" parent="ForgePlacementBase">
+        <Model value="Assets\Buildings\Protoss\ForgePlacement\ForgePlacement.m3"/>
+    </CModel>
+    <CModel id="TaldarimForge@DeathUnderConstruction" parent="ProtossBuildingBuildDeath"/>
     <CModel id="TaldarimForge@Build" parent="ProtossBuildingBuildBase"/>
     <CModel id="TaldarimForge@Birth" parent="ForgeBase">
         <Model value="Assets\Buildings\Protoss\ForgeWarpIn\ForgeWarpIn.m3"/>

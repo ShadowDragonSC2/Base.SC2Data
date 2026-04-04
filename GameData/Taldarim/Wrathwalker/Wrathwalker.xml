@@ -4,7 +4,7 @@
         <Icon value="Assets\Textures\btn-unit-protoss-colossus-taldarimex3.dds"/>
     </CButton>
 
-    <CUnit id="Wrathwalker" parent="Generic_Protoss_Unit_Colossus">
+    <CUnit id="Wrathwalker" parent="Generic_Unit_Ground" race="Tald">
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
 
         <!-- Wrathwalker Properties -->
@@ -12,6 +12,9 @@
             <LayoutButtons Face="ChargedBlast" Type="Passive" Row="2" Column="1"/>
         </CardLayouts>
         <WeaponArray index="0" Link="ChargedBlast"/>
+        <Collide index="Colossus" value="0"/>
+        <Collide index="Small" value="0"/>
+        <Collide index="Ground" value="0"/>
         <LifeStart value="200"/>
         <LifeMax value="200"/>
         <LifeArmor value="1"/>
@@ -22,8 +25,8 @@
         <LateralAcceleration value="46.0625"/>
         <Food value="-6"/>
         <Radius value="1"/>
-        <HotkeyCategory value="Unit/Category/ProtossFaction/Taldarim"/>
-        <GlossaryCategory value="Unit/Category/ProtossFaction/Taldarim"/>
+        <Mover value="Colossus"/>
+        <GlossaryPriority value="60"/>
         <GlossaryStrongArray value="Thor"/>
         <GlossaryStrongArray value="Carrier"/>
         <GlossaryStrongArray value="Ultralisk"/>

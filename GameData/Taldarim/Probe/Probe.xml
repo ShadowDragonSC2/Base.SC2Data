@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Catalog>
     <CButton id="TaldarimProbe" parent="UnitButton_OnlyGround">
-        <Icon value="Assets\Textures\btn-unit-protoss-probe.dds"/>
+        <Icon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-probe.dds"/>
     </CButton>
     
     <CUnit id="TaldarimProbe" parent="Generic_Unit_Ground" race="Tald">
@@ -9,6 +9,7 @@
         
         <AbilArray Link="TaldarimProbe_Build"/>
         <WeaponArray Link="TaldarimProbe_Weapon"/>
+        <GlossaryPriority value="10"/>
 
         <CardLayouts index="0">
             <LayoutButtons Face="ProtossBuild" Row="2" Column="0">
@@ -75,21 +76,21 @@
         <BarWidth value="40"/>
         <BarOffset value="50"/>
         
-        <UnitIcon value="Assets\Textures\btn-unit-protoss-probe.dds"/>
-        <HeroIcon value="Assets\Textures\btn-unit-protoss-probe.dds"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-probe.dds"/>
+        <HeroIcon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-probe.dds"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
         
         <!-- Wireframe -->
         <WireframeShield>
-            <Image value="Assets\Textures\wireframe-protoss-probe-shield01.dds"/>
-            <Image value="Assets\Textures\wireframe-protoss-probe-shield02.dds"/>
-            <Image value="Assets\Textures\wireframe-protoss-probe-shield03.dds"/>
+            <Image value="Assets\Textures\wireframe-collection-taldarim-probe-shield01.dds"/>
+            <Image value="Assets\Textures\wireframe-collection-taldarim-probe-shield02.dds"/>
+            <Image value="Assets\Textures\wireframe-collection-taldarim-probe-shield03.dds"/>
         </WireframeShield>
         <GroupIcon>
-            <Image value="Assets\Textures\wireframe-protoss-probe.dds"/>
+            <Image value="Assets\Textures\wireframe-collection-taldarim-probe.dds"/>
         </GroupIcon>
         <Wireframe>
-            <Image value="Assets\Textures\wireframe-protoss-probe.dds"/>
+            <Image value="Assets\Textures\wireframe-collection-taldarim-probe.dds"/>
         </Wireframe>
 
     </CActorUnit>
@@ -182,6 +183,12 @@
         <DataRecord Entry="Validator,Probe@Target"/>
         <DataRecord Entry="Validator,Probe@Not"/>
         <DataRecord Entry="Validator,Probe@NotTarget"/>
+        <TechInfoUpgradeUsed value="ProtossShields@1"/>
+        <TechInfoUpgradeUsed value="ProtossShields@2"/>
+        <TechInfoUpgradeUsed value="ProtossShields@3"/>
+        <TechInfoUpgradeUsed value="ProtossGroundArmors@1"/>
+        <TechInfoUpgradeUsed value="ProtossGroundArmors@2"/>
+        <TechInfoUpgradeUsed value="ProtossGroundArmors@3"/>
     </CDataCollectionUnit>
 
     <!-- ============ Weapon ============ -->

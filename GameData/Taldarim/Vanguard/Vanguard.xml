@@ -8,7 +8,7 @@
         <AlertIcon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-immortal.dds"/>
     </CButton>
 
-    <CUnit id="Vanguard" parent="Generic_Protoss_Unit_Immortal">
+    <CUnit id="Vanguard" parent="Generic_Unit_Ground" race="Tald">
         <WeaponArray index="0" Link="ScatterCannon"/>
         <LifeMax value="200"/>
         <LifeStart value="200"/>
@@ -22,8 +22,7 @@
         </CardLayouts>
         <CostResource index="Minerals" value="250"/>
         <CostResource index="Vespene" value="100"/>
-        <HotkeyCategory value="Unit/Category/ProtossFaction/Taldarim"/>
-        <GlossaryCategory value="Unit/Category/ProtossFaction/Taldarim"/>
+        <GlossaryPriority value="50"/>
     </CUnit>
 
     <CActorUnit id="Vanguard" parent="GenericUnitStandard" unitName="Vanguard">
@@ -72,31 +71,10 @@
 
     </CActorUnit>
 
-    <CModel id="Vanguard" parent="Unit">
-        <AttachProps Id="Ref_Weapon Right">
-            <Keys index="Weapon" value="0"/>
-        </AttachProps>
-        <AttachProps Id="Ref_Weapon Left">
-            <Keys index="Weapon" value="1"/>
-        </AttachProps>
-        <AttachProps Id="Ref_Hardpoint">
-            <Keys index="Turret" value="0"/>
-        </AttachProps>
+    <CModel id="Vanguard" parent="ImmortalBase">
         <Model value="Assets\Units\Protoss\Immortal_Taldarim\Immortal_Taldarim.m3"/>
         <RequiredAnims value="Assets\Units\Protoss\Immortal_SwarmAnims\Immortal_SwarmAnims.m3a"/>
-        <Occlusion value="Show"/>
-        <Tipability value="0.750000"/>
-        <TipabilityWidth value="0.800000"/>
-        <TipabilityLength value="0.800000"/>
-        <ScaleMax value="0.750000,0.750000,0.750000"/>
-        <ScaleMin value="0.750000,0.750000,0.750000"/>
-        <SelectionRadius value="0.866400"/>
-        <SquibTypeDefault value="Metal"/>
-        <Radius value="0.650000"/>
-        <TechPurchaseCamera value="Star2CameraHigh08"/>
-        <UnitGlossaryCamera value="Star2CameraHigh08"/>
-        <PlanetPanelCamera value="Star2CameraHigh08"/>
-        <ShadowRadius value="0.866400"/>
+        <UnitGlossaryCamera value="Star2CameraHigh09"/>
     </CModel>
     <CModel id="Vanguard@Death" parent="UnitDeath">
         <Model value="Assets\Units\Protoss\Immortal_Taldarim_Death\Immortal_Taldarim_Death.m3"/>

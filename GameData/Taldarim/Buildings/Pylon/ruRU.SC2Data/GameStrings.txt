@@ -1,0 +1,2 @@
+Unit/Name/TaldarimPylon=Пилон
+Button/Name/TaldarimPylon=Вызвать Пилон

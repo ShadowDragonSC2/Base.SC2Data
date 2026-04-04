@@ -3,22 +3,17 @@
     <CButton id="Ascendant">
         <Icon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-hightemplar.dds"/>
     </CButton>
-    <CUnit id="Ascendant" parent="Generic_Protoss_Unit_HighTemplar">
+    <CUnit id="Ascendant" parent="Generic_Unit_Ground" race="Tald">
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
-        <AbilArray Link="attack"/>
         <AbilArray Link="PsiOrb"/>
-        <AbilArray Link="ArchonWarp"/>
         <AbilArray Link="Warpable"/>
         <AbilArray Link="ProgressRally"/>
         <AbilArray Link="MindBlast"/>
         <AbilArray Link="BuildInProgress"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="Rally" Type="AbilCmd" AbilCmd="ProgressRally,Rally1" Row="2" Column="4"/>
-            <LayoutButtons Face="AWrp" Type="AbilCmd" AbilCmd="ArchonWarp,SelectedUnits" Row="2" Column="3"/>
             <LayoutButtons Face="PsiOrb" Type="AbilCmd" AbilCmd="PsiOrb,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="MindBlast" Type="AbilCmd" AbilCmd="MindBlast,Execute" Row="2" Column="0"/>
         </CardLayouts>
-        <WeaponArray Link="HighTemplarWeapon"/>
         <LifeStart value="40"/>
         <LifeMax value="40"/>
         <EnergyStart value="50"/>
@@ -30,10 +25,10 @@
         <LateralAcceleration value="46"/>
         <Food value="-2"/>
         <Sight value="10"/>
-        <GlossaryCategory value="Unit/Category/ProtossFaction/Taldarim"/>
-        <HotkeyCategory value="Unit/Category/ProtossFaction/Taldarim"/>
         <CostResource index="Minerals" value="50"/>
         <CostResource index="Vespene" value="150"/>
+        <BuildTime value="32"/>
+        <GlossaryPriority value="30"/>
         <GlossaryStrongArray value="Marine"/>
         <GlossaryStrongArray value="Hydralisk"/>
         <GlossaryStrongArray value="Sentry"/>

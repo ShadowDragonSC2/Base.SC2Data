@@ -6,6 +6,7 @@
     <CButton id="BloodHunter" parent="UnitButton_OnlyGround">
         <Icon value="Assets\Textures\btn-unit-protoss-darktemplar-taldarim.dds"/>
     </CButton>
+    <CRace id="Tald"/>
 
     <CUnit id="BloodHunter" parent="Generic_Unit_Ground" race="Tald">
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
@@ -30,12 +31,14 @@
         <LateralAcceleration value="46.0625"/>
         <Food value="-2"/>
         <Radius value="0.375"/>
+        <GlossaryPriority value="120"/>
         <GlossaryStrongArray value="Thor"/>
         <GlossaryStrongArray value="Carrier"/>
         <GlossaryStrongArray value="Ultralisk"/>
         <GlossaryWeakArray value="Corruptor"/>
         <GlossaryWeakArray value="VikingFighter"/>
     </CUnit>
+
     
     <CActorUnit id="BloodHunter" parent="AdvancedUnitStandard" unitName="BloodHunter">
         <UnitIcon value="Assets\Textures\btn-unit-protoss-darktemplar-taldarim.dds"/>

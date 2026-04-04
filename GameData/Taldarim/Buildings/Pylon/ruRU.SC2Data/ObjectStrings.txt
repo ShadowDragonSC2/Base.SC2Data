@@ -1,0 +1,15 @@
+Model/Name/TaldarimPylon=Taldarim Pylon
+Model/Name/TaldarimPylon@Death=Death
+Model/Name/TaldarimPylon@Placement=Placement
+Model/Name/TaldarimPylon@Portrait=Portrait
+
+Sound/Name/TaldarimPylon@Death=Death
+Sound/Name/TaldarimPylon@Ready=Ready
+Sound/Name/TaldarimPylon@What=What
+
+Validator/Name/TaldarimPylon@Is=Caster Is Unit
+Validator/Name/TaldarimPylon@Target=Target Is Unit
+Validator/Name/TaldarimPylon@Not=Caster Is Not Unit
+Validator/Name/TaldarimPylon@NotTarget=Target Is Not Unit
+
+Unit/EditorPrefix/TaldarimPylon=Тал'Даримы -

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Catalog>
+
     <CButton id="EssenceCoop">
         <Icon value="Assets\Textures\Wireframe-Pickup-DNA.dds"/>
     </CButton>
@@ -81,7 +82,7 @@
     <CValidatorUnitType id="Essence_Pickup@NotTarget" parent="TargetNotUnit_Default" unit="Essence_Pickup"/>
 
     <CEffectLaunchMissile id="Essence_Pickup@LM">
-        <ImpactEffect value="Essence_Pickup@Impact"/>
+        <ImpactEffect value="Essence_Pickup@Child"/>
         <FinishEffect value="Suicide"/>
         <Movers Link="Essence_Pickup@Mover"/>
         <Flags index="PlacementIgnoreBlockers" value="1"/>
@@ -90,11 +91,10 @@
         <VeterancyBehavior value="DehakaHero@Veterancy"/>
         <XP value="7"/>
     </CEffectModifyUnit>
+    <CEffectModifyUnit id="Essence_Pickup@Child" parent="Essence_Pickup@Impact"/>
 
     <CActorAction id="Essence_Pickup@Item" parent="GenericAttack" effectLaunch="Essence_Pickup@LM" effectImpact="Essence_Pickup@Impact">
         <Missile value="EssenceCoop"/>
-        <ImpactMap index="None" AnimProps="Death" Model="EssenceCoop"/>
-        <ImpactSiteOps Ops="SOpAttachHead"/>
         <LaunchSiteOps Ops="SOpAttachOrigin"/>
     </CActorAction>
 

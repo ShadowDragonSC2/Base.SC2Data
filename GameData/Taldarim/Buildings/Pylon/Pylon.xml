@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+
+    <CButton id="TaldarimPylon">
+        <Icon value="Assets\Textures\btn-building-protoss-pylon-forged.dds"/>
+    </CButton>
+    
+    <CUnit id="TaldarimPylon">
+        <DeathRevealRadius value="3"/>
+        <Facing value="270"/>
+        <Race value="Tald"/>
+        <Mob value="Multiplayer"/>
+        <FogVisibility value="Snapshot"/>
+        <LifeStart value="300"/>
+        <LifeMax value="300"/>
+        <LifeArmor value="1"/>
+        <LifeArmorName value="Unit/LifeArmorName/ProtossBuildingPlating"/>
+        <ShieldsStart value="400"/>
+        <ShieldsMax value="400"/>
+        <ShieldRegenRate value="2"/>
+        <ShieldArmorName value="Unit/ShieldArmorName/ProtossPlasmaShields"/>
+        <StationaryTurningRate value="719.4726"/>
+        <TurningRate value="719.4726"/>
+        <AttackTargetPriority value="11"/>
+        <Radius value="1"/>
+        <SeparationRadius value="1"/>
+        <Footprint value="Footprint2x2Contour"/>
+        <PlacementFootprint value="Footprint2x2"/>
+        <ScoreMake value="50"/>
+        <ScoreKill value="50"/>
+        <ScoreResult value="BuildOrder"/>
+        <SubgroupPriority value="2"/>
+        <MinimapRadius value="1.5"/>
+        <BuildTime value="12"/>
+        <EditorCategories value="ObjectType:Structure,ObjectFamily:Melee"/>
+        <FlagArray index="Turnable" value="0"/>
+        <FlagArray index="PreventDefeat" value="1"/>
+        <FlagArray index="PreventDestroy" value="1"/>
+        <FlagArray index="PenaltyRevealed" value="1"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="TownAlert" value="1"/>
+        <FlagArray index="NoPortraitTalk" value="1"/>
+        <FlagArray index="ArmorDisabledWhileConstructing" value="1"/>
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Structure" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Burrow" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="Structure" value="1"/>
+        <Collide index="RoachBurrow" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <Collide index="Small" value="1"/>
+        <Sight value="7"/>
+        <AbilArray Link="BuildInProgress"/>
+        <BehaviorArray Link="PowerSource"/>
+        <CardLayouts>
+            <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="que5,CancelLast" Row="2" Column="4"/>
+            <LayoutButtons Face="CancelBuilding" Type="AbilCmd" AbilCmd="BuildInProgress,Cancel" Row="2" Column="4"/>
+        </CardLayouts>
+        <GlossaryPriority value="10"/>
+        <HotkeyCategory value="Unit/Category/Tald"/>
+        <CostCategory value="Technology"/>
+        <CostResource index="Minerals" value="100"/>
+        <ShieldRegenDelay value="10"/>
+    </CUnit>
+
+    <CActorUnit id="TaldarimPylon" parent="ProtossCollection@Building" unitName="TaldarimPylon">
+        <Aliases value="_UnitMedium"/>
+        <ModelFlags index="AutomateGlobalLoops" value="0"/>
+        <CreepHeightClass value="Small"/>
+        <BarWidth value="135"/>
+        <UnitFlags index="ShowBlobShadow" value="0"/>
+        <UnitIcon value="Assets\Textures\btn-building-protoss-pylon-forged.dds"/>
+        <HeroIcon value="Assets\Textures\btn-building-protoss-pylon-forged.dds"/>
+        <LifeArmorIcon value="Assets\Textures\protossbuildingarmor.dds"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\btn-building-protoss-pylon-forged.dds"/>
+        </GroupIcon>
+        <NameOffset value="110"/>
+        <Wireframe>
+            <Image value="Assets\Textures\btn-building-protoss-pylon-forged.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image value="Assets\Textures\Wireframe-Protoss-Pylon-Shield01.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-Pylon-Shield02.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-Pylon-Shield03.dds"/>
+        </WireframeShield>
+    </CActorUnit>
+    <CActorModel id="TaldarimPylon@Build" parent="ProtossBuildingBuild"/>
+    
+    <CModel id="TaldarimPylon" parent="PylonBase">
+        <Model value="Assets\Buildings\Protoss\Pylon_Taldarim\Pylon_Taldarim.m3"/>
+    </CModel>
+    <CModel id="TaldarimPylon@Death" parent="PylonDeathBase">
+        <Model value="Assets\Buildings\Protoss\Pylon_Taldarim_Death\Pylon_Taldarim_Death.m3"/>
+    </CModel>
+    <CModel id="TaldarimPylon@Portrait" parent="Portrait">
+        <Model value="Assets\Portraits\Protoss\Executor_Taldarim_Portrait\Executor_Taldarim_Portrait.m3"/>
+    </CModel>
+    <CModel id="TaldarimPylon@Placement" parent="PylonPlacementBase">
+        <Model value="Assets\Buildings\Protoss\Pylon_Taldarim_PlacementModelEX3\Pylon_Taldarim_PlacementModelEX3.m3"/>
+    </CModel>
+    <CModel id="TaldarimPylon@DeathUnderConstruction" parent="ProtossBuildingBuildDeath"/>
+    <CModel id="TaldarimPylon@Build" parent="ProtossBuildingBuildBase"/>
+    <CModel id="TaldarimPylon@Birth" parent="PylonBase">
+        <Model value="Assets\Buildings\Protoss\Pylon_Taldarim_WarpIn\Pylon_Taldarim_WarpIn.m3"/>
+        <Events>
+            <Anim value="Stand,Build,End"/>
+            <Name value="BuildingWarpIn"/>
+            <Type value="Sound"/>
+            <Time value="0.700000"/>
+        </Events>
+    </CModel>
+    
+    <CSound id="TaldarimPylon@Death" parent="Protoss_ExplosionLarge"/>
+    <CSound id="TaldarimPylon@What" parent="Voice">
+        <AssetArray File="Assets\Sounds\Protoss\Pylon\Pylon_What.ogg"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
+    <CSound id="TaldarimPylon@Ready" parent="Ready">
+        <AssetArray File="Assets\Sounds\Protoss\Pylon\Pylon_What.ogg"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
+
+    <CValidatorUnitType id="TaldarimPylon@Is" parent="IsUnit_Default" unit="TaldarimPylon"/>
+    <CValidatorUnitType id="TaldarimPylon@Target" parent="TargetIsUnit_Default" unit="TaldarimPylon"/>
+    <CValidatorUnitType id="TaldarimPylon@Not" parent="NotUnit_Default" unit="TaldarimPylon"/>
+    <CValidatorUnitType id="TaldarimPylon@NotTarget" parent="TargetNotUnit_Default" unit="TaldarimPylon"/>
+
+    <CDataCollectionUnit id="TaldarimPylon" parent="UnitGround">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Coop,Race:Terran,ObjectType:Structure"/>
+        <DataRecord Entry="Button,TaldarimPylon"/>
+        <DataRecord Entry="Unit,TaldarimPylon"/>
+        <DataRecord Entry="Actor,TaldarimPylon"/>
+        <DataRecord Entry="Model,TaldarimPylon"/>
+        <DataRecord Entry="Model,TaldarimPylon@Death"/>
+        <DataRecord Entry="Model,TaldarimPylon@Portrait"/>
+        <DataRecord Entry="Sound,TaldarimPylon@Death"/>
+        <DataRecord Entry="Sound,TaldarimPylon@What"/>
+        <DataRecord Entry="Sound,TaldarimPylon@Ready"/>
+        <DataRecord Entry="Validator,TaldarimPylon@Is"/>
+        <DataRecord Entry="Validator,TaldarimPylon@Target"/>
+        <DataRecord Entry="Validator,TaldarimPylon@Not"/>
+        <DataRecord Entry="Validator,TaldarimPylon@NotTarget"/>
+        <TechInfoUpgradeUsed value="ProtossShields@1"/>
+        <TechInfoUpgradeUsed value="ProtossShields@2"/>
+        <TechInfoUpgradeUsed value="ProtossShields@3"/>
+    </CDataCollectionUnit>
+
+</Catalog>
