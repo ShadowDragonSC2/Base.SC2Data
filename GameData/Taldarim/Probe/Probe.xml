@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    <CButton id="TaldarimProbe" parent="UnitButton_OnlyGround">
+        <Icon value="Assets\Textures\btn-unit-protoss-probe.dds"/>
+    </CButton>
+    
+    <CUnit id="TaldarimProbe" parent="Generic_Unit_Ground" race="Tald">
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+        
+        <AbilArray Link="TaldarimProbe_Build"/>
+        <WeaponArray Link="TaldarimProbe_Weapon"/>
+
+        <CardLayouts index="0">
+            <LayoutButtons Face="ProtossBuild" Row="2" Column="0">
+                <Type value="Submenu"/>
+                <AbilCmd value="255"/>
+                <SubmenuCardId value="PBl1"/>
+            </LayoutButtons>
+            <LayoutButtons Face="ProtossBuildAdvanced" Row="2" Column="1">
+                <Type value="Submenu"/>
+                <AbilCmd value="255"/>
+                <SubmenuCardId value="PBl2"/>
+            </LayoutButtons>
+        </CardLayouts>
+        <CardLayouts CardId="PBl1">
+            <LayoutButtons Face="TaldarimNexus" Type="AbilCmd" AbilCmd="TaldarimProbe_Build,Build1"/>
+            <LayoutButtons Face="TaldarimAssimilator" Type="AbilCmd" AbilCmd="TaldarimProbe_Build,Build2" Column="1"/>
+            <LayoutButtons Face="TaldarimPylon" Type="AbilCmd" AbilCmd="TaldarimProbe_Build,Build3" Column="2"/>
+
+            <LayoutButtons Face="TaldarimGateway" Type="AbilCmd" AbilCmd="TaldarimProbe_Build,Build4" Row="1"/>
+            <LayoutButtons Face="TaldarimForge" Type="AbilCmd" AbilCmd="TaldarimProbe_Build,Build5" Row="1" Column="1"/>
+
+            <LayoutButtons Face="TaldarimCyberneticCore" Type="AbilCmd" AbilCmd="TaldarimProbe_Build,Build6" Row="2"/>
+            <LayoutButtons Face="TaldarimPhotonCannon" Type="AbilCmd" AbilCmd="TaldarimProbe_Build,Build7" Row="2" Column="1"/>
+
+            <LayoutButtons Face="Cancel" Type="CancelSubmenu" Row="2" Column="4"/>
+        </CardLayouts>
+        <CardLayouts CardId="PBl2">
+            <LayoutButtons Face="TaldarimTwilightCouncil" Type="AbilCmd" AbilCmd="TaldarimProbe_Build,Build8"/>
+            <LayoutButtons Face="TaldarimStargate" Type="AbilCmd" AbilCmd="TaldarimProbe_Build,Build9" Column="1"/>
+            <LayoutButtons Face="TaldarimRoboticsFacility" Type="AbilCmd" AbilCmd="TaldarimProbe_Build,Build10" Column="2"/>
+
+            <LayoutButtons Face="TaldarimTemplarArchive" Type="AbilCmd" AbilCmd="TaldarimProbe_Build,Build11" Row="1"/>
+            <LayoutButtons Face="TaldarimFleetBeacon" Type="AbilCmd" AbilCmd="TaldarimProbe_Build,Build12" Row="1" Column="1"/>
+            <LayoutButtons Face="TaldarimRoboticsBay" Type="AbilCmd" AbilCmd="TaldarimProbe_Build,Build13" Row="1" Column="2"/>
+
+            <LayoutButtons Face="TaldarimDarkShrine" Type="AbilCmd" AbilCmd="TaldarimProbe_Build,Build14" Row="2" Column="0"/>
+
+            <LayoutButtons Face="Cancel" Type="CancelSubmenu" Row="2" Column="4"/>
+        </CardLayouts>
+        
+        <LifeStart value="20"/>
+        <LifeMax value="20"/>
+        <ShieldsStart value="20"/>
+        <ShieldsMax value="20"/>
+        <ShieldArmor value="0"/>
+        <Speed value="2.8125"/>
+        <Acceleration value="2.5"/>
+        <Sight value="8"/>
+        <Food value="-1"/>
+        <CargoSize value="1"/>
+        <CostResource index="Minerals" value="50"/>
+        <LateralAcceleration value="46"/>
+
+        <Radius value="0.375"/>
+        <InnerRadius value="0.375"/>
+        
+        <GlossaryWeakArray value="Baneling"/>
+    </CUnit>
+
+    <!-- ============ Actor Unit ============ -->
+    <CActorUnit id="TaldarimProbe" parent="AdvancedUnitStandard" unitName="TaldarimProbe">
+        <Aliases value="_UnitSmall"/>
+        <WalkAnimMoveSpeed value="2.25"/>
+        <BarWidth value="40"/>
+        <BarOffset value="50"/>
+        
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-probe.dds"/>
+        <HeroIcon value="Assets\Textures\btn-unit-protoss-probe.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
+        
+        <!-- Wireframe -->
+        <WireframeShield>
+            <Image value="Assets\Textures\wireframe-protoss-probe-shield01.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-probe-shield02.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-probe-shield03.dds"/>
+        </WireframeShield>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-protoss-probe.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-protoss-probe.dds"/>
+        </Wireframe>
+
+    </CActorUnit>
+
+    <CModel id="TaldarimProbe" parent="Unit">
+        <Model value="Assets\Units\Protoss\Probe_Taldarim\Probe_Taldarim.m3"/>
+    </CModel>
+    <CModel id="TaldarimProbe@Death" parent="UnitDeath">
+        <Model value="Assets\Units\Protoss\Probe_Taldarim_Death\Probe_Taldarim_Death.m3"/>
+    </CModel>
+    <CModel id="TaldarimProbe@DeathRagdoll" parent="UnitDeathRagdoll">
+        <Model value="Assets\Units\Protoss\Probe_Taldarim_Collection_DeathRagdoll\Probe_Taldarim_Collection_DeathRagdoll.m3"/>
+    </CModel>
+    <CModel id="TaldarimProbe@Portrait" parent="Portrait">
+        <Model value="Assets\Portraits\Protoss\Probe_Taldarim_Collection_Portrait\Probe_Taldarim_Collection_Portrait.m3"/>
+    </CModel>
+    <CModel id="TaldarimProbe@Placement" parent="Placement">
+        <Model value="Assets\Units\Protoss\Probe_Taldarim_Collection_Placement\Probe_Taldarim_Collection_Placement.m3"/>
+    </CModel>
+    <CModel id="TaldarimProbe@WarpIn" parent="OneShotSpellFX">
+        <Model value="Assets\Units\Protoss\Probe_Taldarim_Collection_WarpIn\Probe_Taldarim_Collection_WarpIn.m3"/>
+    </CModel>
+
+    <CSound id="TaldarimProbe@Death" parent="Protoss_DeathFX">
+        <AssetArray File="Assets\Sounds\Protoss\Probe\Probe_Death0.wav"/>
+        <Volume value="-1.000000,1.000000"/>
+    </CSound>
+    <CSound id="TaldarimProbe@Pissed" parent="ProtossPissed">
+        <AssetArray File="Assets\Sounds\Protoss\Probe\Probe_Pissed0.ogg"/>
+        <AssetArray File="Assets\Sounds\Protoss\Probe\Probe_Pissed1.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Volume value="-5.000000,-5.000000"/>
+    </CSound>
+    <CSound id="TaldarimProbe@Ready" parent="ProtossReady">
+        <AssetArray File="Assets\Sounds\Protoss\Probe\Probe_Ready0.ogg"/>
+        <AssetArray File="Assets\Sounds\Protoss\Probe\Probe_Ready1.ogg"/>
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="TaldarimProbe@Yes" parent="ProtossAck_Void">
+        <AssetArray File="Assets\Sounds\Protoss\Probe\Probe_Yes0.ogg"/>
+        <AssetArray File="Assets\Sounds\Protoss\Probe\Probe_Yes1.ogg"/>
+        <AssetArray File="Assets\Sounds\Protoss\Probe\Probe_Yes2.ogg"/>
+        <AssetArray File="Assets\Sounds\Protoss\Probe\Probe_Yes3.ogg"/>
+        <Volume value="-5.000000,-5.000000"/>
+    </CSound>
+    <CSound id="TaldarimProbe@What" parent="ProtossAck_Void">
+        <AssetArray File="Assets\Sounds\Protoss\Probe\Probe_What0.ogg"/>
+        <AssetArray File="Assets\Sounds\Protoss\Probe\Probe_What1.ogg"/>
+        <AssetArray File="Assets\Sounds\Protoss\Probe\Probe_What2.ogg"/>
+        <Volume value="-5.000000,-5.000000"/>
+    </CSound>
+
+    <CLight id="TaldarimProbe@Portrait" parent="default">
+        <ToDInfoArray index="0" AmbientColor="0.235294,0.309804,0.392157" Colorize="1">
+            <Param index="HDRExposure" value="1.500000"/>
+            <DirectionalLight index="Key">
+                <Color value="0.772549,0.803922,0.870588"/>
+                <ColorMultiplier value="1.500000"/>
+                <Direction value="0.624465,-0.021479,-0.780757"/>
+            </DirectionalLight>
+        </ToDInfoArray>
+        <EditorCategories value="LightGroup:PortraitsUnitsProtoss"/>
+    </CLight>
+
+    <CValidatorUnitType id="TaldarimProbe@Is" parent="IsUnit_Default" unit="TaldarimProbe"/>
+    <CValidatorUnitType id="TaldarimProbe@Target" parent="TargetIsUnit_Default" unit="TaldarimProbe"/>
+    <CValidatorUnitType id="TaldarimProbe@Not" parent="NotUnit_Default" unit="TaldarimProbe"/>
+    <CValidatorUnitType id="TaldarimProbe@NotTarget" parent="TargetNotUnit_Default" unit="TaldarimProbe"/>
+
+    <CRequirement id="TaldarimProbe@Use"/>
+
+    <CDataCollectionUnit id="TaldarimProbe" parent="UnitGround">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Protoss,ObjectType:Unit"/>
+        <DataRecord Entry="Button,Probe"/>
+        <DataRecord Entry="Unit,Probe"/>
+        <DataRecord Entry="Actor,Probe"/>
+        <DataRecord Entry="Model,Probe"/>
+        <DataRecord Entry="Model,Probe@Death"/>
+        <DataRecord Entry="Model,Probe@Portrait"/>
+        <DataRecord Entry="Model,Probe@WarpIn"/>
+        <DataRecord Entry="Model,Probe@Placement"/>
+        <DataRecord Entry="Sound,Probe@Death"/>
+        <DataRecord Entry="Sound,Probe@Pissed"/>
+        <DataRecord Entry="Sound,Probe@Ready"/>
+        <DataRecord Entry="Sound,Probe@Yes"/>
+        <DataRecord Entry="Sound,Probe@What"/>
+        <DataRecord Entry="Light,Probe@Portrait"/>
+        <DataRecord Entry="Requirement,Probe"/>
+        <DataRecord Entry="Validator,Probe@Is"/>
+        <DataRecord Entry="Validator,Probe@Target"/>
+        <DataRecord Entry="Validator,Probe@Not"/>
+        <DataRecord Entry="Validator,Probe@NotTarget"/>
+    </CDataCollectionUnit>
+
+    <!-- ============ Weapon ============ -->
+     
+    <CWeaponLegacy id="TaldarimProbe_Weapon">
+        <EditorCategories value="Race:Protoss"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="0.1"/>
+        <Period value="1.0"/>
+        <DamagePoint value="0.2"/>
+        <Backswing value="0.8"/>
+        <Options index="Melee" value="1"/>
+        <Effect value="TaldarimProbe_Weapon@Damage"/>
+    </CWeaponLegacy>
+
+    <CEffectDamage id="TaldarimProbe_Weapon@Damage" parent="DU_WEAP">
+        <EditorCategories value="Race:Protoss"/>
+        <Kind value="Melee"/>
+        <Amount value="5"/>
+    </CEffectDamage>
+
+    <CActorAction id="TaldarimProbe_Weapon@Attack" parent="GenericAttack" effectAttack="TaldarimProbe_Weapon@Damage">
+        <ActionFlags index="LaunchForceSite" value="1"/>
+    </CActorAction>
+    <CActorBeamSimple id="TaldarimProbe_Weapon@AttackBeam" parent="GenericAttackBeam"/>
+
+    <CModel id="TaldarimProbe_Weapon@AttackBeam" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Protoss\ProbeBeam\ProbeBeam.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+
+    <CSound id="TaldarimProbe_Weapon@AttackImpact" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Protoss\Probe\Probe_AttackImpact0.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Probe\Probe_AttackImpact1.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Probe\Probe_AttackImpact2.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Probe\Probe_AttackImpact3.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Probe\Probe_AttackImpact4.wav"/>
+        <Pitch value="-2.000000,6.000000"/>
+        <Volume value="-9.000000,-9.000000"/>
+    </CSound>
+    <CSound id="TaldarimProbe_Weapon@AttackLaunch" parent="Combat">
+        <AssetArray File="Assets\Sounds\Protoss\Probe\Probe_AttackLaunch0.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Probe\Probe_AttackLaunch1.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Probe\Probe_AttackLaunch2.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Probe\Probe_AttackLaunch3.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Probe\Probe_AttackLaunch4.wav"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Volume value="-7.500000,-7.500000"/>
+        <Pitch value="-2.000000,2.000000"/>
+    </CSound>
+
+    <CDataCollectionUnit id="TaldarimProbe_Weapon" parent="Weapon_Instant">
+        <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:Protoss,ObjectType:Projectile"/>
+        <DataRecord Entry="Weapon,TaldarimProbe_Weapon"/>
+        <DataRecord Entry="Effect,TaldarimProbe_Weapon@Damage"/>
+        <DataRecord Entry="Actor,TaldarimProbe_Weapon@Attack"/>
+        <DataRecord Entry="Sound,TaldarimProbe_Weapon@AttackLaunch"/>
+        <DataRecord Entry="Sound,TaldarimProbe_Weapon@AttackImpact"/>
+    </CDataCollectionUnit>
+
+    <!-- ============= Abilities =============-->
+    <!-- Build -->
+
+    <CAbilBuild id="TaldarimProbe_Build">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <FlagArray index="PeonMaintained" value="0"/>
+        <FlagArray index="PeonDisableCollision" value="1"/>
+        <FlagArray index="IgnoreUnitBuildTime" value="0"/>
+        <ConstructionMover value="Construction"/>
+        <InfoArray index="Build1" Unit="TaldarimNexus">
+            <Button DefaultButtonFace="TaldarimNexus"/>
+        </InfoArray>
+        <InfoArray index="Build2" Unit="TaldarimAssimilator">
+            <Button DefaultButtonFace="TaldarimAssimilator"/>
+        </InfoArray>
+        <InfoArray index="Build3" Unit="TaldarimPylon">
+            <Button DefaultButtonFace="TaldarimPylon"/>
+        </InfoArray>
+        <InfoArray index="Build4" Unit="TaldarimGateway">
+            <Button DefaultButtonFace="TaldarimGateway"/>
+        </InfoArray>
+        <InfoArray index="Build5" Unit="TaldarimForge">
+            <Button DefaultButtonFace="TaldarimForge"/>
+        </InfoArray>
+        <InfoArray index="Build6" Unit="TaldarimCyberneticCore">
+            <Button DefaultButtonFace="TaldarimCyberneticCore"/>
+        </InfoArray>
+        <InfoArray index="Build7" Unit="TaldarimPhotonCannon">
+            <Button DefaultButtonFace="TaldarimPhotonCannon"/>
+        </InfoArray>
+
+        <InfoArray index="Build8" Unit="TaldarimTwilightCouncil">
+            <Button DefaultButtonFace="TaldarimTwilightCouncil"/>
+        </InfoArray>
+        <InfoArray index="Build9" Unit="TaldarimStargate">
+            <Button DefaultButtonFace="TaldarimStargate"/>
+        </InfoArray>
+        <InfoArray index="Build10" Unit="TaldarimRoboticsFacility">
+            <Button DefaultButtonFace="TaldarimRoboticsFacility"/>
+        </InfoArray>
+        <InfoArray index="Build11" Unit="TaldarimTemplarArchive">
+            <Button DefaultButtonFace="TaldarimTemplarArchive"/>
+        </InfoArray>
+        <InfoArray index="Build12" Unit="TaldarimFleetBeacon">
+            <Button DefaultButtonFace="TaldarimFleetBeacon"/>
+        </InfoArray>
+        <InfoArray index="Build13" Unit="TaldarimRoboticsBay">
+            <Button DefaultButtonFace="TaldarimRoboticsBay"/>
+        </InfoArray>
+        <InfoArray index="Build14" Unit="TaldarimDarkShrine">
+            <Button DefaultButtonFace="TaldarimDarkShrine"/>
+        </InfoArray>
+    </CAbilBuild>
+
+</Catalog>

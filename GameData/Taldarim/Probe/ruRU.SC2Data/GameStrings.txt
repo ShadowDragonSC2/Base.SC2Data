@@ -1,0 +1,3 @@
+Unit/Name/TaldarimProbe=Зонд
+Button/Name/TaldarimProbe=Зонд
+Button/ToolTip/TaldarimProbe=Рабочая единица Тал'Даримов. Добывает ресурсы, может вызывать строения

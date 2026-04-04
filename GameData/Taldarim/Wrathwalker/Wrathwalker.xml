@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
-    <CButton id="Wrathwalker">
+    <CButton id="Wrathwalker" parent="UnitButton_GroundAir">
         <Icon value="Assets\Textures\btn-unit-protoss-colossus-taldarimex3.dds"/>
     </CButton>
 

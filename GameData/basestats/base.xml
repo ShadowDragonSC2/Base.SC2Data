@@ -70,6 +70,18 @@
         <Fields Reference="Model,^ParamId^@AttackMissile,Model" NameOverride="DataCollectionPattern/NameOverride/Model/Missile"/>
     </CDataCollectionPattern>
 
+    <CDataCollectionPattern id="AbilityPattern_Base">
+        <Fields Reference="Abil,^ParamId^,Cost.Cooldown.TimeUse"/>
+        <Fields Reference="Abil,^ParamId^,Cost.Cooldown.TimeStart"/>
+        <Fields Reference="Abil,^ParamId^,TargetFilters"/>
+        <Fields Reference="Abil,^ParamId^,Range"/>
+        <Fields Reference="Abil,^ParamId^,AutoCastRange"/>
+        <Fields Reference="Abil,^ParamId^,CmdButtonArray"/>
+        <Fields Reference="Effect,^ParamId^@Damage,Amount"/>
+        <Fields Reference="Behavior,^ParamId^,Modification"/>
+        <Fields Reference="Behavior,^ParamId^,DamageResponse"/>
+    </CDataCollectionPattern>
+
     <CDataCollectionPattern id="UpgradePattern_Template">
         <Fields Reference="Button,^ParamId^,Name"/>
         <Fields Reference="Upgrade,^ParamId^@1,EffectArrayTemplate" NameOverride="DataCollectionPattern/NameOverride/UpgradePattern/EffectArrayTemplate/1"/>
@@ -107,15 +119,20 @@
     <CDataCollectionUnit default="1" id="WeaponBase">
         <Name value="Weapon/Name/##id##"/>
         <UpgradeInfoWeapon DamagePerDice="0"/>
+        <Pattern value="WeaponPattern_Base"/>
         <EditorIconSource value="Weapon"/>
     </CDataCollectionUnit>
     <CDataCollectionUnit default="1" id="Weapon_Instant" parent="WeaponBase">
         <Name value="Weapon/Name/##id##"/>
-        <Pattern value="WeaponPattern_Base"/>
     </CDataCollectionUnit>
     <CDataCollectionUnit default="1" id="Weapon_Missile" parent="WeaponBase">
         <Name value="Weapon/Name/##id##"/>
         <Pattern value="WeaponPattern_Missile"/>
+    </CDataCollectionUnit>
+
+    <CDataCollectionUnit default="1" id="AbilityBase">
+        <Name value="Abil/Name/##id##"/>
+        <Pattern value="AbilityPattern_Base"/>
     </CDataCollectionUnit>
 
     <CDataCollectionUnit default="1" id="UpgradeBase">
@@ -200,7 +217,7 @@
     <!-- Buttons -->
 
     <CButton default="1" id="Button_AppenderIndent">
-        <TooltipAppender Face="##id##" Text="Button/Tooltip/Appender/Indent"/>
+        <TooltipAppender Text="Button/Tooltip/Appender/Indent"/>
     </CButton>
     <CButton default="1" id="UnitButton_OnlyGround" parent="Button_AppenderIndent">
         <TooltipAppender Text="Button/Tooltip/Appender/OnlyGround"/>
@@ -227,8 +244,14 @@
     <!-- Units -->
 
     <CUnit default="1" id="Generic_Unit">
+        <?token id="race" type="CRaceLink" value="Bogus"?>
         <Name value="Unit/Name/##id##"/>
         <Description value="Button/Tooltip/##id##"/>
+        <GlossaryCategory value="Unit/Category/##race##"/>
+        <HotkeyCategory value="Unit/Category/##race##"/>
+        <Race value="##race##"/>
+        <LifeArmorName value="Unit/LifeArmorName/##race##Armor"/>
+        <ShieldArmorName value="Unit/ShieldArmorName/##race##Armor"/>
         <Acceleration value="1000"/>
         <Mob value="Multiplayer"/>
         <FlagArray index="ArmySelect" value="1"/>
@@ -287,6 +310,11 @@
     <CValidatorUnitType default="1" id="TargetNotUnit_Default" parent="TargetIsUnit_Default">
         <Find value="0"/>
     </CValidatorUnitType>
+
+    <CValidatorUnitState id="IsDetector_Base">
+        <State value="Detector"/>
+        <Enabled value="1"/>
+    </CValidatorUnitState>
 
     <!-- Sounds -->
 

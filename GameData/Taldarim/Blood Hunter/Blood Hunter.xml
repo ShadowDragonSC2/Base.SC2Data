@@ -3,19 +3,21 @@
     <!-- Requires: Unit:UnitGround[base.xml] -->
     <!-- Requires: DataCollectionUnit:Weapon_Base[base.xml] -->
 
-    <CButton id="BloodHunter">
+    <CButton id="BloodHunter" parent="UnitButton_OnlyGround">
         <Icon value="Assets\Textures\btn-unit-protoss-darktemplar-taldarim.dds"/>
     </CButton>
 
-    <CUnit id="BloodHunter" parent="Generic_Unit_Ground">
+    <CUnit id="BloodHunter" parent="Generic_Unit_Ground" race="Tald">
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
-
-        <!-- BloodHunter Properties -->
+        
         <AbilArray Link="BloodHunter_VoidStasis"/>
+        <WeaponArray Link="BloodHunter_Weapon"/>
+        
+        <!-- BloodHunter Properties -->
         <CardLayouts index="0">
             <LayoutButtons Face="BloodHunter_VoidStasis" Type="AbilCmd" AbilCmd="BloodHunter_VoidStasis,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="BloodHunter" Type="Passive" Row="1"/>
         </CardLayouts>
-        <WeaponArray Link="BloodHunter_Weapon"/>
         <LifeStart value="90"/>
         <LifeMax value="90"/>
         <LifeArmor value="2"/>
@@ -28,8 +30,6 @@
         <LateralAcceleration value="46.0625"/>
         <Food value="-2"/>
         <Radius value="0.375"/>
-        <HotkeyCategory value="Unit/Category/ProtossFaction/Taldarim"/>
-        <GlossaryCategory value="Unit/Category/ProtossFaction/Taldarim"/>
         <GlossaryStrongArray value="Thor"/>
         <GlossaryStrongArray value="Carrier"/>
         <GlossaryStrongArray value="Ultralisk"/>
@@ -249,6 +249,7 @@
         <Backswing value="1.333"/>
         <Options index="Melee" value="1"/>
         <Effect value="BloodHunter_Weapon@Damage"/>
+        <DisplayEffect value="BloodHunter_Weapon@Damage"/>
     </CWeaponLegacy>
 
     <CEffectDamage id="BloodHunter_Weapon@Damage" parent="DU_WEAP">
@@ -300,11 +301,14 @@
         <Flags index="AutoCast" value="1"/>
         <Flags index="AutoCastOn" value="1"/>
         <Flags index="Transient" value="1"/>
-        <TargetFilters value="Visible;Player,Ally,Neutral,Invulnerable,Hidden"/>
+        <TargetFilters value="Ground;Player,Ally,Heroic,Missile,Stasis,UnderConstruction,Hidden,Invulnerable"/>
 
-        <AutoCastRange value="5"/>
-        <AutoCastFilters value="Visible"/>
-        <AutoCastAcquireLevel value="Offensive"/>
+        <Cost>
+            <Cooldown TimeUse="15" TimeStart="30"/>
+        </Cost>
+
+        <AutoCastRange value="6"/>
+        <AutoCastValidatorArray value="BloodHunter_VoidStasis@AutoCast"/>
     </CAbilEffectTarget>
 
     <CEffectApplyBehavior id="BloodHunter_VoidStasis@AB">
@@ -316,8 +320,12 @@
         <Modification>
             <StateFlags index="Uncommandable" value="1"/>
             <StateFlags index="Invulnerable" value="1"/>
+            <StateFlags index="SuppressAttack" value="1"/>
+            <StateFlags index="SuppressDetection" value="1"/>
+            <StateFlags index="SuppressEnergyRegen" value="1"/>
             <ModifyFlags index="SuppressMoving" value="1"/>
             <ModifyFlags index="SuppressTurning" value="1"/>
+            <AbilClassDisableArray index="CAbilMorph" value="1"/>
         </Modification>
         <DisplayDuration index="Ally" value="1"/>
     </CBehaviorBuff>
@@ -378,7 +386,17 @@
         <SpeakerMix index="Center" value="2.000000"/>
     </CSound>
 
-    <CDataCollectionUnit id="BloodHunter_VoidStasis" parent="Ability_Instant">
+    <CValidatorCombine id="BloodHunter_VoidStasis@AutoCast">
+        <CombineArray value="IsDetector_Base"/>
+        <CombineArray value="BloodHunter_VoidStasis@EnemyNearby"/>
+        <Type value="And"/>
+    </CValidatorCombine>
+    <CValidatorLocationEnumArea id="BloodHunter_VoidStasis@EnemyNearby">
+        <AreaArray Compare="GT" Count="0" Radius="6"/>
+        <SearchFilters value="Visible;Detector,Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CValidatorLocationEnumArea>
+
+    <CDataCollectionUnit id="BloodHunter_VoidStasis" parent="AbilityBase">
         <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Protoss,ObjectType:Other"/>
         <DataRecord Entry="Button,BloodHunter_VoidStasis"/>
         <DataRecord Entry="Abil,BloodHunter_VoidStasis"/>

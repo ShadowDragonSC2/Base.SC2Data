@@ -32,6 +32,7 @@
         <ScoreResult value="BuildOrder"/>
         <SubgroupPriority value="2"/>
         <MinimapRadius value="1.5"/>
+        <BuildTime value="20"/>
         <EditorCategories value="ObjectType:Structure,ObjectFamily:Melee"/>
         <FlagArray index="Turnable" value="0"/>
         <FlagArray index="PreventDefeat" value="1"/>
@@ -97,6 +98,7 @@
             <Image value="Assets\Textures\Wireframe-Protoss-Forge-Shield03.dds"/>
         </WireframeShield>
     </CActorUnit>
+    <CActorModel id="TaldarimForge@Build" parent="ProtossBuildingBuild"/>
     
     <CModel id="TaldarimForge" parent="ForgeBase">
         <Model value="Assets\Buildings\Protoss\Forge_Taldarim\Forge_Taldarim.m3"/>
@@ -108,6 +110,16 @@
         <Model value="Assets\Portraits\Protoss\Executor_Taldarim_Portrait\Executor_Taldarim_Portrait.m3"/>
     </CModel>
     <CModel id="TaldarimForge@Placement" parent="ForgePlacementBase"/>
+    <CModel id="TaldarimForge@Build" parent="ProtossBuildingBuildBase"/>
+    <CModel id="TaldarimForge@Birth" parent="ForgeBase">
+        <Model value="Assets\Buildings\Protoss\ForgeWarpIn\ForgeWarpIn.m3"/>
+        <Events>
+            <Anim value="Stand,Build,End"/>
+            <Name value="BuildingWarpIn"/>
+            <Type value="Sound"/>
+            <Time value="0.700000"/>
+        </Events>
+    </CModel>
     
     <CSound id="TaldarimForge@Death" parent="Protoss_ExplosionLarge"/>
     <CSound id="TaldarimForge@What" parent="Voice">

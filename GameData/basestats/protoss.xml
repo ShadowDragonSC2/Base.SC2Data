@@ -199,6 +199,9 @@
     </CUnit>
 
     <!-- Actors -->
+    <CActorProgress id="ProtossConstruction">
+        <On Terms="Abil.TaldarimProbe_Build.BuildStart" Send="Create"/>
+    </CActorProgress>
 
     <CActorUnit default="1" id="ProtossCollection@Building" parent="AdvancedUnitStandard">
         <Macros value="BuildingFlattenTerrainMacro"/>
