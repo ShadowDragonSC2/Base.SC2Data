@@ -1,10 +1,11 @@
-Button/Name/BloodHunter=Blood Hunter
-Button/Tooltip/BloodHunter=Палач войнов Тал-даримов
+Behavior/Name/BloodHunter_VoidStasis=Стазис пустоты
+Behavior/Tooltip/BloodHunter_VoidStasis=Эта боевая единица или строение не может передвигаться, атаковать и получать урон.
 
-Unit/Name/BloodHunter=Blood Hunter
-Unit/Name/BloodHunter_Weapon=Weapon
+Button/Name/BloodHunter=Вызвать кровавого охотника
+Button/Tooltip/BloodHunter=Талдаримы<n/>Смертоносный воин-убийца. Обладает постоянной маскировкой. Может использовать способность «Стазис Пустоты».
+Button/Name/BloodHunter_VoidStasis=Стазис пустоты
+Button/Tooltip/BloodHunter_VoidStasis=Выбранная цель на <d ref="Behavior,BloodHunter_VoidStasis,Duration"/> сек. перестает атаковать, использовать способности, передвигаться, обнаруживать замаскированные объекты, производить боевые единицы и служить источником питания.<n/><n/><c val="#ColorAttackInfo">Поражает строения и наземные боевые единицы.</c>
 
-Weapon/Name/BloodHunter_Weapon=Blood Hunter Weapon
+Unit/Name/BloodHunter=Кровавый охотник
 
-DataCollection/Name/BloodHunter=Blood Hunter
-DataCollection/Name/BloodHunter_Weapon=Blood Hunter Weapon
+Weapon/Name/BloodHunter_Weapon=Теневые клинки

@@ -1,4 +1,4 @@
-Abil/Name/BloodHunter_VoidStasis=Стазис пустоты
+Abil/Name/BloodHunter_VoidStasis=Void Stasis
 
 Actor/Name/BloodHunter=Unit
 Actor/Name/BloodHunter_Weapon@Attack=Attack

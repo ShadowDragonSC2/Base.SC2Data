@@ -74,6 +74,9 @@ DataCollectionPattern/NameOverride/UpgradePattern/EffectArrayTemplate/8=Спис
 DataCollectionPattern/NameOverride/UpgradePattern/EffectArrayTemplate/9=Список улучшений, уровень 9
 DataCollectionPattern/NameOverride/UpgradePattern/EffectArrayTemplate/10=Список улучшений, уровень 10
 
+DataCollectionPattern/NameOverride/UpgradeWeapon1=Amount Upgrade Weapon 1
+DataCollectionPattern/NameOverride/UpgradeWeapon2=Amount Upgrade Weapon 2
+
 Validator/Name/IsUnit_Default=Caster Is Unit
 Validator/Name/TargetIsUnit_Default=Target Is Unit
 Validator/Name/NotUnit_Default=Caster Not Unit

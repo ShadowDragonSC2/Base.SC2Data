@@ -4,9 +4,9 @@
     <!-- Requires: DataCollectionUnit:Weapon_Base[base.xml] -->
 
     <CButton id="BloodHunter" parent="UnitButton_OnlyGround">
+        <EditorCategories value="Race:Taldarim"/>
         <Icon value="Assets\Textures\btn-unit-protoss-darktemplar-taldarim.dds"/>
     </CButton>
-    <CRace id="Tald"/>
 
     <CUnit id="BloodHunter" parent="Generic_Unit_Ground" race="Tald">
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
@@ -17,7 +17,6 @@
         <!-- BloodHunter Properties -->
         <CardLayouts index="0">
             <LayoutButtons Face="BloodHunter_VoidStasis" Type="AbilCmd" AbilCmd="BloodHunter_VoidStasis,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="BloodHunter" Type="Passive" Row="1"/>
         </CardLayouts>
         <LifeStart value="90"/>
         <LifeMax value="90"/>
@@ -82,6 +81,7 @@
     </CActorUnit>
     
     <CModel id="BloodHunter">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Units\Protoss\DarkTemplar_TalDarim\DarkTemplar_TalDarim.m3"/>
         <Occlusion value="Show"/>
         <ScaleMax value="0.860000,0.860000,0.860000"/>
@@ -92,25 +92,28 @@
         <PlanetPanelCamera value="Star2CameraHigher22"/>
     </CModel>
     <CModel id="BloodHunter@Death">
+        <EditorCategories value="Race:Taldarim"/>
         <Occlusion value="Show"/>
         <LowQualityModel value="ProtossSmallTaldarimUnitDeathLow"/>
         <Model value="Assets\Units\Protoss\DarkTemplar_TalDarim_Death\DarkTemplar_TalDarim_Death.m3"/>
     </CModel>
     <CModel id="BloodHunter@Portrait">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Portraits\Protoss\DarkTemplar_TalDarim_Portrait\DarkTemplar_TalDarim_Portrait.m3"/>
         <Image value="Assets\Textures\darktemplarportrait_static.dds"/>
     </CModel>
     <CModel id="BloodHunter@WarpIn">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Units\Protoss\DarkTemplar_Taldarim_WarpIn\DarkTemplar_Taldarim_WarpIn.m3"/>
         <Occlusion value="Show"/>
         <ScaleMax value="0.860000,0.860000,0.860000"/>
         <ScaleMin value="0.860000,0.860000,0.860000"/>
-        <EditorCategories value="Race:Protoss"/>
         <LowQualityModel value="ProtossWarpInLow"/>
         <SelectionRadius value="0.555400"/>
         <ShadowRadius value="0.555400"/>
     </CModel>
     <CModel id="BloodHunter@Placement">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Units\Protoss\DarkTemplar_Taldarim_Placement\DarkTemplar_Taldarim_Placement.m3"/>
         <Radius value="-1.000000"/>
         <Occlusion value="Show"/>
@@ -120,6 +123,7 @@
         <ShadowRadius value="0.588100"/>
     </CModel>
     <CModel id="BloodHunter@Holo">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Units\Protoss\DarkTemplar_TalDarim_HoloUnit\DarkTemplar_TalDarim_HoloUnit.m3"/>
         <Radius value="-1.000000"/>
         <ScaleMax value="0.860000,0.860000,0.860000"/>
@@ -129,9 +133,11 @@
     </CModel>
     
     <CSound id="BloodHunter@Help" parent="ProtossHelp">
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_Help00.ogg" FacialGroup=""/>
     </CSound>
     <CSound id="BloodHunter@Attack" parent="Voice">
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_Attack00.ogg" FacialGroup=""/>
         <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_Attack01.ogg" FacialGroup=""/>
         <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_Attack02.ogg" FacialGroup=""/>
@@ -144,6 +150,7 @@
         <Pitch value="-0.300000,0.000000"/>
     </CSound>
     <CSound id="BloodHunter@Pissed" parent="ProtossPissed">
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_Pissed00.ogg" FacialGroup=""/>
         <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_Pissed01.ogg" FacialGroup=""/>
         <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_Pissed02.ogg" FacialGroup=""/>
@@ -156,11 +163,13 @@
         <Pitch value="-0.300000,0.000000"/>
     </CSound>
     <CSound id="BloodHunter@Ready" parent="ProtossReady">
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_Ready00.ogg" FacialGroup=""/>
         <Volume value="-4.000000,-4.000000"/>
         <Pitch value="-0.300000,0.000000"/>
     </CSound>
     <CSound id="BloodHunter@What" parent="ProtossAck_Void">
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_What00.ogg" FacialGroup=""/>
         <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_What01.ogg" FacialGroup=""/>
         <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_What02.ogg" FacialGroup=""/>
@@ -170,6 +179,7 @@
         <Pitch value="-0.300000,0.000000"/>
     </CSound>
     <CSound id="BloodHunter@Yes" parent="ProtossAck_Void">
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_Yes00.ogg" FacialGroup=""/>
         <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_Yes01.ogg" FacialGroup=""/>
         <AssetArray File="LocalizedData\Sounds\VO\Protoss\ShadowHunter_Yes02.ogg" FacialGroup=""/>
@@ -211,7 +221,7 @@
     <CValidatorUnitType id="BloodHunter@NotTarget" parent="TargetNotUnit_Default" unit="BloodHunter"/>
 
     <CDataCollectionUnit id="BloodHunter" parent="UnitGround">
-        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Protoss,ObjectType:Unit"/>
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Taldarim,ObjectType:Unit"/>
         <DataRecord Entry="Button,BloodHunter"/>
         <DataRecord Entry="Unit,BloodHunter"/>
         <DataRecord Entry="Actor,BloodHunter"/>
@@ -243,7 +253,7 @@
     <!-- ============ Weapon ============ -->
 
     <CWeaponLegacy id="BloodHunter_Weapon">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Taldarim"/>
         <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
         <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <Range value="0.1"/>
@@ -256,7 +266,7 @@
     </CWeaponLegacy>
 
     <CEffectDamage id="BloodHunter_Weapon@Damage" parent="DU_WEAP">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Taldarim"/>
         <Kind value="Melee"/>
         <Amount value="40"/>
         <Death value="Eviscerate"/>
@@ -265,7 +275,7 @@
     <CActorAction id="BloodHunter_Weapon@Attack" parent="GenericAttack" effectAttack="BloodHunter_Weapon@Damage"/>
 
     <CSound id="BloodHunter_Weapon@AttackLaunch" parent="Combat">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray File="Assets\Sounds\DarkTemplarVoid_AttackLaunch00.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\DarkTemplarVoid_AttackLaunch01.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\DarkTemplarVoid_AttackLaunch02.wav" FacialGroup=""/>
@@ -274,10 +284,12 @@
         <Pitch value="-2.000000,1.000000"/>
         <Volume value="-2.200000,-1.200000"/>
     </CSound>
-    <CSound id="BloodHunter_Weapon@AttackImpact" parent="Protoss_AttackImpactMediumSlice"/>
+    <CSound id="BloodHunter_Weapon@AttackImpact" parent="Protoss_AttackImpactMediumSlice">
+        <EditorCategories value="Race:Taldarim"/>
+    </CSound>
 
     <CDataCollectionUnit id="BloodHunter_Weapon" parent="Weapon_Instant">
-        <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:Protoss,ObjectType:Projectile"/>
+        <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:Taldarim,ObjectType:Other"/>
         <DataRecord Entry="Weapon,BloodHunter_Weapon"/>
         <DataRecord Entry="Effect,BloodHunter_Weapon@Damage"/>
         <DataRecord Entry="Actor,BloodHunter_Weapon@Attack"/>
@@ -286,13 +298,16 @@
         <DataRecord Entry="Model,BloodHunter_Weapon@AttackImpact"/>
         <DataRecord Entry="Sound,BloodHunter_Weapon@AttackLaunch"/>
         <DataRecord Entry="Sound,BloodHunter_Weapon@AttackImpact"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@1"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@2"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@3"/>
     </CDataCollectionUnit>
 
     <!-- ============= Abilities ============= -->
 
     <!-- Void Stasis -->
     <CButton id="BloodHunter_VoidStasis">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Taldarim"/>
         <Icon value="Assets\Textures\btn-ability-protoss-voidstasis.dds"/>
     </CButton>
 
@@ -307,7 +322,7 @@
         <TargetFilters value="Ground;Player,Ally,Heroic,Missile,Stasis,UnderConstruction,Hidden,Invulnerable"/>
 
         <Cost>
-            <Cooldown TimeUse="15" TimeStart="30"/>
+            <Cooldown TimeUse="15"/>
         </Cost>
 
         <AutoCastRange value="6"/>
@@ -315,22 +330,35 @@
     </CAbilEffectTarget>
 
     <CEffectApplyBehavior id="BloodHunter_VoidStasis@AB">
+        <EditorCategories value="Race:Taldarim"/>
         <Behavior value="BloodHunter_VoidStasis"/>
     </CEffectApplyBehavior>
 
     <CBehaviorBuff id="BloodHunter_VoidStasis">
-        <Duration value="15"/>
+        <EditorCategories value="Race:Taldarim,AbilityorEffectType:Units"/>
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-voidstasis.dds"/>
+        <Duration value="10"/>
         <Modification>
-            <StateFlags index="Uncommandable" value="1"/>
-            <StateFlags index="Invulnerable" value="1"/>
+            <StateFlags index="Stasis" value="1"/>
+            <StateFlags index="Stun" value="1"/>
             <StateFlags index="SuppressAttack" value="1"/>
+            <StateFlags index="SuppressCloak" value="1"/>
             <StateFlags index="SuppressDetection" value="1"/>
-            <StateFlags index="SuppressEnergyRegen" value="1"/>
-            <ModifyFlags index="SuppressMoving" value="1"/>
-            <ModifyFlags index="SuppressTurning" value="1"/>
-            <AbilClassDisableArray index="CAbilMorph" value="1"/>
+            <StateFlags index="SuppressFoodMade" value="1"/>
+            <StateFlags index="SuppressRadar" value="1"/>
+            <StateFlags index="SuppressTech" value="1"/>
+            <AbilClassDisableArray index="CAbilAttack" value="1"/>
+            <AbilClassDisableArray index="CAbilWarpTrain" value="1"/>
+            <BehaviorClassDisableArray index="CBehaviorPowerSource" value="1"/>
+            <BehaviorClassDisableArray index="CBehaviorResource" value="1"/>
+            <BehaviorLinkDisableArray value="SalvageBunker"/>
+            <BehaviorLinkDisableArray value="SalvageShared"/>
+            <BehaviorLinkDisableArray value="SensorTowerRadar"/>
         </Modification>
+        <DisplayDuration index="Self" value="1"/>
         <DisplayDuration index="Ally" value="1"/>
+        <DisplayDuration index="Enemy" value="1"/>
     </CBehaviorBuff>
 
     <CActorModel id="BloodHunter_VoidStasis@Impact" parent="ModelAddition">
@@ -360,15 +388,16 @@
     </CActorSound>
 
     <CModel id="BloodHunter_VoidStasis@Impact" parent="PersistentSpellFX">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Effects\Protoss\VoidStasis\VoidStasis.m3"/>
-        <EditorCategories value="Race:Protoss"/>
     </CModel>
     <CModel id="BloodHunter_VoidStasis@Glaze" parent="Glaze">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Effects\Glaze\Glaze_VoidStasis\Glaze_VoidStasis.m3"/>
     </CModel>
 
     <CSound id="BloodHunter_VoidStasis@LaunchSound" parent="Spell">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray File="Assets\Sounds\ShadowHunter_VoidStasis_06b.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\ShadowHunter_VoidStasis_06c.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\ShadowHunter_VoidStasis_06d.wav" FacialGroup=""/>
@@ -376,7 +405,7 @@
         <Volume value="2.000000,2.000000"/>
     </CSound>
     <CSound id="BloodHunter_VoidStasis@ImpactSound" parent="Spell">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray File="Assets\Sounds\VoidStasis_Impact_01a.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\VoidStasis_Impact_02a.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\VoidStasis_Impact_03a.wav" FacialGroup=""/>
@@ -400,7 +429,7 @@
     </CValidatorLocationEnumArea>
 
     <CDataCollectionUnit id="BloodHunter_VoidStasis" parent="AbilityBase">
-        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Protoss,ObjectType:Other"/>
+        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Taldarim,ObjectType:Spell"/>
         <DataRecord Entry="Button,BloodHunter_VoidStasis"/>
         <DataRecord Entry="Abil,BloodHunter_VoidStasis"/>
         <DataRecord Entry="Behavior,BloodHunter_VoidStasis"/>

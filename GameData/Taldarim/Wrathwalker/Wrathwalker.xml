@@ -6,15 +6,27 @@
 
     <CUnit id="Wrathwalker" parent="Generic_Unit_Ground" race="Tald">
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+        <FlagArray index="Turnable" value="0"/>
 
         <!-- Wrathwalker Properties -->
         <CardLayouts index="0">
             <LayoutButtons Face="ChargedBlast" Type="Passive" Row="2" Column="1"/>
         </CardLayouts>
-        <WeaponArray index="0" Link="ChargedBlast"/>
-        <Collide index="Colossus" value="0"/>
+        <WeaponArray Link="ChargedBlast" Turret="Colossus"/>
+
         <Collide index="Small" value="0"/>
         <Collide index="Ground" value="0"/>
+        <Collide index="Structure" value="1"/>
+        <Collide index="Colossus" value="1"/>
+        <Collide index="Flying" value="1"/>
+        <PlaneArray index="Air" value="1"/>
+
+        <Radius value="1"/>
+        <SeparationRadius value="0.75"/>
+        <DeathRevealRadius value="3"/>
+        <InnerRadius value="0.5625"/>
+        <MinimapRadius value="1"/>
+
         <LifeStart value="200"/>
         <LifeMax value="200"/>
         <LifeArmor value="1"/>
@@ -22,9 +34,10 @@
         <ShieldsMax value="150"/>
         <RepairTime value="75"/>
         <Sight value="10"/>
+        <VisionHeight value="14"/>
+        <CargoSize value="8"/>
         <LateralAcceleration value="46.0625"/>
         <Food value="-6"/>
-        <Radius value="1"/>
         <Mover value="Colossus"/>
         <GlossaryPriority value="60"/>
         <GlossaryStrongArray value="Thor"/>
@@ -34,14 +47,12 @@
         <GlossaryWeakArray value="VikingFighter"/>
     </CUnit>
     
-    <CActorUnit id="Wrathwalker" parent="GenericUnitStandard" unitName="Wrathwalker">
+    <CActorUnit id="Wrathwalker" parent="AdvancedUnitStandard" unitName="Wrathwalker">
         <UnitIcon value="Assets\Textures\btn-unit-protoss-colossus-taldarimex3.dds"/>
         <HeroIcon value="Assets\Textures\btn-unit-protoss-colossus-taldarimex3.dds"/>
         <ModelFlags index="OutlineEmitter" value="1"/>
         <Macros value="TerrainSquibAnimations"/>
         <BuildModel value="Wrathwalker@WarpIn"/>
-        <PortraitModel value="Wrathwalker@Portrait"/>
-        <DeathArray index="Normal" ModelLink="Wrathwalker@Death" SoundLink=""/>
         <DeathCustoms ModelLink="ProtossLargeUnitDeathLow" Name="AntiGravProtoss"/>
         <DeathCustoms ModelLink="HallucinationColossusDeath" SoundLink="Sentry_HallucinationDeathLarge" Name="Hallucination"/>
         <WalkAnimMoveSpeed value="2.1445"/>
@@ -59,12 +70,6 @@
             <Image value="Assets\Textures\wireframe-protoss-colossus-taldarim.dds"/>
         </Wireframe>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
-        <SoundArray index="Ready" value="Wrathwalker@Ready"/>
-        <SoundArray index="Help" value="Wrathwalker@Help"/>
-        <SoundArray index="What" value="Wrathwalker@What"/>
-        <SoundArray index="Yes" value="Wrathwalker@Yes"/>
-        <SoundArray index="Pissed" value="Wrathwalker@Pissed"/>
-        <PlacementModel value="Wrathwalker@Placement"/>
         <TerrainSquibs>
             <MovementDistance value="0.150000,0.150000"/>
             <IdlePeriod value="0.250000,0.500000"/>

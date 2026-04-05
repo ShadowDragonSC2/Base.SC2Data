@@ -63,8 +63,8 @@
         <Fields Reference="Sound,^ParamId^@AttackImpact,AssetArray" NameOverride="DataCollectionPattern/NameOverride/Sound/Impact"/>
         <Fields Reference="Sound,^ParamId^@AttackLaunch,AssetArray" NameOverride="DataCollectionPattern/NameOverride/Sound/Launch"/>
         <Fields Reference="DataCollection,^ParamId^,TechInfoUpgradeUsed" NameOverride="DataCollectionPattern/NameOverride/Upgrades"/>
-        <Fields Reference="DataCollection,^ParamId^,UpgradeInfoWeapon[0]"/>
-        <Fields Reference="DataCollection,^ParamId^,UpgradeInfoWeapon[1]"/>
+        <Fields Reference="DataCollection,^ParamId^,UpgradeInfoWeapon[0]" NameOverride="DataCollectionPattern/NameOverride/UpgradeWeapon1"/>
+        <Fields Reference="DataCollection,^ParamId^,UpgradeInfoWeapon[1]" NameOverride="DataCollectionPattern/NameOverride/UpgradeWeapon2"/>
     </CDataCollectionPattern>
     <CDataCollectionPattern id="WeaponPattern_Missile" parent="WeaponPattern_Base">
         <Fields Reference="Model,^ParamId^@AttackMissile,Model" NameOverride="DataCollectionPattern/NameOverride/Model/Missile"/>
@@ -118,7 +118,7 @@
     
     <CDataCollectionUnit default="1" id="WeaponBase">
         <Name value="Weapon/Name/##id##"/>
-        <UpgradeInfoWeapon DamagePerDice="0"/>
+        <UpgradeInfoWeapon index="0" DamagePerDice="3"/>
         <Pattern value="WeaponPattern_Base"/>
         <EditorIconSource value="Weapon"/>
     </CDataCollectionUnit>
@@ -215,6 +215,8 @@
     </CActorUnit>
 
     <!-- Buttons -->
+
+    <CRace id="Tald"/>
 
     <CButton default="1" id="Button_AppenderIndent">
         <TooltipAppender Text="Button/Tooltip/Appender/Indent"/>

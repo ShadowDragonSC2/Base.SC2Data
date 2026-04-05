@@ -1,0 +1,10 @@
+Behavior/Name/BloodHunter_VoidStasis=Void Stasis
+Behavior/Tooltip/BloodHunter_VoidStasis=This unit or structure cannot move, attack, or be damaged.
+
+Button/Name/BloodHunter=Warp in Blood Hunter
+Button/Tooltip/BloodHunter=Tal'darim Faction<n/>Deadly warrior-assassin. Permanently cloaked. Can use Void Stasis.<n/><n/><c val="ffff8a">Can attack ground units.</c>
+Button/Name/BloodHunter_VoidStasis=Void Stasis
+Button/Tooltip/BloodHunter_VoidStasis=Disables the target's attacks, abilities, movement, detection, production and tech for <d ref="Behavior,BloodHunter_VoidStasis,Duration"/> seconds. Units and structures in stasis cannot be attacked or affected by abilities.<n/><n/><c val="#ColorAttackInfo">Can target ground units and structures.</c>
+Unit/Name/BloodHunter=Blood Hunter
+
+Weapon/Name/BloodHunter_Weapon=Bane Blades
