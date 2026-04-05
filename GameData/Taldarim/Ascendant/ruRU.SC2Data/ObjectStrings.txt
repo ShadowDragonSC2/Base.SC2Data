@@ -1,5 +1,63 @@
+Abil/Name/MindBlast=Взрыв разума
+Abil/Name/PsiOrb=Псионная сфера
+
+Actor/Name/MindBlast@Animation=Animation
+Actor/Name/MindBlast@Attack=Attack
+Actor/Name/MindBlast@Range=Range
+Actor/Name/PsiOrb@Animation=Animation
+Actor/Name/PsiOrb@Attack=Attack
+Actor/Name/PsiOrb@Beam=Beam
+Actor/Name/PsiOrb@BeamAttack=Beam Attack
+Actor/Name/PsiOrb@Missile=Missile
+Actor/Name/PsiOrb@Range=Range
+Actor/Name/PsiOrb@Splat=Splat
+Actor/Name/Ascendant=Ascendant
+
+Behavior/Name/PsiOrb@AuraDamage=Aura Damage
+
+Effect/Name/MindBlast@Damage=Damage
+Effect/Name/PsiOrb@Set=Set
+Effect/Name/PsiOrb@Search=Search
+Effect/Name/PsiOrb@LM=LM
+Effect/Name/PsiOrb@CP=CP
+Effect/Name/PsiOrb@DP=DP
+Effect/Name/PsiOrb@AB=AB
+Effect/Name/PsiOrb@Damage=Damage
+
+Light/Name/Ascendant@Portrait=Portrait
+
+Model/Name/MindBlast@Impact=Impact
+Model/Name/PsiOrb@Missile=Missile
+Model/Name/PsiOrb@Splat=Splat
+Model/Name/PsiOrb@Impact=Impact
+Model/Name/PsiOrb@Beam=Beam
+Model/Name/Ascendant=Ascendant
+Model/Name/Ascendant@Death=Death
+Model/Name/Ascendant@Placement=Placement
+Model/Name/Ascendant@Portrait=Portrait
+Model/Name/Ascendant@WarpIn=Warp In
+
+Mover/Name/PsiOrb@Missile=Missile
+
+Requirement/Name/MindBlast@Learn=Learn
+Requirement/Name/MindBlast@Use=Use
+Requirement/Name/Ascendant=Requirement
+
+Sound/Name/MindBlast@Impact=Impact
+Sound/Name/MindBlast@Launch=Launch
+Sound/Name/AttackImpact=Attack Impact
+Sound/Name/AttackLaunch=Attack Launch
+Sound/Name/BeamAttackImpact=Beam Impact
+Sound/Name/Ascendant@Death=Death
+Sound/Name/Ascendant@DeathVoice=Death Voice
+Sound/Name/Ascendant@Pissed=Pissed
+Sound/Name/Ascendant@Ready=Ready
+Sound/Name/Ascendant@Attack=Attack
+Sound/Name/Ascendant@Yes=Yes
+Sound/Name/Ascendant@What=What
+Sound/Name/Ascendant@AbilSound=Ability Sound
 
 Validator/Name/Ascendant@Is=Caster Is Unit
 Validator/Name/Ascendant@Target=Target Is Unit
-Validator/Name/Ascendant@Not=Caster Not Unit
-Validator/Name/Ascendant@NotTarget=Target Not Unit
+Validator/Name/Ascendant@Not=Caster Is Not Unit
+Validator/Name/Ascendant@NotTarget=Target Is Not Unit
