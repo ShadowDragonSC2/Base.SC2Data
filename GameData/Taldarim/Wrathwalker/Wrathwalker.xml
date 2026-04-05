@@ -16,6 +16,8 @@
 
         <Collide index="Small" value="0"/>
         <Collide index="Ground" value="0"/>
+        <Collide index="ForceField" value="0"/>
+        
         <Collide index="Structure" value="1"/>
         <Collide index="Colossus" value="1"/>
         <Collide index="Flying" value="1"/>

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Catalog>
-    <!-- Requires: Unit:UnitGround[base.xml] -->
+    <!-- Requires: Unit:Generic_Unit_Ground[base.xml] -->
     <!-- Requires: DataCollectionUnit:Weapon_Base[base.xml] -->
     <!-- Requires: DataCollectionUnit:AbilityBase[base.xml] -->
     <!-- Requires: CButton:UnitButton_OnlyGround[base.xml] -->
     <!-- Requires: CActorUnit:AdvancedUnitStandard[base.xml] -->
 
     <CButton id="Ascendant" parent="UnitButton_OnlyGround">
+        <EditorCategories value="Race:Taldarim"/>
         <Icon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-hightemplar.dds"/>
     </CButton>
     <CUnit id="Ascendant" parent="Generic_Unit_Ground" race="Tald">
@@ -17,11 +18,15 @@
         <AbilArray Link="PsiOrb"/>
         <AbilArray Link="MindBlast"/>
         <AbilArray Link="Ascendant_Sacrifice"/>
+        <WeaponArray Link="Ascendant_Weapon"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Ascendant_Sacrifice" Type="AbilCmd" AbilCmd="Ascendant_Sacrifice,Execute" Row="2" Column="2"/>
             <LayoutButtons Face="PsiOrb" Type="AbilCmd" AbilCmd="PsiOrb,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="MindBlast" Type="AbilCmd" AbilCmd="MindBlast,Execute" Row="2"/>
         </CardLayouts>
+        <Attributes index="Biological" value="1"/>
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Psionic" value="1"/>
         <LifeStart value="40"/>
         <LifeMax value="40"/>
         <EnergyStart value="50"/>
@@ -46,6 +51,8 @@
         <EnergyRegenRate value="0"/>
     </CUnit>
     <CActorUnit id="Ascendant" parent="AdvancedUnitStandard" unitName="Ascendant">
+        <On Terms="WeaponStart.Ascendant_Weapon" Send="AnimPlay Attack Spell PlayForever,ForceLooping"/>
+        <On Terms="WeaponStop.Ascendant_Weapon" Send="AnimClear Attack"/>
         <Aliases value="_UnitSmall"/>
         <AnimBlendTime value="0.450000"/>
         <WalkAnimMoveSpeed value="2.25"/>
@@ -69,22 +76,28 @@
     </CActorUnit>
     
     <CModel id="Ascendant" parent="Unit">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Units\Protoss\HighTemplar_TaldarimEx3\HighTemplar_TaldarimEx3.m3"/>
     </CModel>
     <CModel id="Ascendant@Death" parent="UnitDeath">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Units\Protoss\HighTemplar_Taldarim_Death\HighTemplar_Taldarim_Death.m3"/>
     </CModel>
     <CModel id="Ascendant@Placement" parent="Placement">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Units\Protoss\HighTemplar_Taldarim_HoloUnit\HighTemplar_Taldarim_HoloUnit.m3"/>
     </CModel>
     <CModel id="Ascendant@Portrait" parent="Portrait">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Portraits\Protoss\HighTemplar_TalDarim_Portrait\HighTemplar_TalDarim_Portrait.m3"/>
     </CModel>
     <CModel id="Ascendant@WarpIn" parent="OneShotSpellFX">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Units\Protoss\HighTemplarTaldarim_WarpIn\HighTemplarTaldarim_WarpIn.m3"/>
     </CModel>
 
     <CSound id="Ascendant@Death" parent="Protoss_DeathFX">
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray index="0" File="Assets\Sounds\HighTemplarTaldarim_Death_01.wav" FacialGroup=""/>
         <AssetArray index="1" File="Assets\Sounds\HighTemplarTaldarim_Death_02.wav" FacialGroup=""/>
         <AssetArray index="2" File="Assets\Sounds\HighTemplar_Taldarim_Death_03.wav" FacialGroup=""/>
@@ -95,6 +108,7 @@
         <Volume value="-1.000000,1.000000"/>
     </CSound>
     <CSound id="Ascendant@DeathVoice" parent="ProtossDeath">
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray TemplateParam="Ascendant_Death00"/>
         <AssetArray TemplateParam="Ascendant_Death01"/>
         <AssetArray TemplateParam="Ascendant_Death02"/>
@@ -103,6 +117,7 @@
         <Volume value="-5.000000,-5.000000"/>
     </CSound>
     <CSound id="Ascendant@Pissed" parent="ProtossPissed">
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray TemplateParam="Ascendant_Pissed00"/>
         <AssetArray TemplateParam="Ascendant_Pissed01"/>
         <AssetArray TemplateParam="Ascendant_Pissed02"/>
@@ -117,12 +132,14 @@
         <Volume value="-5.000000,-5.000000"/>
     </CSound>
     <CSound id="Ascendant@Ready" parent="ProtossReady">
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray TemplateParam="Ascendant_Ready00"/>
         <Flags index="NeedsUpdate" value="1"/>
         <Flags index="NeedsTTS" value="1"/>
         <Volume value="-2.000000,-2.000000"/>
     </CSound>
     <CSound id="Ascendant@Attack" parent="ProtossAck_Void">
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray TemplateParam="Ascendant_Attack00"/>
         <AssetArray TemplateParam="Ascendant_Attack01"/>
         <AssetArray TemplateParam="Ascendant_Attack02"/>
@@ -135,6 +152,7 @@
         <Volume value="-5.000000,-5.000000"/>
     </CSound>
     <CSound id="Ascendant@Yes" parent="ProtossAck_Void">
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray TemplateParam="Ascendant_Yes00"/>
         <AssetArray TemplateParam="Ascendant_Yes01"/>
         <AssetArray TemplateParam="Ascendant_Yes02"/>
@@ -147,6 +165,7 @@
         <Volume value="-5.000000,-5.000000"/>
     </CSound>
     <CSound id="Ascendant@What" parent="ProtossAck_Void">
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray TemplateParam="Ascendant_What00"/>
         <AssetArray TemplateParam="Ascendant_What01"/>
         <AssetArray TemplateParam="Ascendant_What02"/>
@@ -161,6 +180,7 @@
 
     <!-- Ability Sounds -->
     <CSound id="Ascendant@AbilSound" parent="ProtossAck_Void">
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray File="LocalizedData\Sounds\VO\Protoss\Ascendant_Attack00.ogg" FacialGroup=""/>
         <AssetArray File="LocalizedData\Sounds\VO\Protoss\Ascendant_Attack01.ogg" FacialGroup=""/>
         <AssetArray File="LocalizedData\Sounds\VO\Protoss\Ascendant_Attack02.ogg" FacialGroup=""/>
@@ -242,24 +262,121 @@
         <TechInfoUpgradeUsed value="ProtossGroundWeapons@2"/>
         <TechInfoUpgradeUsed value="ProtossGroundWeapons@3"/>
     </CDataCollectionUnit>
+    
+    <!-- ============== Weapons ============== -->
 
-    <!-- ============== Abils ============== -->
+    <CWeaponLegacy id="Ascendant_Weapon">
+        <EditorCategories value="Race:Taldarim"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
+        <DisplayEffect value="Ascendant_Weapon@Damage"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="7"/>
+        <Period value="1.754"/>
+        <Effect value="Ascendant_Weapon@LM"/>
+    </CWeaponLegacy>
+
+    <CEffectLaunchMissile id="Ascendant_Weapon@LM">
+        <EditorCategories value="Race:Taldarim"/>
+        <ImpactEffect value="Ascendant_Weapon@Damage"/>
+        <AmmoUnit value="Ascendant_Weapon@AttackMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="Ascendant_Weapon@Damage" parent="DU_WEAP">
+        <EditorCategories value="Race:Taldarim"/>
+        <Amount value="9"/>
+        <Death value="Blast"/>
+        <Kind value="Ranged"/>
+    </CEffectDamage>
+    
+    <CActorAction id="Ascendant_Weapon@Attack" parent="GenericAttack" effectImpact="Ascendant_Weapon@Damage" effectLaunch="Ascendant_Weapon@LM">
+        <LaunchSiteOps Ops="SOpAttachCenter SOpMoveByDot15"/>
+        <ImpactPhysics Name="AscendantPsiBlastImpact" MatchKeys="Basic" Physics="Ascendant_Weapon@ImpactForce"/>
+    </CActorAction>
+    <CActorMissile id="Ascendant_Weapon@AttackMissile" parent="GenericAttackMissile" unitName="Ascendant_Weapon@AttackMissile"/>
+    <CActorForceSphere id="Ascendant_Weapon@ImpactForce">
+        <Receiver Subject="::Main"/>
+        <HostSiteOps Ops="SOpIncomingMissileDot25 SOpRotVariancerForward15"/>
+        <Magnitude value="20.000000,5.000000"/>
+        <Radius value="0.500000,0.250000"/>
+        <Field value="Directional"/>
+        <Direction value="Forward"/>
+        <Duration value="0.250000"/>
+    </CActorForceSphere>
+    
+    <CModel id="Ascendant_Weapon@AttackMissile" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\HighTemplarTaldarim_AgonizingBlast\HighTemplarTaldarim_AgonizingBlast.m3"/>
+        <EditorCategories value="Race:Taldarim"/>
+    </CModel>
+    <CModel id="Ascendant_Weapon@AttackImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Protoss\HighTemplarTaldarim_AgonizingBlast_Impact\HighTemplarTaldarim_AgonizingBlast_Impact.m3"/>
+        <EditorCategories value="Race:Taldarim"/>
+    </CModel>
+    
+    <CSound id="Ascendant_Weapon@AttackImpact" parent="Combat">
+        <EditorCategories value="Race:Taldarim"/>
+        <AssetArray File="Assets\Sounds\Protoss\Karass\Karass_AttackImpact0.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Karass\Karass_AttackImpact1.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Karass\Karass_AttackImpact2.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Karass\Karass_AttackImpact3.wav"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-7.500000,-7.500000"/>
+    </CSound>
+    <CSound id="Ascendant_Weapon@AttackLaunch" parent="Combat">
+        <EditorCategories value="Race:Taldarim"/>
+        <AssetArray File="Assets\Sounds\Protoss\Karass\Karass_AttackLaunch0.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Karass\Karass_AttackLaunch1.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Karass\Karass_AttackLaunch2.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Karass\Karass_AttackLaunch3.wav"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-12.000000,-12.000000"/>
+    </CSound>
+
+    <CUnit id="Ascendant_Weapon@AttackMissile" parent="MISSILE_INVULNERABLE">
+        <Race value="Tald"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
+    </CUnit>
+
+    <CMoverMissile id="Ascendant_Weapon@AttackMissile" parent="MissileDefault"/>
+
+    <CDataCollectionUnit id="Ascendant_Weapon" parent="Weapon_Missile">
+        <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:Taldarim,ObjectType:Projectile"/>
+        <DataRecord Entry="Weapon,Ascendant_Weapon"/>
+        <DataRecord Entry="Effect,Ascendant_Weapon@LM"/>
+        <DataRecord Entry="Effect,Ascendant_Weapon@Damage"/>
+        <DataRecord Entry="Actor,Ascendant_Weapon@Attack"/>
+        <DataRecord Entry="Actor,Ascendant_Weapon@AttackMissile"/>
+        <DataRecord Entry="Actor,Ascendant_Weapon@ImpactForce"/>
+        <DataRecord Entry="Model,Ascendant_Weapon@AttackMissile"/>
+        <DataRecord Entry="Model,Ascendant_Weapon@AttackImpact"/>
+        <DataRecord Entry="Sound,Ascendant_Weapon@AttackLaunch"/>
+        <DataRecord Entry="Sound,Ascendant_Weapon@AttackImpact"/>
+        <DataRecord Entry="Unit,Ascendant_Weapon@AttackMissile"/>
+        <DataRecord Entry="Mover,Ascendant_Weapon@AttackMissile"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@1"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@2"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@3"/>
+    </CDataCollectionUnit>
+
+    <!-- ============== Abilities ============== -->
 
     <!-- Psi Orb-->
     <CButton id="PsiOrb">
+        <EditorCategories value="Race:Taldarim"/>
         <Icon value="Assets\Textures\btn-ability-protoss-psionicorb.dds"/>
         <AlertIcon value="Assets\Textures\btn-ability-protoss-psionicorb.dds"/>
     </CButton>
     <CAbilEffectTarget id="PsiOrb">
+        <EditorCategories value="Race:Taldarim"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="PsiOrb"/>
         <Effect index="0" value="PsiOrb@CP"/>
         <Range value="13"/>
     </CAbilEffectTarget>
 
     <CEffectSet id="PsiOrb@Set">
+        <EditorCategories value="Race:Taldarim"/>
         <EffectArray value="PsiOrb@DP"/>
     </CEffectSet>
     <CEffectEnumArea id="PsiOrb@Search">
+        <EditorCategories value="Race:Taldarim"/>
         <AreaArray Radius="5" Effect="PsiOrb@Damage"/>
         <SearchFilters value="-;Self,Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
         <TargetSorts>
@@ -267,25 +384,30 @@
         </TargetSorts>
     </CEffectEnumArea>
     <CEffectLaunchMissile id="PsiOrb@LM">
+        <EditorCategories value="Race:Taldarim"/>
         <AmmoUnit value="PsiOrb@Missile"/>
         <ImpactEffect value="PsiOrb@Set"/>
         <ImpactLocation Value="TargetPoint"/>
         <LaunchEffect value="PsiOrb@AB"/>
     </CEffectLaunchMissile>
     <CEffectCreatePersistent id="PsiOrb@CP">
+        <EditorCategories value="Race:Taldarim"/>
         <InitialEffect value="PsiOrb@LM"/>
         <InitialOffset value="0,-13,0"/>
         <WhichLocation Value="SourcePoint"/>
         <PeriodCount value="1"/>
     </CEffectCreatePersistent>
     <CEffectDestroyPersistent id="PsiOrb@DP">
+        <EditorCategories value="Race:Taldarim"/>
         <Effect value="PsiOrb@CP"/>
     </CEffectDestroyPersistent>
     <CEffectApplyBehavior id="PsiOrb@AB">
+        <EditorCategories value="Race:Taldarim"/>
         <WhichUnit Value="Source"/>
         <Behavior value="PsiOrb@AuraDamage"/>
     </CEffectApplyBehavior>
     <CEffectDamage id="PsiOrb@Damage">
+        <EditorCategories value="Race:Taldarim"/>
         <Amount value="5"/>
     </CEffectDamage>
 
@@ -345,30 +467,36 @@
     </CActorAction>
     
     <CModel id="PsiOrb@Missile">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Effects\Protoss\HighTemplarTaldarim_PsionicOrb_Missile\HighTemplarTaldarim_PsionicOrb_Missile.m3"/>
     </CModel>
     <CModel id="PsiOrb@Splat" parent="UI">
-        <Model value="Assets\UI\Cursors\ProtossCursor1\ProtossCursor1.m3"/>
         <EditorCategories value="Race:Taldarim"/>
+        <Model value="Assets\UI\Cursors\ProtossCursor1\ProtossCursor1.m3"/>
         <ScaleMax value="0.250000,0.250000,0.250000"/>
         <ScaleMin value="0.250000,0.250000,0.250000"/>
         <SelectionRadius value="2.500000"/>
         <ShadowRadius value="2.500000"/>
     </CModel>
     <CModel id="PsiOrb@Impact">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Effects\Protoss\HighTemplarTaldarim_PsionicOrb_Impact\HighTemplarTaldarim_PsionicOrb_Impact.m3"/>
     </CModel>
     <CModel id="PsiOrb@Beam">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Effects\Protoss\HighTemplarTaldarim_PsionicOrb_Beam\HighTemplarTaldarim_PsionicOrb_Beam.m3"/>
         <RadiusLoose value="1"/>
     </CModel>
     <CModel id="PsiOrb@StretchLineStart" parent="UI">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\UI\Cursors\UI_AOEStretchLine_Alarak_Start\UI_AOEStretchLine_Alarak_Start.m3"/>
     </CModel>
     <CModel id="PsiOrb@StretchLineMid" parent="UI">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\UI\Cursors\UI_AOEStretchLine_Alarak_Mid\UI_AOEStretchLine_Alarak_Mid.m3"/>
     </CModel>
     <CModel id="PsiOrb@StretchLineEnd" parent="UI">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\UI\Cursors\UI_AOEStretchLine_Alarak_End\UI_AOEStretchLine_Alarak_End.m3"/>
     </CModel>
 
@@ -474,10 +602,12 @@
 
     <!-- Mind Blast -->
     <CButton id="MindBlast">
+        <EditorCategories value="Race:Taldarim"/>
         <Icon value="Assets\Textures\btn-ability-protoss-mindblast.dds"/>
     </CButton>
 
     <CAbilEffectTarget id="MindBlast">
+        <EditorCategories value="Race:Taldarim"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="MindBlast"/>
         <Effect index="0" value="MindBlast@Damage"/>
         <Cost>
@@ -490,6 +620,7 @@
     </CAbilEffectTarget>
 
     <CEffectDamage id="MindBlast@Damage">
+        <EditorCategories value="Race:Taldarim"/>
         <Amount value="200"/>
         <ImpactLocation Value="TargetUnit"/>
         <Flags index="Notification" value="1"/>
@@ -499,8 +630,7 @@
     </CEffectDamage>
 
     <CActorAction id="MindBlast@Attack" parent="GenericAttack" effectAttack="MindBlast@Damage">
-        <ImpactMap index="None" Model="MindBlast@Impact" Sound="MindBlast@Impact"/>
-        <LaunchAssets Sound="MindBlast@Launch"/>
+        <ImpactSiteOps Ops="SOpAttachCenter"/>
     </CActorAction>
     <CActorRange id="MindBlast@Range" parent="RangeAbil" abil="MindBlast"></CActorRange>
     <CActorSimple id="MindBlast@Animation">
@@ -509,13 +639,15 @@
         <On Terms="AnimDone; AnimName Spell" Send="Destroy"/>
     </CActorSimple>
 
-    <CModel id="MindBlast@Impact">
+    <CModel id="MindBlast@AttackImpact">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Effects\Protoss\HighTemplarTaldarim_MindBlast\HighTemplarTaldarim_MindBlast.m3"/>
         <SelectionRadius value="0.2"/>
         <ShadowRadius value="0.2"/>
     </CModel>
 
-    <CSound id="MindBlast@Impact" parent="Spell">
+    <CSound id="MindBlast@AttackImpact" parent="Spell">
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray File="Assets\Sounds\Ascendant_MindBlast_Impact_01.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\Ascendant_MindBlast_Impact_03.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\Ascendant_MindBlast_Impact_04a.wav" FacialGroup=""/>
@@ -525,7 +657,8 @@
         <Pitch value="-4.000000,-2.000000"/>
         <Volume value="-3.000000,0.000000"/>
     </CSound>
-    <CSound id="MindBlast@Launch" parent="Spell">
+    <CSound id="MindBlast@AttackLaunch" parent="Spell">
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray File="Assets\Sounds\Ascendant_MindBlast_Launch_01.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\Ascendant_MindBlast_Launch_02.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\Ascendant_MindBlast_Launch_03.wav" FacialGroup=""/>
@@ -555,11 +688,12 @@
 
     <!-- Sacrifice -->
     <CButton id="Ascendant_Sacrifice">
+        <EditorCategories value="Race:Taldarim"/>
         <Icon value="Assets\Textures\btn-ability-protoss-sacrifice.dds"/>
     </CButton>
 
     <CAbilEffectTarget id="Ascendant_Sacrifice">
-        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <EditorCategories value="Race:Taldarim"/>
         <TargetFilters value="-;Self,Enemy,Structure,Heroic,Missile,Uncommandable,Stasis,Dead,Hidden,Hallucination,Invulnerable"/>
         <Range value="4"/>
         <Cost>
@@ -570,9 +704,7 @@
     </CAbilEffectTarget>
 
     <CEffectSet id="Ascendant_Sacrifice@Set">
-        <EffectArray value="Ascendant_Sacrifice@LM"/>
-        <EffectArray value="Ascendant_Sacrifice@LM"/>
-        <EffectArray value="Ascendant_Sacrifice@LM"/>
+        <EditorCategories value="Race:Taldarim"/>
         <EffectArray value="Ascendant_Sacrifice@User"/>
         <ValidatorArray value="Ascendant_Sacrifice@TargetLifeGreaterThan1"/>
         <ValidatorArray value="EnergyNotFullCaster"/>
@@ -584,19 +716,25 @@
         <ImpactLocation Value="CasterUnit"/>
         <LaunchLocation Value="TargetUnit"/>
     </CEffectLaunchMissile>
-    <CEffectModifyUnit id="Ascendant_Sacrifice@Impact"></CEffectModifyUnit>
+    <CEffectModifyUnit id="Ascendant_Sacrifice@Impact">
+        <EditorCategories value="Race:Taldarim"/>
+    </CEffectModifyUnit>
 
     <CEffectUserData id="Ascendant_Sacrifice@User">
+        <EditorCategories value="Race:Taldarim"/>
         <ValidateMax value="25"/>
         <EffectSuccess value="Ascendant_Sacrifice@Set_Damage"/>
         <ValidatorArray value="Ascendant_Sacrifice@TargetLifeGreaterThan1"/>
         <ValidatorArray value="EnergyNotFullCaster"/>
     </CEffectUserData>
     <CEffectSet id="Ascendant_Sacrifice@Set_Damage">
+        <EditorCategories value="Race:Taldarim"/>
+        <EffectArray value="Ascendant_Sacrifice@LM"/>
         <EffectArray value="Ascendant_Sacrifice@Damage"/>
         <EffectArray value="Ascendant_Sacrifice@User"/>
     </CEffectSet>
     <CEffectDamage id="Ascendant_Sacrifice@Damage">
+        <EditorCategories value="Race:Taldarim"/>
         <LeechFraction index="Energy" value="2"/>
         <Amount value="25"/>
         <Flags index="Live" value="1"/>
@@ -632,8 +770,8 @@
     </CActorSimple>
 
     <CModel id="Ascendant_Sacrifice@AttackMissile" parent="MissileFX">
-        <Model value="Assets\Effects\Protoss\HighTemplarTaldarim_Sacrifice_Missile\HighTemplarTaldarim_Sacrifice_Missile.m3"/>
         <EditorCategories value="Race:Taldarim"/>
+        <Model value="Assets\Effects\Protoss\HighTemplarTaldarim_Sacrifice_Missile\HighTemplarTaldarim_Sacrifice_Missile.m3"/>
         <Events>
             <Anim value="Stand,00"/>
             <Name value="Ascendant_SacrificeMissile"/>
@@ -643,17 +781,18 @@
         </Events>
     </CModel>
     <CModel id="Ascendant_Sacrifice@AttackImpact" parent="ImpactFX">
-        <Model value="Assets\Effects\Protoss\HighTemplarTaldarim_Sacrifice_Impact\HighTemplarTaldarim_Sacrifice_Impact.m3"/>
         <EditorCategories value="Race:Taldarim"/>
+        <Model value="Assets\Effects\Protoss\HighTemplarTaldarim_Sacrifice_Impact\HighTemplarTaldarim_Sacrifice_Impact.m3"/>
     </CModel>
     <CModel id="Ascendant_Sacrifice@AttackLaunch" parent="LaunchFX">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Effects\Protoss\HighTemplarTaldarim_Sacrifice_Cast\HighTemplarTaldarim_Sacrifice_Cast.m3"/>
         <SelectionRadius value="1.000000"/>
         <ShadowRadius value="1.000000"/>
     </CModel>
     <CModel id="Ascendant_Sacrifice@ImpactModel" parent="ImpactFX">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Effects\Protoss\HighTemplarTaldarim_Sacrifice\HighTemplarTaldarim_Sacrifice.m3"/>
-        <EditorCategories value="Race:Terran"/>
         <SelectionRadius value="0.625000"/>
         <ShadowRadius value="0.625000"/>
     </CModel>
@@ -683,7 +822,7 @@
         <MotionPhases>
             <Driver value="Throw"/>
             <Acceleration value="25"/>
-            <AccelerationRange value="10"/>
+            <AccelerationRange value="20"/>
             <MaxSpeed value="7"/>
             <ArrivalTestType value="2D"/>
             <BlendType value="Linear"/>

@@ -118,7 +118,7 @@
     
     <CDataCollectionUnit default="1" id="WeaponBase">
         <Name value="Weapon/Name/##id##"/>
-        <UpgradeInfoWeapon index="0" DamagePerDice="3"/>
+        <UpgradeInfoWeapon index="0" DamagePerDice="1"/>
         <Pattern value="WeaponPattern_Base"/>
         <EditorIconSource value="Weapon"/>
     </CDataCollectionUnit>

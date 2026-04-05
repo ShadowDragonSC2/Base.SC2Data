@@ -26,7 +26,7 @@ Effect/Name/PsiOrb@Damage=Damage
 
 Light/Name/Ascendant@Portrait=Portrait
 
-Model/Name/MindBlast@Impact=Impact
+Model/Name/MindBlast@AttackImpact=Impact
 Model/Name/PsiOrb@Missile=Missile
 Model/Name/PsiOrb@Splat=Splat
 Model/Name/PsiOrb@Impact=Impact
@@ -43,10 +43,8 @@ Requirement/Name/MindBlast@Learn=Learn
 Requirement/Name/MindBlast@Use=Use
 Requirement/Name/Ascendant=Requirement
 
-Sound/Name/MindBlast@Impact=Impact
-Sound/Name/MindBlast@Launch=Launch
-Sound/Name/AttackImpact=Attack Impact
-Sound/Name/AttackLaunch=Attack Launch
+Sound/Name/MindBlast@AttackImpact=Impact
+Sound/Name/MindBlast@AttackLaunch=Launch
 Sound/Name/BeamAttackImpact=Beam Impact
 Sound/Name/Ascendant@Death=Death
 Sound/Name/Ascendant@DeathVoice=Death Voice
