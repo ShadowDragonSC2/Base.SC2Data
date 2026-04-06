@@ -1,10 +1,244 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Catalog>
-    <CButton id="DestructionWave"></CButton>
+
+    <CButton id="Alarak" parent="UnitButton_OnlyGround">
+        <Icon value="Assets\Textures\btn-unit-protoss-alarak.dds"/>
+    </CButton>
+    
+    <CUnit id="Alarak" parent="Generic_Unit_Ground" race="Tald">
+        <EditorCategories value="ObjectType:Hero,ObjectFamily:Campaign"/>
+        <AbilArray Link="ProgressRally"/>
+        <AbilArray Link="Warpable"/>
+        <AbilArray Link="AlarakKnockback"/>
+        <AbilArray Link="AlarakDeadlyCharge"/>
+        <AbilArray Link="DestructionWave"/>
+        <BehaviorArray Link="SoulAbsorption"/>
+        <WeaponArray Link="DarkArchonChampionWeapon"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Rally" Type="AbilCmd" AbilCmd="ProgressRally,Rally1" Row="2" Column="4"/>
+            <LayoutButtons Face="DestructionWave" Type="AbilCmd" AbilCmd="DestructionWave,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="SoulAbsorption" Type="Passive" Row="2" Column="1"/>
+            <LayoutButtons Face="AlarakDeadlyCharge" Type="AbilCmd" AbilCmd="AlarakDeadlyCharge,Execute" Row="2" Column="2"/>
+        </CardLayouts>
+        <CardLayouts CardId="0002">
+            <LayoutButtons Face="AlarakKnockback" Type="AbilCmd" AbilCmd="DestructionWaveNoOffset,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+
+        <Collide index="Locust" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <Attributes index="Psionic" value="1"/>
+        <Attributes index="Heroic" value="1"/>
+        <LifeStart value="200"/>
+        <LifeMax value="200"/>
+        <LifeArmor value="2"/>
+        <ShieldsStart value="200"/>
+        <ShieldsMax value="200"/>
+        <ShieldArmor value="2"/>
+        <ShieldRegenDelay value="3"/>
+        <ShieldRegenRate value="2"/>
+        <Speed value="2.9492"/>
+        <Acceleration value="1000"/>
+        <LateralAcceleration value="46"/>
+        <Sight value="10"/>
+        <CostCategory value="Army"/>
+        <KillXP value="100"/>
+        <InnerRadius value="0.5"/>
+        <CargoSize value="2"/>
+        <ScoreKill value="200"/>
+        <SubgroupPriority value="58"/>
+        <MinimapRadius value="0.625"/>
+        <GlossaryPriority value="90"/>
+        <AlliedPushPriority value="11"/>
+    </CUnit>
+    
+    <CActorUnit id="Alarak" parent="AdvancedUnitStandard" unitName="Alarak">
+        <Aliases value="_UnitMedium"/>
+        <CustomUnitStatusFrame value="LotV_UnitStatus/HeroUnitEnergyStatusFrameTemplate"/>
+        <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
+        <StatusBarOn index="Custom" value="1"/>
+        <WalkAnimMoveSpeed value="2.9492"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-alarak.dds"/>
+        <HeroIcon value="Assets\Textures\btn-unit-protoss-alarak.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel1.dds"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-alarak.dds"/>
+        <UnitKillRank Text="UnitKillRank/Alarak"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-protoss-alarak.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-protoss-alarak.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image value="Assets\Textures\wireframe-protoss-alarak-shield01.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-alarak-shield02.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-alarak-shield03.dds"/>
+        </WireframeShield>
+    </CActorUnit>
+    
+    <CModel id="Alarak" parent="Unit">
+        <Model value="Assets\Units\Protoss\Alarak\Alarak.m3"/>
+        <Occlusion value="Show"/>
+        <PlanetPanelCamera value="Star2CameraHigher09"/>
+        <Radius value="0.675000"/>
+        <ShadowRadius value="1.093700"/>
+        <TechPurchaseCamera value="Star2CameraHigher09"/>
+        <UnitGlossaryCamera value="Star2CameraHigher09"/>
+        <Events>
+            <Anim value="Attack,00"/>
+            <Name value="Alarak_BaneBlade_AttackImpactSound"/>
+            <Type value="Sound"/>
+            <Time value="0.217000"/>
+            <Payload value="Alarak_BaneBlade_AttackImpactSound"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,01"/>
+            <Name value="Alarak_BaneBlade_AttackImpactSound"/>
+            <Type value="Sound"/>
+            <Time value="0.217000"/>
+            <Payload value="Alarak_BaneBlade_AttackImpactSound"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,02"/>
+            <Name value="Alarak_BaneBlade_AttackImpactSound"/>
+            <Type value="Sound"/>
+            <Time value="0.217000"/>
+            <Payload value="Alarak_BaneBlade_AttackImpactSound"/>
+        </Events>
+    </CModel>
+    <CModel id="Alarak@Death" parent="UnitDeath">
+        <Model value="Assets\Units\Protoss\Alarak_Death\Alarak_Death.m3"/>
+        <LowQualityModel value="ProtossLargeUnitDeathLow"/>
+        <Occlusion value="Show"/>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Alarak_Death_Fx_Missile"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Alarak_Death_Fx_Missile"/>
+        </Events>
+    </CModel>
+    <CModel id="Alarak@Portrait" parent="Portrait">
+        <Image value="Assets\Textures\alarakportrait_static.dds"/>
+        <Flags index="Download" value="1"/>
+    </CModel>
+    <CModel id="Alarak@WarpIn" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\ProtossUnitWarpIn\ProtossUnitWarpIn.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.750000,0.750000,0.750000"/>
+        <ScaleMin value="0.750000,0.750000,0.750000"/>
+        <SelectionRadius value="0.555400"/>
+        <ShadowRadius value="0.555400"/>
+    </CModel>
+    
+    <CSound id="Alarak@Death" parent="DeathVoice">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Alarak_Death_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Alarak_Death_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Alarak_Death_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Alarak_Death_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Alarak_Death_05.wav" FacialGroup=""/>
+        <Flags index="Download" value="0"/>
+        <Flags index="Purgable" value="0"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Select value="Random"/>
+    </CSound>
+    <CSound id="Alarak@Attack" parent="Voice">
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Alarak_Attack00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Alarak_Attack00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Alarak_Attack00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Alarak_Attack00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Alarak_Attack00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Alarak_Attack00.ogg" FacialGroup=""/>
+        <DupeWait value="4000,4000"/>
+    </CSound>
+    <CSound id="Alarak@Help" parent="Alert">
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Alarak_Help00.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="Alarak@Pissed" parent="Pissed">
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Alarak_Pissed00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Alarak_Pissed01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Alarak_Pissed02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Alarak_Pissed03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Alarak_Pissed04.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Alarak_Pissed05.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Alarak_Pissed06.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Alarak_Pissed07.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="Alarak@Yes" parent="Voice">
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Alarak_Yes00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Alarak_Yes01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Alarak_Yes02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Alarak_Yes03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Alarak_Yes04.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Alarak_Yes05.ogg" FacialGroup=""/>
+        <DupeWait value="4000,4000"/>
+    </CSound>
+    <CSound id="Alarak@What" parent="Voice">
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Alarak_What00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Alarak_What01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Alarak_What02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Alarak_What03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Alarak_What04.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Alarak_What05.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Alarak_What06.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="Alarak@Ready" parent="Ready">
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Alarak_Ready00.ogg" FacialGroup=""/>
+    </CSound>
+
+    <CDataCollectionUnit id="Alarak" parent="UnitGround">
+        <DataRecord Entry="Button,Alarak"/>
+        <DataRecord Entry="Unit,Alarak"/>
+        <DataRecord Entry="Actor,Alarak"/>
+        <DataRecord Entry="Model,Alarak"/>
+        <DataRecord Entry="Model,Alarak@Death"/>
+        <DataRecord Entry="Model,Alarak@Portrait"/>
+        <DataRecord Entry="Model,Alarak@WarpIn"/>
+        <DataRecord Entry="Sound,Alarak@Death"/>
+        <DataRecord Entry="Sound,Alarak@Attack"/>
+        <DataRecord Entry="Sound,Alarak@Help"/>
+        <DataRecord Entry="Sound,Alarak@Pissed"/>
+        <DataRecord Entry="Sound,Alarak@Yes"/>
+        <DataRecord Entry="Sound,Alarak@What"/>
+        <DataRecord Entry="Sound,Alarak@Ready"/>
+    </CDataCollectionUnit>
+    
+
+    <!-- ============= Weapons ============= -->
+
+    <!-- ============= Abilities ============= -->
+
+    <CButton id="DestructionWave">
+        <Icon value="Assets\Textures\btn-ability-protoss-destructionwave.dds"/>
+    </CButton>
 
     <CAbilEffectTarget id="DestructionWave">
         <CmdButtonArray index="Execute" DefaultButtonFace="DestructionWave"/>
-        <Arc value="360"/>
+        <Effect value="DestructionWave@CU"/>
     </CAbilEffectTarget>
+    
+    <CEffectCreateUnit id="DestructionWave@CU">
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="PlacementIgnoreCliffTest" value="1"/>
+        <SpawnOffset value="0,5"/>
+        <SpawnEffect value="DestructionWave@LM"/>
+    </CEffectCreateUnit>
+    <CEffectLaunchMissile id="DestructionWave@LM">
+        <AmmoUnit value="DestructionWave@Wave"/>
+        <Flags index="SearchDynamicSearchArea" value="1"/>
+        <SearchEffect value="DestructionWave@Search"/>
+        <ImpactLocation Effect="DestructionWave@CU" Value="TargetPoint"/>
+    </CEffectLaunchMissile>
+    <CEffectEnumArea id="DestructionWave@Search">
+        <AreaArray RectangleWidth="3"/>
+        <DebugTrace value="1"/>
+    </CEffectEnumArea>
+
+    <CUnit id="DestructionWave@Wave" parent="MISSILE_INVULNERABLE"/>
+    <CActorMissile id="DestructionWave@Wave" parent="GenericAttackMissile" unitName="DestructionWave@Wave">
+        <Model value="Invisible"/>
+    </CActorMissile>
+    <CMoverMissile id="DestructionWave@Wave" parent="MissileDefault"/>
 
 </Catalog>
