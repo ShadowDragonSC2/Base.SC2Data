@@ -1,11 +1,18 @@
 Button/Name/Ascendant=Вызвать посвященного
-Button/Tooltip/Ascendant=Талдаримы<n/>Могущественный воин-псионик. Может применять способности «<d stringref="Button,PsiOrb,Name"/>», «<d stringref="Button,MindBlast,Name"/>» и «Жертвоприношение».
+Button/Tooltip/Ascendant=Талдаримы<n/>Могущественный воин-псионик. Может применять способности «<d stringref="Button,Ascendant_PsiOrb,Name"/>», «<d stringref="Button,Ascendant_MindBlast,Name"/>» и «Жертвоприношение».
 
 Unit/Name/Ascendant=Посвященный
-Unit/Name/PsiOrb@Missile=Снаряд
+Unit/Name/Ascendant_PsiOrb@Missile=Снаряд
+Unit/Name/Ascendant_Sacrifice@AttackMissile=Снаряд
+Unit/Name/Ascendant_Weapon@AttackMissile=Снаряд
 
-Button/Name/PsiOrb=Псионная сфера
-Button/Tooltip/PsiOrb=Выпускает псионную сферу, наносящую противникам <d ref="Effect,PsiOrb@Damage,Amount/Effect,PsiOrb@CP,PeriodicPeriodArray[0]"/> ед. урона в секунду во время полета.
+Button/Name/Ascendant_PsiOrb=Псионная сфера
+Button/Tooltip/Ascendant_PsiOrb=Выпускает псионную сферу, наносящую противникам <d ref="Effect,Ascendant_PsiOrb@Damage,Amount/Effect,Ascendant_PsiOrb@CP,PeriodicPeriodArray[0]"/> ед. урона в секунду во время полета.
 
-Button/Name/MindBlast=Взрыв разума
-Button/Tooltip/MindBlast=Наносит цели большой мгновенный урон.
+Button/Name/Ascendant_MindBlast=Взрыв разума
+Button/Tooltip/Ascendant_MindBlast=Наносит цели большой мгновенный урон.
+
+Button/Name/Ascendant_Sacrifice=Жертвоприношение
+Button/Tooltip/Ascendant_Sacrifice=<n/>Уменьшает запас здоровья дружественной цели до 1 ед. (не действует на щиты).<n/>Посвященный восстанавливает <d ref="Effect,Ascendant_Sacrifice@Damage,LeechFraction[Energy]"/> ед. энергии за каждую потерянную целью единицу здоровья, пока не восполнит энергетический запас.<n/><n/><c val="#ColorAttackInfo">Воздействует только на союзников.</c>
+
+Weapon/Name/Ascendant_Weapon=Взрыв боли
