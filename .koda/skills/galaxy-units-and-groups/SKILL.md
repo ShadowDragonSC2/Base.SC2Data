@@ -18,6 +18,7 @@ description: Unit creation, properties, behaviors, abilities, XP/leveling, unit 
 | Custom Values guide | https://s2editor-guides.readthedocs.io/New_Tutorials/03_Trigger_Editor/050_Custom_Values/ |
 | Unit Selection Events guide | https://s2editor-guides.readthedocs.io/New_Tutorials/03_Trigger_Editor/048_Unit_Selection_Events/ |
 | SC2Mapster wiki | https://sc2mapster.wiki.gg/ |
+| **SC2 Unit Type IDs** | See skill `sc2-units-reference` for the full list of all multiplayer unit type ID strings (e.g. `"SiegeTank"`, `"HighTemplar"`, `"BroodLord"`), transform/morph ID pairs, race, attributes, and expansion — use when calling `UnitCreate`, `UnitGetType`, or checking unit attributes. |
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: sc2data-actors-visuals
-description: SC2 Data Editor — Actors, visual effects, animations, sounds, and the actor event system in XML. Use when creating or modifying CActorUnit, CActorModel, CActorAction, CActorSound, CActorBeam, CActorSite, or any <On Terms="..." Send="..."/> event wiring. Covers actor creation, parent types, aliases, macros, death arrays, sound arrays, and all common actor messages. Do not use for game logic/damage (use sc2data-effects-weapons) or unit/ability data (use sc2data-units-abilities). Actors are client-side only — they cannot affect gameplay.
+description: SC2 Data Editor — Actors, visual effects, animations, sounds, and the actor event system in XML. Use when creating or modifying CActorUnit, CActorModel, CActorAction, CActorSound, CActorBeam, CActorSite, or any <On Terms="..." Send="..."/> event wiring. Covers actor creation, parent types, aliases, macros, death arrays, sound arrays, and all common actor messages. Always consult the catalogsData.xsd schema for exact fields and structure — do not assume unsupported fields exist. Do not use for game logic/damage (use sc2data-effects-weapons) or unit/ability data (use sc2data-units-abilities). Actors are client-side only — they cannot affect gameplay.
 ---
 
 # SC2 Data Editor – Actors & Visuals
@@ -19,6 +19,20 @@ Actors are the **visual and audio layer** of StarCraft II data. They respond to 
 | Actor Terms (wiki) | https://sc2mapster.wiki.gg/wiki/Data/Actors/Terms |
 | Blizzard Tutorials – Actors.md | https://github.com/SC2Mapster/blizzard-tutorials/blob/master/docs/New_Tutorials/04_Data_Editor/060_Actors.md |
 | ShadowDragon Base.SC2Data (real GameData XML reference) | https://github.com/ShadowDragonSC2/Base.SC2Data/tree/main/GameData |
+| **Source of Truth: CatalogsData XSD Schema** | https://github.com/ShadowDragonSC2/Base.SC2Data/raw/refs/heads/main/.vscode/schemas/catalogsData.xsd — Always consult this for exact fields, attributes, and structure of each actor type. Do not assume fields exist; verify against the schema. |
+| **Recommended VS Code Extension** | Red Hat XML (redhat.vscode-xml) — Install this extension for XML validation, auto-completion, and error detection using the catalogsData.xsd schema. Configure it in .vscode/settings.json for automatic validation.
+
+## XML Schema Error Check and Fix Workflow
+
+When editing SC2 data XML, always run this loop until diagnostics are clean:
+
+1. Validate with Red Hat XML diagnostics (Problems panel).
+2. For each error, identify whether it is an invalid element, invalid attribute, invalid enum value, or invalid field path/array index.
+3. Verify the exact allowed structure in `catalogsData.xsd` before changing anything.
+4. Fix the XML by aligning to schema-supported fields only; remove guessed or unsupported fields.
+5. Re-validate and repeat until no schema errors remain.
+
+If a user asks to fix XML errors, perform this end-to-end workflow rather than only describing it.
 
 ---
 
@@ -54,6 +68,17 @@ All actor entries are children of `<Catalog>`:
 | `CActorSound` | Plays a sound as an actor event |
 | `CActorModelMaterial` | Modifies material/shader parameters on a model |
 | `CActorTerrain` | Applies terrain effects (squibs, burn marks) |
+| `CActorMissile` | Visual projectile (no event system) |
+| `CActorDoodad` | Environmental object (tree, rock) |
+| `CActorQuad` | 2D sprite/quad overlay |
+| `CActorQuery` | Actor that queries game state |
+| `CActorRegion` | Region-based actor |
+| `CActorSiteOp` | Site operation actor |
+| `CActorSplat` | Ground decal/splat |
+| `CActorTurret` | Turret actor |
+| `CActorVideo` | Video playback actor |
+
+> **Note:** This is not an exhaustive list. Always consult the catalogsData.xsd schema for the complete set of actor types and their exact fields/attributes. The schema is the definitive source of truth for what fields each actor type supports.
 
 ---
 
@@ -285,6 +310,19 @@ Blizzard provides many reusable macros for common patterns (burrow/unburrow, dea
     <Model value="MyBeamModel"/>
     <!-- Beam connects ::Creator (source) to ::Target -->
 </CActorBeam>
+```
+
+---
+
+## CActorMissile — Projectile Actor
+
+**Important:** CActorMissile does **NOT** have an `<On>` array for event wiring. It is purely a visual projectile with no event system. Use CActorAction or other actors for event handling around missile launches/impacts.
+
+```xml
+<CActorMissile id="MyMissileActor">
+    <Model value="MyMissileModel"/>
+    <!-- Missile follows its mover/physics, no events -->
+</CActorMissile>
 ```
 
 ---

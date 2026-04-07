@@ -1,6 +1,6 @@
 ---
 name: sc2data-behaviors-validators
-description: SC2 Data Editor — Behaviors (buffs, debuffs, auras, timers) and Validators (conditional tests) in XML. Use when creating or modifying CBehavior* (buff, attribute modifier, unit tracker, reveal) or CValidator* (unit type, unit order, comparison, combine) entries. Also covers behavior stacking, duration, Vitals modification, and how validators gate effects, abilities, and behaviors. Do not use for applying a behavior via an effect (use sc2data-effects-weapons) or actor visuals tied to a behavior (use sc2data-actors-visuals).
+description: SC2 Data Editor — Behaviors (buffs, debuffs, auras, timers) and Validators (conditional tests) in XML. Use when creating or modifying CBehavior* (buff, attribute modifier, unit tracker, reveal) or CValidator* (unit type, unit order, comparison, combine) entries. Also covers behavior stacking, duration, Vitals modification, and how validators gate effects, abilities, and behaviors. Always consult the catalogsData.xsd schema for exact fields and structure — do not assume unsupported fields exist. Do not use for applying a behavior via an effect (use sc2data-effects-weapons) or actor visuals tied to a behavior (use sc2data-actors-visuals).
 ---
 
 # SC2 Data Editor – Behaviors & Validators
@@ -17,6 +17,20 @@ description: SC2 Data Editor — Behaviors (buffs, debuffs, auras, timers) and V
 | Behaviors (wiki) | https://sc2mapster.wiki.gg/wiki/Data/Behaviors |
 | Validators (wiki) | https://sc2mapster.wiki.gg/wiki/Data/Validators |
 | ShadowDragon Base.SC2Data (real GameData XML reference) | https://github.com/ShadowDragonSC2/Base.SC2Data/tree/main/GameData |
+| **Source of Truth: CatalogsData XSD Schema** | https://github.com/ShadowDragonSC2/Base.SC2Data/raw/refs/heads/main/.vscode/schemas/catalogsData.xsd — Always consult this for exact fields, attributes, and structure of behaviors and validators. Do not assume fields exist; verify against the schema. |
+| **Recommended VS Code Extension** | Red Hat XML (redhat.vscode-xml) — Install this extension for XML validation, auto-completion, and error detection using the catalogsData.xsd schema. Configure it in .vscode/settings.json for automatic validation.
+
+## XML Schema Error Check and Fix Workflow
+
+When editing SC2 data XML, always run this loop until diagnostics are clean:
+
+1. Validate with Red Hat XML diagnostics (Problems panel).
+2. For each error, identify whether it is an invalid element, invalid attribute, invalid enum value, or invalid field path/array index.
+3. Verify the exact allowed structure in `catalogsData.xsd` before changing anything.
+4. Fix the XML by aligning to schema-supported fields only; remove guessed or unsupported fields.
+5. Re-validate and repeat until no schema errors remain.
+
+If a user asks to fix XML errors, perform this end-to-end workflow rather than only describing it.
 
 ---
 
