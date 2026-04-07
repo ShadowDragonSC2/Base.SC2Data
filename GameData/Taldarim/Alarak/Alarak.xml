@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Catalog>
+    <!-- Requires: Validator:NotDead[Liberty.SC2Mod] -->
 
     <CButton id="Alarak" parent="UnitButton_OnlyGround">
         <Icon value="Assets\Textures\btn-unit-protoss-alarak.dds"/>
@@ -53,9 +54,9 @@
     
     <CActorUnit id="Alarak" parent="AdvancedUnitStandard" unitName="Alarak">
         <Aliases value="_UnitMedium"/>
-        <CustomUnitStatusFrame value="LotV_UnitStatus/HeroUnitEnergyStatusFrameTemplate"/>
-        <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
-        <StatusBarOn index="Custom" value="1"/>
+        <!-- <CustomUnitStatusFrame value="LotV_UnitStatus/HeroUnitEnergyStatusFrameTemplate"/> -->
+        <!-- <UnitFlags index="SuppressDefaultStatusBar" value="1"/> -->
+        <!-- <StatusBarOn index="Custom" value="1"/> -->
         <WalkAnimMoveSpeed value="2.9492"/>
         <UnitIcon value="Assets\Textures\btn-unit-protoss-alarak.dds"/>
         <HeroIcon value="Assets\Textures\btn-unit-protoss-alarak.dds"/>
@@ -214,31 +215,133 @@
     </CButton>
 
     <CAbilEffectTarget id="DestructionWave">
+        <Range value="6"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="DestructionWave"/>
-        <Effect value="DestructionWave@CU"/>
+        <Effect index="0" value="DestructionWave@CP"/>
     </CAbilEffectTarget>
+
+    <CBehaviorBuff id="DestructionWave@Knockback">
+        <Duration value="2"/>
+    </CBehaviorBuff>
     
-    <CEffectCreateUnit id="DestructionWave@CU">
-        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
-        <CreateFlags index="PlacementIgnoreCliffTest" value="1"/>
-        <SpawnOffset value="0,5"/>
-        <SpawnEffect value="DestructionWave@LM"/>
-    </CEffectCreateUnit>
+    <CEffectCreatePersistent id="DestructionWave@CP">
+        <EditorCategories value="Race:Taldarim"/>
+        <InitialEffect value="DestructionWave@LM"/>
+        <InitialOffset value="0,-10,0"/>
+        <WhichLocation Value="SourcePoint"/>
+        <OffsetVectorStartLocation Value="SourcePoint"/>
+        <PeriodCount value="1"/>
+    </CEffectCreatePersistent>
     <CEffectLaunchMissile id="DestructionWave@LM">
         <AmmoUnit value="DestructionWave@Wave"/>
+        <Flags index="2D" value="1"/>
         <Flags index="SearchDynamicSearchArea" value="1"/>
+        <SearchFlags index="DynamicSearchArea" value="1"/>
         <SearchEffect value="DestructionWave@Search"/>
-        <ImpactLocation Effect="DestructionWave@CU" Value="TargetPoint"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <DeathType value="Normal"/>
     </CEffectLaunchMissile>
     <CEffectEnumArea id="DestructionWave@Search">
-        <AreaArray RectangleWidth="3"/>
-        <DebugTrace value="1"/>
+        <AreaArray RectangleWidth="3" Effect="DestructionWave@Set_Knockback"/>
+        <SearchFilters value="Visible;Self,Missile,Hidden"/>
     </CEffectEnumArea>
 
-    <CUnit id="DestructionWave@Wave" parent="MISSILE_INVULNERABLE"/>
+    <CEffectSet id="DestructionWave@Set_Knockback">
+        <EffectArray value="DestructionWave@Damage"/>
+        <EffectArray value="DestructionWave@CU_Knockback"/>
+        <EffectArray value="DestructionWave@AB_Knockback"/>
+        <ValidatorArray value="DestructionWave@NotKnockback"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="DestructionWave@AB_Knockback">
+        <Behavior value="DestructionWave@Knockback"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="DestructionWave@RB_Knockback">
+        <WhichUnit Effect="DestructionWave@Set_Knockback"/>
+        <BehaviorLink value="DestructionWave@Knockback"/>
+    </CEffectRemoveBehavior>
+    <CEffectDamage id="DestructionWave@Damage">
+        <Amount value="10"/>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="DestructionWave@CP_Knockback">
+        <InitialEffect value="DestructionWave@CU_Knockback"/>
+        <InitialOffset value="0,-9,0"/>
+        <PeriodCount value="1"/>
+    </CEffectCreatePersistent>
+    <CEffectCreateUnit id="DestructionWave@CU_Knockback">
+        <CreateFlags index="Birth" value="0"/>
+        <CreateFlags index="DropOff" value="0"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="Precursor" value="1"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <CreateFlags index="NormalizeSpawnOffset" value="0"/>
+        <SpawnOffset value="0,5"/>
+        <SpawnRange value="11"/>
+        <SpawnEffect value="DestructionWave@Set_Launch"/>
+        <SpawnOwner Value="Source"/>
+        <ValidatorArray value="NotDead"/>
+        <!-- <SpawnUnit value="DestructionWave@Wave"/> -->
+    </CEffectCreateUnit>
+    <CEffectSet id="DestructionWave@Set_Launch">
+        <EffectArray value="DestructionWave@LM_Knockback"/>
+        <EffectArray value="DestructionWave@KillPrecursor_Knockback"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="DestructionWave@LM_Knockback">
+        <LaunchLocation Effect="DestructionWave@Set_Knockback" Value="TargetUnit"/>
+        <!-- <LaunchEffect value="DestructionWave@RB_Knockback"/> -->
+        <ImpactEffect value="DestructionWave@RB_Knockback"/>
+        <Flags index="2D" value="1"/>
+        <Movers Link="DestructionWave@Mover_Knockback"/>
+        <DeathType value="Unknown"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="DestructionWave@KillPrecursor_Knockback">
+        <Flags index="Kill" value="1"/>
+        <Death value="Normal"/>
+    </CEffectDamage>
+
+    <CValidatorUnitCompareBehaviorCount id="DestructionWave@NotKnockback">
+        <Behavior value="DestructionWave@Knockback"/>
+    </CValidatorUnitCompareBehaviorCount>
+
+    <CMoverMissile id="DestructionWave@Mover_Knockback">
+        <Flags index="IgnoreMovementSuppression" value="1"/>
+        <MotionPhases>
+            <Driver value="Ballistic"/>
+            <Acceleration value="-1"/>
+            <Gravity value="20"/>
+            <RotationActorType value="Upright"/>
+            <YawPitchRoll value="MAX"/>
+            <FlightTime value="1.6"/>
+        </MotionPhases>
+        <RotationIgnoredByUnit value="1"/>
+        <PathMode value="Flying"/>
+    </CMoverMissile>
+
+    <CUnit id="DestructionWave@Wave" parent="MISSILE_INVULNERABLE">
+        <FlagArray index="ArmySelect"/>
+    </CUnit>
     <CActorMissile id="DestructionWave@Wave" parent="GenericAttackMissile" unitName="DestructionWave@Wave">
-        <Model value="Invisible"/>
+        <On index="1" Terms="ActorCreation" Send="AnimBracketStart Lifetime Birth Stand Death"/>
     </CActorMissile>
+    <CActorSimple id="DestructionWave@Animation">
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="Abil.DestructionWave.SourceCastStart" Send="Create"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="AnimClear Walk"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="AnimPlay Spell Spell,A"/>
+        <On Terms="ActorCreation" Send="Destroy"/>
+    </CActorSimple>
+    <CActorSimple id="DestructionWave@Animation_Flail">
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="Behavior.DestructionWave@Knockback.On" Send="Create"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="AnimPlay Flail Flail PlayForever,ForceLooping"/>
+        <On Terms="Behavior.DestructionWave@Knockback.Off" Target="_Unit" Send="AnimClear Flail"/>
+        <On Terms="Behavior.DestructionWave@Knockback.Off" Send="Destroy"/>
+    </CActorSimple>
+
+    <CModel id="DestructionWave@Wave" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\Alarak_DestructionWave\Alarak_DestructionWave.m3"/>
+    </CModel>
     <CMoverMissile id="DestructionWave@Wave" parent="MissileDefault"/>
 
 </Catalog>
