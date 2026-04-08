@@ -2,6 +2,11 @@ Abil/Name/Ascendant_MindBlast=Взрыв разума
 Abil/Name/Ascendant_PsiOrb=Псионная сфера
 Abil/Name/Ascendant_Sacrifice=Жертвоприношение
 
+Accumulator/Name/Ascendant_Sacrifice@Half=Половина разницы
+Accumulator/Name/Ascendant_Sacrifice@DifferenceEnergy=Разница
+Accumulator/Name/Ascendant_Sacrifice@Energy=Текущ. энергия
+Accumulator/Name/Ascendant_Sacrifice@MaxEnergy=Макс. энергии
+
 Actor/Name/Ascendant_Weapon@Attack=Attack
 Actor/Name/Ascendant_Weapon@AttackMissile=Attack Missile
 Actor/Name/Ascendant_Weapon@ImpactForce=Impact Force

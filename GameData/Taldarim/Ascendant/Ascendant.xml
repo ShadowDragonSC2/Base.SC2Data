@@ -369,6 +369,10 @@
     <CAbilEffectTarget id="Ascendant_PsiOrb">
         <EditorCategories value="Race:Taldarim"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Ascendant_PsiOrb"/>
+        <Cost>
+            <Vital index="Energy" value="50"/>
+            <Cooldown TimeUse="2"/>
+        </Cost>
         <Effect index="0" value="Ascendant_PsiOrb@CP"/>
         <Range value="13"/>
     </CAbilEffectTarget>
@@ -699,7 +703,7 @@
         <TargetFilters value="-;Self,Enemy,Structure,Heroic,Missile,Uncommandable,Stasis,Dead,Hidden,Hallucination,Invulnerable"/>
         <Range value="4"/>
         <Cost>
-            <Cooldown Location="Unit" TimeUse="3"/>
+            <Cooldown Location="Unit" TimeUse="10"/>
         </Cost>
         <CmdButtonArray index="Execute" DefaultButtonFace="Ascendant_Sacrifice"/>
         <Effect index="0" value="Ascendant_Sacrifice@Set"/>
@@ -738,7 +742,9 @@
     <CEffectDamage id="Ascendant_Sacrifice@Damage">
         <EditorCategories value="Race:Taldarim"/>
         <LeechFraction index="Energy" value="2"/>
-        <Amount value="25"/>
+        <Amount>
+            <AccumulatorArray value="Ascendant_Sacrifice@Half"/>
+        </Amount>
         <Flags index="Live" value="1"/>
         <Flags index="NoVitalAbsorbShields" value="1"/>
     </CEffectDamage>
@@ -747,6 +753,35 @@
         <Compare value="GT"/>
         <Value value="1"/>
     </CValidatorUnitCompareVital>
+
+    <CAccumulatorArithmetic id="Ascendant_Sacrifice@Half">
+        <Operation value="Multiply"/>
+        <Parameters>
+            <AccumulatorArray value="Ascendant_Sacrifice@DifferenceEnergy"/>
+        </Parameters>
+        <Parameters value="0.5"/>
+        <MinAccumulation value="0"/>
+        <MaxAccumulation value="25"/>
+    </CAccumulatorArithmetic>
+    <CAccumulatorArithmetic id="Ascendant_Sacrifice@DifferenceEnergy">
+        <Parameters>
+            <AccumulatorArray value="Ascendant_Sacrifice@MaxEnergy"/>
+        </Parameters>
+        <Parameters>
+            <AccumulatorArray value="Ascendant_Sacrifice@Energy"/>
+        </Parameters>
+        <Operation value="Subtract"/>
+    </CAccumulatorArithmetic>   
+    <CAccumulatorVitals id="Ascendant_Sacrifice@Energy">
+        <ModificationType value="PerUnit"/>
+        <VitalType value="Energy"/>
+        <Ratio value="1"/>
+    </CAccumulatorVitals>
+    <CAccumulatorVitals id="Ascendant_Sacrifice@MaxEnergy">
+        <ModificationType value="PerUnitMaxVital"/>
+        <VitalType value="Energy"/>
+        <Ratio value="1"/>
+    </CAccumulatorVitals>
 
     <CUnit id="Ascendant_Sacrifice@AttackMissile" parent="MISSILE"/>
 
@@ -856,6 +891,11 @@
         <DataRecord Entry="Effect,Ascendant_Sacrifice@Set_Damage"/>
         <DataRecord Entry="Effect,Ascendant_Sacrifice@Damage"/>
         <DataRecord Entry="Validator,Ascendant_Sacrifice@TargetLifeGreaterThan1"/>
+        <DataRecord Entry="Accumulator,Ascendant_Sacrifice@Half"/>
+        <DataRecord Entry="Accumulator,Ascendant_Sacrifice@DifferenceEnergy"/>
+        <DataRecord Entry="Accumulator,Ascendant_Sacrifice@Energy"/>
+        <DataRecord Entry="Accumulator,Ascendant_Sacrifice@MaxEnergy"/>
+        <DataRecord Entry="Unit,Ascendant_Sacrifice@AttackMissile"/>
         <DataRecord Entry="Actor,Ascendant_Sacrifice@AttackMissile"/>
         <DataRecord Entry="Actor,Ascendant_Sacrifice@Attack"/>
         <DataRecord Entry="Actor,Ascendant_Sacrifice@ImpactModel"/>
@@ -866,7 +906,7 @@
         <DataRecord Entry="Model,Ascendant_Sacrifice@ImpactModel"/>
         <DataRecord Entry="Sound,Ascendant_Sacrifice@AttackLaunch"/>
         <DataRecord Entry="Sound,Ascendant_Sacrifice@AttackImpact"/>
-        <DataRecord Entry="Unit,Ascendant_Sacrifice@AttackMissile"/>
+        <DataRecord Entry="Mover,Ascendant_Sacrifice@AttackMissile"/>
     </CDataCollectionUnit>
 
 </Catalog>
