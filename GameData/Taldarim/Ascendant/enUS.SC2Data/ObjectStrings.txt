@@ -1,0 +1,104 @@
+Abil/Name/Ascendant_MindBlast=Mind blast
+Abil/Name/Ascendant_PsiOrb=Psionic orb
+Abil/Name/Ascendant_Sacrifice=Sacrifice
+
+Accumulator/Name/Ascendant_Sacrifice@Half=Half
+Accumulator/Name/Ascendant_Sacrifice@DifferenceEnergy=Difference Energy
+Accumulator/Name/Ascendant_Sacrifice@Energy=Energy
+Accumulator/Name/Ascendant_Sacrifice@MaxEnergy=Max Energy
+
+Actor/Name/Ascendant_Weapon@Attack=Attack
+Actor/Name/Ascendant_Weapon@AttackMissile=Attack Missile
+Actor/Name/Ascendant_Weapon@ImpactForce=Impact Force
+Actor/Name/Ascendant_MindBlast@Animation=Animation
+Actor/Name/Ascendant_MindBlast@Attack=Attack
+Actor/Name/Ascendant_MindBlast@Range=Range
+Actor/Name/Ascendant_Sacrifice@Animation=Animation
+Actor/Name/Ascendant_Sacrifice@Attack=Attack
+Actor/Name/Ascendant_Sacrifice@AttackMissile=Attack Missile
+Actor/Name/Ascendant_Sacrifice@ImpactModel=Impact Model
+Actor/Name/Ascendant_PsiOrb@Animation=Animation
+Actor/Name/Ascendant_PsiOrb@AttackGuide=Attack Guide
+Actor/Name/Ascendant_PsiOrb@StretchLineEnd=Stretch Line End
+Actor/Name/Ascendant_PsiOrb@StretchLineMid=Stretch Line Mid
+Actor/Name/Ascendant_PsiOrb@StretchLineStart=Stretch Line Start
+Actor/Name/Ascendant_PsiOrb@Attack=Attack
+Actor/Name/Ascendant_PsiOrb@Beam=Beam
+Actor/Name/Ascendant_PsiOrb@BeamAttack=Beam Attack
+Actor/Name/Ascendant_PsiOrb@Missile=Missile
+Actor/Name/Ascendant_PsiOrb@Range=Range
+Actor/Name/Ascendant_PsiOrb@Splat=Splat
+Actor/Name/Ascendant=Ascendant
+
+Behavior/Name/Ascendant_PsiOrb@AuraDamage=Aura Damage
+
+Effect/Name/Ascendant_Weapon@Damage=Damage
+Effect/Name/Ascendant_Weapon@LM=LM
+Effect/Name/Ascendant_MindBlast@Damage=Damage
+Effect/Name/Ascendant_Sacrifice@Damage=Damage
+Effect/Name/Ascendant_Sacrifice@Impact=Impact
+Effect/Name/Ascendant_Sacrifice@LM=LM
+Effect/Name/Ascendant_Sacrifice@Set=Set
+Effect/Name/Ascendant_Sacrifice@Set_Damage=Set Damage
+Effect/Name/Ascendant_Sacrifice@User=User
+Effect/Name/Ascendant_PsiOrb@Set=Set
+Effect/Name/Ascendant_PsiOrb@Search=Search
+Effect/Name/Ascendant_PsiOrb@LM=LM
+Effect/Name/Ascendant_PsiOrb@CP=CP
+Effect/Name/Ascendant_PsiOrb@DP=DP
+Effect/Name/Ascendant_PsiOrb@AB=AB
+Effect/Name/Ascendant_PsiOrb@Damage=Damage
+
+Light/Name/Ascendant@Portrait=Portrait
+
+Model/Name/Ascendant_Weapon@AttackImpact=Attack Impact
+Model/Name/Ascendant_Weapon@AttackMissile=Attack Missile
+Model/Name/Ascendant_MindBlast@AttackImpact=Impact
+Model/Name/Ascendant_Sacrifice@AttackImpact=Impact
+Model/Name/Ascendant_Sacrifice@AttackLaunch=Launch
+Model/Name/Ascendant_Sacrifice@AttackMissile=Missile
+Model/Name/Ascendant_Sacrifice@ImpactModel=Impact Model
+Model/Name/Ascendant_PsiOrb@StretchLineEnd=Stretch Line End
+Model/Name/Ascendant_PsiOrb@StretchLineMid=Stretch Line Mid
+Model/Name/Ascendant_PsiOrb@StretchLineStart=Stretch Line Start
+Model/Name/Ascendant_PsiOrb@Missile=Missile
+Model/Name/Ascendant_PsiOrb@Splat=Splat
+Model/Name/Ascendant_PsiOrb@Impact=Impact
+Model/Name/Ascendant_PsiOrb@Beam=Beam
+Model/Name/Ascendant=Ascendant
+Model/Name/Ascendant@Death=Death
+Model/Name/Ascendant@Placement=Placement
+Model/Name/Ascendant@Portrait=Portrait
+Model/Name/Ascendant@WarpIn=Warp In
+
+Mover/Name/Ascendant_Weapon@AttackMissile=Attack Missile
+Mover/Name/Ascendant_Sacrifice@AttackMissile=Missile
+Mover/Name/Ascendant_PsiOrb@Missile=Missile
+
+Requirement/Name/Ascendant_MindBlast@Learn=Learn
+Requirement/Name/Ascendant_MindBlast@Use=Use
+Requirement/Name/Ascendant=Requirement
+
+Sound/Name/Ascendant_Weapon@AttackImpact=Attack Impact
+Sound/Name/Ascendant_Weapon@AttackLaunch=Attack Launch
+Sound/Name/Ascendant_MindBlast@AttackImpact=Impact
+Sound/Name/Ascendant_MindBlast@AttackLaunch=Launch
+Sound/Name/Ascendant_Sacrifice@AttackImpact=Impact
+Sound/Name/Ascendant_Sacrifice@AttackLaunch=Launch
+Sound/Name/Ascendant_PsiOrb@AttackImpact=Impact
+Sound/Name/Ascendant_PsiOrb@AttackLaunch=Launch
+Sound/Name/Ascendant_PsiOrb@BeamAttackImpact=Beam Impact
+Sound/Name/Ascendant@Death=Death
+Sound/Name/Ascendant@DeathVoice=Death Voice
+Sound/Name/Ascendant@Pissed=Pissed
+Sound/Name/Ascendant@Ready=Ready
+Sound/Name/Ascendant@Attack=Attack
+Sound/Name/Ascendant@Yes=Yes
+Sound/Name/Ascendant@What=What
+Sound/Name/Ascendant@AbilSound=Ability Sound
+
+Validator/Name/Ascendant_Sacrifice@TargetLifeGreaterThan1=Target Life > 1
+Validator/Name/Ascendant@Is=Caster Is Unit
+Validator/Name/Ascendant@Target=Target Is Unit
+Validator/Name/Ascendant@Not=Caster Is Not Unit
+Validator/Name/Ascendant@NotTarget=Target Is Not Unit

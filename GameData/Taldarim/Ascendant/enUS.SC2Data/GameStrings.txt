@@ -1,0 +1,18 @@
+Button/Name/Ascendant=Warp in Ascendant
+Button/Tooltip/Ascendant=Tal'darim Faction<n/>Potent psionic master. Can use <d stringref="Button,Ascendant_PsiOrb,Name"/>, <d stringref="Button,Ascendant_MindBlast,Name"/>, and <d stringref="Button,Ascendant_Sacrifice,Name"/>.
+
+Unit/Name/Ascendant=Ascendant
+Unit/Name/Ascendant_PsiOrb@Missile=Missile
+Unit/Name/Ascendant_Sacrifice@AttackMissile=Missile
+Unit/Name/Ascendant_Weapon@AttackMissile=Missile
+
+Button/Name/Ascendant_PsiOrb=Psionic Orb
+Button/Tooltip/Ascendant_PsiOrb=Unleashes a traveling Psionic Orb that deals <d ref="Effect,Ascendant_PsiOrb@Damage,Amount/Effect,Ascendant_PsiOrb@CP,PeriodicPeriodArray[0]"/> damage per second to all enemies along its path.
+
+Button/Name/Ascendant_MindBlast=Mind Blast
+Button/Tooltip/Ascendant_MindBlast=Deals <d ref="Effect,Ascendant_MindBlast@Damage,Amount"/> damage to target enemy unit.
+
+Button/Name/Ascendant_Sacrifice=Sacrifice
+Button/Tooltip/Ascendant_Sacrifice=<n/>Reduces target friendly unit to 1 life (shields are not affected).<n/><n/>Grants the Ascendant <d ref="Effect,Ascendant_Sacrifice@Damage,LeechFraction[Energy]"/> energy for each life point reduced, up to its maximum energy.<n/><n/><c val="#ColorAttackInfo">Can only target friendly units.</c>
+
+Weapon/Name/Ascendant_Weapon=Agonizing Blast

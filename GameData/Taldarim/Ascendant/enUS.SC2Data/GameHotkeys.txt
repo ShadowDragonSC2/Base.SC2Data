@@ -1,0 +1,4 @@
+Button/Hotkey/Ascendant=A
+Button/Hotkey/Ascendant_MindBlast=Q
+Button/Hotkey/Ascendant_PsiOrb=W
+Button/Hotkey/Ascendant_Sacrifice=E
