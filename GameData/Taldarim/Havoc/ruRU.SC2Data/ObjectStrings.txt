@@ -1,0 +1,41 @@
+Abil/Name/Havoc_ForceField=Силовое поле
+Abil/Name/Havoc_TargetLock=Захват цели
+
+Actor/Name/Havoc=Havoc
+Actor/Name/Havoc_ForceField=Force Field
+Actor/Name/Havoc_ForceField@CursorSplat=Cursor Splat
+Actor/Name/Havoc_ForceField@Range=Range
+Actor/Name/Havoc_SquadSight@Model=Model
+
+Behavior/Name/Havoc_ForceField@TimedLife=Timed Life
+Behavior/Name/Havoc_SquadSight@Aura=Aura
+Behavior/Name/Havoc_SquadSight@Buff=Buff
+
+DataCollection/EditorPrefix/Havoc=Талдаримы -
+DataCollection/EditorPrefix/Havoc_ForceField=Талдаримы -
+DataCollection/EditorPrefix/Havoc_SquadSight=Талдаримы -
+
+Effect/Name/Havoc_ForceField@CU=CU
+Effect/Name/Havoc_ForceField@Placement=Placement
+Effect/Name/Havoc_ForceField@TimedLife=Timed Life
+Effect/Name/Havoc_SquadSight@AB=AB
+Effect/Name/Havoc_SquadSight@Search=Search
+
+Model/Name/Havoc=Havoc
+Model/Name/Havoc@Death=Death
+Model/Name/Havoc@Placement=Placement
+Model/Name/Havoc@Portrait=Portrait
+Model/Name/Havoc@WarpIn=Warp In
+Model/Name/Havoc_ForceField=Force Field
+Model/Name/Havoc_ForceField@CursorSplat=Cursor Splat
+Model/Name/Havoc_SquadSight@Model=Model
+
+Sound/Name/Havoc@Attack=Attack
+Sound/Name/Havoc@Death=Death
+Sound/Name/Havoc@Help=Help
+Sound/Name/Havoc@Pissed=Pissed
+Sound/Name/Havoc@Ready=Ready
+Sound/Name/Havoc@What=What
+Sound/Name/Havoc@Yes=Yes
+Sound/Name/Havoc_ForceField@Birth=Birth
+Sound/Name/Havoc_ForceField@Death=Death

@@ -1,193 +1,168 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Catalog>
     <CButton id="Havoc" parent="UnitButton_OnlyGround">
-        <Icon value="Assets\Textures\btn-unit-protoss-havoc.dds"/>
+        <Icon value="Assets\Textures\btn-unit-protoss-sentry-taldarim.dds"/>
     </CButton>
 
     <CUnit id="Havoc" parent="Generic_Unit_Ground" race="Tald">
-        <EditorCategories value="ObjectType:Hero,ObjectFamily:Campaign"/>
-        <AbilArray Link="ProgressRally"/>
-        <AbilArray Link="Warpable"/>
-        <AbilArray Link="HavocTargetLock"/>
-        <BehaviorArray Link="HavocRangeAura"/>
-        <WeaponArray Link="Havoc_Weapon"/>
-        <CardLayouts index="0">
-            <LayoutButtons Face="Rally" Type="AbilCmd" AbilCmd="ProgressRally,Rally1" Row="2" Column="4"/>
-            <LayoutButtons Face="HavocTargetLock" Type="AbilCmd" AbilCmd="HavocTargetLock,Execute" Row="2" Column="0"/>
-        </CardLayouts>
-
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
         <Collide index="Locust" value="1"/>
-        <Attributes index="Biological" value="1"/>
-        <Attributes index="Psionic" value="1"/>
-        <Attributes index="Heroic" value="1"/>
-        <LifeStart value="180"/>
-        <LifeMax value="180"/>
-        <LifeArmor value="2"/>
-        <ShieldsStart value="150"/>
-        <ShieldsMax value="150"/>
-        <ShieldArmor value="2"/>
-        <ShieldRegenDelay value="3"/>
-        <ShieldRegenRate value="2"/>
-        <Speed value="2.8125"/>
-        <Acceleration value="1000"/>
-        <LateralAcceleration value="46"/>
-        <Sight value="10"/>
-        <CostCategory value="Army"/>
-        <KillXP value="100"/>
-        <InnerRadius value="0.5"/>
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Mechanical" value="1"/>
+        <LifeStart value="40"/>
+        <LifeMax value="40"/>
+        <EnergyStart value="50"/>
+        <EnergyMax value="200"/>
+        <EnergyRegenRate value="0.5625"/>
+        <ShieldsStart value="40"/>
+        <ShieldsMax value="40"/>
+        <Speed value="2.75"/>
+        <Acceleration value="10"/>
+        <Sight value="11"/>
+        <Food value="-1"/>
         <CargoSize value="2"/>
-        <ScoreKill value="200"/>
-        <SubgroupPriority value="58"/>
-        <MinimapRadius value="0.625"/>
-        <GlossaryPriority value="90"/>
-        <AlliedPushPriority value="11"/>
+        <CostResource index="Minerals" value="50"/>
+        <CostResource index="Vespene" value="100"/>
+        <RepairTime value="40"/>
+        <KillXP value="20"/>
+        <AbilArray Link="Warpable"/>
+        <AbilArray Link="Havoc_TargetLock"/>
+        <AbilArray Link="Havoc_ForceField"/>
+        <AbilArray Link="ProgressRally"/>
+        <BehaviorArray Link="Havoc_SquadSight@Aura"/>
+        <BehaviorArray Link="Detector11"/>
+        <!-- <WeaponArray Link="Havoc_Weapon" Turret="FreeRotate"/> -->
+        <CardLayouts index="0">
+            <LayoutButtons index="3" Face="AcquireMove" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="AcquireMove" Type="AbilCmd" AbilCmd="move,AcquireMove" Row="0" Column="4"/>
+            <LayoutButtons Face="Havoc_TargetLock" Type="AbilCmd" AbilCmd="Havoc_TargetLock,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="Havoc_ForceField" Type="AbilCmd" AbilCmd="Havoc_ForceField,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="Havoc_SquadSight" Type="Passive" Behavior="Havoc_SquadSight@Aura" Row="2" Column="2"/>
+            <LayoutButtons Face="Rally" Type="AbilCmd" AbilCmd="ProgressRally,Rally1" Row="2" Column="4"/>
+        </CardLayouts>
+        <ScoreMake value="100"/>
+        <ScoreKill value="100"/>
+        <SubgroupPriority value="25"/>
+        <AIEvalFactor value="0"/>
     </CUnit>
 
-    <CActorUnit id="Havoc" parent="AdvancedUnitStandard" unitName="Havoc">
+    <CActorUnit id="Havoc" parent="AdvancedStandard_Ground" unitName="Havoc">
         <Aliases value="_UnitMedium"/>
+        <Macros value="TerrainSquibAnimations"/>
         <WalkAnimMoveSpeed value="2.8125"/>
-        <UnitIcon value="Assets\Textures\btn-unit-protoss-havoc.dds"/>
-        <HeroIcon value="Assets\Textures\btn-unit-protoss-havoc.dds"/>
-        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel1.dds"/>
-        <UnitKillRank Text="UnitKillRank/Havoc"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-sentry-taldarim.dds"/>
+        <HeroIcon value="Assets\Textures\btn-unit-protoss-sentry-taldarim.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-airarmorlevel0.dds"/>
         <GroupIcon>
-            <Image value="Assets\Textures\wireframe-protoss-havoc.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-sentry-taldarim.dds"/>
         </GroupIcon>
         <Wireframe>
-            <Image value="Assets\Textures\wireframe-protoss-havoc.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-sentry-taldarim.dds"/>
         </Wireframe>
         <WireframeShield>
-            <Image value="Assets\Textures\wireframe-protoss-havoc-shield01.dds"/>
-            <Image value="Assets\Textures\wireframe-protoss-havoc-shield02.dds"/>
-            <Image value="Assets\Textures\wireframe-protoss-havoc-shield03.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-sentry-taldarim-shield01.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-sentry-taldarim-shield02.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-sentry-taldarim-shield03.dds"/>
         </WireframeShield>
     </CActorUnit>
 
     <CModel id="Havoc" parent="Unit">
-        <Model value="Assets\Units\Protoss\Havoc\Havoc.m3"/>
+        <EditorCategories value="Race:Taldarim"/>
+        <Model value="Assets\Units\Protoss\Sentry_TalDarim\Sentry_TalDarim.m3"/>
+        <RequiredAnims value="Assets\Units\Protoss\Sentry_SwarmAnims\Sentry_SwarmAnims.m3a"/>
         <Occlusion value="Show"/>
-        <PlanetPanelCamera value="Star2CameraHigher09"/>
-        <Radius value="0.625"/>
-        <ShadowRadius value="1.0"/>
-        <TechPurchaseCamera value="Star2CameraHigher09"/>
-        <UnitGlossaryCamera value="Star2CameraHigher09"/>
+        <SelectionRadius value="0.733000"/>
+        <Tipability value="0.750000"/>
+        <TipabilityWidth value="0.500000"/>
+        <TipabilityLength value="0.500000"/>
+        <SquibTypeDefault value="Metal"/>
+        <ScaleMax value="0.600000,0.600000,0.600000"/>
+        <ScaleMin value="0.600000,0.600000,0.600000"/>
+        <TechPurchaseCamera value="Star2CameraMid06"/>
+        <UnitGlossaryCamera value="Star2CameraMid06"/>
+        <PlanetPanelCamera value="Star2CameraMid06"/>
+        <ShadowRadius value="0.533000"/>
     </CModel>
     <CModel id="Havoc@Death" parent="UnitDeath">
-        <Model value="Assets\Units\Protoss\Havoc_Death\Havoc_Death.m3"/>
-        <LowQualityModel value="ProtossLargeUnitDeathLow"/>
+        <EditorCategories value="Race:Taldarim"/>
+        <Model value="Assets\Units\Protoss\Sentry_TalDarim_Death\Sentry_TalDarim_Death.m3"/>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Uni_DeathFXincidentallFire"/>
+            <Type value="Sound"/>
+            <Time value="0.300000"/>
+            <Payload value="Uni_DeathFXincidentallFire"/>
+        </Events>
+        <Events>
+            <Anim value="Death,02"/>
+            <Name value="Uni_DeathFXincidentallFire"/>
+            <Type value="Sound"/>
+            <Time value="0.300000"/>
+            <Payload value="Uni_DeathFXincidentallFire"/>
+        </Events>
+        <LowQualityModel value="ProtossTaldarimUnitDeathLow"/>
         <Occlusion value="Show"/>
     </CModel>
     <CModel id="Havoc@Portrait" parent="Portrait">
-        <Image value="Assets\Textures\havocportrait_static.dds"/>
-        <Flags index="Download" value="1"/>
+        <EditorCategories value="Race:Taldarim"/>
+        <Model value="Assets\Portraits\Protoss\MonitorEx2Portrait\MonitorEx2Portrait.m3"/>
+    </CModel>
+    <CModel id="Havoc@Placement" parent="Placement">
+        <EditorCategories value="Race:Taldarim"/>
+        <Model value="Assets\Units\Protoss\Sentry_TalDarim_Placement\Sentry_TalDarim_Placement.m3"/>
     </CModel>
     <CModel id="Havoc@WarpIn" parent="OneShotSpellFX">
-        <Model value="Assets\Effects\Protoss\ProtossUnitWarpIn\ProtossUnitWarpIn.m3"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Occlusion value="Show"/>
-        <ScaleMax value="0.750000,0.750000,0.750000"/>
-        <ScaleMin value="0.750000,0.750000,0.750000"/>
-        <SelectionRadius value="0.555400"/>
-        <ShadowRadius value="0.555400"/>
+        <EditorCategories value="Race:Taldarim"/>
+        <Model value="Assets\Units\Protoss\Sentry_TalDarim_WarpIn\Sentry_TalDarim_WarpIn.m3"/>
     </CModel>
 
-    <CSound id="Havoc@Death" parent="DeathVoice">
-        <EditorCategories value="Race:Neutral"/>
-        <AssetArray File="Assets\Sounds\Havoc_Death_01.wav" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\Havoc_Death_02.wav" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\Havoc_Death_03.wav" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\Havoc_Death_04.wav" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\Havoc_Death_05.wav" FacialGroup=""/>
-        <Flags index="Download" value="0"/>
-        <Flags index="Purgable" value="0"/>
-        <Pitch value="-1.000000,1.000000"/>
-        <Select value="Random"/>
+    <CSound id="Havoc@Death" parent="Protoss_ExplosionMedium">
+        <EditorCategories value="Race:Taldarim"/>
     </CSound>
     <CSound id="Havoc@Attack" parent="Voice">
-        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Havoc_Attack00.ogg" FacialGroup=""/>
-        <DupeWait value="4000,4000"/>
+        <EditorCategories value="Race:Taldarim"/>
+        <AssetArray File="Assets\Sounds\Havoc_Attack01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Havoc_Attack02.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Havoc_Attack03.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Havoc_Attack04.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Havoc_Attack05.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Havoc_Attack06.ogg" FacialGroup=""/>
+        <Pitch value="-0.300000,0.000000"/>
     </CSound>
     <CSound id="Havoc@Help" parent="Alert">
-        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Havoc_Help00.ogg" FacialGroup=""/>
+        <EditorCategories value="Race:Taldarim"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Executor\Alert_ProtossForcesUnderAttack.ogg" FacialGroup=""/>
     </CSound>
     <CSound id="Havoc@Pissed" parent="Pissed">
-        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Havoc_Pissed00.ogg" FacialGroup=""/>
-        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Havoc_Pissed01.ogg" FacialGroup=""/>
-        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Havoc_Pissed02.ogg" FacialGroup=""/>
+        <EditorCategories value="Race:Taldarim"/>
+        <Pitch value="-0.300000,0.000000"/>
+        <AssetArray File="Assets\Sounds\Havoc_Pissed01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Havoc_Pissed02.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Havoc_Pissed03.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Havoc_Pissed04.ogg" FacialGroup=""/>
     </CSound>
     <CSound id="Havoc@Yes" parent="Voice">
-        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Havoc_Yes00.ogg" FacialGroup=""/>
-        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Havoc_Yes01.ogg" FacialGroup=""/>
-        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Havoc_Yes02.ogg" FacialGroup=""/>
-        <DupeWait value="4000,4000"/>
+        <EditorCategories value="Race:Taldarim"/>
+        <Pitch value="-0.300000,0.000000"/>
+        <AssetArray File="Assets\Sounds\Havoc_Yes01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Havoc_Yes02.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Havoc_Yes03.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Havoc_Yes04.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Havoc_Yes05.ogg" FacialGroup=""/>
     </CSound>
     <CSound id="Havoc@What" parent="Voice">
-        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Havoc_What00.ogg" FacialGroup=""/>
-        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Havoc_What01.ogg" FacialGroup=""/>
-        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Havoc_What02.ogg" FacialGroup=""/>
+        <EditorCategories value="Race:Taldarim"/>
+        <Pitch value="-0.300000,0.000000"/>
+        <AssetArray File="Assets\Sounds\Havoc_What01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Havoc_What02.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Havoc_What03.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Havoc_What04.ogg" FacialGroup=""/>
     </CSound>
     <CSound id="Havoc@Ready" parent="Ready">
-        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Havoc_Ready00.ogg" FacialGroup=""/>
+        <EditorCategories value="Race:Taldarim"/>
+        <Pitch value="-0.300000,0.000000"/>
+        <AssetArray File="Assets\Sounds\Havoc_Ready01.ogg" FacialGroup=""/>
     </CSound>
-
-    <CWeapon id="Havoc_Weapon" parent="Psionic">
-        <Range value="6"/>
-        <Period value="0.79"/>
-        <Icon value="Assets\Textures\btn-upgrade-protoss-groundattacklevel1.dds"/>
-        <DisplayName value="Weapons/HavocWeapon"/>
-    </CWeapon>
-
-    <!-- ============= ABILITY: TARGET LOCK (Выбор цели для увеличенного урона) ============= -->
-    <CButton id="HavocTargetLock">
-        <Icon value="Assets\Textures\btn-ability-protoss-targetlock.dds"/>
-    </CButton>
-
-    <CAbilEffectTarget id="HavocTargetLock">
-        <Range value="10"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="HavocTargetLock"/>
-        <Effect index="0" value="HavocTargetLock@Apply"/>
-        <Cost>
-            <Vital index="Energy" value="50"/>
-            <Cooldown TimeUse="12"/>
-        </Cost>
-        <TargetFilters value="Visible;Enemy,Ground,Air"/>
-    </CAbilEffectTarget>
-
-    <CEffectApplyBehavior id="HavocTargetLock@Apply">
-        <Behavior value="HavocTargetLock@Debuff"/>
-    </CEffectApplyBehavior>
-
-    <CBehaviorBuff id="HavocTargetLock@Debuff">
-        <Duration value="8"/>
-        <Modification>
-            <DamageTakenScaled value="1"/>
-        </Modification>
-    </CBehaviorBuff>
-
-    <CActorSimple id="HavocTargetLock@DebuffVisual">
-        <On Terms="Behavior.HavocTargetLock@Debuff.On" Send="Create"/>
-        <On Terms="Behavior.HavocTargetLock@Debuff.Off" Send="Destroy"/>
-    </CActorSimple>
-    <CActorModel id="HavocTargetLock@DebuffModel" parent="Debuff">
-        <Model value="Assets\Effects\Protoss\TargetLock\TargetLock.m3"/>
-    </CActorModel>
-
-    <!-- ============= AURA: RANGE BUFF (Аура увеличения дальности атаки) ============= -->
-    <CBehaviorBuff id="HavocRangeAura" parent="Aura">
-        <Period value="1"/>
-        <Modification>
-            <RangedWeaponRange value="2"/>
-        </Modification>
-    </CBehaviorBuff>
-
-    <CActorSimple id="HavocRangeAura@Visual">
-        <On Terms="Behavior.HavocRangeAura.On" Send="Create"/>
-        <On Terms="ActorCreation" Send="ModelShow"/>
-        <On Terms="Behavior.HavocRangeAura.Off" Send="Destroy"/>
-    </CActorSimple>
-    <CActorModel id="HavocRangeAura@Model" parent="Aura">
-        <Model value="Assets\Effects\Protoss\RangeAura\RangeAura.m3"/>
-    </CActorModel>
 
     <CDataCollectionUnit id="Havoc" parent="UnitGround">
         <DataRecord Entry="Button,Havoc"/>
@@ -204,15 +179,430 @@
         <DataRecord Entry="Sound,Havoc@Yes"/>
         <DataRecord Entry="Sound,Havoc@What"/>
         <DataRecord Entry="Sound,Havoc@Ready"/>
-        <DataRecord Entry="Weapon,HavocWeapon"/>
-        <DataRecord Entry="Button,HavocTargetLock"/>
-        <DataRecord Entry="Abil,HavocTargetLock"/>
-        <DataRecord Entry="Effect,HavocTargetLock@Apply"/>
-        <DataRecord Entry="Behavior,HavocTargetLock@Debuff"/>
-        <DataRecord Entry="Actor,HavocTargetLock@DebuffVisual"/>
-        <DataRecord Entry="Model,HavocTargetLock@DebuffModel"/>
-        <DataRecord Entry="Behavior,HavocRangeAura"/>
-        <DataRecord Entry="Actor,HavocRangeAura@Visual"/>
-        <DataRecord Entry="Model,HavocRangeAura@Model"/>
     </CDataCollectionUnit>
+
+    <!-- ============= Weapons ============= -->
+
+    <CWeaponLegacy id="Havoc_Weapon">
+        <Range value="6"/>
+        <Period value="0.79"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
+    </CWeaponLegacy>
+
+    <!-- ============= Abilities ============= -->
+    <!-- TARGET LOCK -->
+    <CButton id="Havoc_TargetLock">
+        <Icon value="Assets\Textures\btn-ability-protoss-targetlock.dds"/>
+    </CButton>
+
+    <CAbilEffectTarget id="Havoc_TargetLock">
+        <EditorCategories value="Race:Taldarim,AbilityorEffectType:Units"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Havoc_TargetLock"/>
+        <Effect index="0" value="Havoc_TargetLock@CP"/>
+        <TargetFilters value="Visible;Player,Ally,Neutral,Missile,Stasis,Dead,Invulnerable"/>
+        <Flags index="AutoCast" value="1"/>
+        <Range value="8"/>
+        <SmartPriority value="1"/>
+        <AutoCastRange value="8"/>
+        <CastOutroTime value="0.5"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <AutoCastValidatorArray value="NotHaveTargetLock"/>
+        <AutoCastValidatorArray value="NotInterceptor"/>
+        <TargetSorts>
+            <SortArray value="TSLifeLargestFirst"/>
+            <SortArray value="TSDistance"/>
+        </TargetSorts>
+    </CAbilEffectTarget>
+    
+    <CBehaviorBuff id="Havoc_TargetLock@Target">
+        <Alignment value="Negative"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Modification>
+            <DamageTakenFraction index="Spell" value="0.3"/>
+            <DamageTakenFraction index="Melee" value="0.3"/>
+            <DamageTakenFraction index="Ranged" value="0.3"/>
+            <DamageTakenFraction index="Splash" value="0.3"/>
+            <DamageTakenFraction index="NoProc" value="0.3"/>
+        </Modification>
+        <MaxStackCount value="3"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-targetlock.dds"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Havoc_TargetLock@Caster">
+        <MaxStackCount value="3"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+
+    <CEffectCreatePersistent id="Havoc_TargetLock@CP">
+        <EditorCategories value="Race:Taldarim"/>
+        <InitialEffect value="Havoc_TargetLock@Set_Start"/>
+        <FinalEffect value="Havoc_TargetLock@Set_Finish"/>
+        <PeriodicPeriodArray value="1"/>
+        <Flags index="Channeled" value="1"/>
+        <Flags index="PersistUntilDestroyed" value="1"/>
+        <WhichLocation Value="TargetUnit"/>
+        <PeriodicValidator value="Havoc_TargetLock@Checks"/>
+        <ValidatorArray value="Havoc_TargetLock@NotTargetLock"/>
+        <ValidatorArray value="CasterNotMaxTargetLocks"/>
+    </CEffectCreatePersistent>
+
+    <CEffectSet id="Havoc_TargetLock@Set_Start">
+        <EffectArray value="Havoc_TargetLock@AB"/>
+        <EffectArray value="Havoc_TargetLock@ABTarget"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="Havoc_TargetLock@AB">
+        <Behavior value="Havoc_TargetLock@Caster"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="Havoc_TargetLock@ABTarget">
+        <Behavior value="Havoc_TargetLock@Target"/>
+    </CEffectApplyBehavior>
+
+    <CEffectSet id="Havoc_TargetLock@Set_Finish">
+        <EffectArray value="Havoc_TargetLock@RB"/>
+        <EffectArray value="Havoc_TargetLock@RBTarget"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="Havoc_TargetLock@RB">
+        <BehaviorLink value="Havoc_TargetLock@Caster"/>
+        <WhichUnit Value="Caster"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="Havoc_TargetLock@RBTarget">
+        <BehaviorLink value="Havoc_TargetLock@Target"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    
+    <CValidatorUnitCompareBehaviorCount id="Havoc_TargetLock@NotTargetLock">
+        <Behavior value="Havoc_TargetLock@Target"/>
+        <ResultFailed value="Error,Error\Havoc_TargetLock"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareField id="Havoc_TargetLock@RadiusLarge">
+        <Compare value="GE"/>
+        <Field value="Radius"/>
+        <Value value="0.75"/>
+    </CValidatorUnitCompareField>
+    <CValidatorCombine id="Havoc_TargetLock@Checks">
+        <Type value="And"/>
+        <CombineArray value="CasterNotDead"/>
+        <!-- <CombineArray value="CasterNotStunned"/> -->
+        <CombineArray value="TargetNotDead"/>
+        <CombineArray value="Havoc_TargetLock@Distance"/>
+        <CombineArray value="HiddenCompareAB"/>
+        <CombineArray value="HiddenCompareBA"/>
+        <CombineArray value="NotInvulnerable"/>
+    </CValidatorCombine>
+    <CValidatorLocationCompareRange id="Havoc_TargetLock@Distance">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <WhichLocation Value="CasterUnit"/>
+        <Compare value="LT"/>
+        <Range value="10"/>
+        <Value Value="TargetUnit"/>
+    </CValidatorLocationCompareRange>
+
+    <CActorRange id="Havoc_TargetLock@Range" parent="RangeAbil" abil="Havoc_TargetLock"/>
+    <CActorModel id="Havoc_TargetLock@Model" parent="ModelAnimationStyleContinuous">
+        <On Terms="Behavior.Havoc_TargetLock@Target.On; !ValidateUnit Havoc_TargetLock@RadiusLarge" Send="Create"/>
+        <On Terms="Behavior.Havoc_TargetLock@Target.Off" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpAttachCenter" HoldRotation="1"/>
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <Host Subject="_Selectable"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <AutoScaleFactor value="0.700000"/>
+    </CActorModel>
+    <CActorModel id="Havoc_TargetLock@LargeModel" parent="ModelAnimationStyleContinuous">
+        <On Terms="Behavior.ObserverTargetLock.On; ValidateUnit TargetLockUnitRadiusLarge" Send="Create"/>
+        <On Terms="Behavior.ObserverTargetLock.Off" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpAttachCenter" HoldRotation="1"/>
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <Host Subject="_Selectable"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModel>
+    <CActorBeamSimple id="Havoc_TargetLock@Beam" parent="BeamSimpleAnimationStyleContinuous">
+        <On Terms="Effect.Havoc_TargetLock@CP.Start; At Target" Send="Create"/>
+        <On Terms="Effect.Havoc_TargetLock@CP.Stop" Send="AnimBracketStop BSD"/>
+        <HostLaunchSiteOps Ops="SOpAttachWeapon"/>
+        <HostImpactSiteOps Ops="SOpAttachCenter"/>
+        <HostLaunch Subject="_Unit" Scope="Caster"/>
+        <HostImpact Subject="_Unit" Scope="Target"/>
+        <Inherits index="Visibility" value="1"/>
+        <HostForProps Subject="_Unit" Scope="Caster" Actor="Find"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorBeamSimple>
+    <CActorSound id="Havoc_TargetLock@OnSound" parent="SoundOneShot">
+        <On Terms="Effect.Havoc_TargetLock@CP.Start; At Caster" Send="Create"/>
+        <On Terms="Effect.Havoc_TargetLock@CP.Stop" Send="AnimBracketStop BSD"/>
+        <Layers Sound="Havoc_TargetLock@PingSound">
+            <Chance value="0"/>
+            <Pitch value="0.000000,0.000000"/>
+            <PlayDelay value="0,0"/>
+            <Volume value="0.000000,0.000000"/>
+        </Layers>
+    </CActorSound>
+    <CActorSound id="Havoc_TargetLock@PingSound" parent="SoundOneShot">
+        <On Terms="Behavior.Havoc_TargetLock@Target.On; ValidateUnit Havoc_TargetLock@RadiusLarge" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="Havoc_TargetLock@LoopSound" parent="SoundContinuous">
+        <On Terms="Effect.Havoc_TargetLock@CP.Start; At Target" Send="Create"/>
+        <On Terms="Effect.Havoc_TargetLock@CP.Stop" Send="Destroy"/>
+    </CActorSound>
+
+    <CSound id="Havoc_TargetLock@OnSound" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\SentryMonitor_Target_Ping_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SentryMonitor_Target_Ping_03.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,-0.700000"/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="Havoc_TargetLock@PingSound" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\SentryMonitor_TargetLock_On_01.wav" FacialGroup=""/>
+        <Pitch value="-9.000000,-8.700000"/>
+        <Volume value="-8.000000,-8.000000"/>
+    </CSound>
+    <CSound id="Havoc_TargetLock@LoopSound" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\SentryMonitor_TargetBeam_Loop_01.wav" LoopCount="-1" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SentryMonitor_TargetBeam_Loop_02.wav" LoopCount="-1" FacialGroup=""/>
+        <Pitch value="-1.000000,-1.000000"/>
+        <Volume value="-12.000000,-12.000000"/>
+    </CSound>
+    
+    <CModel id="Havoc_TargetLock@Model" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\TargetLockImpact\TargetLockImpact.m3"/>
+    </CModel>
+    <CModel id="Havoc_TargetLock@LargeModel" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\TargetLockImpactLarge\TargetLockImpactLarge.m3"/>
+    </CModel>
+    <CModel id="Havoc_TargetLock@Beam" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Protoss\TargetLockBeam\TargetLockBeam.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+
+    <CDataCollectionUnit id="Havoc_TargetLock" parent="AbilityBase">
+        <DataRecord Entry="Button,Havoc_TargetLock"/>
+        <DataRecord Entry="Abil,Havoc_TargetLock"/>
+        <DataRecord Entry="Behavior,Havoc_TargetLock@Target"/>
+        <DataRecord Entry="Behavior,Havoc_TargetLock@Caster"/>
+        <DataRecord Entry="Effect,Havoc_TargetLock@CP"/>
+        <DataRecord Entry="Effect,Havoc_TargetLock@Set_Start"/>
+        <DataRecord Entry="Effect,Havoc_TargetLock@Set_Finish"/>
+        <DataRecord Entry="Effect,Havoc_TargetLock@AB"/>
+        <DataRecord Entry="Effect,Havoc_TargetLock@ABTarget"/>
+        <DataRecord Entry="Effect,Havoc_TargetLock@RB"/>
+        <DataRecord Entry="Effect,Havoc_TargetLock@RBTarget"/>
+        <DataRecord Entry="Validator,Havoc_TargetLock@NotTargetLock"/>
+        <DataRecord Entry="Validator,Havoc_TargetLock@RadiusLarge"/>
+        <DataRecord Entry="Actor,Havoc_TargetLock@Range"/>
+        <DataRecord Entry="Actor,Havoc_TargetLock@Model"/>
+        <DataRecord Entry="Actor,Havoc_TargetLock@LargeModel"/>
+        <DataRecord Entry="Actor,Havoc_TargetLock@Beam"/>
+        <DataRecord Entry="Actor,Havoc_TargetLock@OnSound"/>
+        <DataRecord Entry="Actor,Havoc_TargetLock@PingSound"/>
+        <DataRecord Entry="Actor,Havoc_TargetLock@LoopSound"/>
+        <DataRecord Entry="Sound,Havoc_TargetLock@OnSound"/>
+        <DataRecord Entry="Sound,Havoc_TargetLock@PingSound"/>
+        <DataRecord Entry="Sound,Havoc_TargetLock@LoopSound"/>
+        <DataRecord Entry="Model,Havoc_TargetLock@Model"/>
+        <DataRecord Entry="Model,Havoc_TargetLock@LargeModel"/>
+        <DataRecord Entry="Model,Havoc_TargetLock@Beam"/>
+    </CDataCollectionUnit>
+
+    <!-- Force Field -->
+    
+    <CButton id="Havoc_ForceField">
+        <EditorCategories value="Race:Taldarim"/>
+        <Icon value="Assets\Textures\btn-ability-protoss-forcefield-red.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-forcefield-red.dds"/>
+    </CButton>
+
+    <CAbilEffectTarget id="Havoc_ForceField">
+        <EditorCategories value="Race:Taldarim,AbilityorEffectType:Units"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Havoc_ForceField"/>
+        <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel"/>
+        <Range value="9"/>
+        <AbilSetId value="ForceField"/>
+        <Effect index="0" value="Havoc_ForceField@CU"/>
+        <CursorEffect value="Havoc_ForceField@Placement"/>
+        <PlaceUnit value="Havoc_ForceField"/>
+        <Cost>
+            <Vital index="Energy" value="50"/>
+        </Cost>
+    </CAbilEffectTarget>
+
+    <CBehaviorBuff id="Havoc_ForceField@TimedLife" parent="TimedLife">
+        <EditorCategories value="Race:Taldarim,AbilityorEffectType:Units"/>
+        <Duration value="15"/>
+        <DisplayDuration index="Self" value="0"/>
+        <DisplayDuration index="Ally" value="0"/>
+    </CBehaviorBuff>
+
+    <CEffectCreateUnit id="Havoc_ForceField@CU">
+        <EditorCategories value="Race:Taldarim"/>
+        <SpawnUnit value="Havoc_ForceField"/>
+        <SpawnEffect value="Havoc_ForceField@TimedLife"/>
+        <SpawnOwner Value="Neutral"/>
+        <SpawnRange value="0"/>
+        <WhichLocation Value="TargetPoint"/>
+        <CreateFlags index="DropOff" value="0"/>
+        <CreateFlags index="Placement" value="0"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <ValidatorArray value="CliffLevelGE1"/>
+    </CEffectCreateUnit>
+    <CEffectEnumArea id="Havoc_ForceField@Placement">
+        <EditorCategories value="Race:Taldarim"/>
+        <SearchFilters value="-;Air,Ground,Structure,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="1.7"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="Havoc_ForceField@TimedLife">
+        <EditorCategories value="Race:Taldarim"/>
+        <Behavior value="Havoc_ForceField@TimedLife"/>
+    </CEffectApplyBehavior>
+
+    <CActorSplat id="Havoc_ForceField@CursorSplat" parent="ProtossCursorSplat" abil="Havoc_ForceField">
+        <Model value="Havoc_ForceField@CursorSplat"/>
+    </CActorSplat>
+    <CActorRange id="Havoc_ForceField@Range" parent="RangeAbil" abil="Havoc_ForceField"/>
+
+    <CModel id="Havoc_ForceField@CursorSplat" parent="ProtossAOECursorSplat"/>
+
+    <CUnit id="Havoc_ForceField">
+        <AbilArray Link="Shatter"/>
+        <!-- <CardLayouts>
+            <LayoutButtons Face="Shatter" Type="AbilCmd" AbilCmd="Shatter,Execute" Row="0" Column="0"/>
+        </CardLayouts> -->
+        <Race value="Tald"/>
+        <LifeStart value="15"/>
+        <LifeMax value="15"/>
+        <Radius value="1.5"/>
+        <InnerRadius value="0.5"/>
+        <SeparationRadius value="0"/>
+        <SubgroupPriority value="31"/>
+        <MinimapRadius value="0"/>
+        <EditorCategories value="ObjectType:Structure,ObjectFamily:Melee"/>
+        <FlagArray index="Turnable" value="0"/>
+        <FlagArray index="Uncommandable" value="1"/>
+        <FlagArray index="Unselectable" value="1"/>
+        <FlagArray index="Untargetable" value="1"/>
+        <FlagArray index="Uncloakable" value="1"/>
+        <FlagArray index="Unradarable" value="1"/>
+        <FlagArray index="KillCredit" value="0"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FlagArray index="Destructible" value="1"/>
+        <FlagArray index="NoScore" value="1"/>
+        <FlagArray index="ForceCollisionCheck" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <DeathRevealRadius value="0"/>
+        <DeathRevealDuration value="0"/>
+        <Collide index="Burrow" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <PlacementFootprint value="Footprint3x3ForceField"/>
+    </CUnit>
+    <CActorUnit id="Havoc_ForceField" parent="AdvancedUnitStandard" unitName="Havoc_ForceField">
+        <On Terms="ActorCreation" Send="SetTintColor 255,0,0"/>
+        <PlacementModel value="Invisible"/>
+        <UnitFlags index="ShowBlobShadow" value="0"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <UnitIcon value="Assets\Textures\BTN-Ability-Terran-ScannerSweep.dds"/>
+        <HeroIcon value="Assets\Textures\BTN-Ability-Terran-ScannerSweep.dds"/>
+    </CActorUnit>
+    <CModel id="Havoc_ForceField" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\ForceFieldImpact\ForceFieldImpact.m3"/>
+        <EditorCategories value="Race:Taldarim"/>
+        <ScaleMax value="0.525000,0.525000,0.525000"/>
+        <ScaleMin value="0.525000,0.525000,0.525000"/>
+        <SelectionLayer value="2"/>
+        <SelectionRadius value="0.952100"/>
+        <ShadowRadius value="0.952100"/>
+    </CModel>
+
+    <CSound id="Havoc_ForceField@Death" parent="Combat">
+        <EditorCategories value="Race:Taldarim"/>
+        <DupeDestroyCount value="3"/>
+        <Volume value="-4.560000,-4.560000"/>
+        <AssetArray File="Assets\Sounds\Protoss\Sentry\Sentry_ForceFieldDeath0.wav"/>
+    </CSound>
+    <CSound id="Havoc_ForceField@Birth" parent="Spell">
+        <EditorCategories value="Race:Taldarim"/>
+        <AssetArray File="Assets\Sounds\Protoss\Sentry\Sentry_ForceFieldLaunch.wav"/>
+    </CSound>
+
+    <CDataCollectionUnit id="Havoc_ForceField" parent="AbilityBase">
+        <DataRecord Entry="Button,Havoc_ForceField"/>
+        <DataRecord Entry="Abil,Havoc_ForceField"/>
+        <DataRecord Entry="Behavior,Havoc_ForceField@TimedLife"/>
+        <DataRecord Entry="Effect,Havoc_ForceField@CU"/>
+        <DataRecord Entry="Effect,Havoc_ForceField@Placement"/>
+        <DataRecord Entry="Effect,Havoc_ForceField@TimedLife"/>
+        <DataRecord Entry="Actor,Havoc_ForceField@CursorSplat"/>
+        <DataRecord Entry="Actor,Havoc_ForceField@Range"/>
+        <DataRecord Entry="Model,Havoc_ForceField@CursorSplat"/>
+        <DataRecord Entry="Sound,Havoc_ForceField@Launch"/>
+        <DataRecord Entry="Unit,Havoc_ForceField"/>
+    </CDataCollectionUnit>
+
+    <!-- ============= Buffs ============= -->
+    <!-- Squad Sight -->
+
+    <CButton id="Havoc_SquadSight">
+        <EditorCategories value="Race:Taldarim"/>
+        <Icon value="Assets\Textures\btn-ability-protoss-squadsight.dds"/>
+    </CButton>
+
+    <CBehaviorBuff id="Havoc_SquadSight@Aura">
+        <EditorCategories value="Race:Taldarim,AbilityorEffectType:Units"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <DisableValidatorArray value="IsNotWarpingIn"/>
+        <Period value="0.25"/>
+        <PeriodicEffect value="Havoc_SquadSight@Search"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Havoc_SquadSight@Buff">
+        <EditorCategories value="Race:Taldarim,AbilityorEffectType:Units"/>
+        <Duration value="1"/>
+        <Modification RangedWeaponRange="2"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-squadsight.dds"/>
+    </CBehaviorBuff>
+
+    <CEffectEnumArea id="Havoc_SquadSight@Search">
+        <EditorCategories value="Race:Taldarim"/>
+        <SearchFilters value="Visible;Neutral,Enemy,Structure,Missile,Stasis,Dead,Invulnerable"/>
+        <AreaArray Radius="4" Effect="Havoc_SquadSight@AB"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="Havoc_SquadSight@AB">
+        <EditorCategories value="Race:Taldarim"/>
+        <Behavior value="Havoc_SquadSight@Buff"/>
+    </CEffectApplyBehavior>
+
+    <CActorModel id="Havoc_SquadSight@Model" parent="ModelAnimationStyleContinuous">
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpBasicScopeFollow" HoldRotation="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <On Terms="Behavior.Havoc_SquadSight@Aura.On" Send="Create"/>
+        <On Terms="Behavior.Havoc_SquadSight@Aura.Off" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CModel id="Havoc_SquadSight@Model" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Protoss\SquadSight\SquadSight.m3"/>
+        <EditorCategories value="Race:Taldarim"/>
+    </CModel>
+
+    <CDataCollectionUnit id="Havoc_SquadSight" parent="AbilityBase">
+        <DataRecord Entry="Button,Havoc_SquadSight"/>
+        <DataRecord Entry="Behavior,Havoc_SquadSight@Aura"/>
+        <DataRecord Entry="Behavior,Havoc_SquadSight@Buff"/>
+        <DataRecord Entry="Effect,Havoc_SquadSight@Search"/>
+        <DataRecord Entry="Effect,Havoc_SquadSight@AB"/>
+        <DataRecord Entry="Actor,Havoc_SquadSight@Model"/>
+        <DataRecord Entry="Model,Havoc_SquadSight@Model"/>
+    </CDataCollectionUnit>
+
 </Catalog>

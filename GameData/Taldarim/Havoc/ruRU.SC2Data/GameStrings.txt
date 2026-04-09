@@ -1,0 +1,6 @@
+Button/Name/Havoc=Вызвать разрушителя
+Button/Name/Havoc_ForceField=Силовое поле
+Button/Name/Havoc_SquadSight=Системы наведения
+
+Unit/Name/Havoc=Разрушитель
+Unit/Name/Havoc_ForceField=Силовое поле

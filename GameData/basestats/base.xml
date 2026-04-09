@@ -211,6 +211,7 @@
         <Macros value="UnloadDropAnim"/>
         <Macros value="PhysicsDeathsSwarmGround"/>
         <Macros value="PhysicsDeathsVoidGround"/>
+        <Macros value="TerrainSquibAnimations"/>
         <WalkAnimMoveSpeed value="2.25"/>
     </CActorUnit>
 
