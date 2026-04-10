@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    <!-- Requires: Unit:Generic_Unit_Air[base.xml] -->
+    <!-- Requires: DataCollectionUnit:Weapon_Base[base.xml] -->
+    <!-- Requires: DataCollectionUnit:AbilityBase[base.xml] -->
+    <!-- Requires: CButton:UnitButton_OnlyAir[base.xml] -->
+    <!-- Requires: CActorUnit:AdvancedUnitStandard[base.xml] -->
+
+    <CButton id="Destroyer" parent="UnitButton_OnlyAir">
+        <EditorCategories value="Race:Taldarim"/>
+        <Icon value="Assets\Textures\btn-unit-protoss-voidray-taldarim.dds"/>
+    </CButton>
+    
+    <CUnit id="Destroyer" parent="Generic_Unit_Air" race="Tald">
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+        <AbilArray Link="ProgressRally"/>
+        <AbilArray Link="Warpable"/>
+        <WeaponArray Link="Destroyer_Weapon"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="VoidVoidRayBeamBounce" Type="Passive" Row="2" Column="0"/>
+        </CardLayouts>
+        <FlagArray index="AIFleeDamageDisabled" value="1"/>
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Mechanical" value="1"/>
+        <LifeStart value="150"/>
+        <LifeMax value="150"/>
+        <ShieldsStart value="100"/>
+        <ShieldsMax value="100"/>
+        <ShieldRegenDelay value="10"/>
+        <ShieldRegenRate value="2"/>
+        <Acceleration value="2"/>
+        <StationaryTurningRate value="999.8437"/>
+        <TurningRate value="999.8437"/>
+        <Sight value="10"/>
+        <Food value="-4"/>
+        <CostResource index="Minerals" value="250"/>
+        <CostResource index="Vespene" value="150"/>
+        <RepairTime value="60"/>
+        <KillXP value="100"/>
+        <Radius value="1"/>
+        <SeparationRadius value="0.75"/>
+        <ScoreMake value="400"/>
+        <ScoreKill value="400"/>
+        <ScoreResult value="BuildOrder"/>
+        <SubgroupPriority value="14"/>
+        <MinimapRadius value="1"/>
+        <GlossaryPriority value="160"/>
+        <GlossaryStrongArray value="Battlecruiser"/>
+        <GlossaryStrongArray value="Corruptor"/>
+        <GlossaryStrongArray value="Carrier"/>
+        <GlossaryWeakArray value="VikingFighter"/>
+        <GlossaryWeakArray value="Mutalisk"/>
+        <GlossaryWeakArray value="Phoenix"/>
+    </CUnit>
+    
+    <CActorUnit id="Destroyer" parent="AdvancedUnitStandard" unitName="Destroyer">
+        <On Terms="Behavior.Destroyer_Weapon@Buff.On" Send="AnimBracketStart AnimAttack Attack Stand,Channel Attack,End ContentForceLooping"/>
+        <On Terms="Behavior.Destroyer_Weapon@Buff.Off" Send="AnimBracketStop AnimAttack"/>
+
+        <On Terms="Behavior.Destroyer_Weapon@Buff.On" Send="Create Destroyer@Addition_Attack01"/>
+        <On Terms="Behavior.Destroyer_Weapon@Buff.On" Send="Create Destroyer@Addition_Attack02"/>
+        <On Terms="Behavior.Destroyer_Weapon@Buff.On" Send="Create Destroyer@Addition_Attack03"/>
+        <On Terms="Behavior.Destroyer_Weapon@Buff.Off" Target="Destroyer@Addition_Attack01" Send="Destroy"/>
+        <On Terms="Behavior.Destroyer_Weapon@Buff.Off" Target="Destroyer@Addition_Attack02" Send="Destroy"/>
+        <On Terms="Behavior.Destroyer_Weapon@Buff.Off" Target="Destroyer@Addition_Attack03" Send="Destroy"/>
+        <Aliases value="_UnitLarge"/>
+        <AnimBlendTime value="0.500000"/>
+        <BarWidth value="100"/>
+        <BarOffset value="65"/>
+        <NameOffset value="60"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-voidray-taldarim.dds"/>
+        <HeroIcon value="Assets\Textures\btn-unit-protoss-voidray-taldarim.dds"/>
+        <WireframeShield>
+            <Image value="Assets\Textures\wireframe-protoss-voidray-taldarim-shield01.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-voidray-taldarim-shield02.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-voidray-taldarim-shield03.dds"/>
+        </WireframeShield>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-protoss-voidray-taldarim.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-protoss-voidray-taldarim.dds"/>
+        </Wireframe>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-airarmorlevel0.dds"/>
+    </CActorUnit>
+
+    
+    <CActorModel id="Destroyer@Addition_Attack01" parent="ModelAnimationStyleContinuous">
+        <Model value="Destroyer@ChargeAttack"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachWeapon03"/>
+    </CActorModel>
+    <CActorModel id="Destroyer@Addition_Attack02" parent="ModelAnimationStyleContinuous">
+        <Model value="Destroyer@ChargeAttack"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachWeapon05"/>
+    </CActorModel>
+    <CActorModel id="Destroyer@Addition_Attack03" parent="ModelAnimationStyleContinuous">
+        <Model value="Destroyer@ChargeAttack"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachWeapon07"/>
+    </CActorModel>
+    
+    <CModel id="Destroyer" parent="Unit">
+        <Model value="Assets\Units\Protoss\VoidRay_TalDarim\VoidRay_TalDarim.m3"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.850000,0.850000,0.850000"/>
+        <ScaleMin value="0.850000,0.850000,0.850000"/>
+        <SelectionOffset value="0.000000,0.000000,-0.750000"/>
+        <SelectionRadius value="0.882000"/>
+        <SquibTypeDefault value="Metal"/>
+        <Radius value="0.750000"/>
+        <TechPurchaseCamera value="Star2CameraLow08"/>
+        <UnitGlossaryCamera value="Star2CameraLow08"/>
+        <PlanetPanelCamera value="Star2CameraLow08"/>
+        <ShadowRadius value="0.882000"/>
+    </CModel>
+    <CModel id="Destroyer@Death" parent="UnitDeath">
+        <ScaleMax value="0.850000,0.850000,0.850000"/>
+        <ScaleMin value="0.850000,0.850000,0.850000"/>
+        <Model value="Assets\Units\Protoss\VoidRay_TalDarim_Death\VoidRay_TalDarim_Death.m3"/>
+        <Occlusion value="Show"/>
+        <LowQualityModel value="ProtossLargeTaldarimUnitDeathLow"/>
+        <SelectionRadius value="0.555400"/>
+        <ShadowRadius value="0.555400"/>
+    </CModel>
+    <CModel id="Destroyer@Holo" parent="OneShotSpellFX">
+
+    </CModel>
+    <CModel id="Destroyer@Placement" parent="Placement">
+        <ScaleMax value="0.850000,0.850000,0.850000"/>
+        <ScaleMin value="0.850000,0.850000,0.850000"/>
+        <Model value="Assets\Units\Protoss\VoidRay_TalDarim_Placement\VoidRay_TalDarim_Placement.m3"/>
+    </CModel>
+    <CModel id="Destroyer@Build">
+    
+    </CModel>
+    <CModel id="Destroyer@WarpIn" parent="OneShotSpellFX">
+        <Model value="Assets\Units\Protoss\VoidRay_TalDarim_WarpIn\VoidRay_TalDarim_WarpIn.m3"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.850000,0.850000,0.850000"/>
+        <ScaleMin value="0.850000,0.850000,0.850000"/>
+        <EditorCategories value="Race:Taldarim"/>
+        <LowQualityModel value="ProtossUnitBirth"/>
+        <SelectionOffset value="0.000000,0.000000,-0.750000"/>
+        <SelectionRadius value="0.882000"/>
+        <ShadowRadius value="0.882000"/>
+    </CModel>
+    <CModel id="Destroyer@WarpOut" parent="OneShotSpellFX">
+        <Model value="Assets\Portraits\Zerg\DestroyerEx2Portrait\DestroyerEx2Portrait.m3"/>
+        <Lighting value="DestroyerEx2Portrait"/>
+        <Image value="Assets\Textures\destroyerportrait_static.dds"/>
+    </CModel>
+    <CModel id="Destroyer@Portrait" parent="Portrait">
+        <Model value="Assets\Portraits\Zerg\DestroyerEx2Portrait\DestroyerEx2Portrait.m3"/>
+        <Lighting value="DestroyerEx2Portrait"/>
+        <Image value="Assets\Textures\destroyerportrait_static.dds"/>
+    </CModel>
+    <CModel id="Destroyer@ChargeAttack" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Protoss\VoidRayBeamBounceBeam\VoidRayBeamBounceBeam.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+
+    <CSound id="Destroyer@Movement" parent="Movement">
+        <EditorCategories value="Race:Taldarim"/>
+        <AssetArray File="Assets\Sounds\Protoss\VoidRay\VoidRay_Movement01.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\VoidRay\VoidRay_Movement02.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\VoidRay\VoidRay_Movement03.wav"/>
+        <Volume value="-6.000000,-6.000000"/>
+        <Pitch value="-1.000000,1.000000"/>
+    </CSound>
+    <CSound id="Destroyer@Attack" parent="Voice">
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Destroyer_Attack00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Destroyer_Attack01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Destroyer_Attack02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Destroyer_Attack03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Destroyer_Attack04.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Destroyer_Attack05.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Destroyer_Attack06.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Destroyer_Attack07.ogg" FacialGroup=""/>
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="Destroyer@Help" parent="Alert">
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Destroyer_Help00.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+    <CSound id="Destroyer@Pissed" parent="Pissed">
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Destroyer_Pissed00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Destroyer_Pissed01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Destroyer_Pissed02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Destroyer_Pissed03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Destroyer_Pissed04.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Destroyer_Pissed05.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Destroyer_Pissed06.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Destroyer_Pissed07.ogg" FacialGroup=""/>
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="Destroyer@Yes" parent="Voice">
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Destroyer_What00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Destroyer_What01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Destroyer_What02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Destroyer_What03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Destroyer_What04.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Destroyer_What05.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Destroyer_What06.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Destroyer_What07.ogg" FacialGroup=""/>
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="Destroyer@What" parent="Voice">
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Destroyer_What00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Destroyer_What01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Destroyer_What02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Destroyer_What03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Destroyer_What04.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Destroyer_What05.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Destroyer_What06.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Destroyer_What07.ogg" FacialGroup=""/>
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="Destroyer@Ready" parent="Ready">
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Destroyer_Ready00.ogg" FacialGroup=""/>
+        <Volume value="1.000000,1.000000"/>
+    </CSound>
+
+    <CDataCollectionUnit id="Destroyer" parent="UnitAir">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Taldarim,ObjectType:Unit"/>
+        <DataRecord Entry="Button,Destroyer"/>
+        <DataRecord Entry="Unit,Destroyer"/>
+        <DataRecord Entry="Actor,Destroyer"/>
+        <DataRecord Entry="Model,Destroyer"/>
+        <DataRecord Entry="Model,Destroyer@Death"/>
+        <DataRecord Entry="Model,Destroyer@Holo"/>
+        <DataRecord Entry="Model,Destroyer@Placement"/>
+        <DataRecord Entry="Model,Destroyer@Build"/>
+        <DataRecord Entry="Model,Destroyer@WarpIn"/>
+        <DataRecord Entry="Model,Destroyer@WarpOut"/>
+        <DataRecord Entry="Model,Destroyer@Portrait"/>
+        <DataRecord Entry="Sound,Destroyer@Movement"/>
+        <DataRecord Entry="Sound,Destroyer@Attack"/>
+        <DataRecord Entry="Sound,Destroyer@Help"/>
+        <DataRecord Entry="Sound,Destroyer@Pissed"/>
+        <DataRecord Entry="Sound,Destroyer@Yes"/>
+        <DataRecord Entry="Sound,Destroyer@What"/>
+        <DataRecord Entry="Sound,Destroyer@Ready"/>
+        <DataRecord Entry="Requirement,Destroyer"/>
+        <DataRecord Entry="Validator,Destroyer@Is"/>
+        <DataRecord Entry="Validator,Destroyer@Target"/>
+        <DataRecord Entry="Validator,Destroyer@Not"/>
+        <DataRecord Entry="Validator,Destroyer@NotTarget"/>
+        <TechInfoUpgradeUsed value="ProtossAirArmors@1"/>
+        <TechInfoUpgradeUsed value="ProtossAirArmors@2"/>
+        <TechInfoUpgradeUsed value="ProtossAirArmors@3"/>
+        <TechInfoUpgradeUsed value="ProtossShields@1"/>
+        <TechInfoUpgradeUsed value="ProtossShields@2"/>
+        <TechInfoUpgradeUsed value="ProtossShields@3"/>
+        <TechInfoUpgradeUsed value="ProtossAirWeapons@1"/>
+        <TechInfoUpgradeUsed value="ProtossAirWeapons@2"/>
+        <TechInfoUpgradeUsed value="ProtossAirWeapons@3"/>
+    </CDataCollectionUnit>
+
+    <CRequirement id="Destroyer"/>
+
+    <CValidatorUnitType id="Destroyer@Is" parent="IsUnit_Default" unit="Destroyer"/>
+    <CValidatorUnitType id="Destroyer@Target" parent="TargetIsUnit_Default" unit="Destroyer"/>
+    <CValidatorUnitType id="Destroyer@Not" parent="NotUnit_Default" unit="Destroyer"/>
+    <CValidatorUnitType id="Destroyer@NotTarget" parent="TargetNotUnit_Default" unit="Destroyer"/>
+
+    <!-- Weapons -->
+
+    <CWeaponLegacy id="Destroyer_Weapon">
+        <EditorCategories value="Race:Taldarim"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-airweaponslevel0.dds"/>
+        <DisplayEffect value="Destroyer_Weapon@Damage"/>
+        <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="6"/>
+        <RangeSlop value="2"/>
+        <ArcSlop value="39.9902"/>
+        <Period value="0.5"/>
+        <Backswing value="0.75"/>
+        <LegacyOptions index="CanRetargetWhileChanneling" value="1"/>
+        <AllowedMovement value="Moving"/>
+        <Effect value="Destroyer_Weapon@Beam"/>
+    </CWeaponLegacy>
+    
+    <CDataCollectionUnit id="Destroyer_Weapon" parent="Weapon_Missile">
+        <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:Taldarim,ObjectType:Projectile"/>
+        <DataRecord Entry="Weapon,Destroyer_Weapon"/>
+        <DataRecord Entry="Effect,Destroyer_Weapon@Beam"/>
+        <DataRecord Entry="Effect,Destroyer_Weapon@Set"/>
+        <DataRecord Entry="Effect,Destroyer_Weapon@AB_Buff"/>
+        <DataRecord Entry="Effect,Destroyer_Weapon@Damage"/>
+        <DataRecord Entry="Effect,Destroyer_Weapon@User_Reset"/>
+        <DataRecord Entry="Effect,Destroyer_Weapon@Search"/>
+        <DataRecord Entry="Effect,Destroyer_Weapon@User"/>
+        <DataRecord Entry="Effect,Destroyer_Weapon@Set_Bounce"/>
+        <DataRecord Entry="Effect,Destroyer_Weapon@DamageBounce"/>
+        <DataRecord Entry="Behavior,Destroyer_Weapon@Buff"/>
+        <DataRecord Entry="Actor,Destroyer_Weapon@Attack"/>
+        <DataRecord Entry="Actor,Destroyer_Weapon@AttackBeam"/>
+        <DataRecord Entry="Actor,Destroyer_Weapon@AttackBounce"/>
+        <DataRecord Entry="Actor,Destroyer_Weapon@AttackBounceBeam"/>
+        <DataRecord Entry="Actor,Destroyer_Weapon@Site"/>
+        <DataRecord Entry="Model,Destroyer_Weapon@AttackBeam"/>
+        <DataRecord Entry="Model,Destroyer_Weapon@AttackBounceBeam"/>
+        <TechInfoUpgradeUsed value="ProtossAirWeapons@1"/>
+        <TechInfoUpgradeUsed value="ProtossAirWeapons@2"/>
+        <TechInfoUpgradeUsed value="ProtossAirWeapons@3"/>
+    </CDataCollectionUnit>
+    
+    <CActorSite id="Destroyer_Weapon@Site" parent="GenericAttackImpactSite"/>
+    <CActorAction id="Destroyer_Weapon@Attack" parent="GenericAttackBase">
+        <ImpactSite value="Destroyer_Weapon@Site"/>
+        <LaunchAttachQuery Methods="Weapon 1"/>
+        <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeNoVizEnhance SOpForwardLaunchGuide"/>
+        <ActionFlags index="AlignedImpactsAndDamages" value="1"/>
+        <ActionFlags index="LaunchForceSite" value="1"/>
+        <Lifetime value="-1"/>
+        <On Terms="Effect.Destroyer_Weapon@Beam.Start; At Caster" Send="Create"/>
+        <On Terms="Effect.Destroyer_Weapon@Damage.Start; FromEffectTreeDescendant" Send="ActionDamage"/>
+        <On Terms="Effect.Destroyer_Weapon@Beam.Stop" Send="Destroy"/>
+    </CActorAction>
+    <CActorBeamSimple id="Destroyer_Weapon@AttackBeam" parent="BeamSimpleAnimationStyleContinuous">
+        <On Terms="Effect.Destroyer_Weapon@Beam.Stop; At Effect" Send="TimerSet 0.125000 DelayDestroy"/>
+        <On Terms="TimerExpired; TimerName DelayDestroy" Send="Destroy"/>
+    </CActorBeamSimple>
+
+    <CActorAction id="Destroyer_Weapon@AttackBounce" parent="GenericAttackBase">
+        <AcquisitionYawHalfArc value="0.100000"/>
+        <AcquisitionPitchHalfArc value="0.100000"/>
+        <AccuracyHalfArc value="0.100000"/>
+        <ImpactSite value="Destroyer_Weapon@Site"/>
+        <BeamScope value="Caster"/>
+        <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeNoVizEnhance"/>
+        <LaunchRequest Subject="Destroyer_Weapon@Site" Actor="Find"/>
+        <ActionFlags index="AlignedImpactsAndDamages" value="1"/>
+        <ActionFlags index="LaunchForceSite" value="1"/>
+        <Lifetime value="0.750000"/>
+        <On Terms="Effect.Destroyer_Weapon@DamageBounce.Start" Send="Create"/>
+        <On Terms="Effect.Destroyer_Weapon@DamageBounce.Start; At Effect; FromEffectTreeDescendant" Send="ActionDamage"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.900000 DelayDeath"/>
+        <On Terms="TimerExpired; TimerName DelayDeath" Send="Destroy"/>
+    </CActorAction>
+    <CActorBeamSimple id="Destroyer_Weapon@AttackBounceBeam">
+        <On Terms="ActorCreation" Send="AnimPlay Attack Attack,02 PlayForever"/>
+        <!-- Beam will persist through death anim if we don't have this. -->
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <!--On Terms="ActorCreation" Send="SetTintColor 128,128,128 1.000000"/-->
+        <On Terms="ActorCreation" Send="SetOpacity"/>
+        <On Terms="ActorCreation" Send="SetOpacity 1.000000 0.300000"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.600000 OpacTimer"/>
+        <On Terms="TimerExpired; TimerName OpacTimer" Send="SetOpacity 0.000000 0.300000"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.900000 DelayDeath"/>
+        <On Terms="TimerExpired; TimerName DelayDeath" Send="Destroy"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+    </CActorBeamSimple>
+
+    
+    <CActorSound id="Destroyer_Weapon@LaunchSound" parent="SoundOneShot">
+        <On Terms="Effect.Destroyer_Weapon@Beam.Start" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="Destroyer_Weapon@ImpactSound" parent="SoundOneShot">
+        <On Terms="Effect.Destroyer_Weapon@Beam.Stop" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="Destroyer_Weapon@LoopSound" parent="SoundContinuous">
+        <Inherits index="Visibility" value="0"/>
+        <Sound value="VoidRay_WeaponLoop1"/>
+        <Host Subject="_Selectable"/>
+        <On Terms="Effect.PrismaticBeamChargeEffect01.Start" Send="Create"/>
+        <On Terms="Effect.PrismaticBeamChargeEffect01.Stop" Send="Destroy"/>
+    </CActorSound>
+
+    <CModel id="Destroyer_Weapon@AttackBeam" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\VoidRayBeamBounceMissile\VoidRayBeamBounceMissile.m3"/>
+        <EditorCategories value="Race:Taldarim"/>
+        <RadiusLoose value="1.000000"/>
+    </CModel>
+    <CModel id="Destroyer_Weapon@AttackBounceBeam" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\BeamBounceMissile\BeamBounceMissile.m3"/>
+        <EditorCategories value="Race:Taldarim"/>
+        <RadiusLoose value="1.000000"/>
+    </CModel>
+
+    <CSound id="Destroyer_Weapon@LaunchSound" parent="Combat">
+        <DupeDestroyCount value="4"/>
+        <Pitch value="-1.820000,1.640000"/>
+        <Volume value="-6.940000,-5.200000"/>
+        <AssetArray File="Assets\Sounds\Protoss\VoidRay\VoidRay_WeaponStart.wav"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CSound>
+    <CSound id="Destroyer_Weapon@ImpactSound" parent="Combat">
+        <DupeDestroyCount value="4"/>
+        <AssetArray File="Assets\Sounds\Protoss\VoidRay\VoidRay_WeaponEnd.wav"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CSound>
+    <CSound id="Destroyer_Weapon@LoopSound" parent="Combat">
+        <AssetArray File="Assets\Sounds\Protoss\VoidRay\VoidRay_WeaponLoop.wav"/>
+        <SustainFade index="1" Time="100"/>
+        <LoopCount value="-1"/>
+        <OffsetFadeIn Volume="-96.000000"/>
+        <OffsetFadeIn Time="100"/>
+        <OffsetFadeOut/>
+        <OffsetFadeOut Time="100" Volume="-96.000000"/>
+        <DupeMuteCount value="4"/>
+        <OverlapTimeDelta value="100"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CSound>
+
+    <CBehaviorBuff id="Destroyer_Weapon@Buff">
+        <EditorCategories value="Race:Taldarim"/>
+        <Duration value="5"/>
+    </CBehaviorBuff>
+
+    <CEffectCreatePersistent id="Destroyer_Weapon@Beam">
+        <EditorCategories value="Race:Taldarim"/>
+        <Flags index="Channeled" value="1"/>
+        <Flags index="PersistUntilDestroyed" value="1"/>
+        <WhichLocation Value="TargetUnit"/>
+        <TimeScaleSource Value="Caster"/>
+        <PeriodicEffectArray value="Destroyer_Weapon@Set"/>
+        <PeriodicPeriodArray value="0.5"/>
+    </CEffectCreatePersistent>
+    
+    <CEffectSet id="Destroyer_Weapon@Set">
+        <EditorCategories value="Race:Taldarim"/>
+        <EffectArray value="Destroyer_Weapon@AB_Buff"/>
+        <EffectArray value="Destroyer_Weapon@Damage"/>
+        <EffectArray value="Destroyer_Weapon@User_Reset"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="Destroyer_Weapon@AB_Buff">
+        <EditorCategories value="Race:Taldarim"/>
+        <Behavior value="Destroyer_Weapon@Buff"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="Destroyer_Weapon@Damage" parent="DU_WEAP">
+        <EditorCategories value="Race:Taldarim"/>
+        <Amount value="9"/>
+        <Death value="Fire"/>
+    </CEffectDamage>
+    <CEffectUserData id="Destroyer_Weapon@User_Reset">
+        <EditorCategories value="Race:Taldarim"/>
+        <Operation value="Set"/>
+        <Amount value="0"/>
+        <EffectSuccess value="Destroyer_Weapon@Search"/>
+    </CEffectUserData>
+    <CEffectEnumArea id="Destroyer_Weapon@Search">
+        <EditorCategories value="Race:Taldarim"/>
+        <AreaArray Radius="5" Effect="Destroyer_Weapon@User"/>
+        <SearchFilters value="Visible;Missile,Hidden,Self,Invulnerable"/>
+        <MaxCount value="2"/>
+        <ExcludeArray Value="Outer"/>
+        <ExcludeArray Value="Target"/>
+        <TargetSorts>
+            <SortArray value="TSFarthestDistance"/>
+        </TargetSorts>
+    </CEffectEnumArea>
+    <CEffectUserData id="Destroyer_Weapon@User">
+        <EditorCategories value="Race:Taldarim"/>
+        <ValidateMax value="2"/>
+        <EffectSuccess value="Destroyer_Weapon@Set_Bounce"/>
+    </CEffectUserData>
+    <CEffectSet id="Destroyer_Weapon@Set_Bounce">
+        <EditorCategories value="Race:Taldarim"/>
+        <EffectArray value="Destroyer_Weapon@DamageBounce"/>
+        <EffectArray value="Destroyer_Weapon@Search"/>
+    </CEffectSet>
+    <CEffectDamage id="Destroyer_Weapon@DamageBounce" parent="DU_WEAP">
+        <EditorCategories value="Race:Taldarim"/>
+        <Amount value="4"/>
+        <AttributeBonus index="Light" value="2"/>
+        <Death value="Fire"/>
+        <DamageModifierSource Value="Caster"/>
+    </CEffectDamage>
+
+
+
+    
+</Catalog>
