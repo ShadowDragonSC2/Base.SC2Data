@@ -1,0 +1,10 @@
+Button/Name/Destroyer=Разрушитель
+Button/Tooltip/Destroyer=Воздушный юнит Талдаримов с атакующим лучом, который может переключаться между целями.
+
+Unit/Name/Destroyer=Разрушитель
+
+Weapon/Name/Destroyer_Weapon=Пsi-луч Разрушителя
+Weapon/Tip/Destroyer_Weapon=Лучевое оружие, наносящее урон по области с возможностью переключения на дополнительные цели.
+
+DataCollection/Name/Destroyer=Разрушитель
+DataCollection/Name/Destroyer_Weapon=Оружие Разрушителя

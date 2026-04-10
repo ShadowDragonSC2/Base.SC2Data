@@ -284,31 +284,6 @@
         <Effect value="Destroyer_Weapon@Beam"/>
     </CWeaponLegacy>
     
-    <CDataCollectionUnit id="Destroyer_Weapon" parent="Weapon_Missile">
-        <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:Taldarim,ObjectType:Projectile"/>
-        <DataRecord Entry="Weapon,Destroyer_Weapon"/>
-        <DataRecord Entry="Effect,Destroyer_Weapon@Beam"/>
-        <DataRecord Entry="Effect,Destroyer_Weapon@Set"/>
-        <DataRecord Entry="Effect,Destroyer_Weapon@AB_Buff"/>
-        <DataRecord Entry="Effect,Destroyer_Weapon@Damage"/>
-        <DataRecord Entry="Effect,Destroyer_Weapon@User_Reset"/>
-        <DataRecord Entry="Effect,Destroyer_Weapon@Search"/>
-        <DataRecord Entry="Effect,Destroyer_Weapon@User"/>
-        <DataRecord Entry="Effect,Destroyer_Weapon@Set_Bounce"/>
-        <DataRecord Entry="Effect,Destroyer_Weapon@DamageBounce"/>
-        <DataRecord Entry="Behavior,Destroyer_Weapon@Buff"/>
-        <DataRecord Entry="Actor,Destroyer_Weapon@Attack"/>
-        <DataRecord Entry="Actor,Destroyer_Weapon@AttackBeam"/>
-        <DataRecord Entry="Actor,Destroyer_Weapon@AttackBounce"/>
-        <DataRecord Entry="Actor,Destroyer_Weapon@AttackBounceBeam"/>
-        <DataRecord Entry="Actor,Destroyer_Weapon@Site"/>
-        <DataRecord Entry="Model,Destroyer_Weapon@AttackBeam"/>
-        <DataRecord Entry="Model,Destroyer_Weapon@AttackBounceBeam"/>
-        <TechInfoUpgradeUsed value="ProtossAirWeapons@1"/>
-        <TechInfoUpgradeUsed value="ProtossAirWeapons@2"/>
-        <TechInfoUpgradeUsed value="ProtossAirWeapons@3"/>
-    </CDataCollectionUnit>
-    
     <CActorSite id="Destroyer_Weapon@Site" parent="GenericAttackImpactSite"/>
     <CActorAction id="Destroyer_Weapon@Attack" parent="GenericAttackBase">
         <ImpactSite value="Destroyer_Weapon@Site"/>
@@ -355,7 +330,6 @@
         <On Terms="TimerExpired; TimerName DelayDeath" Send="Destroy"/>
         <ModelFlags index="AllowHitTest" value="0"/>
     </CActorBeamSimple>
-
     
     <CActorSound id="Destroyer_Weapon@LaunchSound" parent="SoundOneShot">
         <On Terms="Effect.Destroyer_Weapon@Beam.Start" Send="Create"/>
@@ -367,12 +341,12 @@
         <Inherits index="Visibility" value="0"/>
         <Sound value="VoidRay_WeaponLoop1"/>
         <Host Subject="_Selectable"/>
-        <On Terms="Effect.PrismaticBeamChargeEffect01.Start" Send="Create"/>
-        <On Terms="Effect.PrismaticBeamChargeEffect01.Stop" Send="Destroy"/>
+        <On Terms="Effect.Destroyer_Weapon@Beam.Start" Send="Create"/>
+        <On Terms="Effect.Destroyer_Weapon@Beam.Stop" Send="Destroy"/>
     </CActorSound>
 
     <CModel id="Destroyer_Weapon@AttackBeam" parent="MissileFX">
-        <Model value="Assets\Effects\Protoss\VoidRayBeamBounceMissile\VoidRayBeamBounceMissile.m3"/>
+        <Model value="Assets\Effects\Protoss\BeamBounceMissile\BeamBounceMissile.m3"/>
         <EditorCategories value="Race:Taldarim"/>
         <RadiusLoose value="1.000000"/>
     </CModel>
@@ -473,7 +447,30 @@
         <DamageModifierSource Value="Caster"/>
     </CEffectDamage>
 
-
+    <CDataCollectionUnit id="Destroyer_Weapon" parent="Weapon_Missile">
+        <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:Taldarim,ObjectType:Projectile"/>
+        <DataRecord Entry="Weapon,Destroyer_Weapon"/>
+        <DataRecord Entry="Effect,Destroyer_Weapon@Beam"/>
+        <DataRecord Entry="Effect,Destroyer_Weapon@Set"/>
+        <DataRecord Entry="Effect,Destroyer_Weapon@AB_Buff"/>
+        <DataRecord Entry="Effect,Destroyer_Weapon@Damage"/>
+        <DataRecord Entry="Effect,Destroyer_Weapon@User_Reset"/>
+        <DataRecord Entry="Effect,Destroyer_Weapon@Search"/>
+        <DataRecord Entry="Effect,Destroyer_Weapon@User"/>
+        <DataRecord Entry="Effect,Destroyer_Weapon@Set_Bounce"/>
+        <DataRecord Entry="Effect,Destroyer_Weapon@DamageBounce"/>
+        <DataRecord Entry="Behavior,Destroyer_Weapon@Buff"/>
+        <DataRecord Entry="Actor,Destroyer_Weapon@Attack"/>
+        <DataRecord Entry="Actor,Destroyer_Weapon@AttackBeam"/>
+        <DataRecord Entry="Actor,Destroyer_Weapon@AttackBounce"/>
+        <DataRecord Entry="Actor,Destroyer_Weapon@AttackBounceBeam"/>
+        <DataRecord Entry="Actor,Destroyer_Weapon@Site"/>
+        <DataRecord Entry="Model,Destroyer_Weapon@AttackBeam"/>
+        <DataRecord Entry="Model,Destroyer_Weapon@AttackBounceBeam"/>
+        <TechInfoUpgradeUsed value="ProtossAirWeapons@1"/>
+        <TechInfoUpgradeUsed value="ProtossAirWeapons@2"/>
+        <TechInfoUpgradeUsed value="ProtossAirWeapons@3"/>
+    </CDataCollectionUnit>
 
     
 </Catalog>

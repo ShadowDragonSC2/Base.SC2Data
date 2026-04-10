@@ -206,6 +206,8 @@
         <AutoCastRange value="8"/>
         <CastOutroTime value="0.5"/>
         <Flags index="AutoCastOn" value="1"/>
+        <Flags index="Smart" value="1"/>
+        <SmartPriority value="8"/>
         <AutoCastValidatorArray value="NotHaveTargetLock"/>
         <AutoCastValidatorArray value="NotInterceptor"/>
         <TargetSorts>
@@ -237,7 +239,6 @@
         <InitialEffect value="Havoc_TargetLock@Set_Start"/>
         <FinalEffect value="Havoc_TargetLock@Set_Finish"/>
         <PeriodicPeriodArray value="1"/>
-        <Flags index="Channeled" value="1"/>
         <Flags index="PersistUntilDestroyed" value="1"/>
         <WhichLocation Value="TargetUnit"/>
         <PeriodicValidator value="Havoc_TargetLock@Checks"/>
@@ -311,14 +312,15 @@
         <AutoScaleFactor value="0.700000"/>
     </CActorModel>
     <CActorModel id="Havoc_TargetLock@LargeModel" parent="ModelAnimationStyleContinuous">
-        <On Terms="Behavior.ObserverTargetLock.On; ValidateUnit TargetLockUnitRadiusLarge" Send="Create"/>
-        <On Terms="Behavior.ObserverTargetLock.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.Havoc_TargetLock@Target.On; ValidateUnit Havoc_TargetLock@RadiusLarge" Send="Create"/>
+        <On Terms="Behavior.Havoc_TargetLock@Target.Off" Send="AnimBracketStop BSD"/>
         <HostSiteOps Ops="SOpAttachCenter" HoldRotation="1"/>
         <Inherits index="BaseModelScale" value="1"/>
         <Inherits index="Scale" value="1"/>
         <Inherits index="Visibility" value="1"/>
         <Host Subject="_Selectable"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <AutoScaleFactor value="1"/>
     </CActorModel>
     <CActorBeamSimple id="Havoc_TargetLock@Beam" parent="BeamSimpleAnimationStyleContinuous">
         <On Terms="Effect.Havoc_TargetLock@CP.Start; At Target" Send="Create"/>
