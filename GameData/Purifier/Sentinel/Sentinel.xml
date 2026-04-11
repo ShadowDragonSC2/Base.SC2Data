@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    <CButton id="Sentinel">
+        <Icon value="Assets\Textures\btn-unit-protoss-zealot-purifier.dds"/>
+    </CButton>
+    
+    <CUnit id="Sentinel" parent="Generic_Protoss_Unit_Ground" Race="Puri">
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
+        <LifeStart value="100"/>
+        <LifeMax value="100"/>
+        <LifeArmor value="1"/>
+        <ShieldsStart value="50"/>
+        <ShieldsMax value="50"/>
+        <Speed value="2.75"/>
+        <Collide index="Locust" value="1"/>
+        <LateralAcceleration value="46.0625"/>
+        <Food value="-2"/>
+        <KillXP value="20"/>
+        <InnerRadius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <CargoSize value="2"/>
+        <ScoreMake value="100"/>
+        <ScoreKill value="100"/>
+        <SubgroupPriority value="5"/>
+        <MinimapRadius value="0.375"/>
+        <Sight value="9"/>
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Mechanical" value="1"/>
+        <GlossaryPriority value="20"/>
+        <StationaryTurningRate value="999.8437"/>
+        <CostResource index="Minerals" value="100"/>
+        <GlossaryStrongArray value="Marauder"/>
+        <GlossaryStrongArray value="Zergling"/>
+        <GlossaryStrongArray value="Immortal"/>
+        <GlossaryWeakArray value="Hellion"/>
+        <GlossaryWeakArray value="Roach"/>
+        <GlossaryWeakArray value="Colossus"/>
+        <Fidget>
+            <ChanceArray index="Anim" value="20"/>
+            <ChanceArray index="Idle" value="70"/>
+            <ChanceArray index="Turn" value="10"/>
+        </Fidget>
+        <TauntDuration index="Cheer" value="5"/>
+        <TauntDuration index="Dance" value="5"/>
+    </CUnit>
+    
+    <CActorUnit id="Sentinel" parent="AdvancedStandard_Ground" unitName="Sentinel">
+        <Aliases value="_UnitSmall"/>
+        <BuildModel value="ZealotPurifierWarpIn"/>
+        <PlacementSound value="Protoss_BuildingPlacementSmall"/>
+        <Macros value="ChargingAnim"/>
+        <Macros value="TerrainSquibAnimations"/>
+        <On Terms="Behavior.Hallucination.On" Send="Create HallucinationBirthSoundSmall"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Zealot_Land"/>
+        
+        <BarWidth value="42"/>
+        <BarOffset value="45"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-zealot-purifier.dds"/>
+        <HeroIcon value="Assets\Textures\btn-unit-protoss-zealot.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
+        <WireframeShield>
+            <Image value="Assets\Textures\wireframe-protoss-zealot-purifier-shield01.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-zealot-purifier-shield02.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-zealot-purifier-shield03.dds"/>
+        </WireframeShield>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-protoss-zealot-purifier.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-protoss-zealot-purifier.dds"/>
+        </Wireframe>
+        <TerrainSquibs>
+            <MovementDistance value="0.150000,0.150000"/>
+            <IdlePeriod value="0.100000,0.250000"/>
+            <RangeUp value="0.600000"/>
+            <RangeDown value="0.600000"/>
+            <AttachQuery Methods="AMFilterCenter"/>
+            <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleMedium"/>
+        </TerrainSquibs>
+    </CActorUnit>
+    
+    <CModel id="Sentinel" parent="Unit">
+        <Model value="Assets\Units\Protoss\Zealot_Purifier\Zealot_Purifier.m3"/>
+        <RequiredAnims value="Assets\Units\Protoss\Zealot_SwarmAnims\Zealot_SwarmAnims.m3a"/>
+        <Occlusion value="Show"/>
+        <SelectionRadius value="0.416500"/>
+        <SquibTypeDefault value="Metal"/>
+        <Radius value="0.375000"/>
+        <TechPurchaseCamera value="Star2CameraMid05"/>
+        <UnitGlossaryCamera value="Star2CameraMid05"/>
+        <PlanetPanelCamera value="Star2CameraMid05"/>
+        <ShadowRadius value="0.416500"/>
+        <TextureDeclares Prefix="zealot_">
+            <Adaptions TriggerOnSubstring="_Diffuse" Slot="main"/>
+        </TextureDeclares>
+    </CModel>
+    <CModel id="Sentinel@Death" parent="UnitDeath">
+        <Model value="Assets\Units\Protoss\Zealot_Purifier_Death\Zealot_Purifier_Death.m3"/>
+        <Occlusion value="Show"/>
+        <LowQualityModel value="ProtossSpiritDeathLow"/>
+        <SelectionRadius value="0.555400"/>
+        <ShadowRadius value="0.555400"/>
+        <VariationCount value="2"/>
+    </CModel>
+    <CModel id="Sentinel@Placement" parent="Placement">
+        <Model value="Assets\Units\Protoss\Zealot_Purifier_Placement\Zealot_Purifier_Placement.m3"/>
+        <Radius value="-1.000000"/>
+        <Lighting value="Zealot"/>
+        <Occlusion value="Show"/>
+        <SelectionRadius value="0.416500"/>
+        <ShadowRadius value="0.416500"/>
+    </CModel>
+    <CModel id="Sentinel@Portrait" parent="Portrait">
+        <Model value="Assets\Portraits\Protoss\Zealot_Purifier_Portrait\Zealot_Purifier_Portrait.m3"/>
+        <Lighting value="PortraitZealotPurifier"/>
+        <Image value="Assets\Textures\purifierzealotportrait_static.dds"/>
+    </CModel>
+    <CModel id="Sentinel@WarpIn" parent="OneShotSpellFX">
+        <Model value="Assets\Units\Protoss\Zealot_Purifier_WarpIn\Zealot_Purifier_WarpIn.m3"/>
+        <Occlusion value="Show"/>
+        <EditorCategories value="Race:Protoss"/>
+        <LowQualityModel value="ProtossUnitBirth"/>
+        <SelectionRadius value="0.555400"/>
+        <ShadowRadius value="0.555400"/>
+    </CModel>
+
+    <CSound id="Sentinel@Death" parent="Protoss_DeathFX"/>
+    <CSound id="Sentinel@DeathVoice" parent="DeathVoice">
+        <Pitch value="-0.500000,0.500000"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Death01.wav"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Death01.wav"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Death02.wav"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Death03.wav"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Death04.wav"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+    <CSound id="Sentinel@Attack" parent="Voice">
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotPurifier_Attack00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotPurifier_Attack01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotPurifier_Attack02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotPurifier_Attack03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotPurifier_Attack04.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotPurifier_Attack05.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotPurifier_Attack06.ogg" FacialGroup=""/>
+        <Volume value="-5.000000,-5.000000"/>
+    </CSound>
+    <CSound id="Sentinel@Help" parent="Alert">
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotPurifier_Help00.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="Sentinel@Pissed" parent="Pissed">
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotPurifier_Pissed00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotPurifier_Pissed01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotPurifier_Pissed02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotPurifier_Pissed03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotPurifier_Pissed04.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotPurifier_Pissed05.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotPurifier_Pissed06.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotPurifier_Pissed07.ogg" FacialGroup=""/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Sentinel@Yes" parent="Voice">
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotPurifier_Yes00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotPurifier_Yes01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotPurifier_Yes02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotPurifier_Yes03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotPurifier_Yes04.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotPurifier_Yes05.ogg" FacialGroup=""/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Sentinel@What" parent="Voice">
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotPurifier_What00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotPurifier_What01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotPurifier_What02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotPurifier_What03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotPurifier_What04.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotPurifier_What05.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotPurifier_What06.ogg" FacialGroup=""/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Sentinel@Ready" parent="Ready">
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotPurifier_Ready00.ogg" FacialGroup=""/>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+    
+    <CDataCollectionUnit id="Sentinel" parent="UnitGround">
+        <DataRecord Entry="Button,Sentinel"/>
+        <DataRecord Entry="Actor,Sentinel"/>
+        <DataRecord Entry="Unit,Sentinel"/>
+        <DataRecord Entry="Model,Sentinel"/>
+        <DataRecord Entry="Model,Sentinel@Death"/>
+        <DataRecord Entry="Model,Sentinel@Placement"/>
+        <DataRecord Entry="Model,Sentinel@Portrait"/>
+        <DataRecord Entry="Model,Sentinel@WarpIn"/>
+        <DataRecord Entry="Sound,Sentinel@Death"/>
+        <DataRecord Entry="Sound,Sentinel@DeathVoice"/>
+        <DataRecord Entry="Sound,Sentinel@Attack"/>
+        <DataRecord Entry="Sound,Sentinel@Help"/>
+        <DataRecord Entry="Sound,Sentinel@Pissed"/>
+        <DataRecord Entry="Sound,Sentinel@Yes"/>
+        <DataRecord Entry="Sound,Sentinel@What"/>
+        <DataRecord Entry="Sound,Sentinel@Ready"/>
+    </CDataCollectionUnit>
+    
+
+</Catalog>
