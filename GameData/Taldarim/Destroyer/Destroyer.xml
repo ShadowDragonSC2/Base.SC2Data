@@ -11,13 +11,11 @@
         <Icon value="Assets\Textures\btn-unit-protoss-voidray-taldarim.dds"/>
     </CButton>
     
-    <CUnit id="Destroyer" parent="Generic_Unit_Air" race="Tald">
+    <CUnit id="Destroyer" parent="Generic_Protoss_Unit_Air" race="Tald">
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
-        <AbilArray Link="ProgressRally"/>
-        <AbilArray Link="Warpable"/>
         <WeaponArray Link="Destroyer_Weapon"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="VoidVoidRayBeamBounce" Type="Passive" Row="2" Column="0"/>
+            <LayoutButtons Face="Destroyer_Weapon@Passive" Type="Passive" Row="2" Column="0"/>
         </CardLayouts>
         <FlagArray index="AIFleeDamageDisabled" value="1"/>
         <Attributes index="Armored" value="1"/>
@@ -26,11 +24,7 @@
         <LifeMax value="150"/>
         <ShieldsStart value="100"/>
         <ShieldsMax value="100"/>
-        <ShieldRegenDelay value="10"/>
-        <ShieldRegenRate value="2"/>
         <Acceleration value="2"/>
-        <StationaryTurningRate value="999.8437"/>
-        <TurningRate value="999.8437"/>
         <Sight value="10"/>
         <Food value="-4"/>
         <CostResource index="Minerals" value="250"/>
@@ -87,7 +81,6 @@
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-airarmorlevel0.dds"/>
     </CActorUnit>
 
-    
     <CActorModel id="Destroyer@Addition_Attack01" parent="ModelAnimationStyleContinuous">
         <Model value="Destroyer@ChargeAttack"/>
         <Host Subject="_Selectable"/>
@@ -156,7 +149,6 @@
     </CModel>
     <CModel id="Destroyer@Portrait" parent="Portrait">
         <Model value="Assets\Portraits\Zerg\DestroyerEx2Portrait\DestroyerEx2Portrait.m3"/>
-        <Lighting value="DestroyerEx2Portrait"/>
         <Image value="Assets\Textures\destroyerportrait_static.dds"/>
     </CModel>
     <CModel id="Destroyer@ChargeAttack" parent="PersistentSpellFX">
@@ -227,6 +219,27 @@
         <Volume value="1.000000,1.000000"/>
     </CSound>
 
+    
+    <CLight id="Destroyer@Portrait" parent="default">
+        <ToDInfoArray index="0" AmbientColor="0.050980,0.180392,0.223529">
+            <Param index="HDRExposure" value="1.480000"/>
+            <Param index="HDRBloomThreshold" value="1.950000"/>
+            <Param index="HDREmisMultiplier" value="2.000000"/>
+            <Param index="CreepSpecularExp" value="40.000000"/>
+            <Param index="CreepHDRSpecMultiplier" value="5.900000"/>
+            <DirectionalLight index="Key">
+                <Color value="0.807843,0.874510,1.000000"/>
+                <ColorMultiplier value="1.950000"/>
+                <SpecularColor value="0.874510,0.949020,0.988235"/>
+                <SpecColorMultiplier value="1.778000"/>
+                <Direction value="0.212497,-0.089457,-0.973058"/>
+            </DirectionalLight>
+            <DirectionalLight index="Fill" Color="0.549020,0.635294,1.000000" ColorMultiplier="2.138000" Direction="-0.800380,-0.158044,-0.578285"/>
+            <DirectionalLight index="Back" Color="0.803922,0.584314,0.364706" ColorMultiplier="1.047000" Direction="0.570197,0.425012,0.703022"/>
+        </ToDInfoArray>
+        <EditorCategories value="LightGroup:PortraitsUnitsProtoss"/>
+    </CLight>
+
     <CDataCollectionUnit id="Destroyer" parent="UnitAir">
         <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Taldarim,ObjectType:Unit"/>
         <DataRecord Entry="Button,Destroyer"/>
@@ -247,6 +260,7 @@
         <DataRecord Entry="Sound,Destroyer@Yes"/>
         <DataRecord Entry="Sound,Destroyer@What"/>
         <DataRecord Entry="Sound,Destroyer@Ready"/>
+        <DataRecord Entry="Light,Destroyer@Portrait"/>
         <DataRecord Entry="Requirement,Destroyer"/>
         <DataRecord Entry="Validator,Destroyer@Is"/>
         <DataRecord Entry="Validator,Destroyer@Target"/>
@@ -271,6 +285,10 @@
     <CValidatorUnitType id="Destroyer@NotTarget" parent="TargetNotUnit_Default" unit="Destroyer"/>
 
     <!-- Weapons -->
+
+    <CButton id="Destroyer_Weapon@Passive">
+        <Icon value="Assets\Textures\btn-ability-protoss-beambounce.dds"/>
+    </CButton>
 
     <CWeaponLegacy id="Destroyer_Weapon">
         <EditorCategories value="Race:Taldarim"/>

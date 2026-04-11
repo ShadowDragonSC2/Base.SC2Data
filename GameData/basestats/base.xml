@@ -256,6 +256,8 @@
         <ShieldArmorName value="Unit/ShieldArmorName/##race##Armor"/>
         <Acceleration value="1000"/>
         <Mob value="Multiplayer"/>
+        <TurningRate value="1000"/>
+        <StationaryTurningRate value="1000"/>
         <FlagArray index="ArmySelect" value="1"/>
         <FlagArray index="UseLineOfSight" value="1"/>
         <FlagArray index="PreventDestroy" value="1"/>
