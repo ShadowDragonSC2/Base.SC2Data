@@ -54,15 +54,18 @@
     </CUnit>
     
     <CActorUnit id="Destroyer" parent="AdvancedUnitStandard" unitName="Destroyer">
-        <On Terms="Behavior.Destroyer_Weapon@Buff.On" Send="AnimBracketStart AnimAttack Attack Stand,Channel Attack,End ContentForceLooping"/>
-        <On Terms="Behavior.Destroyer_Weapon@Buff.Off" Send="AnimBracketStop AnimAttack"/>
+        <On Terms="WeaponStart.*.AttackStart" Send="TimerKill TimeAttack"/>
+        <On Terms="WeaponStart.*.AttackStart" Send="AnimBracketStart AnimAttack Attack Stand,Channel Attack,End ContentForceLooping"/>
+        <On Terms="WeaponStop.*.AttackStop" Send="TimerSet 5 TimeAttack"/>
+        <On Terms="TimerExpired; TimerName TimeAttack" Send="AnimBracketStop AnimAttack"/>
+        
+        <On Terms="WeaponStart.*.AttackStart" Send="Create Destroyer@Addition_Attack01"/>
+        <On Terms="WeaponStart.*.AttackStart" Send="Create Destroyer@Addition_Attack02"/>
+        <On Terms="WeaponStart.*.AttackStart" Send="Create Destroyer@Addition_Attack03"/>
+        <On Terms="TimerExpired; TimerName TimeAttack" Target="Destroyer@Addition_Attack01" Send="Destroy"/>
+        <On Terms="TimerExpired; TimerName TimeAttack" Target="Destroyer@Addition_Attack02" Send="Destroy"/>
+        <On Terms="TimerExpired; TimerName TimeAttack" Target="Destroyer@Addition_Attack03" Send="Destroy"/>
 
-        <On Terms="Behavior.Destroyer_Weapon@Buff.On" Send="Create Destroyer@Addition_Attack01"/>
-        <On Terms="Behavior.Destroyer_Weapon@Buff.On" Send="Create Destroyer@Addition_Attack02"/>
-        <On Terms="Behavior.Destroyer_Weapon@Buff.On" Send="Create Destroyer@Addition_Attack03"/>
-        <On Terms="Behavior.Destroyer_Weapon@Buff.Off" Target="Destroyer@Addition_Attack01" Send="Destroy"/>
-        <On Terms="Behavior.Destroyer_Weapon@Buff.Off" Target="Destroyer@Addition_Attack02" Send="Destroy"/>
-        <On Terms="Behavior.Destroyer_Weapon@Buff.Off" Target="Destroyer@Addition_Attack03" Send="Destroy"/>
         <Aliases value="_UnitLarge"/>
         <AnimBlendTime value="0.500000"/>
         <BarWidth value="100"/>
@@ -382,6 +385,7 @@
     </CSound>
 
     <CBehaviorBuff id="Destroyer_Weapon@Buff">
+        <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Taldarim"/>
         <Duration value="5"/>
     </CBehaviorBuff>
@@ -423,7 +427,6 @@
         <AreaArray Radius="5" Effect="Destroyer_Weapon@User"/>
         <SearchFilters value="Visible;Missile,Hidden,Self,Invulnerable"/>
         <MaxCount value="2"/>
-        <ExcludeArray Value="Outer"/>
         <ExcludeArray Value="Target"/>
         <TargetSorts>
             <SortArray value="TSFarthestDistance"/>
@@ -431,7 +434,7 @@
     </CEffectEnumArea>
     <CEffectUserData id="Destroyer_Weapon@User">
         <EditorCategories value="Race:Taldarim"/>
-        <ValidateMax value="2"/>
+        <ValidateMax value="3"/>
         <EffectSuccess value="Destroyer_Weapon@Set_Bounce"/>
     </CEffectUserData>
     <CEffectSet id="Destroyer_Weapon@Set_Bounce">
