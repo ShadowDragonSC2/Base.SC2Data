@@ -2,19 +2,6 @@ Unit/Name/Generic_Protoss_Unit=Generic Protoss Unit
 Unit/Name/Generic_Protoss_Unit_Ground=Generic Protoss Unit (Ground)
 Unit/Name/Generic_Protoss_Unit_Air=Generic Protoss Unit (Air)
 
-Unit/Name/Generic_Protoss_Unit_Zealot=Generic Protoss Unit - Zealot
-Unit/Name/Generic_Protoss_Unit_Stalker=Generic Protoss Unit - Stalker
-Unit/Name/Generic_Protoss_Unit_Sentry=Generic Protoss Unit - Sentry
-Unit/Name/Generic_Protoss_Unit_HighTemplar=Generic Protoss Unit - HighTemplar
-Unit/Name/Generic_Protoss_Unit_DarkTemplar=Generic Protoss Unit - DarkTemplar
-Unit/Name/Generic_Protoss_Unit_Archon=Generic Protoss Unit - Archon
-Unit/Name/Generic_Protoss_Unit_Observer=Generic Protoss Unit - Observer
-Unit/Name/Generic_Protoss_Unit_Immortal=Generic Protoss Unit - Immortal
-Unit/Name/Generic_Protoss_Unit_Colossus=Generic Protoss Unit - Colossus
-Unit/Name/Generic_Protoss_Unit_Phoenix=Generic Protoss Unit - Phoenix
-Unit/Name/Generic_Protoss_Unit_VoidRay=Generic Protoss Unit - VoidRay
-Unit/Name/Generic_Protoss_Unit_Carrier=Generic Protoss Unit - Carrier
-
 DataCollectionPattern/NameOverride/CostResource/Minerals=Minerals
 DataCollectionPattern/NameOverride/CostResource/Vespene=Vespene
 

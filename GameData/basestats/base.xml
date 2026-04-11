@@ -162,10 +162,15 @@
     </CActorUnit>
 
     <CActorUnit default="1" id="AdvancedUnitStandard" parent="GenericUnitStandard">
+        <ModelFlags index="OutlineEmitter" value="1"/>
         <PortraitModel value="##id##@Portrait"/>
         <BuildModel value="##id##@Build"/>
         <PlacementModel value="##id##@Placement"/>
         <PlacementSound value="##id##@Placement"/>
+        
+        <On Terms="UnitDeathCustomize; ValidateUnit IsHallucination" Send="DeathCustomize Hallucination"/>
+
+        <DeathCustoms ModelLink="HallucinationDeath" SoundLink="Sentry_HallucinationDeathSmall" Name="Hallucination"/>
 
         <ModelFlags index="OutlineEmitter" value="1"/>
 

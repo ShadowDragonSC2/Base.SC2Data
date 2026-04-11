@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Catalog>
     <!-- Requires: Unit:UnitGround[base.xml] -->
-    <!-- Requires: Unit:Generic_Protoss_Unit_Immortal[protoss.xml] -->
+    <!-- Requires: Unit:Generic_Protoss_Unit_Ground[protoss.xml] -->
 
     <CButton id="Vanguard">
         <Icon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-immortal.dds"/>
         <AlertIcon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-immortal.dds"/>
     </CButton>
 
-    <CUnit id="Vanguard" parent="Generic_Unit_Ground" race="Tald">
-        <WeaponArray index="0" Link="ScatterCannon"/>
+    <CUnit id="Vanguard" parent="Generic_Protoss_Unit_Ground" race="Tald">
+        <WeaponArray Turret="Immortal" Link="ScatterCannon"/>
         <LifeMax value="200"/>
         <LifeStart value="200"/>
         <ShieldsMax value="100"/>
