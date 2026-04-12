@@ -6,6 +6,11 @@
     
     <CUnit id="Sentinel" parent="Generic_Protoss_Unit_Ground" Race="Puri">
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
+        <WeaponArray Link="Sentinel_Weapon"/>
+        <AbilArray Link="Sentinel_Charge"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Sentinel_Charge" Type="AbilCmd" AbilCmd="Sentinel_Charge,Execute" Row="2"/>
+        </CardLayouts>
         <LifeStart value="100"/>
         <LifeMax value="100"/>
         <LifeArmor value="1"/>
@@ -116,9 +121,9 @@
         <Image value="Assets\Textures\purifierzealotportrait_static.dds"/>
     </CModel>
     <CModel id="Sentinel@WarpIn" parent="OneShotSpellFX">
+        <EditorCategories value="Race:Purifier"/>
         <Model value="Assets\Units\Protoss\Zealot_Purifier_WarpIn\Zealot_Purifier_WarpIn.m3"/>
         <Occlusion value="Show"/>
-        <EditorCategories value="Race:Protoss"/>
         <LowQualityModel value="ProtossUnitBirth"/>
         <SelectionRadius value="0.555400"/>
         <ShadowRadius value="0.555400"/>
@@ -126,13 +131,13 @@
 
     <CSound id="Sentinel@Death" parent="Protoss_DeathFX"/>
     <CSound id="Sentinel@DeathVoice" parent="DeathVoice">
-        <Pitch value="-0.500000,0.500000"/>
+        <EditorCategories value="Race:Purifier"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Death01.wav"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Death01.wav"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Death02.wav"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Death03.wav"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Death04.wav"/>
-        <EditorCategories value="Race:Protoss"/>
+        <Pitch value="-0.500000,0.500000"/>
         <Volume value="-1.000000,-1.000000"/>
     </CSound>
     <CSound id="Sentinel@Attack" parent="Voice">
@@ -183,6 +188,33 @@
         <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotPurifier_Ready00.ogg" FacialGroup=""/>
         <Volume value="-1.000000,-1.000000"/>
     </CSound>
+
+    <CLight id="Sentinel@Portrait" parent="default">
+        <ToDInfoArray index="0" Id="PortraitZealotPurifier" AmbientColor="0.145098,0.125490,0.113725">
+            <Param index="HDRExposure" value="1.300000"/>
+            <Param index="HDRBloomThreshold" value="0.750000"/>
+            <Param index="HDRWhitePoint" value="1.850000"/>
+            <Param index="HDRSpecMultiplier" value="1.270000"/>
+            <Param index="HDREmisMultiplier" value="2.000000"/>
+            <Param index="TerrainSpecularExp" value="11.210000"/>
+            <Param index="TerrainHDRSpecular" value="3.750000"/>
+            <Param index="CreepSpecularExp" value="30.000000"/>
+            <Param index="CreepHDRSpecMultiplier" value="3.000000"/>
+            <Param index="ColorizationContrast" value="1.066000"/>
+            <Param index="ColorizationHue" value="-0.026000"/>
+            <Param index="ColorizationBlend" value="0.300000"/>
+            <DirectionalLight index="Key">
+                <Color value="0.819608,0.921569,1.000000"/>
+                <ColorMultiplier value="1.000000"/>
+                <SpecularColor value="0.823529,0.882353,0.976471"/>
+                <SpecColorMultiplier value="0.500000"/>
+                <Direction value="0.011533,-0.207591,-0.978148"/>
+            </DirectionalLight>
+            <DirectionalLight index="Fill" Color="0.054902,0.294118,0.439216" ColorMultiplier="3.000000" Direction="-0.373134,-0.774969,-0.510093"/>
+            <DirectionalLight index="Back" Color="0.474510,0.156863,0.019608" ColorMultiplier="3.000000" Direction="0.064809,-0.593678,0.802088"/>
+        </ToDInfoArray>
+        <EditorCategories value="LightGroup:PortraitsUnitsProtoss"/>
+    </CLight>
     
     <CDataCollectionUnit id="Sentinel" parent="UnitGround">
         <DataRecord Entry="Button,Sentinel"/>
@@ -203,5 +235,130 @@
         <DataRecord Entry="Sound,Sentinel@Ready"/>
     </CDataCollectionUnit>
     
+    <!-- =========== Weapons =========== -->
 
+    <CWeaponLegacy id="Sentinel_Weapon">
+        <EditorCategories value="Race:Taldarim"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="0.1"/>
+        <Period value="1.2"/>
+        <DamagePoint value="0"/>
+        <Effect value="PsiBladesBurst"/>
+        <Options index="Melee" value="1"/>
+        <DisplayAttackCount value="2"/>
+    </CWeaponLegacy>
+
+    <CEffectCreatePersistent id="Sentinel_Weapon@CP">
+        <EditorCategories value="Race:Taldarim"/>
+        <PeriodCount value="2"/>
+        <WhichLocation Value="TargetUnit"/>
+        <TimeScaleSource Value="Caster"/>
+        <Flags index="Channeled" value="1"/>
+        <PeriodicEffectArray value="Sentinel_Weapon@Damage"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0.28"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="Sentinel_Weapon@Damage" parent="DU_WEAP">
+        <EditorCategories value="Race:Taldarim"/>
+        <Amount value="8"/>
+        <Death value="Eviscerate"/>
+        <ValidatorArray value="NotHidden"/>
+    </CEffectDamage>
+
+    <CActorAction id="Sentinel_Weapon@Attack" parent="GenericAttack" effectAttack="Sentinel_Weapon@Damage">
+        <LaunchAttachQuery Methods="AMFilterWeaponLeft"/>
+        <ShieldFlashType value="Header"/>
+    </CActorAction>
+
+    <CSound id="Sentinel_Weapon@AttackImpact" parent="Protoss_AttackImpactMediumSlice"/>
+    <CSound id="Sentinel_Weapon@AttackLaunch" parent="Combat">
+        <EditorCategories value="Race:Purifier"/>
+        <AssetArray File="Assets\Sounds\Protoss\Zealot\Zealot_AttackLaunch0.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Zealot\Zealot_AttackLaunch1.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Zealot\Zealot_AttackLaunch2.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Zealot\Zealot_AttackLaunch3.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Zealot\Zealot_AttackLaunch4.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Zealot\Zealot_AttackLaunch5.wav"/>
+        <Volume value="-10.480000,-10.480000"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupePrioritization value="Oldest"/>
+        <Pitch value="-0.890000,1.640000"/>
+        <VariationMinimum value="8"/>
+        <DupeMuteCount value="4"/>
+        <DupeThresholdPoints/>
+        <DupeThresholdPoints Count="4" Volume="-3.000000"/>
+    </CSound>
+
+    <CDataCollectionUnit id="Sentinel_Weapon" parent="Weapon_Instant">
+        <DataRecord Entry="Weapon,Sentinel_Weapon"/>
+        <DataRecord Entry="Effect,Sentinel_Weapon@CP"/>
+        <DataRecord Entry="Effect,Sentinel_Weapon@Damage"/>
+        <DataRecord Entry="Actor,Sentinel_Weapon@Attack"/>
+        <DataRecord Entry="Sound,Sentinel_Weapon@AttackImpact"/>
+        <DataRecord Entry="Sound,Sentinel_Weapon@AttackLaunch"/>
+    </CDataCollectionUnit>
+
+    <!-- =========== Abilities =========== -->
+
+    <CButton id="Sentinel_Charge">
+        <Icon value="Assets\Textures\btn-ability-protoss-charge-color.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-charge-color.dds"/>
+        <EditorCategories value="Race:Khalai"/>
+    </CButton>
+
+    <CAbilAugment id="Sentinel_Charge">
+        <EditorCategories value="Race:Khalai,AbilityorEffectType:Units"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Sentinel_Charge"/>
+        <AbilCmd value="attack,Execute"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Effect value="Sentinel_Charge@AB"/>
+        <Cost>
+            <Cooldown Link="Charge" Location="Unit" TimeUse="10"/>
+        </Cost>
+        <AutoCastValidatorArray value="CasterNotHoldingPosition"/>
+    </CAbilAugment>
+
+    <CBehaviorBuff id="Sentinel_Charge">
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-charge.dds"/>
+        <EditorCategories value="Race:Purifier,AbilityorEffectType:Units"/>
+        <Duration value="3.5"/>
+        <Modification MoveSpeedMultiplier="2.2"/>
+        <Alignment value="Positive"/>
+        <BuffFlags index="Channeling" value="1"/>
+        <RemoveValidatorArray value="ChargeTargetAttacked"/>
+        <RemoveValidatorArray value="CasterIsNotStationary"/>
+    </CBehaviorBuff>
+
+    <CEffectApplyBehavior id="Sentinel_Charge@AB">
+        <EditorCategories value="Race:Purifier"/>
+        <Behavior value="Sentinel_Charge"/>
+        <WhichUnit Value="Caster"/>
+        <ValidatorArray index="0" value="ChargeMinTriggerDistance"/>
+        <ValidatorArray value="ChargeMaxDistance"/>
+    </CEffectApplyBehavior>
+
+    <CActorSound id="Sentinel_Charge@Sound" parent="SoundContinuous">
+        <Sound value="Zealot_Charge"/>
+        <On Terms="Behavior.Sentinel_Charge.Create" Send="Create"/>
+        <On Terms="Behavior.Sentinel_Charge.Destroy" Send="Destroy"/>
+    </CActorSound>
+    <CActorSimple id="Sentinel_Charge@Animation">
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="Behavior.Sentinel_Charge.On" Send="Create"/>
+        <On Terms="Behavior.Sentinel_Charge.Off" Send="Destroy"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="SetTintColor 255,0,0 0.6 OneShot charging"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="AnimGroupApply Spell"/>
+        <On Terms="ActorDestruction" Target="_Unit" Send="AnimGroupRemove Spell"/>
+        <On Terms="ActorDestruction" Target="_Unit" Send="ClearTintColor 1.8 charging"/>
+    </CActorSimple>
+    
+    <CSound id="Sentinel_Charge@Sound" parent="Combat">
+        <EditorCategories value="Race:Purifier"/>
+        <AssetArray File="Assets\Sounds\Protoss\Zealot\Zealot_Charge0.wav"/>
+        <Pitch value="-0.890000,0.840000"/>
+        <Volume value="-7.960000,-7.960000"/>
+        <SustainFade index="1" Time="300"/>
+    </CSound>
 </Catalog>
