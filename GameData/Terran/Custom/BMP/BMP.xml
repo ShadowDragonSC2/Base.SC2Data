@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    <CButton id="BMP" parent="UnitButton_GroundAir"/>
+    
+    <CUnit id="BMP" parent="Generic_Unit_Ground">
+        <LifeStart value="230"/>
+        <LifeMax value="230"/>
+        <LifeArmor value="2"/>
+        <Sight value="9"/>
+        <WeaponArray Link="BMP_Weapon" Turret="BMP_Weapon@Turret"/>
+        <WeaponArray Link="BMP_SecondWeapon" Turret="BMP_SecondWeapon@Turret"/>
+
+        <TurningRate value="45"/>
+        <StationaryTurningRate value="45"/>
+        <LateralAcceleration value="5"/>
+        <Acceleration value="4"/>
+        <Deceleration value="720"/>
+        <Speed value="3"/>
+        <FlagArray index="TurnBeforeMove" value="1"/>
+    </CUnit>
+    
+    <CActorUnit id="BMP" parent="AdvancedStandard_Ground" unitName="BMP">
+        <WalkAnimMoveSpeed value="3"/>
+    </CActorUnit>
+    
+    <CModel id="BMP" parent="SiegeTank">
+        <Model value="Assets/Units/BMP2.m3"/>
+        <TipabilityRollMax value="45"/>
+        <TipabilityPitchMax value="45"/>
+    </CModel>
+    <CModel id="BMP@Death" parent="SiegeTankDeath">
+        <Model value="Assets\Units\Terran\SiegeTankDeathEx1\SiegeTankDeathEx1.m3"/>
+    </CModel>
+    <CModel id="BMP@Portrait" parent="SiegeTankPortrait"/>
+
+    <CSound id="BMP@Death" parent="Terran_ExplosionMedium"/>
+    <CSound id="BMP@Attack" parent="SiegeTank_Attack"/>
+    <CSound id="BMP@Help" parent="SiegeTank_Help"/>
+    <CSound id="BMP@Pissed" parent="SiegeTank_Pissed"/>
+    <CSound id="BMP@Yes" parent="SiegeTank_Yes"/>
+    <CSound id="BMP@What" parent="SiegeTank_What"/>
+    <CSound id="BMP@Ready" parent="SiegeTank_Ready"/>
+
+    <!-- Weapon -->
+
+    <!-- Main Weapon -->
+    <CWeaponLegacy id="BMP_Weapon">
+        <Range value="7"/>
+        <DisplayEffect value="BMP_Weapon@Damage"/>
+        <Effect value="BMP_Weapon@Damage"/>
+        <TargetFilters value="Visible,Ground;Invulnerable,Missile,Hidden"/>
+    </CWeaponLegacy>
+
+    <CEffectDamage id="BMP_Weapon@Damage" parent="DU_WEAP">
+        <Amount value="15"/>
+    </CEffectDamage>
+
+    <CActorAction id="BMP_Weapon@Attack" parent="GenericAttack" effectAttack="BMP_Weapon@Damage">
+        <LaunchSiteOps Ops="SOpAttachWeapon01"/>
+    </CActorAction>
+    <CActorTurret id="BMP_Weapon@Turret">
+        <On Terms="TurretEnable.BMP_Weapon@Turret" Send="Create"/>
+    </CActorTurret>
+    <CTurret id="BMP_Weapon@Turret">
+        <YawRate value="95"/>
+        <YawArc value="360"/>
+        <Fidget>
+            <ChanceArray index="Turn" value="1"/>
+            <TurnAngle value="45"/>
+            <TurningRate value="2"/>
+        </Fidget>
+    </CTurret>
+
+    <CModel id="BMP_Weapon@AttackLaunch" parent="SiegeTankAttackLaunch"/>
+    <CModel id="BMP_Weapon@AttackImpact" parent="SiegeTankAttackImpact"/>
+
+    <CSound id="BMP_Weapon@AttackLaunch" parent="SiegeTank_AttackLaunch"/>
+    <CSound id="BMP_Weapon@AttackImpact" parent="SiegeTank_AttackImpact"/>
+    
+    <!-- Secondary Weapon -->
+    <CWeaponLegacy id="BMP_SecondWeapon">
+        <Range value="8"/>
+        <Period value="0.65"/>
+        <Effect value="BMP_SecondWeapon@LM"/>
+        <DisplayEffect value="BMP_SecondWeapon@Damage"/>
+        <TargetFilters value="Visible,Air;Invulnerable,Missile,Hidden"/>
+    </CWeaponLegacy>
+
+    <CEffectLaunchMissile id="BMP_SecondWeapon@LM">
+        <ImpactEffect value="BMP_SecondWeapon@Damage"/>
+        <AmmoUnit value="BMP_SecondWeapon@AttackMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="BMP_SecondWeapon@Damage" parent="DU_WEAP_MISSILE">
+        <Amount value="25"/>
+    </CEffectDamage>
+
+    <CActorAction id="BMP_SecondWeapon@Attack" parent="GenericAttack" effectLaunch="BMP_SecondWeapon@LM" effectImpact="BMP_SecondWeapon@Damage">
+        <LaunchSiteOps Ops="SOpAttachWeaponLeft"/>
+    </CActorAction>
+    <CActorTurret id="BMP_SecondWeapon@Turret">
+        <On Terms="TurretEnable.BMP_SecondWeapon@Turret" Send="Create"/>
+        <YawQuery Methods="TurretY"/>
+    </CActorTurret>
+    <CTurret id="BMP_SecondWeapon@Turret">
+        <YawRate value="135"/>
+        <YawArc value="360"/>
+    </CTurret>
+
+    <CMoverMissile id="BMP_SecondWeapon@AttackMissile" parent="MissileDefault"/>
+    <CUnit id="BMP_SecondWeapon@AttackMissile" parent="MISSILE"/>
+    <CActorMissile id="BMP_SecondWeapon@AttackMissile" parent="GenericAttackMissile" unitName="BMP_SecondWeapon@AttackMissile"/>
+    <CModel id="BMP_SecondWeapon@AttackMissile" parent="MissileFX">
+        <Model value="Assets\Effects\Terran\ThorShoulderMissile\ThorShoulderMissile.m3"/>
+    </CModel>
+
+    <CModel id="BMP_SecondWeapon@AttackLaunch" parent="LaunchFX">
+        <Model value="Assets\Effects\Terran\ThorShoulderMissileLaunch\ThorShoulderMissileLaunch.m3"/>
+    </CModel>
+    <CModel id="BMP_SecondWeapon@AttackImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Protoss\Scout_Purifier_AirMissile_Impact\Scout_Purifier_AirMissile_Impact.m3"/>
+    </CModel>
+
+    <CSound id="BMP_SecondWeapon@AttackLaunch">
+        <AssetArray File="Assets\Sounds\HH_Hellion_Grenade_AttackLaunch01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HH_Hellion_Grenade_AttackLaunch02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HH_Hellion_Grenade_AttackLaunch03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HH_Hellion_Grenade_AttackLaunch04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HH_Hellion_Grenade_AttackLaunch05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HH_Hellion_Grenade_AttackLaunch06.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HH_Hellion_Grenade_AttackLaunch07.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HH_Hellion_Grenade_AttackLaunch08.wav" FacialGroup=""/>
+    </CSound>
+    
+</Catalog>
