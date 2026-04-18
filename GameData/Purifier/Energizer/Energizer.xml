@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    <CButton id="Energizer"></CButton>
+    
+    <CUnit id="Energizer" parent="Generic_Protoss_Unit_Ground" race="Puri">
+        <LifeStart value="40"/>
+        <LifeMax value="40"/>
+        <LifeArmor value="1"/>
+        <EnergyStart value="50"/>
+        <EnergyMax value="200"/>
+        <EnergyRegenRate value="0.5625"/>
+        <ShieldsStart value="40"/>
+        <ShieldsMax value="40"/>
+        <Sight value="10"/>
+        <Food value="-2"/>
+
+        <AbilArray Link="Energizer_PhasingMode"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Energizer_PhasingMode" Type="AbilCmd" AbilCmd="Energizer_PhasingMode,Execute" Row="2" Column="1"/>
+        </CardLayouts>
+        
+        <CostResource index="Minerals" value="50"/>
+        <CostResource index="Vespene" value="100"/>
+        <RepairTime value="42"/>
+        <KillXP value="90"/>
+        <SeparationRadius value="0.625"/>
+        <InnerRadius value="0.375"/>
+        <CargoSize value="2"/>
+        <ScoreMake value="150"/>
+        <ScoreKill value="150"/>
+        <MinimapRadius value="0.375"/>
+        <Fidget>
+            <ChanceArray index="Anim" value="5"/>
+            <ChanceArray index="Idle" value="90"/>
+            <ChanceArray index="Turn" value="5"/>
+        </Fidget>
+
+    </CUnit>
+    <CUnit id="Energizer_Phasing" parent="Energizer" race="Puri">
+        <WeaponArray index="0" Link=""/>
+        <AbilArray index="5" Link="Energizer_MobileMode"/>
+        <Speed value="0"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Face="Energizer_MobileMode" Type="AbilCmd" AbilCmd="Energizer_MobileMode,Execute"/>
+        </CardLayouts>
+    </CUnit>
+    
+    <CActorUnit id="Energizer" parent="AdvancedStandard_Ground" unitName="Energizer">
+        
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Sentry_Land"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom Energizer; MorphTo Energizer_Phasing" Send="AnimBracketStart Work Stand,Work,Start,A Stand,Work,A Stand,Work,End,A"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom Energizer_Phasing; MorphTo Energizer" Send="AnimBracketStop Work"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo Energizer" Send="Create"/>
+        <On Terms="AbilMorph.*.Finish; MorphFrom Energizer" Send="Destroy"/>
+
+        <Baselines index="Walk" BlendIn="1.500000" BlendOut="2.000000"/>
+        <PlacementSound value="Protoss_BuildingPlacementSmall"/>
+        <BuildModel value="Energizer@WarpIn"/>
+
+        <BarWidth value="50"/>
+        <BarOffset value="40"/>
+
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-sentry-purifier.dds"/>
+        <HeroIcon value="Assets\Textures\btn-unit-protoss-sentry-purifier.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
+        <WireframeShield>
+            <Image value="Assets\Textures\wireframe-protoss-sentry-purifier-shield01.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-sentry-purifier-shield02.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-sentry-purifier-shield03.dds"/>
+        </WireframeShield>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-protoss-sentry-purifier.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-protoss-sentry-purifier.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorUnit id="Energizer_Phasing" parent="AdvancedStandard_Ground" unitName="Energizer_Phasing">
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Sentry_Land"/>
+        <On Terms="UnitBirth.Energizer_Phasing" Send="AnimBracketStart Work {} Stand,Work,A Stand,Work,End,A Instant"/>
+        <On Terms="AbilMorph.*.Finish; MorphFrom Energizer; MorphTo Energizer_Phasing" Send="AnimBracketStart Work {} Stand,Work,A Stand,Work,End,A Instant"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom Energizer_Phasing; MorphTo Energizer" Send="AnimBracketStop Work"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo Energizer_Phasing" Send="Create"/>
+        <On Terms="AbilMorph.*.Finish; MorphFrom Energizer_Phasing" Send="Destroy"/>
+
+        <PlacementSound value="Protoss_BuildingPlacementSmall"/>
+        <Model value="Energizer"/>
+        <PlacementModel value="Energizer@Placement"/>
+        <PortraitModel value="Energizer@Portrait"/>
+        <BuildModel value="Energizer@WarpIn"/>
+
+        <DeathArray index="Normal" ModelLink="Energizer@Death" SoundLink="Energizer@Death"/>
+
+        <SoundArray index="Ready" value="Energizer@Ready"/>
+        <SoundArray index="What" value="Energizer@What"/>
+        <SoundArray index="Yes" value="Energizer@Yes"/>
+        <SoundArray index="Attack" value="Energizer@Attack"/>
+        <SoundArray index="Pissed" value="Energizer@Pissed"/>
+
+        <BarWidth value="50"/>
+        <BarOffset value="40"/>
+
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-sentry-purifier.dds"/>
+        <HeroIcon value="Assets\Textures\btn-unit-protoss-sentry-purifier.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
+        <WireframeShield>
+            <Image value="Assets\Textures\wireframe-protoss-sentry-purifier-shield01.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-sentry-purifier-shield02.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-sentry-purifier-shield03.dds"/>
+        </WireframeShield>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-protoss-sentry-purifier.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-protoss-sentry-purifier.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    
+    <CModel id="Energizer" parent="Unit">
+        <Model value="Assets\Units\Protoss\Sentry_Purifier\Sentry_Purifier.m3"/>
+        <RequiredAnims value="Assets\Units\Protoss\Sentry_SwarmAnims\Sentry_SwarmAnims.m3a"/>
+        <Occlusion value="Show"/>
+        <SelectionRadius value="0.733000"/>
+        <Tipability value="0.750000"/>
+        <TipabilityWidth value="0.500000"/>
+        <TipabilityLength value="0.500000"/>
+        <SquibTypeDefault value="Metal"/>
+        <ScaleMax value="0.600000,0.600000,0.600000"/>
+        <ScaleMin value="0.600000,0.600000,0.600000"/>
+        <TechPurchaseCamera value="Star2CameraMid06"/>
+        <UnitGlossaryCamera value="Star2CameraMid06"/>
+        <PlanetPanelCamera value="Star2CameraMid06"/>
+        <ShadowRadius value="0.533000"/>
+    </CModel>
+    <CModel id="Energizer@Death" parent="UnitDeath">
+        <Model value="Assets\Units\Protoss\Sentry_Purifier_Death\Sentry_Purifier_Death.m3"/>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Uni_DeathFXincidentallFire"/>
+            <Type value="Sound"/>
+            <Time value="0.300000"/>
+            <Payload value="Uni_DeathFXincidentallFire"/>
+        </Events>
+        <Events>
+            <Anim value="Death,02"/>
+            <Name value="Uni_DeathFXincidentallFire"/>
+            <Type value="Sound"/>
+            <Time value="0.300000"/>
+            <Payload value="Uni_DeathFXincidentallFire"/>
+        </Events>
+        <LowQualityModel value="ProtossMediumUnitDeathLow"/>
+        <Occlusion value="Show"/>
+    </CModel>
+    <CModel id="Energizer@Placement" parent="Placement">
+        <Model value="Assets\Units\Protoss\Sentry_Purifier_Placement\Sentry_Purifier_Placement.m3"/>
+        <Radius value="-1.000000"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.600000,0.600000,0.600000"/>
+        <ScaleMin value="0.600000,0.600000,0.600000"/>
+        <SelectionRadius value="0.499700"/>
+        <ShadowRadius value="0.499700"/>
+    </CModel>
+    <CModel id="Energizer@Portrait" parent="Portrait">
+        <Model value="Assets\Portraits\Protoss\EnergizerEx2Portrait\EnergizerEx2Portrait.m3"/>
+        <Lighting value="PortraitEnergizerEx2Portrait"/>
+        <Image value="Assets\Textures\energizerportrait_static.dds"/>
+    </CModel>
+    <CModel id="Energizer@WarpIn" parent="OneShotSpellFX">
+        <Model value="Assets\Units\Protoss\Sentry_Purifier_WarpIn\Sentry_Purifier_WarpIn.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.600000,0.600000,0.600000"/>
+        <ScaleMin value="0.600000,0.600000,0.600000"/>
+        <LowQualityModel value="ProtossUnitBirth"/>
+        <SelectionRadius value="0.666500"/>
+        <ShadowRadius value="0.666500"/>
+    </CModel>
+    
+    <CSound id="Energizer@Attack" parent="Voice">
+        <Pitch value="-0.300000,0.000000"/>
+        <AssetArray File="Assets\Sounds\Energizer_Attack01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Energizer_Attack02.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Energizer_Attack03.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="Energizer@Help" parent="Alert">
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Executor\Alert_ProtossForcesUnderAttack.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="Energizer@Pissed" parent="Pissed">
+        <Pitch value="-0.300000,0.000000"/>
+        <AssetArray File="Assets\Sounds\Energizer_Pissed01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Energizer_Pissed02.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="Energizer@Yes" parent="Voice">
+        <Pitch value="-0.300000,0.000000"/>
+        <AssetArray File="Assets\Sounds\Energizer_Yes01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Energizer_Yes02.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Energizer_Yes03.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Energizer_Yes04.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="Energizer@What" parent="Voice">
+        <Pitch value="-0.300000,0.000000"/>
+        <AssetArray File="Assets\Sounds\Energizer_What01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Energizer_What02.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Energizer_What03.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Energizer_What04.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="Energizer@Ready" parent="Ready">
+        <Pitch value="-0.300000,0.000000"/>
+        <AssetArray File="Assets\Sounds\Energizer_Ready01.ogg" FacialGroup=""/>
+    </CSound>
+
+    <!-- Weapons -->
+
+    <CWeaponLegacy id="Energizer_Weapon">
+        <EditorCategories value="Race:Protoss"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
+        <DisplayEffect value="Energizer_Weapon@Damage"/>
+        <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <TeleportResetRange value="0"/>
+        <Period value="1"/>
+        <Effect value="Energizer_Weapon@Beam"/>
+        <LegacyOptions index="CanRetargetWhileChanneling" value="1"/>
+    </CWeaponLegacy>
+    
+    <CEffectCreatePersistent id="Energizer_Weapon@Beam">
+        <EditorCategories value="Race:Protoss"/>
+        <InitialEffect value="Energizer_Weapon@Damage"/>
+        <Flags index="Channeled" value="1"/>
+        <Flags index="PersistUntilDestroyed" value="1"/>
+        <WhichLocation Value="TargetUnit"/>
+        <TimeScaleSource Value="Caster"/>
+        <PeriodicEffectArray value="Energizer_Weapon@Damage"/>
+        <PeriodicPeriodArray value="1"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="Energizer_Weapon@Damage" parent="DU_WEAP">
+        <EditorCategories value="Race:Protoss"/>
+        <Amount value="6"/>
+        <Kind value="Ranged"/>
+    </CEffectDamage>
+    
+    <CModel id="Energizer_Weapon@AttackBeam" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Protoss\NullifierBeam\NullifierBeam.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <LowQualityModel value="SentryAttackBeamLow"/>
+        <RadiusLoose value="1.000000"/>
+    </CModel>
+    
+    <CActorAction id="Energizer_Weapon@Attack" parent="GenericAttack" effectLaunch="Energizer_Weapon@Beam" effectImpact="Energizer_Weapon@Damage">
+        <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeNoVizEnhance SOpForwardLaunchGuide"/>
+        <AcquisitionYawHalfArc value="10.000000"/>
+        <ActionFlags index="AlignedImpactsAndDamages" value="1"/>
+        <ActionFlags index="ImpactMonitorsTeleports" value="1"/>
+        <!-- Need this so the impact host ops can know which side of the target is closest to 
+             the attacker. -->
+        <ActionFlags index="LaunchForceSite" value="1"/>
+        <Lifetime value="-1.000000"/>
+    </CActorAction>
+    <CActorBeamSimple id="Energizer_Weapon@AttackBeam" parent="BeamSimpleAnimationStyleContinuous">
+        <On Terms="Effect.Energizer_Weapon@Beam.Stop; At Effect" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Send="RefSetFromRequest ::actor.CasterUnit _Unit Caster Find"/>
+        <Macros value="ActionTargetTeleportDestroy"/>
+    </CActorBeamSimple>
+    
+    <CActorSound id="Energizer_Weapon@Loop" parent="SoundContinuous">
+        <On Terms="Effect.Energizer_Weapon@Beam.Start" Send="Create"/>
+        <On Terms="Effect.Energizer_Weapon@Beam.Stop" Send="Destroy"/>
+    </CActorSound>
+    <CActorSound id="Energizer_Weapon@Start" parent="SoundOneShot">
+        <On Terms="WeaponStart.Energizer_Weapon.AttackStart" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="Energizer_Weapon@End" parent="SoundOneShot">
+        <On Terms="WeaponStop.Energizer_Weapon.AttackStop" Send="Create"/>
+    </CActorSound>
+
+    <CSound id="Energizer_Weapon@Loop" parent="Combat">
+        <AssetArray File="Assets\Sounds\Protoss\Sentry\Sentry_WeaponLoop.wav"/>
+        <DupeMuteCount value="4"/>
+        <LoopCount value="-1"/>
+        <OffsetFadeIn Volume="-96.000000"/>
+        <OffsetFadeIn Time="100"/>
+        <OffsetFadeOut/>
+        <OffsetFadeOut Time="100" Volume="-96.000000"/>
+        <OverlapTimeDelta value="100"/>
+        <SustainFade index="1" Time="100"/>
+        <Pitch value="-1.000000,0.000000"/>
+        <Volume value="-3.000000,-3.000000"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CSound>
+    <CSound id="Energizer_Weapon@Start" parent="Combat">
+        <AssetArray File="Assets\Sounds\Protoss\Sentry\Sentry_WeaponStart.wav"/>
+        <DupeDestroyCount value="4"/>
+        <Pitch value="-1.000000,1.640000"/>
+        <Volume value="-3.000000,-3.000000"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CSound>
+    <CSound id="Energizer_Weapon@End" parent="Combat">
+        <AssetArray File="Assets\Sounds\Protoss\Sentry\Sentry_WeaponEnd.wav"/>
+        <DupeDestroyCount value="4"/>
+        <Pitch value="-1.000000,-1.000000"/>
+        <Volume value="-3.000000,-3.000000"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CSound>
+
+    <!-- Abilities -->
+    
+    <CButton id="Energizer_PhasingMode">
+        <EditorCategories value="Race:Protoss"/>
+        <Icon value="Assets\Textures\btn-ability-protoss-energizermobilemode.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-energizermobilemode.dds"/>
+    </CButton>
+    <CButton id="Energizer_MobileMode">
+        <EditorCategories value="Race:Protoss"/>
+        <Icon value="Assets\Textures\btn-ability-protoss-energizerphasingmode.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-energizerphasingmode.dds"/>
+    </CButton>
+
+    <CAbilMorph id="Energizer_PhasingMode">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Energizer_PhasingMode"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="IgnoreFacing" value="1"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <InfoArray Unit="Energizer_Phasing">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="1.5"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Duration" value="1.5"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="Energizer_MobileMode">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Energizer_MobileMode"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="IgnoreFacing" value="1"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <InfoArray Unit="Energizer">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="1.5"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Duration" value="1.5"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+
+</Catalog>

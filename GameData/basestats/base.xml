@@ -252,6 +252,8 @@
 
     <CUnit default="1" id="Generic_Unit">
         <?token id="race" type="CRaceLink" value="Bogus"?>
+        <WeaponArray Link="##id##_Weapon"/>
+        
         <Name value="Unit/Name/##id##"/>
         <Description value="Button/Tooltip/##id##"/>
         <GlossaryCategory value="Unit/Category/ProtossFaction/##race##"/>

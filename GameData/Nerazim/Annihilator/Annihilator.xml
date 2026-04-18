@@ -104,7 +104,7 @@
     </CActorUnit>
     
     <CModel id="Annihilator" parent="Unit">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Nerazim"/>
         <Model value="Assets\Units\Protoss\Immortal_Nerazim\Immortal_Nerazim.m3"/>
         <RequiredAnims value="Assets\Units\Protoss\Immortal_SwarmAnims\Immortal_SwarmAnims.m3a"/>
         <Occlusion value="Show"/>
@@ -131,7 +131,7 @@
         </AttachProps>
     </CModel>
     <CModel id="Annihilator@Death" parent="UnitDeath">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Nerazim"/>
         <Model value="Assets\Units\Protoss\Immortal_Nerazim_Death\Immortal_Nerazim_Death.m3"/>
         <Occlusion value="Show"/>
         <LowQualityModel value="ProtossMediumUnitDeathLow"/>
@@ -240,12 +240,12 @@
         </Events>
     </CModel>
     <CModel id="Annihilator@Portrait" parent="Portrait">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Nerazim"/>
         <Model value="Assets\Portraits\Protoss\Immortal_Nerazim_Portrait\Immortal_Nerazim_Portrait.m3"/>
         <Image value="Assets\Textures\nerazimimmortalportrait_static.dds"/>
     </CModel>
     <CModel id="Annihilator@Placement" parent="Placement">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Nerazim"/>
         <Model value="Assets\Units\Protoss\ImmortalNerazim_Placement\ImmortalNerazim_Placement.m3"/>
         <Radius value="-1.000000"/>
         <Lighting value="Immortal"/>
@@ -256,7 +256,7 @@
         <ShadowRadius value="0.866400"/>
     </CModel>
     <CModel id="Annihilator@WarpIn" parent="OneShotSpellFX">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Nerazim"/>
         <Model value="Assets\Units\Protoss\ImmortalNerazim_WarpIn\ImmortalNerazim_WarpIn.m3"/>
         <Occlusion value="Show"/>
         <ScaleMax value="0.750000,0.750000,0.750000"/>
@@ -349,7 +349,7 @@
     </CLight>
 
     <CDataCollectionUnit id="Annihilator" parent="UnitGround">
-        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Protoss,ObjectType:Unit"/>
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Nerazim,ObjectType:Unit"/>
         <DataRecord Entry="Button,Annihilator"/>
         <DataRecord Entry="Unit,Annihilator"/>
         <DataRecord Entry="Actor,Annihilator"/>
@@ -413,7 +413,7 @@
     
     <CModel id="AnnihilatorParticleDisruptors@AttackImpact" parent="ImpactFX">
         <Model value="Assets\Effects\Protoss\ImmortalMissileImpact\ImmortalMissileImpact.m3"/>
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Nerazim"/>
         <LowQualityModel value="ImmortalAttackImpactLow"/>
     </CModel>
     
@@ -422,13 +422,13 @@
         <AssetArray File="Assets\Sounds\Protoss\Immortal\Immortal_AttackLaunch0.wav"/>
         <AssetArray File="Assets\Sounds\Protoss\Immortal\Immortal_AttackLaunch1.wav"/>
         <AssetArray File="Assets\Sounds\Protoss\Immortal\Immortal_AttackLaunch2.wav"/>
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Nerazim"/>
         <DupeMaximumMethod value="Replace"/>
     </CSound>
     <CSound id="AnnihilatorParticleDisruptors@AttackImpact" parent="Protoss_ExplosionSmall"/>
 
     <CDataCollectionUnit id="AnnihilatorParticleDisruptors" parent="Weapon_Instant">
-        <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:Protoss,ObjectType:Other"/>
+        <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:Nerazim,ObjectType:Other"/>
         <DataRecord Entry="Weapon,AnnihilatorParticleDisruptors"/>
         <DataRecord Entry="Effect,AnnihilatorParticleDisruptors@Damage"/>
         <DataRecord Entry="Actor,AnnihilatorParticleDisruptors@Attack"/>
@@ -444,13 +444,13 @@
     <!-- =========== Abilities =========== -->
 
     <CButton id="ShadowCannon">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Nerazim"/>
         <Icon value="Assets\Textures\BTN-Ability-Protoss-ShadowCannon.dds"/>
         <AlertIcon value="Assets\Textures\BTN-Ability-Protoss-ShadowCannon.dds"/>
     </CButton>
 
     <CAbilEffectTarget id="ShadowCannon">
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <EditorCategories value="Race:Nerazim,AbilityorEffectType:Units"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="ShadowCannon"/>
         <Effect index="0" value="ShadowCannon@CP"/>
         <Cost>
@@ -464,7 +464,7 @@
     </CAbilEffectTarget>
 
     <CBehaviorBuff id="ShadowCannon">
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <EditorCategories value="Race:Nerazim,AbilityorEffectType:Units"/>
         <Duration value="2"/>
         <InitialEffect value="ShadowCannon@Turret"/>
         <PeriodicEffect value="ShadowCannon@LM"/>
@@ -477,7 +477,7 @@
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="ShadowCannon@DisableWeapon">
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <EditorCategories value="Race:Nerazim,AbilityorEffectType:Units"/>
         <InfoFlags index="Hidden" value="1"/>
         <Duration value="0.125"/>
         <Modification>
@@ -539,8 +539,6 @@
     <CActorMissile id="ShadowCannon@AttackMissile" parent="GenericAttackMissileWithDeathAnim" unitName="ShadowCannon@AttackMissile"/>
     <CActorSimple id="ShadowCannon@Animation">
         <On Terms="ActorOrphan" Send="Destroy"/>
-        <!-- <On Terms="Behavior.ShadowCannon.On" Send="Create"/> -->
-        <!-- <On Terms="Behavior.ShadowCannon.Off" Send="Destroy"/> -->
         <On Terms="Effect.ShadowCannon@CP.Start; At Caster" Send="Create"/>
         <On Terms="Effect.ShadowCannon@CP.Stop; At Caster" Send="Destroy"/>
         <On Terms="Effect.ShadowCannon@LM.Start; At Caster" Target="_Unit" Send="AnimPlay Spell Attack"/>
@@ -548,7 +546,7 @@
 
     <CModel id="ShadowCannon@AttackMissile" parent="MissileFX">
         <Model value="Assets\Effects\Protoss\ShadowCannonMissile\ShadowCannonMissile.m3"/>
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Nerazim"/>
     </CModel>
 
     <CSound id="ShadowCannon@AttackImpact" parent="Protoss_ExplosionSmall">
@@ -569,7 +567,7 @@
         <DupeMuteCount value="6"/>
     </CSound>
     <CSound id="ShadowCannon@AttackLaunch" parent="Combat">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Nerazim"/>
         <AssetArray File="Assets\Sounds\ImmortalShakuras_ShadowCannon_AttackLaunch01_1ch.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\ImmortalShakuras_ShadowCannon_AttackLaunch02_1ch.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\ImmortalShakuras_ShadowCannon_AttackLaunch03_1ch.wav" Weight="17" FacialGroup=""/>
@@ -594,7 +592,7 @@
 
     <!-- Requirements -->
     <CRequirement id="ShadowCannon@Have">
-        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <EditorCategories value="Race:Nerazim,TechType:Ability"/>
         <NodeArray index="Use" Link="ShadowCannon@HaveUpgrade"/>
     </CRequirement>
     <CRequirementCountUpgrade id="ShadowCannon@HaveUpgrade">
@@ -609,7 +607,7 @@
     </CRequirementCountUpgrade>
 
     <CDataCollectionUnit id="ShadowCannon">
-        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Protoss,ObjectType:Projectile"/>
+        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Nerazim,ObjectType:Projectile"/>
         <DataRecord Entry="Button,ShadowCannon"/>
         <DataRecord Entry="Abil,ShadowCannon"/>
         <DataRecord Entry="Behavior,ShadowCannon"/>

@@ -348,10 +348,8 @@
         <On Terms="ActorOrphan" Send="Destroy"/>
         <On Terms="Behavior.Sentinel_Charge.On" Send="Create"/>
         <On Terms="Behavior.Sentinel_Charge.Off" Send="Destroy"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="SetTintColor 255,0,0 0.6 OneShot charging"/>
         <On Terms="ActorCreation" Target="_Unit" Send="AnimGroupApply Spell"/>
         <On Terms="ActorDestruction" Target="_Unit" Send="AnimGroupRemove Spell"/>
-        <On Terms="ActorDestruction" Target="_Unit" Send="ClearTintColor 1.8 charging"/>
     </CActorSimple>
     
     <CSound id="Sentinel_Charge@Sound" parent="Combat">
