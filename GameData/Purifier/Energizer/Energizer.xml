@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Catalog>
-    <CButton id="Energizer"></CButton>
+    <!-- Requires: Unit:Generic_Protoss_Unit_Ground[base.xml] -->
+    <!-- Requires: DataCollectionUnit:UnitGround[base.xml] -->
+    <!-- Requires: DataCollectionUnit:Weapon_Instant[base.xml] -->
+    <!-- Requires: Button:UnitButton_OnlyGround[base.xml] -->
+    <!-- Requires: Actor:AdvancedStandard_Ground[base.xml] -->
+    
+    <CButton id="Energizer" parent="UnitButton_OnlyGround"></CButton>
     
     <CUnit id="Energizer" parent="Generic_Protoss_Unit_Ground" race="Puri">
         <LifeStart value="40"/>
@@ -162,7 +168,6 @@
     </CModel>
     <CModel id="Energizer@Portrait" parent="Portrait">
         <Model value="Assets\Portraits\Protoss\EnergizerEx2Portrait\EnergizerEx2Portrait.m3"/>
-        <Lighting value="PortraitEnergizerEx2Portrait"/>
         <Image value="Assets\Textures\energizerportrait_static.dds"/>
     </CModel>
     <CModel id="Energizer@WarpIn" parent="OneShotSpellFX">
@@ -208,6 +213,39 @@
         <Pitch value="-0.300000,0.000000"/>
         <AssetArray File="Assets\Sounds\Energizer_Ready01.ogg" FacialGroup=""/>
     </CSound>
+
+    <CDataCollectionUnit id="Energizer" parent="UnitGround">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Protoss,ObjectType:Unit"/>
+        <DataRecord Entry="Button,Energizer"/>
+        <DataRecord Entry="Unit,Energizer"/>
+        <DataRecord Entry="Unit,Energizer_Phasing"/>
+        <DataRecord Entry="Actor,Energizer"/>
+        <DataRecord Entry="Actor,Energizer_Phasing"/>
+        <DataRecord Entry="Model,Energizer"/>
+        <DataRecord Entry="Model,Energizer@Death"/>
+        <DataRecord Entry="Model,Energizer@Placement"/>
+        <DataRecord Entry="Model,Energizer@Portrait"/>
+        <DataRecord Entry="Model,Energizer@WarpIn"/>
+        <DataRecord Entry="Sound,Energizer@Attack"/>
+        <DataRecord Entry="Sound,Energizer@Help"/>
+        <DataRecord Entry="Sound,Energizer@Pissed"/>
+        <DataRecord Entry="Sound,Energizer@Yes"/>
+        <DataRecord Entry="Sound,Energizer@What"/>
+        <DataRecord Entry="Sound,Energizer@Ready"/>
+        <DataRecord Entry="Light,Energizer@Portrait"/>
+        <DataRecord Entry="Requirement,Energizer@Use"/>
+        <DataRecord Entry="Requirement,Energizer_Phasing@Use"/>
+        <DataRecord Entry="Validator,Energizer@Is"/>
+        <DataRecord Entry="Validator,Energizer@Target"/>
+        <DataRecord Entry="Validator,Energizer@Not"/>
+        <DataRecord Entry="Validator,Energizer@NotTarget"/>
+        <TechInfoUpgradeUsed value="ProtossShields@1"/>
+        <TechInfoUpgradeUsed value="ProtossShields@2"/>
+        <TechInfoUpgradeUsed value="ProtossShields@3"/>
+        <TechInfoUpgradeUsed value="ProtossGroundArmors@1"/>
+        <TechInfoUpgradeUsed value="ProtossGroundArmors@2"/>
+        <TechInfoUpgradeUsed value="ProtossGroundArmors@3"/>
+    </CDataCollectionUnit>
 
     <!-- Weapons -->
 
@@ -301,6 +339,25 @@
         <EditorCategories value="Race:Protoss"/>
     </CSound>
 
+    <CDataCollectionUnit id="Energizer_Weapon" parent="Weapon_Instant">
+        <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:Protoss,ObjectType:Other"/>
+        <DataRecord Entry="Weapon,Energizer_Weapon"/>
+        <DataRecord Entry="Effect,Energizer_Weapon@Beam"/>
+        <DataRecord Entry="Effect,Energizer_Weapon@Damage"/>
+        <DataRecord Entry="Actor,Energizer_Weapon@Attack"/>
+        <DataRecord Entry="Actor,Energizer_Weapon@AttackBeam"/>
+        <DataRecord Entry="Actor,Energizer_Weapon@Loop"/>
+        <DataRecord Entry="Actor,Energizer_Weapon@Start"/>
+        <DataRecord Entry="Actor,Energizer_Weapon@End"/>
+        <DataRecord Entry="Model,Energizer_Weapon@AttackBeam"/>
+        <DataRecord Entry="Sound,Energizer_Weapon@Loop"/>
+        <DataRecord Entry="Sound,Energizer_Weapon@Start"/>
+        <DataRecord Entry="Sound,Energizer_Weapon@End"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@1"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@2"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@3"/>
+    </CDataCollectionUnit>
+
     <!-- Abilities -->
     
     <CButton id="Energizer_PhasingMode">
@@ -321,21 +378,6 @@
         <Flags index="IgnoreFacing" value="1"/>
         <Flags index="IgnoreUnitCost" value="1"/>
         <InfoArray Unit="Energizer_Phasing">
-            <SectionArray index="Actor">
-                <DurationArray index="Duration" value="1.5"/>
-            </SectionArray>
-            <SectionArray index="Stats">
-                <DurationArray index="Duration" value="1.5"/>
-            </SectionArray>
-        </InfoArray>
-    </CAbilMorph>
-    <CAbilMorph id="Energizer_MobileMode">
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="Energizer_MobileMode"/>
-        <Flags index="BestUnit" value="1"/>
-        <Flags index="IgnoreFacing" value="1"/>
-        <Flags index="IgnoreUnitCost" value="1"/>
-        <InfoArray Unit="Energizer">
             <SectionArray index="Actor">
                 <DurationArray index="Duration" value="1.5"/>
             </SectionArray>
