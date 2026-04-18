@@ -1,0 +1,12 @@
+Button/Name/Energizer=Вызвать заряжателя
+Button/Tooltip/Energizer=Протосский юнит поддержки<n/>Может менять режим между мобильным и фазовым.
+
+Button/Name/Energizer_PhasingMode=Фазовый режим
+Button/Tooltip/Energizer_PhasingMode=Превращается в статичное фазовое строение.
+
+Button/Name/Energizer_MobileMode=Мобильный режим
+Button/Tooltip/Energizer_MobileMode=Превращается обратно в мобильную единицу.
+
+Unit/Name/Energizer=Заряжатель
+
+Weapon/Name/Energizer_Weapon=Фазовый луч

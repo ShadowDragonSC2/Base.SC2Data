@@ -1,0 +1,13 @@
+Button/Name/Energizer=Warp in Energizer
+Button/Tooltip/Energizer=Protoss support unit<n/>Can switch between mobile and phasing modes.
+
+Button/Name/Energizer_PhasingMode=Phasing Mode
+Button/Tooltip/Energizer_PhasingMode=Transforms into a stationary phasing structure.
+
+Button/Name/Energizer_MobileMode=Mobile Mode
+Button/Tooltip/Energizer_MobileMode=Transforms back into a mobile unit.
+
+Unit/Name/Energizer=Energizer
+Unit/Name/Energizer_Phasing=Energizer (Phasing)
+
+Weapon/Name/Energizer_Weapon=Phase Beam

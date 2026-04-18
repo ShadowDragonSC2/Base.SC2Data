@@ -1,0 +1,93 @@
+\ннл \\\ Energizer
+Unit/EditorPrefix/Energizer=Протоссы
+Unit/Name/Energizer=Энергофор
+Unit/EditorPrefix/Energizer_Phasing=Протоссы
+Unit/EditorSuffix/Energizer_Phasing=Фазовый режим
+Unit/Name/Energizer_Phasing=Энергофор (Фазовый)
+
+\\\ Energizer Actor
+Actor/EditorPrefix/Energizer=Протоссы
+Actor/Name/Energizer=Энергофор
+Actor/EditorPrefix/Energizer_Phasing=Протоссы
+Actor/EditorSuffix/Energizer_Phasing=Фазовый режим
+Actor/Name/Energizer_Phasing=Энергофор (Фазовый)
+
+\\\ Energizer Model
+Model/EditorPrefix/Energizer=Протоссы
+Model/Name/Energizer=Энергофор
+Model/EditorPrefix/Energizer@Death=Протоссы
+Model/Name/Energizer@Death=Смерть
+Model/EditorPrefix/Energizer@Placement=Протоссы
+Model/Name/Energizer@Placement=Размещение
+Model/EditorPrefix/Energizer@Portrait=Протоссы
+Model/Name/Energizer@Portrait=Портрет
+Model/EditorPrefix/Energizer@WarpIn=Протоссы
+Model/Name/Energizer@WarpIn=Варп-вход
+
+\\\ Energizer Weapon
+Weapon/EditorPrefix/Energizer_Weapon=Протоссы
+Weapon/Name/Energizer_Weapon=Фазовый луч
+Actor/EditorPrefix/Energizer_Weapon@Attack=Протоссы
+Actor/Name/Energizer_Weapon@Attack=Атака
+Actor/EditorPrefix/Energizer_Weapon@AttackBeam=Протоссы
+Actor/Name/Energizer_Weapon@AttackBeam=Луч атаки
+Effect/EditorPrefix/Energizer_Weapon@Beam=Протоссы
+Effect/Name/Energizer_Weapon@Beam=Луч
+Effect/EditorPrefix/Energizer_Weapon@Damage=Протоссы
+Effect/Name/Energizer_Weapon@Damage=Урон
+Model/EditorPrefix/Energizer_Weapon@AttackBeam=Протоссы
+Model/Name/Energizer_Weapon@AttackBeam=Луч атаки
+Sound/EditorPrefix/Energizer_Weapon@Loop=Протоссы
+Sound/Name/Energizer_Weapon@Loop=Звук цикла
+Sound/EditorPrefix/Energizer_Weapon@Start=Протоссы
+Sound/Name/Energizer_Weapon@Start=Звук начала
+Sound/EditorPrefix/Energizer_Weapon@End=Протоссы
+Sound/Name/Energizer_Weapon@End=Звук конца
+Sound/EditorPrefix/Energizer_Weapon@AttackImpact=Протоссы
+Sound/Name/Energizer_Weapon@AttackImpact=Удар
+
+\\\ Energizer Sounds
+Sound/EditorPrefix/Energizer@Death=Протоссы
+Sound/Name/Energizer@Death=Смерть
+Sound/EditorPrefix/Energizer@DeathVoice=Протоссы
+Sound/Name/Energizer@DeathVoice=Голос смерти
+Sound/EditorPrefix/Energizer@Pissed=Протоссы
+Sound/Name/Energizer@Pissed=Недовольство
+Sound/EditorPrefix/Energizer@Ready=Протоссы
+Sound/Name/Energizer@Ready=Готов
+Sound/EditorPrefix/Energizer@Attack=Протоссы
+Sound/Name/Energizer@Attack=Атака
+Sound/EditorPrefix/Energizer@Yes=Протоссы
+Sound/Name/Energizer@Yes=Да
+Sound/EditorPrefix/Energizer@What=Протоссы
+Sound/Name/Energizer@What=Что?
+Sound/EditorPrefix/Energizer@Help=Протоссы
+Sound/Name/Energizer@Help=Помощь
+Sound/EditorPrefix/Energizer@AbilSound=Протоссы
+Sound/Name/Energizer@AbilSound=Звук способности
+
+\\\ Energizer Abilities
+Abil/EditorPrefix/Energizer_PhasingMode=Протоссы
+Abil/Name/Energizer_PhasingMode=Фазовый режим
+Abil/EditorPrefix/Energizer_MobileMode=Протоссы
+Abil/Name/Energizer_MobileMode=Мобильный режим
+
+\\\ Energizer Light
+Light/EditorPrefix/Energizer@Portrait=Протоссы
+Light/Name/Energizer@Portrait=Портрет
+
+\\\ Energizer Requirement
+Requirement/EditorPrefix/Energizer@Use=Протоссы
+Requirement/Name/Energizer@Use=Использовать
+Requirement/EditorPrefix/Energizer_Phasing@Use=Протоссы
+Requirement/Name/Energizer_Phasing@Use=Использовать
+
+\\\ Energizer Validator
+Validator/EditorPrefix/Energizer@Is=Протоссы
+Validator/Name/Energizer@Is=Исполнитель является юнитом
+Validator/EditorPrefix/Energizer@Target=Протоссы
+Validator/Name/Energizer@Target=Цель является юнитом
+Validator/EditorPrefix/Energizer@Not=Протоссы
+Validator/Name/Energizer@Not=Исполнитель не является юнитом
+Validator/EditorPrefix/Energizer@NotTarget=Протоссы
+Validator/Name/Energizer@NotTarget=Цель не является юнитом

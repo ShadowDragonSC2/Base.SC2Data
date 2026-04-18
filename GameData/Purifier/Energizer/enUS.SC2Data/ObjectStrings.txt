@@ -1,0 +1,93 @@
+\\\ Energizer
+Unit/EditorPrefix/Energizer=Protoss
+Unit/Name/Energizer=Energizer
+Unit/EditorPrefix/Energizer_Phasing=Protoss
+Unit/EditorSuffix/Energizer_Phasing=Phasing Mode
+Unit/Name/Energizer_Phasing=Energizer (Phasing)
+
+\\\ Energizer Actor
+Actor/EditorPrefix/Energizer=Protoss
+Actor/Name/Energizer=Energizer
+Actor/EditorPrefix/Energizer_Phasing=Protoss
+Actor/EditorSuffix/Energizer_Phasing=Phasing Mode
+Actor/Name/Energizer_Phasing=Energizer (Phasing)
+
+\\\ Energizer Model
+Model/EditorPrefix/Energizer=Protoss
+Model/Name/Energizer=Energizer
+Model/EditorPrefix/Energizer@Death=Protoss
+Model/Name/Energizer@Death=Death
+Model/EditorPrefix/Energizer@Placement=Protoss
+Model/Name/Energizer@Placement=Placement
+Model/EditorPrefix/Energizer@Portrait=Protoss
+Model/Name/Energizer@Portrait=Portrait
+Model/EditorPrefix/Energizer@WarpIn=Protoss
+Model/Name/Energizer@WarpIn=Warp In
+
+\\\ Energizer Weapon
+Weapon/EditorPrefix/Energizer_Weapon=Protoss
+Weapon/Name/Energizer_Weapon=Phase Beam
+Actor/EditorPrefix/Energizer_Weapon@Attack=Protoss
+Actor/Name/Energizer_Weapon@Attack=Attack
+Actor/EditorPrefix/Energizer_Weapon@AttackBeam=Protoss
+Actor/Name/Energizer_Weapon@AttackBeam=Attack Beam
+Effect/EditorPrefix/Energizer_Weapon@Beam=Protoss
+Effect/Name/Energizer_Weapon@Beam=Beam
+Effect/EditorPrefix/Energizer_Weapon@Damage=Protoss
+Effect/Name/Energizer_Weapon@Damage=Damage
+Model/EditorPrefix/Energizer_Weapon@AttackBeam=Protoss
+Model/Name/Energizer_Weapon@AttackBeam=Attack Beam
+Sound/EditorPrefix/Energizer_Weapon@Loop=Protoss
+Sound/Name/Energizer_Weapon@Loop=Loop Sound
+Sound/EditorPrefix/Energizer_Weapon@Start=Protoss
+Sound/Name/Energizer_Weapon@Start=Start Sound
+Sound/EditorPrefix/Energizer_Weapon@End=Protoss
+Sound/Name/Energizer_Weapon@End=End Sound
+Sound/EditorPrefix/Energizer_Weapon@AttackImpact=Protoss
+Sound/Name/Energizer_Weapon@AttackImpact=Impact
+
+\\\ Energizer Sounds
+Sound/EditorPrefix/Energizer@Death=Protoss
+Sound/Name/Energizer@Death=Death
+Sound/EditorPrefix/Energizer@DeathVoice=Protoss
+Sound/Name/Energizer@DeathVoice=Death Voice
+Sound/EditorPrefix/Energizer@Pissed=Protoss
+Sound/Name/Energizer@Pissed=Pissed
+Sound/EditorPrefix/Energizer@Ready=Protoss
+Sound/Name/Energizer@Ready=Ready
+Sound/EditorPrefix/Energizer@Attack=Protoss
+Sound/Name/Energizer@Attack=Attack
+Sound/EditorPrefix/Energizer@Yes=Protoss
+Sound/Name/Energizer@Yes=Yes
+Sound/EditorPrefix/Energizer@What=Protoss
+Sound/Name/Energizer@What=What
+Sound/EditorPrefix/Energizer@Help=Protoss
+Sound/Name/Energizer@Help=Help
+Sound/EditorPrefix/Energizer@AbilSound=Protoss
+Sound/Name/Energizer@AbilSound=Ability Sound
+
+\\\ Energizer Abilities
+Abil/EditorPrefix/Energizer_PhasingMode=Protoss
+Abil/Name/Energizer_PhasingMode=Phasing Mode
+Abil/EditorPrefix/Energizer_MobileMode=Protoss
+Abil/Name/Energizer_MobileMode=Mobile Mode
+
+\\\ Energizer Light
+Light/EditorPrefix/Energizer@Portrait=Protoss
+Light/Name/Energizer@Portrait=Portrait
+
+\\\ Energizer Requirement
+Requirement/EditorPrefix/Energizer@Use=Protoss
+Requirement/Name/Energizer@Use=Use
+Requirement/EditorPrefix/Energizer_Phasing@Use=Protoss
+Requirement/Name/Energizer_Phasing@Use=Use
+
+\\\ Energizer Validator
+Validator/EditorPrefix/Energizer@Is=Protoss
+Validator/Name/Energizer@Is=Caster Is Unit
+Validator/EditorPrefix/Energizer@Target=Protoss
+Validator/Name/Energizer@Target=Target Is Unit
+Validator/EditorPrefix/Energizer@Not=Protoss
+Validator/Name/Energizer@Not=Caster Not Unit
+Validator/EditorPrefix/Energizer@NotTarget=Protoss
+Validator/Name/Energizer@NotTarget=Target Not Unit
