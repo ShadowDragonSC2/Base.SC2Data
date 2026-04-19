@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    <CButton id="Corsair"></CButton>
+    
+    <CUnit id="Corsair"></CUnit>
+    
+    <CActorUnit id="Corsair" parent="GenericUnitStandard" unitName="Corsair"/>
+    
+    <CModel id="Corsair" parent="Unit">
+        <Model value=""/>
+    </CModel>
+    <CModel id="Corsair@Death" parent="UnitDeath">
+        <Model value=""/>
+    </CModel>
+    <CModel id="Corsair@Portrait" parent="Portrait">
+        <Model value=""/>
+    </CModel>
+    
+    
+</Catalog>
