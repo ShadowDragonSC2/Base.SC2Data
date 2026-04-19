@@ -1,0 +1,4 @@
+Button/Hotkey/Energizer=E
+Button/Hotkey/Energizer_PhasingMode=E
+Button/Hotkey/Energizer_MobileMode=E
+Button/Hotkey/Energizer_ChronoBeam=Q
