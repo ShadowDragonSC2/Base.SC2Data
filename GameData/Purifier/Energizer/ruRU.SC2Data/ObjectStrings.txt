@@ -1,20 +1,18 @@
-\ннл \\\ Energizer
+\\\ Energizer
 Unit/EditorPrefix/Energizer=Протоссы
-Unit/Name/Energizer=Энергофор
 Unit/EditorPrefix/Energizer_Phasing=Протоссы
 Unit/EditorSuffix/Energizer_Phasing=Фазовый режим
-Unit/Name/Energizer_Phasing=Энергофор (Фазовый)
 
 \\\ Energizer Actor
 Actor/EditorPrefix/Energizer=Протоссы
-Actor/Name/Energizer=Энергофор
+Actor/Name/Energizer=Единица
 Actor/EditorPrefix/Energizer_Phasing=Протоссы
 Actor/EditorSuffix/Energizer_Phasing=Фазовый режим
-Actor/Name/Energizer_Phasing=Энергофор (Фазовый)
+Actor/Name/Energizer_Phasing=Единица (Фазовый)
 
 \\\ Energizer Model
 Model/EditorPrefix/Energizer=Протоссы
-Model/Name/Energizer=Энергофор
+Model/Name/Energizer=Единица
 Model/EditorPrefix/Energizer@Death=Протоссы
 Model/Name/Energizer@Death=Смерть
 Model/EditorPrefix/Energizer@Placement=Протоссы

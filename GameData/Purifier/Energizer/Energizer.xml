@@ -45,7 +45,9 @@
     <CUnit id="Energizer_Phasing" parent="Energizer" race="Puri">
         <WeaponArray index="0" Link=""/>
         <AbilArray index="5" Link="Energizer_MobileMode"/>
+        <BehaviorArray Link="Energizer@PowerSource"/>
         <Speed value="0"/>
+        <FlagArray index="Movable" value="0"/>
         <CardLayouts index="0">
             <LayoutButtons index="6" Face="Energizer_MobileMode" Type="AbilCmd" AbilCmd="Energizer_MobileMode,Execute"/>
         </CardLayouts>
@@ -172,7 +174,7 @@
     </CModel>
     <CModel id="Energizer@WarpIn" parent="OneShotSpellFX">
         <Model value="Assets\Units\Protoss\Sentry_Purifier_WarpIn\Sentry_Purifier_WarpIn.m3"/>
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Purifier"/>
         <Occlusion value="Show"/>
         <ScaleMax value="0.600000,0.600000,0.600000"/>
         <ScaleMin value="0.600000,0.600000,0.600000"/>
@@ -214,8 +216,82 @@
         <AssetArray File="Assets\Sounds\Energizer_Ready01.ogg" FacialGroup=""/>
     </CSound>
 
+    <CLight id="Energizer@Portrait" parent="default">
+        <ToDInfoArray index="0" Id="PsionicWaveUp" AmbientColor="0.235294,0.309804,0.392157" Colorize="1">
+            <Param index="HDRExposure" value="1.500000"/>
+            <Param index="HDRWhitePoint" value="1.850000"/>
+            <Param index="HDRSpecMultiplier" value="4.000000"/>
+            <Param index="TerrainSpecularExp" value="11.210000"/>
+            <Param index="TerrainHDRSpecular" value="3.750000"/>
+            <Param index="CreepSpecularExp" value="30.000000"/>
+            <Param index="CreepHDRSpecMultiplier" value="3.000000"/>
+            <Param index="ColorizationContrast" value="1.066000"/>
+            <Param index="ColorizationHue" value="0.009000"/>
+            <Param index="ColorizationSaturation" value="0.088000"/>
+            <Param index="ColorizationLightness" value="0.040000"/>
+            <Param index="ColorizationBlend" value="0.286000"/>
+            <DirectionalLight index="Key">
+                <Color value="0.772549,0.803922,0.870588"/>
+                <ColorMultiplier value="1.500000"/>
+                <SpecularColor value="0.756863,0.894118,0.933333"/>
+                <SpecColorMultiplier value="1.000000"/>
+                <Direction value="0.624465,-0.021479,-0.780757"/>
+            </DirectionalLight>
+            <DirectionalLight index="Fill" Color="0.003922,0.109804,0.082353" ColorMultiplier="0.209000" Direction="-0.463854,-0.769851,0.438371"/>
+            <DirectionalLight index="Back" Color="0.156863,0.505882,0.690196" ColorMultiplier="1.000000" Direction="-0.585935,0.595628,0.549460"/>
+        </ToDInfoArray>
+        <EditorCategories value="LightGroup:PortraitsUnitsProtoss"/>
+    </CLight>
+
+    <!-- Behavior Source Power -->
+
+    <CBehaviorPowerSource id="Energizer@PowerSource">
+        <Radius value="7.5"/>
+        <PowerLink value="PowerSource"/>
+    </CBehaviorPowerSource>
+    <CActorRange id="Energizer@PowerVisualLow">
+        <Icon value="Assets\Textures\PylonLowRingSplat.dds"/>
+        <IconArcLength value="0.750000"/>
+        <Behavior value="Energizer@PowerSource"/>
+    </CActorRange>
+    <CActorSplat id="Energizer@PowerVisual">
+        <FogVisibility value="Visible"/>
+        <FadeIn value="0.000000"/>
+        <FadeOut value="0.000000"/>
+        <HoldTime value="-1.000000"/>
+        <Layer value="PowerLayer"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpShadow SOpForwardNorth"/>
+    </CActorSplat>
+    <CActorPower id="Energizer@Power">
+        <On Terms="Behavior.Energizer@PowerSource.Create; !Option Model Low" Send="Create"/>
+        <On Terms="Behavior.Energizer@PowerSource.Destroy; !Option Model Low" Send="Destroy"/>
+        <VisualArray value="UnpoweredVisual"/>
+        <VisualArray value="Energizer@PowerVisual"/>
+    </CActorPower>
+    <CActorPower id="Energizer@Power_Low">
+        <On Terms="Behavior.Energizer@PowerSource.Create; Option Model Low" Send="Create"/>
+        <On Terms="Behavior.Energizer@PowerSource.Destroy; Option Model Low" Send="Destroy"/>
+        <VisualArray value="UnpoweredVisualLow"/>
+        <VisualArray value="Energizer@PowerVisualLow"/>
+    </CActorPower>
+
+    <CModel id="Energizer@PowerVisual" parent="UI">
+        <Model value="Assets\Effects\Protoss\Sentry_Purifier_PhasingMode_Radius\Sentry_Purifier_PhasingMode_Radius.m3"/>
+    </CModel>
+
+    <!-- =============== -->
+
+    <CRequirement id="Energizer@Use"/>
+    <CRequirement id="Energizer_Phasing@Use"/>
+
+    <CValidatorUnitType id="Energizer@Is" parent="IsUnit_Default" unit="Energizer"/>
+    <CValidatorUnitType id="Energizer@Target" parent="TargetIsUnit_Default" unit="Energizer"/>
+    <CValidatorUnitType id="Energizer@Not" parent="NotUnit_Default" unit="Energizer"/>
+    <CValidatorUnitType id="Energizer@NotTarget" parent="TargetNotUnit_Default" unit="Energizer"/>
+
     <CDataCollectionUnit id="Energizer" parent="UnitGround">
-        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Protoss,ObjectType:Unit"/>
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Purifier,ObjectType:Unit"/>
         <DataRecord Entry="Button,Energizer"/>
         <DataRecord Entry="Unit,Energizer"/>
         <DataRecord Entry="Unit,Energizer_Phasing"/>
@@ -250,7 +326,7 @@
     <!-- Weapons -->
 
     <CWeaponLegacy id="Energizer_Weapon">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Purifier"/>
         <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
         <DisplayEffect value="Energizer_Weapon@Damage"/>
         <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
@@ -261,7 +337,7 @@
     </CWeaponLegacy>
     
     <CEffectCreatePersistent id="Energizer_Weapon@Beam">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Purifier"/>
         <InitialEffect value="Energizer_Weapon@Damage"/>
         <Flags index="Channeled" value="1"/>
         <Flags index="PersistUntilDestroyed" value="1"/>
@@ -271,14 +347,14 @@
         <PeriodicPeriodArray value="1"/>
     </CEffectCreatePersistent>
     <CEffectDamage id="Energizer_Weapon@Damage" parent="DU_WEAP">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Purifier"/>
         <Amount value="6"/>
         <Kind value="Ranged"/>
     </CEffectDamage>
     
     <CModel id="Energizer_Weapon@AttackBeam" parent="PersistentSpellFX">
         <Model value="Assets\Effects\Protoss\NullifierBeam\NullifierBeam.m3"/>
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Purifier"/>
         <LowQualityModel value="SentryAttackBeamLow"/>
         <RadiusLoose value="1.000000"/>
     </CModel>
@@ -322,25 +398,25 @@
         <SustainFade index="1" Time="100"/>
         <Pitch value="-1.000000,0.000000"/>
         <Volume value="-3.000000,-3.000000"/>
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Purifier"/>
     </CSound>
     <CSound id="Energizer_Weapon@Start" parent="Combat">
         <AssetArray File="Assets\Sounds\Protoss\Sentry\Sentry_WeaponStart.wav"/>
         <DupeDestroyCount value="4"/>
         <Pitch value="-1.000000,1.640000"/>
         <Volume value="-3.000000,-3.000000"/>
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Purifier"/>
     </CSound>
     <CSound id="Energizer_Weapon@End" parent="Combat">
         <AssetArray File="Assets\Sounds\Protoss\Sentry\Sentry_WeaponEnd.wav"/>
         <DupeDestroyCount value="4"/>
         <Pitch value="-1.000000,-1.000000"/>
         <Volume value="-3.000000,-3.000000"/>
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Purifier"/>
     </CSound>
 
     <CDataCollectionUnit id="Energizer_Weapon" parent="Weapon_Instant">
-        <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:Protoss,ObjectType:Other"/>
+        <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:Purifier,ObjectType:Other"/>
         <DataRecord Entry="Weapon,Energizer_Weapon"/>
         <DataRecord Entry="Effect,Energizer_Weapon@Beam"/>
         <DataRecord Entry="Effect,Energizer_Weapon@Damage"/>
@@ -361,18 +437,18 @@
     <!-- Abilities -->
     
     <CButton id="Energizer_PhasingMode">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Purifier"/>
         <Icon value="Assets\Textures\btn-ability-protoss-energizermobilemode.dds"/>
         <AlertIcon value="Assets\Textures\btn-ability-protoss-energizermobilemode.dds"/>
     </CButton>
     <CButton id="Energizer_MobileMode">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Purifier"/>
         <Icon value="Assets\Textures\btn-ability-protoss-energizerphasingmode.dds"/>
         <AlertIcon value="Assets\Textures\btn-ability-protoss-energizerphasingmode.dds"/>
     </CButton>
 
     <CAbilMorph id="Energizer_PhasingMode">
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <EditorCategories value="Race:Purifier,AbilityorEffectType:Units"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Energizer_PhasingMode"/>
         <Flags index="BestUnit" value="1"/>
         <Flags index="IgnoreFacing" value="1"/>
@@ -386,5 +462,43 @@
             </SectionArray>
         </InfoArray>
     </CAbilMorph>
+    <CAbilMorph id="Energizer_MobileMode">
+        <EditorCategories value="Race:Purifier,AbilityorEffectType:Units"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Energizer_MobileMode"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="IgnoreFacing" value="1"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <InfoArray Unit="Energizer">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="1.5"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Duration" value="1.5"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+
+    <CActorSound id="Energizer_PhasingMode@On" parent="SoundOneShot">
+        <On Terms="AbilMorph.*.Start; MorphTo Energizer_Phasing" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="Energizer_MobileMode@On" parent="SoundOneShot">
+        <On Terms="AbilMorph.*.Start; MorphTo Energizer" Send="Create"/>
+    </CActorSound>
+
+    <CSound id="Energizer_PhasingMode@On" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\SentryPurifier_PhaseMode_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SentryPurifier_PhaseMode_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SentryPurifier_PhaseMode_03.wav" Pitch="-2.000000,-2.000000" FacialGroup=""/>
+        <Pitch value="-3.000000,-1.000000"/>
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="Energizer_MobileMode@On" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\SentryPurifier_MobileMode_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SentryPurifier_MobileMode_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SentryPurifier_MobileMode_03.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,0.000000"/>
+    </CSound>
 
 </Catalog>
