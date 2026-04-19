@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Catalog>
-    <!-- Requires: Unit:Generic_Protoss_Unit_Ground[base.xml] -->
     <!-- Requires: DataCollectionUnit:UnitGround[base.xml] -->
     <!-- Requires: DataCollectionUnit:Weapon_Instant[base.xml] -->
     <!-- Requires: Button:UnitButton_OnlyGround[base.xml] -->
     <!-- Requires: Actor:AdvancedStandard_Ground[base.xml] -->
+    <!-- Requires: Unit:Generic_Protoss_Unit_Ground[protoss.xml] -->
     
-    <CButton id="Energizer" parent="UnitButton_OnlyGround"></CButton>
+    <CButton id="Energizer" parent="UnitButton_OnlyGround">
+        <Icon value="Assets\Textures\btn-unit-protoss-sentry-purifier.dds"/>
+    </CButton>
     
     <CUnit id="Energizer" parent="Generic_Protoss_Unit_Ground" race="Puri">
         <LifeStart value="40"/>
@@ -250,6 +252,7 @@
     <CBehaviorPowerSource id="Energizer@PowerSource">
         <Radius value="7.5"/>
         <PowerLink value="PowerSource"/>
+        <InfoFlags index="Hidden" value="1"/>
     </CBehaviorPowerSource>
     <CActorRange id="Energizer@PowerVisualLow">
         <Icon value="Assets\Textures\PylonLowRingSplat.dds"/>
@@ -325,7 +328,7 @@
         <TechInfoUpgradeUsed value="ProtossGroundArmors@3"/>
     </CDataCollectionUnit>
 
-    <!-- Weapons -->
+    <!-- ============ Weapons ============ -->
 
     <CWeaponLegacy id="Energizer_Weapon">
         <EditorCategories value="Race:Purifier"/>
@@ -489,7 +492,7 @@
     </CActorSound>
 
     <CSound id="Energizer_PhasingMode@On" parent="Spell">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Purifier"/>
         <AssetArray File="Assets\Sounds\SentryPurifier_PhaseMode_01.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\SentryPurifier_PhaseMode_02.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\SentryPurifier_PhaseMode_03.wav" Pitch="-2.000000,-2.000000" FacialGroup=""/>
@@ -497,7 +500,7 @@
         <Volume value="-2.000000,-2.000000"/>
     </CSound>
     <CSound id="Energizer_MobileMode@On" parent="Spell">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Purifier"/>
         <AssetArray File="Assets\Sounds\SentryPurifier_MobileMode_01.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\SentryPurifier_MobileMode_02.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\SentryPurifier_MobileMode_03.wav" FacialGroup=""/>
@@ -505,7 +508,6 @@
     </CSound>
 
     <!-- Chrono Beam -->
-     
     <CButton id="Energizer_ChronoBeam">
         <Icon value="Assets\Textures\btn-ability-protoss-chronobeam.dds"/>
     </CButton>
@@ -533,7 +535,7 @@
     </CAbilEffectTarget>
 
     <CEffectCreatePersistent id="Energizer_ChronoBeam@Beam">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Purifier"/>
         <WhichLocation Value="TargetUnit"/>
         <InitialDelay value="1"/>
         <InitialEffect value="Energizer_ChronoBeam@AB"/>
@@ -541,12 +543,12 @@
         <ValidatorArray value="Energizer_ChronoBeam@NotChrono"/>
     </CEffectCreatePersistent>
     <CEffectApplyBehavior id="Energizer_ChronoBeam@AB">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Purifier"/>
         <Behavior value="Energizer_ChronoBeam"/>
     </CEffectApplyBehavior>
 
     <CBehaviorBuff id="Energizer_ChronoBeam">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Purifier"/>
         <Duration value="10"/>
         <Modification AdditiveMoveSpeedFactor="0.5" AdditiveAttackSpeedFactor="0.5"/>
         <Alignment value="Positive"/>
@@ -581,16 +583,16 @@
     </CActorSound>
     
     <CModel id="Energizer_ChronoBeam@Beam" parent="PersistentSpellFX">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Purifier"/>
         <Model value="Assets\Effects\Protoss\Sentry_Purifier_ChronoBeam\Sentry_Purifier_ChronoBeam.m3"/>
     </CModel>
     <CModel id="Energizer_ChronoBeam@Impact" parent="PersistentSpellFX">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Purifier"/>
         <Model value="Assets\Effects\Protoss\Sentry_Purifier_ChronoBeam_Impact\Sentry_Purifier_ChronoBeam_Impact.m3"/>
     </CModel>
     
     <CSound id="Energizer_ChronoBeam@SoundStart" parent="Spell">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Purifier"/>
         <AssetArray File="Assets\Sounds\SentryPurifier_ChronoBeam_01.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\SentryPurifier_ChronoBeam_02.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\SentryPurifier_ChronoBeam_03.wav" FacialGroup=""/>
