@@ -30,7 +30,7 @@
 7.  **Copy all `Assets` folders** into the root of your map folder.
 
 8.  **Merge the text strings** from the localization files in the archive with your own localization files.  
-    For example, copy the contents of `ruRU.SC2Assets/GameStrings.txt` from the archive into your `ruRU.SC2Assets/GameStrings.txt`.
+    For example, copy the contents of `ruRU.SC2Data/GameStrings.txt` from the archive into your `ruRU.SC2Data/LocalizedData/GameStrings.txt`.
 
 9.  **Copy the necessary localized asset folders** (e.g., `ruRU.SC2Assets`, `enUS.SC2Assets`) into the root of your map folder.
 
@@ -64,7 +64,7 @@
 7. Вставить все папки `Assets` в корень вашей карты (её папки)
    
 8. Добавить все тексты из файлов локализации из архива в ваши соотствествующие файл
-   - Например, всё содержимое из файла ruRU.SC2Assets/GameStrings.txt вставляем в ваш файл ruRU.SC2Assets/GameStrings.txt
+   - Например, всё содержимое из файла `ruRU.SC2Data/GameStrings.txt` вставляем в ваш файл `ruRU.SC2Data/LocalizedData/GameStrings.txt`
   
-9. Вставить в корень вашей карты (её папки) все необходимые локализованные файлы ruRU.SC2Assets/enUS.SC2Assets
+9. Вставить в корень вашей карты (её папки) все необходимые локализованные файлы `ruRU.SC2Assets/enUS.SC2Assets`
 
