@@ -6,6 +6,7 @@
     <!-- Requires: Unit:Generic_Protoss_Unit_Air[protoss.xml] -->
 
     <CButton id="Corsair" parent="UnitButton_OnlyAir">
+        <EditorCategories value="Race:Nerazim"/>
         <Icon value="Assets\Textures\btn-unit-protoss-Corsair.dds"/>
     </CButton>
     
@@ -223,7 +224,8 @@
 
     <!-- Disruption Web -->
     <CButton id="Corsair_DisruptionWeb">
-        <Icon value=""/>
+        <Icon value="Assets\Textures\btn-ability-protoss-disruptionweb.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-disruptionweb.dds"/>
     </CButton>
 
     <CAbilEffectTarget id="Corsair_DisruptionWeb">
