@@ -5,6 +5,7 @@
     <!-- Requires: DataCollectionUnit:Weapon_Instant[base.xml] -->
 
     <CButton id="Annihilator">
+        <EditorCategories value="Race:Nerazim"/>
         <Icon value="Assets\Textures\BTN-Unit-Protoss-Immortal-Nerazim.dds"/>
         <AlertIcon value="Assets\Textures\BTN-Unit-Protoss-Immortal-Nerazim.dds"/>
     </CButton>
@@ -395,6 +396,7 @@
     <!-- =========== Weapons =========== -->
     
     <CWeaponLegacy id="AnnihilatorParticleDisruptors">
+        <EditorCategories value="Race:Nerazim"/>
         <Arc value="360"/>
         <Period value="1.45"/>
         <MinScanRange value="6.5"/>
@@ -404,6 +406,7 @@
         <DisplayEffect value="AnnihilatorParticleDisruptors@Damage"/>
     </CWeaponLegacy>
     <CEffectDamage id="AnnihilatorParticleDisruptors@Damage" parent="DU_WEAP">
+        <EditorCategories value="Race:Nerazim"/>
         <Amount value="20"/>
     </CEffectDamage>
 
@@ -487,20 +490,24 @@
     </CBehaviorBuff>
 
     <CEffectApplyBehavior id="ShadowCannon@AB">
+        <EditorCategories value="Race:Nerazim"/>
         <Behavior value="ShadowCannon"/>
         <WhichUnit Value="Caster"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="ShadowCannon@AB@DisableWeapon">
+        <EditorCategories value="Race:Nerazim"/>
         <WhichUnit Value="Caster"/>
         <Behavior value="ShadowCannon@DisableWeapon"/>
     </CEffectApplyBehavior>
     <CEffectLaunchMissile id="ShadowCannon@LM">
+        <EditorCategories value="Race:Nerazim"/>
         <AmmoUnit value="ShadowCannon@AttackMissile"/>
         <ImpactEffect value="ShadowCannon@Damage"/>
         <ImpactLocation Effect="ShadowCannon@CP"/>
         <LaunchLocation Value="CasterUnit"/>
     </CEffectLaunchMissile>
     <CEffectModifyUnit id="ShadowCannon@Turret">
+        <EditorCategories value="Race:Nerazim"/>
         <ImpactUnit Value="Caster"/>
         <ModifyTurret>
             <Flags index="Tracking" value="1"/>
@@ -509,10 +516,12 @@
         </ModifyTurret>
     </CEffectModifyUnit>
     <CEffectModifyUnit id="ShadowCannon@Turret@Clear">
+        <EditorCategories value="Race:Nerazim"/>
         <ImpactUnit Value="Caster"/>
         <ModifyTurret Action="ClearTarget" Turret="Immortal"/>
     </CEffectModifyUnit>
     <CEffectCreatePersistent id="ShadowCannon@CP">
+        <EditorCategories value="Race:Nerazim"/>
         <WhichLocation Value="TargetUnit"/>
         <!-- <InitialEffect value="ShadowCannon@AB"/> -->
         <InitialEffect value="ShadowCannon@Turret"/>
@@ -523,6 +532,7 @@
         <PeriodicValidator value="NotDead"/>
     </CEffectCreatePersistent>
     <CEffectDamage id="ShadowCannon@Damage" parent="DU_WEAP_MISSILE">
+        <EditorCategories value="Race:Nerazim"/>
         <Amount value="40"/>
     </CEffectDamage>
 
@@ -550,6 +560,7 @@
     </CModel>
 
     <CSound id="ShadowCannon@AttackImpact" parent="Protoss_ExplosionSmall">
+        <EditorCategories value="Race:Nerazim"/>
         <AssetArray index="0" File="Assets\Sounds\ImmortalShakuras_ShadowCannon_Impact01_1ch.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
         <AssetArray index="1" File="Assets\Sounds\ImmortalShakuras_ShadowCannon_Impact02_1ch.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
         <AssetArray index="2" File="Assets\Sounds\ImmortalShakuras_ShadowCannon_Impact03_1ch.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
@@ -600,6 +611,7 @@
     </CRequirementCountUpgrade>
 
     <CRequirement id="ShadowCannon@Learn">
+        <EditorCategories value="Race:Nerazim,TechType:Ability"/>
         <NodeArray index="Show" Link="ShadowCannon@LearnUpgrade"/>
     </CRequirement>
     <CRequirementCountUpgrade id="ShadowCannon@LearnUpgrade">
@@ -633,6 +645,7 @@
 
     <!-- =========== Upgrades =========== -->
     <CUpgrade id="ResearchShadowCannon">
+        <EditorCategories value="Race:Nerazim,UpgradeType:SpellResearch"/>
         <Icon value="Assets\Textures\BTN-Ability-Protoss-ShadowCannon.dds"/>
         <AffectedUnitArray value="ImmortalShakuras"/>
     </CUpgrade>
