@@ -1,20 +1,233 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Catalog>
-    <CButton id="Corsair"></CButton>
+    <!-- Requires: Actor:AdvancedUnitStandard[base.xml] -->
+    <!-- Requires: Button:UnitButton_OnlyAir[base.xml] -->
+    <!-- Requires: DataCollection:UnitAir[base.xml] -->
+    <!-- Requires: Unit:Generic_Protoss_Unit_Air[protoss.xml] -->
+
+    <CButton id="Corsair" parent="UnitButton_OnlyAir">
+        <Icon value="Assets\Textures\btn-unit-protoss-Corsair.dds"/>
+    </CButton>
     
-    <CUnit id="Corsair"></CUnit>
+    <CUnit id="Corsair" parent="Generic_Protoss_Unit_Air">
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Mechanical" value="1"/>
+        <LifeStart value="120"/>
+        <LifeMax value="120"/>
+        <LifeArmor value="1"/>
+        <ShieldsStart value="60"/>
+        <ShieldsMax value="60"/>
+        <Speed value="4"/>
+        <Acceleration value="3.25"/>
+        <StationaryTurningRate value="1499.9414"/>
+        <TurningRate value="1499.9414"/>
+        <Sight value="9"/>
+        <Food value="-2"/>
+        <CostCategory value="Army"/>
+        <CostResource index="Minerals" value="150"/>
+        <CostResource index="Vespene" value="100"/>
+        <KillXP value="80"/>
+        <AbilArray Link="Corsair_DisruptionWeb"/>
+        <WeaponArray Link="Corsair_Weapon"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Corsair_DisruptionWeb" Type="AbilCmd" AbilCmd="Corsair_DisruptionWeb,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+        <Radius value="0.75"/>
+        <SeparationRadius value="0.75"/>
+        <SubgroupPriority value="19"/>
+        <MinimapRadius value="0.75"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
+        <GlossaryStrongArray value="MissileTurret"/>
+        <GlossaryStrongArray value="Mutalisk"/>
+        <GlossaryStrongArray value="Banshee"/>
+        <GlossaryWeakArray value="Battlecruiser"/>
+        <GlossaryWeakArray value="VikingFighter"/>
+        <GlossaryWeakArray value="Corruptor"/>
+    </CUnit>
     
-    <CActorUnit id="Corsair" parent="GenericUnitStandard" unitName="Corsair"/>
+    <CActorUnit id="Corsair" parent="AdvancedUnitStandard" unitName="Corsair">
+        <BarWidth value="66"/>
+        <BarOffset value="40"/>
+        <NameOffset value="40"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-Corsair.dds"/>
+        <HeroIcon value="Assets\Textures\btn-unit-protoss-Corsair.dds"/>
+        <WireframeShield>
+            <Image value="Assets\Textures\Wireframe-Protoss-Corsair-Shield01.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-Corsair-Shield02.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-Corsair-Shield03.dds"/>
+        </WireframeShield>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Protoss-Corsair.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Protoss-Corsair.dds"/>
+        </Wireframe>
+    </CActorUnit>
     
     <CModel id="Corsair" parent="Unit">
-        <Model value=""/>
+        <EditorCategories value="Race:Nerazim"/>
+        <Model value="Assets\Units\Protoss\Corsair_Void\Corsair_Void.m3"/>
+        <Occlusion value="Show"/>
+        <SelectionOffset value="0.000000,0.000000,-0.400000"/>
+        <SelectionRadius value="0.882000"/>
+        <SquibTypeDefault value="Metal"/>
+        <Radius value="0.750000"/>
+        <TechPurchaseCamera value="Star2CameraLow05"/>
+        <UnitGlossaryCamera value="Star2CameraLow05"/>
+        <PlanetPanelCamera value="Star2CameraLow05"/>
+        <ShadowRadius value="0.882000"/>
     </CModel>
     <CModel id="Corsair@Death" parent="UnitDeath">
-        <Model value=""/>
+        <EditorCategories value="Race:Nerazim"/>
+        <Model value="Assets\Units\Protoss\Corsair_Death\Corsair_Death.m3"/>
+        <Occlusion value="Show"/>
+        <SelectionRadius value="0.750000"/>
+        <Radius value="0.750000"/>
+        <ShadowRadius value="0.750000"/>
+        <LowQualityModel value="ProtossMediumUnitDeathLow"/>
+        <VariationCount value="2"/>
+    </CModel>
+    <CModel id="Corsair@Placement" parent="Placement">
+        <Model value="Assets\Units\Protoss\Corsair_Placement\Corsair_Placement.m3"/>
+        <Occlusion value="Show"/>
+        <EditorCategories value="Race:Nerazim"/>
+        <LowQualityModel value="ProtossUnitBirth"/>
+        <SelectionOffset value="0.000000,0.000000,-0.750000"/>
+        <SelectionRadius value="0.750000"/>
+        <ShadowRadius value="0.750000"/>
+    </CModel>
+    <CModel id="Corsair@WarpIn" parent="OneShotSpellFX">
+        <Model value="Assets\Units\Protoss\Corsair_WarpIn\Corsair_WarpIn.m3"/>
+        <Occlusion value="Show"/>
+        <EditorCategories value="Race:Nerazim"/>
+        <LowQualityModel value="ProtossUnitBirth"/>
+        <SelectionOffset value="0.000000,0.000000,-0.750000"/>
+        <SelectionRadius value="0.750000"/>
+        <ShadowRadius value="0.750000"/>
     </CModel>
     <CModel id="Corsair@Portrait" parent="Portrait">
-        <Model value=""/>
+        <EditorCategories value="Race:Nerazim"/>
+        <Model value="Assets\Portraits\Protoss\CorsairEx2Portrait\CorsairEx2Portrait.m3"/>
     </CModel>
-    
+
+    <CSound id="Corsair@DeathVoice" parent="DeathVoice">
+        <EditorCategories value="Race:Nerazim"/>
+    </CSound>
+    <CSound id="Corsair@Attack" parent="Voice">
+        <EditorCategories value="Race:Nerazim"/>
+    </CSound>
+    <CSound id="Corsair@Help" parent="Alert">
+        <EditorCategories value="Race:Nerazim"/>
+    </CSound>
+    <CSound id="Corsair@Pissed" parent="Pissed">
+        <EditorCategories value="Race:Nerazim"/>
+    </CSound>
+    <CSound id="Corsair@Yes" parent="Voice">
+        <EditorCategories value="Race:Nerazim"/>
+    </CSound>
+    <CSound id="Corsair@What" parent="Voice">
+        <EditorCategories value="Race:Nerazim"/>
+    </CSound>
+    <CSound id="Corsair@Ready" parent="Ready">
+        <EditorCategories value="Race:Nerazim"/>
+    </CSound>
+
+    <CLight id="Corsair@Portrait" parent="default"/>
+
+    <CDataCollectionUnit id="Corsair" parent="UnitAir">
+        <EditorCategories value="Race:Nerazim"/>
+        <DataRecord Entry="Button,Corsair"/>
+        <DataRecord Entry="Actor,Corsair"/>
+        <DataRecord Entry="Unit,Corsair"/>
+        <DataRecord Entry="Model,Corsair"/>
+        <DataRecord Entry="Model,Corsair@Death"/>
+        <DataRecord Entry="Model,Corsair@Placement"/>
+        <DataRecord Entry="Model,Corsair@WarpIn"/>
+        <DataRecord Entry="Model,Corsair@Portrait"/>
+        <DataRecord Entry="Sound,Corsair@DeathVoice"/>
+        <DataRecord Entry="Sound,Corsair@Attack"/>
+        <DataRecord Entry="Sound,Corsair@Help"/>
+        <DataRecord Entry="Sound,Corsair@Pissed"/>
+        <DataRecord Entry="Sound,Corsair@Yes"/>
+        <DataRecord Entry="Sound,Corsair@What"/>
+        <DataRecord Entry="Sound,Corsair@Ready"/>
+        <DataRecord Entry="Light,Corsair@Portrait"/>
+        <TechInfoUpgradeUsed value="ProtossShields@1"/>
+        <TechInfoUpgradeUsed value="ProtossShields@2"/>
+        <TechInfoUpgradeUsed value="ProtossShields@3"/>
+    </CDataCollectionUnit>
+
+    <!-- ============= Weapons ============= -->
+
+    <CWeaponLegacy id="Corsair_Weapon">
+        <EditorCategories value="Race:Nerazim"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-airweaponslevel0.dds"/>
+        <TargetFilters value="Air,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Effect value="Corsair_Weapon@Damage"/>
+        <DisplayEffect value="Corsair_Weapon@Damage"/>
+        <LegacyOptions index="NoDeceleration" value="1"/>
+        <AllowedMovement value="Slowing"/>
+        <MinScanRange value="5.5"/>
+        <Period value="0.55"/>
+    </CWeaponLegacy>
+
+    <CEffectDamage id="Corsair_Weapon@Damage" parent="DU_WEAP_SPLASH">
+        <EditorCategories value="Race:Nerazim"/>
+        <Amount value="5"/>
+        <AreaArray Radius="1.25" Fraction="1"/>
+        <SearchFilters value="Air,Visible;Player,Ally,Neutral"/>
+        <ExcludeArray Value="Target"/>
+        <AttributeBonus index="Light" value="5"/>
+    </CEffectDamage>
+
+    <CActorAction id="Corsair_Weapon@Attack" parent="GenericAttack" effectAttack="Corsair_Weapon@Damage"/>
+
+    <CModel id="Corsair_Weapon@AttackImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Protoss\PhoenixMissileImpact\PhoenixMissileImpact.m3"/>
+        <EditorCategories value="Race:Nerazim"/>
+    </CModel>
+    <CModel id="Corsair_Weapon@AttackLaunch" parent="LaunchFX">
+        <Model value="Assets\Effects\Terran\MarineWeaponLaunch\MarineWeaponLaunch.m3"/>
+        <EditorCategories value="Race:Nerazim"/>
+    </CModel>
+
+    <CSound id="Corsair_Weapon@AttackLaunch" parent="Combat">
+        <AssetArray File="Assets\Sounds\Protoss\Interceptor\Interceptor_AttackLaunch0.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Interceptor\Interceptor_AttackLaunch1.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Interceptor\Interceptor_AttackLaunch2.wav"/>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+    <CSound id="Corsair_Weapon@AttackImpact" parent="Combat">
+        <AssetArray File="Assets\Sounds\Uni_ElectricalArcs_01.wav"/>
+        <AssetArray File="Assets\Sounds\Uni_ElectricalArcs_03.wav"/>
+        <AssetArray File="Assets\Sounds\Uni_ElectricalArcs_04.wav"/>
+        <AssetArray File="Assets\Sounds\Uni_ElectricalArcs_05.wav"/>
+        <AssetArray File="Assets\Sounds\Uni_ElectricalArcs_07.wav"/>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+
+    <CDataCollectionUnit id="Corsair_Weapon" parent="Weapon_Instant">
+        <DataRecord Entry="Weapon,Corsair_Weapon"/>
+        <DataRecord Entry="Effect,Corsair_Weapon@Damage"/>
+        <DataRecord Entry="Actor,Corsair_Weapon@Attack"/>
+        <DataRecord Entry="Sound,Corsair_Weapon@AttackLaunch"/>
+        <DataRecord Entry="Sound,Corsair_Weapon@AttackImpact"/>
+        <DataRecord Entry="Model,Corsair_Weapon@AttackLaunch"/>
+        <DataRecord Entry="Model,Corsair_Weapon@AttackImpact"/>
+        <TechInfoUpgradeUsed value="ProtossAirWeapons@1"/>
+        <TechInfoUpgradeUsed value="ProtossAirWeapons@2"/>
+        <TechInfoUpgradeUsed value="ProtossAirWeapons@3"/>
+    </CDataCollectionUnit>
+
+    <!-- ============= Abilities ============= -->
+
+    <!-- Disruption Web -->
+    <CButton id="Corsair_DisruptionWeb">
+        <Icon value=""/>
+    </CButton>
+
+    <CAbilEffectTarget id="Corsair_DisruptionWeb">
+        
+    </CAbilEffectTarget>
     
 </Catalog>
