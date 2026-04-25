@@ -15,6 +15,9 @@
         <WeaponArray Link="BloodHunter_Weapon"/>
         
         <!-- BloodHunter Properties -->
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <Attributes index="Psionic" value="1"/>
         <CardLayouts index="0">
             <LayoutButtons Face="BloodHunter_VoidStasis" Type="AbilCmd" AbilCmd="BloodHunter_VoidStasis,Execute" Row="2" Column="0"/>
         </CardLayouts>

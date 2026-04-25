@@ -305,7 +305,7 @@
         <Occlusion value="Show"/>
         <ScaleMax value="0.750000,0.750000,0.750000"/>
         <ScaleMin value="0.750000,0.750000,0.750000"/>
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Taldarim"/>
         <LowQualityModel value="ColossusWarpInLow"/>
         <SelectionRadius value="0.555400"/>
         <ShadowRadius value="0.555400"/>
@@ -365,7 +365,7 @@
     <CValidatorUnitType id="Wrathwalker@NotTarget" parent="TargetNotUnit_Default" unit="Wrathwalker"/>
 
     <CDataCollectionUnit id="Wrathwalker" parent="UnitGround">
-        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Protoss,ObjectType:Unit"/>
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Taldarim,ObjectType:Unit"/>
         <DataRecord Entry="Button,Wrathwalker"/>
         <DataRecord Entry="Unit,Wrathwalker"/>
         <DataRecord Entry="Actor,Wrathwalker"/>
@@ -396,7 +396,7 @@
     <!-- ============ Weapons ============ -->
     
     <CWeaponLegacy id="ChargedBlast">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Taldarim"/>
         <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
         <Effect value="ChargedBlast@LM"/>
         <DisplayEffect value="ChargedBlast@Damage"/>
@@ -414,14 +414,14 @@
     </CWeaponLegacy>
 
     <CEffectDamage id="ChargedBlast@Damage" parent="DU_WEAP">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Taldarim"/>
         <Kind value="Ranged"/>
         <Amount value="100"/>
         <Death value="Fire"/>
         <AttributeBonus index="Structure" value="75"/>
     </CEffectDamage>
     <CEffectLaunchMissile id="ChargedBlast@LM">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Taldarim"/>
         <ImpactEffect value="ChargedBlast@Damage"/>
         <AmmoUnit value="ChargedBlast@AttackMissile"/>
         <LaunchLocation Value="CasterUnit"/>
@@ -461,7 +461,7 @@
     </CModel>
 
     <CSound id="ChargedBlast@AttackLaunch" parent="Combat">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_Launch01_1ch.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_Launch02_1ch.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_Launch03_1ch.wav" FacialGroup=""/>
@@ -474,7 +474,7 @@
         <Volume value="-2.200000,-1.200000"/>
     </CSound>
     <CSound id="ChargedBlast@AttackImpact" parent="Combat">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_Impact01_1ch.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_Impact02_1ch.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_Impact03_1ch.wav" FacialGroup=""/>
@@ -487,7 +487,7 @@
         <Volume value="-6.000000,-6.000000"/>
     </CSound>
     <CSound id="ChargedBlast@Charge" parent="Combat">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_PowerUpPreLaunch01_1ch.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_PowerUpPreLaunch02_1ch.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\ColossusTaldarim_Missile_PowerUpPreLaunch03_1ch.wav" FacialGroup=""/>
@@ -505,7 +505,7 @@
     </CUnit>
 
     <CDataCollectionUnit id="ChargedBlast">
-        <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:Protoss,ObjectType:Projectile"/>
+        <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:Taldarim,ObjectType:Projectile"/>
         <DataRecord Entry="Weapon,ChargedBlast"/>
         <DataRecord Entry="Effect,ChargedBlast@Damage"/>
         <DataRecord Entry="Effect,ChargedBlast@LM"/>
