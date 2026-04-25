@@ -29,7 +29,7 @@
         <AbilArray Link="SOAMothershipLineAttack"/>
         <AbilArray Link="VoidSentryBlackHole"/>
         <AbilArray Link="SOAMothershipBlink"/>
-        <WeaponArray Link="TaldarimMothership_4Weapon" Turret="FreeRotate"/>
+        <WeaponArray Link="TaldarimMothership_Weapon" Turret="FreeRotate"/>
         <WeaponArray Turret="MothershipRotate"/>
         <CardLayouts>
             <LayoutButtons Face="VoidSentryBlackHole" Type="AbilCmd" AbilCmd="VoidSentryBlackHole,Execute" Row="2" Column="0"/>
@@ -326,5 +326,81 @@
         <ValidatorArray value="MothershipRangeCheck"/>
         <EditorCategories value="Race:Protoss"/>
     </CEffectModifyUnit>
+
+    <CActorAction id="TaldarimMothership_Weapon@Attack" parent="GenericAttackBase">
+        <On Terms="Effect.TaldarimMothership_Weapon@Beam.Start" Send="Create"/>
+        <On Terms="Effect.TaldarimMothership_Weapon@Damage.Start; FromEffectTreeDescendant" Send="ActionDamage"/>
+        <On Terms="Effect.TaldarimMothership_Weapon@Beam.Stop" Send="Destroy WhenReady"/>
+        <LaunchAttachQuery Methods="AMFilterWeaponSetA0 AMClosest2ToTarget AMPatternSOAMothershipv4Beam"/>
+        <ActionFlags index="AlignedImpactsAndDamages" value="1"/>
+        <ActionFlags index="ImpactMonitorsTeleports" value="1"/>
+        <Lifetime value="-1.000000"/>
+    </CActorAction>
+    <CActorAction id="TaldarimMothership_Weapon@Attack_Secondary" parent="GenericAttackBase">
+        <On Terms="Effect.TaldarimMothership_Weapon@Beam_Secondary.Start" Send="Create"/>
+        <On Terms="Effect.TaldarimMothership_Weapon@Damage.Start; FromEffectTreeDescendant" Send="ActionDamage"/>
+        <On Terms="Effect.TaldarimMothership_Weapon@Beam.Stop" Send="Destroy WhenReady"/>
+        <LaunchAttachQuery Methods="AMFilterWeaponSetA0 AMClosest2ToTarget AMPatternSOAMothershipv4Beam"/>
+        <ActionFlags index="AlignedImpactsAndDamages" value="1"/>
+        <ActionFlags index="ImpactMonitorsTeleports" value="1"/>
+        <Lifetime value="-1.000000"/>
+        <ImpactMap index="None" Model="TaldarimMothership_Weapon@AttackImpact"/>
+    </CActorAction>
+    <CActorBeamSimple id="TaldarimMothership_Weapon@AttackBeam" parent="BeamSimpleAnimationStyleContinuous">
+        <On Terms="Effect.TaldarimMothership_Weapon@Beam.Stop" Send="AnimBracketStop BSD"/>
+        <Macros value="ActionTargetTeleportDestroy"/>
+    </CActorBeamSimple>
+    <CActorBeamSimple id="TaldarimMothership_Weapon@Attack_SecondaryBeam" parent="BeamSimpleAnimationStyleContinuous">
+        <On Terms="Effect.TaldarimMothership_Weapon@Beam_Secondary.Stop" Send="AnimBracketStop BSD"/>
+        <Macros value="ActionTargetTeleportDestroy"/>
+    </CActorBeamSimple>
+    <CActorSound id="TaldarimMothership_Weapon@AttackLoop" parent="SoundContinuous">
+        <On Terms="Effect.TaldarimMothership_Weapon@Damage.Start; EffectExecuteIndex 1" Send="Create"/>
+        <On Terms="Effect.TaldarimMothership_Weapon@Beam.Stop" Send="Destroy"/>
+    </CActorSound>
+    
+    <CModel id="TaldarimMothership_Weapon@AttackBeam" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\Mothership_Taldarim_Terminator_Beam\Mothership_Taldarim_Terminator_Beam.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <RadiusLoose value="1.000000"/>
+        <ScaleMax value="0.700000,0.700000,0.700000"/>
+        <ScaleMin value="0.700000,0.700000,0.700000"/>
+        <SelectionRadius value="0.714000"/>
+        <ShadowRadius value="0.714000"/>
+    </CModel>
+    <CModel id="TaldarimMothership_Weapon@AttackImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Protoss\Mothership_Taldarim_Terminator_Beam_Impact\Mothership_Taldarim_Terminator_Beam_Impact.m3"/>
+        <EditorCategories value="Race:Zerg"/>
+    </CModel>
+
+    <CSound id="TaldarimMothership_Weapon@AttackLoop" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Keystone_StandB_loop.wav" FacialGroup=""/>
+        <DupeMuteCount value="3"/>
+        <LoopCount value="-1"/>
+        <Pitch value="0.000000,0.300000"/>
+    </CSound>
+    <CSound id="TaldarimMothership_Weapon@AttackImpact" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\MothershipVoid_AttackImpact00.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\MothershipVoid_AttackImpact01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\MothershipVoid_AttackImpact02.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,1.000000"/>
+    </CSound>
+    <CSound id="TaldarimMothership_Weapon@AttackLaunch" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\MothershipVoid_AttackLaunch00.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\MothershipVoid_AttackLaunch01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\MothershipVoid_AttackLaunch02.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+    
+    <!-- ================ Weapons ================ -->
+
+    <CAbilEffectTarget id="TaldarimMothership_BlackHole">
+        
+    </CAbilEffectTarget>
+
     
 </Catalog>

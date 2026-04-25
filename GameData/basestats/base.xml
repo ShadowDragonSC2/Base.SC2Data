@@ -248,6 +248,15 @@
         <TooltipAppender Text="Button/Tooltip/Appender/Detector"/>
     </CButton>
 
+    <!-- Behaviors -->
+
+    <CBehaviorBuff default="1" id="Generic_Aura">
+        <Period value="0.15"/>
+        <PeriodicEffect value="##id##@Aura"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+    </CBehaviorBuff>
+
     <!-- Units -->
 
     <CUnit default="1" id="Generic_Unit">

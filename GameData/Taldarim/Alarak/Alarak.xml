@@ -6,23 +6,17 @@
         <Icon value="Assets\Textures\btn-unit-protoss-alarak.dds"/>
     </CButton>
     
-    <CUnit id="Alarak" parent="Generic_Unit_Ground" race="Tald">
+    <CUnit id="Alarak" parent="Generic_Protoss_Unit_Ground" race="Tald">
         <EditorCategories value="ObjectType:Hero,ObjectFamily:Campaign"/>
-        <AbilArray Link="ProgressRally"/>
-        <AbilArray Link="Warpable"/>
         <AbilArray Link="AlarakKnockback"/>
         <AbilArray Link="AlarakDeadlyCharge"/>
         <AbilArray Link="DestructionWave"/>
-        <BehaviorArray Link="SoulAbsorption"/>
-        <WeaponArray Link="DarkArchonChampionWeapon"/>
+        <BehaviorArray Link="Alarak_SoulAbsorbtion"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Rally" Type="AbilCmd" AbilCmd="ProgressRally,Rally1" Row="2" Column="4"/>
             <LayoutButtons Face="DestructionWave" Type="AbilCmd" AbilCmd="DestructionWave,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="SoulAbsorption" Type="Passive" Row="2" Column="1"/>
+            <LayoutButtons Face="Alarak_SoulAbsorbtion" Type="Passive" Row="2" Column="1"/>
             <LayoutButtons Face="AlarakDeadlyCharge" Type="AbilCmd" AbilCmd="AlarakDeadlyCharge,Execute" Row="2" Column="2"/>
-        </CardLayouts>
-        <CardLayouts CardId="0002">
-            <LayoutButtons Face="AlarakKnockback" Type="AbilCmd" AbilCmd="DestructionWaveNoOffset,Execute" Row="2" Column="0"/>
         </CardLayouts>
 
         <Collide index="Locust" value="1"/>
@@ -205,8 +199,210 @@
         <DataRecord Entry="Sound,Alarak@Ready"/>
     </CDataCollectionUnit>
     
+    <!-- ============= Behaviors ============= -->
+
+    <CButton id="Alarak_SoulAbsorbtion">
+        <Icon value="Assets\Textures\btn-ability-protoss-soulabsorption.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-soulabsorption.dds"/>
+    </CButton>
+    
+    <CBehaviorBuff id="Alarak_SoulAbsorbtion" parent="Generic_Aura"/>
+    <CBehaviorBuff id="Alarak_SoulAbsorbtion@Target">
+        <Duration value="0.2"/>
+        <DamageResponse Chance="1" Fatal="1" Handled="Alarak_SoulAbsorbtion@LM"/>
+    </CBehaviorBuff>
+
+    <CEffectEnumArea id="Alarak_SoulAbsorbtion@Aura">
+        <AreaArray Radius="8" Effect="Alarak_SoulAbsorbtion@AB"/>
+        <SearchFilters value="Visible;Hidden,Invulnerable,Missile,Player,Neutral,Ally"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="Alarak_SoulAbsorbtion@AB">
+        <Behavior value="Alarak_SoulAbsorbtion@Target"/>
+    </CEffectApplyBehavior>
+    <CEffectLaunchMissile id="Alarak_SoulAbsorbtion@LM">
+        <AmmoUnit value="Alarak_SoulAbsorbtion@AttackMissile"/>
+        <ImpactEffect value="Alarak_SoulAbsorbtion@MU"/>
+        <ImpactLocation Value="CasterUnit"/>
+    </CEffectLaunchMissile>
+    <CEffectModifyUnit id="Alarak_SoulAbsorbtion@MU">
+        <VitalArray index="Life" Change="15"/>
+    </CEffectModifyUnit>
+
+    <CUnit id="Alarak_SoulAbsorbtion@AttackMissile" parent="MISSILE">
+        <Race value="Tald"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CActorMissile id="Alarak_SoulAbsorbtion@AttackMissile" parent="GenericAttackMissile" unitName="Alarak_SoulAbsorbtion@AttackMissile">
+        <On Terms="ActorCreation" Send="SetTintColor 185,2,38"/>
+    </CActorMissile>
+    <CActorAction id="Alarak_SoulAbsorbtion@Attack" parent="GenericAttack" effectImpact="Alarak_SoulAbsorbtion@MU" effectLaunch="Alarak_SoulAbsorbtion@LM">
+        <ShieldFlashType value="None"/>
+    </CActorAction>
+    <CActorModelMaterial id="Alarak_SoulAbsorbtion@Glaze" parent="GlazeParent">
+        <On Terms="Effect.Alarak_SoulAbsorbtion@MU.Start; At Target" Send="Create"/>
+        <On Terms="ActorCreation" Send="ModelMaterialApplyTo ::Main"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart Birth Birth"/>
+        <On Terms="AnimDone; AnimName Birth" Send="Destroy"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModelMaterial>
+
+    <CModel id="Alarak_SoulAbsorbtion@AttackMissile" parent="MissileFX">
+        <EditorCategories value="Race:Taldarim"/>
+        <Model value="Assets\Effects\Protoss\Alarak_SoulAbsorption_Missile\Alarak_SoulAbsorption_Missile.m3"/>
+        <SelectionRadius value="0.333200"/>
+        <ShadowRadius value="0.333200"/>
+        <Events>
+            <Anim value="Stand,00"/>
+            <Name value="Alarak_SoulSteal_Missile"/>
+            <Type value="Sound"/>
+            <Time value="0.009000"/>
+            <Payload value="Alarak_SoulSteal_Missile"/>
+        </Events>
+    </CModel>
+    <CModel id="Alarak_SoulAbsorbtion@Glaze">
+        <EditorCategories value="Race:Taldrim"/>
+        <Model value="Assets\Effects\Glaze\Glaze_SoulAbsorption\Glaze_SoulAbsorption.m3"/>
+    </CModel>
+
+    <CSound id="Alarak_SoulAbsorbtion@AttackLaunch" parent="Spell">
+        <EditorCategories value="Race:Taldrim"/>
+        <AssetArray File="Assets\Sounds\Alarak_SoulTake_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Alarak_SoulTake_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Alarak_SoulTake_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Alarak_SoulTake_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Alarak_SoulTake_05.wav" FacialGroup=""/>
+        <Flags index="Download" value="0"/>
+        <Flags index="Purgable" value="0"/>
+        <Pitch value="-1.000000,3.000000"/>
+        <Select value="Random"/>
+        <Volume value="-4.000000,-2.000000"/>
+    </CSound>
+    <CSound id="Alarak_SoulAbsorbtion@AttackImpact" parent="Spell">
+        <EditorCategories value="Race:Taldrim"/>
+        <AssetArray File="Assets\Sounds\Alarak_SoulTake_Rv1_01a.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Alarak_SoulTake_Rv1_05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Alarak_SoulTake_Rv1_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Alarak_SoulTake_Rv1_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Alarak_SoulTake_Rv1_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Alarak_SoulTake_Rv1_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Alarak_SoulTake_Rv1_04a.wav" FacialGroup=""/>
+        <Flags index="Download" value="0"/>
+        <Flags index="Purgable" value="0"/>
+        <Pitch value="-1.000000,3.000000"/>
+        <Select value="Random"/>
+        <Volume value="-4.000000,-2.000000"/>
+    </CSound>
+    
+    <CMoverMissile id="Alarak_SoulAbsorbtion@AttackMissile">
+        <MotionPhases>
+            <Driver value="Throw"/>
+            <Acceleration value="3200"/>
+            <MaxSpeed value="7"/>
+            <ArrivalTestType value="2D"/>
+            <BlendType value="Linear"/>
+            <Outro value="4,4.5"/>
+            <RotationActorType value="LookAtTarget"/>
+            <ThrowVector value="0,-1,0"/>
+            <ThrowBandYaw value="180,-180,14.9963,-14.9963"/>
+            <ThrowBandPitch value="90,4.9987"/>
+        </MotionPhases>
+        <MotionPhases>
+            <Driver value="Guidance"/>
+            <Acceleration value="3200"/>
+            <MaxSpeed value="10"/>
+            <TurnType value="Optimal"/>
+            <ArrivalTestType value="2D"/>
+            <BlendType value="Linear"/>
+            <RotationActorType value="LookAtTarget"/>
+            <YawPitchRoll value="MAX"/>
+        </MotionPhases>
+    </CMoverMissile>
+
+    <CDataCollectionUnit id="Alarak_SoulAbsorbtion">
+        <DataRecord Entry="Button,Alarak_SoulAbsorbtion"/>
+        <DataRecord Entry="Behavior,Alarak_SoulAbsorbtion"/>
+        <DataRecord Entry="Behavior,Alarak_SoulAbsorbtion@Target"/>
+        <DataRecord Entry="Effect,Alarak_SoulAbsorbtion@Aura"/>
+        <DataRecord Entry="Effect,Alarak_SoulAbsorbtion@AB"/>
+        <DataRecord Entry="Effect,Alarak_SoulAbsorbtion@LM"/>
+        <DataRecord Entry="Effect,Alarak_SoulAbsorbtion@MU"/>
+        <DataRecord Entry="Unit,Alarak_SoulAbsorbtion@AttackMissile"/>
+        <DataRecord Entry="Actor,Alarak_SoulAbsorbtion@AttackMissile"/>
+        <DataRecord Entry="Actor,Alarak_SoulAbsorbtion@Sound"/>
+        <DataRecord Entry="Actor,Alarak_SoulAbsorbtion@Glaze"/>
+        <DataRecord Entry="Model,Alarak_SoulAbsorbtion@AttackMissile"/>
+        <DataRecord Entry="Model,Alarak_SoulAbsorbtion@Glaze"/>
+        <DataRecord Entry="Sound,Alarak_SoulAbsorbtion@Sound"/>
+        <DataRecord Entry="Mover,Alarak_SoulAbsorbtion@AttackMissile"/>
+    </CDataCollectionUnit>
 
     <!-- ============= Weapons ============= -->
+
+    <CWeaponLegacy id="Alarak_Weapon">
+        <EditorCategories value="Race:Taldarim"/>
+        <DisplayEffect value="Alarak_Weapon@Damage"/>
+        <Effect value="Alarak_Weapon@CP"/>
+        <DisplayAttackCount value="1"/>
+        <Options index="Melee" value="1"/>
+        <Period value="1"/>
+        <Range value="0.1"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-alarak-melleeweapon.dds"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Cost>
+            <Cooldown Location="Unit"/>
+        </Cost>
+    </CWeaponLegacy>    
+
+    <CEffectCreatePersistent id="Alarak_Weapon@CP">
+        <Flags index="Channeled" value="1"/>
+        <WhichLocation Value="TargetUnit"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="Alarak_Weapon@Damage"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0.28"/>
+        <TimeScaleSource Value="Caster"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="Alarak_Weapon@Damage" parent="DU_WEAP">
+        <Amount value="20"/>
+        <Death value="Eviscerate"/>
+    </CEffectDamage>
+
+    <CActorAction id="Alarak_Weapon@Attack" parent="GenericAttack" effectAttack="Alarak_Weapon@Damage"/>
+    <CSound id="Alarak_Weapon@AttackLaunch" parent="Combat">
+        <EditorCategories value="Race:Taldarim"/>
+        <AssetArray File="Assets\Sounds\Alarak_Att_Launch_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Alarak_Att_Launch_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Alarak_Att_Launch_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Alarak_Att_Launch_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Alarak_Att_Launch_05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Alarak_Att_Launch_06.wav" FacialGroup=""/>
+        <Pitch value="2.000000,4.000000"/>
+        <VariationMinimum value="8"/>
+        <Volume value="-6.000000,-4.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="Alarak_Weapon@AttackImpact" parent="Combat">
+        <EditorCategories value="Race:Taldarim"/>
+        <AssetArray File="Assets\Sounds\Alarak_Att_Impact_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Alarak_Att_Impact_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Alarak_Att_Impact_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Alarak_Att_Impact_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Alarak_Att_Impact_05.wav" FacialGroup=""/>
+        <Pitch value="2.000000,4.000000"/>
+        <VariationMinimum value="8"/>
+        <Volume value="-6.000000,-4.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+
+    <CDataCollectionUnit id="Alarak_Weapon">
+        <DataRecord Entry="Weapon,Alarak_Weapon"/>
+        <DataRecord Entry="Effect,Alarak_Weapon@CP"/>
+        <DataRecord Entry="Effect,Alarak_Weapon@Damage"/>
+        <DataRecord Entry="Actor,Alarak_Weapon@AttackSound"/>
+        <DataRecord Entry="Actor,Alarak_Weapon@AttackSound"/>
+    </CDataCollectionUnit>
 
     <!-- ============= Abilities ============= -->
 
@@ -260,7 +456,7 @@
         <BehaviorLink value="DestructionWave@Knockback"/>
     </CEffectRemoveBehavior>
     <CEffectDamage id="DestructionWave@Damage">
-        <Amount value="10"/>
+        <Amount value="35"/>
     </CEffectDamage>
     <CEffectCreatePersistent id="DestructionWave@CP_Knockback">
         <InitialEffect value="DestructionWave@CU_Knockback"/>
