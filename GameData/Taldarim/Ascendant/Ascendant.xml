@@ -675,17 +675,17 @@
 
     <CDataCollectionUnit id="Ascendant_MindBlast" parent="AbilityBase">
         <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Taldarim,ObjectType:Spell"/>
-        <DataRecord Entry="Button,MindBlast"/>
-        <DataRecord Entry="Abil,MindBlast"/>
-        <DataRecord Entry="Effect,MindBlast@Damage"/>
-        <DataRecord Entry="Actor,MindBlast@Attack"/>
-        <DataRecord Entry="Actor,MindBlast@Range"/>
-        <DataRecord Entry="Actor,MindBlast@Animation"/>
-        <DataRecord Entry="Model,MindBlast@Impact"/>
-        <DataRecord Entry="Sound,MindBlast@Impact"/>
-        <DataRecord Entry="Sound,MindBlast@Launch"/>
-        <DataRecord Entry="Requirement,MindBlast@Use"/>
-        <DataRecord Entry="Requirement,MindBlast@Learn"/>
+        <DataRecord Entry="Button,Ascendant_MindBlast"/>
+        <DataRecord Entry="Abil,Ascendant_MindBlast"/>
+        <DataRecord Entry="Effect,Ascendant_MindBlast@Damage"/>
+        <DataRecord Entry="Actor,Ascendant_MindBlast@Attack"/>
+        <DataRecord Entry="Actor,Ascendant_MindBlast@Range"/>
+        <DataRecord Entry="Actor,Ascendant_MindBlast@Animation"/>
+        <DataRecord Entry="Model,Ascendant_MindBlast@Impact"/>
+        <DataRecord Entry="Sound,Ascendant_MindBlast@Impact"/>
+        <DataRecord Entry="Sound,Ascendant_MindBlast@Launch"/>
+        <DataRecord Entry="Requirement,Ascendant_MindBlast@Use"/>
+        <DataRecord Entry="Requirement,Ascendant_MindBlast@Learn"/>
     </CDataCollectionUnit>
 
     <!-- Sacrifice -->
