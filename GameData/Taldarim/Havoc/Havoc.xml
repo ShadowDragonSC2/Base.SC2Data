@@ -473,9 +473,6 @@
 
     <CUnit id="Havoc_ForceField">
         <AbilArray Link="Shatter"/>
-        <!-- <CardLayouts>
-            <LayoutButtons Face="Shatter" Type="AbilCmd" AbilCmd="Shatter,Execute" Row="0" Column="0"/>
-        </CardLayouts> -->
         <Race value="Tald"/>
         <LifeStart value="15"/>
         <LifeMax value="15"/>
