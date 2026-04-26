@@ -435,7 +435,6 @@
         <SearchFlags index="DynamicSearchArea" value="1"/>
         <SearchEffect value="Alarak_DestructionWave@Search"/>
         <ImpactLocation Value="TargetPoint"/>
-        <DeathType value="Normal"/>
     </CEffectLaunchMissile>
     <CEffectEnumArea id="Alarak_DestructionWave@Search">
         <AreaArray RectangleWidth="3" Effect="Alarak_DestructionWave@Set_Knockback"/>
