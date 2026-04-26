@@ -565,41 +565,41 @@
         <Mover value="Ascendant_PsiOrb@Missile"/>
     </CUnit>
 
-    <CDataCollectionUnit id="Ascendant_PsiOrb" parent="AbilityBase">
+    <CDataCollectionUnit id="Ascendant_PsiOrb" parent="AbilityBase">   
         <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Taldarim,ObjectType:Projectile"/>
-        <DataRecord Entry="Button,PsiOrb"/>
-        <DataRecord Entry="Abil,PsiOrb"/>
-        <DataRecord Entry="Effect,PsiOrb@Set"/>
-        <DataRecord Entry="Effect,PsiOrb@Search"/>
-        <DataRecord Entry="Effect,PsiOrb@LM"/>
-        <DataRecord Entry="Effect,PsiOrb@CP"/>
-        <DataRecord Entry="Effect,PsiOrb@DP"/>
-        <DataRecord Entry="Effect,PsiOrb@AB"/>
-        <DataRecord Entry="Effect,PsiOrb@Damage"/>
-        <DataRecord Entry="Behavior,PsiOrb@AuraDamage"/>
-        <DataRecord Entry="Actor,PsiOrb@Missile"/>
-        <DataRecord Entry="Actor,PsiOrb@Splat"/>
-        <DataRecord Entry="Actor,PsiOrb@Range"/>
-        <DataRecord Entry="Actor,PsiOrb@Attack"/>
-        <DataRecord Entry="Actor,PsiOrb@Animation"/>
-        <DataRecord Entry="Actor,PsiOrb@Beam"/>
-        <DataRecord Entry="Actor,PsiOrb@BeamAttack"/>
-        <DataRecord Entry="Actor,PsiOrb@AttackGuide"/>
-        <DataRecord Entry="Actor,PsiOrb@StretchLineStart"/>
-        <DataRecord Entry="Actor,PsiOrb@StretchLineMid"/>
-        <DataRecord Entry="Actor,PsiOrb@StretchLineEnd"/>
-        <DataRecord Entry="Model,PsiOrb@Missile"/>
-        <DataRecord Entry="Model,PsiOrb@Splat"/>
-        <DataRecord Entry="Model,PsiOrb@Impact"/>
-        <DataRecord Entry="Model,PsiOrb@Beam"/>
-        <DataRecord Entry="Model,PsiOrb@StretchLineStart"/>
-        <DataRecord Entry="Model,PsiOrb@StretchLineMid"/>
-        <DataRecord Entry="Model,PsiOrb@StretchLineEnd"/>
-        <DataRecord Entry="Sound,PsiOrb@BeamAttackImpact"/>
-        <DataRecord Entry="Sound,PsiOrb@AttackImpact"/>
-        <DataRecord Entry="Sound,PsiOrb@AttackLaunch"/>
-        <DataRecord Entry="Mover,PsiOrb@Missile"/>
-        <DataRecord Entry="Unit,PsiOrb@Missile"/>
+        <DataRecord Entry="Button,Ascendant_PsiOrb"/>
+        <DataRecord Entry="Abil,Ascendant_PsiOrb"/>
+        <DataRecord Entry="Effect,Ascendant_PsiOrb@Set"/>
+        <DataRecord Entry="Effect,Ascendant_PsiOrb@Search"/>
+        <DataRecord Entry="Effect,Ascendant_PsiOrb@LM"/>
+        <DataRecord Entry="Effect,Ascendant_PsiOrb@CP"/>
+        <DataRecord Entry="Effect,Ascendant_PsiOrb@DP"/>
+        <DataRecord Entry="Effect,Ascendant_PsiOrb@AB"/>
+        <DataRecord Entry="Effect,Ascendant_PsiOrb@Damage"/>
+        <DataRecord Entry="Behavior,Ascendant_PsiOrb@AuraDamage"/>
+        <DataRecord Entry="Actor,Ascendant_PsiOrb@Missile"/>
+        <DataRecord Entry="Actor,Ascendant_PsiOrb@Splat"/>
+        <DataRecord Entry="Actor,Ascendant_PsiOrb@Range"/>
+        <DataRecord Entry="Actor,Ascendant_PsiOrb@Attack"/>
+        <DataRecord Entry="Actor,Ascendant_PsiOrb@Animation"/>
+        <DataRecord Entry="Actor,Ascendant_PsiOrb@Beam"/>
+        <DataRecord Entry="Actor,Ascendant_PsiOrb@BeamAttack"/>
+        <DataRecord Entry="Actor,Ascendant_PsiOrb@AttackGuide"/>
+        <DataRecord Entry="Actor,Ascendant_PsiOrb@StretchLineStart"/>
+        <DataRecord Entry="Actor,Ascendant_PsiOrb@StretchLineMid"/>
+        <DataRecord Entry="Actor,Ascendant_PsiOrb@StretchLineEnd"/>
+        <DataRecord Entry="Model,Ascendant_PsiOrb@Missile"/>
+        <DataRecord Entry="Model,Ascendant_PsiOrb@Splat"/>
+        <DataRecord Entry="Model,Ascendant_PsiOrb@Impact"/>
+        <DataRecord Entry="Model,Ascendant_PsiOrb@Beam"/>
+        <DataRecord Entry="Model,Ascendant_PsiOrb@StretchLineStart"/>
+        <DataRecord Entry="Model,Ascendant_PsiOrb@StretchLineMid"/>
+        <DataRecord Entry="Model,Ascendant_PsiOrb@StretchLineEnd"/>
+        <DataRecord Entry="Sound,Ascendant_PsiOrb@BeamAttackImpact"/>
+        <DataRecord Entry="Sound,Ascendant_PsiOrb@AttackImpact"/>
+        <DataRecord Entry="Sound,Ascendant_PsiOrb@AttackLaunch"/>
+        <DataRecord Entry="Mover,Ascendant_PsiOrb@Missile"/>
+        <DataRecord Entry="Unit,Ascendant_PsiOrb@Missile"/>
     </CDataCollectionUnit>
 
     <!-- Mind Blast -->
