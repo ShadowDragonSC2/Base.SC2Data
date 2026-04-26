@@ -81,6 +81,14 @@
         <Fields Reference="Behavior,^ParamId^,Modification"/>
         <Fields Reference="Behavior,^ParamId^,DamageResponse"/>
     </CDataCollectionPattern>
+    <CDataCollectionPattern id="AbilityPattern_Missile" parent="AbilityPattern_Base">
+        <Fields Reference="Model,^ParamId^@AttackMissile,Model"/>
+        <Fields Reference="Model,^ParamId^@AttackImpact,Model"/>
+        <Fields Reference="Model,^ParamId^@AttackLaunch,Model"/>
+        <Fields Reference="Model,^ParamId^@ImpactModel,Model"/>
+        <Fields Reference="Sound,^ParamId^@AttackLaunch,AssetArray"/>
+        <Fields Reference="Sound,^ParamId^@AttackImpact,AssetArray"/>
+    </CDataCollectionPattern>
 
     <CDataCollectionPattern id="UpgradePattern_Template">
         <Fields Reference="Button,^ParamId^,Name"/>
@@ -133,6 +141,10 @@
     <CDataCollectionUnit default="1" id="AbilityBase">
         <Name value="Abil/Name/##id##"/>
         <Pattern value="AbilityPattern_Base"/>
+    </CDataCollectionUnit>
+    <CDataCollectionUnit default="1" id="AbilityMisssile" parent="AbilityBase">
+        <Name value="Abil/Name/##id##"/>
+        <Pattern value="AbilityPattern_Missile"/>
     </CDataCollectionUnit>
 
     <CDataCollectionUnit default="1" id="UpgradeBase">

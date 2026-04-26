@@ -882,14 +882,14 @@
         </MotionPhases>
     </CMoverMissile>
 
-    <CDataCollectionPattern id="Ascendant_SacrificePattern" parent="AbilityPattern_Base">
+    <CDataCollectionPattern id="Ascendant_SacrificePattern" parent="AbilityPattern_Missile">
         <Fields Reference="Accumulator,^ParamId^@Half,Parameters[1]"/>
         <Fields Reference="Accumulator,^ParamId^@Half,MaxAccumulation"/>
         <Fields Reference="Validator,^ParamId^@TargetLifeGreaterThan1,Value" NameOverride="DataCollectionPattern/NameOverride/Ascendant_SacrificePattern/TargetLifeGreaterThan1"/>
         <Fields Reference="Effect,^ParamId^@CP,InitialDelay" NameOverride="DataCollectionPattern/NameOverride/Ascendant_SacrificePattern/Interval"/>
     </CDataCollectionPattern>
 
-    <CDataCollectionUnit id="Ascendant_Sacrifice" parent="AbilityBase">
+    <CDataCollectionUnit id="Ascendant_Sacrifice" parent="AbilityMisssile">
         <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Taldarim,ObjectType:Spell"/>
         <Pattern value="Ascendant_SacrificePattern"/>
         <DataRecord Entry="Button,Ascendant_Sacrifice"/>
