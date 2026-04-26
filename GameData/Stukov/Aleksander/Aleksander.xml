@@ -1,0 +1,642 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    <CButton id="Aleksander" parent="UnitButton_GroundAir">
+        <Icon value="Assets\Textures\btn-building-stukov-aleksander.dds"/>
+    </CButton>
+
+    <CUnit id="Aleksander" parent="Generic_Unit_Air" race="InfT">
+        <Facing value="45"/>
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <Attributes index="Mechanical" value="1"/>
+        <Attributes index="Massive" value="1"/>
+        <Attributes index="Heroic" value="1"/>
+        <LifeStart value="2000"/>
+        <LifeMax value="2000"/>
+        <LifeArmor value="3"/>
+        <LifeRegenRate value="0.2734"/>
+        <Speed value="2"/>
+        <Acceleration value="1.3125"/>
+        <StationaryTurningRate value="270"/>
+        <TurningRate value="270"/>
+        <Sight value="14"/>
+        <Height value="4"/>
+        <CostResource index="Minerals" value="400"/>
+        <CostResource index="Vespene" value="400"/>
+        <AbilArray Link="StukovAleksanderCrashed"/>
+        <AbilArray Link="StukovAleksanderCrashedInstant"/>
+        <BehaviorArray Link="MercAirDrop"/>
+        <BehaviorArray Link="StukovAleksanderInfestedSwarm"/>
+        <BehaviorArray Link="StukovAleksanderTentacleStunSearch"/>
+        <BehaviorArray Link="StukovAleksanderCrashedResponse"/>
+        <WeaponArray Link="StukovAleksanderInfestedCannon"/>
+        <WeaponArray Link="StukovAleksanderTentacleDisplayWeapon"/>
+        <CardLayouts>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="StukovAleksanderInfestedSwarmTarget" Type="Passive" Row="2" Column="0"/>
+            <LayoutButtons Face="AleksanderNeuralInfestationLocked" Type="Passive" Requirements="StukovLevel15" Row="2" Column="1"/>
+            <LayoutButtons Face="AleksanderNeuralParasite" Type="Passive" Requirements="HaveStukovAleksanderMindControl" Row="2" Column="1"/>
+        </CardLayouts>
+        <Radius value="3"/>
+        <SeparationRadius value="3"/>
+        <SubgroupPriority value="115"/>
+        <MinimapRadius value="0"/>
+        <EditorCategories value="ObjectType:Hero,ObjectFamily:FactionInfested"/>
+        <GlossaryPriority value="350"/>
+        <GlossaryWeakArray value="VikingFighter"/>
+        <GlossaryWeakArray value="Wraith"/>
+        <GlossaryWeakArray value="Battlecruiser"/>
+    </CUnit>
+
+    <CActorUnit id="Aleksander" parent="AdvancedUnitStandard" unitName="Aleksander">
+        <Aliases value="_UnitHuge"/>
+        <On Terms="ActorCreation" Send="Create StukovAleksanderMinimap"/>
+        <On Terms="Effect.StukovAleksanderInfestedDropPodLaunchMissile.Start; At Caster" Send="AnimPlay Attack Spell 0 -1.000000 -1.000000 -1.000000 AsAutomatic 0.000000 60"/>
+        <On Terms="Behavior.MercAirDropB.On" Send="Create Aleksander_Stukov_ReEntry"/>
+        <On Terms="Behavior.MercAirDropB.On" Target="_Unit" Send="Create AC_Aleksander_AirDropSound"/>
+        <On Terms="ActorCreation" Send="SetVisibility"/>
+        <On Terms="Behavior.MercAirDropB.On" Send="SetVisibility 1"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo StukovAleksanderCrashed" Send="Destroy"/>
+        <On Terms="Abil.StukovAleksanderCrashed.SourceCastStart" Send="ModelSwap StukovAleksanderCrashed"/>
+        <On Terms="Abil.StukovAleksanderCrashedInstant.SourceCastStart" Send="ModelSwap StukovAleksanderCrashed"/>
+        <On Terms="ModelSwapped; ModelSwapTo StukovAleksanderCrashed" Send="AnimPlay Crash Stand,Work,Start PlayForever -1.000000 -1.000000 0.550000 AsTimeScale"/>
+        <On Terms="ModelSwapped; ModelSwapTo StukovAleksanderCrashed" Send="Create StukovAleksanderCrash_EngineWhine"/>
+        <On Terms="ModelSwapped; ModelSwapTo StukovAleksanderCrashed" Send="TimerSet 1.500000 Crash"/>
+        <On Terms="TimerExpired; TimerName Crash" Send="Create Aleksander_Stukov_Coop_SpawnSplat"/>
+        <On Terms="Behavior.StukovSummonAleksanderTimedLife.On" Send="SetStatusBarOn 1 Duration"/>
+        <BuildModel value="Aleksander"/>
+        <PlacementModel value="Aleksander"/>
+        <PortraitActor value="Aleksander@Portrait"/>
+        <AnimBlendTime value="0.300000"/>
+        <BarOffset value="180"/>
+        <BarWidth value="216"/>
+        <NameOffset value="120"/>
+        <UnitKillRank Text="UnitKillRank/Aleksander"/>
+        <HeroIcon value="Assets\Textures\btn-building-stukov-aleksander.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-shipplatinglevel0.dds"/>
+        <UnitIcon value="Assets\Textures\btn-building-stukov-aleksander.dds"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-aleksander_stukov_coop.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-aleksander_stukov_coop.dds"/>
+        </Wireframe>
+    </CActorUnit>
+
+    <CActorModel id="Aleksander@PortraitAddition" parent="CompositePortraitAddition"/>
+    <CActorPortrait id="Aleksander@Portrait" parent="CompositePortrait"/>
+
+    <CModel id="Aleksander" parent="Unit">
+        <AttachProps>
+            <Keys index="SetA" value="0"/>
+        </AttachProps>
+        <AttachProps>
+            <Keys index="SetA" value="0"/>
+        </AttachProps>
+        <AttachProps>
+            <Keys index="SetA" value="0"/>
+        </AttachProps>
+        <AttachProps>
+            <Keys index="SetA" value="0"/>
+        </AttachProps>
+        <AttachProps>
+            <Keys index="SetA" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Weapon 10">
+            <Keys index="SetA" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Weapon 11">
+            <Keys index="SetA" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Weapon 12">
+            <Keys index="SetA" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Weapon 13">
+            <Keys index="SetA" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Weapon 14">
+            <Keys index="SetA" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Weapon 15">
+            <Keys index="SetA" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Weapon 16">
+            <Keys index="SetA" value="0"/>
+        </AttachProps>
+        <Radius value="1.500000"/>
+        <ScaleMax value="1.500000,1.500000,1.500000"/>
+        <ScaleMin value="1.500000,1.500000,1.500000"/>
+        <SelectionOffset value="0.000000,0.000000,-0.950000"/>
+        <SelectionRadius value="1.666200"/>
+        <ShadowRadius value="1.666200"/>
+        <SquibTypeDefault value="Flesh"/>
+        <Events>
+            <Anim value="Walk,A,00"/>
+            <Name value="StukovAleksander_MoveLoop"/>
+            <Type value="Sound"/>
+            <Payload value="StukovAleksander_MoveLoop"/>
+        </Events>
+        <Events>
+            <Anim value="Walk,A,00"/>
+            <Name value="StukovAleksander_MoveLoop"/>
+            <Type value="Sound"/>
+            <Time value="0.750000"/>
+            <Payload value="StukovAleksander_MoveLoop"/>
+        </Events>
+        <Events>
+            <Anim value="Walk,A,00"/>
+            <Name value="StukovAleksander_MoveLoop"/>
+            <Type value="Sound"/>
+            <Time value="1.500000"/>
+            <Payload value="StukovAleksander_MoveLoop"/>
+        </Events>
+        <Events>
+            <Anim value="Walk,A,00"/>
+            <Name value="StukovAleksander_MoveLoop"/>
+            <Type value="Sound"/>
+            <Time value="2.250000"/>
+            <Payload value="StukovAleksander_MoveLoop"/>
+        </Events>
+        <Events>
+            <Anim value="Walk,A,00"/>
+            <Name value="StukovAleksander_MoveLoop"/>
+            <Type value="Sound"/>
+            <Time value="3.000000"/>
+            <Payload value="StukovAleksander_MoveLoop"/>
+        </Events>
+    </CModel>
+    <CModel id="Aleksander@Death" parent="UnitDeath">
+        <Model value="Assets\Units\Zerg\Aleksander_Stukov_Coop_Death\Aleksander_Stukov_Coop_Death.m3"/>
+        <LowQualityModel value="TerranLargeUnitDeathLow"/>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="SMModelEventSound"/>
+            <Type value="Sound"/>
+            <Time value="0.150000"/>
+            <Payload value="Terran_PreExplosionSmall"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="SMModelEventSound"/>
+            <Type value="Sound"/>
+            <Time value="0.620000"/>
+            <Payload value="Terran_ExplosionSmall"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="SMModelEventSound"/>
+            <Type value="Sound"/>
+            <Time value="1.000000"/>
+            <Payload value="Terran_ExplosionMedium"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="SMModelEventSound"/>
+            <Type value="Sound"/>
+            <Time value="1.330000"/>
+            <Payload value="Terran_ExplosionSmall"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="SMModelEventSound"/>
+            <Type value="Sound"/>
+            <Time value="1.920000"/>
+            <Payload value="Terran_ExplosionMedium"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="SMModelEventSound"/>
+            <Type value="Sound"/>
+            <Time value="2.480000"/>
+            <Payload value="Terran_ExplosionLarge"/>
+        </Events>
+        <Occlusion value="Show"/>
+    </CModel>
+    <CModel id="Aleksander@Portrait" parent="FXAPortrait">
+        <EditorCategories value="Race:Zerg"/>
+        <Model value="Assets\StoryModeCharacters\Zerg\SMX1_InfestedStukov_Background_Portrait\SMX1_InfestedStukov_Background_Portrait.m3"/>
+        <FacialController value="LocalizedData\Facial\SMX1_InfestedStukov.fxa"/>
+        <Image value="Assets\Textures\SMX1_InfestedStukovPortrait_Static.dds"/>
+    </CModel>
+    <CModel id="Aleksander@PortraitAddition" parent="FXAPortrait">
+        <Model value="Assets\StoryModeCharacters\Zerg\SMX1_InfestedStukov\SMX1_InfestedStukov.m3"/>
+        <RequiredAnims value="Assets\StoryModeCharacters\Zerg\SMX1_InfestedStukov_FacialAnims\SMX1_InfestedStukov_FacialAnims.m3a"/>
+        <RequiredAnims value="Assets\StoryModeCharacters\Zerg\SMX1_InfestedStukov_RequiredAnims_Portrait\SMX1_InfestedStukov_RequiredAnims_Portrait.m3a"/>
+        <FacialController value="LocalizedData\Facial\SMX1_InfestedStukov.fxa"/>
+        <Flags index="Download" value="1"/>
+    </CModel>
+
+    <CSound id="Aleksander@Attack" parent="Voice">
+        <AssetArray index="0">
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_014.ogg"/>
+            <FacialAnim value="zUnit_HeroStukov_Stukov_014"/>
+            <FacialGroup value="zUnit_HeroStukov_Stukov_014"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_014.fxe"/>
+            <Speaker value=""/>
+            <Subtitle value=""/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_010.ogg"/>
+            <FacialAnim value="zUnit_HeroStukov_Stukov_010"/>
+            <FacialGroup value="zUnit_HeroStukov_Stukov_010"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_010.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_016.ogg"/>
+            <FacialAnim value="zUnit_HeroStukov_Stukov_016"/>
+            <FacialGroup value="zUnit_HeroStukov_Stukov_016"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_016.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_019.ogg"/>
+            <FacialAnim value="zUnit_HeroStukov_Stukov_019"/>
+            <FacialGroup value="zUnit_HeroStukov_Stukov_019"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_019.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_024.ogg"/>
+            <FacialAnim value="zUnit_HeroStukov_Stukov_024"/>
+            <FacialGroup value="zUnit_HeroStukov_Stukov_024"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_024.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_028.ogg"/>
+            <FacialAnim value="zUnit_HeroStukov_Stukov_028"/>
+            <FacialGroup value="zUnit_HeroStukov_Stukov_028"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_028.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_029.ogg"/>
+            <FacialAnim value="zUnit_HeroStukov_Stukov_029"/>
+            <FacialGroup value="zUnit_HeroStukov_Stukov_029"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_029.fxe"/>
+        </AssetArray>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+    <CSound id="Aleksander@Help" parent="Alert">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_004.ogg"/>
+            <FacialAnim value="zUnit_HeroStukov_Stukov_004"/>
+            <FacialGroup value="zUnit_HeroStukov_Stukov_004"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_004.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_031.ogg"/>
+            <FacialAnim value="zUnit_HeroStukov_Stukov_031"/>
+            <FacialGroup value="zUnit_HeroStukov_Stukov_031"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_031.fxe"/>
+        </AssetArray>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+    <CSound id="Aleksander@Pissed" parent="Pissed">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_032.ogg"/>
+            <FacialAnim value="zUnit_HeroStukov_Stukov_032"/>
+            <FacialGroup value="zUnit_HeroStukov_Stukov_032"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_032.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_035.ogg"/>
+            <FacialAnim value="zUnit_HeroStukov_Stukov_035"/>
+            <FacialGroup value="zUnit_HeroStukov_Stukov_035"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_035.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_030.ogg"/>
+            <FacialAnim value="zUnit_HeroStukov_Stukov_030"/>
+            <FacialGroup value="zUnit_HeroStukov_Stukov_030"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_030.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_038.ogg"/>
+            <FacialAnim value="zUnit_HeroStukov_Stukov_038"/>
+            <FacialGroup value="zUnit_HeroStukov_Stukov_038"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_038.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_022.ogg"/>
+            <FacialAnim value="zUnit_HeroStukov_Stukov_022"/>
+            <FacialGroup value="zUnit_HeroStukov_Stukov_022"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_022.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_003.ogg"/>
+            <FacialAnim value="zUnit_HeroStukov_Stukov_003"/>
+            <FacialGroup value="zUnit_HeroStukov_Stukov_003"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_003.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_008.ogg"/>
+            <FacialAnim value="zUnit_HeroStukov_Stukov_008"/>
+            <FacialGroup value="zUnit_HeroStukov_Stukov_008"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_008.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_041.ogg"/>
+            <FacialAnim value="zUnit_HeroStukov_Stukov_041"/>
+            <FacialGroup value="zUnit_HeroStukov_Stukov_041"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_041.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_015.ogg"/>
+            <FacialAnim value="zUnit_HeroStukov_Stukov_015"/>
+            <FacialGroup value="zUnit_HeroStukov_Stukov_015"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_015.fxe"/>
+        </AssetArray>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+    <CSound id="Aleksander@Yes" parent="Voice">
+        <AssetArray index="0">
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_017.ogg"/>
+            <FacialAnim value="zUnit_HeroStukov_Stukov_017"/>
+            <FacialGroup value="zUnit_HeroStukov_Stukov_017"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_017.fxe"/>
+            <Speaker value=""/>
+            <Subtitle value=""/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_011.ogg"/>
+            <FacialAnim value="zUnit_HeroStukov_Stukov_011"/>
+            <FacialGroup value="zUnit_HeroStukov_Stukov_011"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_011.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_023.ogg"/>
+            <FacialAnim value="zUnit_HeroStukov_Stukov_023"/>
+            <FacialGroup value="zUnit_HeroStukov_Stukov_023"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_023.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_025.ogg"/>
+            <FacialAnim value="zUnit_HeroStukov_Stukov_025"/>
+            <FacialGroup value="zUnit_HeroStukov_Stukov_025"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_025.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_027.ogg"/>
+            <FacialAnim value="zUnit_HeroStukov_Stukov_027"/>
+            <FacialGroup value="zUnit_HeroStukov_Stukov_027"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_027.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_036.ogg"/>
+            <FacialAnim value="zUnit_HeroStukov_Stukov_036"/>
+            <FacialGroup value="zUnit_HeroStukov_Stukov_036"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_036.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_037.ogg"/>
+            <FacialAnim value="zUnit_HeroStukov_Stukov_037"/>
+            <FacialGroup value="zUnit_HeroStukov_Stukov_037"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_037.fxe"/>
+        </AssetArray>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+    <CSound id="Aleksander@What" parent="Voice">
+        <AssetArray index="0">
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_007.ogg"/>
+            <FacialAnim value="zUnit_HeroStukov_Stukov_007"/>
+            <FacialGroup value="zUnit_HeroStukov_Stukov_007"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_007.fxe"/>
+            <Speaker value=""/>
+            <Subtitle value=""/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_012.ogg"/>
+            <FacialAnim value="zUnit_HeroStukov_Stukov_012"/>
+            <FacialGroup value="zUnit_HeroStukov_Stukov_012"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_012.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_013.ogg"/>
+            <FacialAnim value="zUnit_HeroStukov_Stukov_013"/>
+            <FacialGroup value="zUnit_HeroStukov_Stukov_013"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_013.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_001.ogg"/>
+            <FacialAnim value="zUnit_HeroStukov_Stukov_001"/>
+            <FacialGroup value="zUnit_HeroStukov_Stukov_001"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_001.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_026.ogg"/>
+            <FacialAnim value="zUnit_HeroStukov_Stukov_026"/>
+            <FacialGroup value="zUnit_HeroStukov_Stukov_026"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_026.fxe"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_040.ogg"/>
+            <FacialAnim value="zUnit_HeroStukov_Stukov_040"/>
+            <FacialGroup value="zUnit_HeroStukov_Stukov_040"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_040.fxe"/>
+        </AssetArray>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+    <CSound id="Aleksander@Ready" parent="Ready">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray>
+            <File value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_006.ogg"/>
+            <FacialAnim value="zUnit_HeroStukov_Stukov_006"/>
+            <FacialGroup value="zUnit_HeroStukov_Stukov_006"/>
+            <FacialFile value="LocalizedData\Sounds\VO\zUnit_HeroStukov_Stukov_006.fxe"/>
+        </AssetArray>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+    <CSound id="Aleksander@Movement" parent="Movement">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\StukovAleksander_Movement_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\StukovAleksander_Movement_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\StukovAleksander_Movement_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\StukovAleksander_Movement_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\StukovAleksander_Movement_05.wav" FacialGroup=""/>
+        <DupeDestroyCount value="3"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="3"/>
+        <DupeThresholdPoints/>
+        <DupeThresholdPoints Count="3" Volume="-6.000000"/>
+        <DupeThresholdPoints Count="2" Volume="-6.000000"/>
+        <DupeThresholdPoints Count="4" Volume="-12.000000"/>
+        <MuteFadeOut/>
+        <MuteFadeOut Time="250" Volume="-96.000000"/>
+        <PanLevel value="0.750000"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <PlayDelay value="0,60"/>
+        <SustainFade index="1" Time="2000"/>
+        <Volume value="-4.000000,-4.000000"/>
+        <VolumeRolloffFadeOut/>
+        <VolumeRolloffFadeOut Time="100" Volume="-96.000000"/>
+    </CSound>
+
+    <CRequirement id="Aleksander"/>
+
+    <CDataCollectionUnit id="Aleksander" parent="UnitAir">
+
+    </CDataCollectionUnit>
+
+    <!-- ========== Weapons ========== -->
+    <!--Infested Cannon -->
+    <CWeaponLegacy id="Aleksander_Weapon">
+        <EditorCategories value="Race:Zerg"/>
+        <Options index="OnlyFireWhileInAttackOrder" value="0"/>
+        <Options index="OnlyFireAtAttackOrderTarget" value="0"/>
+        <Options index="RequireEnabledAttackAbil" value="0"/>
+        <Icon value="Assets\Textures\btn-ability-zerg-banelingspooge.dds"/>
+        <DisplayEffect value="StukovAleksanderInfestedDropPodLaunchMissileDamage"/>
+        <TargetFilters value="Ground,Visible;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <MinScanRange value="8.5"/>
+        <Range value="8"/>
+        <Period value="1.5"/>
+        <Effect value="StukovAleksanderInfestedDropPod"/>
+        <Arc value="360"/>
+        <AllowedMovement value="Moving"/>
+    </CWeaponLegacy>
+
+    <CBehaviorBuff id="Aleksander_Weapon@TimedLife" parent="TimedLife">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Duration value="8"/>
+        <Modification>
+            <StateFlags index="SuppressFoodUsed" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Aleksander_Weapon@DisableWeapon">
+        <InfoFlags index="Hidden" value="1"/>
+        <Duration value="2"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Modification>
+            <StateFlags index="SuppressAttack" value="1"/>
+            <StateFlags index="SuppressArmySelect" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+
+    <CEffectCreatePersistent id="Aleksander_Weapon@CP">
+        <Flags index="Channeled" value="1"/>
+        <WhichLocation Value="TargetUnit"/>
+        <PeriodCount value="3"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0.5"/>
+        <PeriodicPeriodArray value="0.5"/>
+        <PeriodicEffectArray value="Aleksander_Weapon@CU_00"/>
+        <PeriodicEffectArray value="Aleksander_Weapon@CU_01"/>
+        <PeriodicEffectArray value="Aleksander_Weapon@CU_01"/>
+    </CEffectCreatePersistent>
+    <CEffectCreateUnit id="Aleksander_Weapon@CU_00">
+        <EditorCategories value="Race:Zerg"/>
+        <SpawnUnit value="Stukov_InfestedMarine"/>
+        <CreateFlags index="Birth" value="0"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="PlacementIgnoreCliffTest" value="1"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="SetFacing" value="1"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <SpawnEffect value="Aleksander_Weapon@Set"/>
+    </CEffectCreateUnit>
+    <CEffectCreateUnit id="Aleksander_Weapon@CU_01">
+        <EditorCategories value="Race:Zerg"/>
+        <SpawnUnit value="Stukov_InfestedCivilian"/>
+        <CreateFlags index="Birth" value="0"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="PlacementIgnoreCliffTest" value="1"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="SetFacing" value="1"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <SpawnEffect value="Aleksander_Weapon@Set"/>
+    </CEffectCreateUnit>
+    <CEffectSet id="Aleksander_Weapon@Set">
+        <EffectArray value="MakePrecursor"/>
+        <EffectArray value="Aleksander_Weapon@DisableWeapon"/>
+        <EffectArray value="Aleksander_Weapon@LM"/>
+    </CEffectSet>
+    <CEffectSet id="Aleksander_Weapon@Set_Land">
+        <EffectArray value="RemovePrecursor"/>
+        <EffectArray value="Aleksander_Weapon@LM"/>
+        <EffectArray value="Aleksander_Weapon@TimedLife"/>
+        <EffectArray value="Aleksander_Weapon@Issue"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="Aleksander_Weapon@LM">
+        <EditorCategories value="Race:Zerg"/>
+        <AmmoUnit value="StukovAleksanderInfestedDropPodMissile"/>
+        <Movers Link="StukovAleksanderInfestedDropPodMissile"/>
+        <LaunchLocation Value="CasterUnit"/>
+        <ImpactLocation Value="TargetUnitOrPoint"/>
+        <FinishEffect value="Aleksander_Weapon@Set_Land"/>
+        <ImpactEffect value="Aleksander_Weapon@Damage"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="Aleksander_Weapon@Damage">
+        <EditorCategories value="Race:InfestedTerran"/>
+        <ImpactLocation Effect="Aleksander_Weapon@CP"/>
+        <Amount value="20"/>
+        <Death value="Blast"/>
+    </CEffectDamage>
+    <CEffectIssueOrder id="Aleksander_Weapon@Issue">
+        <EditorCategories value="Race:Zerg"/>
+        <Abil value="attack"/>
+        <Target Effect="Aleksander_Weapon@CP" Value="TargetUnit"/>
+    </CEffectIssueOrder>
+    <CEffectApplyBehavior id="Aleksander_Weapon@TimedLife"/>
+    <CEffectApplyBehavior id="Aleksander_Weapon@DisableWeapon"/>
+    
+    <CUnit id="Aleksander_Weapon@AttackMissile" parent="MISSILE_INVULNERABLE"/>
+    <CActorMissile id="Aleksander_Weapon@AttackMissile" parent="GenericAttackMissileNoEvents" unitName="Aleksander_Weapon@AttackMissile">
+        <On Terms="UnitBirth.Aleksander_Weapon@AttackMissile" Send="Create"/>
+        <On Terms="UnitBirth" Send="AnimBracketStart Lifetime {} Walk"/>
+    </CActorMissile>
+    <CActorAction id="Aleksander_Weapon@Attack" parent="GenericAttack" effectImpact="Aleksander_Weapon@Set_Land" effectLaunch="Aleksander_Weapon@LM">
+        <ImpactMap index="None" Model="Aleksander_Weapon@AttackMissile" Sound="Aleksander_Weapon@ImpactSound" AnimProps="Death"/>
+        <LaunchAttachQuery Methods="Weapon 4"/>
+        <ImpactModel value="Aleksander_Weapon@AttackMissile"/>
+    </CActorAction>
+    <CActorModel id="Aleksander_Weapon@ImpactModel">
+        <Flags index="SuppressCreationErrors" value="1"/>
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <On Terms="ActorCreation" Send="AnimPlay Death Death"/>
+        <On Terms="AnimPlay; AnimName Death" Send="AnimSetTime Death 0.600000"/>
+        <On Terms="AnimDone; AnimName Death" Send="Destroy"/>
+        <Model value="Aleksander_Weapon@AttackMissile"/>
+    </CActorModel>
+    <CModel id="Aleksander_Weapon@AttackMissile" parent="RacePersistentSpellFX" Race="Zerg">
+        <SelectionLayer value="2"/>
+        <SquibTypeDefault value="Flesh"/>
+        <Model value="Assets\Effects\Zerg\Stukov_BarracksEgg\Stukov_BarracksEgg.m3"/>
+    </CModel>
+    <CSound id="Aleksander_Weapon@ImpactSound" parent="Zerg_ExplosionSmall">
+        <DupeMuteCount value="10"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CMoverMissile id="Aleksander_Weapon@AttackMissile">
+        <Flags index="RestoreHeight" value="1"/>
+        <MotionPhases>
+            <Driver value="AdaptableParabola"/>
+            <MinSpeed value="10"/>
+            <MaxSpeed value="10"/>
+            <ActorTracking value="Actual"/>
+            <Outro value="-0.5,-0.1"/>
+            <ThrowBandYaw value="-360,-360,-360,-360"/>
+            <ThrowBandPitch value="-360,-360,-360,-360"/>
+            <AdaptableParabolaIsUpright value="1"/>
+            <AdaptableParabolaClearance value="0.5,0.1"/>
+            <AdaptableParabolaDistances index="Launch" value="1"/>
+            <AdaptableParabolaDistances index="PreApex" value="0.3"/>
+            <AdaptableParabolaDistances index="PostApex" value="0.3"/>
+            <AdaptableParabolaDistances index="Land" value="1"/>
+            <AdaptableParabolaAccels index="Launch" value="0"/>
+            <AdaptableParabolaAccels index="Ascent" value="0"/>
+            <AdaptableParabolaAccels index="Apex" value="0"/>
+            <AdaptableParabolaAccels index="Descent" value="0"/>
+            <AdaptableParabolaAccels index="Land" value="0"/>
+        </MotionPhases>
+        <MotionPhases Driver="Guidance" MaxSpeed="40" YawPitchRoll="MAX"/>
+    </CMoverMissile>
+
+
+    
+</Catalog>
