@@ -10,11 +10,8 @@
         <EditorCategories value="Race:Taldarim"/>
         <Icon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-hightemplar.dds"/>
     </CButton>
-    <CUnit id="Ascendant" parent="Generic_Unit_Ground" race="Tald">
+    <CUnit id="Ascendant" parent="Generic_Protoss_Unit_Ground" race="Tald">
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
-        <AbilArray Link="Warpable"/>
-        <AbilArray Link="ProgressRally"/>
-        <AbilArray Link="BuildInProgress"/>
         <AbilArray Link="Ascendant_PsiOrb"/>
         <AbilArray Link="Ascendant_MindBlast"/>
         <AbilArray Link="Ascendant_Sacrifice"/>
@@ -48,7 +45,6 @@
         <GlossaryWeakArray value="Ghost"/>
         <GlossaryWeakArray value="Roach"/>
         <GlossaryWeakArray value="Colossus"/>
-        <EnergyRegenRate value="0"/>
     </CUnit>
     <CActorUnit id="Ascendant" parent="AdvancedUnitStandard" unitName="Ascendant">
         <On Terms="WeaponStart.Ascendant_Weapon" Send="AnimPlay Attack Spell PlayForever,ForceLooping"/>
@@ -728,7 +724,7 @@
 
     <CEffectUserData id="Ascendant_Sacrifice@User">
         <EditorCategories value="Race:Taldarim"/>
-        <ValidateMax value="25"/>
+        <ValidateMax value="75"/>
         <EffectSuccess value="Ascendant_Sacrifice@Set_Damage"/>
         <ValidatorArray value="Ascendant_Sacrifice@TargetLifeGreaterThan1"/>
         <ValidatorArray value="EnergyNotFullCaster"/>
@@ -737,8 +733,14 @@
         <EditorCategories value="Race:Taldarim"/>
         <EffectArray value="Ascendant_Sacrifice@LM"/>
         <EffectArray value="Ascendant_Sacrifice@Damage"/>
-        <EffectArray value="Ascendant_Sacrifice@User"/>
+        <EffectArray value="Ascendant_Sacrifice@CP"/>
     </CEffectSet>
+    <CEffectCreatePersistent id="Ascendant_Sacrifice@CP">
+        <EditorCategories value="Race:Taldarim"/>
+        <InitialDelay value="0.0625"/>
+        <InitialEffect value="Ascendant_Sacrifice@User"/>
+        <WhichLocation Value="TargetUnit"/>
+    </CEffectCreatePersistent>
     <CEffectDamage id="Ascendant_Sacrifice@Damage">
         <EditorCategories value="Race:Taldarim"/>
         <LeechFraction index="Energy" value="2"/>
@@ -800,10 +802,10 @@
         <On Terms="Abil.Ascendant_Sacrifice.TargetCastStart" Send="Create"/>
     </CActorModel>
     <CActorSimple id="Ascendant_Sacrifice@Animation">
+        <On Terms="ActorOrphan" Send="Destroy"/>
         <On Terms="Abil.Ascendant_Sacrifice.SourceCastStart" Send="Create"/>
         <On Terms="ActorCreation" Target="_Unit" Send="AnimPlay Spell Spell,B"/>
         <On Terms="ActorCreation" Send="Destroy"/>
-        <On Terms="ActorOrphan" Send="Destroy"/>
     </CActorSimple>
 
     <CModel id="Ascendant_Sacrifice@AttackMissile" parent="MissileFX">
@@ -883,7 +885,8 @@
     <CDataCollectionPattern id="Ascendant_SacrificePattern" parent="AbilityPattern_Base">
         <Fields Reference="Accumulator,^ParamId^@Half,Parameters[1]"/>
         <Fields Reference="Accumulator,^ParamId^@Half,MaxAccumulation"/>
-        <Fields Reference="Validator,^ParamId^@TargetLifeGreaterThan1,Value"/>
+        <Fields Reference="Validator,^ParamId^@TargetLifeGreaterThan1,Value" NameOverride="DataCollectionPattern/NameOverride/Ascendant_SacrificePattern/TargetLifeGreaterThan1"/>
+        <Fields Reference="Effect,^ParamId^@CP,InitialDelay" NameOverride="DataCollectionPattern/NameOverride/Ascendant_SacrificePattern/Interval"/>
     </CDataCollectionPattern>
 
     <CDataCollectionUnit id="Ascendant_Sacrifice" parent="AbilityBase">

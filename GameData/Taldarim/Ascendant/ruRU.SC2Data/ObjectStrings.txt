@@ -32,6 +32,9 @@ Actor/Name/Ascendant=Ascendant
 
 Behavior/Name/Ascendant_PsiOrb@AuraDamage=Aura Damage
 
+DataCollectionPattern/NameOverride/Ascendant_SacrificePattern/Interval=Интервал между снарядами
+DataCollectionPattern/NameOverride/Ascendant_SacrificePattern/TargetLifeGreaterThan1=Минимальное здоровье цели
+
 Effect/Name/Ascendant_Weapon@Damage=Damage
 Effect/Name/Ascendant_Weapon@LM=LM
 Effect/Name/Ascendant_MindBlast@Damage=Damage
@@ -40,6 +43,7 @@ Effect/Name/Ascendant_Sacrifice@Impact=Impact
 Effect/Name/Ascendant_Sacrifice@LM=LM
 Effect/Name/Ascendant_Sacrifice@Set=Set
 Effect/Name/Ascendant_Sacrifice@Set_Damage=Set Damage
+Effect/Name/Ascendant_Sacrifice@CP=Interval
 Effect/Name/Ascendant_Sacrifice@User=User
 Effect/Name/Ascendant_PsiOrb@Set=Set
 Effect/Name/Ascendant_PsiOrb@Search=Search
