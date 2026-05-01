@@ -1,0 +1,4 @@
+Button/Name/InfestedCivilian=Породить заражённого терран
+Button/Tooltip/InfestedCivilian=Наносит умеренный урон.<n/><n/><c val="FFFF8A">Атакует только наземные цели.</c>
+Unit/Name/InfestedCivilian=Заражённый терран
+Weapon/Name/InfestedClaws=Зараженные когти
