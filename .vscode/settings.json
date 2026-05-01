@@ -1,8 +1,20 @@
 {
     "xml.fileAssociations": [
         {
-            "pattern": "**/*.xml",
-            "systemId": "${workspaceFolder}/.vscode/schemas/catalogsData.xsd"
-        }
+            "pattern": "Base.SC2Data/GameData.xml",
+            "systemId": "C:/Users/bonda/.vscode/schemas/sc2data/catalogsData.xsd"
+        },
+        {
+            "pattern": "Base.SC2Data/GameData/*.xml",
+            "systemId": "C:/Users/bonda/.vscode/schemas/sc2data/catalogsData.xsd"
+        },
+        {
+            "pattern": "**/Base.SC2Data/GameData/*.xml",
+            "systemId": "C:/Users/bonda/.vscode/schemas/sc2data/catalogsData.xsd"
+        },
+        {
+            "pattern": "**/Base.SC2Data/GameData/**/*.xml",
+            "systemId": "C:/Users/bonda/.vscode/schemas/sc2data/catalogsData.xsd"
+        },
     ]
 }
