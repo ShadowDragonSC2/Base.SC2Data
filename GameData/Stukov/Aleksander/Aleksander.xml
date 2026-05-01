@@ -58,8 +58,8 @@
         <On Terms="Effect.StukovAleksanderInfestedDropPodLaunchMissile.Start; At Caster" Send="AnimPlay Attack Spell 0 -1.000000 -1.000000 -1.000000 AsAutomatic 0.000000 60"/>
         <On Terms="Behavior.MercAirDropB.On" Send="Create Aleksander_Stukov_ReEntry"/>
         <On Terms="Behavior.MercAirDropB.On" Target="_Unit" Send="Create AC_Aleksander_AirDropSound"/>
-        <On Terms="ActorCreation" Send="SetVisibility"/>
-        <On Terms="Behavior.MercAirDropB.On" Send="SetVisibility 1"/>
+        <!-- <On Terms="ActorCreation" Send="SetVisibility"/> -->
+        <!-- <On Terms="Behavior.MercAirDropB.On" Send="SetVisibility 1"/> -->
         <On Terms="AbilMorph.*.Finish; MorphTo StukovAleksanderCrashed" Send="Destroy"/>
         <On Terms="Abil.StukovAleksanderCrashed.SourceCastStart" Send="ModelSwap StukovAleksanderCrashed"/>
         <On Terms="Abil.StukovAleksanderCrashedInstant.SourceCastStart" Send="ModelSwap StukovAleksanderCrashed"/>
@@ -127,6 +127,7 @@
         <AttachProps Id="Ref_Weapon 16">
             <Keys index="SetA" value="0"/>
         </AttachProps>
+        <Model value="Assets\Units\Zerg\Aleksander_Stukov_Coop\Aleksander_Stukov_Coop.m3"/>
         <Radius value="1.500000"/>
         <ScaleMax value="1.500000,1.500000,1.500000"/>
         <ScaleMin value="1.500000,1.500000,1.500000"/>
