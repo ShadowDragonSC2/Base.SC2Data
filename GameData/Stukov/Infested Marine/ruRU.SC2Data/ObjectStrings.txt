@@ -1,5 +1,5 @@
 
-Validator/Name/InfestedMarine@Is=Caster Is Unit
-Validator/Name/InfestedMarine@Target=Target Is Unit
-Validator/Name/InfestedMarine@Not=Caster Not Unit
-Validator/Name/InfestedMarine@NotTarget=Target Not Unit
+Validator/Name/StukovInfestedMarine@Is=Caster Is Unit
+Validator/Name/StukovInfestedMarine@Target=Target Is Unit
+Validator/Name/StukovInfestedMarine@Not=Caster Not Unit
+Validator/Name/StukovInfestedMarine@NotTarget=Target Not Unit

@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Catalog>
-    <CButton id="InfestedMarine">
+    <CButton id="StukovInfestedMarine">
         <Icon value="Assets\Textures\btn-unit-zerg-infestedmarine.dds"/>
     </CButton>
     
-    <CUnit id="InfestedMarine"></CUnit>
-    <CUnit id="InfestedMarine@Burrowed">
+    <CUnit id="StukovInfestedMarine" parent="Generic_Unit_Ground"/>
+    <CUnit id="StukovInfestedMarine@Burrowed" parent="StukovInfestedMarine">
         <Collide index="Ground" value="0"/>
         <Collide index="Small" value="0"/>
         <Collide index="ForceField" value="0"/>
     </CUnit>
     
-    <CActorUnit id="InfestedMarine" parent="GenericBurrowerStandard" unitName="InfestedMarine">
-        <PortraitModel value="InfestedMarine@Portrait"/>
-        <DeathArray index="Normal" ModelLink="InfestedMarine@Death" SoundLink="InfestedMarine@Death" VoiceLink="InfestedMarine@DeathVoice"/>
-        <SoundArray index="Attack" value="InfestedMarine@Attack"/>
-        <SoundArray index="Help" value="InfestedMarine@Help"/>
-        <SoundArray index="Pissed" value="InfestedMarine@Pissed"/>
-        <SoundArray index="Yes" value="InfestedMarine@Yes"/>
-        <SoundArray index="What" value="InfestedMarine@What"/>
-        <SoundArray index="Ready" value="InfestedMarine@Ready"/>
+    <CActorUnit id="StukovInfestedMarine" parent="GenericBurrowerStandard" unitName="StukovInfestedMarine">
+        <PortraitModel value="StukovInfestedMarine@Portrait"/>
+        <DeathArray index="Normal" ModelLink="StukovInfestedMarine@Death" SoundLink="StukovInfestedMarine@Death" VoiceLink="StukovInfestedMarine@DeathVoice"/>
+        <SoundArray index="Attack" value="StukovInfestedMarine@Attack"/>
+        <SoundArray index="Help" value="StukovInfestedMarine@Help"/>
+        <SoundArray index="Pissed" value="StukovInfestedMarine@Pissed"/>
+        <SoundArray index="Yes" value="StukovInfestedMarine@Yes"/>
+        <SoundArray index="What" value="StukovInfestedMarine@What"/>
+        <SoundArray index="Ready" value="StukovInfestedMarine@Ready"/>
 
         <Macros value="ZergBurrowStandardAnimMacro"/>
         <Macros value="ZergSmallBurrowEffects"/>
@@ -39,63 +39,63 @@
         <Aliases value="_UnitSmall"/>
     </CActorUnit>
     
-    <CModel id="InfestedMarine" parent="Unit">
+    <CModel id="StukovInfestedMarine" parent="Unit">
         <Model value=""/>
     </CModel>
-    <CModel id="InfestedMarine@Death" parent="UnitDeath">
+    <CModel id="StukovInfestedMarine@Death" parent="UnitDeath">
         <Model value=""/>
     </CModel>
-    <CModel id="InfestedMarine@Portrait" parent="Portrait">
+    <CModel id="StukovInfestedMarine@Portrait" parent="Portrait">
         <Model value=""/>
     </CModel>
     
-    <CSound id="InfestedMarine@DeathVoice" parent="DeathVoice">
+    <CSound id="StukovInfestedMarine@DeathVoice" parent="DeathVoice">
         <AssetArray File=""/>
     </CSound>
-    <CSound id="InfestedMarine@Attack" parent="ZergAck">
+    <CSound id="StukovInfestedMarine@Attack" parent="ZergAck">
         <AssetArray File=""/>
     </CSound>
-    <CSound id="InfestedMarine@Help" parent="Alert">
+    <CSound id="StukovInfestedMarine@Help" parent="Alert">
         <AssetArray File=""/>
     </CSound>
-    <CSound id="InfestedMarine@Pissed" parent="Pissed">
+    <CSound id="StukovInfestedMarine@Pissed" parent="Pissed">
         <AssetArray File=""/>
     </CSound>
-    <CSound id="InfestedMarine@Yes" parent="ZergAck">
+    <CSound id="StukovInfestedMarine@Yes" parent="ZergAck">
         <AssetArray File=""/>
     </CSound>
-    <CSound id="InfestedMarine@What" parent="ZergAck">
+    <CSound id="StukovInfestedMarine@What" parent="ZergAck">
         <AssetArray File=""/>
     </CSound>
-    <CSound id="InfestedMarine@Ready" parent="Ready">
+    <CSound id="StukovInfestedMarine@Ready" parent="Ready">
         <AssetArray File=""/>
     </CSound>
 
-    <CValidatorUnitType id="InfestedMarine@Is" parent="IsUnit_Default" unit="InfestedMarine"/>
-    <CValidatorUnitType id="InfestedMarine@Target" parent="TargetIsUnit_Default" unit="InfestedMarine"/>
-    <CValidatorUnitType id="InfestedMarine@Not" parent="NotUnit_Default" unit="InfestedMarine"/>
-    <CValidatorUnitType id="InfestedMarine@NotTarget" parent="TargetNotUnit_Default" unit="InfestedMarine"/>
+    <CValidatorUnitType id="StukovInfestedMarine@Is" parent="IsUnit_Default" unit="StukovInfestedMarine"/>
+    <CValidatorUnitType id="StukovInfestedMarine@Target" parent="TargetIsUnit_Default" unit="StukovInfestedMarine"/>
+    <CValidatorUnitType id="StukovInfestedMarine@Not" parent="NotUnit_Default" unit="StukovInfestedMarine"/>
+    <CValidatorUnitType id="StukovInfestedMarine@NotTarget" parent="TargetNotUnit_Default" unit="StukovInfestedMarine"/>
 
-    <CDataCollectionUnit id="InfestedMarine" parent="UnitGround">
+    <CDataCollectionUnit id="StukovInfestedMarine" parent="UnitGround">
         <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:InfestedTerran,ObjectType:Unit"/>
-        <DataRecord Entry="Button,InfestedMarine"/>
-        <DataRecord Entry="Unit,InfestedMarine"/>
-        <DataRecord Entry="Unit,InfestedMarine@Burrowed"/>
-        <DataRecord Entry="Actor,InfestedMarine"/>
-        <DataRecord Entry="Model,InfestedMarine"/>
-        <DataRecord Entry="Model,InfestedMarine@Death"/>
-        <DataRecord Entry="Model,InfestedMarine@Portrait"/>
-        <DataRecord Entry="Sound,InfestedMarine@DeathVoice"/>
-        <DataRecord Entry="Sound,InfestedMarine@Attack"/>
-        <DataRecord Entry="Sound,InfestedMarine@Help"/>
-        <DataRecord Entry="Sound,InfestedMarine@Pissed"/>
-        <DataRecord Entry="Sound,InfestedMarine@Yes"/>
-        <DataRecord Entry="Sound,InfestedMarine@What"/>
-        <DataRecord Entry="Sound,InfestedMarine@Ready"/>
-        <DataRecord Entry="Validator,InfestedMarine@Is"/>
-        <DataRecord Entry="Validator,InfestedMarine@Target"/>
-        <DataRecord Entry="Validator,InfestedMarine@Not"/>
-        <DataRecord Entry="Validator,InfestedMarine@NotTarget"/>
+        <DataRecord Entry="Button,StukovInfestedMarine"/>
+        <DataRecord Entry="Unit,StukovInfestedMarine"/>
+        <DataRecord Entry="Unit,StukovInfestedMarine@Burrowed"/>
+        <DataRecord Entry="Actor,StukovInfestedMarine"/>
+        <DataRecord Entry="Model,StukovInfestedMarine"/>
+        <DataRecord Entry="Model,StukovInfestedMarine@Death"/>
+        <DataRecord Entry="Model,StukovInfestedMarine@Portrait"/>
+        <DataRecord Entry="Sound,StukovInfestedMarine@DeathVoice"/>
+        <DataRecord Entry="Sound,StukovInfestedMarine@Attack"/>
+        <DataRecord Entry="Sound,StukovInfestedMarine@Help"/>
+        <DataRecord Entry="Sound,StukovInfestedMarine@Pissed"/>
+        <DataRecord Entry="Sound,StukovInfestedMarine@Yes"/>
+        <DataRecord Entry="Sound,StukovInfestedMarine@What"/>
+        <DataRecord Entry="Sound,StukovInfestedMarine@Ready"/>
+        <DataRecord Entry="Validator,StukovInfestedMarine@Is"/>
+        <DataRecord Entry="Validator,StukovInfestedMarine@Target"/>
+        <DataRecord Entry="Validator,StukovInfestedMarine@Not"/>
+        <DataRecord Entry="Validator,StukovInfestedMarine@NotTarget"/>
     </CDataCollectionUnit>
     
 
