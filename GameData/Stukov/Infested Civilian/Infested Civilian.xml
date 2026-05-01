@@ -4,44 +4,28 @@
     <!-- Requires: DataCollectionUnit:UnitGround[base.xml] -->
     <!-- Requires: DataCollectionUnit:Weapon_Instant[base.xml] -->
 
-    <CButton id="InfestedCivilian" parent="UnitButton_GroundAirDetector">
+    <CButton id="StukovInfestedCivilian" parent="UnitButton_GroundAirDetector">
         <Icon value="Assets\Textures\btn-unit-zerg-infestedcolonist.dds"/>
     </CButton>
     
-    <CUnit id="InfestedCivilian">
-        <DeathRevealRadius value="3"/>
-        <Race value="Zerg"/>
-        <Mob value="Campaign"/>
-        <FlagArray index="UseLineOfSight" value="1"/>
-        <FlagArray index="ArmySelect" value="1"/>
-        <PlaneArray index="Ground" value="1"/>
-        <Collide index="Ground" value="1"/>
-        <Collide index="Small" value="1"/>
+    <CUnit id="StukovInfestedCivilian" parent="Generic_Unit_Ground" race="StuV">
         <Attributes index="Light" value="1"/>
         <Attributes index="Biological" value="1"/>
         <LifeStart value="35"/>
         <LifeMax value="35"/>
         <LifeRegenRate value="0.2734"/>
-        <LifeArmorName value="Unit/LifeArmorName/ZergGroundArmor"/>
         <Speed value="1.25"/>
-        <Acceleration value="1000"/>
         <LateralAcceleration value="46.0625"/>
-        <Sight value="6"/>
-        <AttackTargetPriority value="20"/>
-        <DamageDealtXP value="1"/>
-        <DamageTakenXP value="1"/>
+        <Sight value="8"/>
         <KillXP value="30"/>
-        <AbilArray Link="stop"/>
-        <AbilArray Link="attack"/>
-        <AbilArray Link="move"/>
-        <AbilArray Link="InfestedCivilianBurrowDown"/>
-        <CardLayouts>
+        <AbilArray Link="StukovInfestedCivilian_BurrowDown"/>
+        <CardLayouts index="0">
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
             <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
             <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
             <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
             <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
-            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="InfestedCivilianBurrowDown,Execute" Row="2" Column="4"/>
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="StukovInfestedCivilian_BurrowDown,Execute" Row="2" Column="4"/>
         </CardLayouts>
         <Radius value="0.375"/>
         <SeparationRadius value="0.375"/>
@@ -49,14 +33,11 @@
         <SubgroupPriority value="57"/>
         <MinimapRadius value="0.375"/>
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
-        <HotkeyCategory value="Unit/Category/InfestedFaction/Stukov"/>
-        <WeaponArray Link="InfestedClaws"/>
         <GlossaryWeakArray value="Bunker"/>
         <GlossaryWeakArray value="Firebat"/>
         <GlossaryWeakArray value="Hellion"/>
-        <CostCategory value="Army"/>
     </CUnit>
-    <CUnit id="InfestedCivilian@Burrowed" parent="InfestedCivilian">
+    <CUnit id="StukovInfestedCivilian@Burrowed" parent="StukovInfestedCivilian">
         <FlagArray index="Movable" value="0"/>
         <Collide index="Burrow" value="1"/>
         <Collide index="Ground" value="0"/>
@@ -64,23 +45,23 @@
         <Sight value="3"/>
         <TurningRate value="0"/>
         <WeaponArray index="0" removed="1"/>
-        <AbilArray index="3" Link="InfestedCivilianBurrowUp"/>
+        <AbilArray index="3" Link="StukovInfestedCivilianBurrowUp"/>
         <CardLayouts index="0">
-            <LayoutButtons index="5" Face="BurrowUp" Type="AbilCmd" AbilCmd="InfestedCivilianBurrowUp,Execute"/>
+            <LayoutButtons index="5" Face="BurrowUp" Type="AbilCmd" AbilCmd="StukovInfestedCivilianBurrowUp,Execute"/>
         </CardLayouts>
     </CUnit>
     
-    <CActorUnit id="InfestedCivilian" parent="GenericBurrowerStandard" unitName="InfestedCivilian">
-        <On Terms="AbilMorph.*.Start; MorphTo InfestedCivilian@Burrowed" Send="AnimPlay Burrow Burrow PlayForever,NonLooping"/>
-        <On Terms="AbilMorph.*.Start; MorphTo InfestedCivilian" Send="AnimPlay Burrow Unburrow"/>
+    <CActorUnit id="StukovInfestedCivilian" parent="GenericBurrowerStandard" unitName="StukovInfestedCivilian">
+        <On Terms="AbilMorph.*.Start; MorphTo StukovInfestedCivilian@Burrowed" Send="AnimPlay Burrow Burrow PlayForever,NonLooping"/>
+        <On Terms="AbilMorph.*.Start; MorphTo StukovInfestedCivilian" Send="AnimPlay Burrow Unburrow"/>
 
         <Macros value="ZergBurrowStandardAnimMacro"/>
         <Macros value="ZergSmallBurrowEffects"/>
 
-        <DeathArray index="Normal" ModelLink="InfestedCivilian@Death" SoundLink="InfestedCivilian@Death"/>
-        <DeathArray index="Fire" ModelLink="InfestedCivilian@DeathFire" SoundLink="Uni_DeathFXFire"/>
+        <DeathArray index="Normal" ModelLink="StukovInfestedCivilian@Death" SoundLink="StukovInfestedCivilian@Death"/>
+        <DeathArray index="Fire" ModelLink="StukovInfestedCivilian@DeathFire" SoundLink="Uni_DeathFXFire"/>
         <WalkAnimMoveSpeed value="2.25"/>
-        <PortraitModel value="InfestedCivilian@Portrait"/>
+        <PortraitModel value="StukovInfestedCivilian@Portrait"/>
         <BarWidth value="36"/>
         <BarOffset value="45"/>
         <UnitIcon value="Assets\Textures\btn-unit-zerg-infestedcolonist.dds"/>
@@ -90,14 +71,14 @@
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Zerg-Infestedcolonist.dds"/>
         </Wireframe>
-        <SoundArray index="Ready" value="InfestedCivilian@Ready"/>
-        <SoundArray index="What" value="InfestedCivilian@What"/>
-        <SoundArray index="Yes" value="InfestedCivilian@Yes"/>
-        <SoundArray index="Pissed" value="InfestedCivilian@Pissed"/>
+        <SoundArray index="Ready" value="StukovInfestedCivilian@Ready"/>
+        <SoundArray index="What" value="StukovInfestedCivilian@What"/>
+        <SoundArray index="Yes" value="StukovInfestedCivilian@Yes"/>
+        <SoundArray index="Pissed" value="StukovInfestedCivilian@Pissed"/>
     </CActorUnit>
-    <CActorSplat id="InfestedCivilian@BurrowedSplat" parent="BurrowedSplat" unitName="InfestedCivilian"/>
+    <CActorSplat id="StukovInfestedCivilian@BurrowedSplat" parent="BurrowedSplat" unitName="StukovInfestedCivilian"/>
 
-    <CModel id="InfestedCivilian" parent="Unit">
+    <CModel id="StukovInfestedCivilian" parent="Unit">
         <Model value="Assets\Units\Zerg\InfestedColonist\InfestedColonist.m3"/>
         <RequiredAnims value="Assets\Units\Zerg\InfestedColonist_RequiredAnims\InfestedColonist_RequiredAnims.m3a"/>
         <VariationCount value="3"/>
@@ -113,55 +94,55 @@
         <UnitGlossaryCamera value="Star2CameraMid04"/>
         <PlanetPanelCamera value="Star2CameraMid04"/>
     </CModel>
-    <CModel id="InfestedCivilian@Death" parent="UnitDeath">
+    <CModel id="StukovInfestedCivilian@Death" parent="UnitDeath">
         <Model value="Assets\Units\Zerg\InfestedColonistDeath\InfestedColonistDeath.m3"/>
-        <EditorCategories value="Race:Zerg"/>
+        <EditorCategories value="Race:Stukov"/>
         <LowQualityModel value="ZergSmallUnitDeathLow"/>
         <VariationCount value="3"/>
         <TextureDeclares Prefix="infestedcolonist_">
             <Adaptions Slot="main"/>
         </TextureDeclares>
     </CModel>
-    <CModel id="InfestedCivilian@DeathFire" parent="UnitDeath">
+    <CModel id="StukovInfestedCivilian@DeathFire" parent="UnitDeath">
         <Model value="Assets\Units\Zerg\InfestedColonistDeathFire\InfestedColonistDeathFire.m3"/>
-        <EditorCategories value="Race:Zerg"/>
+        <EditorCategories value="Race:Stukov"/>
         <LowQualityModel value="ZergSmallUnitDeathLow"/>
     </CModel>
-    <CModel id="InfestedCivilian@Portrait" parent="FXAPortrait">
+    <CModel id="StukovInfestedCivilian@Portrait" parent="FXAPortrait">
         <Model value="Assets\Portraits\Zerg\InfestedColonistPortrait\InfestedColonistPortrait.m3"/>
         <FacialController value="LocalizedData\Facial\InfestedColonistPortrait.fxa"/>
     </CModel>
-    <CModel id="InfestedCivilian@BurrowedSplat" parent="Splat">
+    <CModel id="StukovInfestedCivilian@BurrowedSplat" parent="Splat">
         <Model value="Assets\Splats\Splat_ZerglingBurrowed\Splat_ZerglingBurrowed.m3"/>
         <VariationCount value="3"/>
     </CModel>
     
-    <CSound id="InfestedCivilian@Death" parent="Zerg_ExplosionSmall"/>
-    <CSound id="InfestedCivilian@Pissed" parent="Pissed">
+    <CSound id="StukovInfestedCivilian@Death" parent="Zerg_ExplosionSmall"/>
+    <CSound id="StukovInfestedCivilian@Pissed" parent="Pissed">
         <AssetArray File="LocalizedData\Sounds\ZergUnitVO\InfestedTerran\InfestedTerran_Pissed00.ogg" FacialAnim="InfestedTerran_Pissed00"/>
         <AssetArray File="LocalizedData\Sounds\ZergUnitVO\InfestedTerran\InfestedTerran_Pissed01.ogg" FacialAnim="InfestedTerran_Pissed01"/>
-        <EditorCategories value="Race:Zerg"/>
+        <EditorCategories value="Race:Stukov"/>
     </CSound>
-    <CSound id="InfestedCivilian@Yes" parent="Voice">
+    <CSound id="StukovInfestedCivilian@Yes" parent="Voice">
         <AssetArray File="LocalizedData\Sounds\ZergUnitVO\InfestedTerran\InfestedTerran_Attack00.ogg" FacialAnim="InfestedTerran_Attack00"/>
         <AssetArray File="LocalizedData\Sounds\ZergUnitVO\InfestedTerran\InfestedTerran_Attack01.ogg" FacialAnim="InfestedTerran_Attack01"/>
-        <EditorCategories value="Race:Zerg"/>
+        <EditorCategories value="Race:Stukov"/>
         <Flags index="VariationFallback" value="0"/>
     </CSound>
-    <CSound id="InfestedCivilian@What" parent="Voice">
+    <CSound id="StukovInfestedCivilian@What" parent="Voice">
         <AssetArray File="LocalizedData\Sounds\ZergUnitVO\InfestedTerran\InfestedTerran_What00.ogg" FacialAnim="InfestedTerran_What00"/>
         <AssetArray File="LocalizedData\Sounds\ZergUnitVO\InfestedTerran\InfestedTerran_What01.ogg" FacialAnim="InfestedTerran_What01"/>
-        <EditorCategories value="Race:Zerg"/>
+        <EditorCategories value="Race:Stukov"/>
     </CSound>
-    <CSound id="InfestedCivilian@Ready" parent="Ready">
+    <CSound id="StukovInfestedCivilian@Ready" parent="Ready">
         <AssetArray File="LocalizedData\Sounds\ZergUnitVO\InfestedTerran\InfestedTerran_Ready00.ogg" FacialAnim="InfestedTerran_Ready00"/>
         <Category value="Voice"/>
-        <EditorCategories value="Race:Zerg"/>
+        <EditorCategories value="Race:Stukov"/>
         <Pitch value="-2.000000,1.000000"/>
         <Volume value="-2.000000,1.000000"/>
     </CSound>
 
-    <CLight id="InfestedCivilian@Portrait" parent="default">
+    <CLight id="StukovInfestedCivilian@Portrait" parent="default">
         <ToDInfoArray index="0" AmbientColor="0.200000,0.184314,0.282353" OperatorHDR="3">
             <Param index="HDRExposure" value="1.475000"/>
             <DirectionalLight index="Key">
@@ -176,37 +157,37 @@
         <EditorCategories value="LightGroup:PortraitsUnitsZerg"/>
     </CLight>
 
-    <CValidatorUnitType id="InfestedCivilian@Is" parent="IsUnit_Default" unit="InfestedCivilian"/>
-    <CValidatorUnitType id="InfestedCivilian@Target" parent="TargetIsUnit_Default" unit="InfestedCivilian"/>
-    <CValidatorUnitType id="InfestedCivilian@Not" parent="NotUnit_Default" unit="InfestedCivilian"/>
-    <CValidatorUnitType id="InfestedCivilian@NotTarget" parent="TargetNotUnit_Default" unit="InfestedCivilian"/>
+    <CValidatorUnitType id="StukovInfestedCivilian@Is" parent="IsUnit_Default" unit="StukovInfestedCivilian"/>
+    <CValidatorUnitType id="StukovInfestedCivilian@Target" parent="TargetIsUnit_Default" unit="StukovInfestedCivilian"/>
+    <CValidatorUnitType id="StukovInfestedCivilian@Not" parent="NotUnit_Default" unit="StukovInfestedCivilian"/>
+    <CValidatorUnitType id="StukovInfestedCivilian@NotTarget" parent="TargetNotUnit_Default" unit="StukovInfestedCivilian"/>
 
-    <CDataCollectionUnit id="InfestedCivilian" parent="UnitGround">
+    <CDataCollectionUnit id="StukovInfestedCivilian" parent="UnitGround">
         <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:InfestedTerran,ObjectType:Unit"/>
-        <DataRecord Entry="Button,InfestedCivilian"/>
-        <DataRecord Entry="Unit,InfestedCivilian"/>
-        <DataRecord Entry="Unit,InfestedCivilian@Burrowed"/>
-        <DataRecord Entry="Actor,InfestedCivilian"/>
-        <DataRecord Entry="Actor,InfestedCivilian@BurrowedSplat"/>
-        <DataRecord Entry="Model,InfestedCivilian"/>
-        <DataRecord Entry="Model,InfestedCivilian@Death"/>
-        <DataRecord Entry="Model,InfestedCivilian@DeathFire"/>
-        <DataRecord Entry="Model,InfestedCivilian@Portrait"/>
-        <DataRecord Entry="Model,InfestedCivilian@BurrowedSplat"/>
-        <DataRecord Entry="Sound,InfestedCivilian@Death"/>
-        <DataRecord Entry="Sound,InfestedCivilian@Pissed"/>
-        <DataRecord Entry="Sound,InfestedCivilian@Yes"/>
-        <DataRecord Entry="Sound,InfestedCivilian@What"/>
-        <DataRecord Entry="Sound,InfestedCivilian@Ready"/>
-        <DataRecord Entry="Light,InfestedCivilian@Portrait"/>
+        <DataRecord Entry="Button,StukovInfestedCivilian"/>
+        <DataRecord Entry="Unit,StukovInfestedCivilian"/>
+        <DataRecord Entry="Unit,StukovInfestedCivilian@Burrowed"/>
+        <DataRecord Entry="Actor,StukovInfestedCivilian"/>
+        <DataRecord Entry="Actor,StukovInfestedCivilian@BurrowedSplat"/>
+        <DataRecord Entry="Model,StukovInfestedCivilian"/>
+        <DataRecord Entry="Model,StukovInfestedCivilian@Death"/>
+        <DataRecord Entry="Model,StukovInfestedCivilian@DeathFire"/>
+        <DataRecord Entry="Model,StukovInfestedCivilian@Portrait"/>
+        <DataRecord Entry="Model,StukovInfestedCivilian@BurrowedSplat"/>
+        <DataRecord Entry="Sound,StukovInfestedCivilian@Death"/>
+        <DataRecord Entry="Sound,StukovInfestedCivilian@Pissed"/>
+        <DataRecord Entry="Sound,StukovInfestedCivilian@Yes"/>
+        <DataRecord Entry="Sound,StukovInfestedCivilian@What"/>
+        <DataRecord Entry="Sound,StukovInfestedCivilian@Ready"/>
+        <DataRecord Entry="Light,StukovInfestedCivilian@Portrait"/>
     </CDataCollectionUnit>
 
     <!-- Weapons -->
 
-    <CWeaponLegacy id="InfestedClaws">
-        <EditorCategories value="Race:Zerg"/>
-        <Effect value="InfestedClaws@Damage"/>
-        <DisplayEffect value="InfestedClaws@Damage"/>
+    <CWeaponLegacy id="StukovInfestedCivilian_Weapon">
+        <EditorCategories value="Race:Stukov"/>
+        <Effect value="StukovInfestedCivilian_Weapon@Damage"/>
+        <DisplayEffect value="StukovInfestedCivilian_Weapon@Damage"/>
         <Icon value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level0.dds"/>
         <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <Range value="0.1"/>
@@ -215,28 +196,28 @@
         <Options index="Melee" value="1"/>
     </CWeaponLegacy>
 
-    <CEffectDamage id="InfestedClaws@Damage" parent="DU_WEAP">
+    <CEffectDamage id="StukovInfestedCivilian_Weapon@Damage" parent="DU_WEAP">
         <Amount value="8"/>
     </CEffectDamage>
 
-    <CActorAction id="InfestedClaws@Attack" parent="GenericAttack" effectAttack="InfestedClaws@Damage"/>
+    <CActorAction id="StukovInfestedCivilian_Weapon@Attack" parent="GenericAttack" effectAttack="StukovInfestedCivilian_Weapon@Damage"/>
 
-    <CSound id="InfestedClaws@AttackImpact" parent="Zerg_AttackImpactSmallPierce"/>
-    <CSound id="InfestedClaws@AttackLaunch" parent="Zerg_AttackLaunchSmallSwing"/>
+    <CSound id="StukovInfestedCivilian_Weapon@AttackImpact" parent="Zerg_AttackImpactSmallPierce"/>
+    <CSound id="StukovInfestedCivilian_Weapon@AttackLaunch" parent="Zerg_AttackLaunchSmallSwing"/>
 
-    <CDataCollectionUnit id="InfestedClaws" parent="Weapon_Instant">
+    <CDataCollectionUnit id="StukovInfestedCivilian_Weapon" parent="Weapon_Instant">
         <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:InfestedTerran,ObjectType:Other"/>
-        <DataRecord Entry="Weapon,InfestedClaws"/>
-        <DataRecord Entry="Effect,InfestedClaws@Damage"/>
-        <DataRecord Entry="Actor,InfestedClaws@Attack"/>
-        <DataRecord Entry="Sound,InfestedClaws@AttackLaunch"/>
-        <DataRecord Entry="Sound,InfestedClaws@AttackImpact"/>
+        <DataRecord Entry="Weapon,StukovInfestedCivilian_Weapon"/>
+        <DataRecord Entry="Effect,StukovInfestedCivilian_Weapon@Damage"/>
+        <DataRecord Entry="Actor,StukovInfestedCivilian_Weapon@Attack"/>
+        <DataRecord Entry="Sound,StukovInfestedCivilian_Weapon@AttackLaunch"/>
+        <DataRecord Entry="Sound,StukovInfestedCivilian_Weapon@AttackImpact"/>
     </CDataCollectionUnit>
 
 
     <!-- Abilities -->
-    <CAbilMorph id="InfestedCivilianBurrowDown">
-        <InfoArray Unit="InfestedCivilian@Burrowed">
+    <CAbilMorph id="StukovInfestedCivilian_BurrowDown">
+        <InfoArray Unit="StukovInfestedCivilian@Burrowed">
             <SectionArray index="Actor">
                 <DurationArray index="Duration" value="1.333"/>
             </SectionArray>
@@ -255,8 +236,8 @@
         <Flags index="IgnoreFacing" value="1"/>
         <ActorKey value="BurrowDown"/>
     </CAbilMorph>
-    <CAbilMorph id="InfestedCivilianBurrowUp">
-        <InfoArray Unit="InfestedCivilian">
+    <CAbilMorph id="StukovInfestedCivilianBurrowUp">
+        <InfoArray Unit="StukovInfestedCivilian">
             <SectionArray index="Actor">
                 <DurationArray index="Duration" value="2"/>
             </SectionArray>

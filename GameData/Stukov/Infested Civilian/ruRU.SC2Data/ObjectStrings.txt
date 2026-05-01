@@ -1,22 +1,22 @@
-Actor/Name/InfestedCivilian=Infested Civilian
-Actor/Name/InfestedCivilian@BurrowedSplat=
-Model/Name/InfestedCivilian=Infested Civilian
-Model/Name/InfestedCivilian@Death=Death
-Model/Name/InfestedCivilian@DeathFire=Death Fire
-Model/Name/InfestedCivilian@Portrait=Portrait
-Model/Name/InfestedCivilian@BurrowedSplat=Burrowed Splat
-Sound/Name/InfestedCivilian@Death=Death
-Sound/Name/InfestedCivilian@Pissed=Pissed
-Sound/Name/InfestedCivilian@Yes=Yes
-Sound/Name/InfestedCivilian@What=What
-Sound/Name/InfestedCivilian@Ready=Ready
-Light/Name/InfestedCivilian@Portrait=Portrait
-Validator/Name/InfestedCivilian@Is=Caster Is Unit
-Validator/Name/InfestedCivilian@Target=Target Is Unit
-Validator/Name/InfestedCivilian@Not=Caster Not Unit
-Validator/Name/InfestedCivilian@NotTarget=Target Not Unit
+Actor/Name/StukovInfestedCivilian=Infested Civilian
+Actor/Name/StukovInfestedCivilian@BurrowedSplat=
+Model/Name/StukovInfestedCivilian=Infested Civilian
+Model/Name/StukovInfestedCivilian@Death=Death
+Model/Name/StukovInfestedCivilian@DeathFire=Death Fire
+Model/Name/StukovInfestedCivilian@Portrait=Portrait
+Model/Name/StukovInfestedCivilian@BurrowedSplat=Burrowed Splat
+Sound/Name/StukovInfestedCivilian@Death=Death
+Sound/Name/StukovInfestedCivilian@Pissed=Pissed
+Sound/Name/StukovInfestedCivilian@Yes=Yes
+Sound/Name/StukovInfestedCivilian@What=What
+Sound/Name/StukovInfestedCivilian@Ready=Ready
+Light/Name/StukovInfestedCivilian@Portrait=Portrait
+Validator/Name/StukovInfestedCivilian@Is=Caster Is Unit
+Validator/Name/StukovInfestedCivilian@Target=Target Is Unit
+Validator/Name/StukovInfestedCivilian@Not=Caster Not Unit
+Validator/Name/StukovInfestedCivilian@NotTarget=Target Not Unit
 
-Effect/Name/InfestedClaws@Damage
-Actor/Name/InfestedClaws@Attack
-Sound/Name/InfestedClaws@AttackImpact
-Sound/Name/InfestedClaws@AttackLaunch
+Effect/Name/StukovInfestedCivilian_Weapon@Damage
+Actor/Name/StukovInfestedCivilian_Weapon@Attack
+Sound/Name/StukovInfestedCivilian_Weapon@AttackImpact
+Sound/Name/StukovInfestedCivilian_Weapon@AttackLaunch
