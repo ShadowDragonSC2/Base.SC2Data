@@ -202,7 +202,6 @@
         <TargetFilters value="Visible;Player,Ally,Neutral,Missile,Stasis,Dead,Invulnerable"/>
         <Flags index="AutoCast" value="1"/>
         <Range value="8"/>
-        <SmartPriority value="1"/>
         <AutoCastRange value="8"/>
         <CastOutroTime value="0.5"/>
         <Flags index="AutoCastOn" value="1"/>
