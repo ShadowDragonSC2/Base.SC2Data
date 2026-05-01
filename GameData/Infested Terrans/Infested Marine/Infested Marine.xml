@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    <CButton id="InfestedMarine">
+        <Icon value="Assets\Textures\btn-unit-zerg-infestedmarine.dds"/>
+    </CButton>
+    
+    <CUnit id="InfestedMarine"></CUnit>
+    <CUnit id="InfestedMarine@Burrowed">
+        <Collide index="Ground" value="0"/>
+        <Collide index="Small" value="0"/>
+        <Collide index="ForceField" value="0"/>
+    </CUnit>
+    
+    <CActorUnit id="InfestedMarine" parent="GenericBurrowerStandard" unitName="InfestedMarine">
+        <PortraitModel value="InfestedMarine@Portrait"/>
+        <DeathArray index="Normal" ModelLink="InfestedMarine@Death" SoundLink="InfestedMarine@Death" VoiceLink="InfestedMarine@DeathVoice"/>
+        <SoundArray index="Attack" value="InfestedMarine@Attack"/>
+        <SoundArray index="Help" value="InfestedMarine@Help"/>
+        <SoundArray index="Pissed" value="InfestedMarine@Pissed"/>
+        <SoundArray index="Yes" value="InfestedMarine@Yes"/>
+        <SoundArray index="What" value="InfestedMarine@What"/>
+        <SoundArray index="Ready" value="InfestedMarine@Ready"/>
+
+        <Macros value="ZergBurrowStandardAnimMacro"/>
+        <Macros value="ZergSmallBurrowEffects"/>
+        <Macros value="UnloadDropAnim"/>
+
+        <BarWidth value="40"/>
+        <BarOffset value="40"/>
+
+        <UnitIcon value="Assets\Textures\btn-unit-zerg-infestedmarine.dds"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Zerg-InfestedMarine.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Zerg-InfestedMarine.dds"/>
+        </Wireframe>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level0.dds"/>
+        <Aliases value="_UnitSmall"/>
+    </CActorUnit>
+    
+    <CModel id="InfestedMarine" parent="Unit">
+        <Model value=""/>
+    </CModel>
+    <CModel id="InfestedMarine@Death" parent="UnitDeath">
+        <Model value=""/>
+    </CModel>
+    <CModel id="InfestedMarine@Portrait" parent="Portrait">
+        <Model value=""/>
+    </CModel>
+    
+    <CSound id="InfestedMarine@DeathVoice" parent="DeathVoice">
+        <AssetArray File=""/>
+    </CSound>
+    <CSound id="InfestedMarine@Attack" parent="ZergAck">
+        <AssetArray File=""/>
+    </CSound>
+    <CSound id="InfestedMarine@Help" parent="Alert">
+        <AssetArray File=""/>
+    </CSound>
+    <CSound id="InfestedMarine@Pissed" parent="Pissed">
+        <AssetArray File=""/>
+    </CSound>
+    <CSound id="InfestedMarine@Yes" parent="ZergAck">
+        <AssetArray File=""/>
+    </CSound>
+    <CSound id="InfestedMarine@What" parent="ZergAck">
+        <AssetArray File=""/>
+    </CSound>
+    <CSound id="InfestedMarine@Ready" parent="Ready">
+        <AssetArray File=""/>
+    </CSound>
+
+    <CValidatorUnitType id="InfestedMarine@Is" parent="IsUnit_Default" unit="InfestedMarine"/>
+    <CValidatorUnitType id="InfestedMarine@Target" parent="TargetIsUnit_Default" unit="InfestedMarine"/>
+    <CValidatorUnitType id="InfestedMarine@Not" parent="NotUnit_Default" unit="InfestedMarine"/>
+    <CValidatorUnitType id="InfestedMarine@NotTarget" parent="TargetNotUnit_Default" unit="InfestedMarine"/>
+
+    <CDataCollectionUnit id="InfestedMarine" parent="UnitGround">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:InfestedTerran,ObjectType:Unit"/>
+        <DataRecord Entry="Button,InfestedMarine"/>
+        <DataRecord Entry="Unit,InfestedMarine"/>
+        <DataRecord Entry="Unit,InfestedMarine@Burrowed"/>
+        <DataRecord Entry="Actor,InfestedMarine"/>
+        <DataRecord Entry="Model,InfestedMarine"/>
+        <DataRecord Entry="Model,InfestedMarine@Death"/>
+        <DataRecord Entry="Model,InfestedMarine@Portrait"/>
+        <DataRecord Entry="Sound,InfestedMarine@DeathVoice"/>
+        <DataRecord Entry="Sound,InfestedMarine@Attack"/>
+        <DataRecord Entry="Sound,InfestedMarine@Help"/>
+        <DataRecord Entry="Sound,InfestedMarine@Pissed"/>
+        <DataRecord Entry="Sound,InfestedMarine@Yes"/>
+        <DataRecord Entry="Sound,InfestedMarine@What"/>
+        <DataRecord Entry="Sound,InfestedMarine@Ready"/>
+        <DataRecord Entry="Validator,InfestedMarine@Is"/>
+        <DataRecord Entry="Validator,InfestedMarine@Target"/>
+        <DataRecord Entry="Validator,InfestedMarine@Not"/>
+        <DataRecord Entry="Validator,InfestedMarine@NotTarget"/>
+    </CDataCollectionUnit>
+    
+
+</Catalog>
