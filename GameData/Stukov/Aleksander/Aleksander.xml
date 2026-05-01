@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Catalog>
+    <!-- Requires: Button:UnitButton_GroundAir[base.xml] -->
+    <!-- Requires: Unit:Generic_Unit_Air[base.xml] -->
+    <!-- Requires: Actor:AdvancedUnitStandard[base.xml] -->
+    <!-- Requires: DataCollection:UnitAir[base.xml] -->
+    <!-- Requires: Unit:StukovInfestedCivilian[Stukov/InfestedCivilian/InfestedCivilian.xml] -->
+    <!-- Requires: Unit:InfestedMarine[Stukov/InfestedMarine/InfestedMarine.xml] -->
+
     <CButton id="Aleksander" parent="UnitButton_GroundAir">
         <Icon value="Assets\Textures\btn-building-stukov-aleksander.dds"/>
     </CButton>
@@ -20,17 +27,17 @@
         <StationaryTurningRate value="270"/>
         <TurningRate value="270"/>
         <Sight value="14"/>
-        <Height value="4"/>
+        <Height value="6"/>
         <CostResource index="Minerals" value="400"/>
         <CostResource index="Vespene" value="400"/>
-        <AbilArray Link="StukovAleksanderCrashed"/>
-        <AbilArray Link="StukovAleksanderCrashedInstant"/>
-        <BehaviorArray Link="MercAirDrop"/>
-        <BehaviorArray Link="StukovAleksanderInfestedSwarm"/>
+        <!-- <AbilArray Link="StukovAleksanderCrashed"/> -->
+        <!-- <AbilArray Link="StukovAleksanderCrashedInstant"/> -->
+        <!-- <BehaviorArray Link="MercAirDrop"/> -->
+        <BehaviorArray Link="Aleksander_InfestedSwarm@Aura"/>
         <BehaviorArray Link="StukovAleksanderTentacleStunSearch"/>
         <BehaviorArray Link="StukovAleksanderCrashedResponse"/>
-        <WeaponArray Link="StukovAleksanderInfestedCannon"/>
-        <WeaponArray Link="StukovAleksanderTentacleDisplayWeapon"/>
+        <!-- <WeaponArray Link="StukovAleksanderInfestedCannon"/> -->
+        <!-- <WeaponArray Link="StukovAleksanderTentacleDisplayWeapon"/> -->
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
             <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
@@ -135,6 +142,7 @@
         <SelectionRadius value="1.666200"/>
         <ShadowRadius value="1.666200"/>
         <SquibTypeDefault value="Flesh"/>
+        <Tipability value="0.6"/>
         <Events>
             <Anim value="Walk,A,00"/>
             <Name value="StukovAleksander_MoveLoop"/>
@@ -481,20 +489,70 @@
 
     </CDataCollectionUnit>
 
+    <!-- ========== Behaviors ========== -->
+    <!-- Infested Swarm -->
+    <CButton id="Aleksander_InfestedSwarm">
+        <Icon value="Assets\Textures\btn-ability-zerg-stukov-debuff-aleksander.dds"/>
+    </CButton>
+    <CBehaviorBuff id="Aleksander_InfestedSwarm@Aura">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Period value="0.5"/>
+        <PeriodicEffect value="Aleksander_InfestedSwarm@Search"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Aleksander_InfestedSwarm">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-ability-zerg-stukov-debuff-aleksander.dds"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="0.75"/>
+        <Modification>
+            <DamageTakenFraction index="Spell" value="-0.2"/>
+            <DamageTakenFraction index="Melee" value="-0.2"/>
+            <DamageTakenFraction index="Ranged" value="-0.2"/>
+            <DamageTakenFraction index="Splash" value="-0.2"/>
+            <DamageTakenFraction index="NoProc" value="-0.2"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CEffectEnumArea id="Aleksander_InfestedSwarm@Search">
+        <EditorCategories value="Race:Zerg"/>
+        <SearchFilters value="Visible;Neutral,Enemy,Structure,Missile,Stasis,Dead,Invulnerable"/>
+        <AreaArray Radius="8" Effect="Aleksander_InfestedSwarm@AB"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="Aleksander_InfestedSwarm@AB">
+        <Behavior value="Aleksander_InfestedSwarm"/>
+    </CEffectApplyBehavior>
+
+    <CActorModel id="Aleksander_InfestedSwarm@Model" parent="ModelAnimationStyleContinuous">
+        <On Terms="Behavior.Aleksander_InfestedSwarm@Aura.On" Send="Create"/>
+        <On Terms="Behavior.Aleksander_InfestedSwarm@Aura.Off" Send="AnimBracketStop BSD"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <HostSiteOps Ops="SOpAttachTarget" HoldRotation="1"/>
+    </CActorModel>
+    <CModel id="Aleksander_InfestedSwarm@Model" parent="PersistentSpellFX">
+        <EditorCategories value="Race:Zerg"/>
+        <Model value="Assets\Effects\Zerg\Stukov_Battlecruiser_DamageReduction_AOE\Stukov_Battlecruiser_DamageReduction_AOE.m3"/>
+    </CModel>
+
+    <CDataCollectionUnit id="Aleksander_InfestedSwarm">
+        <DataRecord Entry=""/>
+    </CDataCollectionUnit>
+
     <!-- ========== Weapons ========== -->
-    <!--Infested Cannon -->
+    <!-- Infested Cannon -->
     <CWeaponLegacy id="Aleksander_Weapon">
         <EditorCategories value="Race:Zerg"/>
         <Options index="OnlyFireWhileInAttackOrder" value="0"/>
         <Options index="OnlyFireAtAttackOrderTarget" value="0"/>
         <Options index="RequireEnabledAttackAbil" value="0"/>
         <Icon value="Assets\Textures\btn-ability-zerg-banelingspooge.dds"/>
-        <DisplayEffect value="StukovAleksanderInfestedDropPodLaunchMissileDamage"/>
+        <DisplayEffect value="Aleksander_Weapon@Damage"/>
         <TargetFilters value="Ground,Visible;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <MinScanRange value="8.5"/>
         <Range value="8"/>
         <Period value="1.5"/>
-        <Effect value="StukovAleksanderInfestedDropPod"/>
+        <Effect value="Aleksander_Weapon@CP"/>
         <Arc value="360"/>
         <AllowedMovement value="Moving"/>
     </CWeaponLegacy>
@@ -517,8 +575,8 @@
     </CBehaviorBuff>
 
     <CEffectCreatePersistent id="Aleksander_Weapon@CP">
-        <Flags index="Channeled" value="1"/>
         <WhichLocation Value="TargetUnit"/>
+        <Flags index="Channeled" value="1"/>
         <PeriodCount value="3"/>
         <PeriodicPeriodArray value="0"/>
         <PeriodicPeriodArray value="0.5"/>
@@ -529,7 +587,7 @@
     </CEffectCreatePersistent>
     <CEffectCreateUnit id="Aleksander_Weapon@CU_00">
         <EditorCategories value="Race:Zerg"/>
-        <SpawnUnit value="Stukov_InfestedMarine"/>
+        <SpawnUnit value="StukovInfestedMarine"/>
         <CreateFlags index="Birth" value="0"/>
         <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
         <CreateFlags index="PlacementIgnoreCliffTest" value="1"/>
@@ -541,7 +599,7 @@
     </CEffectCreateUnit>
     <CEffectCreateUnit id="Aleksander_Weapon@CU_01">
         <EditorCategories value="Race:Zerg"/>
-        <SpawnUnit value="Stukov_InfestedCivilian"/>
+        <SpawnUnit value="StukovInfestedCivilian"/>
         <CreateFlags index="Birth" value="0"/>
         <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
         <CreateFlags index="PlacementIgnoreCliffTest" value="1"/>
@@ -558,14 +616,12 @@
     </CEffectSet>
     <CEffectSet id="Aleksander_Weapon@Set_Land">
         <EffectArray value="RemovePrecursor"/>
-        <EffectArray value="Aleksander_Weapon@LM"/>
         <EffectArray value="Aleksander_Weapon@TimedLife"/>
         <EffectArray value="Aleksander_Weapon@Issue"/>
     </CEffectSet>
     <CEffectLaunchMissile id="Aleksander_Weapon@LM">
         <EditorCategories value="Race:Zerg"/>
-        <AmmoUnit value="StukovAleksanderInfestedDropPodMissile"/>
-        <Movers Link="StukovAleksanderInfestedDropPodMissile"/>
+        <AmmoUnit value="Aleksander_Weapon@AttackMissile"/>
         <LaunchLocation Value="CasterUnit"/>
         <ImpactLocation Value="TargetUnitOrPoint"/>
         <FinishEffect value="Aleksander_Weapon@Set_Land"/>
@@ -638,6 +694,8 @@
         <MotionPhases Driver="Guidance" MaxSpeed="40" YawPitchRoll="MAX"/>
     </CMoverMissile>
 
-
+    <CDataCollectionUnit id="Aleksander_Weapon" parent="Weapon_Missile">
+        <DataRecord Entry=""/>
+    </CDataCollectionUnit>
     
 </Catalog>
