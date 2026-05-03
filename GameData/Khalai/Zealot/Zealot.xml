@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    <CButton id="KhalaiZealot"></CButton>
+    
+    <CUnit id="KhalaiZealot" parent="Generic_Protoss_Unit_Ground" race="Khai">
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
+        <LifeStart value="100"/>
+        <LifeMax value="100"/>
+        <LifeArmor value="1"/>
+        <ShieldsStart value="50"/>
+        <ShieldsMax value="50"/>
+        <Speed value="2.75"/>
+        <LateralAcceleration value="46.0625"/>
+        <Food value="-2"/>
+        <KillXP value="20"/>
+        <InnerRadius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <CargoSize value="2"/>
+        <ScoreMake value="100"/>
+        <ScoreKill value="100"/>
+        <SubgroupPriority value="5"/>
+        <MinimapRadius value="0.375"/>
+        <Collide index="Locust" value="1"/>
+        <Sight value="9"/>
+        <AbilArray Link="Charge"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Charge" Type="AbilCmd" AbilCmd="Charge,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="KhalaiZealot_Whirlwind" Type="AbilCmd" AbilCmd="KhalaiZealot_Whirlwind,Execute" Row="2" Column="1"/>
+        </CardLayouts>
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <GlossaryPriority value="20"/>
+        <CostResource index="Minerals" value="100"/>
+        <GlossaryStrongArray value="Marauder"/>
+        <GlossaryStrongArray value="Zergling"/>
+        <GlossaryStrongArray value="Immortal"/>
+        <GlossaryWeakArray value="Hellion"/>
+        <GlossaryWeakArray value="Roach"/>
+        <GlossaryWeakArray value="Colossus"/>
+        <Fidget>
+            <ChanceArray index="Anim" value="20"/>
+            <ChanceArray index="Idle" value="70"/>
+            <ChanceArray index="Turn" value="10"/>
+        </Fidget>
+        <TauntDuration index="Cheer" value="5"/>
+        <TauntDuration index="Dance" value="5"/>
+    </CUnit>
+    
+    <CActorUnit id="KhalaiZealot" parent="AdvancedUnitStandard" unitName="KhalaiZealot"/>
+    
+    <CModel id="KhalaiZealot" parent="Unit">
+        <Model value="Assets\Units\Protoss\Zealot_Aiur\Zealot_Aiur.m3"/>
+        <RequiredAnims value="Assets\Units\Protoss\Zealot_SwarmAnims\Zealot_SwarmAnims.m3a"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.900000,0.900000,0.900000"/>
+        <ScaleMin value="0.900000,0.900000,0.900000"/>
+        <SelectionRadius value="0.416500"/>
+        <SquibTypeDefault value="Metal"/>
+        <Radius value="0.375000"/>
+        <TechPurchaseCamera value="Star2CameraMid05"/>
+        <UnitGlossaryCamera value="Star2CameraMid05"/>
+        <PlanetPanelCamera value="Star2CameraMid05"/>
+        <ShadowRadius value="0.416500"/>
+        <TextureDeclares Prefix="zealot_">
+            <Adaptions TriggerOnSubstring="_Diffuse" Slot="main"/>
+        </TextureDeclares>
+        <Events>
+            <Anim value="Attack,00"/>
+            <Name value="ZealotAiur_AttackSweetener"/>
+            <Type value="Sound"/>
+            <Time value="0.018000"/>
+            <Payload value="ZealotAiur_AttackSweetener"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,03"/>
+            <Name value="ZealotAiur_AttackSweetener"/>
+            <Type value="Sound"/>
+            <Time value="0.012000"/>
+            <Payload value="ZealotAiur_AttackSweetener"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,04"/>
+            <Name value="ZealotAiur_AttackSweetener"/>
+            <Type value="Sound"/>
+            <Time value="0.012000"/>
+            <Payload value="ZealotAiur_AttackSweetener"/>
+        </Events>
+    </CModel>
+    <CModel id="KhalaiZealot@Death" parent="UnitDeath">
+        <Model value="Assets\Units\Protoss\ZealotDeath\ZealotDeath.m3"/>
+        <Occlusion value="Show"/>
+        <LowQualityModel value="ProtossSpiritDeathLow"/>
+        <SelectionRadius value="0.555400"/>
+        <ShadowRadius value="0.555400"/>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="ZealotAiur_DeathSweetener"/>
+            <Type value="Sound"/>
+            <Time value="0.024000"/>
+            <Payload value="ZealotAiur_DeathSweetener"/>
+        </Events>
+        <Events>
+            <Anim value="Death,03"/>
+            <Name value="ZealotAiur_DeathSweetener"/>
+            <Type value="Sound"/>
+            <Time value="0.024000"/>
+            <Payload value="ZealotAiur_DeathSweetener"/>
+        </Events>
+        <Events>
+            <Anim value="Death,04"/>
+            <Name value="ZealotAiur_DeathSweetener"/>
+            <Type value="Sound"/>
+            <Time value="0.024000"/>
+            <Payload value="ZealotAiur_DeathSweetener"/>
+        </Events>
+    </CModel>
+    <CModel id="KhalaiZealot@Placement" parent="Placement" Race="Protoss">
+        <Model value="Assets\Units\Protoss\Zealot_Aiur_Placement\Zealot_Aiur_Placement.m3"/>
+        <Radius value="-1.000000"/>
+        <Lighting value="Zealot"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.900000,0.900000,0.900000"/>
+        <ScaleMin value="0.900000,0.900000,0.900000"/>
+        <SelectionRadius value="0.416500"/>
+        <ShadowRadius value="0.416500"/>
+    </CModel>
+    <CModel id="KhalaiZealot@WarpIn" parent="OneShotSpellFX">
+        <Model value="Assets\Units\Protoss\Zealot_Aiur_WarpIn\Zealot_Aiur_WarpIn.m3"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.900000,0.900000,0.900000"/>
+        <ScaleMin value="0.900000,0.900000,0.900000"/>
+        <EditorCategories value="Race:Protoss"/>
+        <LowQualityModel value="ProtossUnitBirth"/>
+        <SelectionRadius value="0.555400"/>
+        <ShadowRadius value="0.555400"/>
+    </CModel>
+    <CModel id="KhalaiZealot@Portrait" parent="Portrait">
+        <Model value="Assets\Portraits\Protoss\Aiur_ZealotEx2_Portrait\Aiur_ZealotEx2_Portrait.m3"/>
+        <Image value="Assets\Textures\aiurzealotportrait_static.dds"/>
+    </CModel>
+
+    <CSound id="KhalaiZealot@Attack" parent="Voice">
+        <Flags index="Download" value="0"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Attack00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Attack01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Attack02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Attack03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Attack04.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Attack05.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Attack06.ogg"/>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+    <CSound id="KhalaiZealot@Help" parent="Alert">
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\ZealotVoid_Help00.ogg"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Volume value="-1.000000,-1.000000"/>
+        <Mode value="3DWorld"/>
+    </CSound>
+    <CSound id="KhalaiZealot@Pissed" parent="Pissed">
+        <Flags index="Download" value="0"/>
+        <Select value="Sequential"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Pissed00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Pissed01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Pissed02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Pissed03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Pissed04.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Pissed05.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Pissed06.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Pissed07.ogg"/>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+    <CSound id="KhalaiZealot@Ready" parent="Ready">
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Ready00.ogg"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+    <CSound id="KhalaiZealot@What" parent="Voice">
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_What00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_What01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_What02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_What03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_What04.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotVoid_What05.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotVoid_What06.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="KhalaiZealot@Yes" parent="Voice">
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Yes00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Yes01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Yes02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Yes03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Yes04.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Yes05.ogg"/>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+    <CSound id="KhalaiZealot@Death" parent="Death">
+        <Pitch value="-0.500000,0.500000"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Death01.wav"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Death01.wav"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Death02.wav"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Death03.wav"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Zealot\Zealot_Death04.wav"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+
+    <!-- ========== Weapons ========== -->
+    <!-- Solarite Reaper -->
+
+    <CWeaponLegacy id="KhalaiZealot_Weapon">
+        <EditorCategories value="Race:Khalai"/>
+        <Options index="Melee" value="1"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
+        <DisplayEffect value="KhalaiZealot_Weapon@Damage"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="0.1"/>
+        <Cost>
+            <Cooldown Link="Weapon/PsiBlades"/>
+        </Cost>
+        <Period value="1.2"/>
+        <DamagePoint value="0"/>
+        <Effect value="KhalaiZealot_Weapon@Damage"/>
+    </CWeaponLegacy>
+    <CEffectDamage id="KhalaiZealot_Weapon@Damage">
+        <EditorCategories value="Race:Protoss"/>
+        <Amount value="16"/>
+        <Death value="Eviscerate"/>
+    </CEffectDamage>
+
+    <CActorAction id="KhalaiZealot_Weapon@Attack" parent="GenericAttack" effectAttack="KhalaiZealot_Weapon@Damage"/>
+    
+    <CSound id="KhalaiZealot_Weapon@AttackLaunch" parent="Combat">
+        <EditorCategories value="Race:Khalai"/>
+        <AssetArray File="Assets\Sounds\Protoss\Zealot\Zealot_AttackLaunch0.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Zealot\Zealot_AttackLaunch1.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Zealot\Zealot_AttackLaunch2.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Zealot\Zealot_AttackLaunch3.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Zealot\Zealot_AttackLaunch4.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Zealot\Zealot_AttackLaunch5.wav"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="4"/>
+        <DupePrioritization value="Oldest"/>
+        <Pitch value="-3.000000,-1.000000"/>
+        <VariationMinimum value="8"/>
+        <Volume value="-10.480000,-10.480000"/>
+    </CSound>
+    <CSound id="KhalaiZealot_Weapon@AttackImpact" parent="Protoss_AttackImpactMediumSlice">
+        <EditorCategories value="Race:Khalai"/>
+        <AssetArray index="2" File="Assets\Sounds\Protoss\SharedEffects\Attacks\Protoss_AttackImpactMediumSlice3.wav"/>
+        <AssetArray index="3" removed="1"/>
+        <DupeDestroyCount value="10"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="4"/>
+        <DupePrioritization value="Oldest"/>
+        <Pitch value="-2.000000,2.000000"/>
+        <Select value="Random"/>
+        <Volume value="-6.000000,-5.000000"/>
+    </CSound>
+
+    <CDataCollectionUnit id="KhalaiZealot_Weapon" parent="Weapon_Instant">
+        <DataRecord Entry="Weapon,KhalaiZealot_Weapon"/>
+        <DataRecord Entry="Effect,KhalaiZealot_Weapon@Damage"/>
+        <DataRecord Entry="Actor,KhalaiZealot_Weapon@Attack"/>
+        <DataRecord Entry="Sound,KhalaiZealot_Weapon@AttackLaunch"/>
+        <DataRecord Entry="Sound,KhalaiZealot_Weapon@AttackImpact"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@1"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@2"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@3"/>
+    </CDataCollectionUnit>
+
+    <!-- ========== Abilities ========== -->
+    <!-- Whirlwind -->
+
+    <CButton id="KhalaiZealot_Whirlwind">
+        <Icon value=""/>
+    </CButton>
+
+    <CAbilEffectInstant id="KhalaiZealot_Whirlwind">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="KhalaiZealot_Whirlwind@Set"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="TransientPreferred" value="1"/>
+        <Cost>
+            <Cooldown TimeUse="10"/>
+        </Cost>
+        <AutoCastRange value="1.5"/>
+        <AutoCastValidatorArray value="VoidZealotWhirlwindCheck"/>
+        <CastOutroTime value="1.2"/>
+        <UninterruptibleArray index="Cast" value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="KhalaiZealot_Whirlwind"/>
+    </CAbilEffectInstant>
+
+    <CBehaviorBuff id="KhalaiZealot_Whirlwind">
+        <PeriodicEffect value="KhalaiZealot_Whirlwind@Search"/>
+        <Modification>
+            <StateFlags index="SuppressCollision" value="1"/>
+            <StateFlags index="SuppressAttack" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+
+    <CEffectSet id="KhalaiZealot_Whirlwind@Set">
+        <EffectArray value="KhalaiZealot_Whirlwind@Search"/>
+        <EffectArray value="KhalaiZealot_Whirlwind@AB"/>
+    </CEffectSet>
+    <CEffectEnumArea id="KhalaiZealot_Whirlwind@Search">
+        <AreaArray Radius="1.5" Effect="KhalaiZealot_Whirlwind@Damage"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+        <SearchFlags index="SameCliff" value="1"/>
+        <SearchFilters value="Ground;Player,Ally,Neutral,Structure,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="KhalaiZealot_Whirlwind@AB">
+        <Behavior value="KhalaiZealot_Whirlwind"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="KhalaiZealot_Whirlwind@Damage" parent="DU_WEAP">
+        <Death value="Eviscerate"/>
+        <Amount value="5"/>
+        <ArmorReduction value="0"/>
+    </CEffectDamage>
+
+    <CActorAction id="KhalaiZealot_Whirlwind@Attack" parent="GenericAttack" effectAttack="KhalaiZealot_Whirlwind@Damage"/>
+    <CActorSimple id="KhalaiZealot_Whirlwind@Animation">
+        <On Terms="Behavior.KhalaiZealot_Whirlwind.On" Send="HostSiteOpsSet ::Host ZealotWhirlwindRotator"/>
+        <On Terms="Effect.KhalaiZealot_Whirlwind@Search.Start" Send="AnimPlay Attack Attack,03"/>
+        <On Terms="Behavior.KhalaiZealot_Whirlwind.Off" Send="HostSiteOpsSet ::Host"/>
+        <On Terms="Behavior.KhalaiZealot_Whirlwind.Off" Send="AnimClear Attack"/>
+    </CActorSimple>
+
+    <CModel id="KhalaiZealot_Whirlwind@AttackLaunch" parent="ImpactFX">
+        <Model value="Assets\Effects\Protoss\Zealot_Aiur_Whirlwind\Zealot_Aiur_Whirlwind.m3"/>
+        <ScaleMax value="1.500000,1.500000,1.500000"/>
+        <ScaleMin value="1.500000,1.500000,1.500000"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+    <CModel id="KhalaiZealot_Whirlwind@AttackImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Protoss\Zealot_Aiur_Whirlwind_Impact\Zealot_Aiur_Whirlwind_Impact.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+
+    <CSound id="KhalaiZealot_Whirlwind@AttackLaunch" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\VoidZealot_Whirlwind_LaunchAttack01_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\VoidZealot_Whirlwind_LaunchAttack02_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\VoidZealot_Whirlwind_LaunchAttack03_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\VoidZealot_Whirlwind_LaunchAttack04_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\VoidZealot_Whirlwind_LaunchAttack05_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\VoidZealot_Whirlwind_LaunchAttack06_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\VoidZealot_Whirlwind_LaunchAttack07_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\VoidZealot_Whirlwind_LaunchAttack08_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\VoidZealot_Whirlwind_LaunchAttack09_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\VoidZealot_Whirlwind_LaunchAttack10_1ch.wav" FacialGroup=""/>
+        <Pitch value="0.000000,0.500000"/>
+        <VariationMinimum value="8"/>
+        <Volume value="-10.480000,-9.480000"/>
+        <DupeDestroyCount value="6"/>
+        <DupeHistoryCount value="6"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="6"/>
+        <PlayDelay value="0,30"/>
+    </CSound>
+    <CSound id="KhalaiZealot_Whirlwind@AttackImpact" parent="Protoss_AttackImpactMediumSlice"/>
+
+</Catalog>
