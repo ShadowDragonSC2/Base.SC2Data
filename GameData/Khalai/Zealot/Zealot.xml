@@ -48,7 +48,27 @@
         <TauntDuration index="Dance" value="5"/>
     </CUnit>
     
-    <CActorUnit id="KhalaiZealot" parent="AdvancedUnitStandard" unitName="KhalaiZealot"/>
+    <CActorUnit id="KhalaiZealot" parent="AdvancedUnitStandard" unitName="KhalaiZealot">
+        <Aliases value="_UnitSmall"/>
+        <Macros value="ChargingAnim"/>
+        <WalkAnimMoveSpeed value="2.25"/>
+        <BarWidth value="42"/>
+        <BarOffset value="45"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-zealot-aiur.dds"/>
+        <HeroIcon value="Assets\Textures\btn-unit-protoss-zealot-aiur.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-protoss-zealotelite.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-protoss-zealot-aiur.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image value="Assets\Textures\wireframe-protoss-zealot-aiur-shield01.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-zealot-aiur-shield02.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-zealot-aiur-shield03.dds"/>
+        </WireframeShield>
+    </CActorUnit>
     
     <CModel id="KhalaiZealot" parent="Unit">
         <Model value="Assets\Units\Protoss\Zealot_Aiur\Zealot_Aiur.m3"/>
