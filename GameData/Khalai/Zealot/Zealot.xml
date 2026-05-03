@@ -25,6 +25,7 @@
         <Collide index="Locust" value="1"/>
         <Sight value="9"/>
         <AbilArray Link="Charge"/>
+        <AbilArray Link="KhalaiZealot_Whirlwind"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Charge" Type="AbilCmd" AbilCmd="Charge,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="KhalaiZealot_Whirlwind" Type="AbilCmd" AbilCmd="KhalaiZealot_Whirlwind,Execute" Row="2" Column="1"/>
@@ -328,27 +329,32 @@
     <!-- Whirlwind -->
 
     <CButton id="KhalaiZealot_Whirlwind">
-        <Icon value=""/>
+        <Icon value="Assets/Textures/btn-ability-protoss-whirlwind.dds"/>
     </CButton>
 
     <CAbilEffectInstant id="KhalaiZealot_Whirlwind">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Effect index="0" value="KhalaiZealot_Whirlwind@Set"/>
         <Flags index="AutoCast" value="1"/>
-        <Flags index="AutoCastOn" value="1"/>
+        <!-- <Flags index="AutoCastOn" value="1"/> -->
         <Flags index="TransientPreferred" value="1"/>
         <Cost>
             <Cooldown TimeUse="10"/>
         </Cost>
         <AutoCastRange value="1.5"/>
-        <AutoCastValidatorArray value="VoidZealotWhirlwindCheck"/>
+        <AutoCastValidatorArray value="KhalaiZealot_Whirlwind@Check"/>
         <CastOutroTime value="1.2"/>
         <UninterruptibleArray index="Cast" value="1"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="KhalaiZealot_Whirlwind"/>
     </CAbilEffectInstant>
 
     <CBehaviorBuff id="KhalaiZealot_Whirlwind">
+        <EditorCategories value="AbilityorEffectType:Units"/>
         <PeriodicEffect value="KhalaiZealot_Whirlwind@Search"/>
+        <Duration value="3"/>
+        <Period value="0.5"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <RemoveValidatorArray value="CasterNotStunned"/>
         <Modification>
             <StateFlags index="SuppressCollision" value="1"/>
             <StateFlags index="SuppressAttack" value="1"/>
@@ -374,26 +380,53 @@
         <ArmorReduction value="0"/>
     </CEffectDamage>
 
-    <CActorAction id="KhalaiZealot_Whirlwind@Attack" parent="GenericAttack" effectAttack="KhalaiZealot_Whirlwind@Damage"/>
-    <CActorSimple id="KhalaiZealot_Whirlwind@Animation">
-        <On Terms="Behavior.KhalaiZealot_Whirlwind.On" Send="HostSiteOpsSet ::Host ZealotWhirlwindRotator"/>
-        <On Terms="Effect.KhalaiZealot_Whirlwind@Search.Start" Send="AnimPlay Attack Attack,03"/>
-        <On Terms="Behavior.KhalaiZealot_Whirlwind.Off" Send="HostSiteOpsSet ::Host"/>
-        <On Terms="Behavior.KhalaiZealot_Whirlwind.Off" Send="AnimClear Attack"/>
-    </CActorSimple>
+    <CValidatorLocationEnumArea id="KhalaiZealot_Whirlwind@Check">
+        <WhichLocation Value="CasterUnit"/>
+        <Compare value="GE"/>
+        <Count value="2"/>
+        <AreaArray Compare="GE" Count="2" Radius="1.5"/>
+        <SearchFilters value="Ground,Visible;Player,Ally,Neutral,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CValidatorLocationEnumArea>
 
-    <CModel id="KhalaiZealot_Whirlwind@AttackLaunch" parent="ImpactFX">
+    <CActorAction id="KhalaiZealot_Whirlwind@Attack" parent="GenericAttack" effectAttack="KhalaiZealot_Whirlwind@Damage"/>
+    <CActorModel id="KhalaiZealot_Whirlwind@LaunchModel" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.KhalaiZealot_Whirlwind@Search.Start; At Caster" Send="Create"/>
+        <Host Subject="_Unit" Scope="Caster"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <EventDataSound Name="Launch" Sound="KhalaiZealot_Whirlwind@LaunchSound"/>
+    </CActorModel>
+    <CActorSimple id="KhalaiZealot_Whirlwind@Animation">
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="Behavior.KhalaiZealot_Whirlwind.Create" Send="Create"/>
+        <On Terms="Behavior.KhalaiZealot_Whirlwind.On" Target="_Unit" Send="HostSiteOpsSet ::Host KhalaiZealot_Whirlwind@Rotator"/>
+        <On Terms="Behavior.KhalaiZealot_Whirlwind.Off" Target="_Unit" Send="HostSiteOpsSet ::Host"/>
+        <On Terms="Behavior.KhalaiZealot_Whirlwind.On" Target="_Unit" Send="AnimPlay Attack Attack,03"/>
+        <On Terms="Behavior.KhalaiZealot_Whirlwind.Off" Target="_Unit" Send="AnimClear Attack"/>
+        <On Terms="Effect.KhalaiZealot_Whirlwind@Search.Start; At Caster" Target="_Unit" Send="AnimPlay Attack Attack,03"/>
+        <On Terms="Behavior.KhalaiZealot_Whirlwind.Destroy" Send="Destroy"/>
+    </CActorSimple>
+    <CActorSiteOpRotator id="KhalaiZealot_Whirlwind@Rotator">
+        <Rate value="1000.000000"/>
+        <LocalAxis value="0.000000,0.000000,1.000000"/>
+    </CActorSiteOpRotator>
+
+    <CModel id="KhalaiZealot_Whirlwind@LaunchModel" parent="ImpactFX">
         <Model value="Assets\Effects\Protoss\Zealot_Aiur_Whirlwind\Zealot_Aiur_Whirlwind.m3"/>
         <ScaleMax value="1.500000,1.500000,1.500000"/>
         <ScaleMin value="1.500000,1.500000,1.500000"/>
         <EditorCategories value="Race:Protoss"/>
+        <Events>
+            <Anim value="Birth"/>
+            <Name value="Launch"/>
+            <Type value="Sound"/>
+        </Events>
     </CModel>
     <CModel id="KhalaiZealot_Whirlwind@AttackImpact" parent="ImpactFX">
         <Model value="Assets\Effects\Protoss\Zealot_Aiur_Whirlwind_Impact\Zealot_Aiur_Whirlwind_Impact.m3"/>
         <EditorCategories value="Race:Protoss"/>
     </CModel>
 
-    <CSound id="KhalaiZealot_Whirlwind@AttackLaunch" parent="Combat">
+    <CSound id="KhalaiZealot_Whirlwind@LaunchSound" parent="Combat">
         <EditorCategories value="Race:Protoss"/>
         <AssetArray File="Assets\Sounds\VoidZealot_Whirlwind_LaunchAttack01_1ch.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\VoidZealot_Whirlwind_LaunchAttack02_1ch.wav" FacialGroup=""/>
