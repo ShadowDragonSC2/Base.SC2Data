@@ -390,7 +390,7 @@
 
     <CActorAction id="KhalaiZealot_Whirlwind@Attack" parent="GenericAttack" effectAttack="KhalaiZealot_Whirlwind@Damage"/>
     <CActorModel id="KhalaiZealot_Whirlwind@LaunchModel" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.KhalaiZealot_Whirlwind@Search.Start; At Caster" Send="Create"/>
+        <On Terms="Effect.KhalaiZealot_Whirlwind@Search.Start" Send="Create"/>
         <Host Subject="_Unit" Scope="Caster"/>
         <HostSiteOps Ops="SOpAttachCenter"/>
         <EventDataSound Name="Launch" Sound="KhalaiZealot_Whirlwind@LaunchSound"/>
