@@ -123,5 +123,115 @@
         </ToDInfoArray>
         <EditorCategories value="LightGroup:PortraitsUnitsProtoss"/>
     </CLight>
+
+    <!-- ========== Weapons ========== -->
+
+    <CWeaponLegacy id="Dragoon_Weapon">
+        <EditorCategories value="Race:Protoss"/>
+        <Arc value="360"/>
+        <DisplayEffect value="Dragoon_Weapon@Damage"/>
+        <Effect value="Dragoon_Weapon@LM"/>
+        <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="7"/>
+        <Period value="2"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
+    </CWeaponLegacy>
+
+    <CActorAction id="Dragoon_Weapon@Attack" parent="GenericAttack" effectLaunch="Dragoon_Weapon@LM" effectImpact="">
+        <ImpactMap index="Flesh" ModelReaction="BloodTargetImpact"/>
+        <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeStandard SOpForwardLaunchGuide"/>
+        <ImpactPhysics Name="DragoonPhaseDisruptorImpact" MatchKeys="Basic" Physics="Dragoon_Weapon@DeathForce"/>
+    </CActorAction>
+    <CActorMissile id="Dragoon_Weapon@AttackMissile" parent="GenericAttackMissile" unitName="Dragoon_Weapon@AttackMissile">
+        <On Terms="UnitBirth" Send="AnimSetTimeScaleAbsolute Lifetime 1.000000"/>
+    </CActorMissile>
+    <CActorSimple id="Dragoon_Weapon@Animation">
+        <On Terms="WeaponStart.Dragoon_Weapon.AttackStart" Send="Create"/>
+        <On Terms="WeaponStop.Dragoon_Weapon.AttackStop" Target="_Unit" Send="AnimBracketStop Attack"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="AnimBracketStart Attack Cover,Start Cover Cover,End"/>
+        <On Terms="WeaponStop.Dragoon_Weapon.AttackStop" Send="Destroy"/>
+        <Terms value="Cap 1"/>
+    </CActorSimple>
+    <CActorForceSphere id="Dragoon_Weapon@DeathForce">
+        <Receiver Subject="::Main"/>
+        <HostSiteOps Ops="SOpIncomingMissileDot25 SOpRotVariancerForward15"/>
+        <Magnitude value="20.000000,5.000000"/>
+        <Radius value="0.500000,0.250000"/>
+        <Field value="Directional"/>
+        <Direction value="Forward"/>
+        <Duration value="0.250000"/>
+    </CActorForceSphere>
+
+    <CModel id="Dragoon_Weapon@AttackImpact" parent="ImpactFX">
+        <EditorCategories value="Race:Protoss"/>
+        <Model value="Assets\Effects\Protoss\DragoonEX2_Missile_Impact\DragoonEX2_Missile_Impact.m3"/>
+    </CModel>
+    <CModel id="Dragoon_Weapon@AttackMissile" parent="MissileFX">
+        <EditorCategories value="Race:Protoss"/>
+        <Model value="Assets\Effects\Protoss\DragoonEX2_Missile\DragoonEX2_Missile.m3"/>
+    </CModel>
+    
+    <CSound id="Dragoon_Weapon@AttackImpact" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Dragoon_AttackImpact01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Dragoon_AttackImpact02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Dragoon_AttackImpact03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Dragoon_AttackImpact04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Dragoon_AttackImpact05.wav" FacialGroup=""/>
+        <DupeThresholdPoints/>
+        <DupeThresholdPoints Count="16" Volume="-6.000000"/>
+        <Pitch value="-3.000000,2.000000"/>
+        <Volume value="-9.000000,-8.000000"/>
+    </CSound>
+    <CSound id="Dragoon_Weapon@AttackLaunch" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Dragoon_AttackLaunch01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Dragoon_AttackLaunch02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Dragoon_AttackLaunch03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Dragoon_AttackLaunch04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Dragoon_AttackLaunch05.wav" FacialGroup=""/>
+        <DupeThresholdPoints/>
+        <DupeThresholdPoints Count="16" Volume="-6.000000"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-7.000000,-4.000000"/>
+    </CSound>
+    
+    <CEffectLaunchMissile id="Dragoon_Weapon@LM">
+        <ImpactEffect value="Dragoon_Weapon@Damage"/>
+        <AmmoUnit value="Dragoon_Weapon@AttackMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="Dragoon_Weapon@Damage">
+        <Amount value="14"/>
+        <AttributeBonus index="Armored" value="8"/>
+    </CEffectDamage>
+
+    <CUnit id="Dragoon_Weapon@AttackMissile" parent="MISSILE">
+        <Race value="Prot"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
+    </CUnit>
+    <CMoverMissile id="Dragoon_Weapon@AttackMissile">
+        <PathMode value="Flying"/>
+        <MotionPhases>
+            <Driver value="Throw"/>
+            <Acceleration value="10"/>
+            <Speed value="5"/>
+            <MaxSpeed value="15"/>
+            <BlendType value="Linear"/>
+            <Outro value="0.1,0.5"/>
+            <ThrowVector value="0,0,1"/>
+        </MotionPhases>
+        <MotionPhases>
+            <Driver value="Guidance"/>
+            <Acceleration value="50"/>
+            <MaxSpeed value="20"/>
+            <BlendType value="Linear"/>
+            <YawPitchRoll value="MAX"/>
+        </MotionPhases>
+    </CMoverMissile>
+    
+    <CDataCollectionUnit id="Dragoon_Weapon" parent="Weapon_Instant">
+        <DataRecord Entry="Weapon,Dragoon_Weapon"/>
+        <DataRecord Entry="Effect,Dragoon_Weapon@Damage"/>
+    </CDataCollectionUnit>
     
 </Catalog>
