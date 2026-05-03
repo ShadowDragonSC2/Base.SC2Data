@@ -649,7 +649,7 @@
     <CActorAction id="Aleksander_Weapon@Attack" parent="GenericAttack" effectImpact="Aleksander_Weapon@Set_Land" effectLaunch="Aleksander_Weapon@LM">
         <ImpactMap index="None" Model="Aleksander_Weapon@AttackMissile" Sound="Aleksander_Weapon@ImpactSound" AnimProps="Death"/>
         <LaunchAttachQuery Methods="Weapon 4"/>
-        <ImpactModel value="Aleksander_Weapon@AttackMissile"/>
+        <ImpactModel value="Aleksander_Weapon@ImpactModel"/>
     </CActorAction>
     <CActorModel id="Aleksander_Weapon@ImpactModel">
         <Flags index="SuppressCreationErrors" value="1"/>
