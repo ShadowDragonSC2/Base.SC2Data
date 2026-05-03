@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Catalog>
+    <!-- Requires: Unit:Generic_Protoss_Unit_Ground[protoss.xml] -->
+    <!-- Requires: Unit:UnitButton_OnlyGround[base.xml] -->
+    <!-- Requires: DataCollectionUnit:Weapon_Instant[base.xml] -->
+
     <CButton id="Dragoon" parent="UnitButton_OnlyGround">
         <Icon value="Assets\Textures\btn-unit-protoss-dragoon-void.dds"/>
     </CButton>
@@ -21,6 +25,8 @@
         <RepairTime value="50"/>
         <KillXP value="35"/>
         <CardLayouts index="0">
+            <LayoutButtons Face="Dragoon_Health@Passive" Type="Passive" Row="1" Requirements="Dragoon_Health@Requirement"/>
+            <LayoutButtons Face="Dragoon_SingularityCharge@Passive" Type="Passive" Row="1" Column="1" Requirements="Dragoon_SingularityCharge@Requirement"/>
             <LayoutButtons Face="VoidStalkerDragoonArmor" Type="Passive" Row="2" Column="1"/>
         </CardLayouts>
         <Radius value="0.625"/>
@@ -138,6 +144,28 @@
         <EditorCategories value="LightGroup:PortraitsUnitsProtoss"/>
     </CLight>
 
+    <CDataCollectionUnit id="Dragoon" parent="UnitGround">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Protoss,ObjectType:Unit"/>
+        <DataRecord Entry="Button,Dragoon"/>
+        <DataRecord Entry="Unit,Dragoon"/>
+        <DataRecord Entry="Actor,Dragoon"/>
+        <DataRecord Entry="Model,Dragoon"/>
+        <DataRecord Entry="Model,Dragoon@Death"/>
+        <DataRecord Entry="Model,Dragoon@Placement"/>
+        <DataRecord Entry="Model,Dragoon@WarpIn"/>
+        <DataRecord Entry="Model,Dragoon@Portrait"/>
+        <DataRecord Entry="Sound,Dragoon@Death"/>
+        <DataRecord Entry="Sound,Dragoon@Attack"/>
+        <DataRecord Entry="Sound,Dragoon@Help"/>
+        <DataRecord Entry="Sound,Dragoon@Pissed"/>
+        <DataRecord Entry="Sound,Dragoon@Yes"/>
+        <DataRecord Entry="Sound,Dragoon@What"/>
+        <DataRecord Entry="Sound,Dragoon@Ready"/>
+        <DataRecord Entry="Light,Dragoon@Portrait"/>
+        <TechInfoUpgradeUsed value="Dragoon_SingularityCharge"/>
+        <TechInfoUpgradeUsed value="Dragoon_Health"/>
+    </CDataCollectionUnit>
+
     <!-- ========== Weapons ========== -->
 
     <CWeaponLegacy id="Dragoon_Weapon">
@@ -244,8 +272,79 @@
     </CMoverMissile>
     
     <CDataCollectionUnit id="Dragoon_Weapon" parent="Weapon_Instant">
+        <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:Protoss,ObjectType:Projectile"/>
         <DataRecord Entry="Weapon,Dragoon_Weapon"/>
+        <DataRecord Entry="Effect,Dragoon_Weapon@LM"/>
         <DataRecord Entry="Effect,Dragoon_Weapon@Damage"/>
+        <DataRecord Entry="Actor,Dragoon_Weapon@Attack"/>
+        <DataRecord Entry="Actor,Dragoon_Weapon@AttackMissile"/>
+        <DataRecord Entry="Actor,Dragoon_Weapon@Animation"/>
+        <DataRecord Entry="Actor,Dragoon_Weapon@DeathForce"/>
+        <DataRecord Entry="Model,Dragoon_Weapon@AttackImpact"/>
+        <DataRecord Entry="Model,Dragoon_Weapon@AttackMissile"/>
+        <DataRecord Entry="Sound,Dragoon_Weapon@AttackImpact"/>
+        <DataRecord Entry="Sound,Dragoon_Weapon@AttackLaunch"/>
+        <DataRecord Entry="Unit,Dragoon_Weapon@AttackMissile"/>
+        <DataRecord Entry="Mover,Dragoon_Weapon@AttackMissile"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@1"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@2"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@3"/>
+        <TechInfoUpgradeUsed value="Dragoon_SingularityCharge"/>
     </CDataCollectionUnit>
+
+    <!-- ========== Upgrades ========== -->
+    <!-- Singularity Charge -->
+    <CButton id="Dragoon_SingularityCharge@Research">
+        <Icon value="Assets\Textures\BTN-Upgrade-Artanis-SingularityCharge.dds"/>
+    </CButton>
+    <CButton id="Dragoon_SingularityCharge@Passive">
+        <Icon value="Assets\Textures\BTN-Upgrade-Artanis-SingularityCharge.dds"/>
+    </CButton>
+    <CUpgrade id="Dragoon_SingularityCharge">
+        <Icon value="Assets\Textures\BTN-Upgrade-Artanis-SingularityCharge.dds"/>
+        <EffectArrayTemplate Reference="Weapon,^ParamId^,Range" Value="2"/>
+        <EffectArrayTemplate Reference="Weapon,^ParamId^,MinScanRange" Value="2"/>
+        <Race value="Khai"/>
+    </CUpgrade>
+    <CRequirement id="Dragoon_SingularityCharge@Requirement">
+        <NodeArray index="Use" Link="Dragoon_SingularityCharge@Requirement_Count"/>
+    </CRequirement>
+    <CRequirementCountUpgrade id="Dragoon_SingularityCharge@Requirement_Count">
+        <Count Link="Dragoon_SingularityCharge" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CDataCollectionUpgrade id="Dragoon_SingularityCharge">
+        <DataRecord Entry="Button,Dragoon_SingularityCharge@Research"/>
+        <DataRecord Entry="Button,Dragoon_SingularityCharge@Passive"/>
+        <DataRecord Entry="Upgrade,Dragoon_SingularityCharge"/>
+        <DataRecord Entry="Requirement,Dragoon_SingularityCharge@Requirement"/>
+    </CDataCollectionUpgrade>
+
+    <!-- Trillic Compression System -->
+    <CButton id="Dragoon_Health@Research">
+        <Icon value="Assets\Textures\btn-ability-protoss-dragoonchassis.dds"/>
+    </CButton>
+    <CButton id="Dragoon_Health@Passive">
+        <Icon value="Assets\Textures\btn-ability-protoss-dragoonchassis.dds"/>
+    </CButton>
+
+    <CUpgrade id="Dragoon_Health">
+        <Icon value="Assets\Textures\btn-ability-protoss-dragoonchassis.dds"/>
+        <EffectArrayTemplate Reference="Unit,^ParamId^,LifeStart" Value="20"/>
+        <EffectArrayTemplate Reference="Unit,^ParamId^,LifeMax" Value="20"/>
+        <EffectArrayTemplate Reference="Unit,^ParamId^,ShieldRegenDelay" Value="0" Operation="Set"/>
+        <EffectArrayTemplate Reference="Unit,^ParamId^,ShieldRegenRate" Value="2"/>
+    </CUpgrade>
+    <CRequirement id="Dragoon_Health@Requirement">
+        <NodeArray index="Use" Link="Dragoon_Health@Requirement_Count"/>
+    </CRequirement>
+    <CRequirementCountUpgrade id="Dragoon_Health@Requirement_Count">
+        <Count Link="Dragoon_Health" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CDataCollectionUpgrade id="Dragoon_Health">
+        <DataRecord Entry="Button,Dragoon_Health@Research"/>
+        <DataRecord Entry="Button,Dragoon_Health@Passive"/>
+        <DataRecord Entry="Upgrade,Dragoon_Health"/>
+        <DataRecord Entry="Requirement,Dragoon_Health@Requirement"/>
+    </CDataCollectionUpgrade>
     
 </Catalog>
