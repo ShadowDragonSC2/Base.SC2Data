@@ -99,6 +99,20 @@
         <Image value="Assets\Textures\aiurdragoonportrait_static.dds"/>
     </CModel>
 
+    <CSound id="Dragoon@Death" parent="Death">
+        <AssetArray File="Assets/Sounds/Dragoon_Death01.wav" FacialGroup=""/>
+        <AssetArray File="Assets/Sounds/Dragoon_Death02.wav" FacialGroup=""/>
+        <AssetArray File="Assets/Sounds/Dragoon_Death03.wav" FacialGroup=""/>
+        <AssetArray File="Assets/Sounds/Dragoon_Death04.wav" FacialGroup=""/>
+        <AssetArray File="Assets/Sounds/Dragoon_Death05.wav" FacialGroup=""/>
+    </CSound>
+    <CSound id="Dragoon@Attack" parent="Voice"></CSound>
+    <CSound id="Dragoon@Help" parent="Alert"></CSound>
+    <CSound id="Dragoon@Pissed" parent="Pissed"></CSound>
+    <CSound id="Dragoon@Yes" parent="Voice"></CSound>
+    <CSound id="Dragoon@What" parent="Voice"></CSound>
+    <CSound id="Dragoon@Ready" parent="Ready"></CSound>
+    
     <CLight id="Dragoon@Portrait" parent="default">
         <ToDInfoArray index="0" AmbientColor="0.294118,0.294118,0.294118" Colorize="1">
             <Param index="HDRExposure" value="1.500000"/>
