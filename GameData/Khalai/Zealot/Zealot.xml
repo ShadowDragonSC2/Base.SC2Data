@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Catalog>
-    <CButton id="KhalaiZealot"></CButton>
+    <CButton id="KhalaiZealot" parent="UnitButton_OnlyGround">
+        <Icon value=""/>
+    </CButton>
     
     <CUnit id="KhalaiZealot" parent="Generic_Protoss_Unit_Ground" race="Khai">
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
