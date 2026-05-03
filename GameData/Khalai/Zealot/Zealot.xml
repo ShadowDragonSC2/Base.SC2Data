@@ -54,7 +54,7 @@
         <TauntDuration index="Dance" value="5"/>
     </CUnit>
     
-    <CActorUnit id="KhalaiZealot" parent="AdvancedUnitStandard" unitName="KhalaiZealot">
+    <CActorUnit id="KhalaiZealot" parent="AdvancedStandard_Ground" unitName="KhalaiZealot">
         <Aliases value="_UnitSmall"/>
         <Macros value="ChargingAnim"/>
         <WalkAnimMoveSpeed value="2.25"/>
