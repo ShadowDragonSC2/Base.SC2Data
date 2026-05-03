@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Catalog>
+    <!-- Requires: Unit:Generic_Protoss_Unit_Ground[protoss.xml] -->
+    <!-- Requires: Unit:UnitButton_OnlyGround[base.xml] -->
+    <!-- Requires: DataCollectionUnit:Weapon_Instant[base.xml] -->
+    <!-- Requires: DataCollectionUnit:AbilityBase[base.xml] -->
+
     <CButton id="KhalaiZealot" parent="UnitButton_OnlyGround">
         <Icon value=""/>
     </CButton>
@@ -261,6 +266,32 @@
         <EditorCategories value="LightGroup:PortraitsUnitsProtoss"/>
     </CLight>
 
+    <CDataCollectionUnit id="KhalaiZealot" parent="UnitGround">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Protoss,ObjectType:Unit"/>
+        <DataRecord Entry="Button,KhalaiZealot"/>
+        <DataRecord Entry="Unit,KhalaiZealot"/>
+        <DataRecord Entry="Actor,KhalaiZealot"/>
+        <DataRecord Entry="Model,KhalaiZealot"/>
+        <DataRecord Entry="Model,KhalaiZealot@Death"/>
+        <DataRecord Entry="Model,KhalaiZealot@Portrait"/>
+        <DataRecord Entry="Model,KhalaiZealot@WarpIn"/>
+        <DataRecord Entry="Model,KhalaiZealot@Placement"/>
+        <DataRecord Entry="Sound,KhalaiZealot@Attack"/>
+        <DataRecord Entry="Sound,KhalaiZealot@Help"/>
+        <DataRecord Entry="Sound,KhalaiZealot@Pissed"/>
+        <DataRecord Entry="Sound,KhalaiZealot@Ready"/>
+        <DataRecord Entry="Sound,KhalaiZealot@What"/>
+        <DataRecord Entry="Sound,KhalaiZealot@Yes"/>
+        <DataRecord Entry="Sound,KhalaiZealot@Death"/>
+        <DataRecord Entry="Light,KhalaiZealot@Portrait"/>
+        <TechInfoUpgradeUsed value="ProtossGroundArmors@1"/>
+        <TechInfoUpgradeUsed value="ProtossGroundArmors@2"/>
+        <TechInfoUpgradeUsed value="ProtossGroundArmors@3"/>
+        <TechInfoUpgradeUsed value="ProtossShields@1"/>
+        <TechInfoUpgradeUsed value="ProtossShields@2"/>
+        <TechInfoUpgradeUsed value="ProtossShields@3"/>
+    </CDataCollectionUnit>
+
     <!-- ========== Weapons ========== -->
     <!-- Solarite Reaper -->
 
@@ -320,6 +351,7 @@
         <DataRecord Entry="Actor,KhalaiZealot_Weapon@Attack"/>
         <DataRecord Entry="Sound,KhalaiZealot_Weapon@AttackLaunch"/>
         <DataRecord Entry="Sound,KhalaiZealot_Weapon@AttackImpact"/>
+        <UpgradeInfoWeapon index="0" DamagePerDice="2"/>
         <TechInfoUpgradeUsed value="ProtossGroundWeapons@1"/>
         <TechInfoUpgradeUsed value="ProtossGroundWeapons@2"/>
         <TechInfoUpgradeUsed value="ProtossGroundWeapons@3"/>
@@ -448,5 +480,24 @@
         <PlayDelay value="0,30"/>
     </CSound>
     <CSound id="KhalaiZealot_Whirlwind@AttackImpact" parent="Protoss_AttackImpactMediumSlice"/>
+
+    <CDataCollectionUnit id="KhalaiZealot_Whirlwind" parent="AbilityBase">
+        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Protoss,ObjectType:Spell"/>
+        <DataRecord Entry="Button,KhalaiZealot_Whirlwind"/>
+        <DataRecord Entry="Abil,KhalaiZealot_Whirlwind"/>
+        <DataRecord Entry="Behavior,KhalaiZealot_Whirlwind"/>
+        <DataRecord Entry="Effect,KhalaiZealot_Whirlwind@Set"/>
+        <DataRecord Entry="Effect,KhalaiZealot_Whirlwind@Search"/>
+        <DataRecord Entry="Effect,KhalaiZealot_Whirlwind@AB"/>
+        <DataRecord Entry="Effect,KhalaiZealot_Whirlwind@Damage"/>
+        <DataRecord Entry="Validator,KhalaiZealot_Whirlwind@Check"/>
+        <DataRecord Entry="Actor,KhalaiZealot_Whirlwind@Attack"/>
+        <DataRecord Entry="Actor,KhalaiZealot_Whirlwind@LaunchModel"/>
+        <DataRecord Entry="Actor,KhalaiZealot_Whirlwind@Animation"/>
+        <DataRecord Entry="Model,KhalaiZealot_Whirlwind@LaunchModel"/>
+        <DataRecord Entry="Model,KhalaiZealot_Whirlwind@AttackImpact"/>
+        <DataRecord Entry="Sound,KhalaiZealot_Whirlwind@LaunchSound"/>
+        <DataRecord Entry="Sound,KhalaiZealot_Whirlwind@AttackImpact"/>
+    </CDataCollectionUnit>
 
 </Catalog>

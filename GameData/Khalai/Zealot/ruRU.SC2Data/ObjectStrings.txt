@@ -1,0 +1,39 @@
+Abil/Name/KhalaiZealot_Whirlwind=«Вихрь»
+
+Actor/Name/KhalaiZealot_Weapon@Attack=Attack
+Actor/Name/KhalaiZealot_Whirlwind@Attack=Attack
+Actor/Name/KhalaiZealot_Whirlwind@LaunchModel=Launch Model
+Actor/Name/KhalaiZealot_Whirlwind@Animation=Animation
+Actor/Name/KhalaiZealot_Whirlwind@Rotator=Rotator
+
+Model/Name/KhalaiZealot=Зилот
+Model/EditorPrefix/KhalaiZealot=Айур -
+Model/Name/KhalaiZealot@Death=Death
+Model/Name/KhalaiZealot@Placement=Placement
+Model/Name/KhalaiZealot@WarpIn=WarpIns
+Model/Name/KhalaiZealot@Portrait=Portrait
+Model/Name/KhalaiZealot_Whirlwind@LaunchModel=Launch Model
+Model/Name/KhalaiZealot_Whirlwind@AttackImpact=Attack Impact
+
+Sound/Name/KhalaiZealot@Attack=Attack
+Sound/Name/KhalaiZealot@Help=Help
+Sound/Name/KhalaiZealot@Pissed=Pissed
+Sound/Name/KhalaiZealot@Ready=Ready
+Sound/Name/KhalaiZealot@What=What
+Sound/Name/KhalaiZealot@Yes=Yes
+Sound/Name/KhalaiZealot@Death=Death
+Sound/Name/KhalaiZealot_Weapon@AttackLaunch=Attack Launch
+Sound/Name/KhalaiZealot_Weapon@AttackImpact=Attack Impact
+Sound/Name/KhalaiZealot_Whirlwind@LaunchSound=Launch Sound
+Sound/Name/KhalaiZealot_Whirlwind@AttackImpact=Attack Impact
+
+Light/Name/KhalaiZealot@Portrait=Portrait
+Light/EditorPrefix/KhalaiZealot@Portrait=Aiur Zealot -
+
+Effect/Name/KhalaiZealot_Weapon@Damage=Damage
+Effect/Name/KhalaiZealot_Whirlwind@Set=Set
+Effect/Name/KhalaiZealot_Whirlwind@Search=Search
+Effect/Name/KhalaiZealot_Whirlwind@AB=AB
+Effect/Name/KhalaiZealot_Whirlwind@Damage=Damage
+
+Validator/Name/KhalaiZealot_Whirlwind@Check=Check

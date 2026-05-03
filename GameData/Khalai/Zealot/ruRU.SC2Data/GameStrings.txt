@@ -1,0 +1,12 @@
+Unit/Name/KhalaiZealot=Зилот
+
+Behavior/Name/KhalaiZealot_Whirlwind=«Вихрь»
+Behavior/Tooltip/KhalaiZealot_Whirlwind=Эта боевая единица наносит урон находящимся рядом противникам.
+
+Button/Name/KhalaiZealot=Вызвать зилота
+Button/Tooltip/KhalaiZealot=Айур<n/>Могучий воин ближнего боя. Может использовать способности «Рывок» и <d stringref="Button,KhalaiZealot_Whirlwind,Name"/>».
+
+Button/Name/KhalaiZealot_Whirlwind=«Вихрь»
+Button/Tooltip/KhalaiZealot_Whirlwind=Наносит <d ref="Effect,KhalaiZealot_Whirlwind@Damage,Amount/Behavior,KhalaiZealot_Whirlwind,Period"/> ед. урона в секунду всем находящимся рядом противникам. Время действия – <d ref="Behavior,KhalaiZealot_Whirlwind,Duration"/> сек.
+
+Weapon/Name/KhalaiZealot_Weapon=Соларитовый жнец
