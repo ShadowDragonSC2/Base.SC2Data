@@ -162,6 +162,12 @@
         <DataRecord Entry="Sound,Dragoon@What"/>
         <DataRecord Entry="Sound,Dragoon@Ready"/>
         <DataRecord Entry="Light,Dragoon@Portrait"/>
+        <TechInfoUpgradeUsed value="ProtossGroundArmors@1"/>
+        <TechInfoUpgradeUsed value="ProtossGroundArmors@2"/>
+        <TechInfoUpgradeUsed value="ProtossGroundArmors@3"/>
+        <TechInfoUpgradeUsed value="ProtossShields@1"/>
+        <TechInfoUpgradeUsed value="ProtossShields@2"/>
+        <TechInfoUpgradeUsed value="ProtossShields@3"/>
         <TechInfoUpgradeUsed value="Dragoon_SingularityCharge"/>
         <TechInfoUpgradeUsed value="Dragoon_Health"/>
     </CDataCollectionUnit>
