@@ -179,7 +179,7 @@
         <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
     </CWeaponLegacy>
 
-    <CActorAction id="Dragoon_Weapon@Attack" parent="GenericAttack" effectLaunch="Dragoon_Weapon@LM" effectImpact="">
+    <CActorAction id="Dragoon_Weapon@Attack" parent="GenericAttack" effectLaunch="Dragoon_Weapon@LM" effectImpact="Dragoon_Weapon@Damage">
         <ImpactMap index="Flesh" ModelReaction="BloodTargetImpact"/>
         <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeStandard SOpForwardLaunchGuide"/>
         <ImpactPhysics Name="DragoonPhaseDisruptorImpact" MatchKeys="Basic" Physics="Dragoon_Weapon@DeathForce"/>
@@ -188,10 +188,16 @@
         <On Terms="UnitBirth" Send="AnimSetTimeScaleAbsolute Lifetime 1.000000"/>
     </CActorMissile>
     <CActorSimple id="Dragoon_Weapon@Animation">
+        <On Terms="ActorOrphan" Send="Destroy"/>
         <On Terms="WeaponStart.Dragoon_Weapon.AttackStart" Send="Create"/>
-        <On Terms="WeaponStop.Dragoon_Weapon.AttackStop" Target="_Unit" Send="AnimBracketStop Attack"/>
+        <!-- <On Terms="WeaponStop.Dragoon_Weapon.AttackStop" Target="_Unit" Send="AnimBracketStop Attack"/> -->
         <On Terms="ActorCreation" Target="_Unit" Send="AnimBracketStart Attack Cover,Start Cover Cover,End"/>
         <On Terms="WeaponStop.Dragoon_Weapon.AttackStop" Send="Destroy"/>
+
+        <On Terms="WeaponStop.Dragoon_Weapon.AttackStop" Send="TimerSet 4 EndAnim"/>
+        <On Terms="TimerExpired; TimerName EndAnim" Target="_Unit" Send="AnimBracketStop Attack"/>
+        <!-- <On Terms="TimerExpired; TimerName EndAnim" Send="Destroy"/> -->
+
         <Terms value="Cap 1"/>
     </CActorSimple>
     <CActorForceSphere id="Dragoon_Weapon@DeathForce">
@@ -300,18 +306,21 @@
     <CButton id="Dragoon_SingularityCharge@Passive">
         <Icon value="Assets\Textures\BTN-Upgrade-Artanis-SingularityCharge.dds"/>
     </CButton>
+
     <CUpgrade id="Dragoon_SingularityCharge">
         <Icon value="Assets\Textures\BTN-Upgrade-Artanis-SingularityCharge.dds"/>
         <EffectArrayTemplate Reference="Weapon,^ParamId^,Range" Value="2"/>
         <EffectArrayTemplate Reference="Weapon,^ParamId^,MinScanRange" Value="2"/>
         <Race value="Khai"/>
     </CUpgrade>
+
     <CRequirement id="Dragoon_SingularityCharge@Requirement">
         <NodeArray index="Use" Link="Dragoon_SingularityCharge@Requirement_Count"/>
     </CRequirement>
     <CRequirementCountUpgrade id="Dragoon_SingularityCharge@Requirement_Count">
         <Count Link="Dragoon_SingularityCharge" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+
     <CDataCollectionUpgrade id="Dragoon_SingularityCharge">
         <DataRecord Entry="Button,Dragoon_SingularityCharge@Research"/>
         <DataRecord Entry="Button,Dragoon_SingularityCharge@Passive"/>
@@ -334,12 +343,14 @@
         <EffectArrayTemplate Reference="Unit,^ParamId^,ShieldRegenDelay" Value="0" Operation="Set"/>
         <EffectArrayTemplate Reference="Unit,^ParamId^,ShieldRegenRate" Value="2"/>
     </CUpgrade>
+
     <CRequirement id="Dragoon_Health@Requirement">
         <NodeArray index="Use" Link="Dragoon_Health@Requirement_Count"/>
     </CRequirement>
     <CRequirementCountUpgrade id="Dragoon_Health@Requirement_Count">
         <Count Link="Dragoon_Health" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    
     <CDataCollectionUpgrade id="Dragoon_Health">
         <DataRecord Entry="Button,Dragoon_Health@Research"/>
         <DataRecord Entry="Button,Dragoon_Health@Passive"/>
