@@ -311,6 +311,7 @@
         <Collide index="Small" value="1"/>
         <Collide index="Ground" value="1"/>
         <Collide index="ForceField" value="1"/>
+        <Collide index="Locust" value="1"/>
         <DeathRevealRadius value="3"/>
         <Name value="Unit/Name/##id##"/>
         <PlaneArray index="Ground" value="1"/>
