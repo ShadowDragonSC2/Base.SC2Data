@@ -23,6 +23,7 @@
         <ScoreKill value="250"/>
         <SubgroupPriority value="6"/>
         <FlagArray index="Cloaked" value="1"/>
+        <BehaviorArray Link="Avenger_Recall"/>
         <Sight value="8"/>
         <CardLayouts>
             <LayoutButtons Face="PermanentlyCloaked" Type="Passive" Row="2" Column="0"/>
@@ -131,16 +132,117 @@
 
     <!-- Recall -->
     <CButton id="Avenger_Recall@Passive"></CButton>
-    <CBehaviorBuff id="Avenger_Recall"></CBehaviorBuff>
-    <CBehaviorBuff id="Avenger_Recall@Recalling"></CBehaviorBuff>
-    <CBehaviorBuff id="Avenger_Recall@Cooldown"></CBehaviorBuff>
+    <CBehaviorBuff id="Avenger_Recall">
+        <DamageResponse Chance="1" Fatal="1">
+            <ModifyFraction value="0"/>
+            <Handled value="Avenger_Recall@Recalling"/>
+        </DamageResponse>
+        <DisableValidatorArray value="Avenger_Recall@Cooldown"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Avenger_Recall@Recalling">
+        <Duration value="0.5"/>
+        <ExpireEffect value="Avenger_Recall@Search"/>
+        <FinalEffect value="Avenger_Recall@Cooldown"/>
+        <Modification>
+            <StateFlags index="Invulnerable" value="1"/>
+            <StateFlags index="Stun" value="1"/>
+            <StateFlags index="SuppressAttack" value="1"/>
+            <StateFlags index="Untargetable" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Avenger_Recall@Cooldown">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
+        <Duration value="60"/>
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-recallondeath.dds"/>
+    </CBehaviorBuff>
 
-    <CEffectEnumArea></CEffectEnumArea>
-    <CEffectSet></CEffectSet>
+    <CEffectApplyBehavior id="Avenger_Recall@Recalling">
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="Avenger_Recall@Cooldown">
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="Avenger_Recall@Search">
+        <AreaArray Radius="500" MaxCount="1" Effect="Avenger_Recall@Set"/>
+        <SearchFilters value="Visible,Player;Hidden"/>
+        <ImpactLocation Value="TargetUnit"/>
+    </CEffectEnumArea>
+    <CEffectSet id="Avenger_Recall@Set">
+        <EffectArray value="Avenger_Recall@Precursor"/>
+        <ValidatorArray value="IsDarkShrine"/>
+    </CEffectSet>
+    <CEffectCreateUnit id="Avenger_Recall@Precursor">
+        <CreateFlags index="Precursor" value="1"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <SpawnEffect value="Avenger_Recall@RetargetTeleport"/>
+        <SpawnRange value="5"/>
+    </CEffectCreateUnit>
+    <CEffectCreatePersistent id="Avenger_Recall@RetargetTeleport">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetUnit"/>
+        <InitialEffect value="Avenger_Recall@Teleport"/>
+        <FinalEffect value="Avenger_Recall@KillPrecursor"/>
+    </CEffectCreatePersistent>
+    <CEffectTeleport id="Avenger_Recall@Teleport">
+        <WhichUnit Value="Caster"/>
+        <TargetLocation Effect="Avenger_Recall@RetargetTeleport" Value="TargetUnit"/>
+        <MinDistance value="0"/>
+        <TeleportEffect value="Avenger_Recall@Heal"/>
+        <PlacementAround Value="TargetUnit"/>
+    </CEffectTeleport>
+    <CEffectModifyUnit id="Avenger_Recall@Heal">
+        <EditorCategories value=""/>
+        <ImpactUnit Value="Caster"/>
+        <VitalArray index="Life" ChangeFraction="1"/>
+        <VitalArray index="Shields" ChangeFraction="1"/>
+    </CEffectModifyUnit>
+    <CEffectDamage id="Avenger_Recall@KillPrecursor">
+        <EditorCategories value=""/>
+        <ImpactLocation Effect="Avenger_Recall@RetargetTeleport" Value="TargetUnit"/>
+        <Flags index="Kill" value="1"/>
+        <Death value="Remove"/>
+    </CEffectDamage>
 
-    <CValidatorUnitCompareBehaviorCount id="Avenger_Recall@NotUsed">
+    <CActorModel id="Avenger_Recall@Start" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.Avenger_Recall@Recalling.Start" Send="Create"/>
+        <On Terms="Effect.Avenger_Recall@Recalling.Start" Send="Create WarpTrainStart"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachCenter" HoldPosition="1" HoldRotation="1"/>
+    </CActorModel>
+    <CActorModel id="Avenger_Recall@Stop" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.Avenger_Recall@Teleport.Stop" Send="Create"/>
+        <On Terms="Effect.Avenger_Recall@Teleport.Stop" Send="Create WarpTrainStop"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachCenter" HoldPosition="1" HoldRotation="1"/>
+    </CActorModel>
+    <CActorSimple id="Avenger_Recall@Animation">
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="Behavior.Avenger_Recall@Recalling.On" Send="Create"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="SetScale 0.5,0.5,2 0.45 RecallScale"/>
+        <On Terms="ActorDestruction" Target="_Unit" Send="ClearScale 0 RecallScale"/>
+        <On Terms="Behavior.Avenger_Recall@Recalling.Off" Send="Destroy"/>
+    </CActorSimple>
+    
+    <CModel id="Avenger_Recall@Start" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\DarkTemplarAiurWarpOut\DarkTemplarAiurWarpOut.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Occlusion value="Show"/>
+        <SelectionRadius value="0.555400"/>
+        <ShadowRadius value="0.555400"/>
+    </CModel>
+    <CModel id="Avenger_Recall@Stop" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\DarkTemplarAiurWarpIn\DarkTemplarAiurWarpIn.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Occlusion value="Show"/>
+        <SelectionRadius value="0.555400"/>
+        <ShadowRadius value="0.555400"/>
+    </CModel>
+
+    <CValidatorUnitCompareBehaviorCount id="Avenger_Recall@Cooldown">
         <Behavior value="Avenger_Recall@Cooldown"/>
-        <Compare value="LE"/>
+        <Compare value="LT"/>
         <Value value="1"/>
     </CValidatorUnitCompareBehaviorCount>
 
