@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+
+    <CButton id="Avenger" parent="UnitButton_OnlyGround">
+        <Icon value="Assets\Textures\btn-unit-protoss-darktemplar-aiur.dds"/>
+    </CButton>
+    
+    <CUnit id="Avenger" parent="Generic_Protoss_Unit_Ground" race="Khai">
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
+        <LifeStart value="40"/>
+        <LifeMax value="40"/>
+        <LifeArmor value="1"/>
+        <ShieldsStart value="80"/>
+        <ShieldsMax value="80"/>
+        <Speed value="2.8125"/>
+        <LateralAcceleration value="46.0625"/>
+        <Food value="-2"/>
+        <KillXP value="45"/>
+        <Radius value="0.375"/>
+        <InnerRadius value="0.375"/>
+        <CargoSize value="2"/>
+        <ScoreMake value="250"/>
+        <ScoreKill value="250"/>
+        <SubgroupPriority value="6"/>
+        <FlagArray index="Cloaked" value="1"/>
+        <Sight value="8"/>
+        <CardLayouts>
+            <LayoutButtons Face="PermanentlyCloaked" Type="Passive" Row="2" Column="0"/>
+        </CardLayouts>
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <Attributes index="Psionic" value="1"/>
+        <GlossaryPriority value="70"/>
+        <CostResource index="Minerals" value="125"/>
+        <CostResource index="Vespene" value="125"/>
+        <SeparationRadius value="0.375"/>
+        <MinimapRadius value="0.375"/>
+        <GlossaryStrongArray value="SCV"/>
+        <GlossaryStrongArray value="Drone"/>
+        <GlossaryStrongArray value="Probe"/>
+        <GlossaryWeakArray value="Raven"/>
+        <GlossaryWeakArray value="Overseer"/>
+        <GlossaryWeakArray value="Observer"/>
+    </CUnit>
+    
+    <CActorUnit id="Avenger" parent="AdvancedStandard_Ground" unitName="Avenger">
+        <ModelFlags index="UseConstSyncSeed" value="1"/>
+        <Aliases value="_UnitSmall"/>
+        <AnimBlendTime value="0.250000"/>
+        <BarWidth value="42"/>
+        <BarOffset value="50"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-darktemplar-aiur.dds"/>
+        <HeroIcon value="Assets\Textures\btn-unit-protoss-darktemplar-aiur.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
+        <WireframeShield>
+            <Image value="Assets\Textures\wireframe-protoss-darktemplar-aiur-shield01.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-darktemplar-aiur-shield02.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-darktemplar-aiur-shield03.dds"/>
+        </WireframeShield>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-protoss-darktemplar-aiur.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-protoss-darktemplar-aiur.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    
+    <CModel id="Avenger" parent="Unit">
+        <Model value="Assets\Units\Protoss\DarkTemplar_Aiur\DarkTemplar_Aiur.m3"/>
+        <RequiredAnims value="Assets\Units\Protoss\DarkTemplar_01_SwarmAnims\DarkTemplar_01_SwarmAnims.m3a"/>
+        <Occlusion value="Show"/>
+        <Radius value="0.400000"/>
+        <ScaleMax value="0.850000,0.850000,0.850000"/>
+        <ScaleMin value="0.850000,0.850000,0.850000"/>
+        <SquibTypeDefault value="LightArmor"/>
+        <TechPurchaseCamera value="Star2CameraMid05"/>
+        <UnitGlossaryCamera value="Star2CameraMid05"/>
+        <PlanetPanelCamera value="Star2CameraMid05"/>
+        <SelectionRadius value="0.375000"/>
+        <ShadowRadius value="0.375000"/>
+    </CModel>
+    <CModel id="Avenger@Death" parent="UnitDeath">
+        <LowQualityModel value="ProtossSpiritDeathLow"/>
+        <Model value="Assets\Units\Protoss\DarkTemplar_Aiur_Death\DarkTemplar_Aiur_Death.m3"/>
+    </CModel>
+    <CModel id="Avenger@Placement" parent="Placement">
+        <Model value="Assets\Units\Protoss\DarkTemplar_Aiur_Placement\DarkTemplar_Aiur_Placement.m3"/>
+        <Radius value="-1.000000"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.850000,0.850000,0.850000"/>
+        <ScaleMin value="0.850000,0.850000,0.850000"/>
+        <SelectionRadius value="0.588100"/>
+        <ShadowRadius value="0.588100"/>
+    </CModel>
+    <CModel id="Avenger@WarpIn" parent="OneShotSpellFX">
+        <Model value="Assets\Units\Protoss\DarkTemplar_Aiur_WarpIn\DarkTemplar_Aiur_WarpIn.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.850000,0.850000,0.850000"/>
+        <ScaleMin value="0.850000,0.850000,0.850000"/>
+        <!--VariationCount value="2"/-->
+        <LowQualityModel value="DarkTemplarWarpInLow"/>
+        <SelectionRadius value="0.588100"/>
+        <ShadowRadius value="0.588100"/>
+    </CModel>
+    <CModel id="Avenger@Portrait" parent="Portrait">
+        <Model value="Assets\Portraits\Protoss\DarkTemplar_Aiur_Portrait\DarkTemplar_Aiur_Portrait.m3"/>
+        <Image value="Assets\Textures\avengerportrait_static.dds"/>
+    </CModel>
+
+    <!-- <CLight id="Avenger@Portrait" parent="default"/> -->
+    
+    <CSound id="Avenger@DeathVoice" parent="DeathVoice"></CSound>
+    <CSound id="Avenger@Attack" parent="Voice"></CSound>
+    <CSound id="Avenger@Help" parent="Alert"></CSound>
+    <CSound id="Avenger@Pissed" parent="Pissed"></CSound>
+    <CSound id="Avenger@Yes" parent="Voice"></CSound>
+    <CSound id="Avenger@What" parent="Voice"></CSound>
+    <CSound id="Avenger@Ready" parent="Ready"></CSound>
+
+    <CDataCollectionUnit id="Avenger" parent="UnitGround">
+        <TechInfoUpgradeUsed value="ProtossGroundArmors@1"/>
+        <TechInfoUpgradeUsed value="ProtossGroundArmors@2"/>
+        <TechInfoUpgradeUsed value="ProtossGroundArmors@3"/>
+        <TechInfoUpgradeUsed value="ProtossShields@1"/>
+        <TechInfoUpgradeUsed value="ProtossShields@2"/>
+        <TechInfoUpgradeUsed value="ProtossShields@3"/>
+    </CDataCollectionUnit>
+
+    <!-- ========== Behaviors ========== -->
+
+    <!-- Recall -->
+    <CButton id="Avenger_Recall@Passive"></CButton>
+    <CBehaviorBuff id="Avenger_Recall"></CBehaviorBuff>
+    <CBehaviorBuff id="Avenger_Recall@Recalling"></CBehaviorBuff>
+    <CBehaviorBuff id="Avenger_Recall@Cooldown"></CBehaviorBuff>
+
+    <CEffectEnumArea></CEffectEnumArea>
+    <CEffectSet></CEffectSet>
+
+    <CValidatorUnitCompareBehaviorCount id="Avenger_Recall@NotUsed">
+        <Behavior value="Avenger_Recall@Cooldown"/>
+        <Compare value="LE"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareBehaviorCount>
+
+    <!-- ========== Weapons ========== -->
+
+    <!-- Psionic Scythe -->
+    <CWeaponLegacy id="Avenger_Weapon">
+        <EditorCategories value="Race:Protoss"/>
+        <Effect value="Avenger_Weapon@Damage"/>
+        <DisplayEffect value="Avenger_Weapon@Damage"/>
+        <Options index="Melee" value="1"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="0.1"/>
+        <Period value="1.694"/>
+        <DamagePoint value="0.361"/>
+        <Backswing value="1.333"/>
+    </CWeaponLegacy>
+
+    <CEffectDamage id="Avenger_Weapon@Damage" parent="DU_WEAP">
+        <EditorCategories value="Race:Protoss"/>
+        <Amount value="45"/>
+        <Death value="Eviscerate"/>
+    </CEffectDamage>
+
+    <CActorAction id="Avenger_Weapon@Attack" parent="GenericAttack" effectAttack="Avenger_Weapon@Damage">
+        <ShieldFlashType value="Header"/>
+    </CActorAction>
+    <CActorSound id="Avenger_Weapon@LaunchSound" parent="SoundOneShot">
+        <On Terms="WeaponStart.Avenger_Weapon.AttackStart" Send="Create"/>
+    </CActorSound>
+    
+    <CSound id="Avenger_Weapon@AttackImpact" parent="Protoss_AttackImpactMediumSlice"/>
+    <CSound id="Avenger_Weapon@AttackLaunch" parent="DarkTemplar_AttackLaunch">
+        <AssetArray File="Assets\Sounds\DarkTemplarVoid_AttackLaunch00.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\DarkTemplarVoid_AttackLaunch01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\DarkTemplarVoid_AttackLaunch02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\DarkTemplarVoid_AttackLaunch03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\DarkTemplarVoid_AttackLaunch04.wav" FacialGroup=""/>
+        <DupeDestroyCount value="8"/>
+    </CSound>
+
+</Catalog>
