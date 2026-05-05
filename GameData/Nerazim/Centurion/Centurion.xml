@@ -109,7 +109,7 @@
         <Occlusion value="Show"/>
         <ScaleMax value="0.900000,0.900000,0.900000"/>
         <ScaleMin value="0.900000,0.900000,0.900000"/>
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Nerazim"/>
         <LowQualityModel value="ProtossUnitBirth"/>
         <SelectionRadius value="0.555400"/>
         <ShadowRadius value="0.555400"/>
@@ -219,6 +219,12 @@
         <DataRecord Entry="Validator,Centurion@Target"/>
         <DataRecord Entry="Validator,Centurion@Not"/>
         <DataRecord Entry="Validator,Centurion@NotTarget"/>
+        <TechInfoUpgradeUsed value="ProtossGroundArmors@1"/>
+        <TechInfoUpgradeUsed value="ProtossGroundArmors@2"/>
+        <TechInfoUpgradeUsed value="ProtossGroundArmors@3"/>
+        <TechInfoUpgradeUsed value="ProtossShields@1"/>
+        <TechInfoUpgradeUsed value="ProtossShields@2"/>
+        <TechInfoUpgradeUsed value="ProtossShields@3"/>
     </CDataCollectionUnit>
 
     <!-- =========== Weapons =========== -->
@@ -284,6 +290,9 @@
         <DataRecord Entry="Actor,Centurion_Weapon@Attack"/>
         <DataRecord Entry="Sound,Centurion_Weapon@AttackImpact"/>
         <DataRecord Entry="Sound,Centurion_Weapon@AttackLaunch"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@1"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@2"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@3"/>
     </CDataCollectionUnit>
 
     <!-- ========== Abilities ========== -->
@@ -292,11 +301,11 @@
     <CButton id="Centurion_Darkcoil">
         <Icon value="Assets\Textures\btn-upgrade-vorazun-shadowstun.dds"/>
         <AlertIcon value="Assets\Textures\btn-upgrade-vorazun-shadowstun.dds"/>
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Nerazim"/>
     </CButton>
 
     <CAbilAugment id="Centurion_Darkcoil">
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <EditorCategories value="Race:Nerazim,AbilityorEffectType:Units"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Centurion_Darkcoil"/>
         <Flags index="AutoCast" value="1"/>
         <Flags index="AutoCastOn" value="1"/>
@@ -313,13 +322,13 @@
     </CAbilAugment>
     
     <CEffectEnumArea id="Centurion_Darkcoil@Search">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Nerazim"/>
         <ImpactLocation Value="SourceUnit"/>
         <SearchFilters value="Ground;Player,Ally,Structure,Missile,Stasis,Dead,Hidden,Invulnerable,Unstoppable"/>
         <AreaArray Radius="1.5" Effect="Centurion_Darkcoil@Switch"/>
     </CEffectEnumArea>
     <CEffectSwitch id="Centurion_Darkcoil@Switch">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Nerazim"/>
         <CaseArray Validator="TargetMassiveOrHeroicOrUnstoppable" Effect="Centurion_Darkcoil@StunTarget"/>
         <CaseDefault value="Centurion_Darkcoil@SlowTarget"/>
     </CEffectSwitch>
@@ -332,7 +341,7 @@
     
     <CBehaviorBuff id="Centurion_Darkcoil@StunTarget">
         <Alignment value="Negative"/>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <EditorCategories value="Race:Nerazim,AbilityorEffectType:Units"/>
         <Duration value="2.5"/>
         <Modification>
             <StateFlags index="Stun" value="1"/>
@@ -342,7 +351,7 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="Centurion_Darkcoil@SlowTarget">
         <Alignment value="Negative"/>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <EditorCategories value="Race:Nerazim,AbilityorEffectType:Units"/>
         <Duration value="2.5"/>
         <Modification MoveSpeedMultiplier="0.5" AttackSpeedMultiplier="0.5"/>
         <InfoIcon value="Assets\Textures\btn-ability-terran-ultrasonicpulse.dds"/>
@@ -404,7 +413,7 @@
     </CModel>
     <CModel id="Centurion_Darkcoil@ImpactModel" parent="OneShotSpellFX">
         <Model value="Assets\Effects\Protoss\Zealot_Nerazim_PhaseChargeStun_Impact\Zealot_Nerazim_PhaseChargeStun_Impact.m3"/>
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Nerazim"/>
         <ScaleMax value="1.500000,1.500000,1.500000"/>
         <ScaleMin value="1.500000,1.500000,1.500000"/>
     </CModel>
@@ -461,11 +470,11 @@
     <CButton id="Centurion_ShadowCharge">
         <Icon value="Assets\Textures\BTN-Ability-Protoss-ShadowCharge.dds"/>
         <AlertIcon value="Assets\Textures\BTN-Ability-Protoss-ShadowCharge.dds"/>
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Nerazim"/>
     </CButton>
 
     <CAbilAugment id="Centurion_ShadowCharge">
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <EditorCategories value="Race:Nerazim,AbilityorEffectType:Units"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Centurion_ShadowCharge"/>
         <Flags index="AutoCast" value="1"/>
         <Flags index="AutoCastOn" value="1"/>
@@ -479,7 +488,7 @@
     </CAbilAugment>
 
     <CEffectApplyBehavior id="Centurion_ShadowCharge@AB">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Nerazim"/>
         <Behavior value="Centurion_ShadowCharge"/>
         <WhichUnit Value="Caster"/>
         <ValidatorArray index="0" value="ChargeMinTriggerDistance"/>
@@ -488,7 +497,7 @@
 
     <CBehaviorBuff id="Centurion_ShadowCharge">
         <InfoIcon value="Assets\Textures\btn-ability-protoss-charge.dds"/>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <EditorCategories value="Race:Nerazim,AbilityorEffectType:Units"/>
         <Duration value="3.5"/>
         <Alignment value="Positive"/>
         <BuffFlags index="Channeling" value="1"/>
@@ -516,7 +525,7 @@
         <Volume value="-7.960000,-7.960000"/>
         <AssetArray File="Assets\Sounds\Protoss\Zealot\Zealot_Charge0.wav"/>
         <SustainFade index="1" Time="300"/>
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Nerazim"/>
     </CSound>
 
     <CValidatorUnitCompareOrderTargetRange id="Centurion_ShadowCharge@MinDistance">
