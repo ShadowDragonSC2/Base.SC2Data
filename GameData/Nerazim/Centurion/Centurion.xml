@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    <CButton id="Centurion" parent="UnitButton_OnlyGround">
+        <Icon value="Assets\Textures\btn-unit-protoss-zealot-nerazim.dds"/>
+    </CButton>
+    
+    <CUnit id="Centurion" parent="Generic_Protoss_Unit_Ground" race="Nera">
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
+        <LifeStart value="100"/>
+        <LifeMax value="100"/>
+        <LifeArmor value="1"/>
+        <ShieldsStart value="50"/>
+        <ShieldsMax value="50"/>
+        <Speed value="2.75"/>
+        <LateralAcceleration value="46.0625"/>
+        <Food value="-2"/>
+        <KillXP value="20"/>
+        <InnerRadius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <CargoSize value="2"/>
+        <ScoreMake value="100"/>
+        <ScoreKill value="100"/>
+        <SubgroupPriority value="5"/>
+        <MinimapRadius value="0.375"/>
+        <Sight value="9"/>
+        <AbilArray Link="Centurion_ShadowCharge"/>
+        <AbilArray Link="Centurion_Darkcoil"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Centurion_ShadowCharge" Type="AbilCmd" AbilCmd="Centurion_ShadowCharge,Execute" Row="2"/>
+            <LayoutButtons Face="Centurion_Darkcoil" Type="AbilCmd" AbilCmd="Centurion_Darkcoil,Execute" Row="2" Column="1"/>
+        </CardLayouts>
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <GlossaryPriority value="20"/>
+        <CostResource index="Minerals" value="100"/>
+        <GlossaryStrongArray value="Marauder"/>
+        <GlossaryStrongArray value="Zergling"/>
+        <GlossaryStrongArray value="Immortal"/>
+        <GlossaryWeakArray value="Hellion"/>
+        <GlossaryWeakArray value="Roach"/>
+        <GlossaryWeakArray value="Colossus"/>
+        <Fidget>
+            <ChanceArray index="Anim" value="20"/>
+            <ChanceArray index="Idle" value="70"/>
+            <ChanceArray index="Turn" value="10"/>
+        </Fidget>
+        <TauntDuration index="Cheer" value="5"/>
+        <TauntDuration index="Dance" value="5"/>
+    </CUnit>
+    
+    <CActorUnit id="Centurion" parent="AdvancedStandard_Ground" unitName="Centurion">
+        <Macros value="ChargingAnim"/>
+        <Aliases value="_UnitSmall"/>
+        <WalkAnimMoveSpeed value="2.25"/>
+        <BarWidth value="42"/>
+        <BarOffset value="45"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-zealot-nerazim.dds"/>
+        <HeroIcon value="Assets\Textures\btn-unit-protoss-zealot-nerazim.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-protoss-zealot-nerazim.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-protoss-zealot-nerazim.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image value="Assets\Textures\wireframe-protoss-zealot-nerazim-shield01.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-zealot-nerazim-shield02.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-zealot-nerazim-shield03.dds"/>
+        </WireframeShield>
+    </CActorUnit>
+    
+    <CModel id="Centurion" parent="Unit">
+        <Model value="Assets\Units\Protoss\Zealot_Shakuras\Zealot_Shakuras.m3"/>
+        <RequiredAnims value="Assets\Units\Protoss\Zealot_SwarmAnims\Zealot_SwarmAnims.m3a"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.900000,0.900000,0.900000"/>
+        <ScaleMin value="0.900000,0.900000,0.900000"/>
+        <SelectionRadius value="0.416500"/>
+        <SquibTypeDefault value="Metal"/>
+        <Radius value="0.375000"/>
+        <TechPurchaseCamera value="Star2CameraMid05"/>
+        <UnitGlossaryCamera value="Star2CameraMid05"/>
+        <PlanetPanelCamera value="Star2CameraMid05"/>
+        <ShadowRadius value="0.416500"/>
+        <TextureDeclares Prefix="zealot_">
+            <Adaptions TriggerOnSubstring="_Diffuse" Slot="main"/>
+        </TextureDeclares>
+    </CModel>
+    <CModel id="Centurion@Death" parent="UnitDeath">
+        <Model value="Assets\Units\Protoss\PrisonZealotDeath\PrisonZealotDeath.m3"/>
+        <Occlusion value="Show"/>
+        <LowQualityModel value="ProtossSpiritDeathLow"/>
+        <SelectionRadius value="0.555400"/>
+        <ShadowRadius value="0.555400"/>
+    </CModel>
+    <CModel id="Centurion@Placement" parent="Placement">
+        <Model value="Assets\Units\Protoss\Zealot_Shakuras_Placement\Zealot_Shakuras_Placement.m3"/>
+        <Radius value="-1.000000"/>
+        <Lighting value="Zealot"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.900000,0.900000,0.900000"/>
+        <ScaleMin value="0.900000,0.900000,0.900000"/>
+        <SelectionRadius value="0.416500"/>
+        <ShadowRadius value="0.416500"/>
+    </CModel>
+    <CModel id="Centurion@WarpIn" parent="OneShotSpellFX">
+        <Model value="Assets\Units\Protoss\Zealot_Nerazim_WarpIn\Zealot_Nerazim_WarpIn.m3"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.900000,0.900000,0.900000"/>
+        <ScaleMin value="0.900000,0.900000,0.900000"/>
+        <EditorCategories value="Race:Protoss"/>
+        <LowQualityModel value="ProtossUnitBirth"/>
+        <SelectionRadius value="0.555400"/>
+        <ShadowRadius value="0.555400"/>
+    </CModel>
+    <CModel id="Centurion@Portrait" parent="Portrait">
+        <Model value="Assets\Portraits\Protoss\Shakuras_ZealotEx2_Portrait\Shakuras_ZealotEx2_Portrait.m3"/>
+        <Image value="Assets\Textures\shakuraszealotportrait_static.dds"/>
+    </CModel>
+
+    <CSound id="Centurion@Death" parent="Protoss_DeathFX"/>
+    <CSound id="Centurion@DeathVoice" parent="DeathVoice">
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_Death00.wav" Weight="1" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_Death01.wav" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_Death02.wav" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_Death03.wav" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_Death04.wav" FacialGroup=""/>
+        <Volume value="-2.000000,-2.000000"/>
+        <Pitch value="-0.500000,0.500000"/>
+        <Select value="Random"/>
+    </CSound>
+    <CSound id="Centurion@Attack" parent="Voice">
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_Attack00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_Attack01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_Attack02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_Attack03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_Attack04.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_Attack05.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_Attack06.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="Centurion@Help" parent="Alert">
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_Help00.ogg" FacialGroup=""/>
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="Centurion@Pissed" parent="Pissed">
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_Pissed00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_Pissed01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_Pissed02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_Pissed03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_Pissed04.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_Pissed05.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_Pissed06.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_Pissed07.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="Centurion@Yes" parent="Voice">
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_Yes00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_Yes01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_Yes02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_Yes03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_Yes04.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_Yes05.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="Centurion@What" parent="Voice">
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_What00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_What01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_What02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_What03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_What04.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_What05.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_What06.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="Centurion@Ready" parent="Ready">
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_Ready00.ogg" FacialGroup=""/>
+    </CSound>
+    
+    <CLight id="Centurion@Portrait" parent="default">
+        <ToDInfoArray index="0" Id="NoLight" AmbientColor="0.129412,0.121569,0.188235" OperatorHDR="3">
+            <Param index="HDRExposure" value="1.475000"/>
+            <Param index="HDRGain" value="0.000000"/>
+            <Param index="HDRScale" value="0.000000"/>
+            <Param index="AOOcclusionRadius" value="1.000000"/>
+            <Param index="AONoOcclusion" value="0.900000"/>
+            <Param index="AOOcclusionPower" value="2.000000"/>
+            <Param index="AODetailOcclusionRadius" value="0.010000"/>
+            <Param index="AODetailNoOcclusion" value="0.060000"/>
+            <Param index="AODetailOcclusionPower" value="4.000000"/>
+            <DirectionalLight index="Key">
+                <Color value="0.647059,0.709804,0.992157"/>
+                <ColorMultiplier value="1.000000"/>
+                <SpecColorMultiplier value="1.288000"/>
+                <Direction value="0.113580,0.702039,-0.703023"/>
+            </DirectionalLight>
+            <DirectionalLight index="Fill" Color="0.313726,0.756863,1.000000" ColorMultiplier="1.514000" Direction="0.150943,-0.963903,0.219335"/>
+            <DirectionalLight index="Back" Color="0.313726,0.874510,0.992157" ColorMultiplier="0.204000" Direction="-0.851308,0.505872,0.139173"/>
+        </ToDInfoArray>
+        <EditorCategories value="LightGroup:PortraitsUnitsProtoss"/>
+    </CLight>
+
+    <CRequirement id="Centurion"/>
+    
+    <CValidatorUnitType id="Centurion@Is" parent="IsUnit_Default" unit="Centurion"/>
+    <CValidatorUnitType id="Centurion@Target" parent="TargetIsUnit_Default" unit="Centurion"/>
+    <CValidatorUnitType id="Centurion@Not" parent="NotUnit_Default" unit="Centurion"/>
+    <CValidatorUnitType id="Centurion@NotTarget" parent="TargetNotUnit_Default" unit="Centurion"/>
+    
+    <CDataCollectionUnit id="Centurion" parent="UnitGround">
+        <DataRecord Entry="Button,Centurion"/>
+        <DataRecord Entry="Unit,Centurion"/>
+        <DataRecord Entry="Actor,Centurion"/>
+        <DataRecord Entry="Model,Centurion"/>
+        <DataRecord Entry="Model,Centurion@Death"/>
+        <DataRecord Entry="Model,Centurion@Placement"/>
+        <DataRecord Entry="Model,Centurion@WarpIn"/>
+        <DataRecord Entry="Model,Centurion@Portrait"/>
+        <DataRecord Entry="Light,Centurion@Portrait"/>
+        <DataRecord Entry="Requirement,Centurion"/>
+        <DataRecord Entry="Validator,Centurion@Is"/>
+        <DataRecord Entry="Validator,Centurion@Target"/>
+        <DataRecord Entry="Validator,Centurion@Not"/>
+        <DataRecord Entry="Validator,Centurion@NotTarget"/>
+    </CDataCollectionUnit>
+
+    <!-- =========== Weapons =========== -->
+
+    <CWeaponLegacy id="Centurion_Weapon">
+        <EditorCategories value="Race:Taldarim"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="0.1"/>
+        <Period value="1.2"/>
+        <DamagePoint value="0"/>
+        <DisplayEffect value="Centurion_Weapon@Damage"/>
+        <Effect value="Centurion_Weapon@CP"/>
+        <Options index="Melee" value="1"/>
+        <DisplayAttackCount value="2"/>
+    </CWeaponLegacy>
+
+    <CEffectCreatePersistent id="Centurion_Weapon@CP">
+        <EditorCategories value="Race:Taldarim"/>
+        <PeriodCount value="2"/>
+        <WhichLocation Value="TargetUnit"/>
+        <TimeScaleSource Value="Caster"/>
+        <Flags index="Channeled" value="1"/>
+        <PeriodicEffectArray value="Centurion_Weapon@Damage"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0.28"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="Centurion_Weapon@Damage" parent="DU_WEAP">
+        <EditorCategories value="Race:Taldarim"/>
+        <Amount value="8"/>
+        <Death value="Eviscerate"/>
+        <ValidatorArray value="NotHidden"/>
+    </CEffectDamage>
+
+    <CActorAction id="Centurion_Weapon@Attack" parent="GenericAttack" effectAttack="Centurion_Weapon@Damage">
+        <LaunchAttachQuery Methods="AMFilterWeaponLeft"/>
+        <ShieldFlashType value="Header"/>
+    </CActorAction>
+
+    <CSound id="Centurion_Weapon@AttackImpact" parent="Protoss_AttackImpactMediumSlice"/>
+    <CSound id="Centurion_Weapon@AttackLaunch" parent="Combat">
+        <EditorCategories value="Race:Purifier"/>
+        <AssetArray File="Assets\Sounds\Protoss\Zealot\Zealot_AttackLaunch0.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Zealot\Zealot_AttackLaunch1.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Zealot\Zealot_AttackLaunch2.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Zealot\Zealot_AttackLaunch3.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Zealot\Zealot_AttackLaunch4.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Zealot\Zealot_AttackLaunch5.wav"/>
+        <Volume value="-10.480000,-10.480000"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupePrioritization value="Oldest"/>
+        <Pitch value="-0.890000,1.640000"/>
+        <VariationMinimum value="8"/>
+        <DupeMuteCount value="4"/>
+        <DupeThresholdPoints/>
+        <DupeThresholdPoints Count="4" Volume="-3.000000"/>
+    </CSound>
+
+    <CDataCollectionUnit id="Centurion_Weapon" parent="Weapon_Instant">
+        <DataRecord Entry="Weapon,Centurion_Weapon"/>
+        <DataRecord Entry="Effect,Centurion_Weapon@CP"/>
+        <DataRecord Entry="Effect,Centurion_Weapon@Damage"/>
+        <DataRecord Entry="Actor,Centurion_Weapon@Attack"/>
+        <DataRecord Entry="Sound,Centurion_Weapon@AttackImpact"/>
+        <DataRecord Entry="Sound,Centurion_Weapon@AttackLaunch"/>
+    </CDataCollectionUnit>
+
+    <!-- ========== Abilities ========== -->
+
+    <!-- Dark coil -->
+    <CButton id="Centurion_Darkcoil">
+        <Icon value="Assets\Textures\btn-upgrade-vorazun-shadowstun.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-vorazun-shadowstun.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+
+    <CAbilAugment id="Centurion_Darkcoil">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Centurion_Darkcoil"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <AbilCmd value="attack,Execute"/>
+        <Alignment value="Negative"/>
+        <Cost>
+            <Cooldown TimeUse="10"/>
+        </Cost>
+        <Effect value="Centurion_Darkcoil@Search"/>
+        <AutoCastValidatorArray value="Centurion_Darkcoil@NotStunnedAndSlowed"/>
+        <AutoCastValidatorArray value="Centurion_Darkcoil@Range"/>
+        <AutoCastValidatorArray value="Centurion_ShadowCharge@NotCharging"/>
+        <AutoCastFilters value="Ground,Visible;Player,Ally,Neutral,Structure,Missile,Stasis,Dead,Hidden,Invulnerable,Unstoppable"/>
+    </CAbilAugment>
+    
+    <CEffectEnumArea id="Centurion_Darkcoil@Search">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <SearchFilters value="Ground;Player,Ally,Structure,Missile,Stasis,Dead,Hidden,Invulnerable,Unstoppable"/>
+        <AreaArray Radius="1.5" Effect="Centurion_Darkcoil@Switch"/>
+    </CEffectEnumArea>
+    <CEffectSwitch id="Centurion_Darkcoil@Switch">
+        <EditorCategories value="Race:Protoss"/>
+        <CaseArray Validator="TargetMassiveOrHeroicOrUnstoppable" Effect="Centurion_Darkcoil@StunTarget"/>
+        <CaseDefault value="Centurion_Darkcoil@SlowTarget"/>
+    </CEffectSwitch>
+    <CEffectApplyBehavior id="Centurion_Darkcoil@SlowTarget">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="Centurion_Darkcoil@StunTarget">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    
+    <CBehaviorBuff id="Centurion_Darkcoil@StunTarget">
+        <Alignment value="Negative"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="2.5"/>
+        <Modification>
+            <StateFlags index="Stun" value="1"/>
+        </Modification>
+        <InfoIcon value="Assets\Textures\btn-ability-terran-ultrasonicpulse.dds"/>
+        <BehaviorCategories index="Stun" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Centurion_Darkcoil@SlowTarget">
+        <Alignment value="Negative"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="2.5"/>
+        <Modification MoveSpeedMultiplier="0.5" AttackSpeedMultiplier="0.5"/>
+        <InfoIcon value="Assets\Textures\btn-ability-terran-ultrasonicpulse.dds"/>
+    </CBehaviorBuff>
+    
+    <CActorModel id="Centurion_Darkcoil@ImpactModel" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.Centurion_Darkcoil@Search.Start; At Caster" Send="Create"/>
+    </CActorModel>
+    <CActorModel id="Centurion_Darkcoil@ImpactModel_Slow" parent="ModelAnimationStyleContinuous">
+        <AutoScaleFactor value="2.000000"/>
+        <Host Subject="_Selectable"/>
+        <Terms value="Cap 1"/>
+        <On Terms="Behavior.Centurion_Darkcoil@SlowTarget.On" Send="Create"/>
+        <On Terms="Behavior.Centurion_Darkcoil@SlowTarget.Off" Send="Destroy"/>
+    </CActorModel>
+    <CActorModel id="Centurion_Darkcoil@ImpactModel_Stun" parent="ModelAnimationStyleContinuous">
+        <EditorCategories value=""/>
+        <On Terms="Behavior.Centurion_Darkcoil@StunTarget.On" Send="Create"/>
+        <On Terms="Behavior.Centurion_Darkcoil@StunTarget.Off" Send="Destroy"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachOverhead"/>
+        <Inherits index="Visibility" value="1"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModel>
+    <CActorSound id="Centurion_Darkcoil@LaunchSound" parent="SoundOneShot">
+        <On Terms="Effect.Centurion_Darkcoil@Search.Start; At Caster" Send="Create"/>
+        <Layers>
+            <Sound value="Darkcoil_Launch2"/>
+            <PitchSource value="Sound"/>
+            <PlayDelaySource value="Sound"/>
+            <VolumeSource value="Sound"/>
+            <Chance value="100"/>
+            <Pitch value="0.000000,0.000000"/>
+            <PlayDelay value="0,0"/>
+            <Volume value="0.000000,0.000000"/>
+        </Layers>
+        <Layers>
+            <Sound value="Darkcoil_Launch3"/>
+            <PitchSource value="Sound"/>
+            <PlayDelaySource value="Sound"/>
+            <VolumeSource value="Sound"/>
+            <Chance value="100"/>
+            <Pitch value="0.000000,0.000000"/>
+            <PlayDelay value="0,0"/>
+            <Volume value="0.000000,0.000000"/>
+        </Layers>
+    </CActorSound>
+
+    <CModel id="Centurion_Darkcoil@ImpactModel_Stun" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Neutral\Stun_Void\Stun_Void.m3"/>
+        <ScaleMax value="1.500000,1.500000,1.500000"/>
+        <ScaleMin value="1.500000,1.500000,1.500000"/>
+    </CModel>
+    <CModel id="Centurion_Darkcoil@ImpactModel_Slow" parent="BuffFX">
+        <Model value="Assets\Effects\Terran\PsiDisruptorImpact\PsiDisruptorImpact.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <SelectionRadius value="0.400000"/>
+        <ShadowRadius value="0.400000"/>
+    </CModel>
+    <CModel id="Centurion_Darkcoil@ImpactModel" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\Zealot_Nerazim_PhaseChargeStun_Impact\Zealot_Nerazim_PhaseChargeStun_Impact.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="1.500000,1.500000,1.500000"/>
+        <ScaleMin value="1.500000,1.500000,1.500000"/>
+    </CModel>
+
+    <CSound id="Centurion_Darkcoil@LaunchSound" parent="Spell">
+        <AssetArray>
+            <File value="Assets\Sounds\SpiritPlasmaA_10.wav"/>
+            <Offset value="60000,60000"/>
+            <Volume value="4.000000,4.000000"/>
+            <FacialGroup value=""/>
+        </AssetArray>
+        <AssetArray File="Assets\Sounds\SpiritPlasmaA_11.wav" Offset="65000,65000" FacialGroup=""/>
+        <AssetArray>
+            <File value="Assets\Sounds\SpiritPlasmaA_12.wav"/>
+            <Offset value="60000,60000"/>
+            <Volume value="2.000000,2.000000"/>
+            <FacialGroup value=""/>
+        </AssetArray>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="2"/>
+        <DupeThresholdPoints/>
+        <DupeThresholdPoints Count="3" Volume="-3.000000"/>
+        <DupePrioritization value="Oldest"/>
+        <OffsetFadeIn Volume="-96.000000"/>
+        <OffsetFadeIn Time="50"/>
+        <Pitch value="-6.000000,-5.000000"/>
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+    
+    <CValidatorCombine id="Centurion_Darkcoil@NotStunnedAndSlowed">
+        <CombineArray value="Centurion_Darkcoil@NotStunned"/>
+        <CombineArray value="Centurion_Darkcoil@NotSlowed"/>
+        <Type value="And"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="Centurion_Darkcoil@NotStunned">
+        <Compare value="LT"/>
+        <Value value="1"/>
+        <Behavior value="Centurion_Darkcoil@StunTarget"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="Centurion_Darkcoil@NotSlowed">
+        <Compare value="LT"/>
+        <Value value="1"/>
+        <Behavior value="Centurion_Darkcoil@SlowTarget"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareOrderTargetRange id="Centurion_Darkcoil@Range">
+        <WhichUnit Value="Caster"/>
+        <OtherUnit Value="Target"/>
+        <Compare value="LT"/>
+        <AbilLink value="attack"/>
+        <Value value="0.1"/>
+    </CValidatorUnitCompareOrderTargetRange>
+
+    <!-- Shadow Charging -->
+    <CButton id="Centurion_ShadowCharge">
+        <Icon value="Assets\Textures\BTN-Ability-Protoss-ShadowCharge.dds"/>
+        <AlertIcon value="Assets\Textures\BTN-Ability-Protoss-ShadowCharge.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+
+    <CAbilAugment id="Centurion_ShadowCharge">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Centurion_ShadowCharge"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <AbilCmd value="attack,Execute"/>
+        <Cost>
+            <Cooldown Link="Charge" Location="Unit" TimeUse="10"/>
+        </Cost>
+        <Effect value="Centurion_ShadowCharge@AB"/>
+        <AutoCastValidatorArray value="CasterNotHoldingPosition"/>
+        <Alignment value="Negative"/>
+    </CAbilAugment>
+
+    <CEffectApplyBehavior id="Centurion_ShadowCharge@AB">
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="Centurion_ShadowCharge"/>
+        <WhichUnit Value="Caster"/>
+        <ValidatorArray index="0" value="ChargeMinTriggerDistance"/>
+        <ValidatorArray value="Centurion_ShadowCharge@MaxDistance"/>
+    </CEffectApplyBehavior>
+
+    <CBehaviorBuff id="Centurion_ShadowCharge">
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-charge.dds"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="3.5"/>
+        <Alignment value="Positive"/>
+        <BuffFlags index="Channeling" value="1"/>
+        <RemoveValidatorArray value="Centurion_ShadowCharge@MinDistance"/>
+        <Modification MoveSpeedMultiplier="6.8">
+            <StateFlags index="Cloak" value="1"/>
+            <StateFlags index="SuppressCollision" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+
+    <CActorSound id="Centurion_ShadowCharge@LaunchSound" parent="SoundContinuous">
+        <On Terms="Behavior.Centurion_ShadowCharge.Create" Send="Create"/>
+        <On Terms="Behavior.Centurion_ShadowCharge.Destroy" Send="Destroy"/>
+    </CActorSound>
+    <CActorSimple id="Centurion_ShadowCharge@Animation">
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="Behavior.Centurion_ShadowCharge.Create" Send="Create"/>
+        <On Terms="Behavior.Centurion_ShadowCharge.Destroy" Send="Destroy"/>
+        <On Terms="ActorCreation" Target="_Selectable" Send="AnimGroupApply Spell"/>
+        <On Terms="ActorDestruction" Target="_Selectable" Send="AnimGroupRemove Spell"/>
+    </CActorSimple>
+
+    <CSound id="Centurion_ShadowCharge@LaunchSound" parent="Combat">
+        <Pitch value="-0.890000,0.840000"/>
+        <Volume value="-7.960000,-7.960000"/>
+        <AssetArray File="Assets\Sounds\Protoss\Zealot\Zealot_Charge0.wav"/>
+        <SustainFade index="1" Time="300"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CSound>
+
+    <CValidatorUnitCompareOrderTargetRange id="Centurion_ShadowCharge@MinDistance">
+        <Compare value="GT"/>
+        <Value value="0.1"/>
+        <AbilLink value="attack"/>
+        <ResultFailed value="TargetIsTooClose"/>
+    </CValidatorUnitCompareOrderTargetRange>
+    <CValidatorLocationCompareRange id="Centurion_ShadowCharge@MaxDistance">
+        <WhichLocation Value="SourceUnit"/>
+        <Value Value="TargetUnit"/>
+        <Compare value="LT"/>
+        <Range value="4"/>
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <Pathing value="1"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorUnitCompareBehaviorCount id="Centurion_ShadowCharge@NotCharging">
+        <Compare value="LT"/>
+        <Value value="1"/>
+        <Behavior value="Centurion_ShadowCharge"/>
+    </CValidatorUnitCompareBehaviorCount>
+
+</Catalog>

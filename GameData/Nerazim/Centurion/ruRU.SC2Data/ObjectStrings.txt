@@ -1,0 +1,16 @@
+Actor/Name/Centurion=Centurion
+Model/Name/Centurion=Centurion
+Model/Name/Centurion@Death=Death
+Model/Name/Centurion@Placement=Placement
+Model/Name/Centurion@WarpIn=WarpIn
+Model/Name/Centurion@Portrait=Portrait
+Sound/Name/Centurion@Death=Death
+Sound/Name/Centurion@DeathVoice=Death Voice
+Sound/Name/Centurion@Attack=Attack
+Sound/Name/Centurion@Help=Help
+Sound/Name/Centurion@Pissed=Pissed
+Sound/Name/Centurion@Yes=Yes
+Sound/Name/Centurion@What=What
+Sound/Name/Centurion@Ready=Ready
+Light/Name/Centurion@Portrait=Portrait
+Requirement/Name/Centurion=Requirement
