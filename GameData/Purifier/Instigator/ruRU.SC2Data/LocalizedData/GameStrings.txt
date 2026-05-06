@@ -1,0 +1,6 @@
+﻿\\\ Instigator
+Weapon/Name/InstigatorWeapon=Нейтронные расщепители
+Button/Name/InstigatorBlinkMultiple=Скачок
+Button/Tooltip/InstigatorBlinkMultiple=Телепортирует сталкера на небольшое расстояние. Каждые <d ref="Abil,InstigatorBlinkMultiple,Cost[0].Charge.TimeUse"/> сек. можно накопить один заряд способности. Максимум 3 заряда.
+Unit/Name/Instigator=Велит
+Button/Tooltip/Instigator=Чистильщики<n/>Шагающий робот поддержки с дальней атакой. Может накапливать несколько зарядов способности «Скачок».<n/><n/><c val="ffff8a">Атакует наземные и воздушные цели.</c>

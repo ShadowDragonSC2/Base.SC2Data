@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>    
+
+<!-- Requires: Unit:Generic_Protoss_Unit_Ground[protoss.xml] -->
+
+<!--Units-->
+        <CUnit id="Instigator" parent="Generic_Protoss_Unit_Ground">
+        <Name value="Unit/Name/Instigator"/>
+        <Description value="Button/Tooltip/Instigator"/>
+        <SubgroupPriority value="17"/>
+        <DeathRevealRadius value="3"/>
+        <Race value="Prot"/>
+        <Mob value="Multiplayer"/>
+        <LifeStart value="80"/>
+        <LifeMax value="80"/>
+        <LifeArmor value="1"/>
+        <LifeArmorName value="Unit/LifeArmorName/ProtossArmor"/>
+        <ShieldsStart value="80"/>
+        <ShieldsMax value="80"/>
+        <ShieldRegenRate value="2"/>
+        <ShieldArmorName value="Unit/ShieldArmorName/ProtossPlasmaShields"/>
+        <Speed value="2.9531"/>
+        <Acceleration value="1000"/>
+        <LateralAcceleration value="46"/>
+        <StationaryTurningRate value="999.8437"/>
+        <TurningRate value="999.8437"/>
+        <Food value="-2"/>
+        <AttackTargetPriority value="20"/>
+        <DamageDealtXP value="1"/>
+        <DamageTakenXP value="1"/>
+        <KillXP value="35"/>
+        <Radius value="0.625"/>
+        <SeparationRadius value="0.625"/>
+        <InnerRadius value="0.5"/>
+        <CargoSize value="2"/>
+        <ScoreMake value="175"/>
+        <ScoreKill value="175"/>
+        <ScoreResult value="BuildOrder"/>
+        <SubgroupPriority value="11"/>
+        <FlagArray index="PreventDestroy" value="1"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="ArmySelect" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <Collide index="Small" value="1"/>
+        <Sight value="10"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="move"/>
+        <AbilArray Link="attack"/>
+        <AbilArray Link="Warpable"/>
+        <AbilArray Link="ProgressRally"/>
+        <AbilArray Link="InstigatorBlinkMultiple"/>
+        <CardLayouts>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+            <LayoutButtons Face="Rally" Type="AbilCmd" AbilCmd="ProgressRally,Rally1" Row="2" Column="4"/>
+            <LayoutButtons Face="InstigatorBlinkMultiple" Type="AbilCmd" AbilCmd="InstigatorBlinkMultiple,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Mechanical" value="1"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
+        <GlossaryCategory value="Unit/Category/ProtossUnits"/>
+        <HotkeyCategory value="Unit/Category/ProtossUnits"/>
+        <GlossaryPriority value="30"/>
+        <CostCategory value="Army"/>
+        <CostResource index="Minerals" value="125"/>
+        <CostResource index="Vespene" value="50"/>
+        <GlossaryStrongArray index="0" value="Reaper"/>
+        <GlossaryStrongArray index="1" value="Mutalisk"/>
+        <GlossaryStrongArray index="2" value="VoidRay"/>
+        <GlossaryWeakArray index="0" value="Marauder"/>
+        <GlossaryWeakArray index="1" value="Zergling"/>
+        <GlossaryWeakArray index="2" value="Immortal"/>
+        <MinimapRadius value="0.625"/>
+        <WeaponArray Link="InstigatorWeapon"/>
+        <Fidget>
+            <ChanceArray index="Anim" value="5"/>
+            <ChanceArray index="Idle" value="90"/>
+            <ChanceArray index="Turn" value="5"/>
+        </Fidget>
+        <ShieldRegenDelay value="10"/>
+        <RepairTime value="42"/>
+    </CUnit>
+
+    <CActorMissile id="InstigatorAttackMissile" parent="GenericAttackMissile" unitName="InstigatorWeapon"/>
+
+<!--Actors-->
+
+    <CActorUnit id="Instigator" parent="GenericUnitBase" unitName="Instigator">
+        <ModelFlags index="OutlineEmitter" value="1"/>
+        <DeathArray index="Normal" ModelLink="InstigatorDeath" SoundLink=""/>
+        <BuildModel value="InstigatorWarpIn"/>
+        <PortraitModel value="InstigatorPortrait"/>
+        <WalkAnimMoveSpeed value="3.1328"/>
+        <PlacementModel value="InstigatorPlacement"/>
+        <PlacementSound value="Protoss_BuildingPlacementSmall"/>
+        <On Terms="Behavior.Hallucination.On" Send="Create HallucinationBirthSoundMedium"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit IsHallucination" Send="DeathCustomize Hallucination"/>
+        <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
+        <On Terms="WeaponStart.*.AttackStart; WeaponTargetElevation GE 20.000000" Send="AnimBracketStart Attack Attack,Superior"/>
+        <On Terms="WeaponStart.*.AttackStart; WeaponTargetElevation LE -20.000000" Send="AnimBracketStart Attack Attack,Inferior"/>
+        <On Terms="WeaponStart.*.AttackStart" Send="AnimBracketStart Attack Attack"/>
+        <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack"/>
+        <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Stalker_Land"/>
+        <Macros value="TerrainSquibAnimations"/>
+        <DeathCustoms ModelLink="HallucinationDeath" SoundLink="Sentry_HallucinationDeathMedium" Name="Hallucination"/>
+        <BarOffset value="70"/>
+        <UnitIcon value="Assets\Textures\BTN-Unit-Protoss-Stalker-Purifier.dds"/>
+        <HeroIcon value="Assets\Textures\BTN-Unit-Protoss-Stalker-Purifier.dds"/>
+        <WireframeShield>
+            <Image value="Assets\Textures\Wireframe-Protoss-Stalker-Purifier-Shield01.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-Stalker-Purifier-Shield02.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-Stalker-Purifier-Shield03.dds"/>
+        </WireframeShield>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Protoss-Stalker-Purifier.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Protoss-Stalker-Purifier.dds"/>
+        </Wireframe>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
+        <TerrainSquibs>
+            <MovementDistance value="0.150000,0.150000"/>
+            <IdlePeriod value="0.100000,0.250000"/>
+            <RangeUp value="0.600000"/>
+            <RangeDown value="1.000000"/>
+            <AttachQuery Methods="AMFilterCenter"/>
+            <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleLarge"/>
+        </TerrainSquibs>
+        <SoundArray index="Ready" value="Instigator@Ready"/>
+        <SoundArray index="Help" value="Instigator@Help"/>
+        <SoundArray index="What" value="Instigator@What"/>
+        <SoundArray index="Yes" value="Instigator@Yes"/>
+        <SoundArray index="Attack" value="Instigator@Attack"/>
+        <SoundArray index="Pissed" value="Instigator@Pissed"/>
+        <AbilSoundArray AbilCmd="InstigatorBlinkMultiple,Execute" Sound="Instigator@BlinkMultipleVO"/>
+        <Aliases value="_UnitMedium"/>
+    </CActorUnit>
+
+    <CActorAction id="InstigatorAttack" parent="GenericAttack" effectImpact="InstigatorWeaponU" effectLaunch="InstigatorWeapon">
+        <LaunchAssets Sound="Instigator_AttackLaunch"/>
+        <ImpactMap index="None" Sound="Instigator_AttackImpact"/>
+        <ImpactMap index="Flesh" ModelReaction="BloodTargetImpact"/>
+        <ImpactModel value="GenericAttackImpactModel"/>
+        <AcquisitionYawHalfArc value="7.500000"/>
+        <AcquisitionPitchHalfArc value="15.000000"/>
+        <AccuracyHalfArc value="10.000000"/>
+    </CActorAction>
+
+    <CActorModel id="InstigatorBlinkMultipleOriginModel" parent="ModelAnimationStyleOneShot">
+        <InheritType value="OneShot"/>
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <On Terms="Effect.InstigatorBlinkMultiple.Start; At Source" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOriginStationary"/>
+    </CActorModel>
+
+    <CActorModel id="InstigatorBlinkMultipleStopModel" parent="ModelAnimationStyleOneShot">
+        <InheritType value="OneShot"/>
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <On Terms="Effect.InstigatorBlinkMultiple.Stop; At Source" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOrigin"/>
+    </CActorModel>
+
+
+    <CActorSound id="Instigator_Blink">
+        <On Terms="Effect.InstigatorBlinkMultiple.Stop; At Source" Send="Create"/>
+    </CActorSound>
+
+<!--Models-->
+
+    <CModel id="InstigatorWeapon" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\StalkerMissile\StalkerMissile.m3"/>
+        <ScaleMax value="0.700000,0.700000,0.700000"/>
+        <ScaleMin value="0.700000,0.700000,0.700000"/>
+        <EditorCategories value="Race:Protoss"/>
+        <SelectionRadius value="0.714000"/>
+        <ShadowRadius value="0.714000"/>
+    </CModel>
+
+    <CModel id="InstigatorAttackImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Protoss\StalkerMissileImpact\StalkerMissileImpact.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+
+    <CModel id="Instigator" parent="Unit" Race="Protoss">
+        <Model value="Assets\Units\Protoss\Stalker_Purifier\Stalker_Purifier.m3"/>
+        <RequiredAnims value="Assets\Units\Protoss\Stalker_SwarmAnims\Stalker_SwarmAnims.m3a"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.690000,0.690000,0.690000"/>
+        <ScaleMin value="0.690000,0.690000,0.690000"/>
+        <SelectionRadius value="1.087000"/>
+        <Tipability value="0.750000"/>
+        <TipabilityWidth value="0.800000"/>
+        <TipabilityLength value="0.800000"/>
+        <SquibTypeDefault value="Metal"/>
+        <Radius value="0.850000"/>
+        <TechPurchaseCamera value="Star2CameraHigh10"/>
+        <UnitGlossaryCamera value="Star2CameraHigh10"/>
+        <PlanetPanelCamera value="Star2CameraHigh10"/>
+        <ShadowRadius value="1.087000"/>
+    </CModel>
+
+    <CModel id="InstigatorDeath" parent="UnitDeath" Race="Protoss">
+        <Model value="Assets\Units\Protoss\Stalker_Purifier_Death\Stalker_Purifier_Death.m3"/>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Uni_DeathFXincidentallFire"/>
+            <Type value="Sound"/>
+            <Time value="0.250000"/>
+            <Payload value="Uni_DeathFXincidentallFire"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Uni_DeathFXincidentallFire"/>
+            <Type value="Sound"/>
+            <Time value="0.250000"/>
+            <Payload value="Uni_DeathFXincidentallFire"/>
+        </Events>
+        <Events>
+            <Anim value="Death,02"/>
+            <Name value="Uni_DeathFXincidentallFire"/>
+            <Type value="Sound"/>
+            <Time value="0.250000"/>
+            <Payload value="Uni_DeathFXincidentallFire"/>
+        </Events>
+        <Events>
+            <Anim value="Death,03"/>
+            <Name value="Uni_DeathFXincidentallFire"/>
+            <Type value="Sound"/>
+            <Time value="0.250000"/>
+            <Payload value="Uni_DeathFXincidentallFire"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Stalker_Explode_Legs_Start"/>
+            <Type value="Sound"/>
+            <Time value="0.193000"/>
+            <Payload value="Stalker_Explode_Legs_Start"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Stalker_Explode_Legs_Impact"/>
+            <Type value="Sound"/>
+            <Time value="0.692000"/>
+            <Payload value="Stalker_Explode_Legs_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Stalker_Explode_Var"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Stalker_Explode_Var"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Stalker_Explode_Var"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Stalker_Explode_Var"/>
+        </Events>
+        <Events>
+            <Anim value="Death,03"/>
+            <Name value="Stalker_Explode_Fall_Start"/>
+            <Type value="Sound"/>
+            <Payload value="Stalker_Explode_Fall_Start"/>
+        </Events>
+        <Events>
+            <Anim value="Death,03"/>
+            <Name value="Stalker_Explode_Fall_Body"/>
+            <Type value="Sound"/>
+            <Time value="0.206000"/>
+            <Payload value="Stalker_Explode_Fall_Body"/>
+        </Events>
+        <Events>
+            <Anim value="Death,03"/>
+            <Name value="Stalker_Explode_Fall_Impact"/>
+            <Type value="Sound"/>
+            <Time value="0.602000"/>
+            <Payload value="Stalker_Explode_Fall_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Death,03"/>
+            <Name value="Stalker_Explode_Var"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Stalker_Explode_Var"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Stalker_Explode"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Stalker_Explode"/>
+        </Events>
+        <Events>
+            <Anim value="Death,02"/>
+            <Name value="Stalker_Explode"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Stalker_Explode"/>
+        </Events>
+        <Occlusion value="Show"/>
+        <LowQualityModel value="ProtossMediumUnitDeathLow"/>
+    </CModel>
+    <CModel id="InstigatorPlacement" parent="Placement" Race="Protoss">
+        <Model value="Assets\Units\Protoss\StalkerPlacement\StalkerPlacement.m3"/>
+        <Radius value="-1.000000"/>
+        <Lighting value="Stalker"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.690000,0.690000,0.690000"/>
+        <ScaleMin value="0.690000,0.690000,0.690000"/>
+        <SelectionRadius value="0.941600"/>
+        <ShadowRadius value="0.941600"/>
+    </CModel>
+
+    <CModel id="InstigatorWarpIn" parent="OneShotSpellFX">
+        <Model value="Assets\Units\Protoss\StalkerWarpIn\StalkerWarpIn.m3"/>
+        <ScaleMax value="0.690000,0.690000,0.690000"/>
+        <ScaleMin value="0.690000,0.690000,0.690000"/>
+        <EditorCategories value="Race:Protoss"/>
+        <LowQualityModel value="ProtossUnitBirth"/>
+        <SelectionRadius value="0.724600"/>
+        <ShadowRadius value="0.724600"/>
+    </CModel>
+
+    <CModel id="InstigatorPortrait" parent="Portrait" Race="Protoss">
+        <Model value="Assets\Portraits\Protoss\Stalker_Purifier_Portrait\Stalker_Purifier_Portrait.m3"/>
+        <Lighting value="PortraitPurifierStalker"/>
+        <Image value="Assets\Textures\purifierstalkerportrait_static.dds"/>
+    </CModel>
+
+    <CModel id="InstigatorBlinkMultipleOriginModel" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\Stalker_Purifier_BlinkOut\Stalker_Purifier_BlinkOut.m3"/>
+        <ScaleMax value="0.690000,0.690000,0.690000"/>
+        <ScaleMin value="0.690000,0.690000,0.690000"/>
+        <EditorCategories value="Race:Protoss"/>
+        <SelectionRadius value="0.833200"/>
+        <ShadowRadius value="0.833200"/>
+    </CModel>
+
+    <CModel id="InstigatorBlinkMultipleStopModel" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\Stalker_Purifier_BlinkIn\Stalker_Purifier_BlinkIn.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+
+<!--Buttons-->
+
+    <CButton id="InstigatorBlinkMultiple">
+        <Icon value="Assets\Textures\BTN-Ability-Protoss-BlinkCharges.dds"/>
+        <AlertIcon value="Assets\Textures\BTN-Ability-Protoss-BlinkCharges.dds"/>
+    </CButton>
+
+    <CButton id="InstigatorPassive">
+        <Icon value="Assets\Textures\btn-unit-protoss-stalker-purifier.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-protoss-stalker-purifier.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <HotkeyAlias value="DragoonPassive"/>
+    </CButton>
+
+<!--Abilities-->
+
+    <CAbilEffectTarget id="InstigatorBlinkMultiple">
+        <AbilSetId value="Blnk"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="InstigatorBlinkMultiple"/>
+        <Flags index="BestUnit" value="0"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Charge>
+                <CountMax value="3"/>
+                <CountStart value="3"/>
+                <CountUse value="1"/>
+                <TimeStart value="4"/>
+                <TimeUse value="4"/>
+            </Charge>
+            <Cooldown Link="Blink"/>
+        </Cost>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="InstigatorBlinkMultiple">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
+
+<!--Weapons-->
+
+    <CWeaponLegacy id="InstigatorWeapon">
+        <EditorCategories value="Race:Protoss"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
+        <DisplayEffect value="ParticleDisruptorsU"/>
+        <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="6"/>
+        <Period value="1.44"/>
+    </CWeaponLegacy>
+
+    <CUnit id="InstigatorWeapon" parent="MISSILE">
+        <Race value="Prot"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
+    </CUnit>
+
+
+<!--Effects-->
+
+    <CEffectLaunchMissile id="InstigatorWeapon">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactEffect value="InstigatorWeaponU"/>
+        <ValidatorArray index="0" value="InstigatorTargetFilters"/>
+        <ValidatorArray value=""/>
+        <AmmoUnit value="InstigatorWeapon"/>
+    </CEffectLaunchMissile>
+
+    <CEffectDamage id="InstigatorWeaponU" parent="DU_WEAP_MISSILE">
+        <EditorCategories value="Race:Protoss"/>
+        <Amount value="10"/>
+        <AttributeBonus index="Armored" value="4"/>
+    </CEffectDamage>
+
+    <CEffectTeleport id="InstigatorBlinkMultiple">
+        <EditorCategories value="Race:Protoss"/>
+        <ClearQueuedOrders value="0"/>
+        <PlacementAround Value="CasterUnit"/>
+        <PlacementRange value="8"/>
+        <Range value="8"/>
+        <WhichUnit Value="Caster"/>
+        <TargetLocation Value="TargetPoint"/>
+        <TeleportFlags index="TestCliff" value="1"/>
+    </CEffectTeleport>
+
+
+<!--Movement types-->
+
+    <CMoverMissile id="InstigatorWeapon" parent="MissileDefault"/>
+
+<!--Sounds-->
+   <CSound id="Instigator_Blink" parent="Spell">
+        <Volume value="-6.120000,-6.120000"/>
+        <AssetArray File="Assets\Sounds\Protoss\Stalker\Stalker_Blink0.wav"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CSound>
+
+    <CSound id="Instigator_AttackImpact">
+        <Volume value="-12.040000,-12.040000"/>
+        <AssetArray File="Assets\Sounds\Protoss\Stalker\Stalker_AttackImpact0.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Stalker\Stalker_AttackImpact1.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Stalker\Stalker_AttackImpact2.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Stalker\Stalker_AttackImpact3.wav"/>
+        <EditorCategories value="Race:Protoss"/>
+        <DupeDestroyCount value="3"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="3"/>
+        <DupePrioritization value="Oldest"/>
+    </CSound>
+
+    <CSound id="Instigator_AttackLaunch">
+        <Pitch value="-0.890000,0.840000"/>
+        <Volume value="-9.160000,-9.160000"/>
+        <AssetArray File="Assets\Sounds\Protoss\Stalker\Stalker_AttackLaunch0.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Stalker\Stalker_AttackLaunch1.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Stalker\Stalker_AttackLaunch2.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Stalker\Stalker_AttackLaunch3.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Stalker\Stalker_AttackLaunch4.wav"/>
+        <EditorCategories value="Race:Protoss"/>
+        <DupeDestroyCount value="3"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="3"/>
+        <DupePrioritization value="Oldest"/>
+    </CSound>
+
+</Catalog>
