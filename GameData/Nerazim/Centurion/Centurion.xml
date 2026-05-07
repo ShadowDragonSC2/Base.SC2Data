@@ -466,6 +466,30 @@
         <Value value="0.1"/>
     </CValidatorUnitCompareOrderTargetRange>
 
+    <CDataCollectionUnit id="Centurion_Darkcoil" parent="AbilityBase">
+        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Nerazim,ObjectType:Spell"/>
+        <DataRecord Entry="Button,Centurion_Darkcoil"/>
+        <DataRecord Entry="Abil,Centurion_Darkcoil"/>
+        <DataRecord Entry="Behavior,Centurion_Darkcoil@StunTarget"/>
+        <DataRecord Entry="Behavior,Centurion_Darkcoil@SlowTarget"/>
+        <DataRecord Entry="Effect,Centurion_Darkcoil@Search"/>
+        <DataRecord Entry="Effect,Centurion_Darkcoil@Switch"/>
+        <DataRecord Entry="Effect,Centurion_Darkcoil@SlowTarget"/>
+        <DataRecord Entry="Effect,Centurion_Darkcoil@StunTarget"/>
+        <DataRecord Entry="Actor,Centurion_Darkcoil@ImpactModel"/>
+        <DataRecord Entry="Actor,Centurion_Darkcoil@ImpactModel_Slow"/>
+        <DataRecord Entry="Actor,Centurion_Darkcoil@ImpactModel_Stun"/>
+        <DataRecord Entry="Actor,Centurion_Darkcoil@LaunchSound"/>
+        <DataRecord Entry="Model,Centurion_Darkcoil@ImpactModel_Stun"/>
+        <DataRecord Entry="Model,Centurion_Darkcoil@ImpactModel_Slow"/>
+        <DataRecord Entry="Model,Centurion_Darkcoil@ImpactModel"/>
+        <DataRecord Entry="Sound,Centurion_Darkcoil@LaunchSound"/>
+        <DataRecord Entry="Validator,Centurion_Darkcoil@NotStunnedAndSlowed"/>
+        <DataRecord Entry="Validator,Centurion_Darkcoil@NotStunned"/>
+        <DataRecord Entry="Validator,Centurion_Darkcoil@NotSlowed"/>
+        <DataRecord Entry="Validator,Centurion_Darkcoil@Range"/>
+    </CDataCollectionUnit>
+
     <!-- Shadow Charging -->
     <CButton id="Centurion_ShadowCharge">
         <Icon value="Assets\Textures\BTN-Ability-Protoss-ShadowCharge.dds"/>
@@ -548,4 +572,17 @@
         <Behavior value="Centurion_ShadowCharge"/>
     </CValidatorUnitCompareBehaviorCount>
 
+    <CDataCollectionUnit id="Centurion_ShadowCharge" parent="AbilityBase">
+        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Nerazim,ObjectType:Spell"/>
+        <DataRecord Entry="Button,Centurion_ShadowCharge"/>
+        <DataRecord Entry="Abil,Centurion_ShadowCharge"/>
+        <DataRecord Entry="Behavior,Centurion_ShadowCharge"/>
+        <DataRecord Entry="Effect,Centurion_ShadowCharge@AB"/>
+        <DataRecord Entry="Actor,Centurion_ShadowCharge@LaunchSound"/>
+        <DataRecord Entry="Actor,Centurion_ShadowCharge@Animation"/>
+        <DataRecord Entry="Sound,Centurion_ShadowCharge@LaunchSound"/>
+        <DataRecord Entry="Validator,Centurion_ShadowCharge@MinDistance"/>
+        <DataRecord Entry="Validator,Centurion_ShadowCharge@MaxDistance"/>
+        <DataRecord Entry="Validator,Centurion_ShadowCharge@NotCharging"/>
+    </CDataCollectionUnit>
 </Catalog>
