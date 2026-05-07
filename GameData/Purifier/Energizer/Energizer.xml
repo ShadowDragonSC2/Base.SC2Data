@@ -285,7 +285,7 @@
         <Model value="Assets\Effects\Protoss\Sentry_Purifier_PhasingMode_Radius\Sentry_Purifier_PhasingMode_Radius.m3"/>
     </CModel>
 
-    <!-- =============== -->
+    <!-- =============== Weapons ============ -->
 
     <CRequirement id="Energizer@Use"/>
     <CRequirement id="Energizer_Phasing@Use"/>
