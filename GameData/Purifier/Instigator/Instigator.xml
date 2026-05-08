@@ -387,8 +387,8 @@
     <CMoverMissile id="InstigatorWeapon" parent="MissileDefault"/>
 
     <CActorAction id="InstigatorWeapon@Attack" parent="GenericAttack" effectImpact="InstigatorWeapon@U" effectLaunch="InstigatorWeapon">
-        <LaunchAssets Sound="Instigator@AttackLaunch"/>
-        <ImpactMap index="None" Sound="Instigator@AttackImpact"/>
+        <LaunchAssets Sound="InstigatorWeapon@AttackLaunch"/>
+        <ImpactMap index="None" Sound="InstigatorWeapon@AttackImpact"/>
         <ImpactMap index="Flesh" ModelReaction="BloodTargetImpact"/>
         <ImpactModel value="GenericAttackImpactModel"/>
         <AcquisitionYawHalfArc value="7.500000"/>
