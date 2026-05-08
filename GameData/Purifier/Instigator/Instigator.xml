@@ -4,7 +4,7 @@
 <!-- Requires: Unit:Generic_Protoss_Unit_Ground[protoss.xml] -->
 
 <!--Unit-->
-    <CUnit id="Instigator" parent="Generic_Protoss_Unit_Ground" Race="Puri">
+    <CUnit id="Instigator" parent="Generic_Protoss_Unit_Ground" race="Puri">
         <SubgroupPriority value="17"/>
         <DeathRevealRadius value="3"/>
         <LifeStart value="80"/>
