@@ -1,0 +1,5 @@
+\\\ Instigator
+Unit/EditorSuffix/Instigator=- Purifier
+Unit/EditorPrefix/Instigator=Stalker -
+Abil/EditorPrefix/Instigator_BlinkMultiple=Stalker -
+Abil/Name/Instigator_BlinkMultiple=Blink Multiple
