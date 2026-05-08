@@ -4,7 +4,7 @@
         <Icon value="Assets\Textures\btn-unit-protoss-zealot-purifier.dds"/>
     </CButton>
     
-    <CUnit id="Sentinel" parent="Generic_Protoss_Unit_Ground" Race="Puri">
+    <CUnit id="Sentinel" parent="Generic_Protoss_Unit_Ground" race="Puri">
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
         <WeaponArray Link="Sentinel_Weapon"/>
         <AbilArray Link="Sentinel_Charge"/>
