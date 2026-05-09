@@ -53,7 +53,7 @@
         <AbilArray Link="KhalaiArbiterRecall"/>
         <AbilArray Link="KhalaiArbiterStasisField"/>
         <AbilArray Link="ProgressRally"/>
-        <BehaviorArray Link="KhalaiArbiterCloakFieldAura"/>
+        <BehaviorArray Link="KhalaiArbiterCloakField@Aura"/>
         <WeaponArray Link="KhalaiArbiterWeapon"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
