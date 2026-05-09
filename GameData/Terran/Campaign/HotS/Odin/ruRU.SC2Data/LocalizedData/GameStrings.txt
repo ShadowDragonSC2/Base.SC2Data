@@ -10,5 +10,4 @@ Weapon/Name/Odin@Ground=Орудие T800
 Weapon/Name/Odin@AA==Ракетные установки «Адское пламя»
 Mover/Name/Odin@@AAWeapon=Odin AA
 Abil/Name/OdinBarrage=Barrage
-Odin=«Один»
 UnitKillRank/Odin=прототип
