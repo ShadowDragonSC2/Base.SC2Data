@@ -1,4 +1,17 @@
 Button/Name/Arbiter=Вызвать арбитра
 Button/Tooltip/Arbiter=Судно поддержки. Может использовать способность <d stringref="Abil,StasisField,Name"/>, а также генерирует <d stringref="Button,CloakingField,Name"/>.
-DataCollection/Name/Arbiter=Арбитр
-Unit/Name/Arbiter=Арбитр
+Unit/Name/KhalaiArbiter=Арбитр
+Unit/Name/KhalaiArbiterWeaponMissile=Фотонный бластер
+
+Weapon/Name/KhalaiArbiterWeapon=Фотонный бластер
+
+Button/Name/ArbiterMPRecall=Массовая телепортация
+Button/Tooltip/ArbiterMPRecall=Телепортирует всех союзников в выбранную область к арбитру.
+
+Button/Name/ArbiterMPStasisField=Стазис поле
+Button/Tooltip/ArbiterMPStasisField=Заключает вражеских юнитов в стазис, делая их неуязвимыми и неспособными действовать на 60 секунд.
+
+Button/Name/KhalaiArbiterCloakFieldButton=Поле невидимости
+Button/Tooltip/KhalaiArbiterCloakFieldButton=Пассивно скрывает всех ближайших союзников.
+
+Button/Name/KhalaiAr
