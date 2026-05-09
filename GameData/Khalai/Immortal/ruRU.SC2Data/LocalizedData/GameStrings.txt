@@ -1,0 +1,7 @@
+Unit/Name/ImmortalAiur=Бессмертный
+Weapon/Name/PhaseDisruptors=Фазовые расщипители
+
+Button/Name/ImmortalOverload=Барьер
+Button/Tooltip/ImmortalOverload=Активирует щит, поглощающий до 200 ед. урона в течение <d ref="Behavior,ImmortalOverload,Duration"/> сек.
+
+Button/Name/HaveBarrier=Улучшенный барьер
