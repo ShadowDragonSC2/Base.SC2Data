@@ -547,7 +547,7 @@
 
     <CAttachMethodPattern id="Odin@AAAMPattern">
         <Keyword value="Weapon"/>
-        <Driver value="OdinAALaunchMissile"/>
+        <Driver value="Odin@AALM"/>
     </CAttachMethodPattern>
 
     <!--Model(s)-->
