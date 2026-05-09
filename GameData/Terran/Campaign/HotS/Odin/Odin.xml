@@ -1,0 +1,824 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Requires: Unit:Generic_Unit_Ground[base.xml] -->
+<!-- Requires: Unit:TerranVehicleWeapons[terran.xml] from @1 to @3 -->
+<!-- Requires: Unit:TerranVehicleArmors[terran.xml] from @1 to @3 -->
+
+<Catalog>   
+<!-- =========== Unit =========== -->
+    <!--Unit Button(s)--> 
+
+    <CButton id="Odin">
+        <Icon value="Assets\Textures\btn-unit-terran-tychusodin.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-terran-tychusodin.dds"/>
+        <EditorCategories value="Race:Terran"/>
+    </CButton>
+    <!--Unit(s)-->
+
+    <CUnit id="Odin" parent="Generic_Unit_Ground" race="Terr">
+        <Facing value="135"/>
+        <Race value="Terr"/>
+        <Mob value="Campaign"/>
+        <LifeStart value="2500"/>
+        <LifeMax value="2500"/>
+        <LifeArmor value="3"/>
+        <LifeArmorName value="Unit/LifeArmorName/TerranVehiclePlating"/>
+        <Speed value="1.875"/>
+        <LateralAcceleration value="46.0625"/>
+        <StationaryTurningRate value="359.2968"/>
+        <TurningRate value="359.2968"/>
+        <CostResource index="Minerals" value="500"/>
+        <CostResource index="Vespene" value="200"/>
+        <RepairTime value="180"/>
+        <KillXP value="160"/>
+        <Radius value="1.5"/>
+        <SeparationRadius value="0.8"/>
+        <InnerRadius value="0.8125"/>
+        <ScoreMake value="1000"/>
+        <ScoreKill value="2000"/>
+        <SubgroupPriority value="49"/>
+        <MinimapRadius value="1.25"/>
+        <EditorCategories value="ObjectType:Hero,ObjectFamily:Campaign"/>
+        <Attributes index="Heroic" value="1"/>
+        <FlagArray index="TurnBeforeMove" value="1"/>
+        <FlagArray index="Hero" value="0"/>
+        <FlagArray index="Unstoppable" value="1"/>
+        <BehaviorArray index="0" removed="1"/>
+        <Collide index="ForceField" value="0"/>
+        <Sight value="13"/>
+        <AbilArray Link="Odin@Barrage"/>
+        <CardLayouts index = "0">
+            <LayoutButtons Face="Odin@Barrage" Type="AbilCmd" AbilCmd="Odin@Barrage,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="OdinBarrage,Cancel" Row="2" Column="4"/>
+        </CardLayouts>
+        <EnergyRegenRate value="0.5625"/>
+        <EnergyMax value="250"/>
+        <EnergyStart value="250"/>
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Mechanical" value="1"/>
+        <Attributes index="Massive" value="1"/>
+        <TacticalAIChannel value="AIChannelOdin"/>
+        <GlossaryCategory value="Unit/Category/TerranUnits"/>
+        <HotkeyCategory value="Unit/Category/TerranStory"/>
+        <GlossaryPriority value="360"/>
+        <WeaponArray Link="Odin@AA"/>
+        <WeaponArray Link="Odin@Ground"/>
+        <Fidget>
+            <ChanceArray index="Anim" value="10"/>
+            <ChanceArray index="Idle" value="90"/>
+        </Fidget>
+        <PushPriority value="11"/>
+        <GlossaryWeakArray value="Banshee"/>
+        <GlossaryWeakArray value="Battlecruiser"/>
+    </CUnit>
+    <!--Actor(s)-->
+
+    <CActorUnit id="Odin" parent="GenericUnitBase" unitName="Odin">
+        <On Terms="AbilMorph.*.Finish; MorphTo Odin" Send="Create"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom Odin" Send="Destroy"/>
+        <On Terms="WeaponStart.Odin@Ground.AttackStart" Send="AnimBracketStart Attack Attack"/>
+        <On Terms="WeaponStop.Odin@Ground.AttackStop" Send="AnimBracketStop Attack"/>
+        <On Terms="Abil.Odin@Barrage.SourcePrepStart" Send="AnimPlay Morph Morph 0 -1.000000 -1.000000 1.500000 AsTimeScale"/>
+        <On Terms="Abil.Odin@Barrage.SourceChannelStart" Send="AnimPlay LoopA Spell"/>
+        <On Terms="Abil.Odin@Barrage.SourceChannelStart" Send="AnimClear Morph"/>
+        <On Terms="AnimDone; AnimName LoopA" Send="AnimPlay LoopB Spell"/>
+        <On Terms="AnimDone; AnimName LoopB" Send="AnimPlay LoopC Spell"/>
+        <On Terms="AnimDone; AnimName LoopC" Send="AnimPlay LoopD Spell"/>
+        <On Terms="Abil.Odin@Barrage.SourceChannelStop" Send="AnimClear LoopA"/>
+        <On Terms="Abil.Odin@Barrage.SourceChannelStop" Send="AnimClear LoopB"/>
+        <On Terms="Abil.Odin@Barrage.SourceChannelStop" Send="AnimClear LoopC"/>
+        <On Terms="Abil.Odin@Barrage.SourceChannelStop" Send="AnimClear LoopD"/>
+        <On Terms="Abil.Odin@Barrage.SourceChannelStop" Send="AnimPlay MorphEnd Morph,End 0 -1.000000 -1.000000 1.833000 AsTimeScale"/>
+        <On Terms="ModelEvent; ModelEventName OdinVictoryLeftSound" Send="Create OdinLeftCheerSquib"/>
+        <On Terms="ModelEvent; ModelEventName OdinVictoryLeftSound" Send="Create OdinLeftCheerSquibB"/>
+        <On Terms="ModelEvent; ModelEventName OdinVictoryRightSound" Send="Create OdinRightCheerSquib"/>
+        <On Terms="ModelEvent; ModelEventName OdinVictoryRightSound" Send="Create OdinRightCheerSquibB"/>
+        <StandAnimTurnTime value="5"/>
+        <WalkAnimMoveSpeed value="1.75"/>
+        <BarWidth value="220"/>
+        <BarOffset value="200"/>
+        <NameOffset value="40"/>
+        <UnitIcon value="Assets\Textures\btn-unit-terran-tychusodin.dds"/>
+        <HeroIcon value="Assets\Textures\btn-unit-terran-tychusodin.dds"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-terran-thor.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-terran-thor.dds"/>
+        </Wireframe>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel0.dds"/>
+        <UnitKillRank Text="UnitKillRank/Odin"/>
+        <Aliases value="_UnitHuge"/>
+        <DeathArray index="Normal" ModelLink="Odin@Death"/>
+        <PortraitModel value="Odin@Portrait"/>
+        <SoundArray index="Birth" value="Odin@Birth"/>
+        <SoundArray index="Ready" value="Odin@Ready"/>
+        <SoundArray index="Help" value="Odin@Help"/>
+        <SoundArray index="What" value="Odin@What"/>
+        <SoundArray index="Yes" value="Odin@Yes"/>
+        <SoundArray index="Attack" value="Odin@Attack"/>
+        <SoundArray index="Pissed" value="Odin@Pissed"/>
+        <SoundArray index="Movement" value="Odin@Movement"/>
+        <SoundArray index="Turning" value="Odin@Turning"/>
+        <SoundArray index="Board" value="Odin@Board"/>
+    </CActorUnit>
+
+    <!--Model(s)-->
+
+    <CModel id="Odin" parent="Unit" Race="Terran">
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.900000,0.900000,0.900000"/>
+        <ScaleMin value="0.900000,0.900000,0.900000"/>
+        <SelectionRadius value="1.333000"/>
+        <AttachProps Id="Ref_Weapon 05">
+            <Keys index="CustomA" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Weapon 06">
+            <Keys index="CustomA" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Weapon 07">
+            <Keys index="CustomB" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Weapon 08">
+            <Keys index="CustomB" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Center">
+            <Keys index="Turret" value="0"/>
+        </AttachProps>
+        <Radius value="1.200000"/>
+        <ShadowRadius value="1.333000"/>
+        <TechPurchaseCamera value="Star2CameraHigher16"/>
+        <UnitGlossaryCamera value="Star2CameraHigher16"/>
+        <PlanetPanelCamera value="Star2CameraHigher16"/>
+        <Events>
+            <Anim value="Stand,Victory"/>
+            <Name value="BarrageMorph"/>
+            <Type value="Sound"/>
+            <Time value="0.600000"/>
+            <Payload value="Odin@BarrageMorph"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Victory"/>
+            <Name value="BarrageUnMorph"/>
+            <Type value="Sound"/>
+            <Time value="5.380000"/>
+            <Payload value="Odin@BarrageUnMorph"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Victory"/>
+            <Name value="OdinVictoryRightSound"/>
+            <Type value="Sound"/>
+            <Time value="1.440000"/>
+            <Payload value="Odin@GroundAttackLaunch"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Victory"/>
+            <Name value="OdinVictoryLeftSound"/>
+            <Type value="Sound"/>
+            <Time value="1.700000"/>
+            <Payload value="Odin@GroundAttackLaunch"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Victory"/>
+            <Name value="OdinVictoryRightSound"/>
+            <Type value="Sound"/>
+            <Time value="2.370000"/>
+            <Payload value="Odin@GroundAttackLaunch"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Victory"/>
+            <Name value="OdinVictoryLeftSound"/>
+            <Type value="Sound"/>
+            <Time value="2.500000"/>
+            <Payload value="Odin@GroundAttackLaunch"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Victory"/>
+            <Name value="OdinVictoryRightSound"/>
+            <Type value="Sound"/>
+            <Time value="3.310000"/>
+            <Payload value="Odin@GroundAttackLaunch"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Victory"/>
+            <Name value="OdinVictoryLeftSound"/>
+            <Type value="Sound"/>
+            <Time value="3.580000"/>
+            <Payload value="Odin@GroundAttackLaunch"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Victory"/>
+            <Name value="OdinVictoryLeftSound"/>
+            <Type value="Sound"/>
+            <Time value="4.500000"/>
+            <Payload value="Odin@GroundAttackLaunch"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Victory"/>
+            <Name value="OdinVictoryBarrage"/>
+            <Type value="Sound"/>
+            <Time value="1.800000"/>
+            <Payload value="Odin@BarrageSound"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Victory"/>
+            <Name value="OdinVictorySound"/>
+            <Type value="Sound"/>
+            <Time value="2.140000"/>
+            <Payload value="Odin@BarrageSound"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Victory"/>
+            <Name value="OdinVictorySound"/>
+            <Type value="Sound"/>
+            <Time value="2.480000"/>
+            <Payload value="Odin@BarrageSound"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Victory"/>
+            <Name value="OdinVictorySound"/>
+            <Type value="Sound"/>
+            <Time value="2.710000"/>
+            <Payload value="Odin@BarrageSound"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Victory"/>
+            <Name value="OdinVictorySound"/>
+            <Type value="Sound"/>
+            <Time value="3.450000"/>
+            <Payload value="Odin@BarrageSound"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Victory"/>
+            <Name value="OdinVictorySound"/>
+            <Type value="Sound"/>
+            <Time value="3.790000"/>
+            <Payload value="Odin@BarrageSound"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Victory"/>
+            <Name value="OdinVictorySound"/>
+            <Type value="Sound"/>
+            <Time value="4.140000"/>
+            <Payload value="Odin@BarrageSound"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Victory"/>
+            <Name value="OdinVictorySound"/>
+            <Type value="Sound"/>
+            <Time value="4.370000"/>
+            <Payload value="Odin@BarrageSound"/>
+        </Events>
+    </CModel>
+
+    <CModel id="Odin@Portrait" parent="FXAPortrait" Race="Terran">
+        <Model value="Assets\Portraits\Terran\OdinPortrait\OdinPortrait.m3"/>
+        <FacialController value="LocalizedData\Facial\ThorPortrait.fxa"/>
+        <Image value="Assets\Textures\odinportrait_static.dds"/>
+        <Lighting value="OdinPortrait"/>
+    </CModel>
+
+    <CModel id="Odin@Death" parent="UnitDeath">
+        <Model value="Assets\Units\Terran\OdinDeath\OdinDeath.m3"/>
+        <LowQualityModel value="TerranLargeUnitDeathLow"/>
+        <EditorCategories value="Race:Terran"/>
+        <Occlusion value="Show"/>
+    </CModel>
+
+    <!--Sound(s)-->
+
+    <CSound id="Odin@Attack" parent="TerranAck">
+        <Flags index="Download" value="0"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_Attack00.ogg" FacialAnim="Thor_Attack00"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_Attack01.ogg" FacialAnim="Thor_Attack01"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_Attack02.ogg" FacialAnim="Thor_Attack02"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_Attack03.ogg" FacialAnim="Thor_Attack03"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_Attack04.ogg" FacialAnim="Thor_Attack04"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_Attack05.ogg" FacialAnim="Thor_Attack05"/>
+    </CSound>
+    <CSound id="Odin@Help" parent="Alert">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_Help00.ogg" FacialGroup=""/>
+        <Mode value="3DWorld"/>
+    </CSound>
+    <CSound id="Odin@Pissed" parent="TerranAck">
+        <Flags index="Download" value="0"/>
+        <Select value="Sequential"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_Pissed00.ogg" FacialAnim="Thor_Pissed00"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_Pissed02.ogg" FacialAnim="Thor_Pissed02"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_Pissed03.ogg" FacialAnim="Thor_Pissed03"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_Pissed04.ogg" FacialAnim="Thor_Pissed04"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_Pissed05.ogg" FacialAnim="Thor_Pissed05"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_Pissed06.ogg" FacialAnim="Thor_Pissed06"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_Pissed07.ogg" FacialAnim="Thor_Pissed07"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_Pissed08.ogg" FacialAnim="Thor_Pissed08"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_Pissed09.ogg" FacialAnim="Thor_Pissed09"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_Pissed10.ogg" FacialAnim="Thor_Pissed10"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_Pissed11.ogg" FacialAnim="Thor_Pissed11"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_Pissed12.ogg" FacialAnim="Thor_Pissed12"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_Pissed13.ogg" FacialAnim="Thor_Pissed13"/>
+    </CSound>
+
+    <CSound id="Odin@Ready" parent="Ready">
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_Ready00.ogg" FacialAnim="Thor_Ready00"/>
+        <EditorCategories value="Race:Terran"/>
+    </CSound>
+
+    <CSound id="Odin@What" parent="TerranAck">
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_What00.ogg" FacialAnim="Thor_What00"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_What01.ogg" FacialAnim="Thor_What01"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_What02.ogg" FacialAnim="Thor_What02"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_What03.ogg" FacialAnim="Thor_What03"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_What04.ogg" FacialAnim="Thor_What04"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_What05.ogg" FacialAnim="Thor_What05"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_What06.ogg" FacialAnim="Thor_What06"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_What07.ogg" FacialAnim="Thor_What07"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_What08.ogg" FacialAnim="Thor_What08"/>
+    </CSound>
+
+    <CSound id="Odin@Yes" parent="TerranAck">
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_Yes00.ogg" FacialAnim="Thor_Yes00"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_Yes02.ogg" FacialAnim="Thor_Yes02"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_Yes03.ogg" FacialAnim="Thor_Yes03"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_Yes04.ogg" FacialAnim="Thor_Yes04"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_Yes05.ogg" FacialAnim="Thor_Yes05"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_Yes06.ogg" FacialAnim="Thor_Yes06"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_Yes07.ogg" FacialAnim="Thor_Yes07"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_Yes08.ogg" FacialAnim="Thor_Yes08"/>
+        <AssetArray File="LocalizedData\Sounds\TerranUnitVO\Thor\Thor_Yes09.ogg" FacialAnim="Thor_Yes09"/>
+    </CSound>
+
+    <CSound id="Odin@Movement" parent="Movement">
+        <AssetArray File="Assets\Sounds\Terran\Thor\Thor_Movement0.wav"/>
+        <EditorCategories value="Race:Terran"/>
+        <Volume value="-6.000000,-6.000000"/>
+        <Pitch value="-1.000000,1.000000"/>
+    </CSound>
+
+    <!--Light(s)-->
+
+    <CLight id="Odin@Portrait" parent="default">
+        <ToDInfoArray index="0" AmbientColor="0.000000,0.133333,0.000000">
+            <Param index="HDRExposure" value="1.200000"/>
+            <Param index="HDRBloomThreshold" value="0.200000"/>
+            <Param index="CreepSpecularExp" value="40.000000"/>
+            <Param index="CreepHDRSpecMultiplier" value="5.900000"/>
+            <DirectionalLight index="Key">
+                <Color value="0.960784,0.866667,0.584314"/>
+                <ColorMultiplier value="1.841000"/>
+                <SpecularColor value="0.956863,0.984314,0.513726"/>
+                <SpecColorMultiplier value="1.995000"/>
+                <Direction value="0.011523,0.241647,-0.970296"/>
+            </DirectionalLight>
+            <DirectionalLight index="Fill" Color="0.721569,0.486275,0.654902" ColorMultiplier="0.407000" Direction="-0.224542,0.691890,0.686199"/>
+            <DirectionalLight index="Back" Color="0.501961,0.501961,1.000000" ColorMultiplier="0.569000" Direction="0.826494,-0.438530,0.352985"/>
+        </ToDInfoArray>
+        <EditorCategories value="LightGroup:PortraitsUnitsTerran"/>
+    </CLight>
+
+    <!--Data Collection-->
+
+    <CDataCollectionUnit id="Odin" parent="UnitGround">
+        <DataRecord Entry="Button,Odin"/>
+        <DataRecord Entry="Actor,Odin"/>
+        <DataRecord Entry="Unit,Odin"/>
+        <DataRecord Entry="Model,Odin"/>
+        <DataRecord Entry="Model,Odin@Death"/>
+        <DataRecord Entry="Model,Odin@Portrait"/>
+        <DataRecord Entry="Sound,Odin@Explode"/>
+        <DataRecord Entry="Sound,Odin@Attack"/>
+        <DataRecord Entry="Sound,Odin@Help"/>
+        <DataRecord Entry="Sound,Odin@Pissed"/>
+        <DataRecord Entry="Sound,Odin@Yes"/>
+        <DataRecord Entry="Sound,Odin@What"/>
+        <DataRecord Entry="Sound,Odin@Ready"/>
+        <DataRecord Entry="Sound,Odin@Movement"/>
+        <DataRecord Entry="Light,Odin@Portrait"/>
+        <TechInfoUpgradeUsed value="TerranVehicleArmors@1"/>
+        <TechInfoUpgradeUsed value="TerranVehicleArmors@1"/>
+        <TechInfoUpgradeUsed value="TerranVehicleArmors@3"/>
+    </CDataCollectionUnit>
+
+<!-- =========== Weapons =========== -->
+
+    <!--Weapon(s)-->
+
+    <CWeaponLegacy id="Odin@Ground">
+        <EditorCategories value="Race:Terran"/>
+        <Icon value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel0.dds"/>
+        <DisplayEffect value="Odin@Damage"/>
+        <DisplayAttackCount value="2"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AcquirePrioritization value="ByAngle"/>
+        <Range value="7"/>
+        <Period value="1.23"/>
+        <DamagePoint value="0.831"/>
+        <Backswing value="0.25"/>
+        <Effect value="Odin@CP"/>
+        <LegacyOptions index="KeepChanneling" value="1"/>
+        <AcquireFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+
+    <CWeaponLegacy id="Odin@AA">
+        <EditorCategories value="Race:Terran"/>
+        <Icon value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel0.dds"/>
+        <DisplayEffect value="OdinAADamage"/>
+        <DisplayAttackCount value="4"/>
+        <TargetFilters value="Air,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AcquirePrioritization value="ByAngle"/>
+        <Range value="10"/>
+        <Arc value="5.625"/>
+        <Period value="2.5"/>
+        <Effect value="Odin@AACP"/>
+        <LegacyOptions index="KeepChanneling" value="1"/>
+        <AcquireFilters value="Air,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+
+    <!--Effect(s)-->
+
+    <CEffectCreatePersistent id="Odin@CP">
+        <EditorCategories value="Race:Terran"/>
+        <PeriodCount value="2"/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <Flags index="Channeled" value="1"/>
+        <PeriodicEffectArray value="Odin@DamageLeft"/>
+        <PeriodicEffectArray value="Odin@DamageRight"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0"/>
+    </CEffectCreatePersistent>
+
+    <CEffectDamage id="Odin@Damage" parent="DU_WEAP">
+        <EditorCategories value="Race:Terran"/>
+        <Kind value="Ranged"/>
+        <Amount value="40"/>
+        <AttributeBonus index="Structure" value="60"/>
+        <Death value="Blast"/>
+        <ExcludeArray Value="Target"/>
+    </CEffectDamage>
+
+    <CEffectDamage id="Odin@DamageLeft" parent="DU_WEAP">
+        <EditorCategories value="Race:Terran"/>
+        <Kind value="Ranged"/>
+        <Amount value="40"/>
+        <AttributeBonus index="Structure" value="60"/>
+        <Death value="Blast"/>
+        <ExcludeArray Value="Target"/>
+        <AreaArray Radius="1" Fraction="1"/>
+        <SearchFilters value="Ground;Self,Player,Ally,Neutral"/>
+    </CEffectDamage>
+
+    <CEffectDamage id="Odin@DamageRight" parent="DU_WEAP">
+        <EditorCategories value="Race:Terran"/>
+        <Kind value="Ranged"/>
+        <Amount value="40"/>
+        <AttributeBonus index="Structure" value="60"/>
+        <Death value="Blast"/>
+        <ExcludeArray Value="Target"/>
+        <AreaArray Radius="1" Fraction="1"/>
+        <SearchFilters value="Ground;Self,Player,Ally,Neutral"/>
+    </CEffectDamage>
+
+    <CEffectCreatePersistent id="Odin@AACP">
+        <EditorCategories value="Race:Terran"/>
+        <PeriodCount value="4"/>
+        <WhichLocation Value="TargetUnit"/>
+        <Flags index="Channeled" value="1"/>
+        <PeriodicEffectArray value="Odin@AALM"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0.2"/>
+        <PeriodicPeriodArray value="0.2"/>
+        <PeriodicPeriodArray value="0.2"/>
+    </CEffectCreatePersistent>
+
+    <CEffectLaunchMissile id="Odin@AALM">
+        <EditorCategories value="Race:Terran"/>
+        <ImpactEffect value="Odin@AADamage"/>
+        <AmmoUnit value="Odin@AAMissile"/>
+    </CEffectLaunchMissile>
+
+    <CEffectDamage id="Odin@AADamage" parent="DU_WEAP_SPLASH">
+        <EditorCategories value="Race:Terran"/>
+        <Kind value="Ranged"/>
+        <Amount value="15"/>
+        <Death value="Blast"/>
+        <SearchFilters value="Air;Self,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <ExcludeArray Value="Target"/>
+    </CEffectDamage>
+
+    <!--Missile(s)-->
+
+     <CUnit id="Odin@AAMissile" parent="MISSILE">
+        <Race value="Terr"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
+    </CUnit>
+
+    <!--Actor(s)-->
+
+    <CActorMissile id="Odin@AAMissile" parent="GenericAttackMissile" unitName="Odin@AAMissile"/>
+
+    <CActorAction id="Odin@LeftAttack" parent="GenericAttack" effectLaunch="Odin@DamageLeft">
+        <LaunchAttachQuery Methods="CustomA"/>
+        <LaunchAssets Model="Odin@GroundAttackLaunch"/>
+        <ImpactMap index="None" Model="Odin@GroundAttackImpact"/>
+        <LaunchAssets Model="Odin@GroundAttackLaunch" Sound="Odin@GroundAttackLaunch"/>
+        <ImpactMap index="None" Model="Odin@GroundAttackImpact" Sound="Odin@GroundAttackImpact"/>
+    </CActorAction>
+
+    <CActorAction id="Odin@RightAttack" parent="GenericAttack" effectLaunch="Odin@DamageRight">
+        <LaunchAttachQuery Methods="CustomB"/>
+        <LaunchAssets Model="Odin@GroundAttackLaunch"/>
+        <LaunchAssets Model="Odin@GroundAttackLaunch" Sound="Odin@GroundAttackLaunch"/>
+        <ImpactMap index="None" Model="Odin@GroundAttackImpact" Sound="Odin@GroundAttackImpact"/>
+    </CActorAction>
+
+    <CActorAction id="Odin@AAAttack" parent="GenericAttack" effectImpact="Odin@AADamage" effectLaunch="Odin@AALM">
+        <LaunchAttachQuery Methods="Odin@AAAMFilter Odin@AAAMPattern"/>
+        <LaunchAssets Sound="Odin@AAAttackLaunch"/>
+        <ImpactMap index="None" Sound="Odin@AAAttackImpact"/>
+    </CActorAction>
+
+    <!--Attachement Method(s)-->
+
+    <CAttachMethodFilter id="Odin@AAAMFilter">
+        <Logic value="OR"/>
+        <Keys Keyword="Weapon" Index="9"/>
+        <Keys Keyword="Weapon" Index="12"/>
+    </CAttachMethodFilter>
+
+    <CAttachMethodPattern id="Odin@AAAMPattern">
+        <Keyword value="Weapon"/>
+        <Driver value="OdinAALaunchMissile"/>
+    </CAttachMethodPattern>
+
+    <!--Model(s)-->
+
+    <CModel id="Odin@GroundAttackLaunch" parent="LaunchFX">
+        <Model value="Assets\Effects\Terran\ThorArmMissileLaunch\ThorArmMissileLaunch.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+
+    <CModel id="Odin@GroundAttackImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Terran\SiegeTankWeaponImpact\SiegeTankWeaponImpact.m3"/>
+        <ScaleMin value="0.900000,0.900000,0.900000"/>
+        <ScaleMax value="0.900000,0.900000,0.900000"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+
+    <CModel id="Odin@AAMissile" parent="MissileFX">
+        <Model value="Assets\Effects\Terran\ThorShoulderMissile\ThorShoulderMissile.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+
+    <CModel id="Odin@AAAttackLaunch" parent="LaunchFX">
+        <Model value="Assets\Effects\Terran\ThorShoulderMissileLaunch\ThorShoulderMissileLaunch.m3"/>
+        <ScaleMax value="1.400000,1.400000,1.400000"/>
+        <ScaleMin value="1.400000,1.400000,1.400000"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+
+    <CModel id="Odin@AAAttackImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Terran\OdinShoulderMissileImpact\OdinShoulderMissileImpact.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <ScaleMax value="0.500000,0.500000,0.500000"/>
+        <ScaleMin value="0.500000,0.500000,0.500000"/>
+    </CModel>
+
+    <!--Sound(s)-->
+
+    <CSound id="Odin@GroundAttackLaunch" parent="Combat">
+        <AssetArray File="Assets\Sounds\Terran\Thor\Thor_AttackLaunch0.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\Thor\Thor_AttackLaunch1.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\Thor\Thor_AttackLaunch2.wav"/>
+        <DupeDestroyCount value="4"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <EditorCategories value="Race:Terran"/>
+        <DupeMaximumMethod value="Replace"/>
+    </CSound>
+
+    <CSound id="Odin@GroundAttackImpact" parent="Terran_ExplosionSmall">
+        <Volume value="-6.000000,-6.000000"/>
+        <DupeMaximumMethod value="Prevent"/>
+        <DupeMuteCount value="10"/>
+    </CSound>
+
+    <CSound id="Odin@AAAttackLaunch" parent="Combat">
+        <DupeDestroyCount value="4"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <AssetArray File="Assets\Sounds\Terran\Thor\Thor_AttackLaunch0.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\Thor\Thor_AttackLaunch1.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\Thor\Thor_AttackLaunch2.wav"/>
+        <EditorCategories value="Race:Terran"/>
+        <DupeMaximumMethod value="Replace"/>
+    </CSound>
+
+    <CSound id="Odin@AAAttackImpact" parent="Combat">
+        <AssetArray File="Assets\Sounds\Terran\Thor\Thor_AttackImpact0.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\Thor\Thor_AttackImpact1.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\Thor\Thor_AttackImpact2.wav"/>
+        <DupeDestroyCount value="4"/>
+        <Pitch value="-2.000000,2.000000"/>
+        <Volume value="-7.960000,-7.960000"/>
+        <EditorCategories value="Race:Terran"/>
+    </CSound>
+
+    <!--Mover(s)-->
+
+    <CMoverMissile id="Odin@AAMissile">
+        <MotionPhases>
+            <Driver value="Guidance"/>
+            <Acceleration value="3200"/>
+            <MaxSpeed value="20"/>
+            <Outro value="-1"/>
+            <YawPitchRoll value="719.2968"/>
+        </MotionPhases>
+        <MotionPhases YawPitchRoll="MAX"/>
+    </CMoverMissile>
+
+    <!--Data Collection-->
+    <CDataCollectionUnit id="Odin_Ground" parent="Weapon_Instant">
+        <DataRecord Entry="Weapon,Odin@Ground"/>
+        <DataRecord Entry="Effect,Odin@CP"/>
+        <DataRecord Entry="Effect,Odin@Damage"/>
+        <DataRecord Entry="Effect,Odin@DamageLeft"/>
+        <DataRecord Entry="Effect,Odin@DamageRight"/>
+        <DataRecord Entry="Actor,Odin@RightAttack"/>
+        <DataRecord Entry="Actor,Odin@LeftAttack"/>
+        <DataRecord Entry="Sound,Odin@GroundAttackLaunch"/>
+        <DataRecord Entry="Sound,Odin@GroundAttackImpact"/>
+        <DataRecord Entry="Model,Odin@GroundAttackLaunch"/>
+        <DataRecord Entry="Model,Odin@GroundAttackImpact"/>
+        <TechInfoUpgradeUsed value="TerranVehicleWeapons@1"/>
+        <TechInfoUpgradeUsed value="TerranVehicleWeapons@2"/>
+        <TechInfoUpgradeUsed value="TerranVehicleWeapons@3"/>
+    </CDataCollectionUnit>
+
+    <CDataCollectionUnit id="Odin_AntiAir" parent="Weapon_Instant">
+        <DataRecord Entry="Weapon,Odin@AA"/>
+        <DataRecord Entry="Effect,Odin@AACP"/>
+        <DataRecord Entry="Effect,Odin@AALM"/>
+        <DataRecord Entry="Effect,Odin@AADamage"/>
+        <DataRecord Entry="Actor,Odin@AAAttack"/>
+        <DataRecord Entry="Sound,Odin@AAAttackLaunch"/>
+        <DataRecord Entry="Sound,Odin@AAAttackImpact"/>
+        <DataRecord Entry="Model,Odin@AAAttackLaunch"/>
+        <DataRecord Entry="Model,Odin@AAAttackImpact"/>
+        <DataRecord Entry="AttachMethod,Odin@AAAMPattern"/>
+        <DataRecord Entry="AttachMethod,Odin@AAAMPattern"/>
+        <DataRecord Entry="Unit,Odin@AAMissile"/>
+        <DataRecord Entry="Actor,Odin@AAMissile"/>
+        <DataRecord Entry="Model,Odin@AAMissile"/>
+        <DataRecord Entry="Mover,Odin@AAMissile"/>
+        <TechInfoUpgradeUsed value="TerranVehicleWeapons@1"/>
+        <TechInfoUpgradeUsed value="TerranVehicleWeapons@2"/>
+        <TechInfoUpgradeUsed value="TerranVehicleWeapons@3"/>
+    </CDataCollectionUnit>
+
+<!-- =========== Abilities =========== -->
+
+    <!--Button(s)-->
+
+    <CButton id="Odin@Barrage">
+        <Icon value="Assets\Textures\BTN-Ability-Terran-BombardmentStrike-color.dds"/>
+        <EditorCategories value="Race:Terran"/>
+    </CButton>
+
+    <!--Ability(ies)-->
+
+    <CAbilEffectTarget id="Odin@Barrage">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Effect index="0" value="Odin@BarragePersistent"/>
+        <Cost>
+            <Vital index="Energy" value="75"/>
+        </Cost>
+        <Range value="11"/>
+        <CastIntroTime value="2"/>
+        <UninterruptibleArray index="Prep" value="1"/>
+        <UninterruptibleArray index="Cast" value="1"/>
+        <UninterruptibleArray index="Channel" value="1"/>
+        <UninterruptibleArray index="Finish" value="1"/>
+        <ValidatedArray index="Channel" value="0"/>
+        <CursorEffect value="Odin@BarrageSearch"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Odin@Barrage"/>
+        <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel"/>
+        <FinishTime value="2"/>
+        <Effect index="0" value="Odin@BarrageCP"/>
+        <CancelableArray index="Cast" value="1"/>
+        <CancelableArray index="Channel" value="1"/>
+        <Alignment value="Negative"/>
+    </CAbilEffectTarget>
+
+    <!--Effect(s)-->
+
+    <CEffectCreatePersistent id="Odin@BarrageCP">
+        <EditorCategories value="Race:Terran"/>
+        <Flags index="Channeled" value="1"/>
+        <PeriodCount value="12"/>
+        <PeriodicEffectArray value="Odin@BarrageSearch"/>
+        <PeriodicPeriodArray value="0.4"/>
+        <ValidatorArray value="OdinRepairing"/>
+        <ValidatorArray value="CliffLevelGE1"/>
+        <RevealRadius value="5"/>
+        <RevealFlags index="Unfog" value="1"/>
+    </CEffectCreatePersistent>
+
+    <CEffectEnumArea id="Odin@BarrageSearch">
+        <EditorCategories value="Race:Terran"/>
+        <ImpactLocation Effect="Odin@BarrageCP"/>
+        <SearchFilters value="Ground;Self,Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="3" Effect="Odin@BarrageDamage"/>
+    </CEffectEnumArea>
+
+    <CEffectDamage id="Odin@BarrageDamage">
+        <EditorCategories value="Race:Terran"/>
+        <Amount value="125"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+    </CEffectDamage>
+
+    <!--Actor(s)-->
+
+    <CActorModel id="Odin@BarrageModel" parent="ModelAnimationStyleOneShot">
+        <HostSiteOps Ops="SOpTargetPoint Odin@BarrageVariance"/>
+        <On Terms="Effect.Odin@BarrageSearch.Impact" Send="Create"/>
+    </CActorModel>
+
+    <CActorSiteOpRandomPointInCircle id="Odin@BarrageVariance">
+        <Radius value="2.000000"/>
+        <Variance value="11.000000"/>
+    </CActorSiteOpRandomPointInCircle>
+
+    <CActorSound id="Odin@BarrageSound" parent="SoundOneShot">
+        <On Terms="Effect.Odin@BarrageSearch.Impact" Send="Create"/>
+    </CActorSound>
+
+    <CActorSound id="Odin@BarrageMorph" parent="SoundOneShot">
+        <On Terms="Abil.Odin@Barrage.SourceCastStart" Send="Create"/>
+    </CActorSound>
+
+    <CActorSound id="Odin@BarrageUnMorph" parent="SoundOneShot">
+        <On Terms="Abil.Odin@Barrage.SourceFinishStart" Send="Create"/>
+    </CActorSound>
+
+    <CActorModel id="Odin@BarrageCursorModel" parent="TerranCursorModel" abil="Odin@Barrage"/>
+
+    <CActorSplat id="Odin@BarrageCursorSplat" parent="TerranCursorSplat" abil="Odin@Barrage"/>
+
+    <CActorRange id="Odin@BarrageRange" parent="RangeAbil" abil="Odin@Barrage"/>
+
+    <!--Model(s)-->
+
+    <CModel id="Odin@BarrageModel" parent="ImpactFX">
+        <Model value="Assets\Effects\Terran\ThorShoulderMissileImpact\ThorShoulderMissileImpact.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+
+    <!--Sound(s)-->
+
+    <CSound id="Odin@BarrageMorph">
+        <DupeDestroyCount value="4"/>
+        <AssetArray File="Assets\Sounds\Terran\Thor\Thor_250mmCannonMorph0.wav"/>
+        <Mode value="3DWorld"/>
+        <EditorCategories value="Race:Terran"/>
+    </CSound>
+
+    <CSound id="Odin@BarrageUnMorph">
+        <DupeDestroyCount value="4"/>
+        <AssetArray File="Assets\Sounds\Terran\Thor\Thor_250mmCannonUnMorph0.wav"/>
+        <Mode value="3DWorld"/>
+        <EditorCategories value="Race:Terran"/>
+    </CSound>
+
+    <CSound id="Odin@BarrageSound" parent="Combat">
+        <DupeDestroyCount value="12"/>
+        <Pitch value="3.160000,5.180000"/>
+        <Volume value="-10.480000,-9.160000"/>
+        <AssetArray File="Assets\Sounds\Terran\Thor\Thor_AttackImpact0.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\Thor\Thor_AttackImpact1.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\Thor\Thor_AttackImpact2.wav"/>
+        <EditorCategories value="Race:Terran"/>
+    </CSound>
+
+    <!--Data Collection-->
+
+    <CDataCollectionUnit id="Odin_Barrage">
+        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Purifier,ObjectType:Spell"/>
+        <DataRecord Entry="Button,Odin@Barrage"/>
+        <DataRecord Entry="Abil,Odin@Barrage"/>
+        <DataRecord Entry="Effect,Odin@BarrageCP"/>
+        <DataRecord Entry="Effect,Odin@BarrageSearch"/>
+        <DataRecord Entry="Effect,Odin@BarrageDamage"/>
+        <DataRecord Entry="Actor,Odin@BarrageModel"/>
+        <DataRecord Entry="Actor,Odin@BarrageVariance"/>
+        <DataRecord Entry="Actor,Odin@BarrageSound"/>
+        <DataRecord Entry="Actor,Odin@BarrageMorph"/>
+        <DataRecord Entry="Actor,Odin@BarrageUnMorph"/>
+        <DataRecord Entry="Actor,Odin@BarrageRange"/>
+        <DataRecord Entry="Actor,Odin@BarrageCursorModel"/>
+        <DataRecord Entry="Actor,Odin@BarrageCursorSplat"/>
+        <DataRecord Entry="Model,Odin@BarrageModel"/>
+        <DataRecord Entry="Sound,Odin@BarrageMorph"/>
+        <DataRecord Entry="Sound,Odin@BarrageUnMorph"/>
+        <DataRecord Entry="Sound,Odin@BarrageSound"/>
+    </CDataCollectionUnit>
+</Catalog>

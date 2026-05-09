@@ -1,0 +1,1 @@
+Button/Hotkey/Odin@Barrage=B
