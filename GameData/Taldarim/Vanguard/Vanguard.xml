@@ -3,7 +3,7 @@
     <!-- Requires: Unit:UnitGround[base.xml] -->
     <!-- Requires: Unit:Generic_Protoss_Unit_Ground[protoss.xml] -->
 
-    <CButton id="Vanguard">
+    <CButton id="Vanguard" parent="UnitButton_OnlyGround">
         <Icon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-immortal.dds"/>
         <AlertIcon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-immortal.dds"/>
     </CButton>
