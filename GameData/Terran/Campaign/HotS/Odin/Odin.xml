@@ -530,39 +530,39 @@
     <CWeaponLegacy id="Odin_AA">
         <EditorCategories value="Race:Terran"/>
         <Icon value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel0.dds"/>
-        <DisplayEffect value="Odin@AADamage"/>
+        <DisplayEffect value="Odin_AA@Damage"/>
         <DisplayAttackCount value="4"/>
         <TargetFilters value="Air,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <AcquirePrioritization value="ByAngle"/>
         <Range value="10"/>
         <Arc value="5.625"/>
         <Period value="2.5"/>
-        <Effect value="Odin@AACP"/>
+        <Effect value="Odin_AA@CP"/>
         <LegacyOptions index="KeepChanneling" value="1"/>
         <AcquireFilters value="Air,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CWeaponLegacy>
 
     <!--Effect(s)-->
 
-    <CEffectCreatePersistent id="Odin@AACP">
+    <CEffectCreatePersistent id="Odin_AA@CP">
         <EditorCategories value="Race:Terran"/>
         <PeriodCount value="4"/>
         <WhichLocation Value="TargetUnit"/>
         <Flags index="Channeled" value="1"/>
-        <PeriodicEffectArray value="Odin@AALM"/>
+        <PeriodicEffectArray value="Odin_AA@LM"/>
         <PeriodicPeriodArray value="0"/>
         <PeriodicPeriodArray value="0.2"/>
         <PeriodicPeriodArray value="0.2"/>
         <PeriodicPeriodArray value="0.2"/>
     </CEffectCreatePersistent>
 
-    <CEffectLaunchMissile id="Odin@AALM">
+    <CEffectLaunchMissile id="Odin_AA@LM">
         <EditorCategories value="Race:Terran"/>
-        <ImpactEffect value="Odin@AADamage"/>
-        <AmmoUnit value="Odin@AAAttackMissile"/>
+        <ImpactEffect value="Odin_AA@Damage"/>
+        <AmmoUnit value="Odin_AA@AttackMissile"/>
     </CEffectLaunchMissile>
 
-    <CEffectDamage id="Odin@AADamage" parent="DU_WEAP_SPLASH">
+    <CEffectDamage id="Odin_AA@Damage" parent="DU_WEAP_SPLASH">
         <EditorCategories value="Race:Terran"/>
         <Kind value="Ranged"/>
         <Amount value="15"/>
@@ -573,36 +573,36 @@
 
     <!--Missile(s)-->
 
-     <CUnit id="Odin@AAAttackMissile" parent="MISSILE">
+     <CUnit id="Odin_AA@AttackMissile" parent="MISSILE">
         <Race value="Terr"/>
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
     </CUnit>
 
     <!--Actor(s)-->
 
-    <CActorMissile id="Odin@AAAttackMissile" parent="GenericAttackMissile" unitName="Odin@AAAttackMissile"/>
+    <CActorMissile id="Odin_AA@AttackMissile" parent="GenericAttackMissile" unitName="Odin_AA@AttackMissile"/>
 
-    <CActorAction id="Odin@AAAttack" parent="GenericAttack" effectImpact="Odin@AADamage" effectLaunch="Odin@AALM">
-        <LaunchAttachQuery Methods="Odin@AAAMFilter Odin@AAAMPattern"/>
-        <LaunchAssets Sound="Odin@AAAttackLaunch"/>
-        <ImpactMap index="None" Sound="Odin@AAAttackImpact"/>
+    <CActorAction id="Odin_AA@Attack" parent="GenericAttack" effectImpact="Odin_AA@Damage" effectLaunch="Odin_AA@LM">
+        <LaunchAttachQuery Methods="Odin_AA@AMFilter Odin_AA@AMPattern"/>
+        <LaunchAssets Sound="Odin_AA@AttackLaunch"/>
+        <ImpactMap index="None" Sound="Odin_AA@AttackImpact"/>
     </CActorAction>
 
     <!--Model(s)-->
 
-    <CModel id="Odin@AAAttackMissile" parent="MissileFX">
+    <CModel id="Odin_AA@AttackMissile" parent="MissileFX">
         <Model value="Assets\Effects\Terran\ThorShoulderMissile\ThorShoulderMissile.m3"/>
         <EditorCategories value="Race:Terran"/>
     </CModel>
 
-    <CModel id="Odin@AAAttackLaunch" parent="LaunchFX">
+    <CModel id="Odin_AA@AttackLaunch" parent="LaunchFX">
         <Model value="Assets\Effects\Terran\ThorShoulderMissileLaunch\ThorShoulderMissileLaunch.m3"/>
         <ScaleMax value="1.400000,1.400000,1.400000"/>
         <ScaleMin value="1.400000,1.400000,1.400000"/>
         <EditorCategories value="Race:Terran"/>
     </CModel>
 
-    <CModel id="Odin@AAAttackImpact" parent="ImpactFX">
+    <CModel id="Odin_AA@AttackImpact" parent="ImpactFX">
         <Model value="Assets\Effects\Terran\OdinShoulderMissileImpact\OdinShoulderMissileImpact.m3"/>
         <EditorCategories value="Race:Terran"/>
         <ScaleMax value="0.500000,0.500000,0.500000"/>
@@ -611,7 +611,7 @@
 
     <!--Sound(s)-->
 
-    <CSound id="Odin@AAAttackLaunch" parent="Combat">
+    <CSound id="Odin_AA@AttackLaunch" parent="Combat">
         <DupeDestroyCount value="4"/>
         <Pitch value="-1.000000,1.000000"/>
         <AssetArray File="Assets\Sounds\Terran\Thor\Thor_AttackLaunch0.wav"/>
@@ -621,7 +621,7 @@
         <DupeMaximumMethod value="Replace"/>
     </CSound>
 
-    <CSound id="Odin@AAAttackImpact" parent="Combat">
+    <CSound id="Odin_AA@AttackImpact" parent="Combat">
         <AssetArray File="Assets\Sounds\Terran\Thor\Thor_AttackImpact0.wav"/>
         <AssetArray File="Assets\Sounds\Terran\Thor\Thor_AttackImpact1.wav"/>
         <AssetArray File="Assets\Sounds\Terran\Thor\Thor_AttackImpact2.wav"/>
@@ -633,7 +633,7 @@
 
     <!--Mover(s)-->
 
-    <CMoverMissile id="Odin@AAAttackMissile">
+    <CMoverMissile id="Odin_AA@AttackMissile">
         <MotionPhases>
             <Driver value="Guidance"/>
             <Acceleration value="3200"/>
@@ -646,35 +646,35 @@
 
     <!--Attachement Method(s)-->
 
-    <CAttachMethodFilter id="Odin@AAAMFilter">
+    <CAttachMethodFilter id="Odin_AA@AMFilter">
         <Logic value="OR"/>
         <Keys Keyword="Weapon" Index="9"/>
         <Keys Keyword="Weapon" Index="12"/>
     </CAttachMethodFilter>
 
-    <CAttachMethodPattern id="Odin@AAAMPattern">
+    <CAttachMethodPattern id="Odin_AA@AMPattern">
         <Keyword value="Weapon"/>
-        <Driver value="Odin@AALM"/>
+        <Driver value="Odin_AA@LM"/>
     </CAttachMethodPattern>
 
     <!--Data Collection-->
 
     <CDataCollectionUnit id="Odin_AA" parent="Weapon_Missile">
         <DataRecord Entry="Weapon,Odin_AA"/>
-        <DataRecord Entry="Effect,Odin@AACP"/>
-        <DataRecord Entry="Effect,Odin@AALM"/>
-        <DataRecord Entry="Effect,Odin@AADamage"/>
-        <DataRecord Entry="Actor,Odin@AAAttack"/>
-        <DataRecord Entry="Sound,Odin@AAAttackLaunch"/>
-        <DataRecord Entry="Sound,Odin@AAAttackImpact"/>
-        <DataRecord Entry="Model,Odin@AAAttackLaunch"/>
-        <DataRecord Entry="Model,Odin@AAAttackImpact"/>
-        <DataRecord Entry="AttachMethod,Odin@AAAMPattern"/>
-        <DataRecord Entry="AttachMethod,Odin@AAAMPattern"/>
-        <DataRecord Entry="Unit,Odin@AAAttackMissile"/>
-        <DataRecord Entry="Actor,Odin@AAAttackMissile"/>
-        <DataRecord Entry="Model,Odin@AAAttackMissile"/>
-        <DataRecord Entry="Mover,Odin@AAAttackMissile"/>
+        <DataRecord Entry="Effect,Odin_AA@CP"/>
+        <DataRecord Entry="Effect,Odin_AA@LM"/>
+        <DataRecord Entry="Effect,Odin_AA@Damage"/>
+        <DataRecord Entry="Actor,Odin_AA@Attack"/>
+        <DataRecord Entry="Sound,Odin_AA@AttackLaunch"/>
+        <DataRecord Entry="Sound,Odin_AA@AttackImpact"/>
+        <DataRecord Entry="Model,Odin_AA@AttackLaunch"/>
+        <DataRecord Entry="Model,Odin_AA@AttackImpact"/>
+        <DataRecord Entry="AttachMethod,Odin_AA@AMPattern"/>
+        <DataRecord Entry="AttachMethod,Odin_AA@AMPattern"/>
+        <DataRecord Entry="Unit,Odin_AA@AttackMissile"/>
+        <DataRecord Entry="Actor,Odin_AA@AttackMissile"/>
+        <DataRecord Entry="Model,Odin_AA@AttackMissile"/>
+        <DataRecord Entry="Mover,Odin_AA@AttackMissile"/>
         <TechInfoUpgradeUsed value="TerranVehicleWeapons@1"/>
         <TechInfoUpgradeUsed value="TerranVehicleWeapons@2"/>
         <TechInfoUpgradeUsed value="TerranVehicleWeapons@3"/>

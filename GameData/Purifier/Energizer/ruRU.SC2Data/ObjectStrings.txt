@@ -1,16 +1,16 @@
-\\\ Energizer
+/// Energizer
 Unit/EditorPrefix/Energizer=Протоссы
 Unit/EditorPrefix/Energizer_Phasing=Протоссы
 Unit/EditorSuffix/Energizer_Phasing=Фазовый режим
 
-\\\ Energizer Actor
+/// Energizer Actor
 Actor/EditorPrefix/Energizer=Протоссы
 Actor/Name/Energizer=Единица
 Actor/EditorPrefix/Energizer_Phasing=Протоссы
 Actor/EditorSuffix/Energizer_Phasing=Фазовый режим
 Actor/Name/Energizer_Phasing=Единица (Фазовый)
 
-\\\ Energizer Model
+/// Energizer Model
 Model/EditorPrefix/Energizer=Протоссы
 Model/Name/Energizer=Единица
 Model/EditorPrefix/Energizer@Death=Протоссы
@@ -22,7 +22,7 @@ Model/Name/Energizer@Portrait=Портрет
 Model/EditorPrefix/Energizer@WarpIn=Протоссы
 Model/Name/Energizer@WarpIn=Варп-вход
 
-\\\ Energizer Weapon
+/// Energizer Weapon
 Weapon/EditorPrefix/Energizer_Weapon=Протоссы
 Weapon/Name/Energizer_Weapon=Фазовый луч
 Actor/EditorPrefix/Energizer_Weapon@Attack=Протоссы
@@ -44,7 +44,7 @@ Sound/Name/Energizer_Weapon@End=Звук конца
 Sound/EditorPrefix/Energizer_Weapon@AttackImpact=Протоссы
 Sound/Name/Energizer_Weapon@AttackImpact=Удар
 
-\\\ Energizer Sounds
+/// Energizer Sounds
 Sound/EditorPrefix/Energizer@Death=Протоссы
 Sound/Name/Energizer@Death=Смерть
 Sound/EditorPrefix/Energizer@DeathVoice=Протоссы
@@ -64,23 +64,23 @@ Sound/Name/Energizer@Help=Помощь
 Sound/EditorPrefix/Energizer@AbilSound=Протоссы
 Sound/Name/Energizer@AbilSound=Звук способности
 
-\\\ Energizer Abilities
+/// Energizer Abilities
 Abil/EditorPrefix/Energizer_PhasingMode=Протоссы
 Abil/Name/Energizer_PhasingMode=Фазовый режим
 Abil/EditorPrefix/Energizer_MobileMode=Протоссы
 Abil/Name/Energizer_MobileMode=Мобильный режим
 
-\\\ Energizer Light
+/// Energizer Light
 Light/EditorPrefix/Energizer@Portrait=Протоссы
 Light/Name/Energizer@Portrait=Портрет
 
-\\\ Energizer Requirement
+/// Energizer Requirement
 Requirement/EditorPrefix/Energizer@Use=Протоссы
 Requirement/Name/Energizer@Use=Использовать
 Requirement/EditorPrefix/Energizer_Phasing@Use=Протоссы
 Requirement/Name/Energizer_Phasing@Use=Использовать
 
-\\\ Energizer Validator
+/// Energizer Validator
 Validator/EditorPrefix/Energizer@Is=Протоссы
 Validator/Name/Energizer@Is=Исполнитель является юнитом
 Validator/EditorPrefix/Energizer@Target=Протоссы

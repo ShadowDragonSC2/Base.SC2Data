@@ -1,18 +1,18 @@
-\\\ Energizer
+/// Energizer
 Unit/EditorPrefix/Energizer=Protoss
 Unit/Name/Energizer=Energizer
 Unit/EditorPrefix/Energizer_Phasing=Protoss
 Unit/EditorSuffix/Energizer_Phasing=Phasing Mode
 Unit/Name/Energizer_Phasing=Energizer (Phasing)
 
-\\\ Energizer Actor
+/// Energizer Actor
 Actor/EditorPrefix/Energizer=Protoss
 Actor/Name/Energizer=Energizer
 Actor/EditorPrefix/Energizer_Phasing=Protoss
 Actor/EditorSuffix/Energizer_Phasing=Phasing Mode
 Actor/Name/Energizer_Phasing=Energizer (Phasing)
 
-\\\ Energizer Model
+/// Energizer Model
 Model/EditorPrefix/Energizer=Protoss
 Model/Name/Energizer=Energizer
 Model/EditorPrefix/Energizer@Death=Protoss
@@ -24,7 +24,7 @@ Model/Name/Energizer@Portrait=Portrait
 Model/EditorPrefix/Energizer@WarpIn=Protoss
 Model/Name/Energizer@WarpIn=Warp In
 
-\\\ Energizer Weapon
+/// Energizer Weapon
 Weapon/EditorPrefix/Energizer_Weapon=Protoss
 Weapon/Name/Energizer_Weapon=Phase Beam
 Actor/EditorPrefix/Energizer_Weapon@Attack=Protoss
@@ -46,7 +46,7 @@ Sound/Name/Energizer_Weapon@End=End Sound
 Sound/EditorPrefix/Energizer_Weapon@AttackImpact=Protoss
 Sound/Name/Energizer_Weapon@AttackImpact=Impact
 
-\\\ Energizer Sounds
+/// Energizer Sounds
 Sound/EditorPrefix/Energizer@Death=Protoss
 Sound/Name/Energizer@Death=Death
 Sound/EditorPrefix/Energizer@DeathVoice=Protoss
@@ -66,23 +66,23 @@ Sound/Name/Energizer@Help=Help
 Sound/EditorPrefix/Energizer@AbilSound=Protoss
 Sound/Name/Energizer@AbilSound=Ability Sound
 
-\\\ Energizer Abilities
+/// Energizer Abilities
 Abil/EditorPrefix/Energizer_PhasingMode=Protoss
 Abil/Name/Energizer_PhasingMode=Phasing Mode
 Abil/EditorPrefix/Energizer_MobileMode=Protoss
 Abil/Name/Energizer_MobileMode=Mobile Mode
 
-\\\ Energizer Light
+/// Energizer Light
 Light/EditorPrefix/Energizer@Portrait=Protoss
 Light/Name/Energizer@Portrait=Portrait
 
-\\\ Energizer Requirement
+/// Energizer Requirement
 Requirement/EditorPrefix/Energizer@Use=Protoss
 Requirement/Name/Energizer@Use=Use
 Requirement/EditorPrefix/Energizer_Phasing@Use=Protoss
 Requirement/Name/Energizer_Phasing@Use=Use
 
-\\\ Energizer Validator
+/// Energizer Validator
 Validator/EditorPrefix/Energizer@Is=Protoss
 Validator/Name/Energizer@Is=Caster Is Unit
 Validator/EditorPrefix/Energizer@Target=Protoss

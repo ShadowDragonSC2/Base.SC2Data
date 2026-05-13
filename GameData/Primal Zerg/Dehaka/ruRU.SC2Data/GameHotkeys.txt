@@ -1,4 +1,4 @@
-\\\ Dehaka
+/// Dehaka
 Button/Hotkey/DehakaHero=Q
 Button/Hotkey/DehakaLeapStomp=Q
 Button/Hotkey/DehakaIntimidatingRoar=W
