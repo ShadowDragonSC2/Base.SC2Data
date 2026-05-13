@@ -223,8 +223,64 @@
         <DeathArray index="UnderConstruction" ModelLink="##unitName##@DeathUnderConstruction" VoiceLink="##unitName##@UnderConstruction" SoundLink="##unitName##@DeathUnderConstruction"/>
         <DeathArray index="Unknown" ModelLink="##unitName##@Unknown" VoiceLink="##unitName##@UnknownDeathVoice" SoundLink="##unitName##@DeathUnknown"/>
     </CActorUnit>
-
     <CActorUnit default="1" id="AdvancedStandard_Ground" parent="AdvancedUnitStandard">
+        <Macros value="UnloadDropAnim"/>
+        <Macros value="PhysicsDeathsSwarmGround"/>
+        <Macros value="PhysicsDeathsVoidGround"/>
+        <Macros value="TerrainSquibAnimations"/>
+    </CActorUnit>
+
+    <CActorUnit default="1" id="AdvancedUnitStandard_NoAttackAnim" parent="GenericUnitBase">
+        <ModelFlags index="OutlineEmitter" value="1"/>
+        <PortraitModel value="##id##@Portrait"/>
+        <BuildModel value="##id##@Build"/>
+        <PlacementModel value="##id##@Placement"/>
+        <PlacementSound value="##id##@Placement"/>
+        
+        <On Terms="UnitDeathCustomize; ValidateUnit IsHallucination" Send="DeathCustomize Hallucination"/>
+
+        <DeathCustoms ModelLink="HallucinationDeath" SoundLink="Sentry_HallucinationDeathSmall" Name="Hallucination"/>
+
+        <ModelFlags index="OutlineEmitter" value="1"/>
+
+        <SoundArray index="Attack" value="##unitName##@Attack"/>
+        <SoundArray index="Birth" value="##unitName##@Birth"/>
+        <SoundArray index="Board" value="##unitName##@Board"/>
+        <SoundArray index="Click" value="##unitName##@Click"/>
+        <SoundArray index="ClickError" value="##unitName##@ClickError"/>
+        <SoundArray index="Construction" value="##unitName##@Construction"/>
+        <SoundArray index="Help" value="##unitName##@Help"/>
+        <SoundArray index="Highlight" value="##unitName##@Highlight"/>
+        <SoundArray index="Movement" value="##unitName##@Movement"/>
+        <SoundArray index="Pissed" value="##unitName##@Pissed"/>
+        <SoundArray index="Ready" value="##unitName##@Ready"/>
+        <SoundArray index="Turning" value="##unitName##@Turning"/>
+        <SoundArray index="What" value="##unitName##@What"/>
+        <SoundArray index="Yes" value="##unitName##@Yes"/>
+
+        <DeathArray index="Blast" ModelLink="##unitName##@DeathBlast" VoiceLink="##unitName##@BlastDeathVoice" SoundLink="##unitName##@DeathBlast"/>
+        <DeathArray index="Cancel" ModelLink="##unitName##@DeathCancel" VoiceLink="##unitName##@CancelDeathVoice" SoundLink="##unitName##@DeathCancel"/>
+        <DeathArray index="Disintegrate" ModelLink="##unitName##@DeathDisintegrate" VoiceLink="##unitName##@DisintegrateDeathVoice" SoundLink="##unitName##@DeathDisintegrate"/>
+        <DeathArray index="Eat" ModelLink="##unitName##@DeathEat" VoiceLink="##unitName##@EatDeathVoice" SoundLink="##unitName##@DeathEat"/>
+        <DeathArray index="Electrocute" ModelLink="##unitName##@DeathElectrocute" VoiceLink="##unitName##@ElectrocuteDeathVoice" SoundLink="##unitName##@DeathElectrocute"/>
+        <DeathArray index="Eviscerate" ModelLink="##unitName##@DeathEviscerate" VoiceLink="##unitName##@EviscerateDeathVoice" SoundLink="##unitName##@DeathEviscerate"/>
+        <DeathArray index="Fire" ModelLink="##unitName##@DeathFire" VoiceLink="##unitName##@FireDeathVoice" SoundLink="##unitName##@DeathFire"/>
+        <DeathArray index="Freeze" ModelLink="##unitName##@DeathFreeze" VoiceLink="##unitName##@FreezeDeathVoice" SoundLink="##unitName##@DeathFreeze"/>
+        <DeathArray index="Impact" ModelLink="##unitName##@DeathImpact" VoiceLink="##unitName##@ImpactDeathVoice" SoundLink="##unitName##@DeathImpact"/>
+        <DeathArray index="Morph" ModelLink="##unitName##@DeathMorph" VoiceLink="##unitName##@MorphDeathVoice" SoundLink="##unitName##@DeathMorph"/>
+        <DeathArray index="Normal" ModelLink="##unitName##@Death" VoiceLink="##unitName##@DeathVoice" SoundLink="##unitName##@Death"/>
+        <DeathArray index="Reincarnation" ModelLink="##unitName##@DeathReincarnation" VoiceLink="##unitName##@ReincarnationDeathVoice" SoundLink="##unitName##@DeathReincarnation"/>
+        <DeathArray index="Remove" ModelLink="##unitName##@Remove" VoiceLink="##unitName##@RemoveVoice" SoundLink="##unitName##@Remove"/>
+        <DeathArray index="Salvage" ModelLink="##unitName##@Salvage" VoiceLink="##unitName##@SalvageVoice" SoundLink="##unitName##@Salvage"/>
+        <DeathArray index="Silentkill" ModelLink="##unitName##@DeathSilentkill" VoiceLink="##unitName##@SilentkillDeathVoice" SoundLink="##unitName##@DeathSilentkill"/>
+        <DeathArray index="Squish" ModelLink="##unitName##@DeathSquish" VoiceLink="##unitName##@SquishDeathVoice" SoundLink="##unitName##@DeathSquish"/>
+        <DeathArray index="Timeout" ModelLink="##unitName##@DeathTimeout" VoiceLink="##unitName##@TimeoutDeathVoice" SoundLink="##unitName##@DeathTimeout"/>
+        <DeathArray index="TrainingCancel" ModelLink="##unitName##@DeathTrainingCancel" VoiceLink="##unitName##@TrainingCancelDeathVoice" SoundLink="##unitName##@DeathTrainingCancel"/>
+        <DeathArray index="TrainingComplete" ModelLink="##unitName##@DeathTrainingComplete" VoiceLink="##unitName##@TrainingCompleteDeathVoice" SoundLink="##unitName##@DeathTrainingComplete"/>
+        <DeathArray index="UnderConstruction" ModelLink="##unitName##@DeathUnderConstruction" VoiceLink="##unitName##@UnderConstruction" SoundLink="##unitName##@DeathUnderConstruction"/>
+        <DeathArray index="Unknown" ModelLink="##unitName##@Unknown" VoiceLink="##unitName##@UnknownDeathVoice" SoundLink="##unitName##@DeathUnknown"/>
+    </CActorUnit>
+    <CActorUnit default="1" id="AdvancedUnitStandard_Ground_NoAttackAnim" parent="AdvancedUnitStandard_NoAttackAnim">
         <Macros value="UnloadDropAnim"/>
         <Macros value="PhysicsDeathsSwarmGround"/>
         <Macros value="PhysicsDeathsVoidGround"/>
