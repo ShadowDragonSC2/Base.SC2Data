@@ -121,10 +121,10 @@
             <Keys index="CustomA" value="0"/>
         </AttachProps>
         <AttachProps Id="Ref_Weapon 07">
-            <Keys index="CustomB" value="0"/>
+            <Keys index="CustomA" value="0"/>
         </AttachProps>
         <AttachProps Id="Ref_Weapon 08">
-            <Keys index="CustomB" value="0"/>
+            <Keys index="CustomA" value="0"/>
         </AttachProps>
         <AttachProps Id="Ref_Center">
             <Keys index="Turret" value="0"/>
@@ -153,49 +153,49 @@
             <Name value="OdinVictoryRightSound"/>
             <Type value="Sound"/>
             <Time value="1.440000"/>
-            <Payload value="Odin@GroundAttackLaunch"/>
+            <Payload value="Odin@AttackLaunch"/>
         </Events>
         <Events>
             <Anim value="Stand,Victory"/>
             <Name value="OdinVictoryLeftSound"/>
             <Type value="Sound"/>
             <Time value="1.700000"/>
-            <Payload value="Odin@GroundAttackLaunch"/>
+            <Payload value="Odin@AttackLaunch"/>
         </Events>
         <Events>
             <Anim value="Stand,Victory"/>
             <Name value="OdinVictoryRightSound"/>
             <Type value="Sound"/>
             <Time value="2.370000"/>
-            <Payload value="Odin@GroundAttackLaunch"/>
+            <Payload value="Odin@AttackLaunch"/>
         </Events>
         <Events>
             <Anim value="Stand,Victory"/>
             <Name value="OdinVictoryLeftSound"/>
             <Type value="Sound"/>
             <Time value="2.500000"/>
-            <Payload value="Odin@GroundAttackLaunch"/>
+            <Payload value="Odin@AttackLaunch"/>
         </Events>
         <Events>
             <Anim value="Stand,Victory"/>
             <Name value="OdinVictoryRightSound"/>
             <Type value="Sound"/>
             <Time value="3.310000"/>
-            <Payload value="Odin@GroundAttackLaunch"/>
+            <Payload value="Odin@AttackLaunch"/>
         </Events>
         <Events>
             <Anim value="Stand,Victory"/>
             <Name value="OdinVictoryLeftSound"/>
             <Type value="Sound"/>
             <Time value="3.580000"/>
-            <Payload value="Odin@GroundAttackLaunch"/>
+            <Payload value="Odin@AttackLaunch"/>
         </Events>
         <Events>
             <Anim value="Stand,Victory"/>
             <Name value="OdinVictoryLeftSound"/>
             <Type value="Sound"/>
             <Time value="4.500000"/>
-            <Payload value="Odin@GroundAttackLaunch"/>
+            <Payload value="Odin@AttackLaunch"/>
         </Events>
         <Events>
             <Anim value="Stand,Victory"/>
@@ -386,9 +386,6 @@
     </CDataCollectionUnit>
 
 <!-- =========== Weapons =========== -->
-
-    <!--Weapon(s)-->
-
     <!--Odin_Weapon-->
 
     <CWeaponLegacy id="Odin_Weapon">
@@ -414,9 +411,7 @@
         <PeriodCount value="2"/>
         <WhichLocation Value="TargetUnitOrPoint"/>
         <Flags index="Channeled" value="1"/>
-        <PeriodicEffectArray value="Odin_Weapon@DamageLeft"/>
-        <PeriodicEffectArray value="Odin_Weapon@DamageRight"/>
-        <PeriodicPeriodArray value="0"/>
+        <PeriodicEffectArray value="Odin_Weapon@Damage"/>
         <PeriodicPeriodArray value="0"/>
     </CEffectCreatePersistent>
 
@@ -431,33 +426,20 @@
         <SearchFilters value="Ground;Self,Player,Ally,Neutral"/>
     </CEffectDamage>
 
-    <CEffectDamage id="Odin_Weapon@DamageLeft" parent="Odin_Weapon@Damage"/>
-
-    <CEffectDamage id="Odin_Weapon@DamageRight" parent="Odin_Weapon@Damage"/>
-
     <!--Actor(s)-->
 
-    <CActorAction id="Odin_Weapon@LeftAttack" parent="GenericAttack" effectLaunch="Odin_Weapon@DamageLeft">
+    <CActorAction id="Odin_Weapon@Attack" parent="GenericAttack" effectAttack="Odin_Weapon@Damage">
         <LaunchAttachQuery Methods="CustomA"/>
-        <LaunchAssets Model="Odin_Weapon@GroundAttackLaunch" Sound="Odin_Weapon@GroundAttackLaunch"/>
-        <ImpactMap index="None" Model="Odin_Weapon@GroundAttackImpact" Sound="Odin_Weapon@GroundAttackImpact"/>
     </CActorAction>
-
-    <CActorAction id="Odin_Weapon@RightAttack" parent="GenericAttack" effectLaunch="Odin_Weapon@DamageRight">
-        <LaunchAttachQuery Methods="CustomB"/>
-        <LaunchAssets Model="Odin_Weapon@GroundAttackLaunch" Sound="Odin_Weapon@GroundAttackLaunch"/>
-        <ImpactMap index="None" Model="Odin_Weapon@GroundAttackImpact" Sound="Odin_Weapon@GroundAttackImpact"/>
-    </CActorAction>
-
 
     <!--Model(s)-->
 
-    <CModel id="Odin_Weapon@GroundAttackLaunch" parent="LaunchFX">
+    <CModel id="Odin_Weapon@AttackLaunch" parent="LaunchFX">
         <Model value="Assets\Effects\Terran\ThorArmMissileLaunch\ThorArmMissileLaunch.m3"/>
         <EditorCategories value="Race:Terran"/>
     </CModel>
 
-    <CModel id="Odin_Weapon@GroundAttackImpact" parent="ImpactFX">
+    <CModel id="Odin_Weapon@AttackImpact" parent="ImpactFX">
         <Model value="Assets\Effects\Terran\SiegeTankWeaponImpact\SiegeTankWeaponImpact.m3"/>
         <ScaleMin value="0.900000,0.900000,0.900000"/>
         <ScaleMax value="0.900000,0.900000,0.900000"/>
@@ -466,7 +448,7 @@
 
     <!--Sound(s)-->
 
-    <CSound id="Odin_Weapon@GroundAttackLaunch" parent="Combat">
+    <CSound id="Odin_Weapon@AttackLaunch" parent="Combat">
         <AssetArray File="Assets\Sounds\Terran\Thor\Thor_AttackLaunch0.wav"/>
         <AssetArray File="Assets\Sounds\Terran\Thor\Thor_AttackLaunch1.wav"/>
         <AssetArray File="Assets\Sounds\Terran\Thor\Thor_AttackLaunch2.wav"/>
@@ -476,7 +458,7 @@
         <DupeMaximumMethod value="Replace"/>
     </CSound>
 
-    <CSound id="Odin_Weapon@GroundAttackImpact" parent="Terran_ExplosionSmall">
+    <CSound id="Odin_Weapon@AttackImpact" parent="Terran_ExplosionSmall">
         <Volume value="-6.000000,-6.000000"/>
         <DupeMaximumMethod value="Prevent"/>
         <DupeMuteCount value="10"/>
@@ -487,14 +469,11 @@
         <DataRecord Entry="Weapon,Odin_Weapon"/>
         <DataRecord Entry="Effect,Odin_Weapon@CP"/>
         <DataRecord Entry="Effect,Odin_Weapon@Damage"/>
-        <DataRecord Entry="Effect,Odin_Weapon@DamageLeft"/>
-        <DataRecord Entry="Effect,Odin_Weapon@DamageRight"/>
-        <DataRecord Entry="Actor,Odin_Weapon@RightAttack"/>
-        <DataRecord Entry="Actor,Odin_Weapon@LeftAttack"/>
-        <DataRecord Entry="Sound,Odin_Weapon@GroundAttackLaunch"/>
-        <DataRecord Entry="Sound,Odin_Weapon@GroundAttackImpact"/>
-        <DataRecord Entry="Model,Odin_Weapon@GroundAttackLaunch"/>
-        <DataRecord Entry="Model,Odin_Weapon@GroundAttackImpact"/>
+        <DataRecord Entry="Actor,Odin_Weapon@Attack"/>
+        <DataRecord Entry="Sound,Odin_Weapon@AttackLaunch"/>
+        <DataRecord Entry="Sound,Odin_Weapon@AttackImpact"/>
+        <DataRecord Entry="Model,Odin_Weapon@AttackLaunch"/>
+        <DataRecord Entry="Model,Odin_Weapon@AttackImpact"/>
         <TechInfoUpgradeUsed value="TerranVehicleWeapons@1"/>
         <TechInfoUpgradeUsed value="TerranVehicleWeapons@2"/>
         <TechInfoUpgradeUsed value="TerranVehicleWeapons@3"/>
