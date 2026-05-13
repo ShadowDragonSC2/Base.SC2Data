@@ -1,12 +1,13 @@
 \\\ Odin
-Actor/Name/Odin=Odin
-Actor/Name/Odin@AAAttack=Odin AA Attack
-Actor/Name/Odin@AAMissile=OdinAAAttackMissile
-Actor/Name/Odin@LeftAttack=Odin Left Attack
-Actor/Name/Odin@RightAttack=Odin Right Attack
-Actor/Name/Odin@BarrageModel=Barrage Model
-Actor/Name/Odin@BarrageSound=Barrage Sound
-Unit/EditorPrefix/Odin@AAWeapon=Weapon -
-Abil/EditorPrefix/OdinBarrage=Odin -
-Weapon/EditorPrefix/Odin@Ground=Odin -
-Weapon/EditorPrefix/Odin@AA=Odin -
+Unit/Name/Odin=«Один»
+Button/Name/Odin=«Один»
+Button/Tooltip/Odin=«Один» -- это тяжелый осадный робот, способный сровнять с землей целый город.
+Button/Name/Odin_Barrage=Артобстрел
+Button/Tooltip/Odin_Barrage=Начинает артобстрел выбранной области, нанося большой урон.<n/><n/><c val="#ColorAttackInfo">Наносит урон наземным войскам и строениям.</c>
+Unit/Name/Odin_AAWeapon=«Один» - ПВО
+Weapon/Name/Odin_Weapon=Орудие T800
+Weapon/Name/Odin_AA=Ракетные установки «Адское пламя»
+Mover/Name/Odin@AAAttackWeapon=Odin AA
+Abil/Name/Odin_Barrage=Barrage
+Odin=«Один»
+UnitKillRank/Odin=прототип
