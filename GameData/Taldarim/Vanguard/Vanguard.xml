@@ -9,7 +9,7 @@
     </CButton>
 
     <CUnit id="Vanguard" parent="Generic_Protoss_Unit_Ground" race="Tald">
-        <WeaponArray Turret="Immortal" Link="ScatterCannon"/>
+        <WeaponArray index="0" Turret="Immortal"/>
         <LifeMax value="200"/>
         <LifeStart value="200"/>
         <ShieldsMax value="100"/>
@@ -18,7 +18,7 @@
         <Food value="-4"/>
         <RepairTime value="55"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="ImmortalTaldarimScatterCannon" Type="Passive" Row="1" Column="0"/>
+            <LayoutButtons Face="Vanguard_Weapon" Type="Passive" Row="1" Column="0"/>
         </CardLayouts>
         <CostResource index="Minerals" value="250"/>
         <CostResource index="Vespene" value="100"/>
@@ -75,6 +75,12 @@
         <Model value="Assets\Units\Protoss\Immortal_Taldarim\Immortal_Taldarim.m3"/>
         <RequiredAnims value="Assets\Units\Protoss\Immortal_SwarmAnims\Immortal_SwarmAnims.m3a"/>
         <UnitGlossaryCamera value="Star2CameraHigh09"/>
+        <AttachProps Id="Ref_Weapon Left">
+            <Keys index="CustomA" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Weapon Right">
+            <Keys index="CustomA" value="1"/>
+        </AttachProps>
     </CModel>
     <CModel id="Vanguard@Death" parent="UnitDeath">
         <Model value="Assets\Units\Protoss\Immortal_Taldarim_Death\Immortal_Taldarim_Death.m3"/>
@@ -279,7 +285,7 @@
         <Volume value="-1.000000,-1.000000"/>
     </CSound>
 
-    <CLight id="Vanguard" parent="Default">
+    <CLight id="Vanguard" parent="default">
         <ToDInfoArray index="0" Id="PortraitTalDarimImmortal" AmbientColor="0.000000,0.000000,0.000000" Colorize="1">
             <Param index="HDRExposure" value="2.075000"/>
             <Param index="HDRSpecMultiplier" value="2.000000"/>
@@ -337,33 +343,31 @@
         <TechInfoUpgradeUsed value="ProtossAirArmorsLevel@3"/>
     </CDataCollectionUnit>
 
-    <!-- ============================= -->
-    <!--            Weapons            -->
-    <!-- ============================= -->
+    <!-- ========== Weapons ========== -->
 
-    <CWeaponLegacy id="ScatterCannon">
+    <CWeaponLegacy id="Vanguard_Weapon">
         <Arc value="360"/>
-        <DisplayEffect value="ScatterCannon@Damage"/>
-        <Effect value="ScatterCannon@CP"/>
+        <DisplayEffect value="Vanguard_Weapon@Damage"/>
+        <Effect value="Vanguard_Weapon@CP"/>
         <DisplayAttackCount value="8"/>
         <Icon value=""/>
         <MinScanRange value="6.5"/>
         <Period value="3.75"/>
         <Range value="6"/>
         <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
-        <DisplayEffect value="ScatterCannon@Damage"/>
+        <DisplayEffect value="Vanguard_Weapon@Damage"/>
     </CWeaponLegacy>
 
-    <CEffectDamage id="ScatterCannon@Damage">
+    <CEffectDamage id="Vanguard_Weapon@Damage">
         <Amount value="8"/>
     </CEffectDamage>
-    <CEffectLaunchMissile id="ScatterCannon@LM">
-        <AmmoUnit value="ScatterCannon@AttackMissile"/>
-        <ImpactEffect value="ScatterCannon@Search"/>
+    <CEffectLaunchMissile id="Vanguard_Weapon@LM">
+        <AmmoUnit value="Vanguard_Weapon@AttackMissile"/>
+        <ImpactEffect value="Vanguard_Weapon@Search"/>
         <ImpactLocation Value="TargetPoint"/>
         <ValidatorArray index="0" value="TargetRadiusLE0Dot125"/>
     </CEffectLaunchMissile>
-    <CEffectCreatePersistent id="ScatterCannon@CP">
+    <CEffectCreatePersistent id="Vanguard_Weapon@CP">
         <EditorCategories value="Race:Protoss"/>
 
         <PeriodicOffsetArray value="-0.75,0,0"/>
@@ -371,7 +375,7 @@
         <PeriodicOffsetArray value="0,-0.75,0"/>
         <PeriodicOffsetArray value="0,0.75,0"/>
         
-        <PeriodicEffectArray value="ScatterCannon@Set@LM"/>
+        <PeriodicEffectArray value="Vanguard_Weapon@LM"/>
 
         <PeriodicPeriodArray value="0"/>
         <PeriodicPeriodArray value="0.0625"/>
@@ -381,47 +385,44 @@
         <PeriodCount value="4"/>
         <!--OffsetRandMode value="RandomNoRepeat"/-->
         <WhichLocation Value="TargetUnit"/>
-        <ExpireEffect value="ScatterCannon@RB"/>
-        <FinalEffect value="ScatterCannon@RB"/>
-        <InitialEffect value="ScatterCannon@LM"/>
+        <ExpireEffect value="Vanguard_Weapon@RB"/>
+        <FinalEffect value="Vanguard_Weapon@RB"/>
+        <InitialEffect value="Vanguard_Weapon@LM"/>
     </CEffectCreatePersistent>
-    <CEffectEnumArea id="ScatterCannon@Search">
+    <CEffectEnumArea id="Vanguard_Weapon@Search">
         <AreaArray>
-            <Effect value="ScatterCannon@Set"/>
+            <Effect value="Vanguard_Weapon@Set"/>
             <Radius value="1.2"/>
         </AreaArray>
-        <IncludeArray Effect="ScatterCannon@CP" Value="Target"/>
+        <IncludeArray Effect="Vanguard_Weapon@CP" Value="Target"/>
         <SearchFilters value="Ground;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectEnumArea>
-    <CEffectRemoveBehavior id="ScatterCannon@RB"/>
-    <CEffectSet id="ScatterCannon@Set">
-        <EffectArray value="ScatterCannon@Damage"/>
-        <EffectArray value="ScatterCannon@Damage"/>
-    </CEffectSet>
-    <CEffectSet id="ScatterCannon@Set@LM">
-        <EffectArray value="ScatterCannon@LM"/>
+    <CEffectRemoveBehavior id="Vanguard_Weapon@RB"/>
+    <CEffectSet id="Vanguard_Weapon@Set">
+        <EffectArray value="Vanguard_Weapon@Damage"/>
+        <EffectArray value="Vanguard_Weapon@Damage"/>
     </CEffectSet>
 
     <!-- Actors -->
 
-    <CActorAction id="ScatterCannon@Attack" parent="GenericAttack" effectImpact="ScatterCannon@Search" effectLaunch="ScatterCannon@LM">
-        <LaunchAttachQuery Methods="AMPatternScatterCannon"/>
+    <CActorAction id="Vanguard_Weapon@Attack" parent="GenericAttack" effectImpact="Vanguard_Weapon@Search" effectLaunch="Vanguard_Weapon@LM">
+        <LaunchAttachQuery Methods="AMFilterWeaponRight"/>
     </CActorAction>
-    <CActorSimple id="ScatterCannon@Animation">
-        <On Terms="Effect.ScatterCannon@CP.Start" Send="Create"/>
-        <On Terms="Effect.ScatterCannon@LM.Start" Target="_Unit" Send="AnimPlay Attack Attack,Superior"/>
-        <On Terms="Effect.ScatterCannon@CP.Stop" Send="Destroy"/>
+    <CActorSimple id="Vanguard_Weapon@Animation">
+        <On Terms="Effect.Vanguard_Weapon@CP.Start" Send="Create"/>
+        <On Terms="Effect.Vanguard_Weapon@LM.Start" Target="_Unit" Send="AnimPlay Attack Attack,Superior"/>
+        <On Terms="Effect.Vanguard_Weapon@CP.Stop" Send="Destroy"/>
         <On Terms="ActorDestruction" Target="_Unit" Send="AnimClear Attack"/>
     </CActorSimple>
 
-    <CModel id="ScatterCannon@AttackLaunch">
+    <CModel id="Vanguard_Weapon@AttackLaunch">
         <Model value="Assets\Effects\Protoss\ScatterCannonLaunch\ScatterCannonLaunch.m3"/>
     </CModel>
-    <CModel id="ScatterCannon@AttackImpact">
+    <CModel id="Vanguard_Weapon@AttackImpact">
         <Model value="Assets\Effects\Protoss\ScatterCannonMissileImpact\ScatterCannonMissileImpact.m3"/>
     </CModel>
     
-    <CSound id="ScatterCannon@AttackLaunch" parent="Combat">
+    <CSound id="Vanguard_Weapon@AttackLaunch" parent="Combat">
         <AssetArray File="Assets\Sounds\Vanguard_ScatterCannon_LaunchAttack01_1ch.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\Vanguard_ScatterCannon_LaunchAttack02_1ch.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\Vanguard_ScatterCannon_LaunchAttack03_1ch.wav" FacialGroup=""/>
@@ -436,7 +437,7 @@
         <DupeMuteCount value="3"/>
         <DupePrioritization value="Oldest"/>
     </CSound>
-    <CSound id="ScatterCannon@AttackImpact" parent="Combat">
+    <CSound id="Vanguard_Weapon@AttackImpact" parent="Combat">
         <AssetArray File="Assets\Sounds\Vanguard_ScatterCannon_Impact01_1ch.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\Vanguard_ScatterCannon_Impact02_1ch.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\Vanguard_ScatterCannon_Impact03_1ch.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
@@ -447,14 +448,14 @@
     </CSound>
     
     <!-- Missile -->
-    <CUnit id="ScatterCannon@AttackMissile" parent="MISSILE">
+    <CUnit id="Vanguard_Weapon@AttackMissile" parent="MISSILE">
         <Race value="Prot"/>
     </CUnit>
-    <CActorUnit id="ScatterCannon@AttackMissile" parent="GenericUnitStandard" unitName="ScatterCannon@AttackMissile"/>
-    <CModel id="ScatterCannon@AttackMissile" parent="MissileFX">
+    <CActorUnit id="Vanguard_Weapon@AttackMissile" parent="GenericUnitStandard" unitName="Vanguard_Weapon@AttackMissile"/>
+    <CModel id="Vanguard_Weapon@AttackMissile" parent="MissileFX">
         <Model value="Assets\Effects\Protoss\ScatterCannonMissile\ScatterCannonMissile.m3"/>
     </CModel>
-    <CMoverMissile id="ScatterCannon@AttackMissile">
+    <CMoverMissile id="Vanguard_Weapon@AttackMissile">
         <MotionPhases>
             <Driver value="Ballistic"/>
             <Acceleration value="-1"/>
@@ -466,34 +467,34 @@
         </MotionPhases>
     </CMoverMissile>
 
-    <CDataCollectionUnit id="ScatterCannon">
+    <CDataCollectionUnit id="Vanguard_Weapon">
         <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:Protoss,ObjectType:Projectile"/>
-        <DataRecord Entry="Weapon,ScatterCannon"/>
-        <DataRecord Entry="Effect,ScatterCannon@Damage"/>
-        <DataRecord Entry="Effect,ScatterCannon@LM"/>
-        <DataRecord Entry="Effect,ScatterCannon@CP"/>
-        <DataRecord Entry="Effect,ScatterCannon@Search"/>
-        <DataRecord Entry="Effect,ScatterCannon@RB"/>
-        <DataRecord Entry="Effect,ScatterCannon@Set"/>
-        <DataRecord Entry="Effect,ScatterCannon@Set@LM"/>
-        <DataRecord Entry="Actor,ScatterCannon@Attack"/>
-        <DataRecord Entry="Actor,ScatterCannon@Animation"/>
-        <DataRecord Entry="Model,ScatterCannon@AttackLaunch"/>
-        <DataRecord Entry="Model,ScatterCannon@AttackImpact"/>
-        <DataRecord Entry="Sound,ScatterCannon@AttackLaunch"/>
-        <DataRecord Entry="Sound,ScatterCannon@AttackImpact"/>
-        <DataRecord Entry="Unit,ScatterCannon@AttackMissile"/>
-        <DataRecord Entry="Actor,ScatterCannon@AttackMissile"/>
-        <DataRecord Entry="Model,ScatterCannon@AttackMissile"/>
-        <DataRecord Entry="Mover,ScatterCannon@AttackMissile"/>
-        <DataRecord Entry="AttachMethod,AMPatternScatterCannon"/>
+        <DataRecord Entry="Weapon,Vanguard_Weapon"/>
+        <DataRecord Entry="Effect,Vanguard_Weapon@Damage"/>
+        <DataRecord Entry="Effect,Vanguard_Weapon@LM"/>
+        <DataRecord Entry="Effect,Vanguard_Weapon@CP"/>
+        <DataRecord Entry="Effect,Vanguard_Weapon@Search"/>
+        <DataRecord Entry="Effect,Vanguard_Weapon@RB"/>
+        <DataRecord Entry="Effect,Vanguard_Weapon@Set"/>
+        <DataRecord Entry="Effect,Vanguard_Weapon@Set@LM"/>
+        <DataRecord Entry="Actor,Vanguard_Weapon@Attack"/>
+        <DataRecord Entry="Actor,Vanguard_Weapon@Animation"/>
+        <DataRecord Entry="Model,Vanguard_Weapon@AttackLaunch"/>
+        <DataRecord Entry="Model,Vanguard_Weapon@AttackImpact"/>
+        <DataRecord Entry="Sound,Vanguard_Weapon@AttackLaunch"/>
+        <DataRecord Entry="Sound,Vanguard_Weapon@AttackImpact"/>
+        <DataRecord Entry="Unit,Vanguard_Weapon@AttackMissile"/>
+        <DataRecord Entry="Actor,Vanguard_Weapon@AttackMissile"/>
+        <DataRecord Entry="Model,Vanguard_Weapon@AttackMissile"/>
+        <DataRecord Entry="Mover,Vanguard_Weapon@AttackMissile"/>
+        <DataRecord Entry="AttachMethod,Vanguard_Weapon@AMPattern"/>
     </CDataCollectionUnit>
 
     <!-- Other Data -->
 
-    <CAttachMethodPattern id="AMPatternScatterCannon">
+    <CAttachMethodPattern id="Vanguard_Weapon@AMPattern">
         <Base value="::RollingIndex"/>
-        <Driver value="ScatterCannon@LM"/>
-        <Keyword value="Weapon"/>
+        <Driver value="Vanguard_Weapon@LM"/>
+        <Keyword value="CustomA"/>
     </CAttachMethodPattern>
 </Catalog>
