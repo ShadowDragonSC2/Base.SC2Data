@@ -1,15 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
-    <!-- Requires: Unit:Generic_Unit_Ground[base.xml] -->
     <!-- Requires: DataCollectionUnit:Weapon_Base[base.xml] -->
     <!-- Requires: DataCollectionUnit:AbilityBase[base.xml] -->
-    <!-- Requires: CButton:UnitButton_OnlyGround[base.xml] -->
-    <!-- Requires: CActorUnit:AdvancedUnitStandard[base.xml] -->
+
     <!-- ==================== UNIT: KhalaiArbiter ==================== -->
     <CButton id="KhalaiArbiter">
         <EditorCategories value="Race:Protoss"/>
         <Icon value="Assets\Textures\btn-unit-protoss-arbiter.dds"/>
     </CButton>
+    <CButton id="MoveHoldPosition">
+        <Icon value="Assets\Textures\btn-command-holdposition.dds"/>
+        <AlertIcon value="Assets\Textures\btn-command-holdposition.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <TintRacially value="1"/>
+        <Universal value="1"/>
+    </CButton>
+    <CButton id="MovePatrol">
+        <Icon value="Assets\Textures\btn-command-patrol.dds"/>
+        <AlertIcon value="Assets\Textures\btn-command-patrol.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <TintRacially value="1"/>
+        <Universal value="1"/>
+    </CButton>
+    <CButton id="KhalaiArbiterCloakFieldButton">
+        <EditorCategories value="Race:Protoss"/>
+        <Icon value="Assets\Textures\btn-ability-protoss-cloakfield-color.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-cloakfield-color.dds"/>
+    </CButton>
+    <CButton id="KhalaiArbiterRecallButton">
+        <EditorCategories value="Race:Protoss"/>
+        <Icon value="Assets\Textures\btn-ability-protoss-recall.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-recall.dds"/>
+    </CButton>
+    <CButton id="KhalaiArbiterStasisFieldButton">
+        <EditorCategories value="Race:Protoss"/>
+        <Icon value="Assets\Textures\btn-ability-protoss-stasisfield.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-stasisfield.dds"/>
+    </CButton>
+
     <CUnit id="KhalaiArbiter">
         <DeathRevealRadius value="3"/>
         <Race value="Prot"/>
@@ -61,8 +89,8 @@
             <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
             <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
             <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
-            <LayoutButtons Face="ArbiterMPStasisField" Type="AbilCmd" AbilCmd="KhalaiArbiterStasisField,0" Row="2" Column="0"/>
-            <LayoutButtons Face="ArbiterMPRecall" Type="AbilCmd" AbilCmd="KhalaiArbiterRecall,0" Row="2" Column="1"/>
+            <LayoutButtons Face="KhalaiArbiterStasisFieldButton" Type="AbilCmd" AbilCmd="KhalaiArbiterStasisField,0" Row="2" Column="0"/>
+            <LayoutButtons Face="KhalaiArbiterRecallButton" Type="AbilCmd" AbilCmd="KhalaiArbiterRecall,0" Row="2" Column="1"/>
             <LayoutButtons Face="KhalaiArbiterCloakFieldButton" Type="Passive" Row="2" Column="2"/>
             <LayoutButtons Face="Rally" Type="AbilCmd" AbilCmd="ProgressRally,0" Row="2" Column="4"/>
         </CardLayouts>
@@ -81,6 +109,7 @@
         <GlossaryWeakArray value="Corruptor"/>
         <HotkeyCategory value="Unit/Category/ProtossUnits"/>
     </CUnit>
+
     <CActorUnit id="KhalaiArbiter" parent="GenericUnitStandard" unitName="KhalaiArbiter">
         <Aliases value="_UnitHuge"/>
         <On Terms="Behavior.WarpInEffect.On" Send="ModelSwap ArbiterWarpInStargate"/>
@@ -130,6 +159,7 @@
             <Image value="Assets\Textures\wireframe-protoss-arbiter-shield03.dds"/>
         </WireframeShield>
     </CActorUnit>
+
     <!-- Models -->
     <CModel id="KhalaiArbiter@Placement" parent="Placement" Race="Protoss">
         <Model value="Assets\Units\Protoss\ArbiterEX2_Placement\ArbiterEX2_Placement.m3"/>
@@ -205,6 +235,7 @@
         <SelectionRadius value="0.625000"/>
         <ShadowRadius value="0.625000"/>
     </CModel>
+
     <!-- Sounds -->
     <CSound id="KhalaiArbiter@Ready" parent="ProtossReady">
         <AssetArray TemplateParam="Arbiter_Ready00"/>
@@ -265,12 +296,13 @@
         <DupePrioritization value="Oldest"/>
         <Pitch value="-1.000000,1.000000"/>
     </CSound>
+
     <!-- Data Collection Unit -->
     <CDataCollectionUnit id="KhalaiArbiter" parent="UnitGround">
         <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Protoss,ObjectType:Unit"/>
         <DataRecord Entry="Button,KhalaiArbiter"/>
-        <DataRecord Entry="Button,HoldPosition"/>
-        <DataRecord Entry="Button,Patrol"/>
+        <DataRecord Entry="Button,MoveHoldPosition"/>
+        <DataRecord Entry="Button,MovePatrol"/>
         <DataRecord Entry="Unit,KhalaiArbiter"/>
         <DataRecord Entry="Actor,KhalaiArbiter"/>
         <DataRecord Entry="Model,KhalaiArbiter@Placement"/>
@@ -301,7 +333,7 @@
         <TechInfoUpgradeUsed value="ProtossAirWeapons@3"/>
     </CDataCollectionUnit>
 
-    <!-- ==================== WEAPON: KhalaiArbiterWeapon ==================== -->
+    <!-- ==================== WEAPON ==================== -->
     <CWeaponLegacy id="KhalaiArbiterWeapon">
         <EditorCategories value="Race:Protoss"/>
         <Icon value="Assets\Textures\btn-upgrade-protoss-airweaponslevel0.dds"/>
@@ -325,57 +357,48 @@
         <Kind value="Ranged"/>
         <Amount value="10"/>
     </CEffectDamage>
+
+    <!-- Weapon sounds -->
+    <CSound id="KhalaiArbiterWeapon@AttackImpact" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\ArbiterMP_AttackImpact00.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ArbiterMP_AttackImpact01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ArbiterMP_AttackImpact02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ArbiterMP_AttackImpact03.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-9.000000,-7.000000"/>
+    </CSound>
+    <CSound id="KhalaiArbiterWeapon@LaunchSound" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Protoss\Karass\Karass_AttackLaunch0.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Karass\Karass_AttackLaunch1.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Karass\Karass_AttackLaunch2.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Karass\Karass_AttackLaunch3.wav"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-12.000000,-12.000000"/>
+    </CSound>
+
+    <!-- Weapon actor -->
     <CActorAction id="KhalaiArbiterWeapon@Attack" parent="GenericAttack" effectImpact="KhalaiArbiterWeapon@Damage" effectLaunch="KhalaiArbiterWeapon@LM">
         <LaunchSiteOps Ops="SOpAttachCenter"/>
         <ImpactSiteOps Ops="SOpAttachCenter"/>
-        <LaunchModel value="KhalaiArbiterWeapon@LaunchModel"/>
-        <LaunchSound value="KhalaiArbiterWeapon@LaunchSound"/>
-        <ContainerModel value="KhalaiArbiterWeapon@LaunchModel"/>
-        <ContainerSound value="KhalaiArbiterWeapon@LaunchSound"/>
+        <LaunchModel value="GenericAttackLaunchModel"/>
+        <LaunchSound value="GenericAttackLaunchSound"/>
+        <ContainerModel value="GenericAttackLaunchModel"/>
+        <ContainerSound value="GenericAttackLaunchSound"/>
         <Missile value="KhalaiArbiterWeapon@MissileActor"/>
         <ImpactMap index="None" Model="KhalaiArbiterWeapon@ImpactModel" Sound="KhalaiArbiterWeapon@AttackImpact"/>
-        <ImpactModel value="KhalaiArbiterWeapon@ImpactModel"/>
-        <ImpactSound value="KhalaiArbiterWeapon@AttackImpact"/>
-        <DamageModel value="KhalaiArbiterWeapon@DamageModel"/>
-        <DamageSound value="KhalaiArbiterWeapon@DamageSound"/>
+        <ImpactModel value="GenericAttackImpactModel"/>
+        <ImpactSound value="GenericAttackImpactSound"/>
+        <DamageModel value="GenericAttackDamageModel"/>
+        <DamageSound value="GenericAttackDamageSound"/>
     </CActorAction>
     <CActorMissile id="KhalaiArbiterWeapon@MissileActor" parent="GenericAttackMissile" unitName="KhalaiArbiterWeapon@Missile">
         <Model value="KhalaiArbiterWeapon@MissileModel"/>
         <On Terms="ActorCreation" Send="Create KhalaiArbiterWeapon@LaunchSound"/>
     </CActorMissile>
-    <!-- Generic attack models/sounds -->
-    <CActorModel id="KhalaiArbiterWeapon@DamageModel" parent="ModelAnimationStyleOneShotNoOrphan">
-        <Flags index="SuppressCreationErrors" value="1"/>
-        <Inherits index="Visibility" value="1"/>
-        <Model value="GenericAttackModel"/>
-        <ModelFlags index="AllowHitTest" value="0"/>
-    </CActorModel>
-    <CActorSound id="KhalaiArbiterWeapon@DamageSound" parent="SoundOneShot">
-        <Flags index="SuppressCreationErrors" value="1"/>
-        <Sound value="GenericAttackSound"/>
-    </CActorSound>
-    <CActorModel id="KhalaiArbiterWeapon@ImpactModel" parent="ModelAnimationStyleOneShotNoOrphan">
-        <Flags index="SuppressCreationErrors" value="1"/>
-        <Inherits index="Visibility" value="1"/>
-        <Model value="GenericAttackModel"/>
-        <ModelFlags index="AllowHitTest" value="0"/>
-    </CActorModel>
-    <CActorSound id="KhalaiArbiterWeapon@AttackImpact" parent="SoundOneShot">
-        <Flags index="SuppressCreationErrors" value="1"/>
-        <Sound value="KhalaiArbiter_AttackImpact"/>
-    </CActorSound>
-    <CActorModel id="KhalaiArbiterWeapon@LaunchModel" parent="ModelAnimationStyleOneShotNoOrphan">
-        <Flags index="SuppressCreationErrors" value="1"/>
-        <Inherits index="Visibility" value="1"/>
-        <Model value="GenericAttackModel"/>
-        <ModelFlags index="AllowHitTest" value="0"/>
-    </CActorModel>
-    <CActorSound id="KhalaiArbiterWeapon@LaunchSound" parent="SoundOneShot">
-        <Flags index="SuppressCreationErrors" value="1"/>
-        <Sound value="GenericAttackSound"/>
-    </CActorSound>
-    <!-- Models -->
-    <CModel id="KhalaiArbiterWeapon@ImpactModelModel" parent="ImpactFX">
+
+    <CModel id="KhalaiArbiterWeapon@ImpactModel" parent="ImpactFX">
         <Model value="Assets\Effects\Protoss\PhotonCannonMissileImpact\PhotonCannonMissileImpact.m3"/>
         <EditorCategories value="Race:Protoss"/>
     </CModel>
@@ -385,25 +408,7 @@
         <ScaleMax value="1.500000,1.500000,1.500000"/>
         <ScaleMin value="1.500000,1.500000,1.500000"/>
     </CModel>
-    <!-- Sounds -->
-    <CSound id="KhalaiArbiterWeapon@AttackImpactSound" parent="Combat">
-        <EditorCategories value="Race:Protoss"/>
-        <AssetArray File="Assets\Sounds\ArbiterMP_AttackImpact00.wav" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\ArbiterMP_AttackImpact01.wav" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\ArbiterMP_AttackImpact02.wav" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\ArbiterMP_AttackImpact03.wav" FacialGroup=""/>
-        <Pitch value="-1.000000,1.000000"/>
-        <Volume value="-9.000000,-7.000000"/>
-    </CSound>
-    <CSound id="KhalaiArbiterWeapon@AttackLaunchSound" parent="Combat">
-        <EditorCategories value="Race:Protoss"/>
-        <AssetArray File="Assets\Sounds\Protoss\Karass\Karass_AttackLaunch0.wav"/>
-        <AssetArray File="Assets\Sounds\Protoss\Karass\Karass_AttackLaunch1.wav"/>
-        <AssetArray File="Assets\Sounds\Protoss\Karass\Karass_AttackLaunch2.wav"/>
-        <AssetArray File="Assets\Sounds\Protoss\Karass\Karass_AttackLaunch3.wav"/>
-        <Pitch value="-1.000000,1.000000"/>
-        <Volume value="-12.000000,-12.000000"/>
-    </CSound>
+
     <CUnit id="KhalaiArbiterWeapon@Missile" parent="MISSILE">
         <Race value="Prot"/>
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
@@ -416,6 +421,7 @@
             <YawPitchRoll value="MAX"/>
         </MotionPhases>
     </CMoverMissile>
+
     <CDataCollectionUnit id="KhalaiArbiterWeapon" parent="Weapon_Base">
         <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:Protoss,ObjectType:Projectile"/>
         <DataRecord Entry="Weapon,KhalaiArbiterWeapon"/>
@@ -423,16 +429,10 @@
         <DataRecord Entry="Effect,KhalaiArbiterWeapon@Damage"/>
         <DataRecord Entry="Actor,KhalaiArbiterWeapon@Attack"/>
         <DataRecord Entry="Actor,KhalaiArbiterWeapon@MissileActor"/>
-        <DataRecord Entry="Actor,KhalaiArbiterWeapon@DamageModel"/>
-        <DataRecord Entry="Actor,KhalaiArbiterWeapon@DamageSound"/>
-        <DataRecord Entry="Actor,KhalaiArbiterWeapon@ImpactModel"/>
-        <DataRecord Entry="Actor,KhalaiArbiterWeapon@AttackImpact"/>
-        <DataRecord Entry="Actor,KhalaiArbiterWeapon@LaunchModel"/>
-        <DataRecord Entry="Actor,KhalaiArbiterWeapon@LaunchSound"/>
-        <DataRecord Entry="Model,KhalaiArbiterWeapon@ImpactModelModel"/>
+        <DataRecord Entry="Model,KhalaiArbiterWeapon@ImpactModel"/>
         <DataRecord Entry="Model,KhalaiArbiterWeapon@MissileModel"/>
-        <DataRecord Entry="Sound,KhalaiArbiterWeapon@AttackImpactSound"/>
-        <DataRecord Entry="Sound,KhalaiArbiterWeapon@AttackLaunchSound"/>
+        <DataRecord Entry="Sound,KhalaiArbiterWeapon@AttackImpact"/>
+        <DataRecord Entry="Sound,KhalaiArbiterWeapon@LaunchSound"/>
         <DataRecord Entry="Unit,KhalaiArbiterWeapon@Missile"/>
         <DataRecord Entry="Mover,KhalaiArbiterWeapon@MissileMover"/>
         <TechInfoUpgradeUsed value="ProtossAirWeapons@1"/>
@@ -441,11 +441,6 @@
     </CDataCollectionUnit>
 
     <!-- ==================== ABILITY: KhalaiArbiterRecall ==================== -->
-    <CButton id="KhalaiArbiterRecallButton">
-        <EditorCategories value="Race:Protoss"/>
-        <Icon value="Assets\Textures\btn-ability-protoss-recall.dds"/>
-        <AlertIcon value="Assets\Textures\btn-ability-protoss-recall.dds"/>
-    </CButton>
     <CAbilEffectTarget id="KhalaiArbiterRecall">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Effect index="0" value="KhalaiArbiterRecall@Search"/>
@@ -474,7 +469,6 @@
         <EffectArray value="KhalaiArbiterRecall@MagazineIterate"/>
     </CEffectSet>
     <CEffectEnumMagazine id="KhalaiArbiterRecall@MagazineIterate">
-        <EditorCategories value=""/>
         <EffectExternal value="KhalaiArbiterRecall@ApplyPreRecall"/>
     </CEffectEnumMagazine>
     <CEffectApplyBehavior id="KhalaiArbiterRecall@ApplyPreRecall">
@@ -521,11 +515,6 @@
             <StateFlags index="Uncommandable" value="1"/>
             <AbilClassDisableArray index="CAbilAttack" value="1"/>
             <AbilClassDisableArray index="CAbilMove" value="1"/>
-            <AbilLinkEnableArray value="VolatileBurstBuilding"/>
-            <AbilLinkEnableArray value="GhostCloak"/>
-            <AbilLinkEnableArray value="BansheeCloak"/>
-            <AbilLinkEnableArray value="CarrierRepairDroneHanger"/>
-            <AbilLinkEnableArray value="BroodLordHangar"/>
         </Modification>
         <DamageResponse>
             <Cost>
@@ -548,11 +537,6 @@
             <StateFlags index="Uncommandable" value="1"/>
             <AbilClassDisableArray index="CAbilAttack" value="1"/>
             <AbilClassDisableArray index="CAbilMove" value="1"/>
-            <AbilLinkEnableArray value="VolatileBurstBuilding"/>
-            <AbilLinkEnableArray value="GhostCloak"/>
-            <AbilLinkEnableArray value="BansheeCloak"/>
-            <AbilLinkEnableArray value="CarrierRepairDroneHanger"/>
-            <AbilLinkEnableArray value="BroodLordHangar"/>
         </Modification>
         <DamageResponse>
             <Cost>
@@ -561,11 +545,15 @@
             </Cost>
         </DamageResponse>
     </CBehaviorBuff>
+
+    <!-- Акторы Recall -->
     <CActorRange id="KhalaiArbiterRecall@Range" parent="RangeAbil" abil="KhalaiArbiterRecall"/>
     <CActorSplat id="KhalaiArbiterRecall@Splat" parent="ProtossCursorSplat" abil="KhalaiArbiterRecall">
         <Model value="KhalaiArbiterRecall@CursorModel"/>
     </CActorSplat>
+    <!-- ВОТ ЭТОТ АКТОР ИСПРАВЛЕН -->
     <CActorModel id="KhalaiArbiterRecall@SearchModel" parent="ModelAnimationStyleOneShot">
+        <Model value="KhalaiArbiterRecall@RecallSearchModelModel"/>
         <On Terms="Effect.KhalaiArbiterRecall@Search.Start" Send="Create"/>
     </CActorModel>
     <CActorSimple id="KhalaiArbiterRecall@Opacity">
@@ -581,6 +569,7 @@
         <On Terms="TimerExpired; TimerName ClearRecallOpacity; ValidateUnit NoRecallingBehaviors" Send="Destroy"/>
     </CActorSimple>
     <CActorModel id="KhalaiArbiterRecall@RecallingImpact" parent="ModelAnimationStyleOneShot">
+        <Model value="KhalaiArbiterRecall@RecallingImpactModel"/>
         <Terms value="Cap 1"/>
         <On Terms="Behavior.KhalaiArbiterRecall@Recalling.On" Send="Create"/>
         <Host Subject="_Selectable"/>
@@ -594,6 +583,7 @@
         <Sound value="KhalaiArbiterRecall@RecallStart"/>
     </CActorSound>
     <CActorModel id="KhalaiArbiterRecall@RecalledImpact" parent="ModelAnimationStyleOneShot">
+        <Model value="KhalaiArbiterRecall@RecalledImpactModel"/>
         <Terms value="Cap 1"/>
         <On Terms="Behavior.KhalaiArbiterRecall@Recalled.On" Send="Create"/>
         <Host Subject="_Selectable"/>
@@ -678,11 +668,6 @@
     </CDataCollectionUnit>
 
     <!-- ==================== ABILITY: KhalaiArbiterStasisField ==================== -->
-    <CButton id="KhalaiArbiterStasisFieldButton">
-        <EditorCategories value="Race:Protoss"/>
-        <Icon value="Assets\Textures\btn-ability-protoss-stasisfield.dds"/>
-        <AlertIcon value="Assets\Textures\btn-ability-protoss-stasisfield.dds"/>
-    </CButton>
     <CAbilEffectTarget id="KhalaiArbiterStasisField">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Effect index="0" value="KhalaiArbiterStasisField@Search"/>
@@ -738,11 +723,13 @@
         <DisplayDuration index="Enemy" value="1"/>
         <Duration value="60"/>
     </CBehaviorBuff>
+    <!-- Акторы стазиса -->
     <CActorRange id="KhalaiArbiterStasisField@Range" parent="RangeAbil" abil="KhalaiArbiterStasisField"/>
     <CActorSplat id="KhalaiArbiterStasisField@Splat" parent="ProtossCursorSplat" abil="KhalaiArbiterStasisField">
         <Model value="KhalaiArbiterStasisField@CursorModel"/>
     </CActorSplat>
     <CActorModel id="KhalaiArbiterStasisField@CastModel" parent="ModelAnimationStyleOneShot">
+        <Model value="KhalaiArbiterStasisField@CastModelModel"/>
         <On Terms="Effect.KhalaiArbiterStasisField@Search.Start" Send="Create"/>
     </CActorModel>
     <CActorModel id="KhalaiArbiterStasisField@Impact" parent="ModelAnimationStyleContinuous">
@@ -755,7 +742,6 @@
         <On Terms="Behavior.KhalaiArbiterStasisField@Behavior.Off" Send="AnimBracketStop BSD"/>
         <On Terms="Behavior.KhalaiArbiterStasisField@Behavior.On" Target="_Unit" Send="AnimSetPausedAll"/>
         <On Terms="Behavior.KhalaiArbiterStasisField@Behavior.Off" Target="_Unit" Send="AnimSetPausedAll 0"/>
-        <On Terms="ActorCreation; ValidateUnit IsBrutalisk" Send="SetScale 2.000000"/>
         <Host Subject="_Unit"/>
         <HostSiteOps Ops="SOpAttachCenter"/>
         <AutoScaleFactor value="0.900000"/>
@@ -848,12 +834,7 @@
         <DataRecord Entry="Sound,KhalaiArbiterStasisField@VO"/>
     </CDataCollectionUnit>
 
-    <!-- ==================== PASSIVE: KhalaiArbiterCloakField ==================== -->
-    <CButton id="KhalaiArbiterCloakFieldButton">
-        <EditorCategories value="Race:Protoss"/>
-        <Icon value="Assets\Textures\btn-ability-protoss-cloakfield-color.dds"/>
-        <AlertIcon value="Assets\Textures\btn-ability-protoss-cloakfield-color.dds"/>
-    </CButton>
+    <!-- ==================== PASSIVE: Cloak Field ==================== -->
     <CBehaviorBuff id="KhalaiArbiterCloakField@Aura">
         <Alignment value="Positive"/>
         <InfoFlags index="Hidden" value="1"/>
@@ -931,7 +912,7 @@
         <DataRecord Entry="Sound,KhalaiArbiterCloakField@Off"/>
     </CDataCollectionUnit>
 
-    <!-- ==================== MISC ==================== -->
+    <!-- MISC -->
     <CAbilWarpable id="KhalaiArbiterWarpable">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <PowerUserBehavior value="KhalaiArbiterWarpableBehavior"/>
