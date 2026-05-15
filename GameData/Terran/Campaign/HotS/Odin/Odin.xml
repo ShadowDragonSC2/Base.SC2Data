@@ -3,8 +3,8 @@
 <!-- Requires: Unit:Generic_Unit_Ground[base.xml] -->
 <!-- Requires: Button:UnitButton_GroundAir[base.xml] -->
 <!-- Requires: Actor:AdvancedUnitStandard[base.xml] -->
-<!-- Requires: Terran Vehicle Weapons:TerranVehicleWeapons[terran.xml] from @1 to @3 -->
-<!-- Requires: Terran Vehicle Armors:TerranVehicleArmors[terran.xml] from @1 to @3 -->
+<!-- Requires: Upgrade:TerranVehicleWeapons[terran.xml] from @1 to @3 -->
+<!-- Requires: Upgrade:TerranVehicleArmors[terran.xml] from @1 to @3 -->
 
 <Catalog>   
 <!-- =========== Unit =========== -->
