@@ -78,13 +78,13 @@
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,0" Row="0" Column="0"/>
             <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,0" Row="0" Column="1"/>
-            <LayoutButtons Face="HoldPosition" Type="AbilCmd" AbilCmd="move,2" Row="0" Column="2"/>
-            <LayoutButtons Face="Patrol" Type="AbilCmd" AbilCmd="move,1" Row="0" Column="3"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
             <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,0" Row="0" Column="4"/>
             <LayoutButtons Face="ImmortalOverloadButton" Type="AbilCmd" AbilCmd="ImmortalOverload,0" Row="2" Column="0"/>
             <LayoutButtons Face="HaveBarrier" Type="Passive" Row="2" Column="1"/>
         </CardLayouts>
-        <Radius value="0.75"/>
+        <Radius value="0.75 "/>
         <SeparationRadius value="0.625"/>
         <InnerRadius value="0.5"/>
         <CargoSize value="4"/>
