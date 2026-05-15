@@ -121,10 +121,10 @@
             <Keys index="CustomA" value="0"/>
         </AttachProps>
         <AttachProps Id="Ref_Weapon 07">
-            <Keys index="CustomA" value="0"/>
+            <Keys index="CustomA" value="1"/>
         </AttachProps>
         <AttachProps Id="Ref_Weapon 08">
-            <Keys index="CustomA" value="0"/>
+            <Keys index="CustomA" value="1"/>
         </AttachProps>
         <AttachProps Id="Ref_Center">
             <Keys index="Turret" value="0"/>
@@ -429,7 +429,7 @@
     <!--Actor(s)-->
 
     <CActorAction id="Odin_Weapon@Attack" parent="GenericAttack" effectAttack="Odin_Weapon@Damage">
-        <LaunchAttachQuery Methods="CustomA"/>
+        <LaunchAttachQuery Methods="Odin_Weapon@AMPattern"/>
     </CActorAction>
 
     <!--Model(s)-->
@@ -464,6 +464,16 @@
         <DupeMuteCount value="10"/>
     </CSound>
 
+    <!-- Attach Method(s) -->
+
+    <CAttachMethodPattern id="Odin_Weapon@AMPattern">
+        <Keyword value="CustomA"/>
+        <Driver value="Odin_Weapon@Damage"/>
+        <Base value="::RollingIndex"/>
+        <Offset value="1"/>
+        <Multiplier value="2"/>
+    </CAttachMethodPattern>
+
     <!--Data Collection-->
     <CDataCollectionUnit id="Odin_Weapon" parent="Weapon_Instant">
         <DataRecord Entry="Weapon,Odin_Weapon"/>
@@ -474,6 +484,7 @@
         <DataRecord Entry="Sound,Odin_Weapon@AttackImpact"/>
         <DataRecord Entry="Model,Odin_Weapon@AttackLaunch"/>
         <DataRecord Entry="Model,Odin_Weapon@AttackImpact"/>
+        <DataRecord Entry="AttachMethod,Odin_Weapon@AMPattern"/>
         <TechInfoUpgradeUsed value="TerranVehicleWeapons@1"/>
         <TechInfoUpgradeUsed value="TerranVehicleWeapons@2"/>
         <TechInfoUpgradeUsed value="TerranVehicleWeapons@3"/>
