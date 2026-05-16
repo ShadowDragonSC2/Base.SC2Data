@@ -20,6 +20,7 @@
 
     <CUnit id="OdinHero" parent="Generic_Unit_Ground" race="Terr">
         <EditorCategories value="ObjectType:Hero,ObjectFamily:Campaign"/>
+        <BehaviorArray Link="OdinHeroDontDie"/>
         <Mob value="Campaign"/>
         <LifeStart value="2500"/>
         <LifeMax value="2500"/>
@@ -57,6 +58,7 @@
         <WeaponArray Link="OdinHero_AA"/>
         <AbilArray Link="OdinHero_Barrage"/>
         <AbilArray Link="OdinHero_NuclearStrike"/>
+        <AbilArray Link="OdinHero_Wreckage"/>
         <CardLayouts index="0">
             <LayoutButtons Face="OdinHero_Barrage" Type="AbilCmd" AbilCmd="OdinHero_Barrage,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="OdinHero_Barrage,Cancel" Row="2" Column="4"/>
