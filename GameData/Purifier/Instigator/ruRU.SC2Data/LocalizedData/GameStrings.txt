@@ -1,4 +1,4 @@
-﻿\\\ Instigator
+﻿/// Instigator
 Weapon/Name/InstigatorWeapon=Нейтронные расщепители
 Button/Name/Instigator_BlinkMultiple=Скачок
 Button/Tooltip/Instigator_BlinkMultiple=Телепортирует сталкера на небольшое расстояние. Каждые <d ref="Abil,InstigatorBlinkMultiple,Cost[0].Charge.TimeUse"/> сек. можно накопить один заряд способности. Максимум 3 заряда.

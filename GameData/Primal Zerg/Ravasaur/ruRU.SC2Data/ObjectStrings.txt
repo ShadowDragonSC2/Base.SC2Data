@@ -1,4 +1,4 @@
-\\\ Ravasaur
+/// Ravasaur
 Actor/Name/Ravasaur=Ravasaur
 Model/Name/Ravasaur=Ravasaur
 Model/Name/Ravasaur@Death=Death
@@ -17,7 +17,7 @@ Validator/Name/Ravasaur@Target=Target Is Unit
 Validator/Name/Ravasaur@Not=Caster Not Unit
 Validator/Name/Ravasaur@NotTarget=Target Not Unit
 
-\\\ Ravasaur Weapon
+/// Ravasaur Weapon
 Actor/Name/Ravasaur_AcidSpit@Attack=Attack
 Actor/Name/Ravasaur_AcidSpit@AttackMissile=Missile
 Effect/Name/Ravasaur_AcidSpit@Launch=Launch

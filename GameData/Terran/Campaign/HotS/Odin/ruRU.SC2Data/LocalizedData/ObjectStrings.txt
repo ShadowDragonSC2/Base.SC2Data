@@ -1,12 +1,18 @@
-\\\ Odin
+/// Odin
 Actor/Name/Odin=Odin
-Actor/Name/Odin@AAAttack=Odin AA Attack
-Actor/Name/Odin@AAMissile=OdinAAAttackMissile
-Actor/Name/Odin@LeftAttack=Odin Left Attack
-Actor/Name/Odin@RightAttack=Odin Right Attack
+Actor/Name/Odin_AA@Attack=Odin AA Attack
+Actor/Name/Odin_AA@Missile=OdinAAAttackMissile
 Actor/Name/Odin@BarrageModel=Barrage Model
 Actor/Name/Odin@BarrageSound=Barrage Sound
-Unit/EditorPrefix/Odin@AAWeapon=Weapon -
-Abil/EditorPrefix/OdinBarrage=Odin -
-Weapon/EditorPrefix/Odin@Ground=Odin -
-Weapon/EditorPrefix/Odin@AA=Odin -
+Unit/EditorPrefix/Odin_AA@Weapon=Weapon -
+Abil/EditorPrefix/Odin_Barrage=Odin -
+Weapon/EditorPrefix/Odin_Weapon=Odin -
+Weapon/EditorPrefix/Odin_AA=Odin -
+
+Effect/Name/Odin_Weapon@CP=CP
+Effect/Name/Odin_Weapon@Damage=Damage
+Actor/Name/Odin_Weapon@Attack=Attack
+Model/Name/Odin_Weapon@AttackLaunch=Attack Launch
+Model/Name/Odin_Weapon@AttackImpact=Attack Impact
+Sound/Name/Odin_Weapon@AttackLaunch=Attack Launch
+Sound/Name/Odin_Weapon@AttackImpact=Attack Impact

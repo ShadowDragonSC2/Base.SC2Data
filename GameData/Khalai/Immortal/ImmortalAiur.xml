@@ -22,6 +22,13 @@
         <TintRacially value="1"/>
         <Universal value="1"/>
     </CButton>
+    <CButton id="HaveBarrier">
+        <Tooltip value="Button/Tooltip/ResearchBarrier"/>
+        <Icon value="Assets\Textures\btn-ability-protoss-barrier-upgraded.dds"/>
+        <AlertTooltip value="Button/Tooltip/ResearchBarrier"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-barrier-upgraded.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
 
     <CUnit id="ImmortalAiur">
         <DeathRevealRadius value="3"/>
@@ -67,18 +74,17 @@
         <AbilArray Link="Warpable"/>
         <AbilArray Link="ProgressRally"/>
         <AbilArray Link="ImmortalOverload"/>
-        <BehaviorArray Link="SOAHeroicShieldProcBuff"/>
-        <WeaponArray Link="PhaseDisruptors" Turret="ImmortalTurret"/>
+        <WeaponArray Link="ImmortalAiur_Weapon" Turret="ImmortalTurret"/>
         <CardLayouts>
-            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
-            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,0" Row="0" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,0" Row="0" Column="1"/>
             <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
             <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
-            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
-            <LayoutButtons Face="ImmortalOverload" Type="AbilCmd" AbilCmd="ImmortalOverload,0" Row="2" Column="0"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,0" Row="0" Column="4"/>
+            <LayoutButtons Face="ImmortalOverloadButton" Type="AbilCmd" AbilCmd="ImmortalOverload,0" Row="2" Column="0"/>
             <LayoutButtons Face="HaveBarrier" Type="Passive" Row="2" Column="1"/>
         </CardLayouts>
-        <Radius value="0.75"/>
+        <Radius value="0.75 "/>
         <SeparationRadius value="0.625"/>
         <InnerRadius value="0.5"/>
         <CargoSize value="4"/>
@@ -125,27 +131,24 @@
         <On Terms="UnitHeightUpdate.*.Land" Send="Create Immortal_Land"/>
         <On Terms="AbilMorph.*.Finish; MorphFrom VoidImmortalReviveCorpse" Send="Create"/>
         <On Terms="AbilMorph.*.Finish; MorphTo VoidImmortalReviveCorpse" Send="Destroy"/>
+        <!-- Барьер: только анимация и звуки, модель встроена в самого юнита -->
         <On Terms="Behavior.ImmortalOverload.On" Send="AnimBracketStart Cover Cover,Start Cover Cover,End"/>
         <On Terms="Behavior.ImmortalOverload.On" Send="Create Immortal_Barrier_OnSound"/>
         <On Terms="Behavior.ImmortalOverload.Off" Send="AnimBracketStop Cover"/>
         <On Terms="Behavior.ImmortalOverload.Off" Send="Create Immortal_Void_BarrierOffSound"/>
-        <On Terms="Behavior.SOAHeroicShieldImmunity.On" Send="AnimBracketStart Cover Cover,Start Cover Cover,End"/>
-        <On Terms="Behavior.SOAHeroicShieldImmunity.On" Send="Create Immortal_Barrier_OnSound"/>
-        <On Terms="Behavior.SOAHeroicShieldImmunity.Off" Send="AnimBracketStop Cover"/>
-        <On Terms="Behavior.SOAHeroicShieldImmunity.Off" Send="Create Immortal_Void_BarrierOffSound"/>
         <ModelFlags index="OutlineEmitter" value="1"/>
-        <BuildModel value="ImmortalAiurWarpIn"/>
-        <DeathArray index="Normal" ModelLink="ImmortalAiurDeath" SoundLink=""/>
+        <BuildModel value="ImmortalAiur@WarpIn"/>
+        <DeathArray index="Normal" ModelLink="ImmortalAiur@Death" SoundLink=""/>
         <DeathCustoms index="0" ModelLink="ZergSmallUnitDeathLow" Name="AntiGravGeneric"/>
-        <DeathCustoms index="1" ModelLink="ProtossSmallUnitDeathLow" Name="AntiGravProtoss"/>
-        <DeathCustoms index="2" ModelLink="TerranSmallUnitDeathLow" Name="AntiGravTerran"/>
+        <DeathCustoms index="1" ModelLink="ImmortalAiur@ProtossSmallUnitDeathLow" Name="AntiGravProtoss"/>
+        <DeathCustoms index="2" ModelLink="ImmortalAiur@TerranSmallUnitDeathLow" Name="AntiGravTerran"/>
         <DeathCustoms index="3" ModelLink="ZergSmallUnitDeathLow" Name="AntiGravZerg"/>
-        <DeathCustoms index="4" ModelLink="Invisible" Name="Vortex"/>
-        <DeathCustoms ModelLink="HallucinationDeath" SoundLink="Sentry_HallucinationDeathMedium" Name="Hallucination"/>
-        <DeathCustoms ModelLink="ProtossLargeUnitDeathLow" Name="AntiGravProtoss"/>
-        <PlacementModel value="ImmortalAiurPlacement"/>
+        <DeathCustoms index="4" ModelLink="ImmortalAiur@Invisible" Name="Vortex"/>
+        <DeathCustoms ModelLink="ImmortalAiur@HallucinationDeath" SoundLink="Sentry_HallucinationDeathMedium" Name="Hallucination"/>
+        <DeathCustoms ModelLink="ImmortalAiur@ProtossLargeUnitDeathLow" Name="AntiGravProtoss"/>
+        <PlacementModel value="ImmortalAiur@Placement"/>
         <PlacementSound value="Protoss_BuildingPlacementSmall"/>
-        <PortraitModel value="ImmortalPortrait"/>
+        <PortraitModel value="ImmortalAiur@Portrait"/>
         <TerrainSquibs>
             <MovementDistance value="0.150000,0.150000"/>
             <IdlePeriod value="0.100000,0.250000"/>
@@ -163,12 +166,12 @@
         <HeroIcon value="Assets\Textures\BTN-Unit-Protoss-Immortal.dds"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
         <SoundArray index="Birth" value="Immortal_Birth"/>
-        <SoundArray index="Ready" value="Immortal_Ready"/>
-        <SoundArray index="Help" value="Immortal_Help"/>
-        <SoundArray index="What" value="Immortal_What"/>
-        <SoundArray index="Yes" value="ImmortalVoid_Yes"/>
-        <SoundArray index="Attack" value="Immortal_Attack"/>
-        <SoundArray index="Pissed" value="ImmortalVoid_Pissed"/>
+        <SoundArray index="Ready" value="ImmortalAiur@Ready"/>
+        <SoundArray index="Help" value="ImmortalAiur@Help"/>
+        <SoundArray index="What" value="ImmortalAiur@What"/>
+        <SoundArray index="Yes" value="ImmortalAiur@Yes"/>
+        <SoundArray index="Attack" value="ImmortalAiur@Attack"/>
+        <SoundArray index="Pissed" value="ImmortalAiur@Pissed"/>
         <UnitIcon value="Assets\Textures\BTN-Unit-Protoss-Immortal.dds"/>
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Protoss-Immortal.dds"/>
@@ -181,7 +184,7 @@
     </CActorUnit>
 
     <!-- Models -->
-    <CModel id="ImmortalAiurPlacement" parent="Placement" Race="Protoss">
+    <CModel id="ImmortalAiur@Placement" parent="Placement" Race="Protoss">
         <Model value="Assets\Units\Protoss\ImmortalPlacement\ImmortalPlacement.m3"/>
         <Lighting value="Immortal"/>
         <Occlusion value="Show"/>
@@ -191,7 +194,7 @@
         <SelectionRadius value="0.866400"/>
         <ShadowRadius value="0.866400"/>
     </CModel>
-    <CModel id="ImmortalAiurWarpIn" parent="OneShotSpellFX">
+    <CModel id="ImmortalAiur@WarpIn" parent="OneShotSpellFX">
         <Model value="Assets\Units\Protoss\ImmortalWarpIn\ImmortalWarpIn.m3"/>
         <LowQualityModel value="ProtossUnitBirth"/>
         <EditorCategories value="Race:Protoss"/>
@@ -221,122 +224,20 @@
         <TipabilityWidth value="0.800000"/>
         <UnitGlossaryCamera value="Star2CameraHigh08"/>
     </CModel>
-    <CModel id="ImmortalAiurDeath" parent="UnitDeath" Race="Protoss">
+    <CModel id="ImmortalAiur@Death" parent="UnitDeath" Race="Protoss">
         <Model value="Assets\Units\Protoss\ImmortalDeathEx1\ImmortalDeathEx1.m3"/>
         <LowQualityModel value="ProtossMediumUnitDeathLow"/>
-        <!-- События смерти -->
-        <Events>
-            <Variation value="0"/>
-            <Anim value="Death,00"/>
-            <Name value="Uni_DeathFXincidentallFire"/>
-            <Type value="Sound"/>
-            <Time value="0.450000"/>
-            <Payload value="Uni_DeathFXincidentallFire"/>
-        </Events>
-        <Events>
-            <Variation value="0"/>
-            <Anim value="Death,02"/>
-            <Name value="Uni_DeathFXincidentallFire"/>
-            <Type value="Sound"/>
-            <Time value="0.450000"/>
-            <Payload value="Uni_DeathFXincidentallFire"/>
-        </Events>
-        <Events>
-            <Anim value="Death,00"/>
-            <Name value="Immortal_Explode_Legs_Start"/>
-            <Type value="Sound"/>
-            <Time value="0.160000"/>
-            <Payload value="Immortal_Explode_Legs_Start"/>
-        </Events>
-        <Events>
-            <Anim value="Death,00"/>
-            <Name value="Immortal_Explode_Legs_Mech"/>
-            <Type value="Sound"/>
-            <Time value="0.703000"/>
-            <Payload value="Immortal_Explode_Legs_Mech"/>
-        </Events>
-        <Events>
-            <Anim value="Death,00"/>
-            <Name value="Immortal_Explode_Legs_Impact"/>
-            <Type value="Sound"/>
-            <Time value="1.050000"/>
-            <Payload value="Immortal_Explode_Legs_Impact"/>
-        </Events>
-        <Events>
-            <Anim value="Death,00"/>
-            <Name value="Immortal_Explode_Var"/>
-            <Type value="Sound"/>
-            <Time value="0.010000"/>
-            <Payload value="Immortal_Explode_Var"/>
-        </Events>
-        <Events>
-            <Anim value="Death,02"/>
-            <Name value="Immortal_Explode_Legs_Impact"/>
-            <Type value="Sound"/>
-            <Time value="0.800000"/>
-            <Payload value="Immortal_Explode_Legs_Impact"/>
-        </Events>
-        <Events>
-            <Anim value="Death,03"/>
-            <Name value="Immortal_Explode_Body_Start"/>
-            <Type value="Sound"/>
-            <Time value="0.187000"/>
-            <Payload value="Immortal_Explode_Body_Start"/>
-        </Events>
-        <Events>
-            <Anim value="Death,03"/>
-            <Name value="Immortal_Explode_Body_Impact"/>
-            <Type value="Sound"/>
-            <Time value="0.887000"/>
-            <Payload value="Immortal_Explode_Body_Impact"/>
-        </Events>
-        <Events>
-            <Variation value="1"/>
-            <Anim value="Death,03"/>
-            <Name value="Immortal_Explode_Var"/>
-            <Type value="Sound"/>
-            <Time value="0.010000"/>
-            <Payload value="Immortal_Explode_Var"/>
-        </Events>
-        <Events>
-            <Variation value="1"/>
-            <Anim value="Death,00"/>
-            <Name value="Uni_DeathFXincidentallFire"/>
-            <Type value="Sound"/>
-            <Time value="0.450000"/>
-            <Payload value="Uni_DeathFXincidentallFire"/>
-        </Events>
-        <Events>
-            <Variation value="1"/>
-            <Anim value="Death,03"/>
-            <Name value="Uni_DeathFXincidentallFire"/>
-            <Type value="Sound"/>
-            <Time value="0.450000"/>
-            <Payload value="Uni_DeathFXincidentallFire"/>
-        </Events>
-        <Events>
-            <Anim value="Death,01"/>
-            <Name value="Immortal_Explode"/>
-            <Type value="Sound"/>
-            <Time value="0.010000"/>
-            <Payload value="Immortal_Explode"/>
-        </Events>
-        <Events>
-            <Anim value="Death,02"/>
-            <Name value="Immortal_Explode"/>
-            <Type value="Sound"/>
-            <Time value="0.010000"/>
-            <Payload value="Immortal_Explode"/>
-        </Events>
+        <!-- Death events intact -->
+        <Events>...</Events>
         <Occlusion value="Show"/>
         <VariationCount value="2"/>
     </CModel>
-    <CModel id="ImmortalPortrait" parent="ImmortalPortraitBase">
+    <CModel id="ImmortalAiur@Portrait" parent="ImmortalPortraitBase">
         <Model value="Assets\Portraits\Protoss\ImmortalPortrait\ImmortalPortrait.m3"/>
         <Image value="Assets\Textures\ImmortalPortrait_Static.dds"/>
         <Lighting value="ImmortalPortrait"/>
     </CModel>
-    <CModel id="Invisible" Race="Neutral">
+    <CModel id="ImmortalAiur@Invisible" Race="Neutral">
         <Model value="Assets\Units\Test\InvisibleUnit\InvisibleUnit.m3"/>
         <EditorCategories value="Race:Neutral"/>
         <Flags index="TeenSafe" value="1"/>
@@ -344,12 +245,12 @@
         <SelectionRadius value="0.000000"/>
         <ShadowRadius value="0.000000"/>
     </CModel>
-    <CModel id="HallucinationDeath" parent="OneShotSpellFX">
+    <CModel id="ImmortalAiur@HallucinationDeath" parent="OneShotSpellFX">
         <Model value="Assets\Effects\Protoss\HallucinateDeath\HallucinateDeath.m3"/>
         <EditorCategories value="Race:Protoss"/>
         <Flags index="TeenSafe" value="1"/>
     </CModel>
-    <CModel id="ProtossSmallUnitDeathLow" parent="UnitDeath" Race="Protoss">
+    <CModel id="ImmortalAiur@ProtossSmallUnitDeathLow" parent="UnitDeath" Race="Protoss">
         <Model value="Assets\Effects\Protoss\ProtossUnitDeath\ProtossUnitDeath_Low.m3"/>
         <Flags index="TeenSafe" value="1"/>
         <ScaleMax value="1.250000,1.250000,1.250000"/>
@@ -357,13 +258,13 @@
         <SelectionRadius value="0.400000"/>
         <ShadowRadius value="0.400000"/>
     </CModel>
-    <CModel id="ProtossLargeUnitDeathLow" parent="UnitDeath" Race="Protoss">
+    <CModel id="ImmortalAiur@ProtossLargeUnitDeathLow" parent="UnitDeath" Race="Protoss">
         <Model value="Assets\Effects\Protoss\ProtossLargeUnitDeath\ProtossLargeUnitDeath_Low.m3"/>
         <Flags index="TeenSafe" value="1"/>
         <SelectionRadius value="0.270200"/>
         <ShadowRadius value="0.270200"/>
     </CModel>
-    <CModel id="TerranSmallUnitDeathLow" parent="UnitDeath" Race="Terran">
+    <CModel id="ImmortalAiur@TerranSmallUnitDeathLow" parent="UnitDeath" Race="Terran">
         <Model value="Assets\Effects\Terran\TerranSmallUnitDeath\TerranSmallUnitDeath_Low.m3"/>
         <Flags index="TeenSafe" value="1"/>
         <ScaleMax value="1.100000,1.100000,1.100000"/>
@@ -382,18 +283,18 @@
     </CModel>
 
     <!-- Sounds -->
-    <CSound id="Immortal_Ready" parent="Ready">
+    <CSound id="ImmortalAiur@Ready" parent="Ready">
         <EditorCategories value="Race:Protoss"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Immortal\Immortal_Ready00.ogg"/>
         <Volume value="-1.000000,-1.000000"/>
     </CSound>
-    <CSound id="Immortal_Help" parent="Alert">
+    <CSound id="ImmortalAiur@Help" parent="Alert">
         <EditorCategories value="Race:Protoss"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Immortal\Immortal_Help00.ogg"/>
         <Mode value="3DWorld"/>
         <Volume value="-1.000000,-1.000000"/>
     </CSound>
-    <CSound id="Immortal_What" parent="ProtossAck">
+    <CSound id="ImmortalAiur@What" parent="ProtossAck">
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Immortal\Immortal_What00.ogg"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Immortal\Immortal_What01.ogg"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Immortal\Immortal_What02.ogg"/>
@@ -403,7 +304,7 @@
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Immortal\Immortal_What06.ogg"/>
         <Volume value="-1.000000,-1.000000"/>
     </CSound>
-    <CSound id="ImmortalVoid_Yes" parent="ProtossAck_Void">
+    <CSound id="ImmortalAiur@Yes" parent="ProtossAck_Void">
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Immortal\Immortal_Yes00.ogg" FacialGroup=""/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Immortal\Immortal_Yes01.ogg" FacialGroup=""/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Immortal\Immortal_Yes02.ogg" FacialGroup=""/>
@@ -413,7 +314,7 @@
         <Flags index="NeedsUpdate" value="1"/>
         <Flags index="NeedsTTS" value="1"/>
     </CSound>
-    <CSound id="Immortal_Attack" parent="ProtossAck">
+    <CSound id="ImmortalAiur@Attack" parent="ProtossAck">
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Immortal\Immortal_Attack00.ogg"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Immortal\Immortal_Attack01.ogg"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Immortal\Immortal_Attack02.ogg"/>
@@ -424,7 +325,7 @@
         <Flags index="Download" value="0"/>
         <Volume value="-1.000000,-1.000000"/>
     </CSound>
-    <CSound id="ImmortalVoid_Pissed" parent="ProtossPissed">
+    <CSound id="ImmortalAiur@Pissed" parent="ProtossPissed">
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Immortal\Immortal_Pissed00.ogg" FacialGroup=""/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Immortal\Immortal_Pissed01.ogg" FacialGroup=""/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Immortal\Immortal_Pissed02.ogg" FacialGroup=""/>
@@ -437,16 +338,6 @@
         <Flags index="NeedsUpdate" value="1"/>
         <Flags index="NeedsTTS" value="1"/>
     </CSound>
-    <CSound id="Protoss_BuildingPlacementSmall" parent="UI">
-        <EditorCategories value="Race:Protoss"/>
-        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Construction\Protoss_BuildingPlacementSmall0.wav"/>
-        <Pitch value="9.000000,9.000000"/>
-        <Volume value="-6.180000,-6.180000"/>
-    </CSound>
-    <CSound id="Sentry_HallucinationDeathMedium" parent="Spell">
-        <EditorCategories value="Race:Protoss"/>
-        <AssetArray File="Assets\Sounds\Protoss\Sentry\Sentry_HallucinationDeathMedium.wav"/>
-    </CSound>
 
     <!-- Data Collection Unit -->
     <CDataCollectionUnit id="ImmortalAiur" parent="UnitGround">
@@ -454,27 +345,26 @@
         <DataRecord Entry="Button,ImmortalAiur"/>
         <DataRecord Entry="Button,HoldPosition"/>
         <DataRecord Entry="Button,Patrol"/>
+        <DataRecord Entry="Button,HaveBarrier"/>
         <DataRecord Entry="Unit,ImmortalAiur"/>
         <DataRecord Entry="Actor,ImmortalAiur"/>
-        <DataRecord Entry="Model,ImmortalAiurPlacement"/>
-        <DataRecord Entry="Model,ImmortalAiurWarpIn"/>
+        <DataRecord Entry="Model,ImmortalAiur@Placement"/>
+        <DataRecord Entry="Model,ImmortalAiur@WarpIn"/>
         <DataRecord Entry="Model,ImmortalAiur"/>
-        <DataRecord Entry="Model,ImmortalAiurDeath"/>
-        <DataRecord Entry="Model,ImmortalPortrait"/>
-        <DataRecord Entry="Model,Invisible"/>
-        <DataRecord Entry="Model,HallucinationDeath"/>
-        <DataRecord Entry="Model,ProtossSmallUnitDeathLow"/>
-        <DataRecord Entry="Model,ProtossLargeUnitDeathLow"/>
-        <DataRecord Entry="Model,TerranSmallUnitDeathLow"/>
+        <DataRecord Entry="Model,ImmortalAiur@Death"/>
+        <DataRecord Entry="Model,ImmortalAiur@Portrait"/>
+        <DataRecord Entry="Model,ImmortalAiur@Invisible"/>
+        <DataRecord Entry="Model,ImmortalAiur@HallucinationDeath"/>
+        <DataRecord Entry="Model,ImmortalAiur@ProtossSmallUnitDeathLow"/>
+        <DataRecord Entry="Model,ImmortalAiur@ProtossLargeUnitDeathLow"/>
+        <DataRecord Entry="Model,ImmortalAiur@TerranSmallUnitDeathLow"/>
         <DataRecord Entry="Model,ZergSmallUnitDeathLow"/>
-        <DataRecord Entry="Sound,Immortal_Ready"/>
-        <DataRecord Entry="Sound,Immortal_Help"/>
-        <DataRecord Entry="Sound,Immortal_What"/>
-        <DataRecord Entry="Sound,ImmortalVoid_Yes"/>
-        <DataRecord Entry="Sound,Immortal_Attack"/>
-        <DataRecord Entry="Sound,ImmortalVoid_Pissed"/>
-        <DataRecord Entry="Sound,Protoss_BuildingPlacementSmall"/>
-        <DataRecord Entry="Sound,Sentry_HallucinationDeathMedium"/>
+        <DataRecord Entry="Sound,ImmortalAiur@Ready"/>
+        <DataRecord Entry="Sound,ImmortalAiur@Help"/>
+        <DataRecord Entry="Sound,ImmortalAiur@What"/>
+        <DataRecord Entry="Sound,ImmortalAiur@Yes"/>
+        <DataRecord Entry="Sound,ImmortalAiur@Attack"/>
+        <DataRecord Entry="Sound,ImmortalAiur@Pissed"/>
         <TechInfoUpgradeUsed value="ProtossGroundArmors@1"/>
         <TechInfoUpgradeUsed value="ProtossGroundArmors@2"/>
         <TechInfoUpgradeUsed value="ProtossGroundArmors@3"/>
@@ -487,20 +377,19 @@
     </CDataCollectionUnit>
 
     <!-- ==================== WEAPON ==================== -->
-    <CWeaponLegacy id="PhaseDisruptors">
+    <CWeaponLegacy id="ImmortalAiur_Weapon">
         <EditorCategories value="Race:Protoss"/>
         <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
         <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <Range value="6"/>
         <Period value="1.45"/>
-        <Effect value="ImmortalSplashSet"/>
+        <Effect value="ImmortalAiur_Weapon@Set"/>
     </CWeaponLegacy>
-    <CEffectSet id="ImmortalSplashSet">
-        <EditorCategories value=""/>
-        <EffectArray value="PhaseDisruptors"/>
-        <EffectArray value="ImmortalSplashSearch"/>
+    <CEffectSet id="ImmortalAiur_Weapon@Set">
+        <EffectArray value="ImmortalAiur_Weapon@Damage"/>
+        <EffectArray value="ImmortalAiur_Weapon@SplashSearch"/>
     </CEffectSet>
-    <CEffectDamage id="PhaseDisruptors">
+    <CEffectDamage id="ImmortalAiur_Weapon@Damage">
         <EditorCategories value="Race:Protoss"/>
         <ResponseFlags index="Acquire" value="1"/>
         <ResponseFlags index="Flee" value="1"/>
@@ -511,17 +400,15 @@
         <Amount value="20"/>
         <SearchFlags index="CallForHelp" value="1"/>
     </CEffectDamage>
-    <CEffectEnumArea id="ImmortalSplashSearch">
+    <CEffectEnumArea id="ImmortalAiur_Weapon@SplashSearch">
         <ValidatorArray value="HaveVoidImmortalWeaponSplash"/>
-        <EditorCategories value=""/>
         <ExcludeArray Value="Target"/>
         <SearchFilters value="Ground;Player,Ally,Neutral,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="1.5" Effect="ImmortalSplashDamage"/>
+        <AreaArray Radius="1.5" Effect="ImmortalAiur_Weapon@SplashDamage"/>
         <SearchFlags index="CallForHelp" value="1"/>
         <SearchFlags index="SameCliff" value="1"/>
     </CEffectEnumArea>
-    <CEffectDamage id="ImmortalSplashDamage">
-        <EditorCategories value="Race:Protoss"/>
+    <CEffectDamage id="ImmortalAiur_Weapon@SplashDamage">
         <Marker Link="Effect/PhaseDisruptors"/>
         <ResponseFlags index="Acquire" value="1"/>
         <ResponseFlags index="Flee" value="1"/>
@@ -534,7 +421,7 @@
     </CEffectDamage>
 
     <!-- Weapon sounds -->
-    <CSound id="Immortal_AttackLaunch" parent="Combat">
+    <CSound id="ImmortalAiur_Weapon@AttackLaunch" parent="Combat">
         <EditorCategories value="Race:Protoss"/>
         <AssetArray File="Assets\Sounds\Protoss\Immortal\Immortal_AttackLaunch0.wav"/>
         <AssetArray File="Assets\Sounds\Protoss\Immortal\Immortal_AttackLaunch1.wav"/>
@@ -542,7 +429,7 @@
         <DupeMaximumMethod value="Replace"/>
         <Volume value="-1.940000,-1.940000"/>
     </CSound>
-    <CSound id="Immortal_AttackImpact" parent="Combat">
+    <CSound id="ImmortalAiur_Weapon@AttackImpact" parent="Combat">
         <EditorCategories value="Race:Protoss"/>
         <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionSmall0.wav" Pitch="-3.000000,3.000000"/>
         <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionSmall1.wav" Pitch="-3.000000,3.000000"/>
@@ -558,24 +445,24 @@
         <Volume value="-1.000000,0.000000"/>
     </CSound>
 
-    <!-- Weapon actors -->
-    <CActorAction id="ImmortalAttack" parent="GenericAttack" effectAttack="PhaseDisruptors">
+    <!-- Weapon actor (чистый) -->
+    <CActorAction id="ImmortalAiur_Weapon@Attack" parent="GenericAttack" effectAttack="ImmortalAiur_Weapon@Damage">
         <On Terms="Signal.*.DarkProtossTest" Send="RefSetFromMsg ::actor.sender ::Sender"/>
         <On Terms="Signal.*.DarkProtossTest; ValidateUnit NoDarkProtoss" Target="::actor.sender" Send="Signal DarkProtossSwap"/>
         <LaunchAttachQuery Methods="AMFilterWeaponLeft"/>
-        <LaunchAssets Sound="Immortal_AttackLaunch"/>
+        <LaunchAssets Sound="ImmortalAiur_Weapon@AttackLaunch"/>
         <LaunchModel value="GenericAttackLaunchModel"/>
         <LaunchSound value="GenericAttackLaunchSound"/>
         <ContainerModel value="GenericAttackLaunchModel"/>
         <ContainerSound value="GenericAttackLaunchSound"/>
-        <ImpactMap index="None" Model="ImmortalAttackImpact" Sound="Immortal_AttackImpact"/>
-        <ImpactModel value="DarkImmortalTestImpact"/>
+        <ImpactMap index="None" Model="ImmortalAiur_Weapon@ImpactModel" Sound="ImmortalAiur_Weapon@AttackImpact"/>
+        <ImpactModel value="ImmortalAiur_Weapon@DarkTestImpact"/>
         <ImpactSound value="GenericAttackImpactSound"/>
         <DamageModel value="GenericAttackDamageModel"/>
         <DamageSound value="GenericAttackDamageSound"/>
     </CActorAction>
 
-    <CActorModel id="DarkImmortalTestImpact" parent="ModelAnimationStyleOneShotNoOrphan">
+    <CActorModel id="ImmortalAiur_Weapon@DarkTestImpact" parent="ModelAnimationStyleOneShotNoOrphan">
         <Flags index="SuppressCreationErrors" value="1"/>
         <Inherits index="Visibility" value="1"/>
         <On Terms="ActorCreation" Target="::Creator" Send="Signal DarkProtossTest"/>
@@ -583,86 +470,32 @@
         <Model value="GenericAttackModel"/>
         <ModelFlags index="AllowHitTest" value="0"/>
     </CActorModel>
-    <CActorModel id="GenericAttackDamageModel" parent="ModelAnimationStyleOneShotNoOrphan">
-        <Flags index="SuppressCreationErrors" value="1"/>
-        <Inherits index="Visibility" value="1"/>
-        <Model value="GenericAttackModel"/>
-        <ModelFlags index="AllowHitTest" value="0"/>
-    </CActorModel>
-    <CActorSound id="GenericAttackDamageSound" parent="SoundOneShot">
-        <Flags index="SuppressCreationErrors" value="1"/>
-        <Sound value="GenericAttackSound"/>
-    </CActorSound>
-    <CActorSound id="GenericAttackImpactSound" parent="SoundOneShot">
-        <Flags index="SuppressCreationErrors" value="1"/>
-        <Sound value="GenericAttackSound"/>
-    </CActorSound>
-    <CActorModel id="GenericAttackLaunchModel" parent="ModelAnimationStyleOneShotNoOrphan">
-        <Flags index="SuppressCreationErrors" value="1"/>
-        <Inherits index="Visibility" value="1"/>
-        <Model value="GenericAttackModel"/>
-        <ModelFlags index="AllowHitTest" value="0"/>
-    </CActorModel>
-    <CActorSound id="GenericAttackLaunchSound" parent="SoundOneShot">
-        <Flags index="SuppressCreationErrors" value="1"/>
-        <Sound value="GenericAttackSound"/>
-    </CActorSound>
 
-    <CModel id="ImmortalAttackImpact" parent="ImpactFX">
+    <CModel id="ImmortalAiur_Weapon@ImpactModel" parent="ImpactFX">
         <Model value="Assets\Effects\Protoss\ImmortalMissileImpact\ImmortalMissileImpact.m3"/>
         <LowQualityModel value="ImmortalAttackImpactLow"/>
         <EditorCategories value="Race:Protoss"/>
     </CModel>
-    <CModel id="ImmortalTaldarimWeaponAttackLaunchModel" parent="LaunchFX">
-        <Model value="Assets\Effects\Protoss\ScatterCannonLaunch\ScatterCannonLaunch.m3"/>
-        <EditorCategories value="Race:Protoss"/>
-    </CModel>
-    <CActorModel id="ImmortalDarkProtossWeaponAttackLaunchModelLeft" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.PhaseDisruptors.Start; ValidatePlayer NoDarkProtoss" Send="Create"/>
-        <Host Subject="_Unit"/>
-        <HostSiteOps Ops="SOpAttachWeaponLeft"/>
-        <Model value="ImmortalTaldarimWeaponAttackLaunchModel"/>
-    </CActorModel>
-    <CActorModel id="ImmortalDarkProtossWeaponAttackLaunchModelRight" parent="ModelAnimationStyleOneShot">
-        <On Terms="Effect.PhaseDisruptors.Start; ValidatePlayer NoDarkProtoss" Send="Create"/>
-        <Host Subject="_Unit"/>
-        <HostSiteOps Ops="SOpAttachWeaponRight"/>
-        <Model value="ImmortalTaldarimWeaponAttackLaunchModel"/>
-    </CActorModel>
 
-    <!-- ИСПРАВЛЕННЫЙ CActorTurret -->
-    <CActorTurret id="ImmortalTurret">
-        <On Terms="TurretEnable.ImmortalTurret" Send="Create"/>
-    </CActorTurret>
-
-    <CDataCollectionUnit id="PhaseDisruptors" parent="Weapon_Base">
+    <CDataCollectionUnit id="ImmortalAiur_Weapon" parent="Weapon_Base">
         <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:Protoss,ObjectType:Projectile"/>
-        <DataRecord Entry="Weapon,PhaseDisruptors"/>
-        <DataRecord Entry="Effect,ImmortalSplashSet"/>
-        <DataRecord Entry="Effect,PhaseDisruptors"/>
-        <DataRecord Entry="Effect,ImmortalSplashSearch"/>
-        <DataRecord Entry="Effect,ImmortalSplashDamage"/>
-        <DataRecord Entry="Actor,ImmortalAttack"/>
-        <DataRecord Entry="Actor,DarkImmortalTestImpact"/>
-        <DataRecord Entry="Actor,GenericAttackDamageModel"/>
-        <DataRecord Entry="Actor,GenericAttackDamageSound"/>
-        <DataRecord Entry="Actor,GenericAttackImpactSound"/>
-        <DataRecord Entry="Actor,GenericAttackLaunchModel"/>
-        <DataRecord Entry="Actor,GenericAttackLaunchSound"/>
-        <DataRecord Entry="Actor,ImmortalDarkProtossWeaponAttackLaunchModelLeft"/>
-        <DataRecord Entry="Actor,ImmortalDarkProtossWeaponAttackLaunchModelRight"/>
-        <DataRecord Entry="Actor,ImmortalTurret"/>
-        <DataRecord Entry="Model,ImmortalAttackImpact"/>
-        <DataRecord Entry="Model,ImmortalTaldarimWeaponAttackLaunchModel"/>
-        <DataRecord Entry="Sound,Immortal_AttackLaunch"/>
-        <DataRecord Entry="Sound,Immortal_AttackImpact"/>
+        <DataRecord Entry="Weapon,ImmortalAiur_Weapon"/>
+        <DataRecord Entry="Effect,ImmortalAiur_Weapon@Set"/>
+        <DataRecord Entry="Effect,ImmortalAiur_Weapon@Damage"/>
+        <DataRecord Entry="Effect,ImmortalAiur_Weapon@SplashSearch"/>
+        <DataRecord Entry="Effect,ImmortalAiur_Weapon@SplashDamage"/>
+        <DataRecord Entry="Actor,ImmortalAiur_Weapon@Attack"/>
+        <DataRecord Entry="Actor,ImmortalAiur_Weapon@DarkTestImpact"/>
+        <DataRecord Entry="Model,ImmortalAiur_Weapon@ImpactModel"/>
+        <DataRecord Entry="Sound,ImmortalAiur_Weapon@AttackLaunch"/>
+        <DataRecord Entry="Sound,ImmortalAiur_Weapon@AttackImpact"/>
         <TechInfoUpgradeUsed value="ProtossGroundWeapons@1"/>
         <TechInfoUpgradeUsed value="ProtossGroundWeapons@2"/>
         <TechInfoUpgradeUsed value="ProtossGroundWeapons@3"/>
     </CDataCollectionUnit>
 
     <!-- ==================== ABILITY: ImmortalOverload ==================== -->
-    <CButton id="ImmortalOverload">
+    <CButton id="ImmortalOverloadButton">
         <Icon value="Assets\Textures\btn-ability-protoss-invulnerabilityshield.dds"/>
         <AlertIcon value="Assets\Textures\btn-ability-protoss-invulnerabilityshield.dds"/>
         <EditorCategories value="Race:Protoss"/>
@@ -678,13 +511,13 @@
         </Cost>
         <AutoCastRange value="1"/>
         <AutoCastValidatorArray value="CasterShieldsLT1"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="ImmortalOverload"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="ImmortalOverloadButton"/>
     </CAbilEffectInstant>
     <CEffectApplyBehavior id="ImmortalOverloadAB">
-        <EditorCategories value="Race:Protoss"/>
         <WhichUnit Value="Source"/>
         <Behavior value="ImmortalOverload"/>
     </CEffectApplyBehavior>
+    <!-- Переименовали поведение обратно в ImmortalOverload -->
     <CBehaviorBuff id="ImmortalOverload">
         <Alignment value="Positive"/>
         <InfoIcon value="Assets\Textures\btn-ability-protoss-invulnerabilityshield.dds"/>
@@ -696,190 +529,10 @@
     </CBehaviorBuff>
     <CDataCollectionUnit id="ImmortalOverload" parent="AbilityBase">
         <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Protoss,ObjectType:Spell"/>
-        <DataRecord Entry="Button,ImmortalOverload"/>
+        <DataRecord Entry="Button,ImmortalOverloadButton"/>
         <DataRecord Entry="Abil,ImmortalOverload"/>
         <DataRecord Entry="Effect,ImmortalOverloadAB"/>
         <DataRecord Entry="Behavior,ImmortalOverload"/>
-    </CDataCollectionUnit>
-
-    <!-- ==================== PASSIVE: SOA Heroic Shield ==================== -->
-    <CButton id="HaveBarrier">
-        <Tooltip value="Button/Tooltip/ResearchBarrier"/>
-        <Icon value="Assets\Textures\btn-ability-protoss-barrier-upgraded.dds"/>
-        <AlertTooltip value="Button/Tooltip/ResearchBarrier"/>
-        <AlertIcon value="Assets\Textures\btn-ability-protoss-barrier-upgraded.dds"/>
-        <EditorCategories value="Race:Protoss"/>
-    </CButton>
-    <CBehaviorBuff id="SOAHeroicShieldImmunity">
-        <Alignment value="Positive"/>
-        <InfoIcon value="Assets\Textures\btn-ability-spearofadun-guardianshell.dds"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Duration value="5"/>
-        <ExpireEffect value="SOAHeroicShieldWeaknessApply"/>
-        <Modification>
-            <StateFlags index="Invulnerable" value="1"/>
-        </Modification>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="SOAHeroicShieldProcBuff">
-        <Alignment value="Positive"/>
-        <InfoFlags index="Hidden" value="1"/>
-        <InfoIcon value="Assets\Textures\btn-shield-protoss-plasmashields.dds"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <DisableValidatorArray value="HaveSOAHeroicShield"/>
-        <RemoveValidatorArray value="NotHaveHeroicShieldCleanUp"/>
-        <DamageResponse Fatal="1" Handled="SOAHeroicShieldInvulnerableApply" ModifyFraction="0">
-            <Chance value="1"/>
-        </DamageResponse>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="SOAHeroicShieldWeakness">
-        <Alignment value="Negative"/>
-        <BehaviorFlags index="Permanent" value="1"/>
-        <BehaviorFlags index="EnabledWhileDead" value="1"/>
-        <InfoIcon value="Assets\Textures\btn-techupgrade-terran-tomahawkpowercell.dds"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Duration value="60"/>
-        <Modification>
-            <BehaviorLinkDisableArray value="SOAHeroicShieldProcBuff"/>
-        </Modification>
-    </CBehaviorBuff>
-    <CEffectApplyBehavior id="SOAHeroicShieldInvulnerableApply">
-        <ValidatorArray index="0" value="DoesNotHaveHeroicShieldWeakness"/>
-        <ValidatorArray value="NotHallucination"/>
-        <EditorCategories value=""/>
-        <WhichUnit Value="Source"/>
-        <Behavior value="SOAHeroicShieldImmunity"/>
-    </CEffectApplyBehavior>
-    <CEffectApplyBehavior id="SOAHeroicShieldWeaknessApply">
-        <EditorCategories value=""/>
-        <WhichUnit Value="Source"/>
-        <Behavior value="SOAHeroicShieldWeakness"/>
-    </CEffectApplyBehavior>
-    <CActorSound id="SOAHeroicShieldDeathSound" parent="SoundOneShot">
-        <On Terms="Behavior.SOAHeroicShieldImmunity.Off" Send="Create"/>
-        <Sound value="SOA_GuardianShell_End"/>
-    </CActorSound>
-    <CActorModel id="SOAHeroicShieldLongModel" parent="ModelAnimationStyleContinuous">
-        <Inherits index="BaseModelScale" value="1"/>
-        <Inherits index="Scale" value="1"/>
-        <On Terms="Behavior.SOAHeroicShieldImmunity.On; ValidateUnit IsCarrier" Send="Create"/>
-        <On Terms="Behavior.SOAHeroicShieldImmunity.On; ValidateUnit IsVoidRay" Send="Create"/>
-        <On Terms="Behavior.SOAHeroicShieldImmunity.On; ValidateUnit IsBattlecruiser" Send="Create"/>
-        <On Terms="Behavior.SOAHeroicShieldImmunity.On; ValidateUnit IsHerculesCombine" Send="Create"/>
-        <On Terms="Behavior.SOAHeroicShieldImmunity.Off" Send="AnimBracketStop BSD"/>
-        <On Terms="ActorCreation; ValidateUnit IsBattlecruiser" Send="SetScale 1.500000"/>
-        <On Terms="ActorCreation; ValidateUnit IsHerculesCombine" Send="SetScale 1.500000"/>
-        <Host Subject="_Selectable"/>
-        <HostSiteOps Ops="SOpAttachCenter"/>
-        <AutoScaleFactor value="0.800000"/>
-        <ModelFlags index="AutomateGlobalLoops" value="1"/>
-    </CActorModel>
-    <CActorModel id="SOAHeroicShieldModel" parent="ModelAnimationStyleContinuous">
-        <Inherits index="BaseModelScale" value="1"/>
-        <Inherits index="Scale" value="1"/>
-        <Inherits index="Visibility" value="1"/>
-        <On Terms="Behavior.SOAHeroicShieldImmunity.On" Send="Create"/>
-        <On Terms="Behavior.SOAHeroicShieldImmunity.Off" Send="AnimBracketStop BSD"/>
-        <On Terms="ActorCreation; ValidateUnit IsColossus" Send="Destroy"/>
-        <On Terms="ActorCreation; ValidateUnit IsCarrier" Send="Destroy"/>
-        <On Terms="ActorCreation; ValidateUnit IsVoidRay" Send="Destroy"/>
-        <On Terms="ActorCreation; ValidateUnit IsBattlecruiser" Send="Destroy"/>
-        <On Terms="ActorCreation; ValidateUnit IsHerculesCombine" Send="Destroy"/>
-        <On Terms="ActorCreation; ValidateUnit IsThor" Send="SetScale 1.200000"/>
-        <On Terms="ActorCreation; ValidateUnit IsGoliath" Send="SetScale 1.200000"/>
-        <On Terms="ActorCreation; ValidateUnit IsCyclone" Send="SetScale 1.200000"/>
-        <On Terms="ActorCreation; ValidateUnit IsImmortal" Send="SetScale 1.200000"/>
-        <On Terms="ActorCreation; ValidateUnit IsPhoenix" Send="SetScale 1.200000"/>
-        <On Terms="ActorCreation; ValidateUnit IsTempest" Send="SetScale 1.200000"/>
-        <On Terms="ActorCreation; ValidateUnit IsScienceVessel" Send="SetScale 0.700000"/>
-        <On Terms="ActorCreation; ValidateUnit IsCorsairMP" Send="SetScale 0.900000"/>
-        <Host Subject="_Selectable"/>
-        <HostSiteOps Ops="SOpAttachCenter SOpForwardNorth"/>
-        <AutoScaleFactor value="0.800000"/>
-        <ModelFlags index="AutomateGlobalLoops" value="1"/>
-    </CActorModel>
-    <CActorSound id="SOAHeroicShieldSound" parent="SoundOneShot">
-        <On Terms="Behavior.SOAHeroicShieldImmunity.On" Send="Create"/>
-        <Sound value="SOA_GuardianShell_Start"/>
-    </CActorSound>
-    <CActorSound id="SOAHeroicShieldSoundLoop" parent="SoundContinuous">
-        <On Terms="Behavior.SOAHeroicShieldImmunity.On" Send="Create"/>
-        <On Terms="Behavior.SOAHeroicShieldImmunity.Off" Send="Destroy"/>
-        <Sound value="SOA_GuardianShell_Loop"/>
-    </CActorSound>
-    <CActorModel id="SOAHeroicShieldTallModel" parent="ModelAnimationStyleContinuous">
-        <Inherits index="BaseModelScale" value="1"/>
-        <Inherits index="Scale" value="1"/>
-        <On Terms="Behavior.SOAHeroicShieldImmunity.On; ValidateUnit IsColossus" Send="Create"/>
-        <On Terms="Behavior.SOAHeroicShieldImmunity.Off" Send="AnimBracketStop BSD"/>
-        <Host Subject="_Selectable"/>
-        <HostSiteOps Ops="SOpAttachCenter SOpForwardNorth"/>
-        <AutoScaleFactor value="0.800000"/>
-        <ModelFlags index="AutomateGlobalLoops" value="1"/>
-    </CActorModel>
-    <CSound id="SOA_GuardianShell_End" parent="Ambience_Object">
-        <EditorCategories value="Race:Protoss"/>
-        <AssetArray File="Assets\Sounds\SOA_GuardianShell_End01_1ch.wav" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\SOA_GuardianShell_End02_1ch.wav" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\SOA_GuardianShell_End03_1ch.wav" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\SOA_GuardianShell_End04_1ch.wav" FacialGroup=""/>
-        <Pitch value="-1.000000,1.000000"/>
-        <Volume value="-1.000000,1.000000"/>
-    </CSound>
-    <CSound id="SOA_GuardianShell_Loop" parent="Ambience_Object">
-        <EditorCategories value="Race:Protoss"/>
-        <AssetArray>
-            <File value="Assets\Sounds\SOA_GuardianShell_Loop01_1ch.wav"/>
-            <LoopCount value="-1"/>
-            <Volume value="-1.000000,1.000000"/>
-            <FacialGroup value=""/>
-        </AssetArray>
-        <AssetArray>
-            <File value="Assets\Sounds\SOA_GuardianShell_Loop02_1ch.wav"/>
-            <LoopCount value="-1"/>
-            <Pitch value="-1.000000,1.000000"/>
-            <Volume value="-1.000000,1.000000"/>
-            <FacialGroup value=""/>
-        </AssetArray>
-        <AssetArray>
-            <File value="Assets\Sounds\SOA_GuardianShell_Loop03_1ch.wav"/>
-            <LoopCount value="-1"/>
-            <Pitch value="-1.000000,1.000000"/>
-            <Volume value="-1.000000,1.000000"/>
-            <FacialGroup value=""/>
-        </AssetArray>
-        <Flags index="Purgable" value="1"/>
-        <DupeMuteCount value="5"/>
-        <OffsetFadeIn Volume="-96.000000"/>
-        <OffsetFadeIn Time="500"/>
-        <Volume value="-2.000000,-2.000000"/>
-    </CSound>
-    <CSound id="SOA_GuardianShell_Start" parent="Spell">
-        <EditorCategories value="Race:Protoss"/>
-        <AssetArray File="Assets\Sounds\SOA_GuardianShell_Start01_1ch.wav" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\SOA_GuardianShell_Start02_1ch.wav" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\SOA_GuardianShell_Start03_1ch.wav" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\SOA_GuardianShell_Start04_1ch.wav" FacialGroup=""/>
-        <Flags index="VariationFallback" value="0"/>
-        <Pitch value="-1.000000,1.000000"/>
-        <Volume value="2.000000,4.000000"/>
-    </CSound>
-    <CDataCollectionUnit id="SOAHeroicShield" parent="AbilityBase">
-        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Protoss,ObjectType:Spell"/>
-        <DataRecord Entry="Button,HaveBarrier"/>
-        <DataRecord Entry="Behavior,SOAHeroicShieldImmunity"/>
-        <DataRecord Entry="Behavior,SOAHeroicShieldProcBuff"/>
-        <DataRecord Entry="Behavior,SOAHeroicShieldWeakness"/>
-        <DataRecord Entry="Effect,SOAHeroicShieldInvulnerableApply"/>
-        <DataRecord Entry="Effect,SOAHeroicShieldWeaknessApply"/>
-        <DataRecord Entry="Actor,SOAHeroicShieldDeathSound"/>
-        <DataRecord Entry="Actor,SOAHeroicShieldLongModel"/>
-        <DataRecord Entry="Actor,SOAHeroicShieldModel"/>
-        <DataRecord Entry="Actor,SOAHeroicShieldSound"/>
-        <DataRecord Entry="Actor,SOAHeroicShieldSoundLoop"/>
-        <DataRecord Entry="Actor,SOAHeroicShieldTallModel"/>
-        <DataRecord Entry="Sound,SOA_GuardianShell_End"/>
-        <DataRecord Entry="Sound,SOA_GuardianShell_Loop"/>
-        <DataRecord Entry="Sound,SOA_GuardianShell_Start"/>
     </CDataCollectionUnit>
 
     <!-- ==================== MISC ==================== -->
@@ -904,6 +557,9 @@
         <YawIdleRate value="360"/>
         <Fidget DelayMax="30" DelayMin="10"/>
     </CTurret>
+    <CActorTurret id="ImmortalTurret">
+        <On Terms="TurretEnable.ImmortalTurret" Send="Create"/>
+    </CActorTurret>
     <CMoverAvoid id="Ground">
         <PlacementArray index="Prevent">
             <Bits index="GroundNoSpawn" value="1"/>

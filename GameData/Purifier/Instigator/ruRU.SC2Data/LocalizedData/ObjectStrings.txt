@@ -1,4 +1,4 @@
-\\\ Instigator
+/// Instigator
 Unit/EditorSuffix/Instigator=- Purifier
 Unit/EditorPrefix/Instigator=Stalker -
 Abil/EditorPrefix/Instigator_BlinkMultiple=Stalker -
