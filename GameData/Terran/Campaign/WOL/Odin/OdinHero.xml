@@ -326,7 +326,7 @@
     <!--Light(s)-->
 
     <CLight id="OdinHero@Portrait" parent="default">
-        <TOdinHerofoArray index="0" AmbientColor="0.000000,0.133333,0.000000">
+        <ToDInfoArray index="0" AmbientColor="0.000000,0.133333,0.000000">
             <Param index="HDRExposure" value="1.200000"/>
             <Param index="HDRBloomThreshold" value="0.200000"/>
             <Param index="CreepSpecularExp" value="40.000000"/>
@@ -340,7 +340,7 @@
             </DirectionalLight>
             <DirectionalLight index="Fill" Color="0.721569,0.486275,0.654902" ColorMultiplier="0.407000" Direction="-0.224542,0.691890,0.686199"/>
             <DirectionalLight index="Back" Color="0.501961,0.501961,1.000000" ColorMultiplier="0.569000" Direction="0.826494,-0.438530,0.352985"/>
-        </TOdinHerofoArray>
+        </ToDInfoArray>
         <EditorCategories value="LightGroup:PortraitsUnitsTerran"/>
     </CLight>
 
@@ -444,65 +444,6 @@
 
     <CModel id="OdinHeroWreckage" parent="Unit">
         <Model value="Assets\Units\Terran\OdinWrecked\OdinWrecked.m3"/>
-        <AttachProps Id="Ref_Weapon 01">
-            <Keys index="SetA" value="0"/>
-        </AttachProps>
-        <AttachProps Id="Ref_Weapon 02">
-            <Keys index="SetA" value="0"/>
-        </AttachProps>
-        <AttachProps Id="Ref_Weapon 03">
-            <Keys index="SetA" value="0"/>
-        </AttachProps>
-        <AttachProps Id="Ref_Weapon 04">
-            <Keys index="SetA" value="0"/>
-        </AttachProps>
-        <AttachProps Id="Ref_Weapon 05">
-            <Keys index="CustomA" value="1"/>
-            <Keys index="SetA" value="1"/>
-        </AttachProps>
-        <AttachProps Id="Ref_Weapon 06">
-            <Keys index="SetA" value="4"/>
-        </AttachProps>
-        <AttachProps Id="Ref_Weapon 07">
-            <Keys index="CustomA" value="1"/>
-            <Keys index="SetA" value="1"/>
-        </AttachProps>
-        <AttachProps Id="Ref_Weapon 08">
-            <Keys index="SetB" value="4"/>
-        </AttachProps>
-        <AttachProps Id="Ref_Weapon 09">
-            <Keys index="SetA" value="2"/>
-        </AttachProps>
-        <AttachProps Id="Ref_Weapon 10">
-            <Keys index="SetA" value="2"/>
-        </AttachProps>
-        <AttachProps Id="Ref_Weapon 11">
-            <Keys index="SetA" value="2"/>
-        </AttachProps>
-        <AttachProps Id="Ref_Weapon 12">
-            <Keys index="SetA" value="2"/>
-        </AttachProps>
-        <AttachProps Id="Ref_Weapon 13">
-            <Keys index="SetA" value="2"/>
-        </AttachProps>
-        <AttachProps Id="Ref_Weapon 14">
-            <Keys index="SetA" value="2"/>
-        </AttachProps>
-        <AttachProps Id="Ref_Weapon 15">
-            <Keys index="SetA" value="3"/>
-        </AttachProps>
-        <AttachProps Id="Ref_Weapon 16">
-            <Keys index="SetA" value="3"/>
-        </AttachProps>
-        <AttachProps Id="Ref_Weapon 17">
-            <Keys index="SetA" value="3"/>
-        </AttachProps>
-        <AttachProps Id="Ref_Weapon 18">
-            <Keys index="SetA" value="3"/>
-        </AttachProps>
-        <AttachProps Id="Ref_Center">
-            <Keys index="Turret" value="0"/>
-        </AttachProps>
         <EditorCategories value="Race:Terran"/>
         <Lighting value="ThorWreckage"/>
         <Occlusion value="Show"/>
