@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    <CButton id="Zeratul_PermanentlyCloaked">
+        <Icon value="Assets\Textures\BTN-ability-Protoss-permanentlycloaked-darktemplar-color.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+
+    <CButton id="Zeratul" parent="UnitButton_OnlyGround">
+        <Icon value="Assets\Textures\btn-unit-protoss-zeratul.dds"/>
+    </CButton>
+    
+    <CUnit id="Zeratul" parent="Generic_Protoss_Unit_Ground" race="Prot">
+        <EditorCategories value="ObjectType:Hero,ObjectFamily:Campaign"/>
+        <Mob value="Campaign"/>
+        <LifeStart value="300"/>
+        <LifeMax value="300"/>
+        <LifeArmor value="2"/>
+        <ShieldsStart value="100"/>
+        <ShieldsMax value="100"/>
+        <Speed value="3"/>
+        <LateralAcceleration value="46.0625"/>
+        <AttackTargetPriority value="19"/>
+        <KillXP value="100"/>
+        <CargoSize value="2"/>
+        <ScoreMake value="1000"/>
+        <ScoreKill value="5000"/>
+        <SubgroupPriority value="90"/>
+        <FlagArray index="Hero" value="1"/>
+        <FlagArray index="Cloaked" value="1"/>
+        <Sight value="12"/>
+        <AbilArray Link="Zeratul_Blink"/>
+        <AbilArray Link="Zeratul_VoidPrison"/>
+        <AbilArray Link="Zeratul_Read"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Zeratul_Blink" Type="AbilCmd" AbilCmd="Zeratul_Blink,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="Zeratul_VoidPrison" Type="AbilCmd" AbilCmd="Zeratul_VoidPrison,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="Zeratul_Read" Type="AbilCmd" AbilCmd="Zeratul_Read,On" Row="1"/>
+            <LayoutButtons Face="Zeratul_Read@Off" Type="AbilCmd" AbilCmd="Zeratul_Read,Off" Row="1" Column="1"/>
+            <LayoutButtons Face="Zeratul_PermanentlyCloaked" Type="Passive" Row="2" Column="2"/>
+        </CardLayouts>
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <Attributes index="Psionic" value="1"/>
+        <BehaviorArray Link="HeroDetectorRadar"/>
+        <GlossaryPriority value="300"/>
+        <GlossaryStrongArray value="Zergling"/>
+        <GlossaryStrongArray value="Roach"/>
+        <GlossaryStrongArray value="Hydralisk"/>
+        <GlossaryWeakArray value="Overseer"/>
+        <GlossaryWeakArray value="SporeCrawler"/>
+        <CostCategory value="Army"/>
+    </CUnit>
+    
+    <CActorUnit id="Zeratul" parent="AdvancedStandard_Ground" unitName="Zeratul">
+        <Aliases value="_UnitSmall"/>
+        <On Terms="Abil.PhaseMineBlast.SourceCastStart" Send="AnimPlay Spell Attack,01 NonLooping"/>
+        <!-- <On Terms="Abil.Zeratul_VoidPrison.SourceCastStart" Send="AnimPlay Spell Stand,Work,Start 0 -1.000000 -1.000000 0.250000 AsDuration"/> -->
+        <On Terms="UnitMovementUpdate.Zeratul.Walk" Send="AnimClear Spell"/>
+        <On Terms="Behavior.Zeratul_Read.On" Send="AnimBracketStart Work Stand,Work,Start Stand,Work Stand,Work,End"/>
+        <On Terms="Behavior.Zeratul_Read.Off" Send="AnimBracketStop Work"/>
+        <UnitKillRank Text="UnitKillRank/Zeratul"/>
+        <WalkAnimMoveSpeed value="3"/>
+        <UnitBorderNormalColor value="150,150,150"/>
+        <UnitBorderSubgroupColor value="255,255,255"/>
+        <BarWidth value="42"/>
+        <BarOffset value="50"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-zeratul.dds"/>
+        <HeroIcon value="Assets\Textures\ui-heroicon-zeratul.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel1.dds"/>
+        <WireframeShield>
+            <Image value="Assets\Textures\Wireframe-Protoss-Zeratul-Shield01.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-Zeratul-Shield02.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-Zeratul-Shield03.dds"/>
+        </WireframeShield>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Protoss-Zeratul.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Protoss-Zeratul.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    
+    <CModel id="Zeratul" parent="Unit" Race="Protoss">
+        <TechPurchaseCamera value="Star2CameraMid05"/>
+        <UnitGlossaryCamera value="Star2CameraMid05"/>
+        <PlanetPanelCamera value="Star2CameraMid05"/>
+    </CModel>
+    <CModel id="Zeratul@Death" parent="UnitDeath">
+        <Model value="Assets\Units\Protoss\ZeratulDeath\ZeratulDeath.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Occlusion value="Show"/>
+    </CModel>
+    <CModel id="Zeratul@Portrait" parent="Portrait">
+        <Model value="Assets\Portraits\Protoss\ZeratulPortrait\ZeratulPortrait.m3"/>
+        <RequiredAnims value="Assets\Portraits\Protoss\ZeratulPortrait_RequiredAnims\ZeratulPortrait_RequiredAnims.m3a"/>
+        <FacialController value="LocalizedData\Facial\ZeratulPortrait.fxa"/>
+    </CModel>
+
+    <CSound id="Zeratul@Death" parent="Protoss_DeathFX"/>
+    <CSound id="Zeratul@Attack" parent="ProtossAck">
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Zeratul\Zeratul_Attack00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Zeratul\Zeratul_Attack01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Zeratul\Zeratul_Attack02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Zeratul\Zeratul_Attack03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Zeratul\Zeratul_Attack04.ogg"/>
+        <Spread value="120.000000"/>
+    </CSound>
+    <CSound id="Zeratul@Yes" parent="ProtossAck">
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Zeratul\Zeratul_Yes00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Zeratul\Zeratul_Yes01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Zeratul\Zeratul_Yes02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Zeratul\Zeratul_Yes03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Zeratul\Zeratul_Yes04.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Zeratul\Zeratul_Yes05.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Zeratul\Zeratul_Yes06.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Zeratul\Zeratul_Yes07.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Zeratul\Zeratul_Yes08.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Zeratul\Zeratul_Yes.10.ogg"/>
+        <Spread value="120.000000"/>
+    </CSound>
+    <CSound id="Zeratul@What" parent="ProtossAck">
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Zeratul\Zeratul_What00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Zeratul\Zeratul_What01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Zeratul\Zeratul_What02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Zeratul\Zeratul_What03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Zeratul\Zeratul_What04.ogg"/>
+        <Spread value="120.000000"/>
+    </CSound>
+    <CSound id="Zeratul@Help" parent="ProtossAck">
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Zeratul\Zeratul_Help00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Zeratul\Zeratul_Help01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossVO\CampaignUnits\Zeratul\Zeratul_Help02.ogg"/>
+        <Spread value="120.000000"/>
+        <Category value="Alert"/>
+    </CSound>
+    
+    <CLight id="Zeratul@Portrait" parent="default">
+        <ToDInfoArray index="0" AmbientColor="0.278431,0.156863,0.000000">
+            <Param index="HDRExposure" value="1.480000"/>
+            <Param index="HDRBloomThreshold" value="1.950000"/>
+            <DirectionalLight index="Key" ColorMultiplier="0.417000" SpecColorMultiplier="1.274000" Direction="0.507217,0.804512,-0.309017"/>
+            <DirectionalLight index="Fill" Color="0.235294,0.717647,0.949020" ColorMultiplier="2.884000" Direction="-0.800160,-0.385951,0.459115"/>
+            <DirectionalLight index="Back" Color="0.901961,0.337255,0.349020" ColorMultiplier="0.407000" Direction="0.865517,-0.104586,0.489839"/>
+        </ToDInfoArray>
+        <EditorCategories value="LightGroup:PortraitsUnitsProtoss"/>
+    </CLight>
+    
+    <CRequirement id="Zeratul"/>
+    
+    <CValidatorUnitType id="Zeratul@Is" parent="IsUnit_Default" unit="Zeratul"/>
+    <CValidatorUnitType id="Zeratul@Target" parent="TargetIsUnit_Default" unit="Zeratul"/>
+    <CValidatorUnitType id="Zeratul@Not" parent="NotUnit_Default" unit="Zeratul"/>
+    <CValidatorUnitType id="Zeratul@NotTarget" parent="TargetNotUnit_Default" unit="Zeratul"/>
+    
+    <CDataCollectionUnit id="Zeratul" parent="UnitGround">
+        <DataRecord Entry="Button,Zeratul"/>
+        <DataRecord Entry="Unit,Zeratul"/>
+        <DataRecord Entry="Actor,Zeratul"/>
+        <DataRecord Entry="Model,Zeratul"/>
+        <DataRecord Entry="Model,Zeratul@Death"/>
+        <DataRecord Entry="Model,Zeratul@Placement"/>
+        <DataRecord Entry="Model,Zeratul@WarpIn"/>
+        <DataRecord Entry="Model,Zeratul@Portrait"/>
+        <DataRecord Entry="Light,Zeratul@Portrait"/>
+        <DataRecord Entry="Requirement,Zeratul"/>
+        <DataRecord Entry="Validator,Zeratul@Is"/>
+        <DataRecord Entry="Validator,Zeratul@Target"/>
+        <DataRecord Entry="Validator,Zeratul@Not"/>
+        <DataRecord Entry="Validator,Zeratul@NotTarget"/>
+    </CDataCollectionUnit>
+
+    <!-- ========== Behaviors ========== -->
+
+
+    <!-- ========== Weapons ========== -->
+
+    <CWeaponLegacy id="Zeratul_Weapon">
+        <EditorCategories value="Race:Protoss"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="0.1"/>
+        <Period value="1.694"/>
+        <DamagePoint value="0.15"/>
+        <Backswing value="1.333"/>
+        <Options index="Melee" value="1"/>
+        <DisplayEffect value="Zeratul_Weapon@Damage"/>
+        <Effect value="Zeratul_Weapon@Damage"/>
+    </CWeaponLegacy>
+
+    <CEffectDamage id="Zeratul_Weapon@Damage" parent="DU_WEAP">
+        <EditorCategories value="Race:Protoss"/>
+        <Amount value="85"/>
+        <AttributeBonus index="Armored" value="25"/>
+        <Death value="Eviscerate"/>
+    </CEffectDamage>
+
+    <CActorAction id="Zeratul_Weapon@Attack" parent="GenericAttack" effectAttack="Zeratul_Weapon@Damage">
+        <ShieldFlashType value="Header"/>
+    </CActorAction>
+    
+    <CSound id="Zeratul_Weapon@AttackLaunch" parent="Combat">
+        <DupeDestroyCount value="5"/>
+        <Pitch value="1.640000,3.160000"/>
+        <Volume value="-3.100000,-3.100000"/>
+        <AssetArray File="Assets\Sounds\Protoss\DarkTemplar\DarkTemplar_AttackLaunch0.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\DarkTemplar\DarkTemplar_AttackLaunch1.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\DarkTemplar\DarkTemplar_AttackLaunch2.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\DarkTemplar\DarkTemplar_AttackLaunch3.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\DarkTemplar\DarkTemplar_AttackLaunch4.wav"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Flags index="VariationFallback" value="0"/>
+    </CSound>
+    <CSound id="Zeratul_Weapon@AttackImpact" parent="Protoss_AttackImpactMediumSlice"/>
+
+    <CDataCollectionUnit id="Zeratul_Weapon" parent="Weapon_Instant">
+        <DataRecord Entry="Weapon,Zeratul_Weapon"/>
+        <DataRecord Entry="Effect,Zeratul_Weapon@Damage"/>
+        <DataRecord Entry="Actor,Zeratul_Weapon@Attack"/>
+        <DataRecord Entry="Sound,Zeratul_Weapon@AttackLaunch"/>
+        <DataRecord Entry="Sound,Zeratul_Weapon@AttackImpact"/>
+    </CDataCollectionUnit>
+
+    <!-- ========== Abilities ========== -->
+
+    <!-- Void Prison -->
+    <CButton id="Zeratul_VoidPrison">
+        <Icon value="Assets\Textures\btn-ability-protoss-voidprison.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <TintRacially value="1"/>
+    </CButton>
+
+    <CAbilEffectTarget id="Zeratul_VoidPrison">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="Zeratul_VoidPrison@AB"/>
+        <Cost>
+            <Cooldown TimeUse="22"/>
+        </Cost>
+        <TargetFilters value="Visible;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="6"/>
+        <AINotifyEffect value=""/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Zeratul_VoidPrison"/>
+    </CAbilEffectTarget>
+
+    <CEffectApplyBehavior id="Zeratul_VoidPrison@AB">
+        <ValidatorArray index="0" value=""/>
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="Zeratul_VoidPrison"/>
+    </CEffectApplyBehavior>
+
+    <CBehaviorBuff id="Zeratul_VoidPrison">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-voidprison.dds"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="12"/>
+        <Modification SightBonus="-12">
+            <ModifyFlags index="DisableAbils" value="1"/>
+            <ModifyFlags index="SuppressMoving" value="1"/>
+            <ModifyFlags index="SuppressTurning" value="1"/>
+            <StateFlags index="SuppressDetection" value="1"/>
+        </Modification>
+        <DisplayDuration index="Self" value="1"/>
+        <DisplayDuration index="Ally" value="1"/>
+        <DisplayDuration index="Enemy" value="1"/>
+        <BehaviorCategories index="Stun" value="1"/>
+    </CBehaviorBuff>
+
+    <CActorRange id="Zeratul_VoidPrison@Range" parent="RangeAbil" abil="Zeratul_VoidPrison"/>
+    <CActorModel id="Zeratul_VoidPrison@Model" parent="ModelAnimationStyleContinuous">
+        <On Terms="Behavior.Zeratul_VoidPrison.On" Send="Create"/>
+        <On Terms="Behavior.Zeratul_VoidPrison.Off" Send="AnimBracketStop BSD"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <AutoScaleFactor value="0.750000"/>
+    </CActorModel>
+    <CActorSound id="Zeratul_VoidPrison@LaunchSound" parent="SoundOneShot">
+        <On Terms="Effect.Zeratul_VoidPrison@AB.Start; At Caster" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="Zeratul_VoidPrison@ImpactSound" parent="SoundOneShot">
+        <On Terms="Behavior.Zeratul_VoidPrison.On" Send="Create"/>
+    </CActorSound>
+    <CActorSimple id="Zeratul_VoidPrison@Animation">
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="Abil.Zeratul_VoidPrison.SourceCastStart" Send="Create"/>
+        <On Terms="ActorCreation" Target="_Selectable" Send="AnimPlay Spell Stand,Work,Start 0 -1.000000 -1.000000 0.250000 AsDuration"/>
+        <On Terms="Abil.Zeratul_VoidPrison.SourceCastStart" Send="Destroy"/>
+    </CActorSimple>
+
+    <CModel id="Zeratul_VoidPrison@Model" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Protoss\VoidPrismImpact\VoidPrismImpact.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+
+    <CSound id="Zeratul_VoidPrison@LaunchSound" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Protoss\Zeratul\Zeratul_VoidPrisonLaunch0.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Zeratul\Zeratul_VoidPrisonLaunch1.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Zeratul\Zeratul_VoidPrisonLaunch2.wav"/>
+    </CSound>
+    <CSound id="Zeratul_VoidPrison@ImpactSound" parent="Spell">
+        <AssetArray File="Assets\Sounds\Protoss\Zeratul\Zeratul_VoidPrisonImpact0.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Zeratul\Zeratul_VoidPrisonImpact1.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Zeratul\Zeratul_VoidPrisonImpact2.wav"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+
+    <!-- Blink -->
+    <CButton id="Zeratul_Blink">
+        <Icon value="Assets\Textures\btn-ability-protoss-blink-zeratul.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-blink-zeratul.dds"/>
+        <TintRacially value="1"/>
+    </CButton>
+    
+    <CAbilEffectTarget id="Zeratul_Blink">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Cost>
+            <Cooldown TimeUse="10"/>
+        </Cost>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Zeratul_Blink">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <Effect index="0" value="Zeratul_Blink@Teleport"/>
+        <AbilSetId value="Blnk"/>
+        <Flags index="BestUnit" value="0"/>
+        <Flags index="RequireTargetVision" value="0"/>
+    </CAbilEffectTarget>
+
+    <CEffectTeleport id="Zeratul_Blink@Teleport">
+        <EditorCategories value="Race:Protoss"/>
+        <ClearQueuedOrders value="0"/>
+        <PlacementAround Value="CasterUnit"/>
+        <PlacementRange value="8"/>
+        <Range value="8"/>
+        <WhichUnit Value="Caster"/>
+        <TargetLocation Value="TargetPoint"/>
+        <TeleportFlags index="TestCliff" value="1"/>
+    </CEffectTeleport>
+
+    <CActorSound id="Zeratul_Blink@ImpactSound" parent="SoundOneShot">
+        <On Terms="Abil.Zeratul_Blink.TargetCastStart" Send="Create"/>
+    </CActorSound>
+    <CActorModel id="Zeratul_Blink@LaunchModel" parent="ModelAnimationStyleOneShotNoOrphan">
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOriginStationary SOpForwardCasterCenter"/>
+        <On Terms="Effect.Zeratul_Blink@Teleport.Start; At Source" Send="Create"/>
+    </CActorModel>
+    <CActorModel id="Zeratul_Blink@ImpactModel" parent="ModelAnimationStyleOneShotNoOrphan">
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOrigin SOpForwardOriginPoint"/>
+        <On Terms="Effect.Zeratul_Blink@Teleport.Stop; At Source" Send="Create"/>
+    </CActorModel>
+    <CActorSimple id="Zeratul_Blink@Animation">
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="Abil.Zeratul_Blink.SourceCastStart" Send="Create"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="ModelSuddenMotionStart"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="AnimPlay Spell Attack,03 NonLooping"/>
+        <On Terms="Abil.Zeratul_Blink.SourceFinish" Target="_Unit" Send="ModelSuddenMotionStop"/>
+        <On Terms="Abil.Zeratul_Blink.SourceFinish" Send="Destroy"/>
+    </CActorSimple>
+    
+    <CModel id="Zeratul_Blink@ImpactModel" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\ZeratulBlinkIn\ZeratulBlinkIn.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+    <CModel id="Zeratul_Blink@LaunchModel" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\ZeratulBlinkOut\ZeratulBlinkOut.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+
+    <CSound id="Zeratul_Blink@ImpactSound" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Protoss\Stalker\Stalker_Blink0.wav"/>
+        <Volume value="-6.120000,-6.120000"/>
+    </CSound>
+
+    <!-- Read -->
+    <CButton id="Zeratul_Read">
+        <Icon value="Assets\Textures\btn-unit-protoss-zeratul.dds"/>
+    </CButton>
+    <CButton id="Zeratul_Read@Off">
+        <Icon value="Assets\Textures\btn-unit-protoss-zeratul.dds"/>
+    </CButton>
+
+    <CAbilBehavior id="Zeratul_Read">
+        <BehaviorArray value="Zeratul_Read"/>
+        <Flags index="Toggle" value="1"/>
+        <CmdButtonArray index="On" DefaultButtonFace="Zeratul_Read"/>
+        <CmdButtonArray index="Off" DefaultButtonFace="Zeratul_Read@Off"/>
+    </CAbilBehavior>
+
+    <CBehaviorBuff id="Zeratul_Read">
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <ModifyFlags index="SuppressMoving" value="1"/>
+            <ModifyFlags index="DisableWeapons" value="1"/>
+            <StateFlags index="SuppressCloak" value="1"/>
+            <AbilClassDisableArray index="CAbilEffectTarget" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+</Catalog>

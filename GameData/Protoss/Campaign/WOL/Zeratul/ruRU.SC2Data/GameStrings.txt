@@ -1,0 +1,17 @@
+Button/Name/Zeratul=Вызвать Зератула
+Button/Tooltip/Zeratul=Зератул – прославленный темный тамплиер с мощными псионными способностями и увеличенным запасом здоровья, наносящий противникам повышенный урон.
+Button/Name/Zeratul_PermanentlyCloaked=Постоянная маскировка
+Button/Tooltip/Zeratul_PermanentlyCloaked=Зератул постоянно замаскирован.
+Button/Name/Zeratul_VoidPrison=Узы Пустоты
+Button/Tooltip/Zeratul_VoidPrison=Окутывает противника облаком псионной энергии, оглушая его и подавляя его способность обнаруживать замаскированные единицы в течение <d ref="Behavior,Zeratul_VoidPrison,Duration"/> сек. <c val="ffff8a"><n/><n/>Действует на воздушные и наземные цели.</c>
+Button/Name/Zeratul_Blink=Скачок
+Button/Tooltip/Zeratul_Blink=Зератул телепортируется на небольшое расстояние.
+
+Behavior/Name/Zeratul_VoidPrison=Узы Пустоты
+Behavior/Tooltip/Zeratul_VoidPrison=та единица оглушена и обездвижена под воздействием Уз Пустоты.
+
+Unit/Name/Zeratul=Зератул
+UnitKillRank/Zeratul=темный прелат
+
+Weapon/Name/Zeratul_Weapon=Пси-клинок мастера
+Weapon/Tip/Zeratul_Weapon=Этот клинок, помимо того что рубит хорошо, так и ещё и фонарик замечательный

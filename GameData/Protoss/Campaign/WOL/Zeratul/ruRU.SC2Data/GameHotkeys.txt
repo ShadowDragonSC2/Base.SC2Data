@@ -1,0 +1,3 @@
+Button/Hotkey/Zeratul=Z
+Button/Hotkey/Zeratul_VoidPrison=W
+Button/Hotkey/Zeratul_Blink=Q
