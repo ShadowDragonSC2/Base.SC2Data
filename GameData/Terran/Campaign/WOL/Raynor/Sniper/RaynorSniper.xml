@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    <CButton id="RaynorSniper" parent="UnitButton_GroundAir">
+        <Icon value="Assets\Textures\BTN-Unit-Terran-MarineRaynorHEV.dds"/>
+    </CButton>
+    
+    <CUnit id="RaynorSniper" parent="Generic_Unit_Ground" race="Terr">
+        <Mob value="Campaign"/>
+        <FlagArray index="Hero" value="1"/>
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="200"/>
+        <LifeMax value="200"/>
+        <LifeArmor value="1"/>
+        <LateralAcceleration value="46.0625"/>
+        <Sight value="10"/>
+        <CostResource index="Minerals" value="50"/>
+        <RepairTime value="20"/>
+        <KillXP value="15"/>
+        <AbilArray Link="RaynorSniper_Snipe"/>
+        <BehaviorArray Link="RaynorRadar"/>
+        <BehaviorArray Link="RaynorRadarDummy"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="RaynorSniper_Snipe" Type="AbilCmd" AbilCmd="RaynorSniper_Snipe,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="RaynorRadar" Type="Passive" Behavior="RaynorRadarDummy" Row="2" Column="1"/>
+        </CardLayouts>
+        <InnerRadius value="0.5"/>
+        <CargoSize value="1"/>
+        <ScoreMake value="50"/>
+        <ScoreKill value="100"/>
+        <SubgroupPriority value="50"/>
+        <EditorCategories value="ObjectType:Hero,ObjectFamily:Campaign"/>
+        <GlossaryPriority value="300"/>
+        <CostCategory value="Army"/>
+        <Fidget>
+            <ChanceArray index="Anim" value="33"/>
+            <ChanceArray index="Idle" value="33"/>
+            <ChanceArray index="Turn" value="33"/>
+        </Fidget>
+    </CUnit>
+    
+    <CActorUnit id="RaynorSniper" parent="AdvancedStandard_Ground" unitName="RaynorSniper">
+        <Aliases value="_UnitSmall"/>
+        <On Terms="ActorCreation" Send="RefSet ::global.RaynorSniper ::Self"/>
+        <On Terms="Abil.RaynorSniper_Snipe.SourcePrepStart" Send="AnimGroupApply Work Stand,Work,Start Stand,Work,End"/>
+        <On Terms="Abil.RaynorSniper_Snipe.SourceCastStop" Send="$Spell NonLooping"/>
+        <On Terms="AnimDone; AnimName Spell" Send="AnimGroupRemove Work"/>
+        <On Terms="Signal.*.DestroySplat" Target="RaynorSniper_Snipe@Splat" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="TextureSelectById Decal_Terran_0002_01"/>
+        <DeathArray index="Normal" ModelLink="RaynorSniper"/>
+        <DeathArray index="Fire" SoundLink="Uni_DeathFXFire"/>
+        <AbilSoundArray AbilCmd="RaynorSnipe,Execute" Sound="RaynorSniper@SnipeVO"/>
+        <ModelFlags index="SuppressPlayerDecals" value="1"/>
+        <StandAnimTurnTime value="5"/>
+        <BarWidth value="50"/>
+        <BarOffset value="50"/>
+        <UnitBorderNormalColor value="150,150,150"/>
+        <UnitBorderSubgroupColor value="255,255,255"/>
+        <UnitKillRank Text="UnitKillRank/Raynor"/>
+        <UnitIcon value="Assets\Textures\BTN-Unit-Terran-MarineRaynorHEV.dds"/>
+        <HeroIcon value="Assets\Textures\ui-heroicon-raynor.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-infantryarmorlevel0.dds"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Terran-Marine-Raynorhev.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Terran-Marine-Raynorhev.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    
+    <CModel id="RaynorSniper" parent="Unit">
+        <Model value="Assets\Units\Terran\MarineRaynorHEV\MarineRaynorHEV.m3"/>
+        <SquibTypeDefault value="Flesh"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="1.300000,1.300000,1.300000"/>
+        <ScaleMin value="1.300000,1.300000,1.300000"/>
+        <Flags index="AutoUnload" value="1"/>
+        <SelectionRadius value="0.416500"/>
+        <ShadowRadius value="0.416500"/>
+        <TechPurchaseCamera value="Star2CameraMid04"/>
+        <UnitGlossaryCamera value="Star2CameraMid04"/>
+        <PlanetPanelCamera value="Star2CameraMid04"/>
+    </CModel>
+    <CModel id="RaynorSniper@DeathFire" parent="UnitDeath" Race="Terran">
+        <Model value="Assets\Units\Terran\MarineRaynorHEVDeathFire\MarineRaynorHEVDeathFire.m3"/>
+    </CModel>
+    <CModel id="RaynorSniper@Portrait" parent="FXAPortrait">
+        <Model value="Assets/Portraits/Terran/RaynorMarinePortrait/RaynorMarinePortrait.m3"/>
+        <RequiredAnims value="Assets\Portraits\Terran\RaynorMarinePortrait_RequiredAnims\RaynorMarinePortrait_RequiredAnims.m3a"/>
+        <RequiredAnims value="Assets\StoryModeCharacters\Terran\SM_RaynorMarine_FacialAnims\SM_RaynorMarine_FacialAnims.m3a"/>
+        <Flags index="Download" value="1"/>
+    </CModel>
+
+    <CSound id="RaynorSniper@Death" parent="Zerg_ExplosionMedium">
+        <EditorCategories value="Race:Terran"/>
+    </CSound>
+    <CSound id="RaynorSniper@DeathVoice" parent="DeathVoice">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Death00.wav"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Death01.wav"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Death02.wav"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Death03.wav"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Death04.wav"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Death05.wav"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Death06.wav"/>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+    <CSound id="RaynorSniper@Attack" parent="TerranAck">
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Attack00.ogg" FacialAnim="Raynor_Attack00"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Attack01.ogg" FacialAnim="Raynor_Attack01"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Attack02.ogg" FacialAnim="Raynor_Attack02"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Attack03.ogg" FacialAnim="Raynor_Attack03"/>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+    <CSound id="RaynorSniper@Help" parent="TerranAck">
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Help00.ogg" FacialAnim="Raynor_Help00"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Help01.ogg" FacialAnim="Raynor_Help01"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Help02.ogg" FacialAnim="Raynor_Help02"/>
+        <Volume value="-1.000000,-1.000000"/>
+        <Category value="Alert"/>
+    </CSound>
+    <CSound id="RaynorSniper@Ready" parent="Ready">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Ready00.ogg" FacialAnim="Raynor_Help01"/>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+    <CSound id="RaynorSniper@Pissed" parent="Pissed">
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Pissed00.ogg" FacialAnim="Raynor_Pissed00"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Pissed01.ogg" FacialAnim="Raynor_Pissed01"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Pissed02.ogg" FacialAnim="Raynor_Pissed02"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Pissed03.ogg" FacialAnim="Raynor_Pissed03"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Pissed04.ogg" FacialAnim="Raynor_Pissed04"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Pissed05.ogg" FacialAnim="Raynor_Pissed05"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Pissed07.ogg" FacialAnim="Raynor_Pissed07"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Pissed08.ogg" FacialAnim="Raynor_Pissed08"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Pissed09.ogg" FacialAnim="Raynor_Pissed09"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Pissed10.ogg" FacialAnim="Raynor_Pissed10"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Pissed11.ogg" FacialAnim="Raynor_Pissed11"/>
+        <EditorCategories value="Race:Terran"/>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+    <CSound id="RaynorSniper@What" parent="TerranAck">
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_What00.ogg" FacialAnim="Raynor_What00"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_What01.ogg" FacialAnim="Raynor_What01"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_What02.ogg" FacialAnim="Raynor_What02"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_What03.ogg" FacialAnim="Raynor_What03"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_What04.ogg" FacialAnim="Raynor_What04"/>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+    <CSound id="RaynorSniper@Yes" parent="TerranAck">
+        <!-- <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Yes00.ogg" FacialAnim="Raynor_Yes00"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Yes01.ogg" FacialAnim="Raynor_Yes01"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Yes02.ogg" FacialAnim="Raynor_Yes02"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Yes03.ogg" FacialAnim="Raynor_Yes03"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Yes04.ogg" FacialAnim="Raynor_Yes04"/> -->
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Yes05.ogg" Volume="-2.000000,-2.000000" FacialAnim="Raynor_Yes05"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Yes06.ogg" Volume="-2.000000,-2.000000" FacialAnim="Raynor_Yes06"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Attack04.ogg" FacialAnim="Raynor_Attack04"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Pissed06.ogg" Volume="-2.000000,-2.000000" FacialAnim="Raynor_Pissed06"/>
+    </CSound>
+
+    <CLight id="RaynorSniper@Portrait" parent="default">
+        <ToDInfoArray index="0" AmbientColor="0.223529,0.200000,0.156863">
+            <Param index="HDRExposure" value="1.480000"/>
+            <Param index="HDRBloomThreshold" value="1.950000"/>
+            <DirectionalLight index="Key" Direction="-0.466141,0.877053,-0.116151"/>
+            <DirectionalLight index="Fill" Color="0.003922,0.239216,0.678431" ColorMultiplier="1.189000" Direction="0.835212,-0.482210,0.264378"/>
+            <DirectionalLight index="Back" Color="1.000000,0.501961,0.000000" ColorMultiplier="0.188000" Direction="-0.943813,0.309397,-0.116151"/>
+        </ToDInfoArray>
+        <EditorCategories value="LightGroup:PortraitsUnitsTerran"/>
+    </CLight>
+    
+    <CSound id="RaynorSniper@SnipeVO" parent="TerranAck">
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignVO\TValerian02ARaynor00051.ogg" FacialAnim="TValerian02ARaynor00051"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignVO\TValerian02ARaynor00050.ogg" FacialAnim="TValerian02ARaynor00050"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignVO\TValerian02ARaynor00049.ogg" FacialAnim="TValerian02ARaynor00049"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignVO\TValerian02ARaynor00048.ogg" FacialAnim="TValerian02ARaynor00048"/>
+    </CSound>
+
+    <!-- ========== Weapons ========== -->
+
+    <CWeaponLegacy id="RaynorSniper_Weapon">
+        <EditorCategories value="Race:Terran"/>
+        <DisplayEffect value="RaynorSniper_Weapon@Damage"/>
+        <Effect value="RaynorSniper_Weapon@Damage"/>
+        <Icon value="Assets\Textures\btn-upgrade-terran-infantryweaponslevel0.dds"/>
+        <Period value="1.5"/>
+        <DamagePoint value="0.05"/>
+        <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+
+    <CEffectDamage id="RaynorSniper_Weapon@Damage">
+        <EditorCategories value="Race:Terran"/>
+        <ArmorReduction value="1"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <Flags index="Notification" value="1"/>
+        <Kind value="Ranged"/>
+        <Amount value="30"/>
+    </CEffectDamage>
+
+    <CActorAction id="RaynorSniper_Weapon@Attack" parent="GenericAttack" effectAttack="RaynorSniper_Weapon@Damage"/>
+
+    <CModel id="RaynorSniper_Weapon@AttackLaunch" parent="LaunchFX">
+        <Model value="Assets\Effects\Terran\GhostWeaponLaunch\GhostWeaponLaunch.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+    <CModel id="RaynorSniper_Weapon@AttackImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Terran\GhostWeaponImpact\GhostWeaponImpact.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+
+    <CSound id="RaynorSniper_Weapon@AttackLaunch" parent="Ghost_AttackLaunch"/>
+    <CSound id="RaynorSniper_Weapon@AttackImpact" parent="Terran_SingleBulletAttackImpact"/>
+
+    <!-- ========== Abilities ========== -->
+
+    <!-- Snipe -->
+    <CButton id="RaynorSniper_Snipe">
+        <Icon value="Assets\Textures\btn-ability-terran-penetratorround.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-terran-penetratorround.dds"/>
+        <EditorCategories value="Race:Terran"/>
+    </CButton>
+    
+    <CAbilEffectTarget id="RaynorSniper_Snipe">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Effect index="0" value="RaynorSnipeCreatePersistent"/>
+        <Cost>
+            <Cooldown TimeUse="20"/>
+        </Cost>
+        <Range value="12"/>
+        <CastIntroTime value="0.66"/>
+        <FinishTime value="1.66"/>
+        <UninterruptibleArray index="Cast" value="1"/>
+        <UninterruptibleArray index="Finish" value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="RaynorSniper_Snipe"/>
+        <CursorEffect value="RaynorSnipeSearch"/>
+        <Alignment value="Negative"/>
+    </CAbilEffectTarget>
+    
+    <CEffectCreatePersistent id="RaynorSnipeCreatePersistent">
+        <ValidatorArray value="HasVision"/>
+        <EditorCategories value="Race:Terran"/>
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
+        <WhichLocation Value="CasterPoint"/>
+        <OffsetVectorStartLocation Value="CasterPoint"/>
+        <PeriodCount value="13"/>
+        <PeriodicEffectArray value="RaynorSnipeSearch"/>
+        <PeriodicOffsetArray value="0,-1,0"/>
+        <PeriodicOffsetArray value="0,-2,0"/>
+        <PeriodicOffsetArray value="0,-3,0"/>
+        <PeriodicOffsetArray value="0,-4,0"/>
+        <PeriodicOffsetArray value="0,-5,0"/>
+        <PeriodicOffsetArray value="0,-6,0"/>
+        <PeriodicOffsetArray value="0,-7,0"/>
+        <PeriodicOffsetArray value="0,-8,0"/>
+        <PeriodicOffsetArray value="0,-9,0"/>
+        <PeriodicOffsetArray value="0,-10,0"/>
+        <PeriodicOffsetArray value="0,-11,0"/>
+        <PeriodicOffsetArray value="0,-12,0"/>
+        <PeriodicOffsetArray value="0,-13,0"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="RaynorSnipeSearch">
+        <EditorCategories value="Race:Terran"/>
+        <SearchFilters value="Ground,Visible;Self,Player,Ally,Missile,Invulnerable"/>
+        <AreaArray Radius="0.75" Effect="RaynorSnipeDamageSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="RaynorSnipeDamageSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="RaynorSnipeDamage"/>
+        <EffectArray value="RaynorSnipeApplyBehavior"/>
+    </CEffectSet>
+    <CEffectDamage id="RaynorSnipeDamage">
+        <EditorCategories value="Race:Terran"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <Kind value="Ranged"/>
+        <Amount value="300"/>
+        <Death value="Silentkill"/>
+        <ValidatorArray value="noMarkers"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="RaynorSnipeApplyBehavior">
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="RaynorSniper_Snipe@Sniped"/>
+        <ValidatorArray index="0" value=""/>
+    </CEffectApplyBehavior>
+
+    <CBehaviorBuff id="RaynorSniper_Snipe@Sniped">
+        <Duration value="0.125"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    
+    <CActorRange id="RaynorSniper_Snipe@Range" parent="RangeAbil" abil="RaynorSniper_Snipe"/>
+    <CActorSplat id="RaynorSniper_Snipe@Splat">
+        <FogVisibility value="Visible"/>
+        <HoldTime value="-1.000000"/>
+        <FadeOut value="0.000000"/>
+        <Layer value="AOELayer"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <HostSiteOps Ops="SOpBasicScopeFollow RaynorSniper_Snipe@ForwardLaunch"/>
+    </CActorSplat>
+    <CActorModel id="RaynorSniper_Snipe@LaunchModel" parent="ModelAnimationStyleOneShot">
+        <Flags index="SuppressCreationErrors" value="1"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachWeapon"/>
+        <On Terms="Abil.RaynorSniper_Snipe.SourceFinishStart" Send="Create"/>
+    </CActorModel>
+    <CActorModel id="RaynorSniper_Snipe@Cursor" parent="CursorModel" abil="RaynorSniper_Snipe">
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <Model value="Invisible"/>
+        <On Terms="ActorCreation" Send="RefSet ::global.raynorbeam ::Self"/>
+        <On Terms="ActorCreation" Target="::global.RaynorSniper" Send="Create RaynorSniper_Snipe@Splat"/>
+        <On Terms="ActorDestruction" Target="::global.RaynorSniper" Send="Signal DestroySplat"/>
+    </CActorModel>
+    <CActorModel id="RaynorSniper_Snipe@BloodImpact_Big" parent="ModelAnimationStyleOneShot">
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachTarget"/>
+        <On Terms="Effect.RaynorSnipeDamage.Start; ValidateUnit UnitIsBiological" Send="Create"/>
+    </CActorModel>
+    <CActorSound id="RaynorSniper_Snipe@LaunchSound" parent="SoundOneShot">
+        <On Terms="Abil.RaynorSniper_Snipe.SourceFinishStart" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="RaynorSniper_Snipe@ChargeUp" parent="SoundOneShot">
+        <On Terms="Abil.RaynorSniper_Snipe.SourceCastStart" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="RaynorSniper_Snipe@ImpactSound" parent="SoundOneShot">
+        <On Terms="Effect.RaynorSnipeDamage.Start" Send="Create"/>
+    </CActorSound>
+    <CActorBeamSimple id="RaynorSniper_Snipe@Beam" parent="BeamSimpleAnimationStyleOneShot">
+        <HostLaunch Subject="RaynorSniper"/>
+        <HostLaunchSiteOps Ops="SOpAttachWeapon" HoldPosition="1" HoldRotation="1"/>
+        <HostImpact Subject="RaynorSniper"/>
+        <HostImpactSiteOps Ops="SOpAttachWeapon RaynorSniper_Snipe@Offset" HoldPosition="1" HoldRotation="1"/>
+        <On Terms="Effect.RaynorSnipeCreatePersistent.Start" Send="Create"/>
+    </CActorBeamSimple>
+    <CActorRegionCircle id="RaynorSniper_Snipe@KillDoodad">
+        <Radius value="0.600000"/>
+        <On Terms="Effect.RaynorSnipeSearch.Start; At Effect" Send="Create"/>
+        <On Terms="ActorCreation" Send="QueryRegion ::Self DoodadKillQuery AgainstCenter"/>
+        <On Terms="Effect.RaynorSnipeSearch.Start; At Effect" Send="Destroy"/>
+    </CActorRegionCircle>
+    <CActorSiteOpForward id="RaynorSniper_Snipe@BigBloodImpactLaunch">
+        <HostForward Subject="::global.RaynorSniper"/>
+    </CActorSiteOpForward>
+    <CActorSiteOpForward id="RaynorSniper_Snipe@ForwardLaunch">
+        <HostForward Subject="::global.raynorbeam" Actor="Find"/>
+    </CActorSiteOpForward>
+    <CActorSiteOpLocalOffset id="RaynorSniper_Snipe@Offset">
+        <LocalOffset value="0.000000,-12.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    
+    <CModel id="RaynorSniper_Snipe@BloodImpact_Big" parent="ImpactFX">
+        <Model value="Assets\Effects\Other\BloodTargetImpact\BloodTargetImpact.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <Lighting value=""/>
+        <ScaleMax value="3.500000,3.500000,3.500000"/>
+        <ScaleMin value="3.500000,3.500000,3.500000"/>
+    </CModel>
+    <CModel id="RaynorSniper_Snipe@LaunchModel" parent="LaunchFX">
+        <Model value="Assets\Effects\Terran\MarineWeaponLaunch\MarineWeaponLaunch.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <ScaleMax value="2.000000,2.000000,2.000000"/>
+        <ScaleMin value="2.000000,2.000000,2.000000"/>
+        <SelectionRadius value="0.250000"/>
+        <ShadowRadius value="0.250000"/>
+    </CModel>
+    <CModel id="RaynorSniper_Snipe@Beam" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Terran\GhostSnipeBeam\GhostSnipeBeam.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <Lighting value=""/>
+    </CModel>
+    <CModel id="RaynorSniper_Snipe@Splat" parent="Splat">
+        <Model value="Assets\Effects\Terran\LaserSightSplat\LaserSightSplat.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+    
+    <CSound id="RaynorSniper_Snipe@ChargeUp" parent="Combat">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Terran\Raynor\Raynor_PenetratorRoundChargeUp0.wav"/>
+        <Volume value="-9.000000,-9.000000"/>
+        <Pitch value="3.000000,3.000000"/>
+    </CSound>
+    <CSound id="RaynorSniper_Snipe@LaunchSound" parent="Combat">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Terran\Raynor\Raynor_PenetratorRoundLaunch0.wav"/>
+    </CSound>
+    <CSound id="RaynorSniper_Snipe@ImpactSound" parent="Ghost_SnipeImpact"/>
+    
+</Catalog>
