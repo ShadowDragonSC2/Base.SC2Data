@@ -365,7 +365,7 @@
         <TechInfoUpgradeUsed value="TerranVehicleArmors@1"/>
         <TechInfoUpgradeUsed value="TerranVehicleArmors@1"/>
         <TechInfoUpgradeUsed value="TerranVehicleArmors@3"/>
-        <EditorCategories value="Race:Terran"/>
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Terran,ObjectType:Unit"/>
     </CDataCollectionUnit>
 
     <!--Odin Hero Wreckage-->
@@ -628,7 +628,7 @@
         <TechInfoUpgradeUsed value="TerranVehicleArmors@1"/>
         <TechInfoUpgradeUsed value="TerranVehicleArmors@1"/>
         <TechInfoUpgradeUsed value="TerranVehicleArmors@3"/>
-        <EditorCategories value="Race:Terran"/>
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Terran,ObjectType:Unit"/>
     </CDataCollectionUnit>
 
 <!-- =========== Weapons =========== -->
@@ -932,7 +932,7 @@
         <DataRecord Entry="Effect,OdinHeroDontDie@Set"/>
         <DataRecord Entry="Effect,OdinHeroDontDie@CancelBarrage"/>
         <DataRecord Entry="Effect,OdinHeroDontDie@IO"/>
-        <EditorCategories value="Race:Terran"/>
+        <EditorCategories value="DataGroup:Behavior,DataFamily:Campaign,Race:Terran,ObjectType:Behavior"/>
     </CDataCollectionUnit>
 
 <!-- =========== Abilities =========== -->
@@ -1084,7 +1084,7 @@
         <DataRecord Entry="Sound,OdinHero_Barrage@BarrageMorph"/>
         <DataRecord Entry="Sound,OdinHero_Barrage@BarrageUnMorph"/>
         <DataRecord Entry="Sound,OdinHero_Barrage@BarrageSound"/>
-        <EditorCategories value="Race:Terran"/>
+        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Terran,ObjectType:Spell"/>
     </CDataCollectionUnit>
 
     <!--Nuclear Strike-->
