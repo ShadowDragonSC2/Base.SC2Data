@@ -18,11 +18,10 @@
         <RepairTime value="20"/>
         <KillXP value="15"/>
         <AbilArray Link="RaynorSniper_Snipe"/>
-        <BehaviorArray Link="RaynorRadar"/>
-        <BehaviorArray Link="RaynorRadarDummy"/>
+        <BehaviorArray Link="RaynorSniper_Radar"/>
         <CardLayouts index="0">
             <LayoutButtons Face="RaynorSniper_Snipe" Type="AbilCmd" AbilCmd="RaynorSniper_Snipe,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="RaynorRadar" Type="Passive" Behavior="RaynorRadarDummy" Row="2" Column="1"/>
+            <LayoutButtons Face="RaynorSniper_Radar" Type="Passive" Behavior="RaynorRadarDummy" Row="2" Column="1"/>
         </CardLayouts>
         <InnerRadius value="0.5"/>
         <CargoSize value="1"/>
@@ -177,6 +176,31 @@
         <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignVO\TValerian02ARaynor00048.ogg" FacialAnim="TValerian02ARaynor00048"/>
     </CSound>
 
+    <!-- ========== Behaviors ========== -->
+
+    <CButton id="RaynorSniper_Radar">
+        <Icon value="Assets\Textures\btn-status-radar.dds"/>
+    </CButton>
+    <CBehaviorBuff id="RaynorSniper_Radar">
+        <InfoIcon value="Assets\Textures\btn-status-radar.dds"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Structures"/>
+        <Modification Radar="25" RadarFilters="-;Missile,Destructible,Buried,Cloaked"/>
+        <Alignment value="Positive"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CActorRange id="RaynorSniper_Radar">
+        <Range value="25.000000"/>
+        <RangeFlags index="Minimap" value="1"/>
+        <On Terms="Behavior.RaynorSniper_Radar.On" Send="Create"/>
+        <On Terms="Behavior.RaynorSniper_Radar.Off" Send="Destroy"/>
+    </CActorRange>
+
+    <CDataCollectionUnit id="RaynorSniper_Radar">
+        <DataRecord Entry="Button,RaynorSniper_Radar"/>
+        <DataRecord Entry="Behavior,RaynorSniper_Radar"/>
+        <DataRecord Entry="Actor,RaynorSniper_Radar"/>
+    </CDataCollectionUnit>
+
     <!-- ========== Weapons ========== -->
 
     <CWeaponLegacy id="RaynorSniper_Weapon">
@@ -189,7 +213,7 @@
         <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CWeaponLegacy>
 
-    <CEffectDamage id="RaynorSniper_Weapon@Damage">
+    <CEffectDamage id="RaynorSniper_Weapon@Damage" parent="DU_WEAP">
         <EditorCategories value="Race:Terran"/>
         <ArmorReduction value="1"/>
         <ResponseFlags index="Acquire" value="1"/>
@@ -213,6 +237,16 @@
     <CSound id="RaynorSniper_Weapon@AttackLaunch" parent="Ghost_AttackLaunch"/>
     <CSound id="RaynorSniper_Weapon@AttackImpact" parent="Terran_SingleBulletAttackImpact"/>
 
+    <CDataCollectionUnit id="RaynorSniper_Weapon" parent="Weapon_Instant">
+        <DataRecord Entry="Weapon,RaynorSniper_Weapon"/>
+        <DataRecord Entry="Effect,RaynorSniper_Weapon@Damage"/>
+        <DataRecord Entry="Actor,RaynorSniper_Weapon@Attack"/>
+        <DataRecord Entry="Model,RaynorSniper_Weapon@AttackLaunch"/>
+        <DataRecord Entry="Model,RaynorSniper_Weapon@AttackImpact"/>
+        <DataRecord Entry="Sound,RaynorSniper_Weapon@AttackLaunch"/>
+        <DataRecord Entry="Sound,RaynorSniper_Weapon@AttackImpact"/>
+    </CDataCollectionUnit>
+
     <!-- ========== Abilities ========== -->
 
     <!-- Snipe -->
@@ -224,7 +258,7 @@
     
     <CAbilEffectTarget id="RaynorSniper_Snipe">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <Effect index="0" value="RaynorSnipeCreatePersistent"/>
+        <Effect index="0" value="RaynorSniper_Snipe@CP"/>
         <Cost>
             <Cooldown TimeUse="20"/>
         </Cost>
@@ -234,11 +268,11 @@
         <UninterruptibleArray index="Cast" value="1"/>
         <UninterruptibleArray index="Finish" value="1"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="RaynorSniper_Snipe"/>
-        <CursorEffect value="RaynorSnipeSearch"/>
+        <CursorEffect value="RaynorSniper_Snipe@Search"/>
         <Alignment value="Negative"/>
     </CAbilEffectTarget>
     
-    <CEffectCreatePersistent id="RaynorSnipeCreatePersistent">
+    <CEffectCreatePersistent id="RaynorSniper_Snipe@CP">
         <ValidatorArray value="HasVision"/>
         <EditorCategories value="Race:Terran"/>
         <Marker>
@@ -247,32 +281,21 @@
         <WhichLocation Value="CasterPoint"/>
         <OffsetVectorStartLocation Value="CasterPoint"/>
         <PeriodCount value="13"/>
-        <PeriodicEffectArray value="RaynorSnipeSearch"/>
-        <PeriodicOffsetArray value="0,-1,0"/>
-        <PeriodicOffsetArray value="0,-2,0"/>
-        <PeriodicOffsetArray value="0,-3,0"/>
-        <PeriodicOffsetArray value="0,-4,0"/>
-        <PeriodicOffsetArray value="0,-5,0"/>
-        <PeriodicOffsetArray value="0,-6,0"/>
-        <PeriodicOffsetArray value="0,-7,0"/>
-        <PeriodicOffsetArray value="0,-8,0"/>
-        <PeriodicOffsetArray value="0,-9,0"/>
-        <PeriodicOffsetArray value="0,-10,0"/>
-        <PeriodicOffsetArray value="0,-11,0"/>
-        <PeriodicOffsetArray value="0,-12,0"/>
-        <PeriodicOffsetArray value="0,-13,0"/>
+        <PeriodicEffectArray value="RaynorSniper_Snipe@Search"/>
+        <PeriodicOffsetArray value="0,-6.5,0"/>
     </CEffectCreatePersistent>
-    <CEffectEnumArea id="RaynorSnipeSearch">
+    <CEffectEnumArea id="RaynorSniper_Snipe@Search">
         <EditorCategories value="Race:Terran"/>
         <SearchFilters value="Ground,Visible;Self,Player,Ally,Missile,Invulnerable"/>
-        <AreaArray Radius="0.75" Effect="RaynorSnipeDamageSet"/>
+        <SearchFlags index="CallForHelp"/>
+        <AreaArray RectangleHeight="13" RectangleWidth="1.5" Effect="RaynorSniper_Snipe@Set"/>
     </CEffectEnumArea>
-    <CEffectSet id="RaynorSnipeDamageSet">
+    <CEffectSet id="RaynorSniper_Snipe@Set">
         <EditorCategories value="Race:Terran"/>
-        <EffectArray value="RaynorSnipeDamage"/>
-        <EffectArray value="RaynorSnipeApplyBehavior"/>
+        <EffectArray value="RaynorSniper_Snipe@Damage"/>
+        <EffectArray value="RaynorSniper_Snipe@AB"/>
     </CEffectSet>
-    <CEffectDamage id="RaynorSnipeDamage">
+    <CEffectDamage id="RaynorSniper_Snipe@Damage">
         <EditorCategories value="Race:Terran"/>
         <ImpactLocation Value="TargetUnit"/>
         <Kind value="Ranged"/>
@@ -280,7 +303,7 @@
         <Death value="Silentkill"/>
         <ValidatorArray value="noMarkers"/>
     </CEffectDamage>
-    <CEffectApplyBehavior id="RaynorSnipeApplyBehavior">
+    <CEffectApplyBehavior id="RaynorSniper_Snipe@AB">
         <EditorCategories value="Race:Terran"/>
         <Behavior value="RaynorSniper_Snipe@Sniped"/>
         <ValidatorArray index="0" value=""/>
@@ -291,6 +314,7 @@
         <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
     
+    <CActorAction id="RaynorSniper_Snipe@Attack" parent="GenericAttack" effectAttack="RaynorSniper_Snipe@Damage"/>
     <CActorRange id="RaynorSniper_Snipe@Range" parent="RangeAbil" abil="RaynorSniper_Snipe"/>
     <CActorSplat id="RaynorSniper_Snipe@Splat">
         <FogVisibility value="Visible"/>
@@ -316,7 +340,7 @@
     <CActorModel id="RaynorSniper_Snipe@BloodImpact_Big" parent="ModelAnimationStyleOneShot">
         <Host Subject="_Unit"/>
         <HostSiteOps Ops="SOpAttachTarget"/>
-        <On Terms="Effect.RaynorSnipeDamage.Start; ValidateUnit UnitIsBiological" Send="Create"/>
+        <On Terms="Effect.RaynorSniper_Snipe@Damage.Start; ValidateUnit UnitIsBiological" Send="Create"/>
     </CActorModel>
     <CActorSound id="RaynorSniper_Snipe@LaunchSound" parent="SoundOneShot">
         <On Terms="Abil.RaynorSniper_Snipe.SourceFinishStart" Send="Create"/>
@@ -324,21 +348,18 @@
     <CActorSound id="RaynorSniper_Snipe@ChargeUp" parent="SoundOneShot">
         <On Terms="Abil.RaynorSniper_Snipe.SourceCastStart" Send="Create"/>
     </CActorSound>
-    <CActorSound id="RaynorSniper_Snipe@ImpactSound" parent="SoundOneShot">
-        <On Terms="Effect.RaynorSnipeDamage.Start" Send="Create"/>
-    </CActorSound>
     <CActorBeamSimple id="RaynorSniper_Snipe@Beam" parent="BeamSimpleAnimationStyleOneShot">
         <HostLaunch Subject="RaynorSniper"/>
         <HostLaunchSiteOps Ops="SOpAttachWeapon" HoldPosition="1" HoldRotation="1"/>
         <HostImpact Subject="RaynorSniper"/>
         <HostImpactSiteOps Ops="SOpAttachWeapon RaynorSniper_Snipe@Offset" HoldPosition="1" HoldRotation="1"/>
-        <On Terms="Effect.RaynorSnipeCreatePersistent.Start" Send="Create"/>
+        <On Terms="Effect.RaynorSniper_Snipe@CP.Start" Send="Create"/>
     </CActorBeamSimple>
     <CActorRegionCircle id="RaynorSniper_Snipe@KillDoodad">
         <Radius value="0.600000"/>
-        <On Terms="Effect.RaynorSnipeSearch.Start; At Effect" Send="Create"/>
+        <On Terms="Effect.RaynorSniper_Snipe@Search.Start; At Effect" Send="Create"/>
         <On Terms="ActorCreation" Send="QueryRegion ::Self DoodadKillQuery AgainstCenter"/>
-        <On Terms="Effect.RaynorSnipeSearch.Start; At Effect" Send="Destroy"/>
+        <On Terms="Effect.RaynorSniper_Snipe@Search.Start; At Effect" Send="Destroy"/>
     </CActorRegionCircle>
     <CActorSiteOpForward id="RaynorSniper_Snipe@BigBloodImpactLaunch">
         <HostForward Subject="::global.RaynorSniper"/>
@@ -385,6 +406,37 @@
         <EditorCategories value="Race:Terran"/>
         <AssetArray File="Assets\Sounds\Terran\Raynor\Raynor_PenetratorRoundLaunch0.wav"/>
     </CSound>
-    <CSound id="RaynorSniper_Snipe@ImpactSound" parent="Ghost_SnipeImpact"/>
+    <CSound id="RaynorSniper_Snipe@AttackImpact" parent="Ghost_SnipeImpact"/>
+
+    <CDataCollectionUnit id="RaynorSniper_Snipe" parent="AbilityBase">
+        <DataRecord Entry="Button,RaynorSniper_Snipe"/>
+        <DataRecord Entry="Abil,RaynorSniper_Snipe"/>
+        <DataRecord Entry="Effect,RaynorSniper_Snipe@CP"/>
+        <DataRecord Entry="Effect,RaynorSniper_Snipe@Search"/>
+        <DataRecord Entry="Effect,RaynorSniper_Snipe@Set"/>
+        <DataRecord Entry="Effect,RaynorSniper_Snipe@Damage"/>
+        <DataRecord Entry="Effect,RaynorSniper_Snipe@AB"/>
+        <DataRecord Entry="Behavior,RaynorSniper_Snipe@Sniped"/>
+        <DataRecord Entry="Actor,RaynorSniper_Snipe@Attack"/>
+        <DataRecord Entry="Actor,RaynorSniper_Snipe@Range"/>
+        <DataRecord Entry="Actor,RaynorSniper_Snipe@Splat"/>
+        <DataRecord Entry="Actor,RaynorSniper_Snipe@LaunchModel"/>
+        <DataRecord Entry="Actor,RaynorSniper_Snipe@Cursor"/>
+        <DataRecord Entry="Actor,RaynorSniper_Snipe@BloodImpact_Big"/>
+        <DataRecord Entry="Actor,RaynorSniper_Snipe@LaunchSound"/>
+        <DataRecord Entry="Actor,RaynorSniper_Snipe@ChargeUp"/>
+        <DataRecord Entry="Actor,RaynorSniper_Snipe@Beam"/>
+        <DataRecord Entry="Actor,RaynorSniper_Snipe@KillDoodad"/>
+        <DataRecord Entry="Actor,RaynorSniper_Snipe@BigBloodImpactLaunch"/>
+        <DataRecord Entry="Actor,RaynorSniper_Snipe@ForwardLaunch"/>
+        <DataRecord Entry="Actor,RaynorSniper_Snipe@Offset"/>
+        <DataRecord Entry="Model,RaynorSniper_Snipe@BloodImpact_Big"/>
+        <DataRecord Entry="Model,RaynorSniper_Snipe@LaunchModel"/>
+        <DataRecord Entry="Model,RaynorSniper_Snipe@Beam"/>
+        <DataRecord Entry="Model,RaynorSniper_Snipe@Splat"/>
+        <DataRecord Entry="Sound,RaynorSniper_Snipe@ChargeUp"/>
+        <DataRecord Entry="Sound,RaynorSniper_Snipe@LaunchSound"/>
+        <DataRecord Entry="Sound,RaynorSniper_Snipe@AttackImpact"/>
+    </CDataCollectionUnit>
     
 </Catalog>
