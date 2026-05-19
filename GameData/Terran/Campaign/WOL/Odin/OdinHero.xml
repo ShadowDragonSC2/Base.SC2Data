@@ -144,14 +144,14 @@
             <Name value="BarrageMorph"/>
             <Type value="Sound"/>
             <Time value="0.600000"/>
-            <Payload value="OdinHero@BarrageMorph"/>
+            <Payload value="OdinHero_Barrage@Morph"/>
         </Events>
         <Events>
             <Anim value="Stand,Victory"/>
             <Name value="BarrageUnMorph"/>
             <Type value="Sound"/>
             <Time value="5.380000"/>
-            <Payload value="OdinHero@BarrageUnMorph"/>
+            <Payload value="OdinHero_Barrage@UnMorph"/>
         </Events>
         <Events>
             <Anim value="Stand,Victory"/>
@@ -207,56 +207,56 @@
             <Name value="OdinHeroVictoryBarrage"/>
             <Type value="Sound"/>
             <Time value="1.800000"/>
-            <Payload value="OdinHero_Barrage@BarrageSound"/>
+            <Payload value="OdinHero_Barrage@Sound"/>
         </Events>
         <Events>
             <Anim value="Stand,Victory"/>
             <Name value="OdinHeroVictorySound"/>
             <Type value="Sound"/>
             <Time value="2.140000"/>
-            <Payload value="OdinHero_Barrage@BarrageSound"/>
+            <Payload value="OdinHero_Barrage@Sound"/>
         </Events>
         <Events>
             <Anim value="Stand,Victory"/>
             <Name value="OdinHeroVictorySound"/>
             <Type value="Sound"/>
             <Time value="2.480000"/>
-            <Payload value="OdinHero_Barrage@BarrageSound"/>
+            <Payload value="OdinHero_Barrage@Sound"/>
         </Events>
         <Events>
             <Anim value="Stand,Victory"/>
             <Name value="OdinHeroVictorySound"/>
             <Type value="Sound"/>
             <Time value="2.710000"/>
-            <Payload value="OdinHero_Barrage@BarrageSound"/>
+            <Payload value="OdinHero_Barrage@Sound"/>
         </Events>
         <Events>
             <Anim value="Stand,Victory"/>
             <Name value="OdinHeroVictorySound"/>
             <Type value="Sound"/>
             <Time value="3.450000"/>
-            <Payload value="OdinHero_Barrage@BarrageSound"/>
+            <Payload value="OdinHero_Barrage@Sound"/>
         </Events>
         <Events>
             <Anim value="Stand,Victory"/>
             <Name value="OdinHeroVictorySound"/>
             <Type value="Sound"/>
             <Time value="3.790000"/>
-            <Payload value="OdinHero_Barrage@BarrageSound"/>
+            <Payload value="OdinHero_Barrage@Sound"/>
         </Events>
         <Events>
             <Anim value="Stand,Victory"/>
             <Name value="OdinHeroVictorySound"/>
             <Type value="Sound"/>
             <Time value="4.140000"/>
-            <Payload value="OdinHero_Barrage@BarrageSound"/>
+            <Payload value="OdinHero_Barrage@Sound"/>
         </Events>
         <Events>
             <Anim value="Stand,Victory"/>
             <Name value="OdinHeroVictorySound"/>
             <Type value="Sound"/>
             <Time value="4.370000"/>
-            <Payload value="OdinHero_Barrage@BarrageSound"/>
+            <Payload value="OdinHero_Barrage@Sound"/>
         </Events>
     <Model value="Assets\Units\Terran\Odin\Odin.m3"/>
     </CModel>
@@ -950,7 +950,6 @@
 
     <CAbilEffectTarget id="OdinHero_Barrage">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <Effect index="0" value="OdinHero_Barrage@BarragePersistent"/>
         <Cost>
             <Vital index="Energy" value="75"/>
         </Cost>
@@ -961,11 +960,11 @@
         <UninterruptibleArray index="Channel" value="1"/>
         <UninterruptibleArray index="Finish" value="1"/>
         <ValidatedArray index="Channel" value="0"/>
-        <CursorEffect value="OdinHero_Barrage@BarrageSearch"/>
+        <CursorEffect value="OdinHero_Barrage@Search"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="OdinHero_Barrage"/>
         <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel"/>
         <FinishTime value="2"/>
-        <Effect index="0" value="OdinHero_Barrage@BarrageCP"/>
+        <Effect index="0" value="OdinHero_Barrage@CP"/>
         <CancelableArray index="Cast" value="1"/>
         <CancelableArray index="Channel" value="1"/>
         <Alignment value="Negative"/>
@@ -973,11 +972,11 @@
 
     <!--Effect(s)-->
 
-    <CEffectCreatePersistent id="OdinHero_Barrage@BarrageCP">
+    <CEffectCreatePersistent id="OdinHero_Barrage@CP">
         <EditorCategories value="Race:Terran"/>
         <Flags index="Channeled" value="1"/>
         <PeriodCount value="12"/>
-        <PeriodicEffectArray value="OdinHero_Barrage@BarrageSearch"/>
+        <PeriodicEffectArray value="OdinHero_Barrage@Search"/>
         <PeriodicPeriodArray value="0.4"/>
         <ValidatorArray value="OdinHeroRepairing"/>
         <ValidatorArray value="CliffLevelGE1"/>
@@ -985,14 +984,14 @@
         <RevealFlags index="Unfog" value="1"/>
     </CEffectCreatePersistent>
 
-    <CEffectEnumArea id="OdinHero_Barrage@BarrageSearch">
+    <CEffectEnumArea id="OdinHero_Barrage@Search">
         <EditorCategories value="Race:Terran"/>
-        <ImpactLocation Effect="OdinHero_Barrage@BarrageCP"/>
+        <ImpactLocation Effect="OdinHero_Barrage@CP"/>
         <SearchFilters value="Ground;Self,Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="3" Effect="OdinHero_Barrage@BarrageDamage"/>
+        <AreaArray Radius="3" Effect="OdinHero_Barrage@Damage"/>
     </CEffectEnumArea>
 
-    <CEffectDamage id="OdinHero_Barrage@BarrageDamage">
+    <CEffectDamage id="OdinHero_Barrage@Damage">
         <EditorCategories value="Race:Terran"/>
         <Amount value="125"/>
         <ResponseFlags index="Acquire" value="1"/>
@@ -1002,58 +1001,58 @@
 
     <!--Actor(s)-->
 
-    <CActorModel id="OdinHero_Barrage@BarrageModel" parent="ModelAnimationStyleOneShot">
-        <HostSiteOps Ops="SOpTargetPoint OdinHero_Barrage@BarrageVariance"/>
-        <On Terms="Effect.OdinHero_Barrage@BarrageSearch.Impact" Send="Create"/>
+    <CActorModel id="OdinHero_Barrage@Model" parent="ModelAnimationStyleOneShot">
+        <HostSiteOps Ops="SOpTargetPoint OdinHero_Barrage@Variance"/>
+        <On Terms="Effect.OdinHero_Barrage@Search.Impact" Send="Create"/>
     </CActorModel>
 
-    <CActorSiteOpRandomPointInCircle id="OdinHero_Barrage@BarrageVariance">
+    <CActorSiteOpRandomPointInCircle id="OdinHero_Barrage@Variance">
         <Radius value="2.000000"/>
         <Variance value="11.000000"/>
     </CActorSiteOpRandomPointInCircle>
 
-    <CActorSound id="OdinHero_Barrage@BarrageSound" parent="SoundOneShot">
-        <On Terms="Effect.OdinHero_Barrage@BarrageSearch.Impact" Send="Create"/>
+    <CActorSound id="OdinHero_Barrage@Sound" parent="SoundOneShot">
+        <On Terms="Effect.OdinHero_Barrage@Search.Impact" Send="Create"/>
     </CActorSound>
 
-    <CActorSound id="OdinHero_Barrage@BarrageMorph" parent="SoundOneShot">
+    <CActorSound id="OdinHero_Barrage@Morph" parent="SoundOneShot">
         <On Terms="Abil.OdinHero_Barrage.SourceCastStart" Send="Create"/>
     </CActorSound>
 
-    <CActorSound id="OdinHero_Barrage@BarrageUnMorph" parent="SoundOneShot">
+    <CActorSound id="OdinHero_Barrage@UnMorph" parent="SoundOneShot">
         <On Terms="Abil.OdinHero_Barrage.SourceFinishStart" Send="Create"/>
     </CActorSound>
 
-    <CActorModel id="OdinHero_Barrage@BarrageCursorModel" parent="TerranCursorModel" abil="OdinHero_Barrage"/>
+    <CActorModel id="OdinHero_Barrage@CursorModel" parent="TerranCursorModel" abil="OdinHero_Barrage"/>
 
-    <CActorSplat id="OdinHero_Barrage@BarrageCursorSplat" parent="TerranCursorSplat" abil="OdinHero_Barrage"/>
+    <CActorSplat id="OdinHero_Barrage@CursorSplat" parent="TerranCursorSplat" abil="OdinHero_Barrage"/>
 
-    <CActorRange id="OdinHero_Barrage@BarrageRange" parent="RangeAbil" abil="OdinHero_Barrage"/>
+    <CActorRange id="OdinHero_Barrage@Range" parent="RangeAbil" abil="OdinHero_Barrage"/>
 
     <!--Model(s)-->
 
-    <CModel id="OdinHero_Barrage@BarrageModel" parent="ImpactFX">
+    <CModel id="OdinHero_Barrage@Model" parent="ImpactFX">
         <Model value="Assets\Effects\Terran\ThorShoulderMissileImpact\ThorShoulderMissileImpact.m3"/>
         <EditorCategories value="Race:Terran"/>
     </CModel>
 
     <!--Sound(s)-->
 
-    <CSound id="OdinHero_Barrage@BarrageMorph" parent="Combat">
+    <CSound id="OdinHero_Barrage@Morph" parent="Combat">
         <DupeDestroyCount value="4"/>
         <AssetArray File="Assets\Sounds\Terran\Thor\Thor_250mmCannonMorph0.wav"/>
         <Mode value="3DWorld"/>
         <EditorCategories value="Race:Terran"/>
     </CSound>
 
-    <CSound id="OdinHero_Barrage@BarrageUnMorph" parent="Combat">
+    <CSound id="OdinHero_Barrage@UnMorph" parent="Combat">
         <DupeDestroyCount value="4"/>
         <AssetArray File="Assets\Sounds\Terran\Thor\Thor_250mmCannonUnMorph0.wav"/>
         <Mode value="3DWorld"/>
         <EditorCategories value="Race:Terran"/>
     </CSound>
 
-    <CSound id="OdinHero_Barrage@BarrageSound" parent="Combat">
+    <CSound id="OdinHero_Barrage@Sound" parent="Combat">
         <DupeDestroyCount value="12"/>
         <Pitch value="3.160000,5.180000"/>
         <Volume value="-10.480000,-9.160000"/>
@@ -1069,21 +1068,21 @@
         <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Terran,ObjectType:Spell"/>
         <DataRecord Entry="Button,OdinHero_Barrage"/>
         <DataRecord Entry="Abil,OdinHero_Barrage"/>
-        <DataRecord Entry="Effect,OdinHero_Barrage@BarrageCP"/>
-        <DataRecord Entry="Effect,OdinHero_Barrage@BarrageSearch"/>
-        <DataRecord Entry="Effect,OdinHero_Barrage@BarrageDamage"/>
-        <DataRecord Entry="Actor,OdinHero_Barrage@BarrageModel"/>
-        <DataRecord Entry="Actor,OdinHero_Barrage@BarrageVariance"/>
-        <DataRecord Entry="Actor,OdinHero_Barrage@BarrageSound"/>
-        <DataRecord Entry="Actor,OdinHero_Barrage@BarrageMorph"/>
-        <DataRecord Entry="Actor,OdinHero_Barrage@BarrageUnMorph"/>
-        <DataRecord Entry="Actor,OdinHero_Barrage@BarrageRange"/>
-        <DataRecord Entry="Actor,OdinHero_Barrage@BarrageCursorModel"/>
-        <DataRecord Entry="Actor,OdinHero_Barrage@BarrageCursorSplat"/>
-        <DataRecord Entry="Model,OdinHero_Barrage@BarrageModel"/>
-        <DataRecord Entry="Sound,OdinHero_Barrage@BarrageMorph"/>
-        <DataRecord Entry="Sound,OdinHero_Barrage@BarrageUnMorph"/>
-        <DataRecord Entry="Sound,OdinHero_Barrage@BarrageSound"/>
+        <DataRecord Entry="Effect,OdinHero_Barrage@CP"/>
+        <DataRecord Entry="Effect,OdinHero_Barrage@Search"/>
+        <DataRecord Entry="Effect,OdinHero_Barrage@Damage"/>
+        <DataRecord Entry="Actor,OdinHero_Barrage@Model"/>
+        <DataRecord Entry="Actor,OdinHero_Barrage@Variance"/>
+        <DataRecord Entry="Actor,OdinHero_Barrage@Sound"/>
+        <DataRecord Entry="Actor,OdinHero_Barrage@Morph"/>
+        <DataRecord Entry="Actor,OdinHero_Barrage@UnMorph"/>
+        <DataRecord Entry="Actor,OdinHero_Barrage@Range"/>
+        <DataRecord Entry="Actor,OdinHero_Barrage@CursorModel"/>
+        <DataRecord Entry="Actor,OdinHero_Barrage@CursorSplat"/>
+        <DataRecord Entry="Model,OdinHero_Barrage@Model"/>
+        <DataRecord Entry="Sound,OdinHero_Barrage@Morph"/>
+        <DataRecord Entry="Sound,OdinHero_Barrage@UnMorph"/>
+        <DataRecord Entry="Sound,OdinHero_Barrage@Sound"/>
         <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Terran,ObjectType:Spell"/>
     </CDataCollectionUnit>
 
