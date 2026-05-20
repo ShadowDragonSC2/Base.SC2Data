@@ -1,0 +1,15 @@
+﻿\\\ Odin Hero
+Unit/Name/OdinHero=«Один»
+Button/Name/OdinHero=«Один»
+Button/Name/OdinHero_NuclearStrike=Ядерный удар
+Button/Tooltip/OdinHero=«Один» -- это тяжелый осадный робот, способный сровнять с землей целый город.
+Abil/Name/OdinHero_NuclearStrike=Nuclear Strike
+UnitKillRank/OdinHero=прототип
+Button/Name/OdinHero_Barrage=Артобстрел
+Button/Tooltip/OdinHero_Barrage=Начинает артобстрел выбранной области, нанося большой урон.<n/><n/><c val="#ColorAttackInfo">Наносит урон наземным войскам и строениям.</c>
+Unit/Name/OdinHero_AAWeapon=«Один» - ПВО
+Weapon/Name/OdinHero_Weapon=Орудие T800
+Weapon/Name/OdinHero_AA=Ракетные установки «Адское пламя»
+Mover/Name/OdinHero@AAAttackWeapon=Odin AA
+Abil/Name/OdinHero_Barrage=Barrage
+Button/Tooltip/OdinHero_NuclearStrike=Вызов ядерного удара по выбранной области. Ядерной ракете требуется время на подлет, при этом она наносит до 5000 ед. урона в большом радиусе.
