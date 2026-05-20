@@ -1,0 +1,21 @@
+\\\ Odin Hero
+
+Actor/Name/OdinHero=Odin
+Actor/Name/OdinHero_NuclearStrike@NukeCollateralFire=Odin Nuke Collateral Fire
+Actor/Name/OdinHero_NuclearStrike@NukeDrop=Odin Nuke Drop
+Actor/Name/OdinHero_NuclearStrike@NukeExplode=Odin Nuke Explode
+Actor/Name/OdinHero_NuclearStrike@NukeIndicator=Odin Nuke Indicator
+Actor/Name/OdinHero_NuclearStrike@NukeLaunch=Odin Nuke Launch
+Actor/Name/OdinHero_NuclearStrike@NukeSeek=Odin Nuke Seek
+Actor/Name/OdinHero_NuclearStrike@NukeTarget=Odin Nuke Target
+Abil/EditorPrefix/OdinHero_NuclearStrike=Odin -
+Actor/Name/OdinHero@AAAttack=Odin AA Attack
+Actor/Name/OdinHero@AAMissile=OdinAAAttackMissile
+Actor/Name/OdinHero@LeftAttack=Odin Left Attack
+Actor/Name/OdinHero@RightAttack=Odin Right Attack
+Actor/Name/OdinHero@BarrageModel=Barrage Model
+Actor/Name/OdinHero@BarrageSound=Barrage Sound
+Unit/EditorPrefix/OdinHero@AAWeapon=Weapon -
+Abil/EditorPrefix/OdinHero_Barrage=Odin -
+Weapon/EditorPrefix/OdinHero_Weapon=Odin -
+Weapon/EditorPrefix/OdinHero_AA=Odin -
