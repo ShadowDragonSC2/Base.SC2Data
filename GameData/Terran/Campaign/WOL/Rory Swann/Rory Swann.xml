@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    <!-- Requires: Button:UnitButton_OnlyGround[base.xml] -->
+    <!-- Requires: Actor:AdvancedStandard_Ground[base.xml] -->
+    <!-- Requires: Unit:Generic_Unit_Ground[base.xml] -->
+    <!-- Requires: Unit:Generic_Unit_Ground[base.xml] -->
+    <!-- Requires: Actor:AdvancedStandard_Ground[base.xml] -->
+    
+    
+
+    <CButton id="RorySwann" parent="UnitButton_OnlyGround"></CButton>
+    
+    <CUnit id="RorySwann" parent="Generic_Unit_Ground" race="Terr">
+        <EditorCategories value="ObjectType:Hero,ObjectFamily:Campaign"/>
+        <Mob value="Campaign"/>
+        <FlagArray index="Hero" value="1"/>
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="200"/>
+        <LifeMax value="200"/>
+        <LifeArmor value="1"/>
+        <LateralAcceleration value="69.125"/>
+        <Sight value="10"/>
+        <CostResource index="Minerals" value="100"/>
+        <CostResource index="Vespene" value="25"/>
+        <RepairTime value="25"/>
+        <KillXP value="15"/>
+        <AbilArray Link="DutchPlaceTurret"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="DutchPlaceTurret" Type="AbilCmd" AbilCmd="DutchPlaceTurret,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+        <InnerRadius value="0.5"/>
+        <CargoSize value="2"/>
+        <ScoreMake value="75"/>
+        <ScoreKill value="150"/>
+        <SubgroupPriority value="48"/>
+        <GlossaryPriority value="320"/>
+        <WeaponArray Link="SwannMelee"/>
+        <CostCategory value="Army"/>
+    </CUnit>
+    
+    <CActorUnit id="RorySwann" parent="AdvancedStandard_Ground" unitName="RorySwann">
+        <Aliases value="_UnitSmall"/>
+        <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
+        <On Terms="Effect.DutchConcussiveGrenadeLaunchMissile.Start; At Caster" Send="AnimPlay AttackRight Attack,Right"/>
+        <On Terms="WeaponStart.SwannMelee.AttackStart" Send="AnimBracketStart AttackCover Attack,Cover"/>
+        <On Terms="WeaponStart.SwannMelee.AttackStart; AnimPlaying AttackCover Cover,00" Send="TimerSet 0.400000 MeleeAttackLaunch"/>
+        <On Terms="WeaponStart.SwannMelee.AttackStart; AnimPlaying AttackCover Cover,01" Send="TimerSet 0.100000 MeleeAttackLaunch"/>
+        <On Terms="WeaponStop.SwannMelee.AttackStop" Send="AnimBracketStop AttackCover"/>
+        <On Terms="TimerExpired; TimerName MeleeAttackLaunch" Send="Create Swann_MeleeAttackLaunch"/>
+        <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
+        <On Terms="Abil.DutchPlaceTurret.SourceCastStart" Send="$Spell 0 -1.000000 -1.000000 1.000000 AsDuration"/>
+        <DeathArray index="Normal" ModelLink="MarauderDeath" SoundLink="Swann_Explode"/>
+        <DeathArray index="Eviscerate" ModelLink="MarauderDeathEviscerate"/>
+        <DeathArray index="Fire" ModelLink="DutchDeathFire" SoundLink="Uni_DeathFXFire"/>
+        <AbilSoundArray AbilCmd="DutchPlaceTurret,Execute" Sound="Swann_PlaceTurretVO"/>
+        <ErrorArray Error="CantSeeBuildLocation" Sound="e_cmdBuildTechRequirementsNotMet_Terr"/>
+        <ErrorArray Error="CantBuildLocationInvalid" Sound="e_cmdBuildTechRequirementsNotMet_Terr"/>
+        <ErrorArray Error="CantFindPlacementLocation" Sound="e_cmdBuildTechRequirementsNotMet_Terr"/>
+        <ErrorArray Error="CantBuildOnThat" Sound="e_cmdBuildTechRequirementsNotMet_Terr"/>
+        <UnitKillRank Text="UnitKillRank/Swann"/>
+        <BarWidth value="50"/>
+        <BarOffset value="60"/>
+        <UnitBorderNormalColor value="150,150,150"/>
+        <UnitBorderSubgroupColor value="255,255,255"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-infantryarmorlevel0.dds"/>
+        <UnitIcon value="Assets\Textures\BTN-Unit-Terran-MarauderSwann.dds"/>
+        <HeroIcon value="Assets\Textures\ui-heroicon-swann.dds"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Terran-Marauder-Swann.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Terran-Marauder-Swann.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    
+    <CModel id="RorySwann" parent="Unit">
+        <Model value=""/>
+    </CModel>
+    <CModel id="RorySwann@Death" parent="UnitDeath">
+        <Model value=""/>
+    </CModel>
+    <CModel id="RorySwann@Portrait" parent="Portrait">
+        <Model value=""/>
+    </CModel>
+    
+    
+    
+    <!-- ========== Weapons ========== -->
+
+    <CActorAction id="RorySwann_Weapon@Attack" parent="GenericAttack" effectAttack="RorySwann_Weapon@Damage"/>
+    
+    <CWeaponLegacy id="RorySwann_Weapon">
+        <Range value="7"/>
+        <Effect value="RorySwann_Weapon@Damage"/>
+    </CWeaponLegacy>
+    <CEffectDamage id="RorySwann_Weapon@Damage">
+        <Amount value="25"/>
+    </CEffectDamage>
+    
+    <!-- ========= Abilities ========== -->
+    
+    <!-- Flame Turret -->
+
+    <CAbilEffectTarget id="RorySwann_PlaceTurret">
+
+    </CAbilEffectTarget>
+    
+    
+    
+</Catalog>
