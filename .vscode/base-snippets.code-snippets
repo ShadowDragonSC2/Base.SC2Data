@@ -1,0 +1,21 @@
+{
+	"Requires Block":{
+		"scope": "xml",
+		"prefix": "require",
+		"body": "<!-- Requires: ${1|Unit,Weapon,DataCollection,Actor,Behavior,Upgrade,Button|}:${2:$CLIPBOARD}[${3|base,protoss,terran,zerg|}.xml] -->\n",
+		"description": "Добавляет блок требований для информации о требуемых элментах в других xml",
+		"include": ["**/Base.SC2Data/**/*.xml"],
+	},
+
+	"Separator Data": {
+		"scope": "xml",
+		"prefix": "==",
+		"body": [
+			"<!-- ========= ${1|Weapons,Abilities,Behaviors|} ========== -->",
+			"\n<!-- ${2:ID единицы данных} -->",
+			"$0"
+		],
+		"description": "Разделитель блоков данных",
+		"include": ["**/Base.SC2Data/**/*.xml"],
+	}
+}
