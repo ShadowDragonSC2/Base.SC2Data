@@ -382,6 +382,23 @@
         <Collide index="Flying" value="1"/>
     </CUnit>
 
+    <!-- Upgrades -->
+
+    <CUpgrade default="1" id="UpgradeArmors">
+        <?token id="icon" type="CImagePath" value="Bogus"?>
+        <Icon value="##icon##"/>
+        <EffectArrayTemplate Operation="Set" Reference="Actor,^ParamId^,LifeArmorIcon" Value="{Upgrade,##id##,Icon}"/>
+        <EffectArrayTemplate Reference="Unit,^ParamId^,LifeArmor" Value="{DataCollection,^ParamId^,UpgradeInfoUnitLifeArmorPerLevel}"/>
+        <EffectArrayTemplate Reference="Unit,^ParamId^,LifeArmorLevel" Value="1"/>
+    </CUpgrade>
+    <CUpgrade default="1" id="UpgradeWeapons">
+        <?token id="icon" type="CImagePath" value="Bogus"?>
+        <Icon value="##icon##"/>
+        <EffectArrayTemplate Operation="Set" Reference="Weapon,^ParamId^,Icon" Value="{Upgrade,##id##,Icon}"/>
+        <EffectArrayTemplate Reference="Effect,^ParamId^@Damage,Amount" Value="{DataColecction,^ParamId^,UpgradeInfoWeapon[0].DamagePerDice}"/>
+        <EffectArrayTemplate Reference="Weapon,^ParamId^,Level" Value="1"/>
+    </CUpgrade>
+
     <!-- Validators -->
 
     <CValidatorUnitType default="1" id="IsUnit_Default">

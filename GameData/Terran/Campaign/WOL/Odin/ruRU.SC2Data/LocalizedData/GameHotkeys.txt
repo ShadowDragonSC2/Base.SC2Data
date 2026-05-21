@@ -1,0 +1,3 @@
+Button/Hotkey/OdinHero_NuclearStrike=N
+
+Button/Hotkey/OdinHero_Barrage=B
