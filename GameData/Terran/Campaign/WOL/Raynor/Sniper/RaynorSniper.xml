@@ -147,11 +147,11 @@
         <Volume value="-1.000000,-1.000000"/>
     </CSound>
     <CSound id="RaynorSniper@Yes" parent="TerranAck">
-        <!-- <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Yes00.ogg" FacialAnim="Raynor_Yes00"/>
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Yes00.ogg" FacialAnim="Raynor_Yes00"/>
         <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Yes01.ogg" FacialAnim="Raynor_Yes01"/>
         <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Yes02.ogg" FacialAnim="Raynor_Yes02"/>
         <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Yes03.ogg" FacialAnim="Raynor_Yes03"/>
-        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Yes04.ogg" FacialAnim="Raynor_Yes04"/> -->
+        <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Yes04.ogg" FacialAnim="Raynor_Yes04"/>
         <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Yes05.ogg" Volume="-2.000000,-2.000000" FacialAnim="Raynor_Yes05"/>
         <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Yes06.ogg" Volume="-2.000000,-2.000000" FacialAnim="Raynor_Yes06"/>
         <AssetArray File="LocalizedData\Sounds\TerranVO\CampaignUnits\Raynor\Raynor_Attack04.ogg" FacialAnim="Raynor_Attack04"/>
@@ -199,6 +199,7 @@
         <DataRecord Entry="Button,RaynorSniper_Radar"/>
         <DataRecord Entry="Behavior,RaynorSniper_Radar"/>
         <DataRecord Entry="Actor,RaynorSniper_Radar"/>
+        <EditorCategories value="DataGroup:Buff,DataFamily:Campaign,Race:Terran"/>
     </CDataCollectionUnit>
 
     <!-- ========== Weapons ========== -->
@@ -245,6 +246,7 @@
         <DataRecord Entry="Model,RaynorSniper_Weapon@AttackImpact"/>
         <DataRecord Entry="Sound,RaynorSniper_Weapon@AttackLaunch"/>
         <DataRecord Entry="Sound,RaynorSniper_Weapon@AttackImpact"/>
+        <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:Terran"/>
     </CDataCollectionUnit>
 
     <!-- ========== Abilities ========== -->
@@ -280,7 +282,6 @@
         </Marker>
         <WhichLocation Value="CasterPoint"/>
         <OffsetVectorStartLocation Value="CasterPoint"/>
-        <PeriodCount value="13"/>
         <PeriodicEffectArray value="RaynorSniper_Snipe@Search"/>
         <PeriodicOffsetArray value="0,-6.5,0"/>
     </CEffectCreatePersistent>
@@ -374,7 +375,6 @@
     <CModel id="RaynorSniper_Snipe@BloodImpact_Big" parent="ImpactFX">
         <Model value="Assets\Effects\Other\BloodTargetImpact\BloodTargetImpact.m3"/>
         <EditorCategories value="Race:Terran"/>
-        <Lighting value=""/>
         <ScaleMax value="3.500000,3.500000,3.500000"/>
         <ScaleMin value="3.500000,3.500000,3.500000"/>
     </CModel>
@@ -389,7 +389,6 @@
     <CModel id="RaynorSniper_Snipe@Beam" parent="PersistentSpellFX">
         <Model value="Assets\Effects\Terran\GhostSnipeBeam\GhostSnipeBeam.m3"/>
         <EditorCategories value="Race:Terran"/>
-        <Lighting value=""/>
     </CModel>
     <CModel id="RaynorSniper_Snipe@Splat" parent="Splat">
         <Model value="Assets\Effects\Terran\LaserSightSplat\LaserSightSplat.m3"/>
@@ -407,6 +406,14 @@
         <AssetArray File="Assets\Sounds\Terran\Raynor\Raynor_PenetratorRoundLaunch0.wav"/>
     </CSound>
     <CSound id="RaynorSniper_Snipe@AttackImpact" parent="Ghost_SnipeImpact"/>
+
+    <CDataCollectionPattern id="RaynorSnipe_Pattern" parent="AbilityPattern_Base">
+        <Fields Reference="Effect,^ParamId^@CP,PeriodicOffsetArray" NameOverride="DataCollectionPattern/Name/RaynorSniper_Snipe/PeriodicOffsetArray"/>
+        <Fields Reference="Sound,^ParamId^@ChargeUp,AssetArray" NameOverride="DataCollectionPattern/Name/RaynorSniper_Snipe/ChargeUpSound"/>
+        <Fields Reference="Sound,^ParamId^@LaunchSound,AssetArray" NameOverride="DataCollectionPattern/Name/RaynorSniper_Snipe/LaunchSound"/>
+        <Fields Reference="Model,^ParamId^@Beam,Model" NameOverride="DataCollectionPattern/Name/RaynorSniper_Snipe/BeamModel"/>
+        <Fields Reference="Model,^ParamId^@Splat,Model" NameOverride="DataCollectionPattern/Name/RaynorSniper_Snipe/SplatModel"/>
+    </CDataCollectionPattern>
 
     <CDataCollectionUnit id="RaynorSniper_Snipe" parent="AbilityBase">
         <DataRecord Entry="Button,RaynorSniper_Snipe"/>
@@ -437,6 +444,7 @@
         <DataRecord Entry="Sound,RaynorSniper_Snipe@ChargeUp"/>
         <DataRecord Entry="Sound,RaynorSniper_Snipe@LaunchSound"/>
         <DataRecord Entry="Sound,RaynorSniper_Snipe@AttackImpact"/>
+        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Terran,ObjectType:Spell"/>
     </CDataCollectionUnit>
     
 </Catalog>

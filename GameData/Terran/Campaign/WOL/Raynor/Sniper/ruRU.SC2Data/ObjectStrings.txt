@@ -1,0 +1,7 @@
+DataCollectionPattern/Name/RaynorSniper_Snipe/PeriodicOffsetArray=Смещения линии (X,Y,Z)
+DataCollectionPattern/Name/RaynorSniper_Snipe/ChargeUpSound=Звук зарядки
+DataCollectionPattern/Name/RaynorSniper_Snipe/LaunchSound=Звук выстрела
+DataCollectionPattern/Name/RaynorSniper_Snipe/BeamModel=Модель луча
+DataCollectionPattern/Name/RaynorSniper_Snipe/SplatModel=Модель прицела
+DataCollectionPattern/Name/RaynorSniper_Snipe/DamageAmount=Урон
+DataCollectionPattern/Name/RaynorSniper_Snipe/AppliedBehavior=Накладываемое поведение
