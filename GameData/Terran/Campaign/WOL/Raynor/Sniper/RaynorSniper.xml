@@ -2,6 +2,7 @@
 <Catalog>
     <CButton id="RaynorSniper" parent="UnitButton_GroundAir">
         <Icon value="Assets\Textures\BTN-Unit-Terran-MarineRaynorHEV.dds"/>
+        <EditorCategories value="Race:Terran"/>
     </CButton>
     
     <CUnit id="RaynorSniper" parent="Generic_Unit_Ground" race="Terr">
@@ -67,7 +68,7 @@
         </Wireframe>
     </CActorUnit>
     
-    <CModel id="RaynorSniper" parent="Unit">
+    <CModel id="RaynorSniper" parent="Unit" Race="Terran">
         <Model value="Assets\Units\Terran\MarineRaynorHEV\MarineRaynorHEV.m3"/>
         <SquibTypeDefault value="Flesh"/>
         <Occlusion value="Show"/>
@@ -83,7 +84,7 @@
     <CModel id="RaynorSniper@DeathFire" parent="UnitDeath" Race="Terran">
         <Model value="Assets\Units\Terran\MarineRaynorHEVDeathFire\MarineRaynorHEVDeathFire.m3"/>
     </CModel>
-    <CModel id="RaynorSniper@Portrait" parent="FXAPortrait">
+    <CModel id="RaynorSniper@Portrait" parent="FXAPortrait" Race="Terran">
         <Model value="Assets/Portraits/Terran/RaynorMarinePortrait/RaynorMarinePortrait.m3"/>
         <RequiredAnims value="Assets\Portraits\Terran\RaynorMarinePortrait_RequiredAnims\RaynorMarinePortrait_RequiredAnims.m3a"/>
         <RequiredAnims value="Assets\StoryModeCharacters\Terran\SM_RaynorMarine_FacialAnims\SM_RaynorMarine_FacialAnims.m3a"/>
@@ -208,6 +209,7 @@
 
     <CButton id="RaynorSniper_Radar">
         <Icon value="Assets\Textures\btn-status-radar.dds"/>
+        <EditorCategories value="Race:Terran"/>
     </CButton>
     <CBehaviorBuff id="RaynorSniper_Radar">
         <InfoIcon value="Assets\Textures\btn-status-radar.dds"/>
