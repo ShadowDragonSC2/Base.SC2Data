@@ -1,0 +1,683 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+
+    <!-- ========= Units ========== -->
+    <CUnit default="1" id="EradicatorBase" parent="Generic_Unit_Ground" race="Terr">
+        <EditorCategories value="ObjectType:Hero,ObjectFamily:Campaign"/>
+        <FlagArray index="Unstoppable" value="1"/>
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Mechanical" value="1"/>
+        <Attributes index="Heroic" value="1"/>
+        <LifeStart value="1000"/>
+        <LifeMax value="1000"/>
+        <LifeArmor value="1"/>
+        <Speed value="3"/>
+        <LateralAcceleration value="46.0625"/>
+        <Sight value="13"/>
+        <CostResource index="Minerals" value="250"/>
+        <RepairTime value="41.667"/>
+        <KillXP value="30"/>
+        <!-- <AbilArray Link="NovaEradicatorLaunchMissile"/> -->
+        <!-- <AbilArray Link="NovaEradicatorMissileMode"/> -->
+        <!-- <AbilArray Link="NovaEradicatorFlamethrower"/> -->
+        <!-- <AbilArray Link="NovaEradicatorRailgun"/> -->
+        <!-- <AbilArray Link="NovaEradicatorRailgunFire"/> -->
+        <!-- <AbilArray Link="NovaEradicatorTurnTurret"/> -->
+        <!-- <AbilArray Link="NovaEradicatorResetTurret"/> -->
+        <BehaviorArray Link="Detector11"/>
+        <BehaviorArray Link="NovaEradicatorRepulserField2"/>
+        <BehaviorArray Link="NovaUnstoppable"/>
+        <CardLayouts index="0">
+            <!-- <LayoutButtons Face="NovaEradicatorLaunchMissile" Type="AbilCmd" AbilCmd="NovaEradicatorLaunchMissile,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="NovaEradicatorMissileMode" Type="AbilCmd" AbilCmd="NovaEradicatorMissileMode,On" Row="2" Column="1"/>
+            <LayoutButtons Face="NovaEradicatorAssaultMode" Type="AbilCmd" AbilCmd="NovaEradicatorMissileMode,Off" Row="2" Column="1"/>
+            <LayoutButtons Face="NovaEradicatorFlamethrowerOn" Type="AbilCmd" AbilCmd="NovaEradicatorFlamethrower,On" Row="2" Column="2"/>
+            <LayoutButtons Face="NovaEradicatorFlamethrowerOff" Type="AbilCmd" AbilCmd="NovaEradicatorFlamethrower,Off" Row="2" Column="2"/>
+            <LayoutButtons Face="NovaEradicatorRailgun" Type="AbilCmd" AbilCmd="NovaEradicatorRailgun,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="NovaEradicatorRailgunFire" Type="AbilCmd" AbilCmd="NovaEradicatorRailgunFire,Execute" Row="1" Column="3"/>
+            <LayoutButtons Face="TurnTurret" Type="AbilCmd" AbilCmd="NovaEradicatorTurnTurret,Execute" Row="1" Column="0"/> -->
+            <LayoutButtons Face="ResetTurret" Type="AbilCmd" AbilCmd="NovaEradicatorResetTurret,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="NovaFrenzy" Type="Submenu" Row="2" Column="4"/>
+        </CardLayouts>
+        <Radius value="2"/>
+        <SeparationRadius value="1.2"/>
+        <InnerRadius value="1.25"/>
+        <CargoSize value="2"/>
+        <ScoreMake value="200"/>
+        <ScoreKill value="400"/>
+        <SubgroupPriority value="15"/>
+        <MinimapRadius value="1.5"/>
+        <GlossaryPriority value="470"/>
+        <Response value="AcquireNoFlee"/>
+        <TurretArray value="NovaEradicator"/>
+        <GlossaryStrongArray value="NovaHero"/>
+        <GlossaryWeakArray value="NovaHero"/>
+    </CUnit>
+
+    <!-- Eradicator -->
+    <CButton id="Eradicator" parent="UnitButton_OnlyGroundDetector">
+        <EditorCategories value="Race:Terran"/>
+        <Icon value="Assets\Textures\btn-unit-terran-ares.dds"/>
+    </CButton>
+    
+    <CUnit id="Eradicator" parent="EradicatorBase">
+        <Name value="Unit/Name/Eradicator"/>
+        <AbilArray Link="Eradicator_ToFlamethrower"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Eradicator_ToFlamethrower" Type="AbilCmd" AbilCmd="Eradicator_ToFlamethrower,Execute" Row="2"/>
+        </CardLayouts>
+    </CUnit>
+    
+    <CActorUnit id="Eradicator" parent="AdvancedStandard_Ground" unitName="Eradicator">
+        <On Terms="AbilMorph.*.Start; MorphTo Eradicator" Send="Create"/>
+        <On Terms="AbilMorph.*.Start; MorphTo Eradicator" Send="AnimGroupApply Work Stand,Work,Start,A Stand,Work,End,A"/>
+        <On Terms="AbilMorph.*.Start; MorphTo EradicatorFlamethrower" Send="AnimGroupRemove A"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo Eradicator" Send="Destroy"/>
+        <!-- <On Terms="Abil.WarbotCharge.SourcePrepStart" Send="AnimGroupRemove C"/> -->
+        <!-- <On Terms="Abil.WarbotCharge.SourceFinishStart" Send="AnimGroupApply C"/> -->
+        <!-- <On Terms="Effect.NovaEradicatorMissileLaunchMissile.Start; HasStatus B" Send="AnimPlay Attack Attack"/> -->
+        <!-- <On Terms="Behavior.NovaEradicatorMissileMode.On" Send="AnimGroupRemove C"/> -->
+        <!-- <On Terms="AnimDone; HasStatus B; AnimName C" Send="AnimGroupApply B Stand,Work,End,B Stand,Work,Start,B"/> -->
+        <!-- <On Terms="Behavior.NovaEradicatorMissileMode.Off" Send="AnimGroupRemove B"/> -->
+        <!-- <On Terms="AnimDone; !HasStatus B; AnimName B" Send="AnimGroupApply C Stand,Work,End,C Stand,Work,Start,C"/> -->
+        <!-- <On Terms="Behavior.NovaEradicatorMissileMode.On" Send="StatusSet B 1"/> -->
+        <!-- <On Terms="Behavior.NovaEradicatorMissileMode.Off" Send="StatusSet B 0"/> -->
+        <!-- <On Terms="StatusOn.*.B; !AnimPlayingName C" Send="AnimGroupApply B Stand,Work,End,B Stand,Work,Start,B"/> -->
+        <!-- <On Terms="StatusOff.*.B; !AnimPlayingName B" Send="AnimGroupApply C Stand,Work,End,C Stand,Work,Start,C"/> -->
+        <DeathActorModelLow value="UnitDeathModel"/>
+        <CantSelectUncontrollableTooltip value="Button/Tooltip/NovaFrenzy"/>
+        <BarOffset value="140"/>
+        <BarWidth value="180"/>
+        <NameOffset value="40"/>
+        <GlossaryAnim value="Stand,C"/>
+        <UnitFlags index="SuppressStandIntro" value="1"/>
+        <UnitFlags index="SuppressWalkIntro" value="1"/>
+        <UnitFlags index="SuppressWalkOutro" value="1"/>
+        <UnitIcon value="Assets\Textures\btn-unit-terran-ares.dds"/>
+        <HeroIcon value="Assets\Textures\btn-unit-terran-ares.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel0.dds"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-terran-warbot.dds"/>
+            <Image value="Assets\Textures\Wireframe-terran-warbot.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-terran-warbot.dds"/>
+            <Image value="Assets\Textures\Wireframe-terran-warbot.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    
+    <CModel id="Eradicator" parent="Unit">
+        <EditorCategories value="Race:Terran"/>
+        <Model value="Assets\Units\Terran\ARES\ARES.m3"/>
+        <Flags index="AutoUnload" value="1"/>
+        <Occlusion value="Show"/>
+        <PlanetPanelCamera value="Star2CameraHigher10"/>
+        <Radius value="2.000000"/>
+        <SelectionRadius value="2.000000"/>
+        <ShadowRadius value="2.000000"/>
+        <TechPurchaseCamera value="Star2CameraHigher10"/>
+        <Tipability value="0.750000"/>
+        <TipabilityLength value="1.000000"/>
+        <TipabilityWidth value="1.000000"/>
+        <UnitGlossaryCamera value="Star2CameraHigher10"/>
+        <Events Anim="Stand,Work,Start,C" Type="Sound" Payload="Nova_Eradicator_SWS_C"/>
+        <Events Anim="Stand,Work,Start,B" Type="Sound" Payload="Nova_Eradicator_SWS_B"/>
+        <Events Anim="Stand,Work,Start,A" Type="Sound" Payload="Nova_Eradicator_SWS_A"/>
+        <Events Anim="Stand,Work,End,C" Type="Sound" Payload="Nova_Eradicator_SWE_C"/>
+        <Events Anim="Stand,Work,End,B" Type="Sound" Payload="Nova_Eradicator_SWE_B"/>
+        <Events Anim="Stand,Work,End,A" Type="Sound" Payload="Nova_Eradicator_SWE_A"/>
+    </CModel>
+    <CModel id="Eradicator@Death" parent="UnitDeath">
+        <EditorCategories value="Race:Terran"/>
+        <Model value="Assets\Units\Terran\ARESDeathC\ARESDeathC.m3"/>
+        <LowQualityModel value="TerranLargeUnitDeathLow"/>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Nova_Eradicator_Explosion_Death"/>
+            <Type value="Sound"/>
+            <Time value="0.028000"/>
+            <Payload value="Nova_Eradicator_Explosion_Death"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Nova_Eradicator_Death_Metal_Debris"/>
+            <Type value="Sound"/>
+            <Time value="1.149000"/>
+            <Payload value="Nova_Eradicator_Death_Metal_Debris"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Nova_Eradicator_Explosion_DeathDebris"/>
+            <Type value="Sound"/>
+            <Time value="1.410000"/>
+            <Payload value="Nova_Eradicator_Explosion_DeathDebris"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Nova_Eradicator_Explosion_DeathFire"/>
+            <Type value="Sound"/>
+            <Time value="0.221000"/>
+            <Payload value="Nova_Eradicator_Explosion_DeathFire"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Harness_Bolt_Explosion"/>
+            <Type value="Sound"/>
+            <Time value="0.146000"/>
+            <Payload value="Harness_Bolt_Explosion"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Harness_Bolt_Explosion"/>
+            <Type value="Sound"/>
+            <Time value="1.474000"/>
+            <Payload value="Harness_Bolt_Explosion"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Nova_Eradicator_VxFx_"/>
+            <Type value="Sound"/>
+            <Time value="0.019000"/>
+            <Payload value="Nova_Eradicator_VxFx_"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Nova_Eradicator_VxFx_"/>
+            <Type value="Sound"/>
+            <Time value="1.279000"/>
+            <Payload value="Nova_Eradicator_VxFx_"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Nova_Eradicator_Explosion_Death"/>
+            <Type value="Sound"/>
+            <Time value="0.028000"/>
+            <Payload value="Nova_Eradicator_Explosion_Death"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Nova_Eradicator_Death_Metal_Debris"/>
+            <Type value="Sound"/>
+            <Time value="1.149000"/>
+            <Payload value="Nova_Eradicator_Death_Metal_Debris"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Nova_Eradicator_Explosion_DeathDebris"/>
+            <Type value="Sound"/>
+            <Time value="1.368000"/>
+            <Payload value="Nova_Eradicator_Explosion_DeathDebris"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Nova_Eradicator_Explosion_DeathFire"/>
+            <Type value="Sound"/>
+            <Time value="0.221000"/>
+            <Payload value="Nova_Eradicator_Explosion_DeathFire"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Harness_Bolt_Explosion"/>
+            <Type value="Sound"/>
+            <Time value="0.146000"/>
+            <Payload value="Harness_Bolt_Explosion"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Harness_Bolt_Explosion"/>
+            <Type value="Sound"/>
+            <Time value="1.445000"/>
+            <Payload value="Harness_Bolt_Explosion"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Nova_Eradicator_VxFx_"/>
+            <Type value="Sound"/>
+            <Time value="0.019000"/>
+            <Payload value="Nova_Eradicator_VxFx_"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Nova_Eradicator_VxFx_"/>
+            <Type value="Sound"/>
+            <Time value="1.279000"/>
+            <Payload value="Nova_Eradicator_VxFx_"/>
+        </Events>
+    </CModel>
+    <CModel id="Eradicator@Portrait" parent="Portrait">
+        <EditorCategories value="Race:Terran"/>
+        <Model value="Assets\Portraits\Terran\ARESPortrait\ARESPortrait.m3"/>
+        <FacialController value="LocalizedData\Facial\UmojanLabWarbotPortrait.fxa"/>
+        <Flags index="ForcePortraitModel" value="1"/>
+    </CModel>
+
+    <CSound id="Eradicator@Death" parent="Death">
+        <AssetArray File="Assets\Sounds\St_Explosion_1.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\St_Explosion_1a.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\St_Explosion_2.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\St_Explosion_2a.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\St_Explosion_3.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\St_Explosion_3a.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\St_Explosion_4.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\St_Explosion_4a.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\St_Explosion_5.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\St_Explosion_5a.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\St_Explosion_SwtRoink.wav" FacialGroup=""/>
+        <Flags index="Ignorable" value="0"/>
+        <Category value="Doodad"/>
+        <Pitch value="-4.000000,1.000000"/>
+        <ReverbBalance Room="-10000"/>
+        <Volume value="-3.000000,0.000000"/>
+        <VolumeRolloffPoints Distance="12.000000"/>
+        <VolumeRolloffPoints Distance="25.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="Eradicator@Attack" parent="Voice">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Attack0.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Attack1.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Attack2.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Attack3.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Attack4.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Attack5.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Attack6.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Attack7.ogg"/>
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="Eradicator@Pissed" parent="Pissed">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_What0.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_What1.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_What2.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_What3.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_What4.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_What5.ogg"/>
+        <Select value="Shuffle"/>
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="Eradicator@Yes" parent="Voice">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Yes0.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Yes1.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Yes2.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Yes3.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Yes4.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Yes5.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Yes6.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Yes7.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Yes8.ogg"/>
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="Eradicator@What" parent="Voice">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_What0.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_What1.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_What2.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_What3.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_What4.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_What5.ogg"/>
+        <Select value="Shuffle"/>
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="Eradicator@Ready" parent="Ready">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Ready0.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Ready1.ogg"/>
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+
+    <CValidatorUnitType id="Eradicator@Is" parent="IsUnit_Default" unit="Eradicator"/>
+    <CValidatorUnitType id="Eradicator@Target" parent="TargetIsUnit_Default" unit="Eradicator"/>
+    <CValidatorUnitType id="Eradicator@Not" parent="NotUnit_Default" unit="Eradicator"/>
+    <CValidatorUnitType id="Eradicator@NotTarget" parent="TargetNotUnit_Default" unit="Eradicator"/>
+    
+    <CDataCollectionUnit id="Eradicator" parent="UnitGround">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Terran,ObjectType:Hero"/>
+        <DataRecord Entry="Button,Eradicator"/>
+        <DataRecord Entry="Unit,Eradicator"/>
+        <DataRecord Entry="Actor,Eradicator"/>
+        <DataRecord Entry="Model,Eradicator"/>
+        <DataRecord Entry="Model,Eradicator@Death"/>
+        <DataRecord Entry="Model,Eradicator@Portrait"/>
+        <DataRecord Entry="Sound,Eradicator@Attack"/>
+        <DataRecord Entry="Sound,Eradicator@Pissed"/>
+        <DataRecord Entry="Sound,Eradicator@Yes"/>
+        <DataRecord Entry="Sound,Eradicator@What"/>
+        <DataRecord Entry="Sound,Eradicator@Ready"/>
+        <DataRecord Entry="Light,Eradicator@Portrait"/>
+        <DataRecord Entry="AttachMethod,Eradicator@AMPattern"/>
+        <DataRecord Entry="Validator,Eradicator@Is"/>
+        <DataRecord Entry="Validator,Eradicator@Target"/>
+        <DataRecord Entry="Validator,Eradicator@Not"/>
+        <DataRecord Entry="Validator,Eradicator@NotTarget"/>
+    </CDataCollectionUnit>
+
+    <!-- Eradicator Flamethrower -->
+    <CButton id="EradicatorFlamethrower" parent="UnitButton_OnlyGroundDetector">
+        <EditorCategories value="Race:Terran"/>
+        <Icon value="Assets\Textures\btn-unit-terran-ares.dds"/>
+    </CButton>
+    
+    <CUnit id="EradicatorFlamethrower" parent="EradicatorBase">
+        <Name value="Unit/Name/EradicatorFlamethrower"/>
+        <AbilArray Link="Eradicator_FromFlamethrower"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Eradicator_FromFlamethrower" Type="AbilCmd" AbilCmd="Eradicator_FromFlamethrower,Execute" Row="2" Column="1"/>
+        </CardLayouts>
+    </CUnit>
+    
+    <CActorUnit id="EradicatorFlamethrower" parent="AdvancedStandard_Ground" unitName="EradicatorFlamethrower">
+        <On Terms="AbilMorph.*.Start; MorphFrom Eradicator" Send="Create"/>
+        <On Terms="AbilMorph.*.Start; MorphTo EradicatorFlamethrower" Send="AnimGroupApply C Stand,Work,Start,C Stand,Work,End,C"/>
+        <On Terms="AbilMorph.*.Start; MorphTo Eradicator" Send="AnimGroupRemove C"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo Eradicator" Send="Destroy"/>
+        <!-- <On Terms="Abil.WarbotCharge.SourcePrepStart" Send="AnimGroupRemove C"/> -->
+        <!-- <On Terms="Abil.WarbotCharge.SourceFinishStart" Send="AnimGroupApply C"/> -->
+        <!-- <On Terms="Effect.NovaEradicatorMissileLaunchMissile.Start; HasStatus B" Send="AnimPlay Attack Attack"/> -->
+        <!-- <On Terms="Behavior.NovaEradicatorMissileMode.On" Send="AnimGroupRemove C"/> -->
+        <!-- <On Terms="AnimDone; HasStatus B; AnimName C" Send="AnimGroupApply B Stand,Work,End,B Stand,Work,Start,B"/> -->
+        <!-- <On Terms="Behavior.NovaEradicatorMissileMode.Off" Send="AnimGroupRemove B"/> -->
+        <!-- <On Terms="AnimDone; !HasStatus B; AnimName B" Send="AnimGroupApply C Stand,Work,End,C Stand,Work,Start,C"/> -->
+        <!-- <On Terms="Behavior.NovaEradicatorMissileMode.On" Send="StatusSet B 1"/> -->
+        <!-- <On Terms="Behavior.NovaEradicatorMissileMode.Off" Send="StatusSet B 0"/> -->
+        <!-- <On Terms="StatusOn.*.B; !AnimPlayingName C" Send="AnimGroupApply B Stand,Work,End,B Stand,Work,Start,B"/> -->
+        <!-- <On Terms="StatusOff.*.B; !AnimPlayingName B" Send="AnimGroupApply C Stand,Work,End,C Stand,Work,Start,C"/> -->
+        <Baselines index="Stand" AnimProps="Stand,C"/>
+        <Baselines index="Walk" AnimProps="Walk,C"/>
+        <DeathActorModelLow value="UnitDeathModel"/>
+        <CantSelectUncontrollableTooltip value="Button/Tooltip/NovaFrenzy"/>
+        <BarOffset value="140"/>
+        <BarWidth value="180"/>
+        <NameOffset value="40"/>
+        <GlossaryAnim value="Stand,C"/>
+        <UnitFlags index="SuppressStandIntro" value="1"/>
+        <UnitFlags index="SuppressWalkIntro" value="1"/>
+        <UnitFlags index="SuppressWalkOutro" value="1"/>
+        <UnitIcon value="Assets\Textures\btn-unit-terran-ares.dds"/>
+        <HeroIcon value="Assets\Textures\btn-unit-terran-ares.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel0.dds"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-terran-warbot.dds"/>
+            <Image value="Assets\Textures\Wireframe-terran-warbot.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-terran-warbot.dds"/>
+            <Image value="Assets\Textures\Wireframe-terran-warbot.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    
+    <CModel id="EradicatorFlamethrower" parent="Unit">
+        <EditorCategories value="Race:Terran"/>
+        <Model value="Assets\Units\Terran\ARES\ARES.m3"/>
+        <Flags index="AutoUnload" value="1"/>
+        <Occlusion value="Show"/>
+        <PlanetPanelCamera value="Star2CameraHigher10"/>
+        <Radius value="2.000000"/>
+        <SelectionRadius value="2.000000"/>
+        <ShadowRadius value="2.000000"/>
+        <TechPurchaseCamera value="Star2CameraHigher10"/>
+        <Tipability value="0.750000"/>
+        <TipabilityLength value="1.000000"/>
+        <TipabilityWidth value="1.000000"/>
+        <UnitGlossaryCamera value="Star2CameraHigher10"/>
+        <Events Anim="Stand,Work,Start,C" Type="Sound" Payload="Nova_Eradicator_SWS_C"/>
+        <Events Anim="Stand,Work,Start,B" Type="Sound" Payload="Nova_Eradicator_SWS_B"/>
+        <Events Anim="Stand,Work,Start,A" Type="Sound" Payload="Nova_Eradicator_SWS_A"/>
+        <Events Anim="Stand,Work,End,C" Type="Sound" Payload="Nova_Eradicator_SWE_C"/>
+        <Events Anim="Stand,Work,End,B" Type="Sound" Payload="Nova_Eradicator_SWE_B"/>
+        <Events Anim="Stand,Work,End,A" Type="Sound" Payload="Nova_Eradicator_SWE_A"/>
+    </CModel>
+    <CModel id="EradicatorFlamethrower@Death" parent="UnitDeath">
+        <EditorCategories value="Race:Terran"/>
+        <Model value="Assets\Units\Terran\ARESDeathC\ARESDeathC.m3"/>
+        <LowQualityModel value="TerranLargeUnitDeathLow"/>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Nova_Eradicator_Explosion_Death"/>
+            <Type value="Sound"/>
+            <Time value="0.028000"/>
+            <Payload value="Nova_Eradicator_Explosion_Death"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Nova_Eradicator_Death_Metal_Debris"/>
+            <Type value="Sound"/>
+            <Time value="1.149000"/>
+            <Payload value="Nova_Eradicator_Death_Metal_Debris"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Nova_Eradicator_Explosion_DeathDebris"/>
+            <Type value="Sound"/>
+            <Time value="1.410000"/>
+            <Payload value="Nova_Eradicator_Explosion_DeathDebris"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Nova_Eradicator_Explosion_DeathFire"/>
+            <Type value="Sound"/>
+            <Time value="0.221000"/>
+            <Payload value="Nova_Eradicator_Explosion_DeathFire"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Harness_Bolt_Explosion"/>
+            <Type value="Sound"/>
+            <Time value="0.146000"/>
+            <Payload value="Harness_Bolt_Explosion"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Harness_Bolt_Explosion"/>
+            <Type value="Sound"/>
+            <Time value="1.474000"/>
+            <Payload value="Harness_Bolt_Explosion"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Nova_Eradicator_VxFx_"/>
+            <Type value="Sound"/>
+            <Time value="0.019000"/>
+            <Payload value="Nova_Eradicator_VxFx_"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Nova_Eradicator_VxFx_"/>
+            <Type value="Sound"/>
+            <Time value="1.279000"/>
+            <Payload value="Nova_Eradicator_VxFx_"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Nova_Eradicator_Explosion_Death"/>
+            <Type value="Sound"/>
+            <Time value="0.028000"/>
+            <Payload value="Nova_Eradicator_Explosion_Death"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Nova_Eradicator_Death_Metal_Debris"/>
+            <Type value="Sound"/>
+            <Time value="1.149000"/>
+            <Payload value="Nova_Eradicator_Death_Metal_Debris"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Nova_Eradicator_Explosion_DeathDebris"/>
+            <Type value="Sound"/>
+            <Time value="1.368000"/>
+            <Payload value="Nova_Eradicator_Explosion_DeathDebris"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Nova_Eradicator_Explosion_DeathFire"/>
+            <Type value="Sound"/>
+            <Time value="0.221000"/>
+            <Payload value="Nova_Eradicator_Explosion_DeathFire"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Harness_Bolt_Explosion"/>
+            <Type value="Sound"/>
+            <Time value="0.146000"/>
+            <Payload value="Harness_Bolt_Explosion"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Harness_Bolt_Explosion"/>
+            <Type value="Sound"/>
+            <Time value="1.445000"/>
+            <Payload value="Harness_Bolt_Explosion"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Nova_Eradicator_VxFx_"/>
+            <Type value="Sound"/>
+            <Time value="0.019000"/>
+            <Payload value="Nova_Eradicator_VxFx_"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Nova_Eradicator_VxFx_"/>
+            <Type value="Sound"/>
+            <Time value="1.279000"/>
+            <Payload value="Nova_Eradicator_VxFx_"/>
+        </Events>
+    </CModel>
+    <CModel id="EradicatorFlamethrower@Portrait" parent="Portrait">
+        <EditorCategories value="Race:Terran"/>
+        <Model value="Assets\Portraits\Terran\ARESPortrait\ARESPortrait.m3"/>
+        <FacialController value="LocalizedData\Facial\UmojanLabWarbotPortrait.fxa"/>
+        <Flags index="ForcePortraitModel" value="1"/>
+    </CModel>
+
+    <CSound id="EradicatorFlamethrower@Death" parent="Death">
+        <AssetArray File="Assets\Sounds\St_Explosion_1.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\St_Explosion_1a.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\St_Explosion_2.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\St_Explosion_2a.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\St_Explosion_3.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\St_Explosion_3a.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\St_Explosion_4.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\St_Explosion_4a.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\St_Explosion_5.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\St_Explosion_5a.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\St_Explosion_SwtRoink.wav" FacialGroup=""/>
+        <Flags index="Ignorable" value="0"/>
+        <Category value="Doodad"/>
+        <Pitch value="-4.000000,1.000000"/>
+        <ReverbBalance Room="-10000"/>
+        <Volume value="-3.000000,0.000000"/>
+        <VolumeRolloffPoints Distance="12.000000"/>
+        <VolumeRolloffPoints Distance="25.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="EradicatorFlamethrower@Attack" parent="Voice">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Attack0.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Attack1.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Attack2.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Attack3.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Attack4.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Attack5.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Attack6.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Attack7.ogg"/>
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="EradicatorFlamethrower@Pissed" parent="Pissed">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_What0.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_What1.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_What2.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_What3.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_What4.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_What5.ogg"/>
+        <Select value="Shuffle"/>
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="EradicatorFlamethrower@Yes" parent="Voice">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Yes0.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Yes1.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Yes2.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Yes3.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Yes4.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Yes5.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Yes6.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Yes7.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Yes8.ogg"/>
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="EradicatorFlamethrower@What" parent="Voice">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_What0.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_What1.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_What2.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_What3.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_What4.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_What5.ogg"/>
+        <Select value="Shuffle"/>
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="EradicatorFlamethrower@Ready" parent="Ready">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Ready0.ogg"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Warbot\Warbot_Ready1.ogg"/>
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+
+    <CValidatorUnitType id="EradicatorFlamethrower@Is" parent="IsUnit_Default" unit="EradicatorFlamethrower"/>
+    <CValidatorUnitType id="EradicatorFlamethrower@Target" parent="TargetIsUnit_Default" unit="EradicatorFlamethrower"/>
+    <CValidatorUnitType id="EradicatorFlamethrower@Not" parent="NotUnit_Default" unit="EradicatorFlamethrower"/>
+    <CValidatorUnitType id="EradicatorFlamethrower@NotTarget" parent="TargetNotUnit_Default" unit="EradicatorFlamethrower"/>
+    
+    <CDataCollectionUnit id="EradicatorFlamethrower" parent="UnitGround">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Terran,ObjectType:Hero"/>
+        <DataRecord Entry="Button,Eradicator"/>
+        <DataRecord Entry="Unit,Eradicator"/>
+        <DataRecord Entry="Actor,Eradicator"/>
+        <DataRecord Entry="Model,Eradicator"/>
+        <DataRecord Entry="Model,Eradicator@Death"/>
+        <DataRecord Entry="Model,Eradicator@Portrait"/>
+        <DataRecord Entry="Sound,Eradicator@Attack"/>
+        <DataRecord Entry="Sound,Eradicator@Pissed"/>
+        <DataRecord Entry="Sound,Eradicator@Yes"/>
+        <DataRecord Entry="Sound,Eradicator@What"/>
+        <DataRecord Entry="Sound,Eradicator@Ready"/>
+        <DataRecord Entry="Light,Eradicator@Portrait"/>
+        <DataRecord Entry="AttachMethod,Eradicator@AMPattern"/>
+        <DataRecord Entry="Validator,Eradicator@Is"/>
+        <DataRecord Entry="Validator,Eradicator@Target"/>
+        <DataRecord Entry="Validator,Eradicator@Not"/>
+        <DataRecord Entry="Validator,Eradicator@NotTarget"/>
+    </CDataCollectionUnit>
+
+    <!-- ========= Abilities ========== -->
+    
+    <!-- Morph Eradicator To Missile -->
+    <CButton id="Eradicator_ToFlamethrower">
+        <Icon value="Assets\Textures\btn-techupgrade-terran-twin-linkedflamethrower.dds "/>
+    </CButton>
+    <CButton id="Eradicator_FromFlamethrower">
+        <Icon value="Assets\Textures\btn-techupgrade-terran-twin-linkedflamethrower.dds "/>
+    </CButton>
+
+    <CAbilMorph id="Eradicator_ToFlamethrower">
+        <Flags index="Transient" value="1"/>
+        <Flags index="IgnoreFacing" value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Eradicator_ToFlamethrower"/>
+        <InfoArray Unit="EradicatorFlamethrower">
+            <SectionArray index="Actor"><DurationArray index="Duration" value="3"/></SectionArray>
+            <SectionArray index="Stats"><DurationArray index="Duration" value="3"/></SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="Eradicator_FromFlamethrower">
+        <Flags index="Transient" value="1"/>
+        <Flags index="IgnoreFacing" value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Eradicator_FromFlamethrower"/>
+        <InfoArray Unit="Eradicator">
+            <SectionArray index="Actor"><DurationArray index="Duration" value="3"/></SectionArray>
+            <SectionArray index="Stats"><DurationArray index="Duration" value="3"/></SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    
+
+</Catalog>
