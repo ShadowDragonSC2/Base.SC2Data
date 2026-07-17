@@ -1,0 +1,32 @@
+Actor/Name/ReaverAiur=Reaver Aiur
+Actor/Name/ReaverAiurScarab=Scarab
+Actor/Name/ReaverAiur_Weapon@Attack=Weapon Attack
+Actor/Name/ReaverAiur_Weapon@MissileActor=Scarab Missile
+
+Model/Name/ReaverAiur=Reaver Aiur
+Model/Name/ReaverAiur@Death=Death
+Model/Name/ReaverAiur@DeathRagdoll=Death Ragdoll
+Model/Name/ReaverAiur@Placement=Placement
+Model/Name/ReaverAiur@Portrait=Portrait
+Model/Name/ReaverAiur@Build=Build
+Model/Name/Invisible=Invisible
+Model/Name/ReaverAiurScarab=Scarab
+Model/Name/StaticPortrait=Static Portrait
+Model/Name/ReaverAiur_Weapon@MissileModel=Scarab Missile
+Model/Name/ReaverAiur_Weapon@ImpactModel=Scarab Impact
+
+Sound/Name/ReaverAiur@Attack=Attack
+Sound/Name/ReaverAiur@DeathSound=Death
+Sound/Name/ReaverAiur@Help=Help
+Sound/Name/ReaverAiur@Pissed=Pissed
+Sound/Name/ReaverAiur@Ready=Ready
+Sound/Name/ReaverAiur@What=What
+Sound/Name/ReaverAiur@Yes=Yes
+Sound/Name/ReaverAiur@Move=Move
+Sound/Name/ReaverAiur@AttackLaunch=Attack Launch
+Sound/Name/ReaverAiur@ScarabExplode=Scarab Explode
+
+Mover/Name/ReaverAiurScarabWeapon=Scarab Mover
+Mover/Name/Fly=Fly
+
+Light/Name/ReaverAiur@Portrait=Portrait Light

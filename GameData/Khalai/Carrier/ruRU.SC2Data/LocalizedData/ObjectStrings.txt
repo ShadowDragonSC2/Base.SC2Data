@@ -1,0 +1,44 @@
+Actor/Name/CarrierAiur=Carrier Aiur
+Actor/Name/CarrierAiurInterceptor=Interceptor (Carrier Aiur)
+Actor/Name/CarrierAiurRepairDrone=Repair Drone (Carrier Aiur)
+Actor/Name/InterceptorAttack=Interceptor Attack
+Actor/Name/InterceptorAttackBeam=Interceptor Attack Beam
+Actor/Name/CarrierRepairDroneHealBeam=Repair Drone Heal Beam
+Actor/Name/CarrierRepairDroneHealImpact=Repair Drone Heal Impact
+Actor/Name/CarrierRepairDroneHealSound=Repair Drone Heal Sound
+
+Model/Name/CarrierAiur=Carrier Aiur
+Model/Name/CarrierAiurDeath=Death
+Model/Name/CarrierAiurPlacement=Placement
+Model/Name/CarrierAiurWarpIn=Warp In
+Model/Name/CarrierPortrait=Portrait
+Model/Name/CarrierAiurInterceptor=Interceptor (Carrier Aiur)
+Model/Name/InterceptorDeath=Interceptor Death
+Model/Name/StaticPortrait=Static Portrait
+Model/Name/CarrierAiurRepairDrone=Repair Drone (Carrier Aiur)
+Model/Name/CarrierRepairDroneDeath=Repair Drone Death
+Model/Name/ProtossGenericWarpInOut=Generic Warp In/Out
+Model/Name/ObserverPortrait=Observer Portrait
+Model/Name/InterceptorAttackBeamModel=Interceptor Attack Beam
+Model/Name/InterceptorAttackImpact=Interceptor Attack Impact
+Model/Name/CarrierRepairDroneHealBeamModel=Repair Drone Heal Beam
+Model/Name/CarrierRepairDroneHealImpactModel=Repair Drone Heal Impact
+
+Sound/Name/Carrier_Ready=Ready
+Sound/Name/CarrierVoid_Help=Help
+Sound/Name/Carrier_What=What
+Sound/Name/CarrierVoid_Yes=Yes
+Sound/Name/Carrier_Attack=Attack
+Sound/Name/Carrier_Pissed=Pissed
+Sound/Name/Carrier_Movement=Movement
+Sound/Name/Interceptor_Explode=Explode
+Sound/Name/Interceptor_AttackLaunch=Attack Launch
+Sound/Name/Interceptor_AttackImpact=Attack Impact
+Sound/Name/Observer_Explode=Explode
+Sound/Name/Observer_Ready=Ready
+Sound/Name/Observer_What=What
+Sound/Name/Observer_Yes=Yes
+Sound/Name/Observer_Pissed=Pissed
+Sound/Name/Carrier_RepairDroneHeal_Loop=Repair Drone Heal Loop
+
+Light/Name/CarrierAiur@Portrait=Portrait Light

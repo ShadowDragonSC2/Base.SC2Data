@@ -1,0 +1,1037 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <!-- ========== Unit: ArtanisAiur ========== -->
+    <CButton id="ArtanisAiur" parent="UnitButton_OnlyGround">
+        <Icon value="Assets\Textures\btn-unit-protoss-artanishero.dds"/>
+    </CButton>
+
+    <CUnit id="ArtanisAiur" parent="Generic_Protoss_Unit_Ground" race="Prot">
+        <DeathRevealRadius value="3"/>
+        <Mob value="Campaign"/>
+        <FlagArray index="PreventDestroy" value="1"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="AlwaysThreatens" value="1"/>
+        <FlagArray index="AIThreatGround" value="1"/>
+        <FlagArray index="AIThreatAir" value="1"/>
+        <FlagArray index="AISplash" value="1"/>
+        <FlagArray index="AIHighPrioTarget" value="1"/>
+        <FlagArray index="AICaster" value="1"/>
+        <FlagArray index="AIPressForwardDisabled" value="1"/>
+        <FlagArray index="ArmySelect" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <Collide index="Locust" value="1"/>
+        <Collide index="Small" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <Attributes index="Psionic" value="1"/>
+        <Attributes index="Heroic" value="1"/>
+        <LifeStart value="200"/>
+        <LifeMax value="200"/>
+        <LifeArmor value="3"/>
+        <LifeRegenRate value="1"/>
+        <ShieldsStart value="500"/>
+        <ShieldsMax value="500"/>
+        <ShieldArmor value="3"/>
+        <ShieldRegenDelay value="3"/>
+        <ShieldRegenRate value="4"/>
+        <Speed value="2.9492"/>
+        <Acceleration value="1000"/>
+        <LateralAcceleration value="46"/>
+        <Sight value="10"/>
+        <CostCategory value="Army"/>
+        <AttackTargetPriority value="20"/>
+        <DamageDealtXP value="1"/>
+        <DamageTakenXP value="1"/>
+        <KillXP value="100"/>
+        <AbilArray Link="ArtanisAiur_AstralWind"/>
+        <AbilArray Link="ArtanisAiur_LightningDash"/>
+        <WeaponArray Link="ArtanisAiur_WeaponMelee"/>
+        <WeaponArray Link="ArtanisAiur_WeaponRanged"/>
+        <BehaviorArray Link="ArtanisAiur_Resurgence"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ArtanisAiur_AstralWind" Type="AbilCmd" AbilCmd="ArtanisAiur_AstralWind,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="ArtanisAiur_LightningDash" Type="AbilCmd" AbilCmd="ArtanisAiur_LightningDash,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="ArtanisAiur_ResurgencePassive" Type="Passive" Row="2" Column="2"/>
+        </CardLayouts>
+        <Radius value="0.400000"/>
+        <ScoreMake value="200"/>
+        <ScoreKill value="200"/>
+        <SubgroupPriority value="60"/>
+        <EditorCategories value="ObjectType:Hero,ObjectFamily:Campaign"/>
+        <AIEvalFactor value="1.8"/>
+        <GlossaryPriority value="80"/>
+        <KillDisplay value="Always"/>
+        <RankDisplay value="Always"/>
+    </CUnit>
+
+    <CActorUnit id="ArtanisAiur" parent="AdvancedUnitStandard" unitName="ArtanisAiur">
+        <Aliases value="_UnitLarge"/>
+        <!-- Ближний бой по земле -->
+        <On Terms="WeaponStart.ArtanisAiur_WeaponMelee.AttackStart" Send="AnimBracketStart Attack Attack,Superior"/>
+        <On Terms="WeaponStop.ArtanisAiur_WeaponMelee.AttackStop" Send="AnimBracketStop Attack"/>
+        <!-- Дальний бой по воздуху -->
+        <On Terms="WeaponStart.ArtanisAiur_WeaponRanged.AttackStart" Send="AnimBracketStart AttackAir Attack,Superior"/>
+        <On Terms="WeaponStop.ArtanisAiur_WeaponRanged.AttackStop" Send="AnimBracketStop AttackAir"/>
+        <On Terms="Abil.ArtanisAiur_LightningDash.SourceCastStart" Send="$Spell,E"/>
+        <On Terms="Abil.ArtanisAiur_AstralWind.SourceCastStart; !UnitWalking" Send="$Spell,B"/>
+        <On Terms="UnitMovementUpdate.*.Walk" Send="AnimClear Spell"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Zealot_Land"/>
+        <!-- Возрождение -->
+        <On Terms="Behavior.ArtanisAiur_Resurgence@Invulnerable.On" Send="AnimBracketStart Work Spell,F,Start Spell,F Spell,F,End"/>
+        <On Terms="Behavior.ArtanisAiur_Resurgence@Stun.Off" Send="AnimBracketStop Work"/>
+        <On Terms="Behavior.ArtanisAiur_Resurgence@Stun.Off" Send="AnimClear Work"/>
+        <On Terms="Behavior.ArtanisAiur_Resurgence@Stun.Off" Send="AnimPlay Stand Stand"/>
+        <AnimBlendTime value="0.150000"/>
+        <BuildModel value="ArtanisAiur@WarpIn"/>
+        <DeathArray index="Normal" ModelLink="ArtanisAiur@Death" SoundLink="Artanis_DeathFX"/>
+        <PlacementModel value="ArtanisAiur@Placement"/>
+        <PortraitActor value="ArtanisAiur@PortraitActor"/>
+        <BarOffset value="70"/>
+        <BarWidth value="42"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Protoss-Artanis.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-unit-protoss-artanishero.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
+        <SoundArray index="Ready" value="ArtanisAiur_Ready"/>
+        <SoundArray index="Help" value="ArtanisAiur_Help"/>
+        <SoundArray index="What" value="ArtanisAiur_What"/>
+        <SoundArray index="Yes" value="ArtanisAiur_Yes"/>
+        <SoundArray index="Attack" value="ArtanisAiur_Attack"/>
+        <SoundArray index="Pissed" value="ArtanisAiur_Pissed"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-artanishero.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Protoss-Artanis.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image value="Assets\Textures\wireframe-protoss-artanis-shield01.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-artanis-shield02.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-artanis-shield03.dds"/>
+        </WireframeShield>
+    </CActorUnit>
+    <CActorPortrait id="ArtanisAiur@PortraitActor" parent="PortraitGame">
+        <Model value="ArtanisAiur@Portrait"/>
+        <Camera value="PortraitCamera"/>
+    </CActorPortrait>
+    <!-- ========== Модели и звуки юнита ========== -->
+    <CModel id="ArtanisAiur" parent="Unit" Race="Protoss">
+        <Model value="Assets\Units\Protoss\Artanis\Artanis.m3"/>
+        <Occlusion value="Show"/>
+        <PlanetPanelCamera value="Star2CameraHigh05"/>
+        <Radius value="0.400000"/>
+        <SelectionRadius value="0.750000"/>
+        <ShadowRadius value="0.750000"/>
+        <SquibTypeDefault value="LightArmor"/>
+        <TechPurchaseCamera value="Star2CameraHigh05"/>
+        <UnitGlossaryCamera value="Star2CameraHigh05"/>
+    </CModel>
+    <CModel id="ArtanisAiur@Death" parent="UnitDeath" Race="Protoss">
+        <Model value="Assets\Units\Protoss\Artanis_Death\Artanis_Death.m3"/>
+        <LowQualityModel value="ProtossLargeUnitDeathLow"/>
+        <Occlusion value="Show"/>
+    </CModel>
+    <CModel id="ArtanisAiur@WarpIn" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\Protoss_Generic_WarpOut\Protoss_Generic_WarpOut.m3"/>
+        <LowQualityModel value="ProtossUnitBirth"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Occlusion value="Show"/>
+    </CModel>
+    <CModel id="ArtanisAiur@Portrait" parent="Portrait" Race="Protoss">
+        <Model value="Assets\Portraits\Protoss\ArtanisEx2Portrait\ArtanisEx2Portrait.m3"/>
+        <Image value="Assets\Textures\artanisportrait_static.dds"/>
+        <Lighting value="ArtanisEx2Portrait"/>
+    </CModel>
+    <CModel id="ArtanisAiur@Placement" parent="Placement" Race="Protoss">
+        <Model value="Assets\Units\Protoss\Artanis\Artanis.m3"/>
+    </CModel>
+
+    <CSound id="ArtanisAiur_Ready" parent="ProtossReady">
+        <AssetArray TemplateParam="ArtanisVoid_Ready00"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ArtanisAiur_Help" parent="ProtossHelp">
+        <AssetArray TemplateParam="ArtanisVoid_Help00"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ArtanisAiur_What" parent="ProtossAck_Void">
+        <AssetArray TemplateParam="ArtanisVoid_What00"/>
+        <AssetArray TemplateParam="ArtanisVoid_What01"/>
+        <AssetArray TemplateParam="ArtanisVoid_What02"/>
+        <AssetArray TemplateParam="ArtanisVoid_What03"/>
+        <AssetArray TemplateParam="ArtanisVoid_What04"/>
+        <AssetArray TemplateParam="ArtanisVoid_What05"/>
+        <AssetArray TemplateParam="ArtanisVoid_What06"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ArtanisAiur_Yes" parent="ProtossAck_Void">
+        <AssetArray TemplateParam="ArtanisVoid_Yes00"/>
+        <AssetArray TemplateParam="ArtanisVoid_Yes01"/>
+        <AssetArray TemplateParam="ArtanisVoid_Yes02"/>
+        <AssetArray TemplateParam="ArtanisVoid_Yes03"/>
+        <AssetArray TemplateParam="ArtanisVoid_Yes04"/>
+        <AssetArray TemplateParam="ArtanisVoid_Yes05"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ArtanisAiur_Attack" parent="ProtossAck_Void">
+        <AssetArray TemplateParam="ArtanisVoid_Attack00"/>
+        <AssetArray TemplateParam="ArtanisVoid_Attack01"/>
+        <AssetArray TemplateParam="ArtanisVoid_Attack02"/>
+        <AssetArray TemplateParam="ArtanisVoid_Attack03"/>
+        <AssetArray TemplateParam="ArtanisVoid_Attack04"/>
+        <AssetArray TemplateParam="ArtanisVoid_Attack05"/>
+        <AssetArray TemplateParam="ArtanisVoid_Attack06"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="ArtanisAiur_Pissed" parent="ProtossPissed">
+        <AssetArray TemplateParam="ArtanisVoid_Pissed00"/>
+        <AssetArray TemplateParam="ArtanisVoid_Pissed01"/>
+        <AssetArray TemplateParam="ArtanisVoid_Pissed02"/>
+        <AssetArray TemplateParam="ArtanisVoid_Pissed03"/>
+        <AssetArray TemplateParam="ArtanisVoid_Pissed04"/>
+        <AssetArray TemplateParam="ArtanisVoid_Pissed05"/>
+        <AssetArray TemplateParam="ArtanisVoid_Pissed06"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Artanis_DeathFX" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Artanis_Death01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Artanis_Death02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Artanis_Death03.wav" FacialGroup=""/>
+        <DupeDestroyCount value="3"/>
+        <Pitch value="-1.000000,1.000000"/>
+    </CSound>
+
+    <CValidatorUnitType id="ArtanisAiur@Is" parent="IsUnit_Default" unit="ArtanisAiur"/>
+    <CValidatorUnitType id="ArtanisAiur@Target" parent="TargetIsUnit_Default" unit="ArtanisAiur"/>
+    <CValidatorUnitType id="ArtanisAiur@Not" parent="NotUnit_Default" unit="ArtanisAiur"/>
+    <CValidatorUnitType id="ArtanisAiur@NotTarget" parent="TargetNotUnit_Default" unit="ArtanisAiur"/>
+    <CRequirement id="ArtanisAiur"/>
+
+    <CDataCollectionUnit id="ArtanisAiur" parent="UnitGround">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Protoss,ObjectType:Hero"/>
+        <DataRecord Entry="Button,ArtanisAiur"/>
+        <DataRecord Entry="Unit,ArtanisAiur"/>
+        <DataRecord Entry="Actor,ArtanisAiur"/>
+        <DataRecord Entry="Model,ArtanisAiur"/>
+        <DataRecord Entry="Model,ArtanisAiur@Death"/>
+        <DataRecord Entry="Model,ArtanisAiur@WarpIn"/>
+        <DataRecord Entry="Model,ArtanisAiur@Portrait"/>
+        <DataRecord Entry="Sound,ArtanisAiur_Ready"/>
+        <DataRecord Entry="Sound,ArtanisAiur_Help"/>
+        <DataRecord Entry="Sound,ArtanisAiur_What"/>
+        <DataRecord Entry="Sound,ArtanisAiur_Yes"/>
+        <DataRecord Entry="Sound,ArtanisAiur_Attack"/>
+        <DataRecord Entry="Sound,ArtanisAiur_Pissed"/>
+        <DataRecord Entry="Sound,Artanis_DeathFX"/>
+        <DataRecord Entry="Validator,ArtanisAiur@Is"/>
+        <DataRecord Entry="Validator,ArtanisAiur@Target"/>
+        <DataRecord Entry="Validator,ArtanisAiur@Not"/>
+        <DataRecord Entry="Validator,ArtanisAiur@NotTarget"/>
+        <DataRecord Entry="Requirement,ArtanisAiur"/>
+        <TechInfoUpgradeUsed value="ProtossGroundArmors@1"/>
+        <TechInfoUpgradeUsed value="ProtossGroundArmors@2"/>
+        <TechInfoUpgradeUsed value="ProtossGroundArmors@3"/>
+        <TechInfoUpgradeUsed value="ProtossShields@1"/>
+        <TechInfoUpgradeUsed value="ProtossShields@2"/>
+        <TechInfoUpgradeUsed value="ProtossShields@3"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@1"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@2"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@3"/>
+    </CDataCollectionUnit>
+
+    <!-- ========== Оружие ближнего боя ========== -->
+    <CWeaponLegacy id="ArtanisAiur_WeaponMelee">
+        <EditorCategories value="Race:Protoss"/>
+        <Options index="Melee" value="1"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
+        <DisplayEffect value="ArtanisAiur_WeaponMelee@Damage"/>
+        <DisplayAttackCount value="2"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="0"/>
+        <Period value="1"/>
+        <DamagePoint value="0.2"/>
+        <Effect value="ArtanisAiur_WeaponMelee@CP"/>
+    </CWeaponLegacy>
+
+    <CEffectCreatePersistent id="ArtanisAiur_WeaponMelee@CP">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetUnit"/>
+        <TimeScaleSource Value="Caster"/>
+        <Flags index="Channeled" value="1"/>
+        <PeriodCount value="2"/>
+        <PeriodicEffectArray value="ArtanisAiur_WeaponMelee@Damage"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0.28"/>
+    </CEffectCreatePersistent>
+
+    <CEffectDamage id="ArtanisAiur_WeaponMelee@Damage" parent="DU_WEAP">
+        <EditorCategories value="Race:Protoss"/>
+        <Amount value="20"/>
+        <SearchFilters value="-;Self,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectDamage>
+
+    <CActorAction id="ArtanisAiur_WeaponMelee@Attack" parent="GenericAttack" effectAttack="ArtanisAiur_WeaponMelee@Damage">
+        <LaunchAttachQuery Methods="AMFilterWeaponLeft"/>
+        <LaunchAssets Sound="ArtanisAiur_WeaponMelee@LaunchSound"/>
+        <ImpactMap index="None" Sound="ArtanisAiur_WeaponMelee@ImpactSound"/>
+    </CActorAction>
+
+    <CSound id="ArtanisAiur_WeaponMelee@LaunchSound" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Artanis_PsiBladeAttackLaunch01.wav"/>
+        <AssetArray File="Assets\Sounds\Artanis_PsiBladeAttackLaunch02.wav"/>
+        <AssetArray File="Assets\Sounds\Artanis_PsiBladeAttackLaunch03.wav"/>
+        <AssetArray File="Assets\Sounds\Artanis_PsiBladeAttackLaunch04.wav"/>
+        <AssetArray File="Assets\Sounds\Artanis_PsiBladeAttackLaunch05.wav"/>
+        <AssetArray File="Assets\Sounds\Artanis_PsiBladeAttackLaunch06.wav"/>
+        <AssetArray File="Assets\Sounds\Artanis_PsiBladeAttackLaunch07.wav"/>
+        <AssetArray File="Assets\Sounds\Artanis_PsiBladeAttackLaunch08.wav"/>
+        <AssetArray File="Assets\Sounds\Artanis_PsiBladeAttackLaunch09.wav"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="6"/>
+        <Pitch value="-0.500000,0.500000"/>
+        <Volume value="-11.000000,-7.000000"/>
+    </CSound>
+    <CSound id="ArtanisAiur_WeaponMelee@ImpactSound" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Attacks\Protoss_AttackImpactMediumSlice0.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Attacks\Protoss_AttackImpactMediumSlice1.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Attacks\Protoss_AttackImpactMediumSlice2.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Attacks\Protoss_AttackImpactMediumSlice3.wav"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="4"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-8.000000,-6.000000"/>
+    </CSound>
+
+    <CDataCollectionUnit id="ArtanisAiur_WeaponMelee" parent="Weapon_Instant">
+        <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:Protoss,ObjectType:Other"/>
+        <DataRecord Entry="Weapon,ArtanisAiur_WeaponMelee"/>
+        <DataRecord Entry="Effect,ArtanisAiur_WeaponMelee@CP"/>
+        <DataRecord Entry="Effect,ArtanisAiur_WeaponMelee@Damage"/>
+        <DataRecord Entry="Actor,ArtanisAiur_WeaponMelee@Attack"/>
+        <DataRecord Entry="Sound,ArtanisAiur_WeaponMelee@LaunchSound"/>
+        <DataRecord Entry="Sound,ArtanisAiur_WeaponMelee@ImpactSound"/>
+    </CDataCollectionUnit>
+
+    <!-- ========== Оружие дальнего боя (воздушная атака) ========== -->
+    <CWeaponLegacy id="ArtanisAiur_WeaponRanged">
+        <EditorCategories value="Race:Protoss"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
+        <DisplayEffect value="ArtanisAiur_WeaponRanged@Damage"/>
+        <TargetFilters value="Air,Visible;Ground,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="4"/>
+        <Period value="1"/>
+        <DamagePoint value="0.2"/>
+        <Effect value="ArtanisAiur_WeaponRanged@Set"/>
+    </CWeaponLegacy>
+
+    <CEffectSet id="ArtanisAiur_WeaponRanged@Set">
+        <EffectArray value="ArtanisAiur_WeaponRanged@LM"/>
+    </CEffectSet>
+
+    <CEffectLaunchMissile id="ArtanisAiur_WeaponRanged@LM">
+        <ImpactEffect value="ArtanisAiur_WeaponRanged@Damage"/>
+        <AmmoUnit value="ArtanisAiur_WeaponRanged@Missile"/>
+    </CEffectLaunchMissile>
+
+    <CEffectDamage id="ArtanisAiur_WeaponRanged@Damage" parent="DU_WEAP">
+        <EditorCategories value="Race:Protoss"/>
+        <Amount value="20"/>
+        <SearchFilters value="-;Self,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectDamage>
+
+    <CActorAction id="ArtanisAiur_WeaponRanged@Attack" parent="GenericAttack" effectImpact="ArtanisAiur_WeaponRanged@Damage" effectLaunch="ArtanisAiur_WeaponRanged@LM">
+        <LaunchAttachQuery Methods="AMFilterWeaponRight"/>
+        <LaunchAssets Sound="ArtanisAiur_WeaponRanged@LaunchSound"/>
+        <Missile value="ArtanisAiur_WeaponRanged@AttackMissile"/>
+        <ImpactMap index="None" Model="ArtanisAiur_WeaponRanged@ImpactModel" Sound="ArtanisAiur_WeaponRanged@ImpactSound"/>
+        <ImpactMap index="Flesh" ModelReaction="BloodTargetImpact"/>
+    </CActorAction>
+
+   <CActorMissile id="ArtanisAiur_WeaponRanged@AttackMissile" parent="GenericAttackMissile" unitName="ArtanisAiur_WeaponRanged@Missile">
+    <Model value="ArtanisAiur_WeaponRanged@MissileModel"/>
+    </CActorMissile>
+    <CModel id="ArtanisAiur_WeaponRanged@MissileModel" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\Artanis_BasicAirAttack_Missile\Artanis_BasicAirAttack_Missile.m3"/>
+    </CModel>
+    <CModel id="ArtanisAiur_WeaponRanged@ImpactModel" parent="ImpactFX">
+        <Model value="Assets\Effects\Protoss\Artanis_BasicAirAttack_Impact\Artanis_BasicAirAttack_Impact.m3"/>
+    </CModel>
+
+    <CSound id="ArtanisAiur_WeaponRanged@LaunchSound" parent="Combat">
+        <AssetArray File="Assets\Sounds\PsionicOrb_Launch_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PsionicOrb_Launch_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PsionicOrb_Launch_07.wav" Volume="1.000000,1.000000" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="3"/>
+        <Pitch value="2.000000,5.000000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="ArtanisAiur_WeaponRanged@ImpactSound" parent="Combat">
+        <AssetArray File="Assets\Sounds\ArtanisVoid_PsionicAssaultImpact01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ArtanisVoid_PsionicAssaultImpact02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ArtanisVoid_PsionicAssaultImpact03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ArtanisVoid_PsionicAssaultImpact04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ArtanisVoid_PsionicAssaultImpact05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ArtanisVoid_PsionicAssaultImpact06.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ArtanisVoid_PsionicAssaultImpact07.wav" FacialGroup=""/>
+        <DupeMuteCount value="4"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+
+    <CUnit id="ArtanisAiur_WeaponRanged@Missile" parent="MISSILE_INVULNERABLE">
+        <Race value="Prot"/>
+        <Mover value="MissileDefault"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
+    </CUnit>
+
+    <CDataCollectionUnit id="ArtanisAiur_WeaponRanged" parent="Weapon_Missile">
+        <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:Protoss,ObjectType:Projectile"/>
+        <DataRecord Entry="Weapon,ArtanisAiur_WeaponRanged"/>
+        <DataRecord Entry="Effect,ArtanisAiur_WeaponRanged@Set"/>
+        <DataRecord Entry="Effect,ArtanisAiur_WeaponRanged@LM"/>
+        <DataRecord Entry="Effect,ArtanisAiur_WeaponRanged@Damage"/>
+        <DataRecord Entry="Actor,ArtanisAiur_WeaponRanged@Attack"/>
+        <DataRecord Entry="Actor,ArtanisAiur_WeaponRanged@AttackMissile"/>
+        <DataRecord Entry="Model,ArtanisAiur_WeaponRanged@MissileModel"/>
+        <DataRecord Entry="Model,ArtanisAiur_WeaponRanged@ImpactModel"/>
+        <DataRecord Entry="Sound,ArtanisAiur_WeaponRanged@LaunchSound"/>
+        <DataRecord Entry="Sound,ArtanisAiur_WeaponRanged@ImpactSound"/>
+        <DataRecord Entry="Unit,ArtanisAiur_WeaponRanged@Missile"/>
+    </CDataCollectionUnit>
+
+    <!-- ========== Поведения (Возрождение) ========== -->
+    <CBehaviorBuff id="ArtanisAiur_Resurgence">
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-resurgence.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <DamageResponse Fatal="1" Handled="ArtanisAiur_Resurgence@TriggerSet" ModifyFraction="0">
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+
+    <CBehaviorBuff id="ArtanisAiur_Resurgence@Disable">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-resurgence.dds"/>
+        <Duration value="60"/>
+        <Modification>
+            <BehaviorLinkDisableArray value="ArtanisAiur_Resurgence"/>
+        </Modification>
+    </CBehaviorBuff>
+
+    <CBehaviorBuff id="ArtanisAiur_Resurgence@Invulnerable">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-resurgence.dds"/>
+        <DisplayDuration index="Self" value="1"/>
+        <Duration value="3"/>
+        <Period value="3"/>
+        <PeriodicEffect value="ArtanisAiur_Resurgence@ExplodeSet"/>
+        <DamageResponse ModifyFraction="0" ModifyMinimumDamage="1">
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+
+    <CBehaviorBuff id="ArtanisAiur_Resurgence@ReviveSupressed">
+        <Alignment value="Negative"/>
+        <Cost>
+            <Cooldown TimeStart="60"/>
+        </Cost>
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-resurgence.dds"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="60"/>
+    </CBehaviorBuff>
+
+    <CBehaviorBuff id="ArtanisAiur_Resurgence@Stun">
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-resurgence.dds"/>
+        <BehaviorCategories index="Stun" value="1"/>
+        <Duration value="3"/>
+        <Modification>
+            <StateFlags index="Stun" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+
+    <CEffectSet id="ArtanisAiur_Resurgence@TriggerSet">
+        <EffectArray value="ArtanisAiur_Resurgence@InvulnerableAB"/>
+        <EffectArray value="ArtanisAiur_Resurgence@DisableAB"/>
+        <EffectArray value="ArtanisAiur_Resurgence@StunAB"/>
+        <EffectArray value="ArtanisAiur_Resurgence@SuppressedApply"/>
+    </CEffectSet>
+
+    <CEffectApplyBehavior id="ArtanisAiur_Resurgence@InvulnerableAB">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="ArtanisAiur_Resurgence@Invulnerable"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ArtanisAiur_Resurgence@DisableAB">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="ArtanisAiur_Resurgence@Disable"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ArtanisAiur_Resurgence@StunAB">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="ArtanisAiur_Resurgence@Stun"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ArtanisAiur_Resurgence@SuppressedApply">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="ArtanisAiur_Resurgence@ReviveSupressed"/>
+    </CEffectApplyBehavior>
+
+    <CEffectSet id="ArtanisAiur_Resurgence@ExplodeSet">
+        <EffectArray value="ArtanisAiur_Resurgence@Heal"/>
+        <EffectArray value="ArtanisAiur_Resurgence@EnemySearch"/>
+    </CEffectSet>
+
+    <CEffectModifyUnit id="ArtanisAiur_Resurgence@Heal">
+        <EditorCategories value="Race:Protoss"/>
+        <VitalArray index="Life">
+            <ChangeFraction value="1"/>
+        </VitalArray>
+        <VitalArray index="Shields">
+            <ChangeFraction value="1"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+
+    <CEffectEnumArea id="ArtanisAiur_Resurgence@EnemySearch">
+        <SearchFilters value="-;Self,Player,Ally,Neutral,Structure,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="3" Effect="ArtanisAiur_Resurgence@EnemyImpactSet"/>
+    </CEffectEnumArea>
+
+    <CEffectSet id="ArtanisAiur_Resurgence@EnemyImpactSet">
+        <EffectArray value="ArtanisAiur_Resurgence@Knockback"/>
+        <EffectArray value="ArtanisAiur_Resurgence@EnemyImpactDamageCP"/>
+    </CEffectSet>
+
+    <CEffectDamage id="ArtanisAiur_Resurgence@EnemyImpactDamage">
+        <Kind value="Ranged"/>
+        <Amount value="100"/>
+    </CEffectDamage>
+
+    <CEffectCreatePersistent id="ArtanisAiur_Resurgence@EnemyImpactDamageCP">
+        <WhichLocation Value="TargetUnit"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="ArtanisAiur_Resurgence@EnemyImpactDamage"/>
+        <PeriodicPeriodArray value="0.0625"/>
+        <PeriodicPeriodArray value="0.125"/>
+        <PeriodicPeriodArray value="0.1875"/>
+    </CEffectCreatePersistent>
+
+    <CEffectCreateUnit id="ArtanisAiur_Resurgence@Knockback">
+        <EditorCategories value="Race:Zerg"/>
+        <CreateFlags index="Birth" value="0"/>
+        <CreateFlags index="DropOff" value="0"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="Precursor" value="1"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <CreateFlags index="NormalizeSpawnOffset" value="0"/>
+        <SpawnOwner Value="Neutral"/>
+        <SpawnEffect value="ArtanisAiur_Resurgence@KnockbackCreateSet"/>
+        <SpawnRange value="6"/>
+        <SpawnOffset value="0,5"/>
+        <TypeFallbackUnit Value="Target"/>
+    </CEffectCreateUnit>
+
+    <CEffectSet id="ArtanisAiur_Resurgence@KnockbackCreateSet">
+        <EffectArray value="ArtanisAiur_Resurgence@PrecursorKnockbackAB"/>
+        <EffectArray value="ArtanisAiur_Resurgence@KnockbackAB"/>
+        <EffectArray value="ArtanisAiur_Resurgence@KnockbackLM"/>
+    </CEffectSet>
+
+    <CEffectApplyBehavior id="ArtanisAiur_Resurgence@PrecursorKnockbackAB">
+        <Behavior value="ArtanisAiur_Resurgence@PrecursorKnockback"/>
+    </CEffectApplyBehavior>
+
+    <CBehaviorBuff id="ArtanisAiur_Resurgence@PrecursorKnockback">
+        <InfoFlags index="Hidden" value="1"/>
+        <Duration value="0.5"/>
+        <FinalEffect value="SuicideRemove"/>
+        <Modification>
+            <ModifyFlags index="DisableAbils" value="1"/>
+            <ModifyFlags index="SuppressMoving" value="1"/>
+            <ModifyFlags index="SuppressTurning" value="1"/>
+            <StateFlags index="Invulnerable" value="1"/>
+            <StateFlags index="SuppressCollision" value="1"/>
+            <StateFlags index="NoDraw" value="1"/>
+            <StateFlags index="Uncommandable" value="1"/>
+            <StateFlags index="Unselectable" value="1"/>
+            <StateFlags index="Untargetable" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+
+    <CEffectDamage id="SuicideRemove">
+        <ImpactLocation Value="SourceUnit"/>
+        <Flags index="Kill" value="1"/>
+        <Death value="Remove"/>
+    </CEffectDamage>
+
+    <CEffectApplyBehavior id="ArtanisAiur_Resurgence@KnockbackAB">
+        <Behavior value="UnitKnockback"/>
+    </CEffectApplyBehavior>
+
+    <CBehaviorBuff id="UnitKnockback">
+        <InfoFlags index="Hidden" value="1"/>
+        <Duration value="2"/>
+    </CBehaviorBuff>
+
+    <CEffectLaunchMissile id="ArtanisAiur_Resurgence@KnockbackLM">
+        <LaunchLocation Effect="ArtanisAiur_Resurgence@Knockback" Value="TargetUnit"/>
+        <ImpactEffect value="ArtanisAiur_Resurgence@KnockbackImpactCP"/>
+        <Flags index="2D" value="1"/>
+        <Movers Link="UnitKnockbackMover5"/>
+        <DeathType value="Unknown"/>
+    </CEffectLaunchMissile>
+
+    <CEffectCreatePersistent id="ArtanisAiur_Resurgence@KnockbackImpactCP">
+        <WhichLocation Value="CasterUnit"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="ArtanisAiur_Resurgence@KnockbackRemove"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+
+    <CEffectRemoveBehavior id="ArtanisAiur_Resurgence@KnockbackRemove">
+        <WhichUnit Effect="ArtanisAiur_Resurgence@Knockback"/>
+        <BehaviorLink value="UnitKnockback"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+
+    <!-- Визуальные эффекты Возрождения -->
+    <CActorModel id="ArtanisAiur_Resurgence@ChargeModel" parent="ModelAnimationStyleOneShotNoOrphan">
+        <On Terms="Behavior.ArtanisAiur_Resurgence@Stun.Off" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOriginStationary SOp2DRotation"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+    </CActorModel>
+    <CActorSplat id="ArtanisAiur_LightningDash@Cursor" parent="ProtossCursorSplat" abil="ArtanisAiur_LightningDash"/>
+    <CActorSound id="ArtanisAiur_Resurgence@ChargeSound" parent="SoundOneShot">
+        <On Terms="Behavior.ArtanisAiur_Resurgence@Stun.On" Send="Create"/>
+        <Sound value="ArtanisAiur_Resurgence@ChargeSound"/>
+    </CActorSound>
+
+    <CActorSound id="ArtanisAiur_Resurgence@ExplodeSound" parent="SoundContinuous">
+        <On Terms="Behavior.ArtanisAiur_Resurgence@Stun.Off" Send="Create"/>
+        <Sound value="ArtanisAiur_Resurgence@ExplodeSound"/>
+    </CActorSound>
+
+    <CModel id="ArtanisAiur_Resurgence@ChargeModel" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\Artanis_Resurgence\Artanis_Resurgence.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <RadiusLoose value="1.000000"/>
+    </CModel>
+
+    <CSound id="ArtanisAiur_Resurgence@ChargeSound" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Artanis_ResurgenceCharge00.wav" FacialGroup=""/>
+        <DupeMuteCount value="3"/>
+        <Pitch value="-1.000000,1.000000"/>
+    </CSound>
+
+    <CSound id="ArtanisAiur_Resurgence@ExplodeSound" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Artanis_ResurgenceExplosion.wav" FacialGroup=""/>
+        <DupeMuteCount value="3"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Spread value="30.000000"/>
+        <Volume value="3.000000,3.000000"/>
+    </CSound>
+
+    <CDataCollectionUnit id="ArtanisAiur_Resurgence" parent="AbilityBase">
+        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Protoss,ObjectType:Spell"/>
+        <DataRecord Entry="Button,ArtanisAiur_ResurgencePassive"/>
+        <DataRecord Entry="Behavior,ArtanisAiur_Resurgence"/>
+        <DataRecord Entry="Behavior,ArtanisAiur_Resurgence@Disable"/>
+        <DataRecord Entry="Behavior,ArtanisAiur_Resurgence@Invulnerable"/>
+        <DataRecord Entry="Behavior,ArtanisAiur_Resurgence@ReviveSupressed"/>
+        <DataRecord Entry="Behavior,ArtanisAiur_Resurgence@Stun"/>
+        <DataRecord Entry="Effect,ArtanisAiur_Resurgence@TriggerSet"/>
+        <DataRecord Entry="Effect,ArtanisAiur_Resurgence@InvulnerableAB"/>
+        <DataRecord Entry="Effect,ArtanisAiur_Resurgence@DisableAB"/>
+        <DataRecord Entry="Effect,ArtanisAiur_Resurgence@StunAB"/>
+        <DataRecord Entry="Effect,ArtanisAiur_Resurgence@SuppressedApply"/>
+        <DataRecord Entry="Effect,ArtanisAiur_Resurgence@ExplodeSet"/>
+        <DataRecord Entry="Effect,ArtanisAiur_Resurgence@Heal"/>
+        <DataRecord Entry="Effect,ArtanisAiur_Resurgence@EnemySearch"/>
+        <DataRecord Entry="Effect,ArtanisAiur_Resurgence@EnemyImpactSet"/>
+        <DataRecord Entry="Effect,ArtanisAiur_Resurgence@EnemyImpactDamage"/>
+        <DataRecord Entry="Effect,ArtanisAiur_Resurgence@EnemyImpactDamageCP"/>
+        <DataRecord Entry="Effect,ArtanisAiur_Resurgence@Knockback"/>
+        <DataRecord Entry="Effect,ArtanisAiur_Resurgence@KnockbackCreateSet"/>
+        <DataRecord Entry="Effect,ArtanisAiur_Resurgence@PrecursorKnockbackAB"/>
+        <DataRecord Entry="Effect,ArtanisAiur_Resurgence@KnockbackAB"/>
+        <DataRecord Entry="Effect,ArtanisAiur_Resurgence@KnockbackLM"/>
+        <DataRecord Entry="Effect,ArtanisAiur_Resurgence@KnockbackImpactCP"/>
+        <DataRecord Entry="Effect,ArtanisAiur_Resurgence@KnockbackRemove"/>
+        <DataRecord Entry="Effect,SuicideRemove"/>
+        <DataRecord Entry="Behavior,ArtanisAiur_Resurgence@PrecursorKnockback"/>
+        <DataRecord Entry="Behavior,UnitKnockback"/>
+        <DataRecord Entry="Actor,ArtanisAiur_Resurgence@ChargeModel"/>
+        <DataRecord Entry="Actor,ArtanisAiur_Resurgence@ChargeSound"/>
+        <DataRecord Entry="Actor,ArtanisAiur_Resurgence@ExplodeSound"/>
+        <DataRecord Entry="Model,ArtanisAiur_Resurgence@ChargeModel"/>
+        <DataRecord Entry="Sound,ArtanisAiur_Resurgence@ChargeSound"/>
+        <DataRecord Entry="Sound,ArtanisAiur_Resurgence@ExplodeSound"/>
+    </CDataCollectionUnit>
+
+    <!-- ========== Способности ========== -->
+    <!-- Астральный Ветер -->
+    <CButton id="ArtanisAiur_AstralWind">
+        <Icon value="Assets\Textures\btn-ability-protoss-astralwind.dds"/>
+    </CButton>
+
+    <CAbilEffectInstant id="ArtanisAiur_AstralWind">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Cooldown TimeUse="15"/>
+        </Cost>
+        <Effect index="0" value="ArtanisAiur_AstralWind@Set"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="ArtanisAiur_AstralWind"/>
+    </CAbilEffectInstant>
+
+    <CEffectSet id="ArtanisAiur_AstralWind@Set">
+        <EffectArray value="ArtanisAiur_AstralWind@Self"/>
+        <EffectArray value="ArtanisAiur_AstralWind@Search"/>
+    </CEffectSet>
+
+    <CEffectModifyUnit id="ArtanisAiur_AstralWind@Self">
+        <VitalArray index="Life">
+            <Change value="300"/>
+        </VitalArray>
+        <VitalArray index="Shields">
+            <Change value="200"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+
+    <CEffectEnumArea id="ArtanisAiur_AstralWind@Search">
+        <ImpactLocation Value="TargetUnit"/>
+        <ExcludeArray Effect="ArtanisAiur_AstralWind@Set" Value="Target"/>
+        <SearchFilters value="-;Enemy,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="6" Effect="ArtanisAiur_AstralWind@OtherSet"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CEffectEnumArea>
+
+    <CEffectSet id="ArtanisAiur_AstralWind@OtherSet">
+        <EffectArray value="ArtanisAiur_AstralWind@Other"/>
+    </CEffectSet>
+
+    <CEffectModifyUnit id="ArtanisAiur_AstralWind@Other">
+        <VitalArray index="Life">
+            <Change value="300"/>
+        </VitalArray>
+        <VitalArray index="Shields">
+            <Change value="200"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+
+    <CActorModel id="ArtanisAiur_AstralWind@CastModel" parent="ModelAnimationStyleOneShot">
+        <Inherits index="CloakEffect" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <On Terms="Effect.ArtanisAiur_AstralWind@Search.Start" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOrigin" HoldRotation="1"/>
+    </CActorModel>
+
+    <CActorModel id="ArtanisAiur_AstralWind@ImpactModel" parent="ModelAnimationStyleOneShot">
+        <Inherits index="CloakEffect" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <On Terms="Effect.ArtanisAiur_AstralWind@Other.Start; At Target" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOrigin" HoldRotation="1"/>
+    </CActorModel>
+
+    <CActorSound id="ArtanisAiur_AstralWind@Sound" parent="SoundOneShot">
+        <On Terms="Effect.ArtanisAiur_AstralWind@Search.Start" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <Sound value="ArtanisAiur_AstralWind@Sound"/>
+    </CActorSound>
+
+    <CModel id="ArtanisAiur_AstralWind@CastModel" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\Artanis_AstralWinds\Artanis_AstralWinds.m3"/>
+    </CModel>
+    <CModel id="ArtanisAiur_AstralWind@ImpactModel" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\Artanis_AstralWinds_Impact\Artanis_AstralWinds_Impact.m3"/>
+    </CModel>
+
+    <CSound id="ArtanisAiur_AstralWind@Sound" parent="Spell">
+        <AssetArray File="Assets\Sounds\Artanis_AstralWind00.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Artanis_AstralWind01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Artanis_AstralWind02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Artanis_AstralWind03.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+
+    <CDataCollectionUnit id="ArtanisAiur_AstralWind" parent="AbilityBase">
+        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Protoss,ObjectType:Spell"/>
+        <DataRecord Entry="Button,ArtanisAiur_AstralWind"/>
+        <DataRecord Entry="Abil,ArtanisAiur_AstralWind"/>
+        <DataRecord Entry="Effect,ArtanisAiur_AstralWind@Set"/>
+        <DataRecord Entry="Effect,ArtanisAiur_AstralWind@Self"/>
+        <DataRecord Entry="Effect,ArtanisAiur_AstralWind@Search"/>
+        <DataRecord Entry="Effect,ArtanisAiur_AstralWind@OtherSet"/>
+        <DataRecord Entry="Effect,ArtanisAiur_AstralWind@Other"/>
+        <DataRecord Entry="Actor,ArtanisAiur_AstralWind@CastModel"/>
+        <DataRecord Entry="Actor,ArtanisAiur_AstralWind@ImpactModel"/>
+        <DataRecord Entry="Actor,ArtanisAiur_AstralWind@Sound"/>
+        <DataRecord Entry="Model,ArtanisAiur_AstralWind@CastModel"/>
+        <DataRecord Entry="Model,ArtanisAiur_AstralWind@ImpactModel"/>
+        <DataRecord Entry="Sound,ArtanisAiur_AstralWind@Sound"/>
+    </CDataCollectionUnit>
+
+    <!-- Рывок Молний -->
+    <CButton id="ArtanisAiur_LightningDash">
+        <Icon value="Assets\Textures\btn-ability-protoss-lightningdash.dds"/>
+    </CButton>
+
+    <CAbilEffectTarget id="ArtanisAiur_LightningDash">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Cost>
+            <Cooldown TimeUse="5"/>
+        </Cost>
+        <Range value="8"/>
+        <Arc value="4.9987"/>
+        <CursorEffect value="ArtanisAiur_LightningDash@DamageSearch"/>
+        <Effect index="0" value="ArtanisAiur_LightningDash@CP"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="ArtanisAiur_LightningDash"/>
+    </CAbilEffectTarget>
+
+    <CEffectCreatePersistent id="ArtanisAiur_LightningDash@CP">
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
+        <InitialEffect value="ArtanisAiur_LightningDash@Switch"/>
+        <PeriodCount value="1"/>
+    </CEffectCreatePersistent>
+
+    <CEffectSwitch id="ArtanisAiur_LightningDash@Switch">
+        <CaseArray Validator="ArtanisAiur_LightningDash@ValidPoint" Effect="ArtanisAiur_LightningDash@CU"/>
+        <CaseDefault value="ArtanisAiur_LightningDash@CUClosest"/>
+    </CEffectSwitch>
+
+    <CValidatorLocationPathable id="ArtanisAiur_LightningDash@ValidPoint">
+        <WhichLocation Value="TargetPoint"/>
+        <ResultFailed value="ArtanisAiur_LightningDash@ClosestPoint"/>
+    </CValidatorLocationPathable>
+
+    <CEffectCreateUnit id="ArtanisAiur_LightningDash@CU">
+        <WhichLocation Value="TargetPoint"/>
+        <CreateFlags index="Placement" value="0"/>
+        <SpawnEffect value="ArtanisAiur_LightningDash@CUPoint"/>
+        <SpawnRange value="0"/>
+    </CEffectCreateUnit>
+
+    <CEffectCreateUnit id="ArtanisAiur_LightningDash@CUClosest">
+        <WhichLocation Value="TargetPoint"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <SpawnEffect value="ArtanisAiur_LightningDash@CUPoint"/>
+        <SpawnRange value="8"/>
+    </CEffectCreateUnit>
+
+    <CEffectCreatePersistent id="ArtanisAiur_LightningDash@CUPoint">
+        <WhichLocation Value="TargetUnit"/>
+        <PeriodCount value="2"/>
+        <PeriodicEffectArray value="ArtanisAiur_LightningDash@MakePrecursor"/>
+        <PeriodicEffectArray value="ArtanisAiur_LightningDash@LM"/>
+        <PeriodicPeriodArray value="0"/>
+    </CEffectCreatePersistent>
+
+    <CEffectApplyBehavior id="ArtanisAiur_LightningDash@MakePrecursor">
+        <Behavior value="ArtanisAiur_LightningDash@Precursor"/>
+    </CEffectApplyBehavior>
+
+    <CBehaviorBuff id="ArtanisAiur_LightningDash@Precursor">
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <ModifyFlags index="DisableAbils" value="1"/>
+            <ModifyFlags index="SuppressMoving" value="1"/>
+            <ModifyFlags index="SuppressTurning" value="1"/>
+            <StateFlags index="Invulnerable" value="1"/>
+            <StateFlags index="NoDraw" value="1"/>
+            <StateFlags index="Uncommandable" value="1"/>
+            <StateFlags index="Unselectable" value="1"/>
+            <StateFlags index="Untargetable" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+
+    <CEffectLaunchMissile id="ArtanisAiur_LightningDash@LM">
+        <LaunchLocation Value="CasterUnit"/>
+        <ImpactLocation Effect="ArtanisAiur_LightningDash@CUPoint" Value="TargetPoint"/>
+        <FinishEffect value="ArtanisAiur_LightningDash@ImpactSet"/>
+        <Flags index="2D" value="1"/>
+        <Movers Link="ArtanisAiur_LightningDash@MissileMover"/>
+        <DeathType value="Unknown"/>
+    </CEffectLaunchMissile>
+
+    <CMoverMissile id="ArtanisAiur_LightningDash@MissileMover">
+        <MotionPhases>
+            <Driver value="Guidance"/>
+            <Acceleration value="3200"/>
+            <MaxSpeed value="30"/>
+            <ClearanceAcceleration value="75"/>
+            <Outro value="-0.2,-0.1"/>
+            <YawPitchRoll value="719.2968"/>
+            <Overlays Scale="0.7,0.1"/>
+        </MotionPhases>
+        <MotionPhases>
+            <Driver value="Guidance"/>
+            <Acceleration value="3200"/>
+            <MaxSpeed value="30"/>
+            <ClearanceAcceleration value="75"/>
+            <YawPitchRoll value="MAX"/>
+            <Overlays Scale="0.1,0.1"/>
+        </MotionPhases>
+        <MotionOverlays Type="Wave" Axis="1,0,0" Wavelength="6,0.1"/>
+    </CMoverMissile>
+
+    <CEffectSet id="ArtanisAiur_LightningDash@ImpactSet">
+        <EffectArray value="ArtanisAiur_LightningDash@StunSearch"/>
+        <EffectArray value="ArtanisAiur_LightningDash@DamageSearch"/>
+        <EffectArray value="ArtanisAiur_LightningDash@RemovePrecursorUnit"/>
+    </CEffectSet>
+
+    <CEffectEnumArea id="ArtanisAiur_LightningDash@StunSearch">
+        <SearchFilters value="Ground;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Invulnerable"/>
+        <AreaArray Radius="1.5" Effect="ArtanisAiur_LightningDash@StunAB"/>
+    </CEffectEnumArea>
+
+    <CEffectApplyBehavior id="ArtanisAiur_LightningDash@StunAB">
+        <Behavior value="ArtanisAiur_LightningDash@Stun"/>
+    </CEffectApplyBehavior>
+
+    <CBehaviorBuff id="ArtanisAiur_LightningDash@Stun">
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-lightningdash.dds"/>
+        <BehaviorCategories index="Stun" value="1"/>
+        <Duration value="2"/>
+        <Modification>
+            <StateFlags index="Stun" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+
+    <CEffectEnumArea id="ArtanisAiur_LightningDash@DamageSearch">
+        <SearchFilters value="Ground;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Invulnerable"/>
+        <AreaArray Radius="1.5" Effect="ArtanisAiur_LightningDash@Damage"/>
+    </CEffectEnumArea>
+
+    <CEffectDamage id="ArtanisAiur_LightningDash@Damage" parent="DU_WEAP">
+        <AttributeBonus index="Structure" value="50"/>
+        <Amount value="100"/>
+        <Death value="Blast"/>
+    </CEffectDamage>
+
+    <CEffectDamage id="ArtanisAiur_LightningDash@RemovePrecursorUnit">
+        <ImpactLocation Effect="ArtanisAiur_LightningDash@CUPoint" Value="TargetUnit"/>
+        <Flags index="Kill" value="1"/>
+        <Death value="Remove"/>
+    </CEffectDamage>
+
+    <CActorModel id="ArtanisAiur_LightningDash@ImpactModel" parent="ModelAnimationStyleOneShotUNIT">
+        <On Terms="Effect.ArtanisAiur_LightningDash@Damage.Start; At Target" Send="Create"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+    </CActorModel>
+
+    <CActorSound id="ArtanisAiur_LightningDash@ImpactSound" parent="SoundOneShot">
+        <On Terms="Effect.ArtanisAiur_LightningDash@ImpactSet.Start" Send="Create"/>
+        <Sound value="ArtanisAiur_LightningDash@ImpactSound"/>
+    </CActorSound>
+
+    <CActorSound id="ArtanisAiur_LightningDash@ImpactSweetenerSound" parent="SoundOneShot">
+        <On Terms="Effect.ArtanisAiur_LightningDash@ImpactSet.Start" Send="Create"/>
+        <Sound value="ArtanisAiur_LightningDash@ImpactSweetenerSound"/>
+    </CActorSound>
+
+    <CActorModel id="ArtanisAiur_LightningDash@InModel" parent="ModelAnimationStyleOneShotNoOrphan">
+        <On Terms="Effect.ArtanisAiur_LightningDash@ImpactSet.Start" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOrigin SOpForwardScopeLaunch"/>
+    </CActorModel>
+
+    <CActorModel id="ArtanisAiur_LightningDash@StunModel" parent="ModelAnimationStyleContinuous">
+        <On Terms="Behavior.ArtanisAiur_LightningDash@Stun.On" Send="Create"/>
+        <On Terms="Behavior.ArtanisAiur_LightningDash@Stun.Off" Send="Destroy"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOverhead"/>
+        <Model value="ArtanisAiur_LightningDash@StunModel"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModel>
+
+    <CModel id="ArtanisAiur_LightningDash@ImpactModel" parent="ImpactFX">
+        <Model value="Assets\Effects\Protoss\PsiStormImpact\PsiStormImpact.m3"/>
+    </CModel>
+
+    <CModel id="ArtanisAiur_LightningDash@StunModel" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Neutral\Stun_Void\Stun_Void.m3"/>
+    </CModel>
+
+    <CModel id="ArtanisAiur_LightningDash@InModel" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\Artanis_LightningDash\Artanis_LightningDash.m3"/>
+    </CModel>
+
+    <CSound id="ArtanisAiur_LightningDash@ImpactSound" parent="Spell">
+        <AssetArray File="Assets\Sounds\ExplosionPunch_SparseRockDebris1.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ExplosionPunch_SparseRockDebris2.wav" Weight="21" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ExplosionPunch_SparseRockDebris3.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ExplosionPunch_SparseRockDebris4.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ExplosionPunch_SparseRockDebris5.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="3"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+
+    <CSound id="ArtanisAiur_LightningDash@ImpactSweetenerSound" parent="Spell">
+        <AssetArray File="Assets\Sounds\Artanis_LightningDashB01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Artanis_LightningDashB02.wav" FacialGroup=""/>
+        <Chance value="50"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="6"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+
+    <CDataCollectionUnit id="ArtanisAiur_LightningDash" parent="AbilityBase">
+        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Protoss,ObjectType:Spell"/>
+        <DataRecord Entry="Button,ArtanisAiur_LightningDash"/>
+        <DataRecord Entry="Abil,ArtanisAiur_LightningDash"/>
+        <DataRecord Entry="Effect,ArtanisAiur_LightningDash@CP"/>
+        <DataRecord Entry="Effect,ArtanisAiur_LightningDash@Switch"/>
+        <DataRecord Entry="Effect,ArtanisAiur_LightningDash@CU"/>
+        <DataRecord Entry="Effect,ArtanisAiur_LightningDash@CUClosest"/>
+        <DataRecord Entry="Effect,ArtanisAiur_LightningDash@CUPoint"/>
+        <DataRecord Entry="Effect,ArtanisAiur_LightningDash@MakePrecursor"/>
+        <DataRecord Entry="Effect,ArtanisAiur_LightningDash@LM"/>
+        <DataRecord Entry="Effect,ArtanisAiur_LightningDash@ImpactSet"/>
+        <DataRecord Entry="Effect,ArtanisAiur_LightningDash@StunSearch"/>
+        <DataRecord Entry="Effect,ArtanisAiur_LightningDash@StunAB"/>
+        <DataRecord Entry="Effect,ArtanisAiur_LightningDash@DamageSearch"/>
+        <DataRecord Entry="Effect,ArtanisAiur_LightningDash@Damage"/>
+        <DataRecord Entry="Effect,ArtanisAiur_LightningDash@RemovePrecursorUnit"/>
+        <DataRecord Entry="Behavior,ArtanisAiur_LightningDash@Stun"/>
+        <DataRecord Entry="Behavior,ArtanisAiur_LightningDash@Precursor"/>
+        <DataRecord Entry="Actor,ArtanisAiur_LightningDash@ImpactModel"/>
+        <DataRecord Entry="Actor,ArtanisAiur_LightningDash@ImpactSound"/>
+        <DataRecord Entry="Actor,ArtanisAiur_LightningDash@ImpactSweetenerSound"/>
+        <DataRecord Entry="Actor,ArtanisAiur_LightningDash@InModel"/>
+        <DataRecord Entry="Actor,ArtanisAiur_LightningDash@StunModel"/>
+        <DataRecord Entry="Model,ArtanisAiur_LightningDash@ImpactModel"/>
+        <DataRecord Entry="Model,ArtanisAiur_LightningDash@StunModel"/>
+        <DataRecord Entry="Model,ArtanisAiur_LightningDash@InModel"/>
+        <DataRecord Entry="Sound,ArtanisAiur_LightningDash@ImpactSound"/>
+        <DataRecord Entry="Sound,ArtanisAiur_LightningDash@ImpactSweetenerSound"/>
+        <DataRecord Entry="Mover,ArtanisAiur_LightningDash@MissileMover"/>
+        <DataRecord Entry="Validator,ArtanisAiur_LightningDash@ValidPoint"/>
+    </CDataCollectionUnit>
+
+    <!-- Пассивная кнопка Возрождения -->
+    <CButton id="ArtanisAiur_ResurgencePassive">
+        <Icon value="Assets\Textures\btn-ability-protoss-resurgence.dds"/>
+    </CButton>
+</Catalog>

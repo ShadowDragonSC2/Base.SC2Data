@@ -1,0 +1,36 @@
+Actor/Name/PhoenixAiur=Phoenix Aiur
+Actor/Name/PhoenixAiur_GravitonBeam@Beam=Graviton Beam
+Actor/Name/PhoenixAiur_GravitonBeam@Impact=Graviton Beam Impact
+Actor/Name/PhoenixAiur_GravitonBeam@ImpactAnim=Graviton Beam Impact Anim
+Actor/Name/PhoenixAiur_GravitonBeam@LoopSound=Graviton Beam Loop Sound
+Actor/Name/PhoenixAiur_GravitonBeam@StartSound=Graviton Beam Start Sound
+Actor/Name/PhoenixAiur_GravitonBeam@StopSound=Graviton Beam Stop Sound
+Actor/Name/PhoenixAiur_Weapon@AttackLeft=Attack Left
+Actor/Name/PhoenixAiur_Weapon@AttackRight=Attack Right
+Actor/Name/PhoenixAiur_Weapon@AttackMissile=Attack Missile
+
+Model/Name/PhoenixAiur=Phoenix Aiur
+Model/Name/PhoenixAiurDeath=Death
+Model/Name/PhoenixAiurWarpIn=Warp In
+Model/Name/PhoenixPlacement=Placement
+Model/Name/PhoenixPortrait=Portrait
+Model/Name/PhoenixAiur_GravitonBeam@BeamModel=Graviton Beam Model
+Model/Name/PhoenixAiur_GravitonBeam@ImpactModel=Graviton Beam Impact Model
+Model/Name/PhoenixAiur_Weapon@AttackMissile=Attack Missile
+Model/Name/PhoenixAiur_Weapon@ImpactModel=Impact Model
+
+Sound/Name/Phoenix_Birth=Birth
+Sound/Name/Phoenix_Ready=Ready
+Sound/Name/Phoenix_Help=Help
+Sound/Name/Phoenix_What=What
+Sound/Name/Phoenix_Yes=Yes
+Sound/Name/Phoenix_Attack=Attack
+Sound/Name/Phoenix_Pissed=Pissed
+Sound/Name/Phoenix_Explode=Explode
+Sound/Name/PhoenixAiur_GravitonBeam@StartSound=Graviton Beam Start
+Sound/Name/PhoenixAiur_GravitonBeam@LoopSound=Graviton Beam Loop
+Sound/Name/PhoenixAiur_GravitonBeam@EndSound=Graviton Beam End
+Sound/Name/PhoenixAiur_Weapon@LaunchSound=Weapon Launch
+Sound/Name/PhoenixAiur_Weapon@ImpactSound=Weapon Impact
+
+Light/Name/PhoenixAiur@Portrait=Portrait Light

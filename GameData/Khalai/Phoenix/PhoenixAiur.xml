@@ -58,7 +58,6 @@
 
     <CActorUnit id="PhoenixAiur" parent="AdvancedUnitStandard" unitName="PhoenixAiur">
         <Aliases value="_UnitLarge"/>
-        <Turret Value="Phoenix"/>
         <On Terms="Effect.PhoenixAiur_GravitonBeamVoid@CP.Start; At Source" Send="$Spell PlayForever"/>
         <On Terms="Effect.PhoenixAiur_GravitonBeamVoid@CP.Stop; At Source" Send="AnimClear Spell"/>
         <On Terms="UnitHeightUpdate.*.Land" Send="Create Phoenix_Land"/>
@@ -528,7 +527,6 @@
         <Icon value="Assets\Textures\btn-ability-protoss-dualgravitonbeam.dds"/>
         <AlertIcon value="Assets\Textures\btn-ability-protoss-dualgravitonbeam.dds"/>
     </CButton>
-    <CButton id="Cancel"/>
 
     <CAbilEffectTarget id="PhoenixAiur_GravitonBeamVoid">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>

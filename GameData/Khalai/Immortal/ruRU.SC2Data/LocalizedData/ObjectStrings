@@ -1,0 +1,27 @@
+Actor/Name/ImmortalAiur=Immortal Aiur
+Actor/Name/ImmortalAiur_Weapon@Attack=Attack
+Actor/Name/ImmortalTurret=Turret
+
+Model/Name/ImmortalAiur=Immortal Aiur
+Model/Name/ImmortalAiur@Death=Death
+Model/Name/ImmortalAiur@WarpIn=Warp In
+Model/Name/ImmortalAiur@Placement=Placement
+Model/Name/ImmortalAiur@Portrait=Portrait
+Model/Name/ImmortalAiur@Invisible=Invisible
+Model/Name/ImmortalAiur@HallucinationDeath=Hallucination Death
+Model/Name/ImmortalAiur@ProtossSmallUnitDeathLow=Protoss Small Unit Death Low
+Model/Name/ImmortalAiur@ProtossLargeUnitDeathLow=Protoss Large Unit Death Low
+Model/Name/ImmortalAiur@TerranSmallUnitDeathLow=Terran Small Unit Death Low
+Model/Name/ZergSmallUnitDeathLow=Zerg Small Unit Death Low
+Model/Name/ImmortalAiur_Weapon@ImpactModel=Weapon Impact
+
+Sound/Name/ImmortalAiur@Ready=Ready
+Sound/Name/ImmortalAiur@Help=Help
+Sound/Name/ImmortalAiur@What=What
+Sound/Name/ImmortalAiur@Yes=Yes
+Sound/Name/ImmortalAiur@Attack=Attack
+Sound/Name/ImmortalAiur@Pissed=Pissed
+Sound/Name/ImmortalAiur_Weapon@LaunchSound=Weapon Launch
+Sound/Name/ImmortalAiur_Weapon@AttackImpact=Weapon Impact
+
+Turret/Name/ImmortalTurret=Immortal Turret

@@ -1,0 +1,34 @@
+Button/Name/ArtanisAiur=Нанять Артаниса Айура
+Button/Tooltip/ArtanisAiur=Герой-воевода протоссов. Мощные атаки в ближнем и дальнем бою. Способности: «Астральный Ветер» (лечение), «Рывок Молний» (телепорт и урон по области), «Возрождение» (пассивное воскрешение с взрывом).
+Unit/Name/ArtanisAiur=Артанис Айура
+
+Button/Name/ArtanisAiur_AstralWind=Астральный Ветер
+Button/Tooltip/ArtanisAiur_AstralWind=Восстанавливает 300 ед. здоровья и 200 ед. щитов Артанису и всем ближайшим союзникам в радиусе 6. Время перезарядки: 15 с.
+Abil/Name/ArtanisAiur_AstralWind=Астральный Ветер
+Effect/Name/ArtanisAiur_AstralWind@Set=Набор эффектов Астрального Ветра
+Effect/Name/ArtanisAiur_AstralWind@Self=Лечение Артаниса
+Effect/Name/ArtanisAiur_AstralWind@Search=Поиск союзников
+Effect/Name/ArtanisAiur_AstralWind@OtherSet=Набор эффектов для союзников
+Effect/Name/ArtanisAiur_AstralWind@Other=Лечение союзников
+
+Button/Name/ArtanisAiur_LightningDash=Рывок Молний
+Button/Tooltip/ArtanisAiur_LightningDash=Мгновенно телепортирует Артаниса в указанную точку, нанося 100 ед. урона и оглушая врагов в радиусе 1,5. Время перезарядки: 5 с.
+Abil/Name/ArtanisAiur_LightningDash=Рывок Молний
+Behavior/Name/ArtanisAiur_LightningDash@Stun=Оглушение (Рывок Молний)
+Effect/Name/ArtanisAiur_LightningDash@Damage=Урон (Рывок Молний)
+
+Button/Name/ArtanisAiur_ResurgencePassive=Возрождение
+Button/Tooltip/ArtanisAiur_ResurgencePassive=При получении смертельного урона Артанис впадает в стан на 3 с, затем восстанавливает всё здоровье и щиты и наносит 100 ед. урона окружающим врагам. Перезарядка: 60 с.
+Behavior/Name/ArtanisAiur_Resurgence=Возрождение
+Behavior/Name/ArtanisAiur_Resurgence@Stun=Стан (Возрождение)
+
+Weapon/Name/ArtanisAiur_WeaponMelee=Клинки Айура
+Weapon/Name/ArtanisAiur_WeaponRanged=Пси-Атака
+Effect/Name/ArtanisAiur_WeaponMelee@Damage=Урон (Клинки)
+Effect/Name/ArtanisAiur_WeaponRanged@Damage=Урон (Пси-Атака)
+
+Validator/Name/ArtanisAiur@Is=Это Артанис Айура
+Validator/Name/ArtanisAiur@Target=Цель – Артанис Айура
+Validator/Name/ArtanisAiur@Not=Это не Артанис Айура
+Validator/Name/ArtanisAiur@NotTarget=Цель – не Артанис Айура
+Requirement/Name/ArtanisAiur=Артанис Айура
