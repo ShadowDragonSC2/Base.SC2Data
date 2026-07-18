@@ -36,7 +36,7 @@
         <AttackTargetPriority value="20"/>
         <KillXP value="35"/>
         <AbilArray Link="ImmortalAiur_Overload"/>
-        <WeaponArray Link="ImmortalAiur_Weapon" Turret="ImmortalTurret"/>
+        <WeaponArray index="0" Turret="Immortal"/>
         <CardLayouts index="0">
             <LayoutButtons Face="ImmortalAiur_Overload" Type="AbilCmd" AbilCmd="ImmortalAiur_Overload,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="ImmortalAiur_BarrierPassive" Type="Passive" Row="2" Column="1"/>
@@ -69,7 +69,6 @@
 
     <CActorUnit id="ImmortalAiur" parent="AdvancedUnitStandard" unitName="ImmortalAiur">
         <Aliases value="_UnitLarge"/>
-        <Turret Value="ImmortalTurret"/>
         <Macros value="TerrainSquibAnimations"/>
         <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
         <On Terms="WeaponStart.*.AttackStart; WeaponTargetElevation GE 20" Send="AnimBracketStart Attack Attack,Superior"/>
@@ -324,7 +323,6 @@
     <CEffectSet id="ImmortalAiur_Weapon@Set">
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="ImmortalAiur_Weapon@Damage"/>
-        <EffectArray value="ImmortalAiur_Weapon@SplashSearch"/>
     </CEffectSet>
     <CEffectDamage id="ImmortalAiur_Weapon@Damage" parent="DU_WEAP">
         <EditorCategories value="Race:Protoss"/>
@@ -337,25 +335,7 @@
         <Amount value="20"/>
         <SearchFlags index="CallForHelp" value="1"/>
     </CEffectDamage>
-    <CEffectEnumArea id="ImmortalAiur_Weapon@SplashSearch">
-        <EditorCategories value="Race:Protoss"/>
-        <ExcludeArray Value="Target"/>
-        <SearchFilters value="Ground;Player,Ally,Neutral,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="1.5" Effect="ImmortalAiur_Weapon@SplashDamage"/>
-        <SearchFlags index="CallForHelp" value="1"/>
-        <SearchFlags index="SameCliff" value="1"/>
-    </CEffectEnumArea>
-    <CEffectDamage id="ImmortalAiur_Weapon@SplashDamage" parent="DU_WEAP">
-        <EditorCategories value="Race:Protoss"/>
-        <ResponseFlags index="Acquire" value="1"/>
-        <ResponseFlags index="Flee" value="1"/>
-        <AttributeBonus index="Armored" value="6"/>
-        <ArmorReduction value="1"/>
-        <Flags index="Notification" value="1"/>
-        <Kind value="Ranged"/>
-        <Amount value="4"/>
-        <SearchFlags index="CallForHelp" value="1"/>
-    </CEffectDamage>
+
 
     <CActorAction id="ImmortalAiur_Weapon@Attack" parent="GenericAttack" effectAttack="ImmortalAiur_Weapon@Damage">
         <LaunchAttachQuery Methods="AMFilterWeaponLeft"/>
@@ -406,7 +386,6 @@
         <DataRecord Entry="Weapon,ImmortalAiur_Weapon"/>
         <DataRecord Entry="Effect,ImmortalAiur_Weapon@Set"/>
         <DataRecord Entry="Effect,ImmortalAiur_Weapon@Damage"/>
-        <DataRecord Entry="Effect,ImmortalAiur_Weapon@SplashSearch"/>
         <DataRecord Entry="Effect,ImmortalAiur_Weapon@SplashDamage"/>
         <DataRecord Entry="Actor,ImmortalAiur_Weapon@Attack"/>
         <DataRecord Entry="Model,ImmortalAiur_Weapon@ImpactModel"/>
@@ -476,15 +455,13 @@
     </CDataCollectionUnit>
 
     <!-- ========== Misc (Turret, Mover, Warpable) ========== -->
-    <CTurret id="ImmortalTurret">
+    <CTurret id="ImmortalAiur" parent="FreeRotate">
         <Idle value="FollowMovement"/>
-        <YawArc value="360"/>
-        <YawRate value="720"/>
         <YawIdleRate value="360"/>
-        <Fidget DelayMax="30" DelayMin="10"/>
     </CTurret>
-    <CActorTurret id="ImmortalTurret">
-        <On Terms="TurretEnable.ImmortalTurret" Send="Create"/>
+
+    <CActorTurret id="ImmortalAiur">
+        <On Terms="TurretEnable.ImmortalAiur" Send="Create"/>
     </CActorTurret>
     <CMoverAvoid id="Ground">
         <PlacementArray index="Prevent">

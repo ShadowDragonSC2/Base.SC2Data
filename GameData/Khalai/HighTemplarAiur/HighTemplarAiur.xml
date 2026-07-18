@@ -1,0 +1,1082 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <!-- ========== HighTemplarAiur ========== -->
+    <CButton id="HighTemplarAiur" parent="UnitButton_OnlyGround">
+        <Icon value="Assets\Textures\btn-unit-protoss-hightemplar.dds"/>
+    </CButton>
+
+    <CUnit id="HighTemplarAiur" parent="Generic_Protoss_Unit_Ground" race="Prot">
+        <DeathRevealRadius value="3"/>
+        <Mob value="Multiplayer"/>
+        <FlagArray index="PreventDestroy" value="1"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="AlwaysThreatens" value="1"/>
+        <FlagArray index="AIThreatGround" value="1"/>
+        <FlagArray index="AIThreatAir" value="1"/>
+        <FlagArray index="AISplash" value="1"/>
+        <FlagArray index="AIHighPrioTarget" value="1"/>
+        <FlagArray index="AICaster" value="1"/>
+        <FlagArray index="AIPressForwardDisabled" value="1"/>
+        <FlagArray index="ArmySelect" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <Collide index="Locust" value="1"/>
+        <Collide index="Small" value="1"/>
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <Attributes index="Psionic" value="1"/>
+        <LifeStart value="40"/>
+        <LifeMax value="40"/>
+        <LifeArmorName value="Unit/LifeArmorName/ProtossArmor"/>
+        <EnergyStart value="50"/>
+        <EnergyMax value="200"/>
+        <EnergyRegenRate value="0.5625"/>
+        <ShieldsStart value="40"/>
+        <ShieldsMax value="40"/>
+        <ShieldRegenDelay value="10"/>
+        <ShieldRegenRate value="2"/>
+        <ShieldArmorName value="Unit/ShieldArmorName/ProtossPlasmaShields"/>
+        <Speed value="2.25"/>
+        <Acceleration value="1000"/>
+        <Deceleration value="1000"/>
+        <LateralAcceleration value="46"/>
+        <StationaryTurningRate value="999.8437"/>
+        <TurningRate value="999.8437"/>
+        <Sight value="10"/>
+        <Food value="-2"/>
+        <CostCategory value="Army"/>
+        <CostResource index="Minerals" value="50"/>
+        <CostResource index="Vespene" value="150"/>
+        <AttackTargetPriority value="20"/>
+        <DamageDealtXP value="1"/>
+        <DamageTakenXP value="1"/>
+        <KillXP value="40"/>
+        <AbilArray Link="HighTemplarAiur_PsiStorm"/>
+        <AbilArray Link="HighTemplarAiur_ArchonWarp"/>
+        <AbilArray Link="HighTemplarAiur_Feedback"/>
+        <BehaviorArray Link="HighTemplarAiur_DamageDisablesAttack"/>
+        <WeaponArray Link="HighTemplarAiur_Weapon"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="HighTemplarAiur_PsiStorm" Type="AbilCmd" AbilCmd="HighTemplarAiur_PsiStorm,0" Row="2" Column="1"/>
+            <LayoutButtons Face="HighTemplarAiur_ArchonWarp" Type="AbilCmd" AbilCmd="HighTemplarAiur_ArchonWarp,0" Row="2" Column="3"/>
+            <LayoutButtons Face="HighTemplarAiur_Feedback" Type="AbilCmd" AbilCmd="HighTemplarAiur_Feedback,0" Row="2" Column="0"/>
+            <LayoutButtons Face="HighTemplarAiur_HealingStorm" Type="Passive" Row="1" Column="1"/>
+        </CardLayouts>
+        <Radius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+        <CargoSize value="2"/>
+        <ScoreMake value="200"/>
+        <ScoreKill value="200"/>
+        <ScoreResult value="BuildOrder"/>
+        <SubgroupPriority value="45"/>
+        <MinimapRadius value="0.375"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+        <TacticalAI value="HighTemplar"/>
+        <TacticalAIThink value="AIThinkHighTemplar"/>
+        <AIEvalFactor value="1.8"/>
+        <GlossaryCategory value="Unit/Category/ProtossUnits"/>
+        <GlossaryPriority value="80"/>
+        <GlossaryStrongArray value="Mutalisk"/>
+        <GlossaryWeakArray value="Thor"/>
+        <GlossaryWeakArray value="Ultralisk"/>
+        <GlossaryWeakArray value="Immortal"/>
+        <HotkeyCategory value="Unit/Category/ProtossStory"/>
+        <KillDisplay value="Always"/>
+        <RankDisplay value="Always"/>
+        <AIEvaluateAlias value="HighTemplar"/>
+    </CUnit>
+
+    <CActorUnit id="HighTemplarAiur" parent="AdvancedUnitStandard" unitName="HighTemplarAiur">
+        <Aliases value="_UnitSmall"/>
+        <On Terms="Abil.PsiStorm.SourceCastStart" Send="AnimPlay A A"/>
+        <On Terms="Abil.PhaseShift.SourceCastStart" Send="AnimPlay B B"/>
+        <On Terms="Abil.HighTemplarAiur_Feedback.SourceCastStart" Send="AnimPlay B B"/>
+        <On Terms="Abil.PlasmaSurge.SourceCastStart" Send="AnimPlay B B"/>
+        <On Terms="Abil.Vortex.SourceCastStart" Send="AnimPlay A A"/>
+        <On Terms="Abil.TemporalRift.SourceCastStart" Send="AnimPlay A A"/>
+        <On Terms="Behavior.Hallucination.On" Send="Create HallucinationBirthSoundSmall"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit IsHallucination" Send="DeathCustomize Hallucination"/>
+        <On Terms="WeaponStart.HighTemplarAiur_Weapon.AttackStart" Send="$Spell,A"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.200000 Shadow"/>
+        <On Terms="TimerExpired; TimerName Shadow; IsStatus ShadowCreate 1; !ModelIsLowQuality" Send="Create HighTemplarShadow"/>
+        <On Terms="TimerExpired; TimerName Shadow" Send="TimerSet 0.200000 Shadow"/>
+        <On Terms="UnitMovementUpdate.*.Stand" Send="StatusSet ShadowCreate 0"/>
+        <On Terms="UnitMovementUpdate.*.Walk" Send="StatusSet ShadowCreate 1"/>
+        <On Terms="ActorCreation" Send="StatusSet ShadowCreate 0"/>
+        <On Terms="Abil.HighTemplarAiur_PsiStorm.SourceCastStart" Send="AnimPlay A A"/>
+        <On Terms="Abil.HighTemplarAiur_ArchonWarp.SourceCastStart" Send="AnimPlay B B"/>
+        <AnimBlendTime value="0.450000"/>
+        <ModelFlags index="OutlineEmitter" value="1"/>
+        <BuildModel value="HighTemplarAiur@WarpIn"/>
+        <DeathArray index="Normal" ModelLink="HighTemplarAiur@Death" SoundLink="HighTemplarAiur_DeathFX"/>
+        <DeathCustoms ModelLink="HallucinationDeath" SoundLink="Sentry_HallucinationDeathSmall" Name="Hallucination"/>
+        <PlacementModel value="HighTemplarAiur@Placement"/>
+        <PlacementSound value="Protoss_BuildingPlacementSmall"/>
+        <PortraitModel value="HighTemplarAiur@Portrait"/>
+        <WalkAnimMoveSpeed value="2.25"/>
+        <AbilSoundArray AbilCmd="HighTemplarAiur_PsiStorm,0" Sound="HighTemplarAiur_PsionicStormVO"/>
+        <AbilSoundArray AbilCmd="HighTemplarAiur_ArchonWarp,0" Sound="HighTemplarAiur_ArchonWarpVO"/>
+        <AbilSoundArray AbilCmd="HighTemplarAiur_Feedback,0" Sound="HighTemplarAiur_AttackVO"/>
+        <BarOffset value="70"/>
+        <BarWidth value="42"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Protoss-HighTemplar.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-unit-protoss-hightemplar.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
+        <SoundArray index="Ready" value="HighTemplarAiur_Ready"/>
+        <SoundArray index="Help" value="HighTemplarAiur_Help"/>
+        <SoundArray index="What" value="HighTemplarAiur_What"/>
+        <SoundArray index="Yes" value="HighTemplarAiur_Yes"/>
+        <SoundArray index="Attack" value="HighTemplarAiur_Attack"/>
+        <SoundArray index="Pissed" value="HighTemplarAiur_Pissed"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-hightemplar.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Protoss-HighTemplar.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image value="Assets\Textures\Wireframe-Protoss-HighTemplar-Shield01.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-HighTemplar-Shield02.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-HighTemplar-Shield03.dds"/>
+        </WireframeShield>
+    </CActorUnit>
+
+    <!-- Модели и звуки HighTemplarAiur -->
+    <CModel id="HighTemplarAiur" parent="Unit" Race="Protoss">
+        <Model value="Assets\Units\Protoss\HighTemplar\HighTemplar.m3"/>
+        <RequiredAnims value="Assets\Units\Protoss\HighTemplar_SwarmAnims\HighTemplar_SwarmAnims.m3a"/>
+        <Occlusion value="Show"/>
+        <PlanetPanelCamera value="Star2CameraHigh05"/>
+        <Radius value="0.400000"/>
+        <ScaleMax value="0.950000,0.950000,0.950000"/>
+        <ScaleMin value="0.950000,0.950000,0.950000"/>
+        <SelectionRadius value="0.375000"/>
+        <ShadowRadius value="0.375000"/>
+        <SquibTypeDefault value="LightArmor"/>
+        <TechPurchaseCamera value="Star2CameraHigh05"/>
+        <TextureDeclares Prefix="templar_">
+            <Adaptions TriggerOnSubstring="_Diffuse" Slot="main"/>
+        </TextureDeclares>
+        <UnitGlossaryCamera value="Star2CameraHigh05"/>
+    </CModel>
+    <CModel id="HighTemplarAiur@Death" parent="HighTemplarDeathBase">
+        <Model value="Assets\Units\Protoss\HighTemplarDeath\HighTemplarDeath.m3"/>
+    </CModel>
+    <CModel id="HighTemplarAiur@Placement" parent="Placement" Race="Protoss">
+        <Model value="Assets\Units\Protoss\HighTemplarPlacement\HighTemplarPlacement.m3"/>
+        <Lighting value="HighTemplar"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.850000,0.850000,0.850000"/>
+        <ScaleMin value="0.850000,0.850000,0.850000"/>
+        <SelectionRadius value="0.588100"/>
+        <ShadowRadius value="0.588100"/>
+    </CModel>
+    <CModel id="HighTemplarAiur@WarpIn" parent="HighTemplarWarpInBase">
+        <Model value="Assets\Units\Protoss\HighTemplarWarpIn\HighTemplarWarpIn.m3"/>
+    </CModel>
+    <CModel id="HighTemplarAiur@Portrait" parent="HighTemplarPortraitBase">
+        <Model value="Assets\Portraits\Protoss\HighTemplarPortrait\HighTemplarPortrait.m3"/>
+        <Image value="Assets\Textures\HighTemplarPortrait_Static.dds"/>
+        <Lighting value="HighTemplarPortrait"/>
+    </CModel>
+
+    <CSound id="HighTemplarAiur_Ready" parent="ProtossReady">
+        <AssetArray TemplateParam="HighTemplarVoid_Ready00"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="5.000000,5.000000"/>
+    </CSound>
+    <CSound id="HighTemplarAiur_Help" parent="ProtossHelp">
+        <AssetArray TemplateParam="HighTemplarVoid_Help00"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="4.000000,4.000000"/>
+    </CSound>
+    <CSound id="HighTemplarAiur_What" parent="ProtossAck_Void">
+        <AssetArray TemplateParam="HighTemplarVoid_What00"/>
+        <AssetArray TemplateParam="HighTemplarVoid_What01"/>
+        <AssetArray TemplateParam="HighTemplarVoid_What02"/>
+        <AssetArray TemplateParam="HighTemplarVoid_What03"/>
+        <AssetArray TemplateParam="HighTemplarVoid_What04"/>
+        <AssetArray TemplateParam="HighTemplarVoid_What05"/>
+        <AssetArray TemplateParam="HighTemplarVoid_What06"/>
+        <AssetArray TemplateParam="HighTemplarVoid_What07"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="2.000000,2.000000"/>
+    </CSound>
+    <CSound id="HighTemplarAiur_Yes" parent="ProtossAck_Void">
+        <AssetArray TemplateParam="HighTemplarVoid_Yes00"/>
+        <AssetArray TemplateParam="HighTemplarVoid_Yes01"/>
+        <AssetArray TemplateParam="HighTemplarVoid_Yes02"/>
+        <AssetArray TemplateParam="HighTemplarVoid_Yes03"/>
+        <AssetArray TemplateParam="HighTemplarVoid_Yes04"/>
+        <AssetArray TemplateParam="HighTemplarVoid_Yes05"/>
+        <AssetArray TemplateParam="HighTemplarVoid_Yes06"/>
+        <AssetArray TemplateParam="HighTemplarVoid_Yes07"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="2.000000,2.000000"/>
+    </CSound>
+    <CSound id="HighTemplarAiur_Attack" parent="ProtossAck_Void">
+        <AssetArray TemplateParam="HighTemplarVoid_Attack00"/>
+        <AssetArray TemplateParam="HighTemplarVoid_Attack01"/>
+        <AssetArray TemplateParam="HighTemplarVoid_Attack02"/>
+        <AssetArray TemplateParam="HighTemplarVoid_Attack03"/>
+        <AssetArray TemplateParam="HighTemplarVoid_Attack04"/>
+        <AssetArray TemplateParam="HighTemplarVoid_Attack05"/>
+        <AssetArray TemplateParam="HighTemplarVoid_Attack06"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="2.000000,2.000000"/>
+    </CSound>
+    <CSound id="HighTemplarAiur_Pissed" parent="ProtossPissed">
+        <AssetArray TemplateParam="HighTemplarVoid_Pissed00"/>
+        <AssetArray TemplateParam="HighTemplarVoid_Pissed01"/>
+        <AssetArray TemplateParam="HighTemplarVoid_Pissed02"/>
+        <AssetArray TemplateParam="HighTemplarVoid_Pissed03"/>
+        <AssetArray TemplateParam="HighTemplarVoid_Pissed04"/>
+        <AssetArray TemplateParam="HighTemplarVoid_Pissed05"/>
+        <AssetArray TemplateParam="HighTemplarVoid_Pissed06"/>
+        <AssetArray TemplateParam="HighTemplarVoid_Pissed07"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="2.000000,2.000000"/>
+    </CSound>
+    <CSound id="HighTemplarAiur_ArchonWarpVO" parent="ProtossAck">
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\HighTemplar\HighTemplar_ArchonWarp00.ogg"/>
+        <Chance value="25"/>
+        <Volume value="2.000000,2.000000"/>
+    </CSound>
+    <CSound id="HighTemplarAiur_AttackVO" parent="ProtossAck">
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\HighTemplar\HighTemplar_Attack00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\HighTemplar\HighTemplar_Attack01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\HighTemplar\HighTemplar_Attack02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\HighTemplar\HighTemplar_Attack03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\HighTemplar\HighTemplar_Attack04.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\HighTemplar\HighTemplar_Attack05.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\HighTemplar\HighTemplar_Attack06.ogg"/>
+        <Flags index="Download" value="0"/>
+        <Volume value="2.000000,2.000000"/>
+    </CSound>
+    <CSound id="HighTemplarAiur_DeathFX" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\DeathFX\Protoss_DeathFX0.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\DeathFX\Protoss_DeathFX1.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\DeathFX\Protoss_DeathFX2.wav"/>
+        <DupeDestroyCount value="4"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="HighTemplarAiur_PsionicStormLaunch" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Protoss\HighTemplar\HighTemplar_PsionicStormLaunch0.wav"/>
+    </CSound>
+    <CSound id="HighTemplarAiur_PsionicStormVO" parent="ProtossAck">
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\HighTemplar\HighTemplar_PsionicStorm00.ogg"/>
+        <Chance value="25"/>
+        <Volume value="2.000000,2.000000"/>
+    </CSound>
+
+    <CBehaviorBuff id="HighTemplarAiur_DamageDisablesAttack">
+        <InfoFlags index="Hidden" value="1"/>
+        <DisableValidatorArray value="CasterNotInCombat"/>
+        <Modification>
+            <WeaponEnableArray value="HighTemplarFakeWeapon"/>
+        </Modification>
+    </CBehaviorBuff>
+
+    <CLight id="HighTemplarAiur@Portrait" parent="default">
+        <ToDInfoArray index="0" Id="PsionicWaveUp" AmbientColor="0.235294,0.309804,0.392157" Colorize="1">
+            <Param index="HDRExposure" value="1.500000"/>
+            <Param index="HDRWhitePoint" value="1.850000"/>
+            <Param index="HDRSpecMultiplier" value="4.000000"/>
+            <Param index="TerrainSpecularExp" value="11.210000"/>
+            <Param index="TerrainHDRSpecular" value="3.750000"/>
+            <Param index="CreepSpecularExp" value="30.000000"/>
+            <Param index="CreepHDRSpecMultiplier" value="3.000000"/>
+            <Param index="ColorizationContrast" value="1.066000"/>
+            <Param index="ColorizationHue" value="0.009000"/>
+            <Param index="ColorizationSaturation" value="0.088000"/>
+            <Param index="ColorizationLightness" value="0.040000"/>
+            <Param index="ColorizationBlend" value="0.286000"/>
+            <DirectionalLight index="Key">
+                <Color value="0.772549,0.803922,0.870588"/>
+                <ColorMultiplier value="1.500000"/>
+                <SpecularColor value="0.756863,0.894118,0.933333"/>
+                <SpecColorMultiplier value="1.000000"/>
+                <Direction value="0.624465,-0.021479,-0.780757"/>
+            </DirectionalLight>
+            <DirectionalLight index="Fill" Color="0.003922,0.109804,0.082353" ColorMultiplier="0.209000" Direction="-0.463854,-0.769851,0.438371"/>
+            <DirectionalLight index="Back" Color="0.156863,0.505882,0.690196" ColorMultiplier="1.000000" Direction="-0.585935,0.595628,0.549460"/>
+        </ToDInfoArray>
+        <EditorCategories value="LightGroup:PortraitsUnitsProtoss"/>
+    </CLight>
+
+    <CRequirement id="HighTemplarAiur"/>
+
+    <CValidatorUnitType id="HighTemplarAiur@Is" parent="IsUnit_Default" unit="HighTemplarAiur"/>
+    <CValidatorUnitType id="HighTemplarAiur@Target" parent="TargetIsUnit_Default" unit="HighTemplarAiur"/>
+    <CValidatorUnitType id="HighTemplarAiur@Not" parent="NotUnit_Default" unit="HighTemplarAiur"/>
+    <CValidatorUnitType id="HighTemplarAiur@NotTarget" parent="TargetNotUnit_Default" unit="HighTemplarAiur"/>
+
+    <CDataCollectionUnit id="HighTemplarAiur" parent="UnitGround">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Protoss,ObjectType:Unit"/>
+        <DataRecord Entry="Button,HighTemplarAiur"/>
+        <DataRecord Entry="Unit,HighTemplarAiur"/>
+        <DataRecord Entry="Actor,HighTemplarAiur"/>
+        <DataRecord Entry="Model,HighTemplarAiur"/>
+        <DataRecord Entry="Model,HighTemplarAiur@Death"/>
+        <DataRecord Entry="Model,HighTemplarAiur@Placement"/>
+        <DataRecord Entry="Model,HighTemplarAiur@WarpIn"/>
+        <DataRecord Entry="Model,HighTemplarAiur@Portrait"/>
+        <DataRecord Entry="Sound,HighTemplarAiur_Ready"/>
+        <DataRecord Entry="Sound,HighTemplarAiur_Help"/>
+        <DataRecord Entry="Sound,HighTemplarAiur_What"/>
+        <DataRecord Entry="Sound,HighTemplarAiur_Yes"/>
+        <DataRecord Entry="Sound,HighTemplarAiur_Attack"/>
+        <DataRecord Entry="Sound,HighTemplarAiur_Pissed"/>
+        <DataRecord Entry="Sound,HighTemplarAiur_ArchonWarpVO"/>
+        <DataRecord Entry="Sound,HighTemplarAiur_AttackVO"/>
+        <DataRecord Entry="Sound,HighTemplarAiur_DeathFX"/>
+        <DataRecord Entry="Light,HighTemplarAiur@Portrait"/>
+        <DataRecord Entry="Requirement,HighTemplarAiur"/>
+        <DataRecord Entry="Validator,HighTemplarAiur@Is"/>
+        <DataRecord Entry="Validator,HighTemplarAiur@Target"/>
+        <DataRecord Entry="Validator,HighTemplarAiur@Not"/>
+        <DataRecord Entry="Validator,HighTemplarAiur@NotTarget"/>
+        <TechInfoUpgradeUsed value="ProtossGroundArmors@1"/>
+        <TechInfoUpgradeUsed value="ProtossGroundArmors@2"/>
+        <TechInfoUpgradeUsed value="ProtossGroundArmors@3"/>
+        <TechInfoUpgradeUsed value="ProtossShields@1"/>
+        <TechInfoUpgradeUsed value="ProtossShields@2"/>
+        <TechInfoUpgradeUsed value="ProtossShields@3"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@1"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@2"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@3"/>
+    </CDataCollectionUnit>
+
+    <!-- ========== Weapon: HighTemplarAiur_Weapon ========== -->
+    <CWeaponLegacy id="HighTemplarAiur_Weapon">
+        <EditorCategories value="Race:Protoss"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
+        <DisplayEffect value="HighTemplarAiur_Weapon@Damage"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="7"/>
+        <Period value="1.754"/>
+        <Effect value="HighTemplarAiur_Weapon@LM"/>
+    </CWeaponLegacy>
+
+    <CEffectLaunchMissile id="HighTemplarAiur_Weapon@LM">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactEffect value="HighTemplarAiur_Weapon@Set"/>
+        <AmmoUnit value="HighTemplarAiur_Weapon@Missile"/>
+        <Movers Link="HighTemplarAiur_Weapon@Mover"/>
+    </CEffectLaunchMissile>
+    <CEffectSet id="HighTemplarAiur_Weapon@Set">
+        <EffectArray value="HighTemplarAiur_Weapon@Damage"/>
+    </CEffectSet>
+    <CEffectDamage id="HighTemplarAiur_Weapon@Damage" parent="DU_WEAP">
+        <EditorCategories value="Race:Protoss"/>
+        <Kind value="Ranged"/>
+        <Amount value="9"/>
+        <Death value="Blast"/>
+    </CEffectDamage>
+
+    <CActorAction id="HighTemplarAiur_Weapon@Attack" parent="GenericAttack" effectImpact="HighTemplarAiur_Weapon@Set" effectLaunch="HighTemplarAiur_Weapon@LM">
+        <LaunchSiteOps Ops="SOpAttachCenter SOpMoveByDot15"/>
+        <LaunchAssets Sound="HighTemplarAiur_Weapon@LaunchSound"/>
+        <Missile value="HighTemplarAiur_Weapon@MissileActor"/>
+        <ImpactMap index="None" Model="HighTemplarAiur_Weapon@ImpactModel" Sound="HighTemplarAiur_Weapon@ImpactSound"/>
+    </CActorAction>
+    <CActorMissile id="HighTemplarAiur_Weapon@MissileActor" parent="GenericAttackMissile" unitName="HighTemplarAiur_Weapon@Missile">
+        <Model value="HighTemplarAiur_Weapon@MissileModel"/>
+    </CActorMissile>
+
+    <CModel id="HighTemplarAiur_Weapon@MissileModel" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\AdeptSoulMissile\AdeptSoulMissile.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+    <CModel id="HighTemplarAiur_Weapon@ImpactModel" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\AdeptSoulMissileImpact\AdeptSoulMissileImpact.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+
+    <CSound id="HighTemplarAiur_Weapon@LaunchSound" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\HighTemplar_Taldarim_Launch_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HighTemplar_Taldarim_Launch_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HighTemplar_Taldarim_Launch_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HighTemplar_Taldarim_Launch_04.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,1.000000"/>
+        <Volume value="-1.000000,1.000000"/>
+    </CSound>
+    <CSound id="HighTemplarAiur_Weapon@ImpactSound" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\HighTemplar_Taldarim_Impact_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HighTemplar_Taldarim_Impact_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HighTemplar_Taldarim_Impact_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HighTemplar_Taldarim_Impact_04.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,0.000000"/>
+        <Volume value="-1.000000,1.000000"/>
+    </CSound>
+
+    <CUnit id="HighTemplarAiur_Weapon@Missile" parent="MISSILE_INVULNERABLE">
+        <Race value="Prot"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
+    </CUnit>
+
+    <CMoverMissile id="HighTemplarAiur_Weapon@Mover">
+        <MotionPhases>
+            <Driver value="Guidance"/>
+            <Acceleration value="3200"/>
+            <MaxSpeed value="18.75"/>
+            <ClearanceAcceleration value="75"/>
+            <Outro value="-1"/>
+            <YawPitchRoll value="719.2968"/>
+        </MotionPhases>
+        <MotionPhases YawPitchRoll="MAX"/>
+    </CMoverMissile>
+
+    <CDataCollectionUnit id="HighTemplarAiur_Weapon" parent="Weapon_Missile">
+        <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:Protoss,ObjectType:Projectile"/>
+        <DataRecord Entry="Weapon,HighTemplarAiur_Weapon"/>
+        <DataRecord Entry="Effect,HighTemplarAiur_Weapon@LM"/>
+        <DataRecord Entry="Effect,HighTemplarAiur_Weapon@Set"/>
+        <DataRecord Entry="Effect,HighTemplarAiur_Weapon@Damage"/>
+        <DataRecord Entry="Actor,HighTemplarAiur_Weapon@Attack"/>
+        <DataRecord Entry="Actor,HighTemplarAiur_Weapon@MissileActor"/>
+        <DataRecord Entry="Model,HighTemplarAiur_Weapon@MissileModel"/>
+        <DataRecord Entry="Model,HighTemplarAiur_Weapon@ImpactModel"/>
+        <DataRecord Entry="Sound,HighTemplarAiur_Weapon@LaunchSound"/>
+        <DataRecord Entry="Sound,HighTemplarAiur_Weapon@ImpactSound"/>
+        <DataRecord Entry="Unit,HighTemplarAiur_Weapon@Missile"/>
+        <DataRecord Entry="Mover,HighTemplarAiur_Weapon@Mover"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@1"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@2"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@3"/>
+    </CDataCollectionUnit>
+
+    <!-- ========== Abilities: HighTemplarAiur_PsiStorm ========== -->
+    <CButton id="HighTemplarAiur_PsiStorm">
+        <Icon value="Assets\Textures\btn-ability-protoss-psistorm-color.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-psistorm-color.dds"/>
+    </CButton>
+    <CButton id="HighTemplarAiur_HealingStorm">
+        <Icon value="Assets\Textures\btn-upgrade-artanis-healingpsionicstorm.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-artanis-healingpsionicstorm.dds"/>
+    </CButton>
+
+    <CAbilEffectTarget id="HighTemplarAiur_PsiStorm">
+        <Alignment value="Negative"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="HighTemplarAiur_PsiStorm@Persistent"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Cost>
+            <Vital index="Energy" value="75"/>
+            <Cooldown TimeUse="2"/>
+        </Cost>
+        <Range value="11"/>
+        <CastOutroTime value="0.5"/>
+        <CursorEffect value="HighTemplarAiur_PsiStorm@Search"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="HighTemplarAiur_PsiStorm"/>
+    </CAbilEffectTarget>
+
+    <CEffectCreatePersistent id="HighTemplarAiur_PsiStorm@Persistent">
+        <EditorCategories value="Race:Protoss"/>
+        <InitialEffect value="HighTemplarAiur_PsiStorm@SearchSet"/>
+        <PeriodCount value="6"/>
+        <PeriodicEffectArray value="HighTemplarAiur_PsiStorm@SearchSet"/>
+        <PeriodicPeriodArray value="0.5712"/>
+        <AINotifyEffect value="HighTemplarAiur_PsiStorm@Search"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="HighTemplarAiur_PsiStorm@SearchSet">
+        <EffectArray value="HighTemplarAiur_PsiStorm@Search"/>
+        <EffectArray value="HighTemplarAiur_PsiStorm@FriendlySearch"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectEnumArea id="HighTemplarAiur_PsiStorm@Search">
+        <SearchFilters value="-;Player,Ally,Neutral,Structure,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="2.3" Effect="HighTemplarAiur_PsiStorm@ApplyBehavior"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="HighTemplarAiur_PsiStorm@ApplyBehavior">
+        <Behavior value="HighTemplarAiur_PsiStorm@Behavior"/>
+    </CEffectApplyBehavior>
+    <CBehaviorBuff id="HighTemplarAiur_PsiStorm@Behavior">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-psistorm.dds"/>
+        <MaxStackCount value="65535"/>
+        <TimeScaleSource Value="Global"/>
+        <Duration value="0.6665"/>
+        <Period value="0.571"/>
+        <InitialEffect value="HighTemplarAiur_PsiStorm@DamageInitial"/>
+        <PeriodicEffect value="HighTemplarAiur_PsiStorm@Damage"/>
+    </CBehaviorBuff>
+    <CEffectDamage id="HighTemplarAiur_PsiStorm@Damage" parent="DU_WEAP">
+        <ValidatorArray value="PsiStormUTargetFilters"/>
+        <Visibility value="Hidden"/>
+        <Amount value="10"/>
+    </CEffectDamage>
+    <CEffectDamage id="HighTemplarAiur_PsiStorm@DamageInitial" parent="DU_WEAP">
+        <ValidatorArray value="PsiStormUTargetFilters"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <Flags index="Notification" value="1"/>
+        <Amount value="10"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="HighTemplarAiur_PsiStorm@FriendlySearch">
+        <SearchFilters value="-;Neutral,Enemy,Structure,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="2.3" Effect="HighTemplarAiur_PsiStorm@Heal"/>
+    </CEffectEnumArea>
+    <CEffectCreateHealer id="HighTemplarAiur_PsiStorm@Heal">
+        <Flags index="Channeled" value="0"/>
+        <PeriodCount value="2"/>
+        <PeriodicPeriod value="0.25"/>
+        <RechargeVital value="Shields"/>
+        <RechargeVitalRate value="14.2968"/>
+    </CEffectCreateHealer>
+
+    <CActorModel id="HighTemplarAiur_PsiStorm@StormModel" parent="ModelAnimationStyleContinuous">
+        <On Terms="Effect.HighTemplarAiur_PsiStorm@Persistent.Start" Send="Create"/>
+        <On Terms="Effect.HighTemplarAiur_PsiStorm@Persistent.Stop" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpShadow"/>
+        <Scale value="1.300000"/>
+    </CActorModel>
+    <CActorModel id="HighTemplarAiur_PsiStorm@ImpactModel" parent="ModelAnimationStyleContinuous">
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <On Terms="Behavior.HighTemplarAiur_PsiStorm@Behavior.Start" Send="Create"/>
+        <On Terms="Behavior.HighTemplarAiur_PsiStorm@Behavior.Off" Send="AnimBracketStop BSD"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <AutoScaleFactor value="0.750000"/>
+    </CActorModel>
+    <CActorSound id="HighTemplarAiur_PsiStorm@StormSound" parent="SoundContinuous">
+        <On Terms="Effect.HighTemplarAiur_PsiStorm@Persistent.Start" Send="Create"/>
+        <On Terms="Effect.HighTemplarAiur_PsiStorm@Persistent.Stop" Send="Destroy"/>
+        <HostSiteOps Ops="SOpShadow"/>
+        <Sound value="HighTemplarAiur_PsionicStormLaunch"/>
+    </CActorSound>
+    <CActorSplat id="HighTemplarAiur_PsiStorm@Splat" parent="ProtossCursorSplat" abil="HighTemplarAiur_PsiStorm"/>
+
+    <CModel id="HighTemplarAiur_PsiStorm@StormModel" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Protoss\PsiStorm\PsiStorm.m3"/>
+        <RadiusLoose value="1.000000"/>
+        <ScaleMax value="1.200000,1.200000,1.200000"/>
+        <ScaleMin value="1.200000,1.200000,1.200000"/>
+    </CModel>
+    <CModel id="HighTemplarAiur_PsiStorm@ImpactModel" parent="ImpactFX">
+        <Model value="Assets\Effects\Protoss\PsiStormImpact\PsiStormImpact.m3"/>
+        <Radius value="1.000000"/>
+    </CModel>
+
+    <CDataCollectionUnit id="HighTemplarAiur_PsiStorm" parent="AbilityBase">
+        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Protoss,ObjectType:Spell"/>
+        <DataRecord Entry="Button,HighTemplarAiur_PsiStorm"/>
+        <DataRecord Entry="Button,HighTemplarAiur_HealingStorm"/>
+        <DataRecord Entry="Abil,HighTemplarAiur_PsiStorm"/>
+        <DataRecord Entry="Behavior,HighTemplarAiur_PsiStorm@Behavior"/>
+        <DataRecord Entry="Effect,HighTemplarAiur_PsiStorm@Persistent"/>
+        <DataRecord Entry="Effect,HighTemplarAiur_PsiStorm@SearchSet"/>
+        <DataRecord Entry="Effect,HighTemplarAiur_PsiStorm@Search"/>
+        <DataRecord Entry="Effect,HighTemplarAiur_PsiStorm@ApplyBehavior"/>
+        <DataRecord Entry="Effect,HighTemplarAiur_PsiStorm@Damage"/>
+        <DataRecord Entry="Effect,HighTemplarAiur_PsiStorm@DamageInitial"/>
+        <DataRecord Entry="Effect,HighTemplarAiur_PsiStorm@FriendlySearch"/>
+        <DataRecord Entry="Effect,HighTemplarAiur_PsiStorm@Heal"/>
+        <DataRecord Entry="Actor,HighTemplarAiur_PsiStorm@StormModel"/>
+        <DataRecord Entry="Actor,HighTemplarAiur_PsiStorm@ImpactModel"/>
+        <DataRecord Entry="Actor,HighTemplarAiur_PsiStorm@StormSound"/>
+        <DataRecord Entry="Actor,HighTemplarAiur_PsiStorm@Splat"/>
+        <DataRecord Entry="Model,HighTemplarAiur_PsiStorm@StormModel"/>
+        <DataRecord Entry="Model,HighTemplarAiur_PsiStorm@ImpactModel"/>
+        <DataRecord Entry="Sound,HighTemplarAiur_PsionicStormLaunch"/>
+    </CDataCollectionUnit>
+
+    <!-- HighTemplarAiur_Feedback -->
+    <CButton id="HighTemplarAiur_Feedback">
+        <Icon value="Assets\Textures\btn-ability-protoss-feedback-color.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-feedback-color.dds"/>
+    </CButton>
+
+    <CAbilEffectTarget id="HighTemplarAiur_Feedback">
+        <Alignment value="Negative"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="HighTemplarAiur_Feedback@Set"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Cost>
+            <Vital index="Energy" value="50"/>
+        </Cost>
+        <TargetFilters value="CanHaveEnergy,Visible,HasEnergy;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="9"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="HighTemplarAiur_Feedback"/>
+    </CAbilEffectTarget>
+
+    <CEffectSet id="HighTemplarAiur_Feedback@Set">
+        <ValidatorArray value="NotOrbitalCommand"/>
+        <ValidatorArray value="NotOrbitalCommandFlying"/>
+        <ValidatorArray value="NotNexus"/>
+        <EffectArray value="HighTemplarAiur_Feedback@Damage"/>
+        <EffectArray value="HighTemplarAiur_Feedback@EnergyLoss"/>
+    </CEffectSet>
+    <CEffectDamage id="HighTemplarAiur_Feedback@Damage">
+        <EditorCategories value="Race:Protoss"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <Flags index="Notification" value="1"/>
+        <VitalFractionCurrent index="Energy" value="1"/>
+        <Death value="Blast"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+    </CEffectDamage>
+    <CEffectModifyUnit id="HighTemplarAiur_Feedback@EnergyLoss">
+        <EditorCategories value="Race:Protoss"/>
+        <VitalArray index="Energy">
+            <ChangeFraction value="-1"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+
+    <CActorModel id="HighTemplarAiur_Feedback@LaunchModel" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.HighTemplarAiur_Feedback@Set.Start; At Caster" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOrigin"/>
+    </CActorModel>
+    <CActorSound id="HighTemplarAiur_Feedback@LaunchSound" parent="SoundOneShot">
+        <On Terms="Effect.HighTemplarAiur_Feedback@Set.Start; At Caster" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <Sound value="HighTemplarAiur_Feedback@LaunchSound"/>
+    </CActorSound>
+    <CActorModel id="HighTemplarAiur_Feedback@ImpactModel" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.HighTemplarAiur_Feedback@Set.Start; At Target" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+    </CActorModel>
+    <CActorSound id="HighTemplarAiur_Feedback@ImpactSound" parent="SoundOneShot">
+        <On Terms="Effect.HighTemplarAiur_Feedback@Set.Start; At Target" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <Sound value="HighTemplarAiur_Feedback@ImpactSound"/>
+    </CActorSound>
+    <CActorRange id="HighTemplarAiur_Feedback@Range" parent="RangeAbil" abil="HighTemplarAiur_Feedback"/>
+
+    <CModel id="HighTemplarAiur_Feedback@LaunchModel" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\FeedbackLaunch\FeedbackLaunch.m3"/>
+        <ScaleMax value="0.650000,0.650000,0.650000"/>
+        <ScaleMin value="0.650000,0.650000,0.650000"/>
+    </CModel>
+    <CModel id="HighTemplarAiur_Feedback@ImpactModel" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Protoss\FeedbackImpact\FeedbackImpact.m3"/>
+    </CModel>
+
+    <CSound id="HighTemplarAiur_Feedback@LaunchSound" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Protoss\Obelisk\Obelisk_ArgusLinkLaunch0.wav"/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="HighTemplarAiur_Feedback@ImpactSound" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Protoss\Obelisk\Obelisk_ArgusLinkImpact0.wav"/>
+    </CSound>
+
+    <CDataCollectionUnit id="HighTemplarAiur_Feedback" parent="AbilityBase">
+        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Protoss,ObjectType:Spell"/>
+        <DataRecord Entry="Button,HighTemplarAiur_Feedback"/>
+        <DataRecord Entry="Abil,HighTemplarAiur_Feedback"/>
+        <DataRecord Entry="Effect,HighTemplarAiur_Feedback@Set"/>
+        <DataRecord Entry="Effect,HighTemplarAiur_Feedback@Damage"/>
+        <DataRecord Entry="Effect,HighTemplarAiur_Feedback@EnergyLoss"/>
+        <DataRecord Entry="Actor,HighTemplarAiur_Feedback@LaunchModel"/>
+        <DataRecord Entry="Actor,HighTemplarAiur_Feedback@LaunchSound"/>
+        <DataRecord Entry="Actor,HighTemplarAiur_Feedback@ImpactModel"/>
+        <DataRecord Entry="Actor,HighTemplarAiur_Feedback@ImpactSound"/>
+        <DataRecord Entry="Actor,HighTemplarAiur_Feedback@Range"/>
+        <DataRecord Entry="Model,HighTemplarAiur_Feedback@LaunchModel"/>
+        <DataRecord Entry="Model,HighTemplarAiur_Feedback@ImpactModel"/>
+        <DataRecord Entry="Sound,HighTemplarAiur_Feedback@LaunchSound"/>
+        <DataRecord Entry="Sound,HighTemplarAiur_Feedback@ImpactSound"/>
+    </CDataCollectionUnit>
+
+    <!-- ========== HighTemplarAiur_ArchonWarp ========== -->
+    <CButton id="HighTemplarAiur_ArchonWarp">
+        <Icon value="Assets\Textures\btn-unit-protoss-archon.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-protoss-archon.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Universal value="1"/>
+    </CButton>
+
+    <CAbilMerge id="HighTemplarAiur_ArchonWarp">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <CmdButtonArray index="SelectedUnits" DefaultButtonFace="HighTemplarAiur_ArchonWarp" State="Restricted">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="WithTarget" DefaultButtonFace="ArchonWarpTarget" State="Restricted">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <EffectArray index="Source" value="HighTemplarAiur_ArchonWarp@SourceSet"/>
+        <Info Unit="HighTemplarAiur_Archon" Time="12"/>
+    </CAbilMerge>
+
+    <CEffectApplyBehavior id="HighTemplarAiur_ArchonWarp@SourceSet">
+        <WhichUnit Value="Source"/>
+        <Behavior value="HighTemplarAiur_ArchonWarp@SourceBehavior"/>
+    </CEffectApplyBehavior>
+
+    <CBehaviorBuff id="HighTemplarAiur_ArchonWarp@SourceBehavior">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="12"/>
+        <Modification>
+            <ModifyFlags index="DisableAbils" value="1"/>
+            <ModifyFlags index="SuppressMoving" value="1"/>
+            <ModifyFlags index="SuppressTurning" value="1"/>
+            <StateFlags index="SuppressAttack" value="1"/>
+            <StateFlags index="Stun" value="1"/>
+            <StateFlags index="Uncommandable" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+
+    <CActorModel id="HighTemplarAiur_ArchonWarp@Model" parent="ModelAnimationStyleOneShot">
+        <On Terms="Behavior.HighTemplarAiur_ArchonWarp@SourceBehavior.On" Send="Create"/>
+        <On Terms="Behavior.HighTemplarAiur_ArchonWarp@SourceBehavior.Off" Send="Destroy"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <Model value="HighTemplarAiur_ArchonWarp@Model"/>
+    </CActorModel>
+
+    <CModel id="HighTemplarAiur_ArchonWarp@Model" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\ArchonWarp\ArchonWarp.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="1.000000,1.000000,1.000000"/>
+        <ScaleMin value="1.000000,1.000000,1.000000"/>
+    </CModel>
+
+    <CDataCollectionUnit id="HighTemplarAiur_ArchonWarp" parent="AbilityBase">
+        <DataRecord Entry="Button,HighTemplarAiur_ArchonWarp"/>
+        <DataRecord Entry="Abil,HighTemplarAiur_ArchonWarp"/>
+        <DataRecord Entry="Unit,HighTemplarAiur_Archon"/>
+        <DataRecord Entry="Effect,HighTemplarAiur_ArchonWarp@SourceSet"/>
+        <DataRecord Entry="Behavior,HighTemplarAiur_ArchonWarp@SourceBehavior"/>
+        <DataRecord Entry="Actor,HighTemplarAiur_ArchonWarp@Model"/>
+        <DataRecord Entry="Model,HighTemplarAiur_ArchonWarp@Model"/>
+    </CDataCollectionUnit>
+
+    <!-- ========== HighTemplarAiur_Archon ========== -->
+    <CUnit id="HighTemplarAiur_Archon" parent="Generic_Protoss_Unit_Ground" race="Prot">
+        <DeathRevealRadius value="3"/>
+        <Mob value="Multiplayer"/>
+        <FlagArray index="PreventDestroy" value="1"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="ArmySelect" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="Locust" value="1"/>
+        <Collide index="Small" value="1"/>
+        <Attributes index="Psionic" value="1"/>
+        <Attributes index="Massive" value="1"/>
+        <LifeStart value="10"/>
+        <LifeMax value="10"/>
+        <LifeArmorName value="Unit/LifeArmorName/ProtossArmor"/>
+        <ShieldsStart value="350"/>
+        <ShieldsMax value="350"/>
+        <ShieldRegenDelay value="10"/>
+        <ShieldRegenRate value="2"/>
+        <ShieldArmorName value="Unit/ShieldArmorName/ProtossPlasmaShields"/>
+        <Speed value="2.8125"/>
+        <Acceleration value="1000"/>
+        <LateralAcceleration value="46"/>
+        <StationaryTurningRate value="999.8437"/>
+        <TurningRate value="999.8437"/>
+        <Sight value="9"/>
+        <Food value="-4"/>
+        <CostCategory value="Army"/>
+        <CostResource index="Minerals" value="175"/>
+        <CostResource index="Vespene" value="275"/>
+        <AttackTargetPriority value="20"/>
+        <DamageDealtXP value="1"/>
+        <DamageTakenXP value="1"/>
+        <KillXP value="80"/>
+        <AbilArray Link="Mergeable"/>
+        <BehaviorArray Link="HighTemplarAiur_Archon_FinalAct"/>
+        <BehaviorArray Link="HighTemplarAiur_Archon_ShockAttack"/>
+        <WeaponArray Link="HighTemplarAiur_Archon_Weapon"/>
+        <CardLayouts/>
+        <Radius value="1"/>
+        <SeparationRadius value="0.75"/>
+        <InnerRadius value="0.75"/>
+        <CargoSize value="4"/>
+        <ScoreKill value="450"/>
+        <ScoreResult value="BuildOrder"/>
+        <SubgroupPriority value="8"/>
+        <MinimapRadius value="0.75"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
+        <GlossaryCategory value="Unit/Category/ProtossUnits"/>
+        <GlossaryPriority value="90"/>
+        <GlossaryStrongArray value="Mutalisk"/>
+        <GlossaryWeakArray value="Thor"/>
+        <GlossaryWeakArray value="Ultralisk"/>
+        <GlossaryWeakArray value="Immortal"/>
+        <HotkeyCategory value="Unit/Category/ProtossUnits"/>
+    </CUnit>
+
+    <CActorUnit id="HighTemplarAiur_Archon" parent="AdvancedUnitStandard" unitName="HighTemplarAiur_Archon">
+        <Aliases value="_UnitLarge"/>
+        <On Terms="Abil.ArchonWarp.Start" Send="AnimBracketStart Merging Stand,Work,Start Stand,Work"/>
+        <On Terms="Abil.ArchonWarp.Stop" Send="AnimBracketStop Merging"/>
+        <On Terms="UnitBirth.*.Normal" Send="AnimPlay Birth Stand,Work,End 0 0.000000"/>
+        <On Terms="Abil.attack.ReadyStop" Target="HighTemplarAiur_Archon_AttackBeam" Send="Destroy"/>
+        <On Terms="WeaponStart.*.AttackStart; AnimPlaying Birth" Send="AnimClear Birth"/>
+        <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
+        <On Terms="WeaponStart.*.AttackStart; WeaponTargetElevation GE 20.000000" Send="AnimBracketStart Attack Attack,Superior"/>
+        <On Terms="WeaponStart.*.AttackStart; WeaponTargetElevation LE -20.000000" Send="AnimBracketStart Attack Attack,Inferior"/>
+        <On Terms="WeaponStart.*.AttackStart" Send="AnimBracketStart Attack Attack"/>
+        <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack"/>
+        <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Archon_Land"/>
+        <Model value="HighTemplarAiur_Archon_Model"/>
+        <ModelFlags index="OutlineEmitter" value="1"/>
+        <BuildModel value="HighTemplarAiur_Archon_Model"/>
+        <DeathArray index="Normal" ModelLink="HighTemplarAiur_Archon_Death" SoundLink="HighTemplarAiur_Archon_Explode"/>
+        <PlacementModel value="HighTemplarAiur_Archon_Model"/>
+        <PortraitModel value="HighTemplarAiur_Archon_Portrait"/>
+        <BarOffset value="120"/>
+        <BarWidth value="66"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Protoss-Archon.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-unit-protoss-archon.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
+        <SoundArray index="Ready" value="HighTemplarAiur_Archon_Ready"/>
+        <SoundArray index="Help" value="HighTemplarAiur_Archon_Help"/>
+        <SoundArray index="What" value="HighTemplarAiur_Archon_What"/>
+        <SoundArray index="Yes" value="HighTemplarAiur_Archon_Yes"/>
+        <SoundArray index="Attack" value="HighTemplarAiur_Archon_Attack"/>
+        <SoundArray index="Pissed" value="HighTemplarAiur_Archon_Pissed"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-archon.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Protoss-Archon.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image value="Assets\Textures\Wireframe-Protoss-Archon-Shield01.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-Archon-Shield02.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-Archon-Shield03.dds"/>
+        </WireframeShield>
+    </CActorUnit>
+
+    <CActorAction id="HighTemplarAiur_Archon_Attack" parent="GenericAttack" effectAttack="HighTemplarAiur_Archon_Weapon@Damage">
+        <LaunchAssets Sound="HighTemplarAiur_Archon_AttackLaunch"/>
+        <Beam value="HighTemplarAiur_Archon_AttackBeam"/>
+        <BeamScope value="Caster"/>
+        <ImpactMap index="None" Sound="HighTemplarAiur_Archon_AttackImpact"/>
+    </CActorAction>
+    <CActorBeamSimple id="HighTemplarAiur_Archon_AttackBeam" parent="BeamSimpleAnimationStyleOneShot">
+        <Macros value="ActionTargetTeleportDestroy"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death ContentPlayOnce"/>
+        <On Terms="AnimBracketState.*.AfterClosing; AnimName BSD" Send="Destroy"/>
+        <Scale value="0.500000"/>
+        <Model value="ArchonAttackBeam"/>
+    </CActorBeamSimple>
+
+    <CModel id="HighTemplarAiur_Archon_Model" parent="ArchonBase">
+        <Model value="Assets\Units\Protoss\Archon\Archon.m3"/>
+        <LowQualityModel value="ArchonLow"/>
+        <TextureDeclares Prefix="archon_">
+            <Adaptions TriggerOnSubstring="_Diffuse" Slot="main"/>
+        </TextureDeclares>
+    </CModel>
+    <CModel id="HighTemplarAiur_Archon_Death" parent="ArchonDeathBase">
+        <Model value="Assets\Units\Protoss\ArchonDeath\ArchonDeath.m3"/>
+    </CModel>
+    <CModel id="HighTemplarAiur_Archon_Portrait" parent="ArchonPortraitBase">
+        <Model value="Assets\Portraits\Protoss\ArchonPortrait\ArchonPortrait.m3"/>
+        <Image value="Assets\Textures\ArchonPortrait_Static.dds"/>
+        <Lighting value="ArchonPortrait"/>
+    </CModel>
+    <CModel id="ArchonAttackBeam" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Protoss\ArchonBeam\ArchonBeam.m3"/>
+        <LowQualityModel value="ArchonAttackBeamLow"/>
+        <RadiusLoose value="1.000000"/>
+    </CModel>
+
+    <CSound id="HighTemplarAiur_Archon_Ready" parent="Ready">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Archon\Archon_Ready00.ogg"/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="HighTemplarAiur_Archon_Help" parent="Alert">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Archon\Archon_Help00.ogg"/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="HighTemplarAiur_Archon_What" parent="ProtossAck">
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Archon\Archon_What00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Archon\Archon_What01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Archon\Archon_What02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Archon\Archon_What03.ogg"/>
+    </CSound>
+    <CSound id="HighTemplarAiur_Archon_Yes" parent="ProtossAck">
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Archon\Archon_Yes00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Archon\Archon_Yes01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Archon\Archon_Yes02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Archon\Archon_Yes03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Archon\Archon_Yes04.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Archon\Archon_Yes05.ogg"/>
+    </CSound>
+    <CSound id="HighTemplarAiur_Archon_Attack" parent="ProtossAck">
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Archon\Archon_Attack00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Archon\Archon_Attack01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Archon\Archon_Attack02.ogg"/>
+        <Flags index="Download" value="0"/>
+    </CSound>
+    <CSound id="HighTemplarAiur_Archon_Pissed" parent="ProtossAck">
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Archon\Archon_Pissed00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Archon\Archon_Pissed01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Archon\Archon_Pissed02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Archon\Archon_Pissed03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Archon\Archon_Pissed04.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Archon\Archon_Pissed05.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Archon\Archon_Pissed06.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Archon\Archon_Pissed07.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Archon\Archon_Pissed08.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Archon\Archon_Pissed09.ogg"/>
+        <Flags index="Download" value="0"/>
+        <Select value="Sequential"/>
+    </CSound>
+    <CSound id="HighTemplarAiur_Archon_AttackLaunch" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Protoss\Archon\Archon_AttackLaunch0.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Archon\Archon_AttackLaunch1.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Archon\Archon_AttackLaunch2.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Archon\Archon_AttackLaunch3.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Archon\Archon_AttackLaunch4.wav"/>
+        <Flags index="VariationFallback" value="0"/>
+        <Pitch value="0.000000,6.000000"/>
+    </CSound>
+    <CSound id="HighTemplarAiur_Archon_AttackImpact" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Protoss\Archon\Archon_AttackImpact0.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Archon\Archon_AttackImpact1.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Archon\Archon_AttackImpact2.wav"/>
+        <Volume value="-12.349999,-12.349999"/>
+    </CSound>
+    <CSound id="HighTemplarAiur_Archon_Explode" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionSmall0.wav" Pitch="-3.000000,3.000000"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionSmall1.wav" Pitch="-3.000000,3.000000"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionSmall2.wav" Pitch="-3.000000,3.000000"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionSmall3.wav" Pitch="-3.000000,3.000000"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionSmall4.wav" Pitch="-3.000000,3.000000"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionSmall5.wav" Pitch="-3.000000,3.000000"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionSmall6.wav" Pitch="-3.000000,3.000000"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionSmall7.wav" Pitch="-3.000000,3.000000"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionSmall8.wav" Pitch="-3.000000,3.000000"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionSmall9.wav" Pitch="-3.000000,3.000000"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-1.000000,0.000000"/>
+    </CSound>
+
+    <CBehaviorBuff id="HighTemplarAiur_Archon_FinalAct">
+        <InfoFlags index="Hidden" value="1"/>
+        <DisableValidatorArray value="HaveVoidArchonFinalAct"/>
+        <Modification>
+            <DeathResponse Chance="1" Effect="HighTemplarAiur_Archon_FinalActSearch"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CEffectEnumArea id="HighTemplarAiur_Archon_FinalActSearch">
+        <SearchFilters value="Visible;Self,Neutral,Enemy,RawResource,HarvestableResource,Missile,Item,Dead,Hidden"/>
+        <AreaArray Radius="3" Effect="HighTemplarAiur_Archon_FinalActModify"/>
+    </CEffectEnumArea>
+    <CEffectModifyUnit id="HighTemplarAiur_Archon_FinalActModify">
+        <VitalArray index="Shields">
+            <Change value="50"/>
+        </VitalArray>
+        <VitalArray index="Energy">
+            <Change value="50"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+
+    <CBehaviorBuff id="HighTemplarAiur_Archon_ShockAttack">
+        <InfoFlags index="Hidden" value="1"/>
+        <DisableValidatorArray value="HaveVoidArchonShockAttack"/>
+        <DamageResponse Handled="HighTemplarAiur_Archon_ShockAttackApply" Location="Attacker">
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CEffectApplyBehavior id="HighTemplarAiur_Archon_ShockAttackApply">
+        <Behavior value="HighTemplarAiur_Archon_ShockAttackDebuff"/>
+    </CEffectApplyBehavior>
+    <CBehaviorBuff id="HighTemplarAiur_Archon_ShockAttackDebuff">
+        <Duration value="2"/>
+        <Modification MoveSpeedMultiplier="0.5" AttackSpeedMultiplier="0.5"/>
+    </CBehaviorBuff>
+
+    <CWeaponLegacy id="HighTemplarAiur_Archon_Weapon">
+        <EditorCategories value="Race:Protoss"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
+        <DisplayEffect value="HighTemplarAiur_Archon_Weapon@Damage"/>
+        <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="3"/>
+        <TeleportResetRange value="0"/>
+        <Period value="1.754"/>
+        <Effect value="HighTemplarAiur_Archon_Weapon@Damage"/>
+    </CWeaponLegacy>
+    <CEffectDamage id="HighTemplarAiur_Archon_Weapon@Damage" parent="DU_WEAP">
+        <EditorCategories value="Race:Protoss"/>
+        <AttributeBonus index="Biological" value="10"/>
+        <Kind value="Ranged"/>
+        <KindSplash value="Splash"/>
+        <Amount value="25"/>
+        <AreaArray Radius="0.25" Fraction="1"/>
+        <AreaArray Radius="0.5" Fraction="0.5"/>
+        <AreaArray Radius="1" Fraction="0.25"/>
+        <ExcludeArray Value="Outer"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="-;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectDamage>
+
+    <CDataCollectionUnit id="HighTemplarAiur_Archon" parent="UnitGround">
+        <DataRecord Entry="Unit,HighTemplarAiur_Archon"/>
+        <DataRecord Entry="Actor,HighTemplarAiur_Archon"/>
+        <DataRecord Entry="Model,HighTemplarAiur_Archon_Model"/>
+        <DataRecord Entry="Model,HighTemplarAiur_Archon_Death"/>
+        <DataRecord Entry="Model,HighTemplarAiur_Archon_Portrait"/>
+        <DataRecord Entry="Sound,HighTemplarAiur_Archon_Ready"/>
+        <DataRecord Entry="Sound,HighTemplarAiur_Archon_Help"/>
+        <DataRecord Entry="Sound,HighTemplarAiur_Archon_What"/>
+        <DataRecord Entry="Sound,HighTemplarAiur_Archon_Yes"/>
+        <DataRecord Entry="Sound,HighTemplarAiur_Archon_Attack"/>
+        <DataRecord Entry="Sound,HighTemplarAiur_Archon_Pissed"/>
+        <DataRecord Entry="Sound,HighTemplarAiur_Archon_AttackLaunch"/>
+        <DataRecord Entry="Sound,HighTemplarAiur_Archon_AttackImpact"/>
+        <DataRecord Entry="Sound,HighTemplarAiur_Archon_Explode"/>
+        <DataRecord Entry="Weapon,HighTemplarAiur_Archon_Weapon"/>
+        <DataRecord Entry="Effect,HighTemplarAiur_Archon_Weapon@Damage"/>
+        <DataRecord Entry="Actor,HighTemplarAiur_Archon_Attack"/>
+        <DataRecord Entry="Actor,HighTemplarAiur_Archon_AttackBeam"/>
+        <DataRecord Entry="Behavior,HighTemplarAiur_Archon_FinalAct"/>
+        <DataRecord Entry="Effect,HighTemplarAiur_Archon_FinalActSearch"/>
+        <DataRecord Entry="Effect,HighTemplarAiur_Archon_FinalActModify"/>
+        <DataRecord Entry="Behavior,HighTemplarAiur_Archon_ShockAttack"/>
+        <DataRecord Entry="Effect,HighTemplarAiur_Archon_ShockAttackApply"/>
+        <DataRecord Entry="Behavior,HighTemplarAiur_Archon_ShockAttackDebuff"/>
+    </CDataCollectionUnit>
+
+    <!-- Общие объекты -->
+    <CButton id="Attack"/>
+    <CAbilAttack id="attack"/>
+    <CButton id="Move"/>
+    <CButton id="MoveHoldPosition"/>
+    <CButton id="MovePatrol"/>
+    <CAbilMove id="move"/>
+    <CButton id="Stop"/>
+    <CAbilStop id="stop"/>
+    <CAbilWarpable id="Warpable">
+        <PowerUserBehavior value="PowerUserWarpable"/>
+    </CAbilWarpable>
+    <CBehaviorPowerUser id="PowerUserWarpable"/>
+    <CButton id="Rally"/>
+    <CAbilRally id="ProgressRally"/>
+    <CAbilBuildable id="BuildInProgress"/>
+
+</Catalog>

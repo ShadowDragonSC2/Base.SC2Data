@@ -86,7 +86,7 @@
         <BuildModel value="CarrierAiurWarpIn"/>
         <DeathArray index="Normal" ModelLink="CarrierAiurDeath" SoundLink=""/>
         <PlacementModel value="CarrierAiurPlacement"/>
-        <PortraitModel value="CarrierPortrait"/>
+        <PortraitModel value="CarrierAiurPortrait"/>
         <BarOffset value="60"/>
         <BarWidth value="156"/>
         <GroupIcon>
@@ -95,13 +95,13 @@
         <HeroIcon value="Assets\Textures\BTN-Unit-Protoss-CarrierHero.dds"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-airarmorlevel0.dds"/>
         <NameOffset value="110"/>
-        <SoundArray index="Ready" value="Carrier_Ready"/>
-        <SoundArray index="Help" value="CarrierVoid_Help"/>
-        <SoundArray index="What" value="Carrier_What"/>
-        <SoundArray index="Yes" value="CarrierVoid_Yes"/>
-        <SoundArray index="Attack" value="Carrier_Attack"/>
-        <SoundArray index="Pissed" value="Carrier_Pissed"/>
-        <SoundArray index="Movement" value="Carrier_Movement"/>
+        <SoundArray index="Ready" value="CarrierAiur_Ready"/>
+        <SoundArray index="Help" value="CarrierAiur_Help"/>
+        <SoundArray index="What" value="CarrierAiur_What"/>
+        <SoundArray index="Yes" value="CarrierAiur_Yes"/>
+        <SoundArray index="Attack" value="CarrierAiur_Attack"/>
+        <SoundArray index="Pissed" value="CarrierAiur_Pissed"/>
+        <SoundArray index="Movement" value="CarrierAiur_Movement"/>
         <UnitIcon value="Assets\Textures\BTN-Unit-Protoss-CarrierHero.dds"/>
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Protoss-Carrier.dds"/>
@@ -113,6 +113,7 @@
         </WireframeShield>
     </CActorUnit>
 
+    <!-- Модели и звуки CarrierAiur -->
     <CModel id="CarrierAiur" parent="Unit" Race="Protoss">
         <Model value="Assets\Units\Protoss\CarrierHero_Ex2\CarrierHero_Ex2.m3"/>
         <Occlusion value="Show"/>
@@ -152,23 +153,23 @@
         <SelectionRadius value="1.718700"/>
         <ShadowRadius value="1.718700"/>
     </CModel>
-    <CModel id="CarrierPortrait" parent="CarrierPortraitBase">
+    <CModel id="CarrierAiurPortrait" parent="CarrierPortraitBase">
         <Model value="Assets\Portraits\Protoss\CarrierPortrait\CarrierPortrait.m3"/>
         <Image value="Assets\Textures\CarrierPortrait_Static.dds"/>
         <Lighting value="CarrierPortrait"/>
     </CModel>
 
-    <CSound id="Carrier_Ready" parent="Ready">
+    <CSound id="CarrierAiur_Ready" parent="Ready">
         <EditorCategories value="Race:Protoss"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Carrier\Carrier_Ready00.ogg"/>
         <Volume value="-2.000000,-2.000000"/>
     </CSound>
-    <CSound id="CarrierVoid_Help" parent="ProtossHelp">
+    <CSound id="CarrierAiur_Help" parent="ProtossHelp">
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Carrier\CarrierVoid_Help00.ogg" FacialGroup=""/>
         <Flags index="NeedsUpdate" value="1"/>
         <Flags index="NeedsTTS" value="1"/>
     </CSound>
-    <CSound id="Carrier_What" parent="ProtossAck">
+    <CSound id="CarrierAiur_What" parent="ProtossAck">
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Carrier\Carrier_What00.ogg"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Carrier\Carrier_What01.ogg"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Carrier\Carrier_What02.ogg"/>
@@ -177,7 +178,7 @@
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Carrier\Carrier_What05.ogg"/>
         <Volume value="-2.000000,-2.000000"/>
     </CSound>
-    <CSound id="CarrierVoid_Yes" parent="ProtossAck_Void">
+    <CSound id="CarrierAiur_Yes" parent="ProtossAck_Void">
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Carrier\Carrier_Yes00.ogg" FacialGroup=""/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Carrier\Carrier_Yes01.ogg" FacialGroup=""/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Carrier\Carrier_Yes02.ogg" FacialGroup=""/>
@@ -189,7 +190,7 @@
         <Flags index="NeedsUpdate" value="1"/>
         <Flags index="NeedsTTS" value="1"/>
     </CSound>
-    <CSound id="Carrier_Attack" parent="ProtossAck">
+    <CSound id="CarrierAiur_Attack" parent="ProtossAck">
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Carrier\Carrier_Attack00.ogg"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Carrier\Carrier_Attack01.ogg"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Carrier\Carrier_Attack02.ogg"/>
@@ -199,7 +200,7 @@
         <Flags index="Download" value="0"/>
         <Volume value="-2.000000,-2.000000"/>
     </CSound>
-    <CSound id="Carrier_Pissed" parent="ProtossAck">
+    <CSound id="CarrierAiur_Pissed" parent="ProtossAck">
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Carrier\Carrier_Pissed00.ogg"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Carrier\Carrier_Pissed01.ogg"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Carrier\Carrier_Pissed02.ogg"/>
@@ -211,7 +212,7 @@
         <Select value="Sequential"/>
         <Volume value="-2.000000,-2.000000"/>
     </CSound>
-    <CSound id="Carrier_Movement" parent="Movement">
+    <CSound id="CarrierAiur_Movement" parent="Movement">
         <EditorCategories value="Race:Protoss"/>
         <AssetArray File="Assets\Sounds\Protoss\Carrier\Carrier_Movement01.wav"/>
         <AssetArray File="Assets\Sounds\Protoss\Carrier\Carrier_Movement02.wav"/>
@@ -270,7 +271,7 @@
 
     <CValidatorUnitCompareDistance id="TargetIsWithinHealRange">
         <WhichUnit Value="Caster"/>
-        <WhichUnit Value="Target"/>
+        <WhichUnit Value="Source"/>
         <Compare value="LTE"/>
         <Value value="6"/>
     </CValidatorUnitCompareDistance>
@@ -285,8 +286,6 @@
         <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Protoss,ObjectType:Unit"/>
         <DataRecord Entry="Button,CarrierAiur"/>
         <DataRecord Entry="Button,Interceptor"/>
-        <DataRecord Entry="Button,Cancel"/>
-        <DataRecord Entry="Button,Rally"/>
         <DataRecord Entry="Button,RepairDrones"/>
         <DataRecord Entry="Unit,CarrierAiur"/>
         <DataRecord Entry="Actor,CarrierAiur"/>
@@ -294,14 +293,14 @@
         <DataRecord Entry="Model,CarrierAiurDeath"/>
         <DataRecord Entry="Model,CarrierAiurPlacement"/>
         <DataRecord Entry="Model,CarrierAiurWarpIn"/>
-        <DataRecord Entry="Model,CarrierPortrait"/>
-        <DataRecord Entry="Sound,Carrier_Ready"/>
-        <DataRecord Entry="Sound,CarrierVoid_Help"/>
-        <DataRecord Entry="Sound,Carrier_What"/>
-        <DataRecord Entry="Sound,CarrierVoid_Yes"/>
-        <DataRecord Entry="Sound,Carrier_Attack"/>
-        <DataRecord Entry="Sound,Carrier_Pissed"/>
-        <DataRecord Entry="Sound,Carrier_Movement"/>
+        <DataRecord Entry="Model,CarrierAiurPortrait"/>
+        <DataRecord Entry="Sound,CarrierAiur_Ready"/>
+        <DataRecord Entry="Sound,CarrierAiur_Help"/>
+        <DataRecord Entry="Sound,CarrierAiur_What"/>
+        <DataRecord Entry="Sound,CarrierAiur_Yes"/>
+        <DataRecord Entry="Sound,CarrierAiur_Attack"/>
+        <DataRecord Entry="Sound,CarrierAiur_Pissed"/>
+        <DataRecord Entry="Sound,CarrierAiur_Movement"/>
         <DataRecord Entry="Light,CarrierAiur@Portrait"/>
         <DataRecord Entry="Validator,CarrierAiur@Is"/>
         <DataRecord Entry="Validator,CarrierAiur@Target"/>
@@ -325,7 +324,7 @@
         <EditorCategories value="Race:Protoss"/>
         <Options index="Hidden" value="1"/>
         <Icon value="Assets\Textures\btn-unit-protoss-interceptor.dds"/>
-        <DisplayEffect value="CarrierAiur_InterceptorLaunchSet"/>
+        <DisplayEffect value="Carrier"/>
         <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <Range value="8"/>
         <Arc value="360"/>
@@ -405,7 +404,7 @@
         <Launch value="ReleaseAtSource"/>
         <Flags index="AutoCreate" value="1"/>
         <Flags index="Retarget" value="1"/>
-        <Leash value="5"/>
+        <Leash value="10"/>
         <InfoArray index="Ammo1" CountStart="2" Manage="Recall" Unit="CarrierAiurRepairDrone">
             <Charge HideCount="1" Link="CarrierRepairDrone" Location="Unit"/>
             <Button DefaultButtonFace="RepairDrones">
@@ -447,18 +446,18 @@
         <Sight value="7"/>
         <Height value="3.25"/>
         <Mover value="Fly"/>
-        <WeaponArray Link="InterceptorBeam"/>
+        <WeaponArray Link="CarrierAiurInterceptorBeam"/>
     </CUnit>
 
     <CActorUnit id="CarrierAiurInterceptor" parent="GenericUnitStandard" unitName="CarrierAiurInterceptor">
         <Aliases value="_UnitSmall"/>
         <Macros value="PhysicsDeathsSwarmAir"/>
         <On Terms="UnitHeightUpdate.*.Land" Send="Create Interceptor_Land"/>
-        <Model value="Interceptor"/>
+        <Model value="CarrierAiurInterceptorModel"/>
         <ModelFlags index="OutlineEmitter" value="1"/>
-        <DeathArray index="Normal" ModelLink="InterceptorDeath" SoundLink="Interceptor_Explode"/>
-        <PlacementModel value="Interceptor"/>
-        <PortraitModel value="StaticPortrait"/>
+        <DeathArray index="Normal" ModelLink="CarrierAiurInterceptorDeathModel" SoundLink="CarrierAiurInterceptor_Explode"/>
+        <PlacementModel value="CarrierAiurInterceptorModel"/>
+        <PortraitModel value="CarrierAiurStaticPortrait"/>
         <BarOffset value="25"/>
         <BarWidth value="36"/>
         <HeroIcon value="Assets\Textures\btn-unit-protoss-interceptor.dds"/>
@@ -468,20 +467,19 @@
         <StatusBarFlags index="Life" value="0"/>
         <UnitIcon value="Assets\Textures\btn-unit-protoss-interceptor.dds"/>
     </CActorUnit>
-
-    <CModel id="Interceptor" parent="InterceptorBase">
+    <CModel id="CarrierAiurInterceptorModel" parent="InterceptorBase">
         <Model value="Assets\Units\Protoss\InterceptorEX2\InterceptorEX2.m3"/>
     </CModel>
-    <CModel id="InterceptorDeath" parent="InterceptorDeathBase">
+    <CModel id="CarrierAiurInterceptorDeathModel" parent="InterceptorDeathBase">
         <Model value="Assets\Units\Protoss\InterceptorDeathEx1\InterceptorDeathEx1.m3"/>
     </CModel>
-    <CModel id="StaticPortrait" parent="Portrait">
+    <CModel id="CarrierAiurStaticPortrait" parent="Portrait">
         <Model value="Assets\Portraits\Terran\TerranPortraitTransition\TerranPortraitTransition.m3"/>
         <Flags index="Download" value="1"/>
         <Image value="Assets\Textures\TerranPortraitTransition_Static.dds"/>
     </CModel>
 
-    <CSound id="Interceptor_Explode" parent="Combat">
+    <CSound id="CarrierAiurInterceptor_Explode" parent="Combat">
         <EditorCategories value="Race:Protoss"/>
         <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionSmall0.wav" Pitch="-3.000000,3.000000"/>
         <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionSmall1.wav" Pitch="-3.000000,3.000000"/>
@@ -497,48 +495,48 @@
         <Volume value="-1.000000,0.000000"/>
     </CSound>
 
-    <CWeaponStrafe id="InterceptorBeam">
+    <CWeaponStrafe id="CarrierAiurInterceptorBeam">
         <EditorCategories value="Race:Protoss"/>
         <Icon value="Assets\Textures\btn-upgrade-protoss-airweaponslevel0.dds"/>
-        <DisplayEffect value="InterceptorBeamDamage"/>
+        <DisplayEffect value="CarrierAiurInterceptorBeamDamage"/>
         <DisplayAttackCount value="2"/>
         <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <Range value="2"/>
         <TeleportResetRange value="0"/>
         <Arc value="19.6875"/>
         <Period value="3"/>
-        <Effect value="InterceptorBeamPersistent"/>
+        <Effect value="CarrierAiurInterceptorBeamPersistent"/>
     </CWeaponStrafe>
 
-    <CEffectCreatePersistent id="InterceptorBeamPersistent">
+    <CEffectCreatePersistent id="CarrierAiurInterceptorBeamPersistent">
         <EditorCategories value="Race:Protoss"/>
         <WhichLocation Value="TargetUnit"/>
         <TimeScaleSource Value="Caster"/>
-        <InitialEffect value="InterceptorBeamDamage"/>
+        <InitialEffect value="CarrierAiurInterceptorBeamDamage"/>
         <PeriodCount value="1"/>
-        <PeriodicEffectArray value="InterceptorBeamDamage"/>
+        <PeriodicEffectArray value="CarrierAiurInterceptorBeamDamage"/>
         <PeriodicPeriodArray value="0"/>
     </CEffectCreatePersistent>
 
-    <CEffectDamage id="InterceptorBeamDamage" parent="DU_WEAP">
+    <CEffectDamage id="CarrierAiurInterceptorBeamDamage" parent="DU_WEAP">
         <EditorCategories value="Race:Protoss"/>
         <Visibility value="Visible"/>
         <Kind value="Ranged"/>
         <Amount value="5"/>
     </CEffectDamage>
 
-    <CActorAction id="InterceptorAttack" parent="GenericAttackBase">
-        <On Terms="Effect.InterceptorBeamPersistent.Start; At Caster" Send="Create"/>
-        <On Terms="Effect.InterceptorBeamDamage.Start; At Caster; FromEffectTreeDescendant" Send="ActionDamage"/>
+    <CActorAction id="CarrierAiurInterceptorAttack" parent="GenericAttackBase">
+        <On Terms="Effect.CarrierAiurInterceptorBeamPersistent.Start; At Caster" Send="Create"/>
+        <On Terms="Effect.CarrierAiurInterceptorBeamDamage.Start; At Caster; FromEffectTreeDescendant" Send="ActionDamage"/>
         <LaunchAttachQuery Methods="AMFilterWeapon"/>
-        <LaunchAssets Sound="Interceptor_AttackLaunch"/>
-        <Beam value="InterceptorAttackBeam"/>
+        <LaunchAssets Sound="CarrierAiurInterceptor_AttackLaunch"/>
+        <Beam value="CarrierAiurInterceptorAttackBeam"/>
         <BeamScope value="Caster"/>
-        <ImpactMap index="None" Model="InterceptorAttackImpact" Sound="Interceptor_AttackImpact"/>
+        <ImpactMap index="None" Model="CarrierAiurInterceptorAttackImpactModel" Sound="CarrierAiurInterceptor_AttackImpact"/>
         <ActionFlags index="ImpactMonitorsTeleports" value="1"/>
     </CActorAction>
 
-    <CActorBeamSimple id="InterceptorAttackBeam">
+    <CActorBeamSimple id="CarrierAiurInterceptorAttackBeam" parent="GenericBeamBase">
         <Macros value="ActionTargetTeleportDestroy"/>
         <Flags index="SuppressSaveLoad" value="1"/>
         <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death ContentPlayOnce"/>
@@ -546,16 +544,16 @@
         <Model value="InterceptorAttackBeamModel"/>
     </CActorBeamSimple>
 
-    <CModel id="InterceptorAttackBeamModel" parent="PersistentSpellFX">
+    <CModel id="CarrierAiurInterceptorAttackBeamModel" parent="PersistentSpellFX">
         <Model value="Assets\Effects\Protoss\InterceptorMissile\InterceptorMissile.m3"/>
         <EditorCategories value="Race:Protoss"/>
     </CModel>
-    <CModel id="InterceptorAttackImpact" parent="ImpactFX">
+    <CModel id="CarrierAiurInterceptorAttackImpactModel" parent="ImpactFX">
         <Model value="Assets\Effects\Protoss\InterceptorMissileImpact\InterceptorMissileImpact.m3"/>
         <EditorCategories value="Race:Protoss"/>
     </CModel>
 
-    <CSound id="Interceptor_AttackLaunch" parent="Combat">
+    <CSound id="CarrierAiurInterceptor_AttackLaunch" parent="Combat">
         <EditorCategories value="Race:Protoss"/>
         <AssetArray File="Assets\Sounds\Protoss\Interceptor\Interceptor_AttackLaunch0.wav"/>
         <AssetArray File="Assets\Sounds\Protoss\Interceptor\Interceptor_AttackLaunch1.wav"/>
@@ -565,7 +563,7 @@
         <Pitch value="0.000000,6.000000"/>
         <Volume value="-10.000000,-6.000000"/>
     </CSound>
-    <CSound id="Interceptor_AttackImpact" parent="Combat">
+    <CSound id="CarrierAiurInterceptor_AttackImpact" parent="Combat">
         <EditorCategories value="Race:Protoss"/>
         <AssetArray File="Assets\Sounds\Protoss\Interceptor\Interceptor_AttackImpact0.wav"/>
         <AssetArray File="Assets\Sounds\Protoss\Interceptor\Interceptor_AttackImpact1.wav"/>
@@ -581,19 +579,19 @@
         <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Protoss,ObjectType:Unit"/>
         <DataRecord Entry="Unit,CarrierAiurInterceptor"/>
         <DataRecord Entry="Actor,CarrierAiurInterceptor"/>
-        <DataRecord Entry="Model,Interceptor"/>
-        <DataRecord Entry="Model,InterceptorDeath"/>
-        <DataRecord Entry="Model,StaticPortrait"/>
-        <DataRecord Entry="Sound,Interceptor_Explode"/>
-        <DataRecord Entry="Weapon,InterceptorBeam"/>
-        <DataRecord Entry="Effect,InterceptorBeamPersistent"/>
-        <DataRecord Entry="Effect,InterceptorBeamDamage"/>
-        <DataRecord Entry="Actor,InterceptorAttack"/>
-        <DataRecord Entry="Actor,InterceptorAttackBeam"/>
-        <DataRecord Entry="Model,InterceptorAttackBeamModel"/>
-        <DataRecord Entry="Model,InterceptorAttackImpact"/>
-        <DataRecord Entry="Sound,Interceptor_AttackLaunch"/>
-        <DataRecord Entry="Sound,Interceptor_AttackImpact"/>
+        <DataRecord Entry="Model,CarrierAiurInterceptorModel"/>
+        <DataRecord Entry="Model,CarrierAiurInterceptorDeathModel"/>
+        <DataRecord Entry="Model,CarrierAiurStaticPortrait"/>
+        <DataRecord Entry="Sound,CarrierAiurInterceptor_Explode"/>
+        <DataRecord Entry="Weapon,CarrierAiurInterceptorBeam"/>
+        <DataRecord Entry="Effect,CarrierAiurInterceptorBeamPersistent"/>
+        <DataRecord Entry="Effect,CarrierAiurInterceptorBeamDamage"/>
+        <DataRecord Entry="Actor,CarrierAiurInterceptorAttack"/>
+        <DataRecord Entry="Actor,CarrierAiurInterceptorAttackBeam"/>
+        <DataRecord Entry="Model,CarrierAiurInterceptorAttackBeamModel"/>
+        <DataRecord Entry="Model,CarrierAiurInterceptorAttackImpactModel"/>
+        <DataRecord Entry="Sound,CarrierAiurInterceptor_AttackLaunch"/>
+        <DataRecord Entry="Sound,CarrierAiurInterceptor_AttackImpact"/>
     </CDataCollectionUnit>
 
     <!-- ========== CarrierAiurRepairDrone Unit ========== -->
@@ -611,6 +609,7 @@
         <Height value="3.75"/>
         <Mover value="Fly"/>
         <AbilArray Link="CarrierRepairDroneHeal"/>
+        <BehaviorArray Link="AbilityTargetExclusionBehavior"/>
         <CardLayouts>
             <LayoutButtons Face="CarrierRepairDroneHeal" Type="AbilCmd" AbilCmd="CarrierRepairDroneHeal,Execute" Row="2" Column="0"/>
         </CardLayouts>
@@ -620,9 +619,9 @@
         <Model value="CarrierRepairDrone"/>
         <AnimBlendTime value="1.200000"/>
         <BuildModel value="ProtossGenericWarpInOut"/>
-        <DeathArray index="Normal" ModelLink="CarrierRepairDroneDeath" SoundLink="Observer_Explode"/>
+        <DeathArray index="Normal" ModelLink="CarrierRepairDroneDeath" SoundLink="CarrierAiurRepairDrone_Explode"/>
         <PlacementModel value="CarrierRepairDrone"/>
-        <PortraitModel value="ObserverPortrait"/>
+        <PortraitModel value="CarrierAiurRepairDronePortrait"/>
         <BarOffset value="40"/>
         <BarWidth value="42"/>
         <GroupIcon>
@@ -630,10 +629,10 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\btn-unit-protoss-observer.dds"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-airarmorlevel0.dds"/>
-        <SoundArray index="Ready" value="Observer_Ready"/>
-        <SoundArray index="What" value="Observer_What"/>
-        <SoundArray index="Yes" value="Observer_Yes"/>
-        <SoundArray index="Pissed" value="Observer_Pissed"/>
+        <SoundArray index="Ready" value="CarrierAiurRepairDrone_Ready"/>
+        <SoundArray index="What" value="CarrierAiurRepairDrone_What"/>
+        <SoundArray index="Yes" value="CarrierAiurRepairDrone_Yes"/>
+        <SoundArray index="Pissed" value="CarrierAiurRepairDrone_Pissed"/>
         <UnitIcon value="Assets\Textures\btn-unit-protoss-observer.dds"/>
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Protoss-Observer.dds"/>
@@ -669,13 +668,13 @@
         <SelectionRadius value="0.555400"/>
         <ShadowRadius value="0.555400"/>
     </CModel>
-    <CModel id="ObserverPortrait" parent="ObserverPortraitBase">
+    <CModel id="CarrierAiurRepairDronePortrait" parent="ObserverPortraitBase">
         <Model value="Assets\Portraits\Protoss\ObserverPortrait\ObserverPortrait.m3"/>
         <Image value="Assets\Textures\ObserverPortrait_Static.dds"/>
         <Lighting value="ObserverPortrait"/>
     </CModel>
 
-    <CSound id="Observer_Explode" parent="Combat">
+    <CSound id="CarrierAiurRepairDrone_Explode" parent="Combat">
         <EditorCategories value="Race:Protoss"/>
         <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionSmall0.wav" Pitch="-3.000000,3.000000"/>
         <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionSmall1.wav" Pitch="-3.000000,3.000000"/>
@@ -690,13 +689,13 @@
         <Pitch value="-1.000000,1.000000"/>
         <Volume value="-1.000000,0.000000"/>
     </CSound>
-    <CSound id="Observer_Ready" parent="Ready">
+    <CSound id="CarrierAiurRepairDrone_Ready" parent="Ready">
         <EditorCategories value="Race:Protoss"/>
         <AssetArray File="Assets\Sounds\Protoss\Observer\Observer_Ready00.ogg"/>
         <AssetArray File="Assets\Sounds\Protoss\Observer\Observer_Ready01.ogg"/>
         <Volume value="-2.000000,-2.000000"/>
     </CSound>
-    <CSound id="Observer_What" parent="Voice">
+    <CSound id="CarrierAiurRepairDrone_What" parent="Voice">
         <AssetArray File="Assets\Sounds\Protoss\Observer\Observer_What00.ogg"/>
         <AssetArray File="Assets\Sounds\Protoss\Observer\Observer_What01.ogg"/>
         <AssetArray File="Assets\Sounds\Protoss\Observer\Observer_What02.ogg"/>
@@ -704,7 +703,7 @@
         <AssetArray File="Assets\Sounds\Protoss\Observer\Observer_What04.ogg"/>
         <Volume value="-2.000000,-2.000000"/>
     </CSound>
-    <CSound id="Observer_Yes" parent="Voice">
+    <CSound id="CarrierAiurRepairDrone_Yes" parent="Voice">
         <AssetArray File="Assets\Sounds\Protoss\Observer\Observer_Yes00.ogg"/>
         <AssetArray File="Assets\Sounds\Protoss\Observer\Observer_Yes01.ogg"/>
         <AssetArray File="Assets\Sounds\Protoss\Observer\Observer_Yes02.ogg"/>
@@ -714,7 +713,7 @@
         <AssetArray File="Assets\Sounds\Protoss\Observer\Observer_Yes06.ogg"/>
         <Volume value="-2.000000,-2.000000"/>
     </CSound>
-    <CSound id="Observer_Pissed" parent="Pissed">
+    <CSound id="CarrierAiurRepairDrone_Pissed" parent="Pissed">
         <AssetArray File="Assets\Sounds\Protoss\Observer\Observer_Pissed00.ogg"/>
         <AssetArray File="Assets\Sounds\Protoss\Observer\Observer_Pissed01.ogg"/>
         <AssetArray File="Assets\Sounds\Protoss\Observer\Observer_Pissed02.ogg"/>
@@ -723,7 +722,7 @@
         <Volume value="-2.000000,-2.000000"/>
     </CSound>
 
-    <!-- Repair Drone Heal Ability (переработана на Healer) -->
+    <!-- Repair Drone Heal Ability (Healer-версия, как у Sentry) -->
     <CButton id="CarrierRepairDroneHeal">
         <Icon value="Assets\Textures\btn-ability-terran-heal-color.dds"/>
         <AlertIcon value="Assets\Textures\btn-ability-terran-heal-color.dds"/>
@@ -745,7 +744,7 @@
         <RangeSlop value="2"/>
         <AutoCastAcquireLevel value="Defensive"/>
         <AutoCastFilters value="Mechanical,Visible;Self,Neutral,Enemy,Missile,Dead,Hidden,Invulnerable"/>
-        <AutoCastRange value="5"/>
+        <AutoCastRange value="8"/>
         <AutoCastValidatorArray value="NotWarpingIn"/>
         <AutoCastValidatorArray value="NotFullLife"/>
         <DefaultError value="RequiresHealTarget"/>
@@ -765,7 +764,7 @@
     </CEffectCreateHealer>
     <CEffectSet id="CarrierRepairDroneHealPeriodicSet"/>
 
-    <!-- Акторы для лечащего луча (привязаны к событиям Healer'а) -->
+    <!-- Акторы для лечащего луча (привязаны к событиям Healer) -->
     <CActorBeamSimple id="CarrierRepairDroneHealBeam" parent="BeamSimpleAnimationStyleContinuous">
         <On Terms="Effect.CarrierRepairDroneHealHealer.TargetStart" Send="Create"/>
         <On Terms="Effect.CarrierRepairDroneHealHealer.TargetStop" Send="AnimBracketStop BSD"/>
@@ -838,12 +837,12 @@
         <DataRecord Entry="Model,CarrierRepairDrone"/>
         <DataRecord Entry="Model,CarrierRepairDroneDeath"/>
         <DataRecord Entry="Model,ProtossGenericWarpInOut"/>
-        <DataRecord Entry="Model,ObserverPortrait"/>
-        <DataRecord Entry="Sound,Observer_Explode"/>
-        <DataRecord Entry="Sound,Observer_Ready"/>
-        <DataRecord Entry="Sound,Observer_What"/>
-        <DataRecord Entry="Sound,Observer_Yes"/>
-        <DataRecord Entry="Sound,Observer_Pissed"/>
+        <DataRecord Entry="Model,CarrierAiurRepairDronePortrait"/>
+        <DataRecord Entry="Sound,CarrierAiurRepairDrone_Explode"/>
+        <DataRecord Entry="Sound,CarrierAiurRepairDrone_Ready"/>
+        <DataRecord Entry="Sound,CarrierAiurRepairDrone_What"/>
+        <DataRecord Entry="Sound,CarrierAiurRepairDrone_Yes"/>
+        <DataRecord Entry="Sound,CarrierAiurRepairDrone_Pissed"/>
         <DataRecord Entry="Button,CarrierRepairDroneHeal"/>
         <DataRecord Entry="Abil,CarrierRepairDroneHeal"/>
         <DataRecord Entry="Effect,CarrierRepairDroneHealHealer"/>

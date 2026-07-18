@@ -56,7 +56,7 @@
         <ModelFlags index="OutlineEmitter" value="1"/>
         <Baselines index="Walk" BlendIn="1.500000" BlendOut="2.000000"/>
         <BuildModel value="SentryAiur@WarpIn"/>
-        <DeathArray index="Normal" ModelLink="SentryAiur@Death" SoundLink="Sentry_Explode"/>
+        <DeathArray index="Normal" ModelLink="SentryAiur@Death" SoundLink="SentryAiur_Explode"/>
         <DeathCustoms index="0" ModelLink="ZergSmallUnitDeathLow" Name="AntiGravGeneric"/>
         <DeathCustoms index="1" ModelLink="ProtossSmallUnitDeathLow" Name="AntiGravProtoss"/>
         <DeathCustoms index="2" ModelLink="TerranSmallUnitDeathLow" Name="AntiGravTerran"/>
@@ -80,13 +80,13 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\btn-unit-protoss-sentry.dds"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
-        <SoundArray index="Birth" value="Sentry_Birth"/>
-        <SoundArray index="Ready" value="Sentry_Ready"/>
-        <SoundArray index="Help" value="Sentry_Help"/>
-        <SoundArray index="What" value="Sentry_What"/>
-        <SoundArray index="Yes" value="Sentry_Yes"/>
-        <SoundArray index="Attack" value="Sentry_Attack"/>
-        <SoundArray index="Pissed" value="Sentry_Pissed"/>
+        <SoundArray index="Birth" value="SentryAiur_Birth"/>
+        <SoundArray index="Ready" value="SentryAiur_Ready"/>
+        <SoundArray index="Help" value="SentryAiur_Help"/>
+        <SoundArray index="What" value="SentryAiur_What"/>
+        <SoundArray index="Yes" value="SentryAiur_Yes"/>
+        <SoundArray index="Attack" value="SentryAiur_Attack"/>
+        <SoundArray index="Pissed" value="SentryAiur_Pissed"/>
         <UnitIcon value="Assets\Textures\btn-unit-protoss-sentry.dds"/>
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Protoss-sentry.dds"/>
@@ -194,7 +194,8 @@
         <Pitch value="9.000000,9.000000"/>
         <Volume value="-6.180000,-6.180000"/>
     </CSound>
-    <CSound id="Sentry_Attack" parent="Voice">
+    <CSound id="SentryAiur_Birth" parent="Protoss_Birth"/>
+    <CSound id="SentryAiur_Attack" parent="Voice">
         <EditorCategories value="Race:Protoss"/>
         <AssetArray File="Assets\Sounds\Protoss\Sentry\Sentry_Attack00.ogg"/>
         <AssetArray File="Assets\Sounds\Protoss\Sentry\Sentry_Attack01.ogg"/>
@@ -205,7 +206,7 @@
         <AssetArray File="Assets\Sounds\Protoss\Sentry\Sentry_Attack06.ogg"/>
         <Volume value="-4.500000,-4.500000"/>
     </CSound>
-    <CSound id="Sentry_Explode" parent="Combat">
+    <CSound id="SentryAiur_Explode" parent="Combat">
         <EditorCategories value="Race:Protoss"/>
         <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionLarge0.wav" Pitch="-3.000000,3.000000"/>
         <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionLarge1.wav" Pitch="-3.000000,3.000000"/>
@@ -221,7 +222,7 @@
         <Pitch value="5.000000,7.000000"/>
         <Volume value="-4.000000,-2.000000"/>
     </CSound>
-    <CSound id="Sentry_Pissed" parent="Pissed">
+    <CSound id="SentryAiur_Pissed" parent="Pissed">
         <EditorCategories value="Race:Protoss"/>
         <AssetArray File="Assets\Sounds\Protoss\Sentry\Sentry_Pissed00.ogg"/>
         <AssetArray File="Assets\Sounds\Protoss\Sentry\Sentry_Pissed01.ogg"/>
@@ -229,13 +230,13 @@
         <AssetArray File="Assets\Sounds\Protoss\Sentry\Sentry_Pissed03.ogg"/>
         <Volume value="-4.500000,-4.500000"/>
     </CSound>
-    <CSound id="Sentry_Ready" parent="Ready">
+    <CSound id="SentryAiur_Ready" parent="Ready">
         <EditorCategories value="Race:Protoss"/>
         <AssetArray File="Assets\Sounds\Protoss\Sentry\Sentry_Ready00.ogg"/>
         <AssetArray File="Assets\Sounds\Protoss\Sentry\Sentry_Ready01.ogg"/>
         <Volume value="-4.500000,-4.500000"/>
     </CSound>
-    <CSound id="Sentry_What" parent="Voice">
+    <CSound id="SentryAiur_What" parent="Voice">
         <EditorCategories value="Race:Protoss"/>
         <AssetArray File="Assets\Sounds\Protoss\Sentry\Sentry_What00.ogg"/>
         <AssetArray File="Assets\Sounds\Protoss\Sentry\Sentry_What01.ogg"/>
@@ -245,7 +246,7 @@
         <AssetArray File="Assets\Sounds\Protoss\Sentry\Sentry_What05.ogg"/>
         <Volume value="-4.500000,-4.500000"/>
     </CSound>
-    <CSound id="Sentry_Yes" parent="Voice">
+    <CSound id="SentryAiur_Yes" parent="Voice">
         <EditorCategories value="Race:Protoss"/>
         <AssetArray File="Assets\Sounds\Protoss\Sentry\Sentry_Yes00.ogg"/>
         <AssetArray File="Assets\Sounds\Protoss\Sentry\Sentry_Yes01.ogg"/>
@@ -298,17 +299,14 @@
         <DataRecord Entry="Model,SentryAiur@Placement"/>
         <DataRecord Entry="Model,SentryAiur@WarpIn"/>
         <DataRecord Entry="Model,SentryAiur@Portrait"/>
-        <DataRecord Entry="Model,ProtossSmallUnitDeathLow"/>
-        <DataRecord Entry="Model,TerranSmallUnitDeathLow"/>
-        <DataRecord Entry="Model,ZergSmallUnitDeathLow"/>
-        <DataRecord Entry="Model,Invisible"/>
         <DataRecord Entry="Sound,Protoss_BuildingPlacementSmall"/>
-        <DataRecord Entry="Sound,Sentry_Attack"/>
-        <DataRecord Entry="Sound,Sentry_Explode"/>
-        <DataRecord Entry="Sound,Sentry_Pissed"/>
-        <DataRecord Entry="Sound,Sentry_Ready"/>
-        <DataRecord Entry="Sound,Sentry_What"/>
-        <DataRecord Entry="Sound,Sentry_Yes"/>
+        <DataRecord Entry="Sound,SentryAiur_Birth"/>
+        <DataRecord Entry="Sound,SentryAiur_Attack"/>
+        <DataRecord Entry="Sound,SentryAiur_Explode"/>
+        <DataRecord Entry="Sound,SentryAiur_Pissed"/>
+        <DataRecord Entry="Sound,SentryAiur_Ready"/>
+        <DataRecord Entry="Sound,SentryAiur_What"/>
+        <DataRecord Entry="Sound,SentryAiur_Yes"/>
         <DataRecord Entry="Light,SentryAiur@Portrait"/>
         <DataRecord Entry="Requirement,SentryAiur"/>
         <DataRecord Entry="Validator,SentryAiur@Is"/>

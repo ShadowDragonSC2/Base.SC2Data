@@ -58,6 +58,7 @@
 
     <CActorUnit id="PhoenixAiur" parent="AdvancedUnitStandard" unitName="PhoenixAiur">
         <Aliases value="_UnitLarge"/>
+        <Turret Value="Phoenix"/>
         <On Terms="Effect.PhoenixAiur_GravitonBeamVoid@CP.Start; At Source" Send="$Spell PlayForever"/>
         <On Terms="Effect.PhoenixAiur_GravitonBeamVoid@CP.Stop; At Source" Send="AnimClear Spell"/>
         <On Terms="UnitHeightUpdate.*.Land" Send="Create Phoenix_Land"/>
@@ -65,9 +66,9 @@
         <AnimBlendTime value="0.450000"/>
         <Baselines index="Walk" BlendIn="1.500000" BlendOut="2.000000"/>
         <BuildModel value="PhoenixAiurWarpIn"/>
-        <DeathArray index="Normal" ModelLink="PhoenixAiurDeath" SoundLink="Phoenix_Explode"/>
-        <PlacementModel value="PhoenixPlacement"/>
-        <PortraitModel value="PhoenixPortrait"/>
+        <DeathArray index="Normal" ModelLink="PhoenixAiurDeath" SoundLink="PhoenixAiur_Explode"/>
+        <PlacementModel value="PhoenixAiurPlacement"/>
+        <PortraitModel value="PhoenixAiurPortrait"/>
         <BarOffset value="50"/>
         <GroupIcon>
             <Image value="Assets\Textures\Wireframe-Protoss-Phoenix.dds"/>
@@ -75,13 +76,13 @@
         <HeroIcon value="Assets\Textures\btn-unit-protoss-phoenix.dds"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-airarmorlevel0.dds"/>
         <NameOffset value="50"/>
-        <SoundArray index="Birth" value="Phoenix_Birth"/>
-        <SoundArray index="Ready" value="Phoenix_Ready"/>
-        <SoundArray index="Help" value="Phoenix_Help"/>
-        <SoundArray index="What" value="Phoenix_What"/>
-        <SoundArray index="Yes" value="Phoenix_Yes"/>
-        <SoundArray index="Attack" value="Phoenix_Attack"/>
-        <SoundArray index="Pissed" value="Phoenix_Pissed"/>
+        <SoundArray index="Birth" value="PhoenixAiur_Birth"/>
+        <SoundArray index="Ready" value="PhoenixAiur_Ready"/>
+        <SoundArray index="Help" value="PhoenixAiur_Help"/>
+        <SoundArray index="What" value="PhoenixAiur_What"/>
+        <SoundArray index="Yes" value="PhoenixAiur_Yes"/>
+        <SoundArray index="Attack" value="PhoenixAiur_Attack"/>
+        <SoundArray index="Pissed" value="PhoenixAiur_Pissed"/>
         <UnitIcon value="Assets\Textures\btn-unit-protoss-phoenix.dds"/>
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Protoss-Phoenix.dds"/>
@@ -122,28 +123,28 @@
         <ScaleMax value="0.850000,0.850000,0.850000"/>
         <ScaleMin value="0.850000,0.850000,0.850000"/>
     </CModel>
-    <CModel id="PhoenixPlacement" parent="Placement" Race="Protoss">
+    <CModel id="PhoenixAiurPlacement" parent="Placement" Race="Protoss">
         <Model value="Assets\Units\Protoss\Phoenix_Purifier_Placement\Phoenix_Purifier_Placement.m3"/>
         <Occlusion value="Show"/>
         <ScaleMax value="0.850000,0.850000,0.850000"/>
         <ScaleMin value="0.850000,0.850000,0.850000"/>
     </CModel>
-    <CModel id="PhoenixPortrait" parent="PhoenixPortraitBase">
+    <CModel id="PhoenixAiurPortrait" parent="PhoenixPortraitBase">
         <Model value="Assets\Portraits\Protoss\PhoenixPortrait\PhoenixPortrait.m3"/>
         <Image value="Assets\Textures\PhoenixPortrait_Static.dds"/>
         <Lighting value="PhoenixPortrait"/>
     </CModel>
 
-    <CSound id="Phoenix_Birth" parent="Protoss_Birth"/>
-    <CSound id="Phoenix_Ready" parent="Ready">
+    <CSound id="PhoenixAiur_Birth" parent="Protoss_Birth"/>
+    <CSound id="PhoenixAiur_Ready" parent="Ready">
         <EditorCategories value="Race:Protoss"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Phoenix\Phoenix_Ready00.ogg"/>
     </CSound>
-    <CSound id="Phoenix_Help" parent="Alert">
+    <CSound id="PhoenixAiur_Help" parent="Alert">
         <EditorCategories value="Race:Protoss"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Phoenix\PhoenixVoid_Help00.ogg"/>
     </CSound>
-    <CSound id="Phoenix_What" parent="ProtossAck">
+    <CSound id="PhoenixAiur_What" parent="ProtossAck">
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Phoenix\Phoenix_What00.ogg"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Phoenix\Phoenix_What01.ogg"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Phoenix\Phoenix_What02.ogg"/>
@@ -152,7 +153,7 @@
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Phoenix\Phoenix_What05.ogg"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Phoenix\Phoenix_What06.ogg"/>
     </CSound>
-    <CSound id="Phoenix_Yes" parent="ProtossAck">
+    <CSound id="PhoenixAiur_Yes" parent="ProtossAck">
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Phoenix\Phoenix_Yes00.ogg"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Phoenix\Phoenix_Yes01.ogg"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Phoenix\Phoenix_Yes02.ogg"/>
@@ -161,7 +162,7 @@
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Phoenix\Phoenix_Yes05.ogg"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Phoenix\Phoenix_Yes06.ogg"/>
     </CSound>
-    <CSound id="Phoenix_Attack" parent="ProtossAck">
+    <CSound id="PhoenixAiur_Attack" parent="ProtossAck">
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Phoenix\Phoenix_Attack00.ogg"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Phoenix\Phoenix_Attack01.ogg"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Phoenix\Phoenix_Attack02.ogg"/>
@@ -170,7 +171,7 @@
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Phoenix\Phoenix_Attack05.ogg"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Phoenix\Phoenix_Attack06.ogg"/>
     </CSound>
-    <CSound id="Phoenix_Pissed" parent="ProtossPissed">
+    <CSound id="PhoenixAiur_Pissed" parent="ProtossPissed">
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Phoenix\Phoenix_Pissed00.ogg"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Phoenix\Phoenix_Pissed01.ogg"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Phoenix\Phoenix_Pissed02.ogg"/>
@@ -183,7 +184,7 @@
         <Flags index="NeedsUpdate" value="1"/>
         <Flags index="NeedsTTS" value="1"/>
     </CSound>
-    <CSound id="Phoenix_Explode" parent="Combat">
+    <CSound id="PhoenixAiur_Explode" parent="Combat">
         <EditorCategories value="Race:Protoss"/>
         <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionLarge0.wav" Pitch="-3.000000,3.000000"/>
         <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionLarge1.wav" Pitch="-3.000000,3.000000"/>
@@ -199,7 +200,6 @@
         <Pitch value="5.000000,7.000000"/>
         <Volume value="-4.000000,-2.000000"/>
     </CSound>
-
     <CLight id="PhoenixAiur@Portrait" parent="default">
         <ToDInfoArray index="0" Id="PsionicWaveUp" AmbientColor="0.235294,0.309804,0.392157" Colorize="1">
             <Param index="HDRExposure" value="1.500000"/>
@@ -527,6 +527,7 @@
         <Icon value="Assets\Textures\btn-ability-protoss-dualgravitonbeam.dds"/>
         <AlertIcon value="Assets\Textures\btn-ability-protoss-dualgravitonbeam.dds"/>
     </CButton>
+    <CButton id="Cancel"/>
 
     <CAbilEffectTarget id="PhoenixAiur_GravitonBeamVoid">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>

@@ -1,0 +1,41 @@
+Button/Name/HighTemplarAiur=Обучить Высшего Тамплиера Айура
+Button/Tooltip/HighTemplarAiur=Могущественный пси-юнит. Может использовать Пси-Шторм, Обратную связь и Слияние в Архонта. Протосс (Aiur)
+Unit/Name/HighTemplarAiur=Высший Тамплиер Айура
+
+Button/Name/HighTemplarAiur_PsiStorm=Пси-Шторм
+Button/Tooltip/HighTemplarAiur_PsiStorm=Вызывает Пси-Шторм в указанной области, который наносит 10 урона врагам каждые 0,57 сек. и восстанавливает 14,3 щита союзникам каждые 0,25 сек. Длится 3 сек. Требует 75 ед. энергии.
+Abil/Name/HighTemplarAiur_PsiStorm=Пси-Шторм (исцеляющий)
+Behavior/Name/HighTemplarAiur_PsiStorm@Behavior=Пси-Шторм
+
+Button/Name/HighTemplarAiur_HealingStorm=Исцеляющий шторм
+Button/Tooltip/HighTemplarAiur_HealingStorm=Пассивная способность. Пси-Шторм также восстанавливает щиты союзным юнитам.
+
+Button/Name/HighTemplarAiur_Feedback=Обратная связь
+Button/Tooltip/HighTemplarAiur_Feedback=Наносит выбранному вражескому юниту урон, равный текущему запасу его энергии, и полностью истощает энергию. Требует 50 ед. энергии.
+Abil/Name/HighTemplarAiur_Feedback=Обратная связь
+Effect/Name/HighTemplarAiur_Feedback@Damage=Урон (Обратная связь)
+Effect/Name/HighTemplarAiur_Feedback@EnergyLoss=Потеря энергии
+
+Button/Name/HighTemplarAiur_ArchonWarp=Слияние в Архонта
+Button/Tooltip/HighTemplarAiur_ArchonWarp=Выбранные два Высших Тамплиера сливаются в могучего Архонта Айура, способного замедлять свои цели. Процесс слияния занимает 12 сек.
+Abil/Name/HighTemplarAiur_ArchonWarp=Слияние в Архонта
+
+Unit/Name/HighTemplarAiur_Archon=Архонт Айура
+Abil/Name/HighTemplarAiur_Archon_FinalAct=Финальный акт
+Behavior/Name/HighTemplarAiur_Archon_FinalAct=Финальный акт
+Behavior/Name/HighTemplarAiur_Archon_ShockAttack=Шоковая атака
+Behavior/Name/HighTemplarAiur_Archon_ShockAttackDebuff=Шоковая атака (замедление)
+Weapon/Name/HighTemplarAiur_Archon_Weapon=Пси-Разряд
+Effect/Name/HighTemplarAiur_Archon_Weapon@Damage=Урон (Пси-Разряд)
+
+Weapon/Name/HighTemplarAiur_Weapon=Пси-Всплеск
+Effect/Name/HighTemplarAiur_Weapon@Damage=Урон (Пси-Всплеск)
+
+Behavior/Name/HighTemplarAiur_DamageDisablesAttack=Блокировка атаки
+
+Validator/Name/HighTemplarAiur@Is=Это Высший Тамплиер Айура
+Validator/Name/HighTemplarAiur@Target=Цель — Высший Тамплиер Айура
+Validator/Name/HighTemplarAiur@Not=Это не Высший Тамплиер Айура
+Validator/Name/HighTemplarAiur@NotTarget=Цель — не Высший Тамплиер Айура
+
+Requirement/Name/HighTemplarAiur=Высший Тамплиер Айура
