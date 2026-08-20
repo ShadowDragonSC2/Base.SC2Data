@@ -6,7 +6,6 @@
         <LifeStart value="230"/>
         <LifeMax value="230"/>
         <LifeArmor value="2"/>
-        <Sight value="9"/>
         <WeaponArray Link="BMP_Weapon" Turret="BMP_Weapon@Turret"/>
         <WeaponArray Link="BMP_SecondWeapon" Turret="BMP_SecondWeapon@Turret"/>
 

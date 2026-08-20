@@ -19,7 +19,6 @@
         <LifeArmorName value="Unit/LifeArmorName/TerranInfantryArmor"/>
         <LateralAcceleration value="46.0625"/>
         <StationaryTurningRate value="999.8437"/>
-        <Sight value="9"/>
         <Food value="-3"/>
         <CostResource index="Minerals" value="200"/>
         <CostResource index="Vespene" value="100"/>

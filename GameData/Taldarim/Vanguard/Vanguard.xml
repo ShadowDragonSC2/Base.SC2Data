@@ -22,7 +22,6 @@
         <CostResource index="Vespene" value="100"/>
         <CostCategory value="Army"/>
         <Mob value="Campaign"/>
-        <Sight value="9"/>
         <Food value="-4"/>
         <Speed value="2.25"/>
         <Acceleration value="1000"/>
