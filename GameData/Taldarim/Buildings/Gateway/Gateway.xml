@@ -22,9 +22,9 @@
         <BuildTime value="65"/>
         <EditorCategories value="ObjectType:Structure,ObjectFamily:Melee"/>
         <AbilArray Link="que5"/>
-        <AbilArray Link="TaldarimGateway_Train"/>
         <AbilArray Link="Rally"/>
-        <AbilArray Link="UpgradeToWarpGate"/>
+        <AbilArray Link="TaldarimGateway_Train"/>
+        <AbilArray Link="TaldarimGateway_MorphToWarpgate"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Supplicant" Type="AbilCmd" AbilCmd="TaldarimGateway_Train,Train1"/>
             <LayoutButtons Face="Slayer" Type="AbilCmd" AbilCmd="TaldarimGateway_Train,Train2" Column="1"/>
@@ -33,9 +33,9 @@
             <LayoutButtons Face="BloodHunter" Type="AbilCmd" AbilCmd="TaldarimGateway_Train,Train5" Column="4"/>
 
             <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="que5,CancelLast" Row="2" Column="4"/>
-            <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="UpgradeToWarpGate,Cancel" Row="2" Column="4"/>
+            <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="TaldarimGateway_MorphToWarpgate,Cancel" Row="2" Column="4"/>
             <LayoutButtons Face="Rally" Type="AbilCmd" AbilCmd="Rally,Rally1" Row="1" Column="4"/>
-            <LayoutButtons Face="UpgradeToWarpGate" Type="AbilCmd" AbilCmd="UpgradeToWarpGate,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="TaldarimGateway_MorphToWarpgate" Type="AbilCmd" AbilCmd="TaldarimGateway_MorphToWarpgate,Execute" Row="2" Column="0"/>
         </CardLayouts>
         <GlossaryPriority value="22"/>
         <CostResource index="Minerals" value="150"/>
@@ -59,10 +59,10 @@
         <!-- Morph data -->
         <On Terms="BehaviorLevel.PowerUserQueue.Start; Level 0" Send="AnimSetPaused Morph"/>
         <On Terms="BehaviorLevel.PowerUserQueue.Stop; Level 0" Send="AnimSetPaused Morph 0"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom Gateway; MorphTo WarpGate" Send="Destroy"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom WarpGate; MorphTo Gateway" Send="Create"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom WarpGate; MorphTo Gateway" Send="AnimPlay Morph Morph,End 0 0.000000"/>
-        <On Terms="AbilMorph.*.Finish; MorphFrom WarpGate; MorphTo Gateway" Send="AnimClear Morph"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom TaldarimGateway; MorphTo TaldarimWarpgate" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom TaldarimWarpgate; MorphTo TaldarimGateway" Send="Create"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom TaldarimWarpgate; MorphTo TaldarimGateway" Send="AnimPlay Morph Morph,End 0 0.000000"/>
+        <On Terms="AbilMorph.*.Finish; MorphFrom TaldarimWarpgate; MorphTo TaldarimGateway" Send="AnimClear Morph"/>
         <ModelFlags index="AutomateGlobalLoops" value="0"/>
         <CreepHeightClass value="Small"/>
         <BarOffset value="140"/>
@@ -119,7 +119,7 @@
     <CModel id="TaldarimGateway@Portrait" parent="ExecutorPortrait"/>
     <CModel id="TaldarimGateway@DeathUnderConstruction" parent="ProtossBuildingBuildDeath"/>
 
-    <CSound id="TaldarimGateway@Explode" parent="Protoss_ExplosionLarge"/>
+    <CSound id="TaldarimGateway@Death" parent="Protoss_ExplosionLarge"/>
     <CSound id="TaldarimGateway@What" parent="Voice">
         <AssetArray File="Assets\Sounds\Protoss\Gateway\Gateway_What.ogg"/>
         <EditorCategories value="Race:Protoss"/>
@@ -144,6 +144,59 @@
         <AssetArray File="Assets\Sounds\Protoss\WarpGate\WarpGate_MorphToGateway2.wav"/>
         <Volume value="-3.000000,-3.000000"/>
     </CSound>
+
+    <!-- Taldarim Warpgate -->
+    
+    <CUnit id="TaldarimWarpgate" parent="TaldarimGateway">
+        <AbilArray index="4" Link="TaldarimWarpgate_MorphToGateway"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="9" Face="TaldarimWarpgate_MorphToGateway" Type="AbilCmd" AbilCmd="TaldarimWarpgate_MorphToGateway,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    
+    <CActorUnit id="TaldarimWarpgate" parent="ProtossCollection@Building" unitName="TaldarimWarpgate">
+        <On Terms="UnitConstruction.*.Start" Send="Create TaldarimProbe_Build@BuildMedium"/>
+        <Aliases value="_UnitHuge"/>
+        <Macros value="ProtossBuildingPowerUp"/>
+        <Macros value="VoidMPUnpoweredAnim"/>
+        <Macros value="QueueAnim"/>
+        <Macros value="GlobalLoopMacro"/>
+        <Macros value="GlobalLoopMacroMore"/>
+        <On Terms="ActorCreation" Send="AnimGroupApply Superior"/>
+        <!-- Morph data -->
+        <On Terms="BehaviorLevel.PowerUserQueue.Start; Level 0" Send="AnimSetPaused Morph"/>
+        <On Terms="BehaviorLevel.PowerUserQueue.Stop; Level 0" Send="AnimSetPaused Morph 0"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom TaldarimWarpgate; MorphTo TaldarimGateway" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom TaldarimGateway; MorphTo TaldarimWarpgate" Send="Create"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom TaldarimGateway; MorphTo TaldarimWarpgate" Send="AnimPlay Morph Morph 0 0.000000"/>
+        <On Terms="AbilMorph.*.Finish; MorphFrom TaldarimGateway; MorphTo TaldarimWarpgate" Send="AnimClear Morph"/>
+
+        <Model value="TaldarimGateway"/>
+        <PlacementModel value="TaldarimGateway@Placement"/>
+        <PortraitModel value="TaldarimGateway@Portrait"/>
+        <BuildModel value="TaldarimGateway@Birth"/>
+        <DeathArray index="Normal" ModelLink="TaldarimGateway@Death" SoundLink="TaldarimGateway@Death"/>
+
+        <GlossaryAnim value="Stand,Superior"/>
+
+        <ModelFlags index="AutomateGlobalLoops" value="0"/>
+        <CreepHeightClass value="Small"/>
+        <BarOffset value="140"/>
+        <BarWidth value="160"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Protoss-Gateway.dds"/>
+        </GroupIcon>
+        <NameOffset value="130"/>
+        <UnitFlags index="ShowBlobShadow" value="0"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Protoss-Gateway.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image value="Assets\Textures\Wireframe-Protoss-Gateway-Shield01.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-Gateway-Shield02.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-Gateway-Shield03.dds"/>
+        </WireframeShield>
+    </CActorUnit>
     
     <!-- ========= Abilities ========== -->
     
@@ -154,24 +207,78 @@
         <InfoArray index="Train1">
             <Button DefaultButtonFace="Supplicant"/>
             <Unit value="Supplicant"/>
+            <Unit value="Supplicant"/>
         </InfoArray>
         <InfoArray index="Train2">
             <Button DefaultButtonFace="Slayer" Requirements="HaveCyberneticsCore"/>
             <Unit value="Slayer"/>
         </InfoArray>
         <InfoArray index="Train3">
-            <Button DefaultButtonFace="Ascendant" Requirements="HaveTemplarArchives"/>
-            <Unit value="Ascendant"/>
-        </InfoArray>
-        <InfoArray index="Train4">
-            <Button DefaultButtonFace="BloodHunter" Requirements="HaveDarkShrine"/>
-            <Unit value="BloodHunter"/>
-        </InfoArray>
-        <InfoArray index="Train5">
             <Button DefaultButtonFace="Havoc" Requirements="HaveCyberneticsCore"/>
             <Unit value="Havoc"/>
         </InfoArray>
+        <InfoArray index="Train4">
+            <Button DefaultButtonFace="Ascendant" Requirements="HaveTemplarArchives"/>
+            <Unit value="Ascendant"/>
+        </InfoArray>
+        <InfoArray index="Train5">
+            <Button DefaultButtonFace="BloodHunter" Requirements="HaveDarkShrine"/>
+            <Unit value="BloodHunter"/>
+        </InfoArray>
         <Activity value="UI/Warping"/>
     </CAbilTrain>
+
+    <!-- Morph To Warpgate -->
+    <CButton id="TaldarimGateway_MorphToWarpgate">
+        <Icon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-warpgate.dds"/>
+    </CButton>
+    <CButton id="TaldarimWarpgate_MorphToGateway">
+        <Icon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-gateway.dds"/>
+    </CButton>
+    <CAbilMorph id="TaldarimGateway_MorphToWarpgate">
+        <CmdButtonArray index="Execute" DefaultButtonFace="TaldarimGateway_MorphToWarpgate" State="Restricted" Requirements="UseWarpGate"/>
+        <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="Birth" value="1"/>
+        <Flags index="DisableAbils" value="1"/>
+        <Flags index="FastBuild" value="1"/>
+        <Flags index="Produce" value="1"/>
+        <Flags index="ShowProgress" value="1"/>
+        <InfoArray Unit="TaldarimWarpgate">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="10"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="10"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="10"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="TaldarimWarpgate_MorphToGateway">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:MorphsandBurrows"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="TaldarimWarpgate_MorphToGateway"/>
+        <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="Birth" value="1"/>
+        <Flags index="DisableAbils" value="1"/>
+        <Flags index="FastBuild" value="1"/>
+        <Flags index="ShowProgress" value="1"/>
+        <Cost>
+            <Cooldown Link="WarpGateTrain" Location="Unit"/>
+        </Cost>
+        <InfoArray Unit="TaldarimGateway">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="10"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="10"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="10"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
 
 </Catalog>
