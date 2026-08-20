@@ -8,7 +8,6 @@
     <CUnit id="TaldarimPylon" parent="Generic_Protoss_Structure" race="Tald">
         <Facing value="270"/>
         <BehaviorArray index="0" Link="PowerSource"/>
-        <Race value="Tald"/>
         <Mob value="Campaign"/>
         <LifeStart value="300"/>
         <LifeMax value="300"/>
@@ -18,6 +17,7 @@
         <SeparationRadius value="1"/>
         <Footprint value="Footprint2x2Contour"/>
         <PlacementFootprint value="Footprint2x2"/>
+        <Food value="8"/>
         <ScoreMake value="50"/>
         <ScoreKill value="50"/>
         <ScoreResult value="BuildOrder"/>
