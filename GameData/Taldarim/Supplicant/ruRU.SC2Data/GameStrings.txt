@@ -1,0 +1,14 @@
+Unit/Name/Supplicant=Приверженец
+
+Button/Name/Supplicant=Вызвать приверженцев
+Button/Tooltip/Supplicant=Воин, ведущий бой на малой дистанции. Приносит себя в жертву, чтобы восстановить здоровье Алараку, когда тот близок к гибели. Приверженцы вызываются по двое.
+
+Button/Name/Supplicant_BloodShields=Кровавые щиты
+Button/Tooltip/Supplicant_BloodShields=Уменьшает урон от вражеских атак по щитам приверженцев.
+Upgrade/Name/Supplicant_BloodShields=Кровавые щиты
+
+Button/Name/Supplicant_SoulAugmentation=Твердость духа
+Button/Tooltip/Supplicant_SoulAugmentation=Прочность щитов приверженцев увеличивается на <d ref="Upgrade,Supplicant_SoulAugmentation,EffectArrayTemplate[0].Value"/> ед.
+Upgrade/Name/Supplicant_SoulAugmentation=Твердость духа
+
+Weapon/Name/Supplicant_Weapon=Кровавая сфера

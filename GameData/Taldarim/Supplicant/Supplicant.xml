@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    <!-- Requires: Button:UnitButton_OnlyGround[base.xml] -->
+    <!-- Requires: Unit:Generic_Protoss_Unit_Ground[protoss.xml] -->
+    <!-- Requires: Actor:AdvancedStandard_Ground[base.xml] -->
+    <!-- Requires: DataCollection:UnitGround[base.xml] -->
+    
+
+    <CButton id="Supplicant" parent="UnitButton_OnlyGround">
+        <Icon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-supplicant.dds"/>
+    </CButton>
+    
+    <CUnit id="Supplicant" parent="Generic_Protoss_Unit_Ground" race="Tald">
+        <Mob value="Campaign"/>
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="75"/>
+        <LifeMax value="75"/>
+        <ShieldsStart value="125"/>
+        <ShieldsMax value="125"/>
+        <Speed value="3"/>
+        <LateralAcceleration value="46.0625"/>
+        <Food value="-2"/>
+        <CostCategory value="Army"/>
+        <CostResource index="Minerals" value="75"/>
+        <EffectArray index="Birth" value="SupplicantBirth"/>
+        <EffectArray index="Death" value="AlarakTheStrongestSurvivePrestigeMechBuffSearch"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="AdeptPhaseShiftCancel,Execute" Row="2" Column="4"/>
+            <LayoutButtons Face="AlarakACMyLifefortheHighlord" Type="Passive" Row="2" Column="0"/>
+            <LayoutButtons Face="AlarakSupplicantMaxShields" Type="Passive" Requirements="HaveAlarakSupplicantMaxShields" Row="2" Column="2"/>
+            <LayoutButtons Face="PHSupplicantShieldArmor" Type="Passive" Requirements="HaveSupplicantShieldArmor" Row="2" Column="1"/>
+            <LayoutButtons Face="AlarakSupplicantSacrificeCDR" Type="Passive" Requirements="HaveAlarakSupplicantSacrificeCDR" Row="2" Column="3"/>
+            <LayoutButtons Face="SupplicantSacrificeCDRLocked" Type="Passive" Requirements="AlarakLevel15" Row="2" Column="3"/>
+        </CardLayouts>
+        <InnerRadius value="0.375"/>
+        <CargoSize value="2"/>
+        <SubgroupPriority value="104"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:FactionTaldarim"/>
+        <GlossaryPriority value="20"/>
+        <GlossaryStrongArray value="Zergling"/>
+        <GlossaryStrongArray value="Stalker"/>
+        <GlossaryStrongArray value="Marine"/>
+        <GlossaryWeakArray value="Roach"/>
+        <GlossaryWeakArray value="Zealot"/>
+        <GlossaryWeakArray value="Marauder"/>
+        <Level value="20"/>
+    </CUnit>
+    
+    <CActorUnit id="Supplicant" parent="AdvancedStandard_Ground" unitName="Supplicant">
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Adept_Land"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Templar_LandSweetener"/>
+        <On Terms="UnitMovementUpdate.*.Walk; AnimPlaying Spell" Send="AnimClear Spell"/>
+        <WalkAnimMoveSpeed value="3"/>
+        <BarOffset value="60"/>
+        <BarWidth value="42"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-protoss-supplicant-taldarim.dds"/>
+        </GroupIcon>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-supplicant.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-protoss-supplicant-taldarim.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image value="Assets\Textures\wireframe-protoss-supplicant-taldarim-shield01.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-supplicant-taldarim-shield02.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-supplicant-taldarim-shield03.dds"/>
+        </WireframeShield>
+    </CActorUnit>
+    
+    <CModel id="Supplicant" parent="Unit" Race="Protoss">
+        <Model value="Assets\Units\Protoss\Supplicant\Supplicant.m3"/>
+        <Occlusion value="Show"/>
+        <PlanetPanelCamera value="Star2CameraMid05"/>
+        <SquibTypeDefault value="Metal"/>
+        <TechPurchaseCamera value="Star2CameraMid05"/>
+        <UnitGlossaryCamera value="Star2CameraMid05"/>
+        <ScaleMax value="0.850000,0.850000,0.850000"/>
+        <ScaleMin value="0.850000,0.850000,0.850000"/>
+    </CModel>
+    <CModel id="Supplicant@Death" parent="UnitDeath">
+        <Model value="Assets\Units\Protoss\Supplicant_Death\Supplicant_Death.m3"/>
+        <Occlusion value="Show"/>
+        <LowQualityModel value="ProtossSpiritDeathLow"/>
+    </CModel>
+    <CModel id="Supplicant@Placement" parent="Placement">
+        <Model value="Assets\Units\Protoss\Supplicant_PlacementModel\Supplicant_PlacementModel.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.850000,0.850000,0.850000"/>
+        <ScaleMin value="0.850000,0.850000,0.850000"/>
+    </CModel>
+    <CModel id="Supplicant@WarpIn" parent="OneShotSpellFX">
+        <Model value="Assets\Units\Protoss\Supplicant_WarpIn\Supplicant_WarpIn.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <LowQualityModel value="ProtossUnitBirth"/>
+        <Occlusion value="Show"/>
+        <PlanetPanelCamera value="Star2CameraMid05"/>
+        <TechPurchaseCamera value="Star2CameraMid05"/>
+        <UnitGlossaryCamera value="Star2CameraMid05"/>
+        <ScaleMax value="0.850000,0.850000,0.850000"/>
+        <ScaleMin value="0.850000,0.850000,0.850000"/>
+    </CModel>
+    <CModel id="Supplicant@Portrait" parent="Portrait">
+        <Model value="Assets\Portraits\Protoss\Supplicant_Portrait\Supplicant_Portrait.m3"/>
+        <Image value="Assets\Textures\supplicantportrait_static.dds"/>
+    </CModel>
+    
+    <CSound id="Supplicant@Attack" parent="Voice">
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Attack00.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Attack01.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Attack02.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Attack03.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Attack04.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Attack05.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Attack06.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Supplicant@DeathVoice" parent="DeathVoice">
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Death00.wav"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Death01.wav"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Death02.wav"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Death03.wav"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Death04.wav"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Supplicant@Help" parent="Alert">
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Help00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Supplicant@Pissed" parent="Pissed">
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Pissed00.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Pissed01.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Pissed02.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Pissed03.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Pissed04.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Pissed05.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Pissed06.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Pissed07.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Pissed08.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Supplicant@Ready" parent="Ready">
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Ready00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Supplicant@What" parent="Voice">
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_What00.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_What01.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_What02.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_What03.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_What04.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_What05.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_What06.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Supplicant@Yes" parent="Voice">
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Yes00.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Yes01.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Yes02.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Yes03.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Yes04.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Yes05.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    
+    <CLight id="Supplicant@Portrait" parent="default">
+        <ToDInfoArray index="0" Id="RogueAI_BotHeal_Portrait" AmbientColor="0.188235,0.215686,0.286275" Colorize="1">
+            <Param index="HDRExposure" value="1.500000"/>
+            <Param index="HDRBloomThreshold" value="1.100000"/>
+            <Param index="HDRWhitePoint" value="1.850000"/>
+            <Param index="TerrainSpecularExp" value="11.210000"/>
+            <Param index="TerrainHDRSpecular" value="3.750000"/>
+            <Param index="CreepSpecularExp" value="30.000000"/>
+            <Param index="CreepHDRSpecMultiplier" value="3.000000"/>
+            <Param index="ColorizationContrast" value="1.066000"/>
+            <Param index="ColorizationHue" value="0.001000"/>
+            <Param index="ColorizationBlend" value="0.180000"/>
+            <DirectionalLight index="Key">
+                <Color value="0.694118,0.858824,1.000000"/>
+                <ColorMultiplier value="1.000000"/>
+                <SpecColorMultiplier value="3.126000"/>
+                <Direction value="0.265947,-0.585191,-0.766044"/>
+            </DirectionalLight>
+            <DirectionalLight index="Fill" Color="0.305882,0.345098,0.380392" ColorMultiplier="2.200000" Direction="0.889191,0.229133,0.396026"/>
+            <DirectionalLight index="Back" Color="0.921569,0.121569,0.003922" ColorMultiplier="0.733000" Direction="-0.668793,-0.021251,0.743145"/>
+        </ToDInfoArray>
+        <EditorCategories value="LightGroup:PortraitsUnitsProtoss"/>
+    </CLight>
+
+    <CRequirement id="Supplicant"/>
+    
+    <CValidatorUnitType id="Supplicant@Is" parent="IsUnit_Default" unit="Supplicant"/>
+    <CValidatorUnitType id="Supplicant@Target" parent="TargetIsUnit_Default" unit="Supplicant"/>
+    <CValidatorUnitType id="Supplicant@Not" parent="NotUnit_Default" unit="Supplicant"/>
+    <CValidatorUnitType id="Supplicant@NotTarget" parent="TargetNotUnit_Default" unit="Supplicant"/>
+    
+    <CDataCollectionUnit id="Supplicant" parent="UnitGround">
+        <DataRecord Entry="Button,Supplicant"/>
+        <DataRecord Entry="Unit,Supplicant"/>
+        <DataRecord Entry="Actor,Supplicant"/>
+        <DataRecord Entry="Model,Supplicant"/>
+        <DataRecord Entry="Model,Supplicant@Death"/>
+        <DataRecord Entry="Model,Supplicant@Placement"/>
+        <DataRecord Entry="Model,Supplicant@WarpIn"/>
+        <DataRecord Entry="Model,Supplicant@Portrait"/>
+        <DataRecord Entry="Light,Supplicant@Portrait"/>
+        <DataRecord Entry="Requirement,Supplicant"/>
+        <DataRecord Entry="Validator,Supplicant@Is"/>
+        <DataRecord Entry="Validator,Supplicant@Target"/>
+        <DataRecord Entry="Validator,Supplicant@Not"/>
+        <DataRecord Entry="Validator,Supplicant@NotTarget"/>
+        <TechInfoUpgradeUsed value="Supplicant_BloodShields"/>
+    </CDataCollectionUnit>
+
+    <!-- ========= Weapons ========== -->
+    
+    <!-- Supplicant_Weapon -->
+    <CWeaponLegacy id="Supplicant_Weapon">
+        <EditorCategories value="Race:Taldarim"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
+        <DisplayEffect value="Supplicant_Weapon@Damage"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="3"/>
+        <Period value="1.65"/>
+        <Effect value="Supplicant_Weapon@LM"/>
+        <DamagePoint value="0.125"/>
+    </CWeaponLegacy>
+    
+    <CEffectDamage id="Supplicant_Weapon@Damage" parent="DU_WEAP_MISSILE">
+        <EditorCategories value="Race:Taldarim"/>
+        <Kind value="Ranged"/>
+        <Amount value="5"/>
+        <Death value="Blast"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="Supplicant_Weapon@LM">
+        <EditorCategories value="Race:Taldarim"/>
+        <ImpactEffect value="Supplicant_Weapon@Damage"/>
+        <AmmoUnit value="Supplicant_Weapon@AttackMissile"/>
+    </CEffectLaunchMissile>
+    
+    <CActorAction id="Supplicant_Weapon@Attack" parent="GenericAttack" effectImpact="Supplicant_Weapon@Damage" effectLaunch="Supplicant_Weapon@LM">
+        <LaunchSiteOps Ops="SOpAttachWeaponRight"/>
+    </CActorAction>
+    <CActorMissile id="Supplicant_Weapon@AttackMissile" parent="GenericAttackMissile" unitName="Supplicant_Weapon@AttackMissile"/>
+    
+    <CModel id="Supplicant_Weapon@AttackLaunch" parent="LaunchFX">
+        <Model value="Assets\Effects\Protoss\Supplicant_COOP_Missile_Launch\Supplicant_COOP_Missile_Launch.m3"/>
+        <EditorCategories value="Race:Taldarim"/>
+    </CModel>
+    <CModel id="Supplicant_Weapon@AttackImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Protoss\Supplicant_COOP_Missile_Impact\Supplicant_COOP_Missile_Impact.m3"/>
+        <EditorCategories value="Race:Taldarim"/>
+    </CModel>
+    <CModel id="Supplicant_Weapon@AttackMissile" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\Supplicant_COOP_Missile\Supplicant_COOP_Missile.m3"/>
+        <EditorCategories value="Race:Taldarim"/>
+    </CModel>
+
+    <CSound id="Supplicant_Weapon@AttackImpact" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Supplicant_AttackImpact01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Supplicant_AttackImpact02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Supplicant_AttackImpact03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Supplicant_AttackImpact04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Supplicant_AttackImpact05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Supplicant_AttackImpact06.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Supplicant_AttackImpact07.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Supplicant_AttackImpact08.wav" FacialGroup=""/>
+        <DupeMuteCount value="3"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-7.000000,-7.000000"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeDestroyCount value="3"/>
+    </CSound>
+    <CSound id="Supplicant_Weapon@AttackLaunch" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Supplicant_AttackLaunch01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Supplicant_AttackLaunch02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Supplicant_AttackLaunch03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Supplicant_AttackLaunch04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Supplicant_AttackLaunch05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Supplicant_AttackLaunch06.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Supplicant_AttackLaunch07.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Supplicant_AttackLaunch08.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Supplicant_AttackLaunch09.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Supplicant_AttackLaunch10.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="3"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-11.000000,-4.000000"/>
+        <DupeDestroyCount value="3"/>
+    </CSound>
+    
+    <CMoverMissile id="Supplicant_Weapon@AttackMissile" parent="MissileDefault"/>
+    <CUnit id="Supplicant_Weapon@AttackMissile" parent="MISSILE">
+        <Race value="Prot"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Taldarim"/>
+    </CUnit>
+
+    <CDataCollectionUnit id="Supplicant_Weapon" parent="Weapon_Missile">
+        <DataRecord Entry="Weapon,Supplicant_Weapon"/>
+        <DataRecord Entry="Effect,Supplicant_Weapon@Damage"/>
+        <DataRecord Entry="Effect,Supplicant_Weapon@LM"/>
+        <DataRecord Entry="Actor,Supplicant_Weapon@Attack"/>
+        <DataRecord Entry="Actor,Supplicant_Weapon@AttackMissile"/>
+        <DataRecord Entry="Model,Supplicant_Weapon@AttackLaunch"/>
+        <DataRecord Entry="Model,Supplicant_Weapon@AttackImpact"/>
+        <DataRecord Entry="Model,Supplicant_Weapon@AttackMissile"/>
+        <DataRecord Entry="Sound,Supplicant_Weapon@AttackImpact"/>
+        <DataRecord Entry="Sound,Supplicant_Weapon@AttackLaunch"/>
+        <DataRecord Entry="Mover,Supplicant_Weapon@AttackMissile"/>
+        <DataRecord Entry="Unit,Supplicant_Weapon@AttackMissile"/>
+    </CDataCollectionUnit>
+
+    <!-- ========= Upgrades ========== -->
+    
+    <!-- Blood Shields -->
+    <CButton id="Supplicant_BloodShields">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-alarak-supplicantarmor.dds"/>
+    </CButton>
+
+    <CUpgrade id="Supplicant_BloodShields">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Race value="Tald"/>
+        <ScoreResult value="BuildOrder"/>
+        <EditorCategories value="Race:Taldarim,UpgradeType:Talents"/>
+        <AffectedUnitArray value="Supplicant"/>
+        <EffectArrayTemplate Reference="Unit,^ParamId^,ShieldArmor" Value="2"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-alarak-supplicantarmor.dds"/>
+    </CUpgrade>
+    
+    <CRequirement id="Supplicant_BloodShields@Have">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="Supplicant_BloodShields@Have_CU"/>
+    </CRequirement>
+    <CRequirementCountUpgrade id="Supplicant_BloodShields@Have_CU">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="Supplicant_BloodShields" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    
+    <CRequirement id="Supplicant_BloodShields@Learn">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="Supplicant_BloodShields@Learn_Not"/>
+    </CRequirement>
+    <CRequirementCountUpgrade id="Supplicant_BloodShields@Learn_QoB">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="Supplicant_BloodShields" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="Supplicant_BloodShields@Learn_Not">
+        <OperandArray index="0" value="Supplicant_BloodShields@Learn_QoB"/>
+    </CRequirementNot>
+
+    <CDataCollectionUnit id="Supplicant_BloodShields">
+        <DataRecord Entry="Button,Supplicant_BloodShields"/>
+        <DataRecord Entry="Upgrade,Supplicant_BloodShields"/>
+        <DataRecord Entry="Requirement,Supplicant_BloodShields@Have"/>
+        <DataRecord Entry="RequirementNode,Supplicant_BloodShields@Have_CU"/>
+        <DataRecord Entry="Requirement,Supplicant_BloodShields@Learn"/>
+        <DataRecord Entry="RequirementNode,Supplicant_BloodShields@Learn_QoB"/>
+        <DataRecord Entry="RequirementNode,Supplicant_BloodShields@Learn_Not"/>
+    </CDataCollectionUnit>
+
+    <!-- Soul Augmentation -->
+    <CButton id="Supplicant_SoulAugmentation">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-alarak-supplicantextrashields.dds"/>
+    </CButton>
+
+    <CUpgrade id="Supplicant_SoulAugmentation">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-alarak-supplicantextrashields.dds"/>
+        <Race value="Prot"/>
+        <ScoreResult value="BuildOrder"/>
+        <EffectArrayTemplate Reference="Unit,^ParamId^,ShieldsMax" Value="25"/>
+        <EffectArrayTemplate Reference="Unit,^ParamId^,ShieldsStart" Value="25"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <AffectedUnitArray value="Supplicant"/>
+    </CUpgrade>
+    
+    <CRequirement id="Supplicant_SoulAugmentation@Have">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="Supplicant_SoulAugmentation@Have_CU"/>
+    </CRequirement>
+    <CRequirementCountUpgrade id="Supplicant_SoulAugmentation@Have_CU">
+        <Count Link="Supplicant_SoulAugmentation" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    
+    <CRequirement id="Supplicant_SoulAugmentation@Learn">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Show" Link="Supplicant_SoulAugmentation@Learn_Not"/>
+    </CRequirement>
+    <CRequirementNot id="Supplicant_SoulAugmentation@Learn_Not">
+        <OperandArray index="0" value="Supplicant_SoulAugmentation@Have_CU"/>
+    </CRequirementNot>
+
+    <CDataCollectionUnit id="Supplicant_SoulAugmentation">
+        <DataRecord Entry="Button,Supplicant_SoulAugmentation"/>
+        <DataRecord Entry="Upgrade,Supplicant_SoulAugmentation"/>
+        <DataRecord Entry="Requirement,Supplicant_SoulAugmentation@Have"/>
+        <DataRecord Entry="RequirementNode,Supplicant_SoulAugmentation@Have_CU"/>
+        <DataRecord Entry="Requirement,Supplicant_SoulAugmentation@Learn"/>
+        <DataRecord Entry="RequirementNode,Supplicant_SoulAugmentation@Learn_Not"/>
+    </CDataCollectionUnit>
+
+
+</Catalog>
