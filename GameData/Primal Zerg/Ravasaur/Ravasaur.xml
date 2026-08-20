@@ -14,7 +14,6 @@
         <LifeArmorName value="Unit/LifeArmorName/PrimalZergArmor"/>
         <LateralAcceleration value="46.0625"/>
         <StationaryTurningRate value="999.8437"/>
-        <Sight value="9"/>
         <Radius value="0.75"/>
         <InnerRadius value="0.5"/>
         <CargoSize value="2"/>

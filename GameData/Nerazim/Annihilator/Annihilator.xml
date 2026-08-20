@@ -17,7 +17,6 @@
         <LifeStart value="200"/>
         <ShieldsMax value="100"/>
         <ShieldsStart value="100"/>
-        <Sight value="9"/>
         <Food value="-4"/>
         
         <CargoSize value="4"/>

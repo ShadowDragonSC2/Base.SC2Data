@@ -4,7 +4,7 @@
         <Icon value=""/>
     </CButton>
     
-    <CUnit id="DarkArchon" parent="Generic_Protoss_Unit_Ground" race="Prot">
+    <CUnit id="DarkArchon" parent="Generic_Protoss_Unit_Ground" race="Nera">
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
         <Mob value="Campaign"/>
         <LifeStart value="10"/>
@@ -16,7 +16,6 @@
         <ShieldsMax value="350"/>
         <Speed value="2.8125"/>
         <Food value="-4"/>
-        <Sight value="9"/>
         <Radius value="1"/>
         <KillXP value="80"/>
         <CargoSize value="4"/>

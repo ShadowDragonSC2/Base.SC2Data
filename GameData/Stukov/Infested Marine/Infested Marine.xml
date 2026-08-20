@@ -23,7 +23,6 @@
         <ScoreResult value="BuildOrder"/>
         <SubgroupPriority value="112"/>
         <MinimapRadius value="0.375"/>
-        <Sight value="9"/>
     </CUnit>
     <CUnit id="StukovInfestedMarine@Burrowed" parent="StukovInfestedMarine">
         <Collide index="Ground" value="0"/>

@@ -28,7 +28,6 @@
         <ShieldArmor value="0"/>
         <Speed value="2.813"/>
         <FlagArray index="Cloaked" value="1"/>
-        <Sight value="9"/>
         <LateralAcceleration value="46.0625"/>
         <Food value="-2"/>
         <Radius value="0.375"/>

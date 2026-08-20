@@ -28,7 +28,6 @@
         <SubgroupPriority value="5"/>
         <MinimapRadius value="0.375"/>
         <Collide index="Locust" value="1"/>
-        <Sight value="9"/>
         <AbilArray Link="Charge"/>
         <AbilArray Link="KhalaiZealot_Whirlwind"/>
         <CardLayouts index="0">

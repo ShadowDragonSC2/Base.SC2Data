@@ -10,7 +10,7 @@
         <Icon value="Assets\Textures\btn-unit-protoss-Corsair.dds"/>
     </CButton>
     
-    <CUnit id="Corsair" parent="Generic_Protoss_Unit_Air">
+    <CUnit id="Corsair" parent="Generic_Protoss_Unit_Air" race="Nera">
         <Attributes index="Light" value="1"/>
         <Attributes index="Mechanical" value="1"/>
         <LifeStart value="120"/>
@@ -22,7 +22,6 @@
         <Acceleration value="3.25"/>
         <StationaryTurningRate value="1499.9414"/>
         <TurningRate value="1499.9414"/>
-        <Sight value="9"/>
         <Food value="-2"/>
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="150"/>

@@ -28,7 +28,6 @@
         <ScoreKill value="100"/>
         <SubgroupPriority value="5"/>
         <MinimapRadius value="0.375"/>
-        <Sight value="9"/>
         <Attributes index="Light" value="1"/>
         <Attributes index="Mechanical" value="1"/>
         <GlossaryPriority value="20"/>
