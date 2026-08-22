@@ -16,6 +16,8 @@
         <Collide index="Small" value="1"/>
         <Collide index="Ground" value="1"/>
         <Collide index="ForceField" value="1"/>
+        <Collide index="Locust" value="1"/>
+        <DeathRevealRadius value="3"/>
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <CUnit default="1" id="Generic_Protoss_Unit_Air" parent="Generic_Protoss_Unit">
