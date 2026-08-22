@@ -29,3 +29,10 @@ Model/Name/Supplicant_Weapon@AttackMissile=Attack Missile
 Sound/Name/Supplicant_Weapon@AttackLaunch=Attack Launch
 Sound/Name/Supplicant_Weapon@AttackImpact=Attack Impact
 Mover/Name/Supplicant_Weapon@AttackMissile=Attack Missile
+
+DataCollectionPattern/Name/Supplicant_SoulAugmentationPattern/StartShields=+К начальному щиту
+DataCollectionPattern/Name/Supplicant_SoulAugmentationPattern/MaxShields=+К макс. щиту
+DataCollectionPattern/Name/Supplicant_SoulAugmentationPattern/RequirementHave=Требование
+DataCollectionPattern/Name/Supplicant_SoulAugmentationPattern/RequirementLearn=Требование для исследования
+DataCollectionPattern/Name/Supplicant_SoulAugmentationPattern/ButtonIcon=Значок кнопки
+DataCollectionPattern/Name/Supplicant_SoulAugmentationPattern/UpgradeIcon=Значок улучшения
