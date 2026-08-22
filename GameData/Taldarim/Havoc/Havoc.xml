@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Catalog>
     <CButton id="Havoc" parent="UnitButton_OnlyGround">
+        <EditorCategories value="Race:Taldarim"/>
         <Icon value="Assets\Textures\btn-unit-protoss-sentry-taldarim.dds"/>
     </CButton>
 
@@ -162,6 +163,7 @@
     </CSound>
 
     <CDataCollectionUnit id="Havoc" parent="UnitGround">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Taldarim,ObjectType:Unit"/>
         <DataRecord Entry="Button,Havoc"/>
         <DataRecord Entry="Unit,Havoc"/>
         <DataRecord Entry="Actor,Havoc"/>
@@ -181,6 +183,7 @@
     <!-- ============= Weapons ============= -->
 
     <CWeaponLegacy id="Havoc_Weapon">
+        <EditorCategories value="Race:Taldarim"/>
         <Range value="6"/>
         <Period value="0.79"/>
         <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
@@ -189,6 +192,7 @@
     <!-- ============= Abilities ============= -->
     <!-- TARGET LOCK -->
     <CButton id="Havoc_TargetLock">
+        <EditorCategories value="Race:Taldarim"/>
         <Icon value="Assets\Textures\btn-ability-protoss-targetlock.dds"/>
     </CButton>
 
@@ -348,20 +352,20 @@
     </CActorSound>
 
     <CSound id="Havoc_TargetLock@OnSound" parent="Spell">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray File="Assets\Sounds\SentryMonitor_Target_Ping_01.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\SentryMonitor_Target_Ping_03.wav" FacialGroup=""/>
         <Pitch value="-1.000000,-0.700000"/>
         <Volume value="-3.000000,-3.000000"/>
     </CSound>
     <CSound id="Havoc_TargetLock@PingSound" parent="Spell">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray File="Assets\Sounds\SentryMonitor_TargetLock_On_01.wav" FacialGroup=""/>
         <Pitch value="-9.000000,-8.700000"/>
         <Volume value="-8.000000,-8.000000"/>
     </CSound>
     <CSound id="Havoc_TargetLock@LoopSound" parent="Spell">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray File="Assets\Sounds\SentryMonitor_TargetBeam_Loop_01.wav" LoopCount="-1" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\SentryMonitor_TargetBeam_Loop_02.wav" LoopCount="-1" FacialGroup=""/>
         <Pitch value="-1.000000,-1.000000"/>
@@ -369,17 +373,20 @@
     </CSound>
     
     <CModel id="Havoc_TargetLock@Model" parent="OneShotSpellFX">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Effects\Protoss\TargetLockImpact\TargetLockImpact.m3"/>
     </CModel>
     <CModel id="Havoc_TargetLock@LargeModel" parent="OneShotSpellFX">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Effects\Protoss\TargetLockImpactLarge\TargetLockImpactLarge.m3"/>
     </CModel>
     <CModel id="Havoc_TargetLock@Beam" parent="PersistentSpellFX">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Effects\Protoss\TargetLockBeam\TargetLockBeam.m3"/>
-        <EditorCategories value="Race:Protoss"/>
     </CModel>
 
     <CDataCollectionUnit id="Havoc_TargetLock" parent="AbilityBase">
+        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Taldarim,ObjectType:Spell"/>
         <DataRecord Entry="Button,Havoc_TargetLock"/>
         <DataRecord Entry="Abil,Havoc_TargetLock"/>
         <DataRecord Entry="Behavior,Havoc_TargetLock@Target"/>
@@ -531,6 +538,7 @@
     </CSound>
 
     <CDataCollectionUnit id="Havoc_ForceField" parent="AbilityBase">
+        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Taldarim,ObjectType:Spell"/>
         <DataRecord Entry="Button,Havoc_ForceField"/>
         <DataRecord Entry="Abil,Havoc_ForceField"/>
         <DataRecord Entry="Behavior,Havoc_ForceField@TimedLife"/>
@@ -591,6 +599,7 @@
     </CModel>
 
     <CDataCollectionUnit id="Havoc_SquadSight" parent="AbilityBase">
+        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Taldarim,ObjectType:Spell"/>
         <DataRecord Entry="Button,Havoc_SquadSight"/>
         <DataRecord Entry="Behavior,Havoc_SquadSight@Aura"/>
         <DataRecord Entry="Behavior,Havoc_SquadSight@Buff"/>
