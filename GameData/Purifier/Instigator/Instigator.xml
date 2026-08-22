@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Catalog>    
+    <!-- Requires: Button:UnitButton_GroundAir[base.xml] -->
+    <!-- Requires: Unit:Generic_Protoss_Unit_Ground[protoss.xml] -->
+    <!-- Requires: Actor:AdvancedStandard_Ground[base.xml] -->
+    <!-- Requires: DataCollection:UnitGround[base.xml] -->
+    <!-- Requires: DataCollection:Weapon_Missile[base.xml] -->
+    
 
-<!-- Requires: Unit:Generic_Protoss_Unit_Ground[protoss.xml] -->
+    <CButton id="Instigator" parent="UnitButton_GroundAir">
+        <Icon value="Assets\Textures\btn-unit-protoss-stalker-purifier.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-protoss-stalker-purifier.dds"/>
+        <EditorCategories value="Race:Purifier"/>
+    </CButton>
 
-<!--Unit-->
     <CUnit id="Instigator" parent="Generic_Protoss_Unit_Ground" race="Puri">
         <SubgroupPriority value="17"/>
-        <DeathRevealRadius value="3"/>
         <LifeStart value="80"/>
         <LifeMax value="80"/>
         <LifeArmor value="1"/>
@@ -14,11 +22,7 @@
         <ShieldsMax value="80"/>
         <Speed value="2.9531"/>
         <LateralAcceleration value="46"/>
-        <StationaryTurningRate value="999.8437"/>
-        <TurningRate value="999.8437"/>
         <Food value="-2"/>
-        <DamageDealtXP value="1"/>
-        <DamageTakenXP value="1"/>
         <KillXP value="35"/>
         <Radius value="0.625"/>
         <SeparationRadius value="0.625"/>
@@ -26,25 +30,16 @@
         <CargoSize value="2"/>
         <ScoreMake value="175"/>
         <ScoreKill value="175"/>
-        <ScoreResult value="BuildOrder"/>
         <SubgroupPriority value="11"/>
-        <Collide index="Ground" value="1"/>
-        <Collide index="ForceField" value="1"/>
-        <Collide index="Small" value="1"/>
         <Sight value="10"/>
-        <AbilArray Link="ProgressRally"/>
-        <AbilArray Link="Instigator_BlinkMultiple"/>
+        <AbilArray Link="Instigator_Blink"/>
         <CardLayouts index = "0">
-            <LayoutButtons Face="Rally" Type="AbilCmd" AbilCmd="ProgressRally,Rally1" Row="2" Column="4"/>
-            <LayoutButtons Face="Instigator_BlinkMultiple" Type="AbilCmd" AbilCmd="Instigator_BlinkMultiple,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="Instigator_Blink" Type="AbilCmd" AbilCmd="Instigator_Blink,Execute" Row="2" Column="0"/>
         </CardLayouts>
         <Attributes index="Armored" value="1"/>
         <Attributes index="Mechanical" value="1"/>
-        <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
-        <GlossaryCategory value="Unit/Category/ProtossUnits"/>
-        <HotkeyCategory value="Unit/Category/ProtossUnits"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
         <GlossaryPriority value="30"/>
-        <CostCategory value="Army"/>
         <CostResource index="Minerals" value="125"/>
         <CostResource index="Vespene" value="50"/>
         <GlossaryStrongArray index="0" value="Reaper"/>
@@ -54,35 +49,18 @@
         <GlossaryWeakArray index="1" value="Zergling"/>
         <GlossaryWeakArray index="2" value="Immortal"/>
         <MinimapRadius value="0.625"/>
-        <WeaponArray Link="InstigatorWeapon"/>
         <Fidget>
             <ChanceArray index="Anim" value="5"/>
             <ChanceArray index="Idle" value="90"/>
             <ChanceArray index="Turn" value="5"/>
         </Fidget>
-        <ShieldRegenDelay value="10"/>
         <RepairTime value="42"/>
     </CUnit>
 
-    <CActorUnit id="Instigator" parent="GenericUnitBase" unitName="Instigator">
-        <ModelFlags index="OutlineEmitter" value="1"/>
-        <DeathArray index="Normal" ModelLink="Instigator@Death" SoundLink=""/>
-        <BuildModel value="Instigator@WarpIn"/>
-        <PortraitModel value="Instigator@Portrait"/>
+    <CActorUnit id="Instigator" parent="AdvancedStandard_Ground" unitName="Instigator">
+        <Aliases value="_UnitMedium"/>
         <WalkAnimMoveSpeed value="3.1328"/>
-        <PlacementModel value="Instigator@Placement"/>
-        <PlacementSound value="Protoss_BuildingPlacementSmall"/>
-        <On Terms="Behavior.Hallucination.On" Send="Create HallucinationBirthSoundMedium"/>
-        <On Terms="UnitDeathCustomize; ValidateUnit IsHallucination" Send="DeathCustomize Hallucination"/>
-        <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
-        <On Terms="WeaponStart.*.AttackStart; WeaponTargetElevation GE 20.000000" Send="AnimBracketStart Attack Attack,Superior"/>
-        <On Terms="WeaponStart.*.AttackStart; WeaponTargetElevation LE -20.000000" Send="AnimBracketStart Attack Attack,Inferior"/>
-        <On Terms="WeaponStart.*.AttackStart" Send="AnimBracketStart Attack Attack"/>
-        <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack"/>
-        <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
         <On Terms="UnitHeightUpdate.*.Land" Send="Create Stalker_Land"/>
-        <Macros value="TerrainSquibAnimations"/>
-        <DeathCustoms ModelLink="HallucinationDeath" SoundLink="Sentry_HallucinationDeathMedium" Name="Hallucination"/>
         <BarOffset value="70"/>
         <UnitIcon value="Assets\Textures\BTN-Unit-Protoss-Stalker-Purifier.dds"/>
         <HeroIcon value="Assets\Textures\BTN-Unit-Protoss-Stalker-Purifier.dds"/>
@@ -98,24 +76,10 @@
             <Image value="Assets\Textures\Wireframe-Protoss-Stalker-Purifier.dds"/>
         </Wireframe>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
-        <TerrainSquibs>
-            <MovementDistance value="0.150000,0.150000"/>
-            <IdlePeriod value="0.100000,0.250000"/>
-            <RangeUp value="0.600000"/>
-            <RangeDown value="1.000000"/>
-            <AttachQuery Methods="AMFilterCenter"/>
-            <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleLarge"/>
-        </TerrainSquibs>
-        <SoundArray index="Ready" value="Instigator@Ready"/>
-        <SoundArray index="Help" value="Instigator@Help"/>
-        <SoundArray index="What" value="Instigator@What"/>
-        <SoundArray index="Yes" value="Instigator@Yes"/>
-        <SoundArray index="Attack" value="Instigator@Attack"/>
-        <SoundArray index="Pissed" value="Instigator@Pissed"/>
-        <Aliases value="_UnitMedium"/>
     </CActorUnit>
 
     <CModel id="Instigator" parent="Unit" Race="Protoss">
+        <EditorCategories value="Race:Purifier"/>
         <Model value="Assets\Units\Protoss\Stalker_Purifier\Stalker_Purifier.m3"/>
         <RequiredAnims value="Assets\Units\Protoss\Stalker_SwarmAnims\Stalker_SwarmAnims.m3a"/>
         <Occlusion value="Show"/>
@@ -132,8 +96,8 @@
         <PlanetPanelCamera value="Star2CameraHigh10"/>
         <ShadowRadius value="1.087000"/>
     </CModel>
-
-    <CModel id="Instigator@Death" parent="UnitDeath" Race="Protoss">
+    <CModel id="Instigator@Death" parent="UnitDeath">
+        <EditorCategories value="Race:Purifier"/>
         <Model value="Assets\Units\Protoss\Stalker_Purifier_Death\Stalker_Purifier_Death.m3"/>
         <Events>
             <Anim value="Death,00"/>
@@ -235,42 +199,87 @@
         <Occlusion value="Show"/>
         <LowQualityModel value="ProtossMediumUnitDeathLow"/>
     </CModel>
-    <CModel id="Instigator@Placement" parent="Placement" Race="Protoss">
+    <CModel id="Instigator@Placement" parent="Placement">
+        <EditorCategories value="Race:Purifier"/>
         <Model value="Assets\Units\Protoss\StalkerPlacement\StalkerPlacement.m3"/>
         <Radius value="-1.000000"/>
-        <Lighting value="Stalker"/>
         <Occlusion value="Show"/>
         <ScaleMax value="0.690000,0.690000,0.690000"/>
         <ScaleMin value="0.690000,0.690000,0.690000"/>
         <SelectionRadius value="0.941600"/>
         <ShadowRadius value="0.941600"/>
     </CModel>
-
     <CModel id="Instigator@WarpIn" parent="OneShotSpellFX">
         <Model value="Assets\Units\Protoss\StalkerWarpIn\StalkerWarpIn.m3"/>
         <ScaleMax value="0.690000,0.690000,0.690000"/>
         <ScaleMin value="0.690000,0.690000,0.690000"/>
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Purifier"/>
         <LowQualityModel value="ProtossUnitBirth"/>
         <SelectionRadius value="0.724600"/>
         <ShadowRadius value="0.724600"/>
     </CModel>
-
-    <CModel id="Instigator@Portrait" parent="Portrait" Race="Protoss">
+    <CModel id="Instigator@Portrait" parent="Portrait">
+        <EditorCategories value="Race:Purifier"/>
         <Model value="Assets\Portraits\Protoss\Stalker_Purifier_Portrait\Stalker_Purifier_Portrait.m3"/>
-        <Lighting value="PortraitPurifierStalker"/>
         <Image value="Assets\Textures\purifierstalkerportrait_static.dds"/>
     </CModel>
 
-    <CButton id="Instigator">
-        <Icon value="Assets\Textures\btn-unit-protoss-stalker-purifier.dds"/>
-        <AlertIcon value="Assets\Textures\btn-unit-protoss-stalker-purifier.dds"/>
-        <EditorCategories value="Race:Protoss"/>
-        <HotkeyAlias value="DragoonPassive"/>
-    </CButton>
+    <CSound id="Instigator@Death" parent="Protoss_ExplosionMedium">
+        <EditorCategories value="Race:Purifier"/>
+    </CSound>
+    <CSound id="Instigator@Ready" parent="Ready">
+        <EditorCategories value="Race:Purifier"/>
+        <AssetArray File="Assets\Sounds\Instigator_Ready01.ogg" FacialGroup=""/>
+        <Pitch value="-0.300000,0.000000"/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="Instigator@What" parent="Voice">
+        <EditorCategories value="Race:Purifier"/>
+        <AssetArray File="Assets\Sounds\Instigator_What01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Instigator_What02.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Instigator_What03.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Instigator_What04.ogg" FacialGroup=""/>
+        <Pitch value="-0.300000,0.000000"/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
+    <CSound id="Instigator@Yes" parent="Voice">
+        <EditorCategories value="Race:Purifier"/>
+        <AssetArray File="Assets\Sounds\Instigator_Yes01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Instigator_Yes02.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Instigator_Yes03.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Instigator_Yes04.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Instigator_Attack02.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Instigator_Attack03.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Instigator_Attack01.ogg" FacialGroup=""/>
+        <Pitch value="-0.300000,0.000000"/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
+    <CSound id="Instigator@Attack" parent="Voice">
+        <EditorCategories value="Race:Purifier"/>
+        <AssetArray File="Assets\Sounds\Instigator_Attack01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Instigator_Attack02.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Instigator_Attack03.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Instigator_Yes01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Instigator_Yes02.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Instigator_Yes03.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Instigator_Yes04.ogg" FacialGroup=""/>
+        <Pitch value="-0.300000,0.000000"/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
+    <CSound id="Instigator@Help" parent="Alert">
+        <EditorCategories value="Race:Purifier"/>
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Executor\Alert_ProtossForcesUnderAttack.ogg" FacialGroup=""/>
+        <Volume value="-5.000000,-5.000000"/>
+    </CSound>
+    <CSound id="Instigator@Pissed" parent="Pissed">
+        <EditorCategories value="Race:Purifier"/>
+        <AssetArray File="Assets\Sounds\Instigator_Pissed01.ogg" FacialGroup=""/>
+        <Pitch value="-0.300000,0.000000"/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
 
-     <CLight id="Instigator@Portrait" parent="default">
-        <ToDInfoArray index="0" Id="PortraitPurifierStalker" AmbientColor="0.113725,0.050980,0.027451">
+    <CLight id="Instigator@Portrait" parent="default">
+        <ToDInfoArray index="0" Id="Instigator@Portrait" AmbientColor="0.113725,0.050980,0.027451">
             <Param index="HDRExposure" value="2.500000"/>
             <Param index="HDRBloomThreshold" value="0.500000"/>
             <Param index="ColorizationBlend" value="0.141000"/>
@@ -287,68 +296,17 @@
         <EditorCategories value="LightGroup:PortraitsUnitsProtoss"/>
     </CLight>
 
-    <CSound id="Instigator@Ready" parent="ProtossReady">
-        <AssetArray File="Assets\Sounds\Instigator_Ready01.ogg" FacialGroup=""/>
-        <Pitch value="-0.300000,0.000000"/>
-        <Volume value="-3.000000,-3.000000"/>
-    </CSound>
-
-    <CSound id="Instigator@What" parent="ProtossAck_Void">
-        <AssetArray File="Assets\Sounds\Instigator_What01.ogg" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\Instigator_What02.ogg" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\Instigator_What03.ogg" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\Instigator_What04.ogg" FacialGroup=""/>
-        <Pitch value="-0.300000,0.000000"/>
-        <Volume value="-6.000000,-6.000000"/>
-    </CSound>
-
-    <CSound id="Instigator@Yes" parent="ProtossAck_Void">
-        <AssetArray File="Assets\Sounds\Instigator_Yes01.ogg" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\Instigator_Yes02.ogg" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\Instigator_Yes03.ogg" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\Instigator_Yes04.ogg" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\Instigator_Attack02.ogg" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\Instigator_Attack03.ogg" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\Instigator_Attack01.ogg" FacialGroup=""/>
-        <Pitch value="-0.300000,0.000000"/>
-        <Volume value="-6.000000,-6.000000"/>
-    </CSound>
-
-    <CSound id="Instigator@Attack" parent="ProtossAck_Void">
-        <AssetArray File="Assets\Sounds\Instigator_Attack01.ogg" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\Instigator_Attack02.ogg" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\Instigator_Attack03.ogg" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\Instigator_Yes01.ogg" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\Instigator_Yes02.ogg" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\Instigator_Yes03.ogg" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\Instigator_Yes04.ogg" FacialGroup=""/>
-        <Pitch value="-0.300000,0.000000"/>
-        <Volume value="-6.000000,-6.000000"/>
-    </CSound>
-
-    <CSound id="Instigator@Help" parent="ProtossHelp">
-        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Executor\Alert_ProtossForcesUnderAttack.ogg" FacialGroup=""/>
-        <Volume value="-5.000000,-5.000000"/>
-    </CSound>
-
-    <CSound id="Instigator@Pissed" parent="ProtossPissed">
-        <AssetArray File="Assets\Sounds\Instigator_Pissed01.ogg" FacialGroup=""/>
-        <Pitch value="-0.300000,0.000000"/>
-        <Volume value="-6.000000,-6.000000"/>
-    </CSound>
-
-    <CSound id="Instigator@Explode" parent="Protoss_ExplosionMedium"/>
-
     <CDataCollectionUnit id="Instigator" parent="UnitGround">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Purifier,ObjectType:Unit"/>
         <DataRecord Entry="Button,Instigator"/>
-        <DataRecord Entry="Actor,Instigator"/>
         <DataRecord Entry="Unit,Instigator"/>
+        <DataRecord Entry="Actor,Instigator"/>
         <DataRecord Entry="Model,Instigator"/>
         <DataRecord Entry="Model,Instigator@Death"/>
         <DataRecord Entry="Model,Instigator@Placement"/>
         <DataRecord Entry="Model,Instigator@Portrait"/>
         <DataRecord Entry="Model,Instigator@WarpIn"/>
-        <DataRecord Entry="Sound,Instigator@Explode"/>
+        <DataRecord Entry="Sound,Instigator@Death"/>
         <DataRecord Entry="Sound,Instigator@Attack"/>
         <DataRecord Entry="Sound,Instigator@Help"/>
         <DataRecord Entry="Sound,Instigator@Pissed"/>
@@ -362,82 +320,66 @@
         <TechInfoUpgradeUsed value="ProtossShields@1"/>
         <TechInfoUpgradeUsed value="ProtossShields@2"/>
         <TechInfoUpgradeUsed value="ProtossShields@3"/>
-        <TechInfoUpgradeUsed value="ProtossGroundWeapons@1"/>
-        <TechInfoUpgradeUsed value="ProtossGroundWeapons@2"/>
-        <TechInfoUpgradeUsed value="ProtossGroundWeapons@3"/>
     </CDataCollectionUnit>
-<!--Weapon-->
-
-    <CWeaponLegacy id="InstigatorWeapon">
-        <EditorCategories value="Race:Protoss"/>
+    
+    <!-- ========= Weapons ========== -->
+    
+    <!-- Instigator Weapon -->
+    <CWeaponLegacy id="Instigator_Weapon">
+        <EditorCategories value="Race:Purifier"/>
+        <Effect value="Instigator_Weapon@LM"/>
+        <DisplayEffect value="Instigator_Weapon@Damage"/>
         <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
-        <DisplayEffect value="ParticleDisruptorsU"/>
+        <DisplayEffect value="Instigator_Weapon@LM"/>
         <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <Range value="6"/>
         <Period value="1.44"/>
     </CWeaponLegacy>
 
-    <CUnit id="InstigatorWeapon" parent="MISSILE">
-        <Race value="Prot"/>
-        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
-    </CUnit>
-
-    <CActorMissile id="InstigatorWeapon@AttackMissile" parent="GenericAttackMissile" unitName="InstigatorWeapon"/>
-
-    <CMoverMissile id="InstigatorWeapon" parent="MissileDefault"/>
-
-    <CActorAction id="InstigatorWeapon@Attack" parent="GenericAttack" effectImpact="InstigatorWeapon@U" effectLaunch="InstigatorWeapon">
-        <LaunchAssets Sound="InstigatorWeapon@AttackLaunch"/>
-        <ImpactMap index="None" Sound="InstigatorWeapon@AttackImpact"/>
-        <ImpactMap index="Flesh" ModelReaction="BloodTargetImpact"/>
-        <ImpactModel value="GenericAttackImpactModel"/>
-        <AcquisitionYawHalfArc value="7.500000"/>
-        <AcquisitionPitchHalfArc value="15.000000"/>
-        <AccuracyHalfArc value="10.000000"/>
-    </CActorAction>
-
-    <CEffectLaunchMissile id="InstigatorWeapon">
-        <EditorCategories value="Race:Protoss"/>
-        <ImpactEffect value="InstigatorWeapon@U"/>
-        <ValidatorArray index="0" value="InstigatorTargetFilters"/>
-        <ValidatorArray value=""/>
-        <AmmoUnit value="InstigatorWeapon"/>
+    <CEffectLaunchMissile id="Instigator_Weapon@LM">
+        <EditorCategories value="Race:Purifier"/>
+        <ImpactEffect value="Instigator_Weapon@Damage"/>
+        <AmmoUnit value="Instigator_Weapon@AttackMissile"/>
     </CEffectLaunchMissile>
-
-    <CEffectDamage id="InstigatorWeapon@U" parent="DU_WEAP_MISSILE">
-        <EditorCategories value="Race:Protoss"/>
+    <CEffectDamage id="Instigator_Weapon@Damage" parent="DU_WEAP_MISSILE">
+        <EditorCategories value="Race:Purifier"/>
         <Amount value="10"/>
         <AttributeBonus index="Armored" value="4"/>
     </CEffectDamage>
 
-    <CModel id="InstigatorWeapon" parent="MissileFX">
+    <CActorAction id="Instigator_Weapon@Attack" parent="GenericAttack" effectImpact="Instigator_Weapon@Damage" effectLaunch="Instigator_Weapon@LM">
+        <AcquisitionYawHalfArc value="7.500000"/>
+        <AcquisitionPitchHalfArc value="15.000000"/>
+        <AccuracyHalfArc value="10.000000"/>
+    </CActorAction>
+    <CActorMissile id="Instigator_Weapon@AttackMissile" parent="GenericAttackMissile" unitName="Instigator_Weapon@AttackMissile"/>
+
+    <CModel id="Instigator_Weapon@AttackMissile" parent="MissileFX">
         <Model value="Assets\Effects\Protoss\StalkerMissile\StalkerMissile.m3"/>
         <ScaleMax value="0.700000,0.700000,0.700000"/>
         <ScaleMin value="0.700000,0.700000,0.700000"/>
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Purifier"/>
         <SelectionRadius value="0.714000"/>
         <ShadowRadius value="0.714000"/>
     </CModel>
-
-    <CModel id="InstigatorWeapon@AttackImpact" parent="ImpactFX">
+    <CModel id="Instigator_Weapon@AttackImpact" parent="ImpactFX">
         <Model value="Assets\Effects\Protoss\StalkerMissileImpact\StalkerMissileImpact.m3"/>
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Purifier"/>
     </CModel>
 
-    <CSound id="InstigatorWeapon@AttackImpact">
+    <CSound id="Instigator_Weapon@AttackImpact">
         <Volume value="-12.040000,-12.040000"/>
         <AssetArray File="Assets\Sounds\Protoss\Stalker\Stalker_AttackImpact0.wav"/>
         <AssetArray File="Assets\Sounds\Protoss\Stalker\Stalker_AttackImpact1.wav"/>
         <AssetArray File="Assets\Sounds\Protoss\Stalker\Stalker_AttackImpact2.wav"/>
         <AssetArray File="Assets\Sounds\Protoss\Stalker\Stalker_AttackImpact3.wav"/>
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Purifier"/>
         <DupeDestroyCount value="3"/>
         <DupeMaximumMethod value="Replace"/>
         <DupeMuteCount value="3"/>
         <DupePrioritization value="Oldest"/>
     </CSound>
-
-    <CSound id="InstigatorWeapon@AttackLaunch">
+    <CSound id="Instigator_Weapon@AttackLaunch">
         <Pitch value="-0.890000,0.840000"/>
         <Volume value="-9.160000,-9.160000"/>
         <AssetArray File="Assets\Sounds\Protoss\Stalker\Stalker_AttackLaunch0.wav"/>
@@ -445,34 +387,51 @@
         <AssetArray File="Assets\Sounds\Protoss\Stalker\Stalker_AttackLaunch2.wav"/>
         <AssetArray File="Assets\Sounds\Protoss\Stalker\Stalker_AttackLaunch3.wav"/>
         <AssetArray File="Assets\Sounds\Protoss\Stalker\Stalker_AttackLaunch4.wav"/>
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Purifier"/>
         <DupeDestroyCount value="3"/>
         <DupeMaximumMethod value="Replace"/>
         <DupeMuteCount value="3"/>
         <DupePrioritization value="Oldest"/>
     </CSound>
 
-    <CDataCollectionUnit id="InstigatorWeapon" parent="Weapon_Missile">
-        <DataRecord Entry="Weapon,InstigatorWeapon"/>
-        <DataRecord Entry="Effect,InstigatorWeapon"/>
-        <DataRecord Entry="Effect,InstigatorWeapon@U"/>
-        <DataRecord Entry="Actor,InstigatorWeapon@Attack"/>
-        <DataRecord Entry="Sound,InstigatorWeapon@AttackImpact"/>
-        <DataRecord Entry="Sound,InstigatorWeapon@AttackLaunch"/>
-        <DataRecord Entry="Model,InstigatorWeapon@AttackImpact"/>
-        <DataRecord Entry="Unit,InstigatorWeapon"/>
-        <DataRecord Entry="Actor,InstigatorWeapon@AttackMissile"/>
-        <DataRecord Entry="Mover,InstigatorWeapon"/>
+    <CMoverMissile id="Instigator_Weapon@AttackMissile" parent="MissileDefault"/>
+
+    <CUnit id="Instigator_Weapon@AttackMissile" parent="MISSILE">
+        <Race value="Khal"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
+    </CUnit>
+
+    <CDataCollectionUnit id="Instigator_Weapon" parent="Weapon_Missile">
+        <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:Purifier,ObjectType:Projectile"/>
+        <DataRecord Entry="Weapon,Instigator_Weapon"/>
+        <DataRecord Entry="Effect,Instigator_Weapon@LM"/>
+        <DataRecord Entry="Effect,Instigator_Weapon@Damage"/>
+        <DataRecord Entry="Actor,Instigator_Weapon@Attack"/>
+        <DataRecord Entry="Actor,Instigator_Weapon@AttackMissile"/>
+        <DataRecord Entry="Model,Instigator_Weapon@AttackMissile"/>
+        <DataRecord Entry="Model,Instigator_Weapon@AttackImpact"/>
+        <DataRecord Entry="Sound,Instigator_Weapon@AttackImpact"/>
+        <DataRecord Entry="Sound,Instigator_Weapon@AttackLaunch"/>
+        <DataRecord Entry="Mover,Instigator_Weapon@AttackMissile"/>
+        <DataRecord Entry="Unit,Instigator_Weapon@AttackMissile"/>
         <TechInfoUpgradeUsed value="ProtossGroundWeapons@1"/>
         <TechInfoUpgradeUsed value="ProtossGroundWeapons@2"/>
         <TechInfoUpgradeUsed value="ProtossGroundWeapons@3"/>
     </CDataCollectionUnit>
-<!--Abilities-->
+    
+    <!-- ========= Abilities ========== -->
+    
+    <!-- Blink -->
+    <CButton id="Instigator_Blink">
+        <EditorCategories value="Race:Purifier"/>
+        <Icon value="Assets\Textures\BTN-Ability-Protoss-BlinkCharges.dds"/>
+        <AlertIcon value="Assets\Textures\BTN-Ability-Protoss-BlinkCharges.dds"/>
+    </CButton>
 
-    <CAbilEffectTarget id="Instigator_BlinkMultiple">
+    <CAbilEffectTarget id="Instigator_Blink">
         <AbilSetId value="Blnk"/>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Effect index="0" value="Instigator_BlinkMultiple"/>
+        <EditorCategories value="Race:Purifier,AbilityorEffectType:Units"/>
+        <Effect index="0" value="Instigator_Blink@Teleport"/>
         <Flags index="BestUnit" value="0"/>
         <Flags index="RequireTargetVision" value="0"/>
         <Cost>
@@ -487,60 +446,13 @@
         </Cost>
         <Range value="500"/>
         <Arc value="360"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="Instigator_BlinkMultiple">
+        <CmdButtonArray index="Execute" DefaultButtonFace="Instigator_Blink">
             <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
     </CAbilEffectTarget>
 
-    <CActorModel id="Instigator_BlinkMultiple@OriginModel" parent="ModelAnimationStyleOneShot">
-        <InheritType value="OneShot"/>
-        <Inherits index="BaseModelScale" value="1"/>
-        <Inherits index="Scale" value="1"/>
-        <On Terms="Effect.Instigator_BlinkMultiple.Start; At Source" Send="Create"/>
-        <Host Subject="_Selectable"/>
-        <HostSiteOps Ops="SOpAttachOriginStationary"/>
-    </CActorModel>
-
-    <CActorModel id="Instigator_BlinkMultiple@StopModel" parent="ModelAnimationStyleOneShot">
-        <InheritType value="OneShot"/>
-        <Inherits index="BaseModelScale" value="1"/>
-        <Inherits index="Scale" value="1"/>
-        <On Terms="Effect.Instigator_BlinkMultiple.Stop; At Source" Send="Create"/>
-        <Host Subject="_Selectable"/>
-        <HostSiteOps Ops="SOpAttachOrigin"/>
-    </CActorModel>
-
-    <CActorSound id="Instigator_Blink">
-        <On Terms="Effect.Instigator_BlinkMultiple.Stop; At Source" Send="Create"/>
-    </CActorSound>
-
-    <CModel id="Instigator_BlinkMultiple@OriginModel" parent="OneShotSpellFX">
-        <Model value="Assets\Effects\Protoss\Stalker_Purifier_BlinkOut\Stalker_Purifier_BlinkOut.m3"/>
-        <ScaleMax value="0.690000,0.690000,0.690000"/>
-        <ScaleMin value="0.690000,0.690000,0.690000"/>
-        <EditorCategories value="Race:Protoss"/>
-        <SelectionRadius value="0.833200"/>
-        <ShadowRadius value="0.833200"/>
-    </CModel>
-
-    <CModel id="Instigator_BlinkMultiple@StopModel" parent="OneShotSpellFX">
-        <Model value="Assets\Effects\Protoss\Stalker_Purifier_BlinkIn\Stalker_Purifier_BlinkIn.m3"/>
-        <EditorCategories value="Race:Protoss"/>
-    </CModel>
-
-    <CButton id="Instigator_BlinkMultiple">
-        <Icon value="Assets\Textures\BTN-Ability-Protoss-BlinkCharges.dds"/>
-        <AlertIcon value="Assets\Textures\BTN-Ability-Protoss-BlinkCharges.dds"/>
-    </CButton>
-
-   <CSound id="Instigator_Blink" parent="Spell">
-        <Volume value="-6.120000,-6.120000"/>
-        <AssetArray File="Assets\Sounds\Protoss\Stalker\Stalker_Blink0.wav"/>
-        <EditorCategories value="Race:Protoss"/>
-    </CSound>
-
-    <CEffectTeleport id="Instigator_BlinkMultiple">
-        <EditorCategories value="Race:Protoss"/>
+    <CEffectTeleport id="Instigator_Blink@Teleport">
+        <EditorCategories value="Race:Purifier"/>
         <ClearQueuedOrders value="0"/>
         <PlacementAround Value="CasterUnit"/>
         <PlacementRange value="8"/>
@@ -549,17 +461,56 @@
         <TargetLocation Value="TargetPoint"/>
         <TeleportFlags index="TestCliff" value="1"/>
     </CEffectTeleport>
+
+    <CActorModel id="Instigator_Blink@LaunchModel" parent="ModelAnimationStyleOneShot">
+        <InheritType value="OneShot"/>
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <On Terms="Effect.Instigator_Blink@Teleport.Start; At Source" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOriginStationary"/>
+    </CActorModel>
+    <CActorModel id="Instigator_Blink@ImpactModel" parent="ModelAnimationStyleOneShot">
+        <InheritType value="OneShot"/>
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <On Terms="Effect.Instigator_Blink@Teleport.Stop; At Source" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOrigin"/>
+    </CActorModel>
+    <CActorSound id="Instigator_Blink@ImpactSound" parent="SoundOneShot">
+        <On Terms="Effect.Instigator_Blink@Teleport.Stop; At Source" Send="Create"/>
+    </CActorSound>
+
+    <CModel id="Instigator_Blink@LaunchModel" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\Stalker_Purifier_BlinkOut\Stalker_Purifier_BlinkOut.m3"/>
+        <ScaleMax value="0.690000,0.690000,0.690000"/>
+        <ScaleMin value="0.690000,0.690000,0.690000"/>
+        <EditorCategories value="Race:Purifier"/>
+        <SelectionRadius value="0.833200"/>
+        <ShadowRadius value="0.833200"/>
+    </CModel>
+    <CModel id="Instigator_Blink@ImpactModel" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\Stalker_Purifier_BlinkIn\Stalker_Purifier_BlinkIn.m3"/>
+        <EditorCategories value="Race:Purifier"/>
+    </CModel>
+
+    <CSound id="Instigator_Blink@ImpactSound" parent="Spell">
+        <Volume value="-6.120000,-6.120000"/>
+        <AssetArray File="Assets\Sounds\Protoss\Stalker\Stalker_Blink0.wav"/>
+        <EditorCategories value="Race:Purifier"/>
+    </CSound>
     
-    <CDataCollectionUnit id="Instigator_BlinkMultiple">
+    <CDataCollectionUnit id="Instigator_Blink">
         <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Purifier,ObjectType:Spell"/>
-        <DataRecord Entry="Button,Instigator_BlinkMultiple"/>
-        <DataRecord Entry="Abil,Instigator_BlinkMultiple"/>
-        <DataRecord Entry="Effect,Instigator_BlinkMultiple"/>
-        <DataRecord Entry="Actor,Instigator_BlinkMultiple@OriginModel"/>
-        <DataRecord Entry="Actor,Instigator_BlinkMultiple@StopModel"/>
-        <DataRecord Entry="Actor,Instigator_Blink"/>
-        <DataRecord Entry="Model,Instigator_BlinkMultiple@OriginModel"/>
-        <DataRecord Entry="Model,Instigator_BlinkMultiple@StopModel"/>
-        <DataRecord Entry="Sound,Instigator_Blink"/>
+        <DataRecord Entry="Button,Instigator_Blink"/>
+        <DataRecord Entry="Abil,Instigator_Blink"/>
+        <DataRecord Entry="Effect,Instigator_Blink@Teleport"/>
+        <DataRecord Entry="Actor,Instigator_Blink@LaunchModel"/>
+        <DataRecord Entry="Actor,Instigator_Blink@ImpactModel"/>
+        <DataRecord Entry="Actor,Instigator_Blink@ImpactSound"/>
+        <DataRecord Entry="Model,Instigator_Blink@LaunchModel"/>
+        <DataRecord Entry="Model,Instigator_Blink@ImpactModel"/>
+        <DataRecord Entry="Sound,Instigator_Blink@ImpactSound"/>
     </CDataCollectionUnit>
 </Catalog>
