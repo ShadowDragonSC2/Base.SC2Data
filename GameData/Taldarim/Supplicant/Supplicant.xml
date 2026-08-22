@@ -4,9 +4,11 @@
     <!-- Requires: Unit:Generic_Protoss_Unit_Ground[protoss.xml] -->
     <!-- Requires: Actor:AdvancedStandard_Ground[base.xml] -->
     <!-- Requires: DataCollection:UnitGround[base.xml] -->
+    <!-- Requires: DataCollection:UpgradeStatsBase[base.xml] -->
     
 
     <CButton id="Supplicant" parent="UnitButton_OnlyGround">
+        <EditorCategories value="Race:Taldarim"/>
         <Icon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-supplicant.dds"/>
     </CButton>
     
@@ -70,6 +72,7 @@
     </CActorUnit>
     
     <CModel id="Supplicant" parent="Unit" Race="Protoss">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Units\Protoss\Supplicant\Supplicant.m3"/>
         <Occlusion value="Show"/>
         <PlanetPanelCamera value="Star2CameraMid05"/>
@@ -80,19 +83,20 @@
         <ScaleMin value="0.850000,0.850000,0.850000"/>
     </CModel>
     <CModel id="Supplicant@Death" parent="UnitDeath">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Units\Protoss\Supplicant_Death\Supplicant_Death.m3"/>
         <Occlusion value="Show"/>
         <LowQualityModel value="ProtossSpiritDeathLow"/>
     </CModel>
     <CModel id="Supplicant@Placement" parent="Placement">
         <Model value="Assets\Units\Protoss\Supplicant_PlacementModel\Supplicant_PlacementModel.m3"/>
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Taldarim"/>
         <ScaleMax value="0.850000,0.850000,0.850000"/>
         <ScaleMin value="0.850000,0.850000,0.850000"/>
     </CModel>
     <CModel id="Supplicant@WarpIn" parent="OneShotSpellFX">
         <Model value="Assets\Units\Protoss\Supplicant_WarpIn\Supplicant_WarpIn.m3"/>
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Taldarim"/>
         <LowQualityModel value="ProtossUnitBirth"/>
         <Occlusion value="Show"/>
         <PlanetPanelCamera value="Star2CameraMid05"/>
@@ -102,11 +106,13 @@
         <ScaleMin value="0.850000,0.850000,0.850000"/>
     </CModel>
     <CModel id="Supplicant@Portrait" parent="Portrait">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Portraits\Protoss\Supplicant_Portrait\Supplicant_Portrait.m3"/>
         <Image value="Assets\Textures\supplicantportrait_static.dds"/>
     </CModel>
     
     <CSound id="Supplicant@Attack" parent="Voice">
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Attack00.ogg"/>
         <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Attack01.ogg"/>
         <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Attack02.ogg"/>
@@ -118,6 +124,7 @@
         <Flags index="NeedsTTS" value="1"/>
     </CSound>
     <CSound id="Supplicant@DeathVoice" parent="DeathVoice">
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Death00.wav"/>
         <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Death01.wav"/>
         <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Death02.wav"/>
@@ -127,11 +134,13 @@
         <Flags index="NeedsTTS" value="1"/>
     </CSound>
     <CSound id="Supplicant@Help" parent="Alert">
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Help00.ogg"/>
         <Flags index="NeedsUpdate" value="1"/>
         <Flags index="NeedsTTS" value="1"/>
     </CSound>
     <CSound id="Supplicant@Pissed" parent="Pissed">
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Pissed00.ogg"/>
         <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Pissed01.ogg"/>
         <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Pissed02.ogg"/>
@@ -145,11 +154,13 @@
         <Flags index="NeedsTTS" value="1"/>
     </CSound>
     <CSound id="Supplicant@Ready" parent="Ready">
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Ready00.ogg"/>
         <Flags index="NeedsUpdate" value="1"/>
         <Flags index="NeedsTTS" value="1"/>
     </CSound>
     <CSound id="Supplicant@What" parent="Voice">
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_What00.ogg"/>
         <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_What01.ogg"/>
         <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_What02.ogg"/>
@@ -161,6 +172,7 @@
         <Flags index="NeedsTTS" value="1"/>
     </CSound>
     <CSound id="Supplicant@Yes" parent="Voice">
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Yes00.ogg"/>
         <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Yes01.ogg"/>
         <AssetArray File="LocalizedData/Sounds/VO/Protoss/ZealotAlarak_Yes02.ogg"/>
@@ -203,6 +215,7 @@
     <CValidatorUnitType id="Supplicant@NotTarget" parent="TargetNotUnit_Default" unit="Supplicant"/>
     
     <CDataCollectionUnit id="Supplicant" parent="UnitGround">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Taldarim,ObjectType:Unit"/>
         <DataRecord Entry="Button,Supplicant"/>
         <DataRecord Entry="Unit,Supplicant"/>
         <DataRecord Entry="Actor,Supplicant"/>
@@ -218,6 +231,7 @@
         <DataRecord Entry="Validator,Supplicant@Not"/>
         <DataRecord Entry="Validator,Supplicant@NotTarget"/>
         <TechInfoUpgradeUsed value="Supplicant_BloodShields"/>
+        <TechInfoUpgradeUsed value="Supplicant_SoulAugmentation"/>
     </CDataCollectionUnit>
 
     <!-- ========= Weapons ========== -->
@@ -265,7 +279,7 @@
     </CModel>
 
     <CSound id="Supplicant_Weapon@AttackImpact" parent="Combat">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray File="Assets\Sounds\Supplicant_AttackImpact01.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\Supplicant_AttackImpact02.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\Supplicant_AttackImpact03.wav" FacialGroup=""/>
@@ -281,7 +295,7 @@
         <DupeDestroyCount value="3"/>
     </CSound>
     <CSound id="Supplicant_Weapon@AttackLaunch" parent="Combat">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray File="Assets\Sounds\Supplicant_AttackLaunch01.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\Supplicant_AttackLaunch02.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\Supplicant_AttackLaunch03.wav" FacialGroup=""/>
@@ -305,7 +319,15 @@
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:Taldarim"/>
     </CUnit>
 
+    <CWeaponLegacy id="SupplcantOrbWeap">
+        <EditorCategories value="Race:Taldarim"/>
+    </CWeaponLegacy>
+    <CDataCollectionUnit id="SupplcantOrbWeap">
+        <EditorCategories value="DataGroup:Weapon,DataFamily:Melee,Race:Taldarim,ObjectType:Projectile"/>
+    </CDataCollectionUnit>
+
     <CDataCollectionUnit id="Supplicant_Weapon" parent="Weapon_Missile">
+        <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:Taldarim,ObjectType:Projectile"/>
         <DataRecord Entry="Weapon,Supplicant_Weapon"/>
         <DataRecord Entry="Effect,Supplicant_Weapon@Damage"/>
         <DataRecord Entry="Effect,Supplicant_Weapon@LM"/>
@@ -324,6 +346,7 @@
     
     <!-- Blood Shields -->
     <CButton id="Supplicant_BloodShields">
+        <EditorCategories value="Race:Taldarim"/>
         <Icon value="Assets\Textures\btn-upgrade-protoss-alarak-supplicantarmor.dds"/>
     </CButton>
 
@@ -338,7 +361,7 @@
     </CUpgrade>
     
     <CRequirement id="Supplicant_BloodShields@Have">
-        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <EditorCategories value="Race:Taldarim,TechType:Ability"/>
         <NodeArray index="Use" Link="Supplicant_BloodShields@Have_CU"/>
     </CRequirement>
     <CRequirementCountUpgrade id="Supplicant_BloodShields@Have_CU">
@@ -347,7 +370,7 @@
     </CRequirementCountUpgrade>
     
     <CRequirement id="Supplicant_BloodShields@Learn">
-        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <EditorCategories value="Race:Taldarim,TechType:Ability"/>
         <NodeArray index="Show" Link="Supplicant_BloodShields@Learn_Not"/>
     </CRequirement>
     <CRequirementCountUpgrade id="Supplicant_BloodShields@Learn_QoB">
@@ -359,6 +382,7 @@
     </CRequirementNot>
 
     <CDataCollectionUnit id="Supplicant_BloodShields">
+        <EditorCategories value="DataGroup:Research,DataFamily:Campaign,Race:Taldarim,ObjectType:Permanent"/>
         <DataRecord Entry="Button,Supplicant_BloodShields"/>
         <DataRecord Entry="Upgrade,Supplicant_BloodShields"/>
         <DataRecord Entry="Requirement,Supplicant_BloodShields@Have"/>
@@ -370,6 +394,7 @@
 
     <!-- Soul Augmentation -->
     <CButton id="Supplicant_SoulAugmentation">
+        <EditorCategories value="Race:Taldarim"/>
         <Icon value="Assets\Textures\btn-upgrade-protoss-alarak-supplicantextrashields.dds"/>
     </CButton>
 
@@ -380,12 +405,12 @@
         <ScoreResult value="BuildOrder"/>
         <EffectArrayTemplate Reference="Unit,^ParamId^,ShieldsMax" Value="25"/>
         <EffectArrayTemplate Reference="Unit,^ParamId^,ShieldsStart" Value="25"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <EditorCategories value="Race:Taldarim,UpgradeType:Talents"/>
         <AffectedUnitArray value="Supplicant"/>
     </CUpgrade>
     
     <CRequirement id="Supplicant_SoulAugmentation@Have">
-        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <EditorCategories value="Race:Taldarim,TechType:Ability"/>
         <NodeArray index="Use" Link="Supplicant_SoulAugmentation@Have_CU"/>
     </CRequirement>
     <CRequirementCountUpgrade id="Supplicant_SoulAugmentation@Have_CU">
@@ -393,14 +418,25 @@
     </CRequirementCountUpgrade>
     
     <CRequirement id="Supplicant_SoulAugmentation@Learn">
-        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <EditorCategories value="Race:Taldarim,TechType:Ability"/>
         <NodeArray index="Show" Link="Supplicant_SoulAugmentation@Learn_Not"/>
     </CRequirement>
     <CRequirementNot id="Supplicant_SoulAugmentation@Learn_Not">
         <OperandArray index="0" value="Supplicant_SoulAugmentation@Have_CU"/>
     </CRequirementNot>
 
-    <CDataCollectionUnit id="Supplicant_SoulAugmentation">
+    <CDataCollectionPattern id="Supplicant_SoulAugmentationPattern">
+        <Fields Reference="Button,^ParamId^,Icon" NameOverride="DataCollectionPattern/Name/Supplicant_SoulAugmentationPattern/ButtonIcon"/>
+        <Fields Reference="Upgrade,^ParamId^,Icon" NameOverride="DataCollectionPattern/Name/Supplicant_SoulAugmentationPattern/UpgradeIcon"/>
+        <Fields Reference="Upgrade,^ParamId^,EffectArrayTemplate[0].Value" NameOverride="DataCollectionPattern/Name/Supplicant_SoulAugmentationPattern/StartShields"/>
+        <Fields Reference="Upgrade,^ParamId^,EffectArrayTemplate[1].Value" NameOverride="DataCollectionPattern/Name/Supplicant_SoulAugmentationPattern/MaxShields"/>
+        <Fields Reference="Requirement,^ParamId^@Have,NodeArray" NameOverride="DataCollectionPattern/Name/Supplicant_SoulAugmentationPattern/RequirementHave"/>
+        <Fields Reference="Requirement,^ParamId^@Learn,NodeArray" NameOverride="DataCollectionPattern/Name/Supplicant_SoulAugmentationPattern/RequirementLearn"/>
+    </CDataCollectionPattern>
+
+    <CDataCollectionUnit id="Supplicant_SoulAugmentation" parent="UpgradeStatsBase">
+        <EditorCategories value="DataGroup:Research,DataFamily:Campaign,Race:Taldarim,ObjectType:Permanent"/>
+        <Pattern value="Supplicant_SoulAugmentationPattern"/>
         <DataRecord Entry="Button,Supplicant_SoulAugmentation"/>
         <DataRecord Entry="Upgrade,Supplicant_SoulAugmentation"/>
         <DataRecord Entry="Requirement,Supplicant_SoulAugmentation@Have"/>
