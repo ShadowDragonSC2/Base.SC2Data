@@ -110,9 +110,11 @@
     </CActorForceSphere>
     
     <CModel id="TaldarimMothership@DeathRagdoll" parent="MothershipDeathRagdollBase">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Units\Protoss\Mothership_Taldarim_Collection_DeathRagdoll\Mothership_Taldarim_Collection_DeathRagdoll.m3"/>
     </CModel>
     <CModel id="TaldarimMothership" parent="Unit">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Units\Protoss\MotherShip_Taldarim\MotherShip_Taldarim.m3"/>
         <AttachProps Id="Ref_Weapon 01">
             <Keys index="SetA" value="0"/>
@@ -145,27 +147,34 @@
         <UnitGlossaryCamera value="Star2CameraLow20"/>
     </CModel>
     <CModel id="TaldarimMothership@Death" parent="UnitDeath">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Units\Protoss\MotherShip_Taldarim_Death\MotherShip_Taldarim_Death.m3"/>
         <LowQualityModel value="ProtossLargeTaldarimUnitDeathLow"/>
     </CModel>
     <CModel id="TaldarimMothership@Placement" parent="Placement">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Units\Protoss\MotherShip_Taldarim_Placement\MotherShip_Taldarim_Placement.m3"/>
         <Occlusion value="Show"/>
         <ScaleMax value="0.600000,0.600000,0.600000"/>
         <ScaleMin value="0.600000,0.600000,0.600000"/>
     </CModel>
     <CModel id="TaldarimMothership@WarpIn" parent="OneShotSpellFX">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Units\Protoss\MotherShip_Taldarim_WarpIn\MotherShip_Taldarim_WarpIn.m3"/>
         <ScaleMax value="0.600000,0.600000,0.600000"/>
         <ScaleMin value="0.600000,0.600000,0.600000"/>
     </CModel>
     <CModel id="TaldarimMothership@Portrait" parent="Portrait">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Portraits\Protoss\MothershipTalDarimEx2Portrait\MothershipTalDarimEx2Portrait.m3"/>
         <Image value="Assets\Textures\mothershiptaldarimportrait_static.dds"/>
     </CModel>
 
-    <CSound id="TaldarimMothership@Death" parent="Protoss_ExplosionLarge"/>
+    <CSound id="TaldarimMothership@Death" parent="Protoss_ExplosionLarge">
+        <EditorCategories value="Race:Taldarim"/>
+    </CSound>
     <CSound id="TaldarimMothership@Attack" parent="ProtossAck_Void">
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray TemplateParam="MothershipVoid_Attack00"/>
         <AssetArray TemplateParam="MothershipVoid_Attack01"/>
         <AssetArray TemplateParam="MothershipVoid_Attack02"/>
@@ -179,6 +188,7 @@
         <Volume value="-1.000000,-1.000000"/>
     </CSound>
     <CSound id="TaldarimMothership@Help" parent="Alert">
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray TemplateParam="MothershipVoid_Help00"/>
         <Flags index="NeedsUpdate" value="1"/>
         <Flags index="NeedsTTS" value="1"/>
@@ -186,6 +196,7 @@
         <Volume value="0.000000,0.000000"/>
     </CSound>
     <CSound id="TaldarimMothership@Pissed" parent="Pissed">
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray TemplateParam="MothershipVoid_Pissed00"/>
         <AssetArray TemplateParam="MothershipVoid_Pissed01"/>
         <AssetArray TemplateParam="MothershipVoid_Pissed02"/>
@@ -201,6 +212,7 @@
         <Volume value="-1.000000,-1.000000"/>
     </CSound>
     <CSound id="TaldarimMothership@Yes" parent="ProtossAck_Void">
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray TemplateParam="MothershipVoid_Yes00"/>
         <AssetArray TemplateParam="MothershipVoid_Yes01"/>
         <AssetArray TemplateParam="MothershipVoid_Yes02"/>
@@ -214,6 +226,7 @@
         <Volume value="-1.000000,-1.000000"/>
     </CSound>
     <CSound id="TaldarimMothership@What" parent="ProtossAck_Void">
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray TemplateParam="MothershipVoid_What00"/>
         <AssetArray TemplateParam="MothershipVoid_What01"/>
         <AssetArray TemplateParam="MothershipVoid_What02"/>
@@ -227,6 +240,7 @@
         <Volume value="-1.000000,-1.000000"/>
     </CSound>
     <CSound id="TaldarimMothership@Ready" parent="Ready">
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray TemplateParam="MothershipVoid_Ready00"/>
         <Flags index="NeedsUpdate" value="1"/>
         <Flags index="NeedsTTS" value="1"/>
@@ -267,6 +281,7 @@
     </CLight>
 
     <CDataCollectionUnit id="TaldarimMothership" parent="UnitGround">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Taldarim,ObjectType:Unit"/>
         <DataRecord Entry="Button,TaldarimMothership"/>
         <DataRecord Entry="Unit,TaldarimMothership"/>
         <DataRecord Entry="Actor,TaldarimMothership"/>
@@ -382,8 +397,8 @@
     </CActorSound>
     
     <CModel id="TaldarimMothership_Weapon@AttackBeam" parent="MissileFX">
-        <Model value="Assets\Effects\Protoss\Mothership_Taldarim_Terminator_Beam\Mothership_Taldarim_Terminator_Beam.m3"/>
         <EditorCategories value="Race:Taldarim"/>
+        <Model value="Assets\Effects\Protoss\Mothership_Taldarim_Terminator_Beam\Mothership_Taldarim_Terminator_Beam.m3"/>
         <RadiusLoose value="1.000000"/>
         <ScaleMax value="0.700000,0.700000,0.700000"/>
         <ScaleMin value="0.700000,0.700000,0.700000"/>
@@ -391,8 +406,8 @@
         <ShadowRadius value="0.714000"/>
     </CModel>
     <CModel id="TaldarimMothership_Weapon@AttackImpact" parent="ImpactFX">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Effects\Protoss\Mothership_Taldarim_Terminator_Beam_Impact\Mothership_Taldarim_Terminator_Beam_Impact.m3"/>
-        <EditorCategories value="Race:Zerg"/>
     </CModel>
 
     <CSound id="TaldarimMothership_Weapon@AttackLoop" parent="Combat">
@@ -425,6 +440,7 @@
     </CAttachMethodPattern>
 
     <CDataCollectionUnit id="TaldarimMothership_Weapon" parent="Weapon_Instant">
+        <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:Taldarim,ObjectType:Beam"/>
         <DataRecord Entry="Weapon,TaldarimMothership_Weapon"/>
         <DataRecord Entry="Effect,TaldarimMothership_Weapon@Damage"/>
         <DataRecord Entry="Actor,TaldarimMothership_Weapon@Attack"/>
@@ -516,6 +532,7 @@
     </CSound>
 
     <CDataCollectionUnit id="TaldarimMothership_Blink" parent="AbilityBase">
+        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Taldarim,ObjectType:Spell"/>
         <DataRecord Entry="Button,TaldarimMothership_Blink"/>
         <DataRecord Entry="Abil,TaldarimMothership_Blink"/>
         <DataRecord Entry="Effect,TaldarimMothership_Blink@Teleport"/>
@@ -681,6 +698,7 @@
     </CUnit>
 
     <CDataCollectionUnit id="TaldarimMothership_ThermalLance" parent="AbilityBase">
+        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Taldarim,ObjectType:Spell"/>
         <DataRecord Entry="Button,TaldarimMothership_ThermalLance"/>
         <DataRecord Entry="Abil,TaldarimMothership_ThermalLance"/>
         <DataRecord Entry="Effect,TaldarimMothership_ThermalLance@CP"/>
@@ -706,6 +724,7 @@
 
     <!-- Black Hole -->
     <CButton id="TaldarimMothership_BlackHole">
+        <EditorCategories value="Race:Taldarim"/>
         <Icon value="Assets\Textures\btn-ability-protoss-blackhole-redcolor.dds"/>
     </CButton>
 
@@ -856,17 +875,18 @@
     </CActorSound>
     
     <CModel id="TaldarimMothership_BlackHole@Model" parent="PersistentSpellFX">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Effects\Protoss\Taldarim_Mothership_Black_Hole\Taldarim_Mothership_Black_Hole.m3"/>
         <ScaleMax value="1.150000,1.150000,1.150000"/>
         <ScaleMin value="1.150000,1.150000,1.150000"/>
     </CModel>
     <CModel id="TaldarimMothership_BlackHole@Cursor" parent="UI">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\UI\Cursors\Taldarim_Mothership_Black_Hole_Cursor\Taldarim_Mothership_Black_Hole_Cursor.m3"/>
         <ScaleMax value="0.220000,0.220000,0.220000"/>
         <ScaleMin value="0.220000,0.220000,0.220000"/>
         <SelectionRadius value="2.500000"/>
         <ShadowRadius value="2.500000"/>
-        <EditorCategories value="Race:Taldarim"/>
     </CModel>
 
     <CSound id="TaldarimMothership_BlackHole@LaunchSound" parent="Spell">
@@ -921,6 +941,7 @@
         <Volume value="1.000000,1.000000"/>
     </CSound>
     <CSound id="TaldarimMothership_BlackHole@LoopSound2" parent="Spell">
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray File="Assets\Sounds\VoidVortex_SweetenerB_01.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\VoidVortex_SweetenerB_02.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\VoidVortex_SweetenerB_03.wav" FacialGroup=""/>
@@ -937,6 +958,7 @@
         <PositionRandomOffsetPower value="2.000000"/>
     </CSound>
     <CSound id="TaldarimMothership_BlackHole@LoopSound3" parent="Spell">
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray File="Assets\Sounds\VoidVortex_Sweetener_fire_01.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\VoidVortex_Sweetener_fire_02.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\VoidVortex_Sweetener_fire_03.wav" FacialGroup=""/>
@@ -951,6 +973,7 @@
         <PositionRandomOffsetPower value="2.000000"/>
     </CSound>
     <CSound id="TaldarimMothership_BlackHole@LoopSound4" parent="Spell">
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray File="Assets\Sounds\VoidVortex_sweetener_mantra_01.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\VoidVortex_sweetener_mantra_02.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\VoidVortex_sweetener_mantra_03.wav" FacialGroup=""/>
@@ -962,6 +985,7 @@
         <PositionRandomOffsetPower value="2.000000"/>
     </CSound>
     <CSound id="TaldarimMothership_BlackHole@LoopSound5" parent="Spell">
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray File="Assets\Sounds\VoidVortex_SweetenerA_01.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\VoidVortex_SweetenerA_02.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\VoidVortex_SweetenerA_03.wav" FacialGroup=""/>
@@ -987,6 +1011,7 @@
     </CSound>
 
     <CDataCollectionUnit id="TaldarimMothership_BlackHole" parent="AbilityBase">
+        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Taldarim,ObjectType:Spell"/>
         <DataRecord Entry="Button,TaldarimMothership_BlackHole"/>
         <DataRecord Entry="Abil,TaldarimMothership_BlackHole"/>
         <DataRecord Entry="Effect,TaldarimMothership_BlackHole@CP"/>
