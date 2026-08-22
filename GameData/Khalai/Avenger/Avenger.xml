@@ -2,10 +2,11 @@
 <Catalog>
 
     <CButton id="Avenger" parent="UnitButton_OnlyGround">
+        <EditorCategories value="Race:Khalai"/>
         <Icon value="Assets\Textures\btn-unit-protoss-darktemplar-aiur.dds"/>
     </CButton>
     
-    <CUnit id="Avenger" parent="Generic_Protoss_Unit_Ground" race="Khai">
+    <CUnit id="Avenger" parent="Generic_Protoss_Unit_Ground" race="Khal">
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
         <LifeStart value="40"/>
         <LifeMax value="40"/>
@@ -67,6 +68,7 @@
     </CActorUnit>
     
     <CModel id="Avenger" parent="Unit">
+        <EditorCategories value="Race:Khalai"/>
         <Model value="Assets\Units\Protoss\DarkTemplar_Aiur\DarkTemplar_Aiur.m3"/>
         <RequiredAnims value="Assets\Units\Protoss\DarkTemplar_01_SwarmAnims\DarkTemplar_01_SwarmAnims.m3a"/>
         <Occlusion value="Show"/>
@@ -81,10 +83,12 @@
         <ShadowRadius value="0.375000"/>
     </CModel>
     <CModel id="Avenger@Death" parent="UnitDeath">
+        <EditorCategories value="Race:Khalai"/>
         <LowQualityModel value="ProtossSpiritDeathLow"/>
         <Model value="Assets\Units\Protoss\DarkTemplar_Aiur_Death\DarkTemplar_Aiur_Death.m3"/>
     </CModel>
     <CModel id="Avenger@Placement" parent="Placement">
+        <EditorCategories value="Race:Khalai"/>
         <Model value="Assets\Units\Protoss\DarkTemplar_Aiur_Placement\DarkTemplar_Aiur_Placement.m3"/>
         <Radius value="-1.000000"/>
         <Occlusion value="Show"/>
@@ -94,32 +98,47 @@
         <ShadowRadius value="0.588100"/>
     </CModel>
     <CModel id="Avenger@WarpIn" parent="OneShotSpellFX">
+        <EditorCategories value="Race:Khalai"/>
         <Model value="Assets\Units\Protoss\DarkTemplar_Aiur_WarpIn\DarkTemplar_Aiur_WarpIn.m3"/>
-        <EditorCategories value="Race:Protoss"/>
         <Occlusion value="Show"/>
         <ScaleMax value="0.850000,0.850000,0.850000"/>
         <ScaleMin value="0.850000,0.850000,0.850000"/>
-        <!--VariationCount value="2"/-->
         <LowQualityModel value="DarkTemplarWarpInLow"/>
         <SelectionRadius value="0.588100"/>
         <ShadowRadius value="0.588100"/>
     </CModel>
     <CModel id="Avenger@Portrait" parent="Portrait">
+        <EditorCategories value="Race:Khalai"/>
         <Model value="Assets\Portraits\Protoss\DarkTemplar_Aiur_Portrait\DarkTemplar_Aiur_Portrait.m3"/>
         <Image value="Assets\Textures\avengerportrait_static.dds"/>
     </CModel>
-
-    <!-- <CLight id="Avenger@Portrait" parent="default"/> -->
     
-    <CSound id="Avenger@DeathVoice" parent="DeathVoice"></CSound>
-    <CSound id="Avenger@Attack" parent="Voice"></CSound>
-    <CSound id="Avenger@Help" parent="Alert"></CSound>
-    <CSound id="Avenger@Pissed" parent="Pissed"></CSound>
-    <CSound id="Avenger@Yes" parent="Voice"></CSound>
-    <CSound id="Avenger@What" parent="Voice"></CSound>
-    <CSound id="Avenger@Ready" parent="Ready"></CSound>
+    <CSound id="Avenger@DeathVoice" parent="DeathVoice">
+        <EditorCategories value="Race:Khalai"/>
+    </CSound>
+    <CSound id="Avenger@Attack" parent="Voice">
+        <EditorCategories value="Race:Khalai"/>
+    </CSound>
+    <CSound id="Avenger@Help" parent="Alert">
+        <EditorCategories value="Race:Khalai"/>
+    </CSound>
+    <CSound id="Avenger@Pissed" parent="Pissed">
+        <EditorCategories value="Race:Khalai"/>
+    </CSound>
+    <CSound id="Avenger@Yes" parent="Voice">
+        <EditorCategories value="Race:Khalai"/>
+    </CSound>
+    <CSound id="Avenger@What" parent="Voice">
+        <EditorCategories value="Race:Khalai"/>
+    </CSound>
+    <CSound id="Avenger@Ready" parent="Ready">
+        <EditorCategories value="Race:Khalai"/>
+    </CSound>
+
+    <CLight id="Avenger@Portrait" parent="default"/>
 
     <CDataCollectionUnit id="Avenger" parent="UnitGround">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Khalai,ObjectType:Unit"/>
         <TechInfoUpgradeUsed value="ProtossGroundArmors@1"/>
         <TechInfoUpgradeUsed value="ProtossGroundArmors@2"/>
         <TechInfoUpgradeUsed value="ProtossGroundArmors@3"/>
@@ -131,8 +150,11 @@
     <!-- ========== Behaviors ========== -->
 
     <!-- Recall -->
-    <CButton id="Avenger_Recall@Passive"></CButton>
+    <CButton id="Avenger_Recall@Passive">
+        <EditorCategories value="Race:Khalai"/>
+    </CButton>
     <CBehaviorBuff id="Avenger_Recall">
+        <EditorCategories value="Race:Khalai"/>
         <DamageResponse Chance="1" Fatal="1">
             <ModifyFraction value="0"/>
             <Handled value="Avenger_Recall@Recalling"/>
@@ -140,6 +162,7 @@
         <DisableValidatorArray value="Avenger_Recall@Cooldown"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Avenger_Recall@Recalling">
+        <EditorCategories value="Race:Khalai"/>
         <Duration value="0.5"/>
         <ExpireEffect value="Avenger_Recall@Search"/>
         <FinalEffect value="Avenger_Recall@Cooldown"/>
@@ -151,28 +174,33 @@
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="Avenger_Recall@Cooldown">
-        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Khalai"/>
         <Duration value="60"/>
         <Alignment value="Negative"/>
         <InfoIcon value="Assets\Textures\btn-ability-protoss-recallondeath.dds"/>
     </CBehaviorBuff>
 
     <CEffectApplyBehavior id="Avenger_Recall@Recalling">
+        <EditorCategories value="Race:Khalai"/>
         <WhichUnit Value="Caster"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="Avenger_Recall@Cooldown">
+        <EditorCategories value="Race:Khalai"/>
         <WhichUnit Value="Caster"/>
     </CEffectApplyBehavior>
     <CEffectEnumArea id="Avenger_Recall@Search">
+        <EditorCategories value="Race:Khalai"/>
         <AreaArray Radius="500" MaxCount="1" Effect="Avenger_Recall@Set"/>
         <SearchFilters value="Visible,Player;Hidden"/>
         <ImpactLocation Value="TargetUnit"/>
     </CEffectEnumArea>
     <CEffectSet id="Avenger_Recall@Set">
+        <EditorCategories value="Race:Khalai"/>
         <EffectArray value="Avenger_Recall@Precursor"/>
         <ValidatorArray value="IsDarkShrine"/>
     </CEffectSet>
     <CEffectCreateUnit id="Avenger_Recall@Precursor">
+        <EditorCategories value="Race:Khalai"/>
         <CreateFlags index="Precursor" value="1"/>
         <CreateFlags index="TechComplete" value="0"/>
         <CreateFlags index="UseFood" value="0"/>
@@ -180,12 +208,13 @@
         <SpawnRange value="5"/>
     </CEffectCreateUnit>
     <CEffectCreatePersistent id="Avenger_Recall@RetargetTeleport">
-        <EditorCategories value=""/>
+        <EditorCategories value="Race:Khalai"/>
         <WhichLocation Value="TargetUnit"/>
         <InitialEffect value="Avenger_Recall@Teleport"/>
         <FinalEffect value="Avenger_Recall@KillPrecursor"/>
     </CEffectCreatePersistent>
     <CEffectTeleport id="Avenger_Recall@Teleport">
+        <EditorCategories value="Race:Khalai"/>
         <WhichUnit Value="Caster"/>
         <TargetLocation Effect="Avenger_Recall@RetargetTeleport" Value="TargetUnit"/>
         <MinDistance value="0"/>
@@ -193,13 +222,13 @@
         <PlacementAround Value="TargetUnit"/>
     </CEffectTeleport>
     <CEffectModifyUnit id="Avenger_Recall@Heal">
-        <EditorCategories value=""/>
+        <EditorCategories value="Race:Khalai"/>
         <ImpactUnit Value="Caster"/>
         <VitalArray index="Life" ChangeFraction="1"/>
         <VitalArray index="Shields" ChangeFraction="1"/>
     </CEffectModifyUnit>
     <CEffectDamage id="Avenger_Recall@KillPrecursor">
-        <EditorCategories value=""/>
+        <EditorCategories value="Race:Khalai"/>
         <ImpactLocation Effect="Avenger_Recall@RetargetTeleport" Value="TargetUnit"/>
         <Flags index="Kill" value="1"/>
         <Death value="Remove"/>
@@ -226,15 +255,15 @@
     </CActorSimple>
     
     <CModel id="Avenger_Recall@Start" parent="OneShotSpellFX">
+        <EditorCategories value="Race:Khalai"/>
         <Model value="Assets\Effects\Protoss\DarkTemplarAiurWarpOut\DarkTemplarAiurWarpOut.m3"/>
-        <EditorCategories value="Race:Protoss"/>
         <Occlusion value="Show"/>
         <SelectionRadius value="0.555400"/>
         <ShadowRadius value="0.555400"/>
     </CModel>
     <CModel id="Avenger_Recall@Stop" parent="OneShotSpellFX">
+        <EditorCategories value="Race:Khalai"/>
         <Model value="Assets\Effects\Protoss\DarkTemplarAiurWarpIn\DarkTemplarAiurWarpIn.m3"/>
-        <EditorCategories value="Race:Protoss"/>
         <Occlusion value="Show"/>
         <SelectionRadius value="0.555400"/>
         <ShadowRadius value="0.555400"/>
@@ -250,7 +279,7 @@
 
     <!-- Psionic Scythe -->
     <CWeaponLegacy id="Avenger_Weapon">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Khalai"/>
         <Effect value="Avenger_Weapon@Damage"/>
         <DisplayEffect value="Avenger_Weapon@Damage"/>
         <Options index="Melee" value="1"/>
@@ -263,7 +292,7 @@
     </CWeaponLegacy>
 
     <CEffectDamage id="Avenger_Weapon@Damage" parent="DU_WEAP">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Khalai"/>
         <Amount value="45"/>
         <Death value="Eviscerate"/>
     </CEffectDamage>
@@ -275,8 +304,11 @@
         <On Terms="WeaponStart.Avenger_Weapon.AttackStart" Send="Create"/>
     </CActorSound>
     
-    <CSound id="Avenger_Weapon@AttackImpact" parent="Protoss_AttackImpactMediumSlice"/>
+    <CSound id="Avenger_Weapon@AttackImpact" parent="Protoss_AttackImpactMediumSlice">
+        <EditorCategories value="Race:Khalai"/>
+    </CSound>
     <CSound id="Avenger_Weapon@AttackLaunch" parent="DarkTemplar_AttackLaunch">
+        <EditorCategories value="Race:Khalai"/>
         <AssetArray File="Assets\Sounds\DarkTemplarVoid_AttackLaunch00.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\DarkTemplarVoid_AttackLaunch01.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\DarkTemplarVoid_AttackLaunch02.wav" FacialGroup=""/>
@@ -284,5 +316,18 @@
         <AssetArray File="Assets\Sounds\DarkTemplarVoid_AttackLaunch04.wav" FacialGroup=""/>
         <DupeDestroyCount value="8"/>
     </CSound>
+
+    <CDataCollectionUnit id="Avenger_Weapon" parent="Weapon_Instant">
+        <EditorCategories value="Race:Khalai"/>
+        <DataRecord Entry="Weapon,Avenger_Weapon"/>
+        <DataRecord Entry="Effect,Avenger_Weapon@Damage"/>
+        <DataRecord Entry="Actor,Avenger_Weapon@Attack"/>
+        <DataRecord Entry="Actor,Avenger_Weapon@LaunchSound"/>
+        <DataRecord Entry="Sound,Avenger_Weapon@AttackImpact"/>
+        <DataRecord Entry="Sound,Avenger_Weapon@AttackLaunch"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@1"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@2"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@3"/>
+    </CDataCollectionUnit>
 
 </Catalog>
