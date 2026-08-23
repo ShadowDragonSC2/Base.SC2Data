@@ -22,6 +22,7 @@
         <ShieldsMax value="125"/>
         <Speed value="3"/>
         <LateralAcceleration value="46.0625"/>
+        <BuildTime value="14"/>
         <Food value="-2"/>
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="75"/>
@@ -30,8 +31,8 @@
         <CardLayouts index="0">
             <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="AdeptPhaseShiftCancel,Execute" Row="2" Column="4"/>
             <LayoutButtons Face="AlarakACMyLifefortheHighlord" Type="Passive" Row="2" Column="0"/>
-            <LayoutButtons Face="AlarakSupplicantMaxShields" Type="Passive" Requirements="HaveAlarakSupplicantMaxShields" Row="2" Column="2"/>
-            <LayoutButtons Face="PHSupplicantShieldArmor" Type="Passive" Requirements="HaveSupplicantShieldArmor" Row="2" Column="1"/>
+            <LayoutButtons Face="Supplicant_BloodShields" Type="Passive" Requirements="Supplicant_SoulAugmentation@Have" Row="2" Column="2"/>
+            <LayoutButtons Face="Supplicant_SoulAugmentation" Type="Passive" Requirements="Supplicant_SoulAugmentation@Have" Row="2" Column="1"/>
             <LayoutButtons Face="AlarakSupplicantSacrificeCDR" Type="Passive" Requirements="HaveAlarakSupplicantSacrificeCDR" Row="2" Column="3"/>
             <LayoutButtons Face="SupplicantSacrificeCDRLocked" Type="Passive" Requirements="AlarakLevel15" Row="2" Column="3"/>
         </CardLayouts>
