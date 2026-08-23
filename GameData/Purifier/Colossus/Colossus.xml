@@ -56,7 +56,7 @@
         <GlossaryWeakArray value="Immortal"/>
         <RepairTime value="75"/>
     </CUnit>
-    
+
     <CActorUnit id="PurifierColossus" parent="AdvancedUnitStandard_Ground_NoAttackAnim" unitName="PurifierColossus">
         <Aliases value="_UnitHuge"/>
         <On Terms="Effect.PurifierColossus_Weapon@Forward.Start" Send="AnimBracketStart Attack Stand,Channel,Start Stand,Channel Stand,Channel,End"/>
@@ -537,7 +537,7 @@
         <ValidatorArray value="noMarkers"/>
         <Death value="Fire"/>
     </CEffectDamage>
-    <!-- Fire beam effects setup, currently on Colossus Aiur -->
+    <!-- Fire Beam -->
     <CEffectCreatePersistent id="PurifierColossus_Weapon@FireBeam">
         <EditorCategories value="Race:Protoss"/>
         <WhichLocation Value="TargetUnit"/>
