@@ -1,0 +1,771 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    <CButton id="PurifierColossus" parent="UnitButton_OnlyGround">
+        <Icon value="Assets\Textures\btn-unit-protoss-colossus-purifier.dds"/>
+        <EditorCategories value="Race:Purifier"/>
+    </CButton>
+    
+    <CUnit id="PurifierColossus" parent="Generic_Protoss_Unit_Ground" race="Puri">
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+        <WeaponArray index="0" Turret="Colossus"/>
+        <Mob value="Campaign"/>
+        <LifeStart value="200"/>
+        <LifeMax value="200"/>
+        <LifeArmor value="1"/>
+        <ShieldsStart value="150"/>
+        <ShieldsMax value="150"/>
+        <Mover value="Colossus"/>
+        <LateralAcceleration value="46.0625"/>
+        <Food value="-6"/>
+        <KillXP value="160"/>
+        <CargoSize value="8"/>
+        <Radius value="1"/>
+        <SeparationRadius value="0.75"/>
+        <InnerRadius value="0.5625"/>
+        <ScoreMake value="500"/>
+        <ScoreKill value="500"/>
+        <SubgroupPriority value="10"/>
+        <MinimapRadius value="1"/>
+        <FlagArray index="Turnable" value="0"/>
+        <FlagArray index="AISplash" value="1"/>
+        <PlaneArray index="Air" value="1"/>
+        <Collide index="Ground" value="0"/>
+        <Collide index="Locust" value="0"/>
+        <Collide index="ForceField" value="0"/>
+        <Collide index="Small" value="0"/>
+        <Collide index="Colossus" value="1"/>
+        <Collide index="Structure" value="1"/>
+        <Collide index="Flying" value="1"/>
+        <VisionHeight value="4"/>
+        <Sight value="10"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="CliffWalk" Type="Passive" Row="2" Column="0"/>
+            <LayoutButtons Face="PurifierColossus_Weapon@Passive_FireBeam" Type="Passive" Row="2" Column="1"/>
+        </CardLayouts>
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Mechanical" value="1"/>
+        <Attributes index="Massive" value="1"/>
+        <GlossaryPriority value="130"/>
+        <CostResource index="Minerals" value="300"/>
+        <CostResource index="Vespene" value="200"/>
+        <GlossaryStrongArray value="Marine"/>
+        <GlossaryStrongArray value="Zergling"/>
+        <GlossaryStrongArray value="Zealot"/>
+        <GlossaryWeakArray value="VikingFighter"/>
+        <GlossaryWeakArray value="Corruptor"/>
+        <GlossaryWeakArray value="Immortal"/>
+        <RepairTime value="75"/>
+    </CUnit>
+    
+    <CActorUnit id="PurifierColossus" parent="AdvancedUnitStandard_Ground_NoAttackAnim" unitName="PurifierColossus">
+        <Aliases value="_UnitHuge"/>
+        <On Terms="Effect.PurifierColossus_Weapon@Forward.Start" Send="AnimBracketStart Attack Stand,Channel,Start Stand,Channel Stand,Channel,End"/>
+        <On Terms="Effect.PurifierColossus_Weapon@Forward.Stop" Send="AnimBracketStop Attack"/>
+        <On Terms="AbilTransport.*.CargoLoad" Target="PurifierColossus_Weapon@LaunchSite" Send="Destroy"/>
+        <On Terms="AbilTransport.*.CargoLoad" Target="PurifierColossus_Weapon@ImpactSite" Send="Destroy"/>
+        <On Terms="AbilTransport.*.CargoLoad" Target="PurifierColossus_Weapon@AttackBeam" Send="Destroy"/>
+        <On Terms="AbilTransport.*.CargoLoad" Target="PurifierColossus_Weapon@AttackBeamImpact" Send="Destroy"/>
+        <On Terms="AbilTransport.*.CargoLoad" Target="PurifierColossus_Weapon@LaunchSiteReverse" Send="Destroy"/>
+        <On Terms="AbilTransport.*.CargoLoad" Target="PurifierColossus_Weapon@ImpactSiteReverse" Send="Destroy"/>
+        <On Terms="AbilTransport.*.CargoLoad" Target="PurifierColossus_Weapon@AttackBeamReverse" Send="Destroy"/>
+        <On Terms="AbilTransport.*.CargoLoad" Target="PurifierColossus_Weapon@AttackBeamImpactReverse" Send="Destroy"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Colossus_Land"/>
+        <WalkAnimMoveSpeed value="2.1445"/>
+        <BarWidth value="140"/>
+        <BarOffset value="250"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-colossus-purifier.dds"/>
+        <HeroIcon value="Assets\Textures\btn-unit-protoss-colossus-purifier.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
+        <WireframeShield>
+            <Image value="Assets\Textures\wireframe-protoss-colossus-purifier-shield01.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-colossus-purifier-shield02.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-colossus-purifier-shield03.dds"/>
+        </WireframeShield>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-protoss-colossus-purifier.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-protoss-colossus-purifier.dds"/>
+        </Wireframe>
+        <TerrainSquibs>
+            <MovementDistance value="0.150000,0.150000"/>
+            <IdlePeriod value="0.250000,0.500000"/>
+            <RangeUp value="2.750000"/>
+            <RangeDown value="0.100000"/>
+            <AttachQuery Methods="AMFilterHardpoint"/>
+            <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleMedium"/>
+        </TerrainSquibs>
+        <TerrainSquibs>
+            <MovementDistance value="0.150000,0.150000"/>
+            <IdlePeriod value="0.250000,0.500000"/>
+            <RangeUp value="3.000000"/>
+            <RangeDown value="0.250000"/>
+            <AttachQuery Methods="AMFilterCenter"/>
+            <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleLargeVehicle"/>
+        </TerrainSquibs>
+    </CActorUnit>
+    
+    <CModel id="PurifierColossus" parent="Unit">
+        <Model value="Assets\Units\Protoss\Colossus_Purifier\Colossus_Purifier.m3"/>
+        <RequiredAnims value="Assets\Units\Protoss\Colossus_SwarmAnims\Colossus_SwarmAnims.m3a"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.750000,0.750000,0.750000"/>
+        <ScaleMin value="0.750000,0.750000,0.750000"/>
+        <SelectionRadius value="1.333200"/>
+        <SquibTypeDefault value="Metal"/>
+        <AttachProps Id="Ref_Target 02">
+            <Keys index="Ground" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Target 03">
+            <Keys index="Ground" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Target 04">
+            <Keys index="Ground" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Target 05">
+            <Keys index="Ground" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Weapon 02">
+            <Keys index="CustomA" value="2"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Weapon 03">
+            <Keys index="CustomA" value="3"/>
+        </AttachProps>
+        <Radius value="1.000000"/>
+        <TechPurchaseCamera value="Star2CameraHigher22"/>
+        <UnitGlossaryCamera value="Star2CameraHigher22"/>
+        <PlanetPanelCamera value="Star2CameraHigher22"/>
+        <ShadowRadius value="1.333200"/>
+    </CModel>
+    <CModel id="PurifierColossus@Death" parent="UnitDeath">
+        <Occlusion value="Show"/>
+        <LowQualityModel value="ProtossLargeUnitDeathLow"/>
+        <Model value="Assets\Units\Protoss\Colossus_Purifier_Death\Colossus_Purifier_Death.m3"/>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Time value="0.200000"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Time value="0.400000"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Colossus_Explode_Large"/>
+            <Type value="Sound"/>
+            <Time value="1.200000"/>
+            <Payload value="Colossus_Explode_Large"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Colossus_Explode_Vocalize"/>
+            <Type value="Sound"/>
+            <Payload value="Colossus_Explode_Vocalize"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Time value="0.200000"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Time value="0.400000"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Colossus_Explode_Large"/>
+            <Type value="Sound"/>
+            <Time value="1.200000"/>
+            <Payload value="Colossus_Explode_Large"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Colossus_Explode_Vocalize"/>
+            <Type value="Sound"/>
+            <Payload value="Colossus_Explode_Vocalize"/>
+        </Events>
+        <Events>
+            <Anim value="Death,02"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,02"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Time value="0.200000"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,02"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Time value="0.400000"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,02"/>
+            <Name value="Colossus_Explode_Large"/>
+            <Type value="Sound"/>
+            <Time value="1.200000"/>
+            <Payload value="Colossus_Explode_Large"/>
+        </Events>
+        <Events>
+            <Anim value="Death,02"/>
+            <Name value="Colossus_Explode_Vocalize"/>
+            <Type value="Sound"/>
+            <Payload value="Colossus_Explode_Vocalize"/>
+        </Events>
+        <Events>
+            <Anim value="Death,03"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,03"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Time value="0.200000"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,03"/>
+            <Name value="Colossus_Explode_Small"/>
+            <Type value="Sound"/>
+            <Time value="0.400000"/>
+            <Payload value="Colossus_Explode_Small"/>
+        </Events>
+        <Events>
+            <Anim value="Death,03"/>
+            <Name value="Colossus_Explode_Large"/>
+            <Type value="Sound"/>
+            <Time value="1.200000"/>
+            <Payload value="Colossus_Explode_Large"/>
+        </Events>
+        <Events>
+            <Anim value="Death,03"/>
+            <Name value="Colossus_Explode_Vocalize"/>
+            <Type value="Sound"/>
+            <Payload value="Colossus_Explode_Vocalize"/>
+        </Events>
+        <Events>
+            <Anim value="Death,04"/>
+            <Name value="Colossus_Explode_Large"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Colossus_Explode_Large"/>
+        </Events>
+        <Events>
+            <Anim value="Death,04"/>
+            <Name value="Colossus_Explode_Legs_Whoosh"/>
+            <Type value="Sound"/>
+            <Time value="0.437000"/>
+            <Payload value="Colossus_Explode_Legs_Whoosh"/>
+        </Events>
+        <Events>
+            <Anim value="Death,04"/>
+            <Name value="Colossus_Explode_Legs_Impact"/>
+            <Type value="Sound"/>
+            <Time value="2.000000"/>
+            <Payload value="Colossus_Explode_Legs_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Death,04"/>
+            <Name value="Colossus_Explode_Legs_Spark_A"/>
+            <Type value="Sound"/>
+            <Time value="2.981000"/>
+            <Payload value="Colossus_Explode_Legs_Spark_A"/>
+        </Events>
+        <Events>
+            <Anim value="Death,04"/>
+            <Name value="Colossus_Explode_Legs_Spark_B"/>
+            <Type value="Sound"/>
+            <Time value="4.445000"/>
+            <Payload value="Colossus_Explode_Legs_Spark_B"/>
+        </Events>
+    </CModel>
+    <CModel id="PurifierColossus@Placement" parent="Placement">
+        <Model value="Assets\Units\Protoss\Colossus_Purifier_Placement\Colossus_Purifier_Placement.m3"/>
+        <Radius value="-1.000000"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.750000,0.750000,0.750000"/>
+        <ScaleMin value="0.750000,0.750000,0.750000"/>
+        <SelectionRadius value="0.588100"/>
+        <ShadowRadius value="0.588100"/>
+    </CModel>
+    <CModel id="PurifierColossus@WarpIn" parent="OneShotSpellFX">
+        <Model value="Assets\Units\Protoss\Colossus_Purifier_WarpIn\Colossus_Purifier_WarpIn.m3"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.750000,0.750000,0.750000"/>
+        <ScaleMin value="0.750000,0.750000,0.750000"/>
+        <EditorCategories value="Race:Protoss"/>
+        <LowQualityModel value="ColossusWarpInLow"/>
+        <SelectionRadius value="0.555400"/>
+        <ShadowRadius value="0.555400"/>
+    </CModel>
+    <CModel id="PurifierColossus@Portrait" parent="Portrait">
+        <Model value="Assets\Portraits\Protoss\Purifier_Colossus_Portrait\Purifier_Colossus_Portrait.m3"/>
+        <Image value="Assets\Textures\purifiercolossusportrait_static.dds"/>
+    </CModel>
+    
+    <CSound id="PurifierColossus@Death" parent="Protoss_ExplosionLarge"/>
+    <CSound id="PurifierColossus@Help" parent="Alert">
+        <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Executor\Alert_ProtossForcesUnderAttack.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="PurifierColossus@Ready" parent="Ready">
+        <AssetArray File="Assets\Sounds\ColossusPurifier_Ready01.ogg" FacialGroup=""/>
+        <Pitch value="-0.300000,0.000000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="PurifierColossus@What" parent="Voice">
+        <AssetArray File="Assets\Sounds\ColossusPurifier_What01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusPurifier_What02.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusPurifier_What03.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusPurifier_What04.ogg" FacialGroup=""/>
+        <Pitch value="-0.300000,0.000000"/>
+        <Volume value="-7.000000,-7.000000"/>
+    </CSound>
+    <CSound id="PurifierColossus@Yes" parent="Voice">
+        <AssetArray File="Assets\Sounds\ColossusPurifier_Yes01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusPurifier_Yes02.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusPurifier_Yes03.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusPurifier_Yes04.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusPurifier_Yes05.ogg" FacialGroup=""/>
+        <Pitch value="-0.300000,0.000000"/>
+        <Volume value="-7.000000,-7.000000"/>
+    </CSound>
+    <CSound id="PurifierColossus@Pissed" parent="Pissed">
+        <AssetArray File="Assets\Sounds\ColossusPurifier_Pissed01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusPurifier_Pissed02.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusPurifier_Pissed03.ogg" FacialGroup=""/>
+        <Pitch value="-0.300000,0.000000"/>
+        <Volume value="-7.000000,-7.000000"/>
+    </CSound>
+    
+    <CLight id="PurifierColossus@Portrait" parent="default">
+        <ToDInfoArray index="0">
+            <Id value="Cybros"/>
+            <AmbientColor value="0.282353,0.282353,0.282353"/>
+            <OperatorHDR value="2"/>
+            <Colorize value="1"/>
+            <Param index="HDRExposure" value="1.500000"/>
+            <Param index="HDRBloomThreshold" value="1.300000"/>
+            <Param index="HDRWhitePoint" value="1.850000"/>
+            <Param index="TerrainSpecularExp" value="11.210000"/>
+            <Param index="TerrainHDRSpecular" value="3.750000"/>
+            <Param index="CreepSpecularExp" value="30.000000"/>
+            <Param index="CreepHDRSpecMultiplier" value="3.000000"/>
+            <Param index="ColorizationContrast" value="1.066000"/>
+            <Param index="ColorizationHue" value="0.001000"/>
+            <Param index="ColorizationBlend" value="0.300000"/>
+            <Param index="ShadowPenumbraSize" value="0.093000"/>
+            <DirectionalLight index="Key">
+                <Color value="0.945098,0.835294,0.603922"/>
+                <ColorMultiplier value="0.331000"/>
+                <SpecColorMultiplier value="3.055000"/>
+                <Direction value="-0.593846,0.343826,-0.727414"/>
+            </DirectionalLight>
+            <DirectionalLight index="Fill" Color="0.184314,0.227451,0.231373" ColorMultiplier="2.786000" Direction="0.253995,0.430682,0.866025"/>
+            <DirectionalLight index="Back" Color="0.200000,0.231373,0.282353" ColorMultiplier="2.065000" Direction="-0.558844,0.279483,0.780758"/>
+        </ToDInfoArray>
+        <EditorCategories value="LightGroup:PortraitsUnitsProtoss"/>
+    </CLight>
+    
+    <CRequirement id="PurifierColossus"/>
+    
+    <CValidatorUnitType id="PurifierColossus@Is" parent="IsUnit_Default" unit="PurifierColossus"/>
+    <CValidatorUnitType id="PurifierColossus@Target" parent="TargetIsUnit_Default" unit="PurifierColossus"/>
+    <CValidatorUnitType id="PurifierColossus@Not" parent="NotUnit_Default" unit="PurifierColossus"/>
+    <CValidatorUnitType id="PurifierColossus@NotTarget" parent="TargetNotUnit_Default" unit="PurifierColossus"/>
+    
+    <CDataCollectionUnit id="PurifierColossus" parent="UnitGround">
+        <DataRecord Entry="Button,PurifierColossus"/>
+        <DataRecord Entry="Unit,PurifierColossus"/>
+        <DataRecord Entry="Actor,PurifierColossus"/>
+        <DataRecord Entry="Model,PurifierColossus"/>
+        <DataRecord Entry="Model,PurifierColossus@Death"/>
+        <DataRecord Entry="Model,PurifierColossus@Placement"/>
+        <DataRecord Entry="Model,PurifierColossus@WarpIn"/>
+        <DataRecord Entry="Model,PurifierColossus@Portrait"/>
+        <DataRecord Entry="Sound,PurifierColossus@Death"/>
+        <DataRecord Entry="Sound,PurifierColossus@Help"/>
+        <DataRecord Entry="Sound,PurifierColossus@Ready"/>
+        <DataRecord Entry="Sound,PurifierColossus@What"/>
+        <DataRecord Entry="Sound,PurifierColossus@Yes"/>
+        <DataRecord Entry="Sound,PurifierColossus@Pissed"/>
+        <DataRecord Entry="Light,PurifierColossus@Portrait"/>
+        <DataRecord Entry="Requirement,PurifierColossus"/>
+        <DataRecord Entry="Validator,PurifierColossus@Is"/>
+        <DataRecord Entry="Validator,PurifierColossus@Target"/>
+        <DataRecord Entry="Validator,PurifierColossus@Not"/>
+        <DataRecord Entry="Validator,PurifierColossus@NotTarget"/>
+    </CDataCollectionUnit>
+
+    <!-- ========= Weapons ========== -->
+    
+    <!-- Thermal Lance -->
+    
+    <CButton id="PurifierColossus_Weapon@Passive_FireBeam">
+        <Icon value="Assets\Textures\BTN-Ability-Protoss-FireBeam.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+
+    <CWeaponLegacy id="PurifierColossus_Weapon">
+        <EditorCategories value="Race:Protoss"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
+        <DisplayEffect value="PurifierColossus_Weapon@Damage"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AcquirePrioritization value="ByDistanceFromTarget"/>
+        <Range value="9"/>
+        <Arc value="90"/>
+        <Period value="2.2"/>
+        <DamagePoint value="0.0832"/>
+        <DisplayAttackCount value="2"/>
+        <LegacyOptions index="KeepChanneling" value="1"/>
+        <RangeSlop value="0"/>
+    </CWeaponLegacy>
+    
+    <CEffectSet id="PurifierColossus_Weapon">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="PurifierColossus_Weapon@Forward"/>
+        <EffectArray value="PurifierColossus_Weapon@Reverse"/>
+        <EffectArray value="PurifierColossus_Weapon@FireBeam"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="PurifierColossus_Weapon@Forward">
+        <EditorCategories value="Race:Protoss"/>
+        <ExpireDelay value="0.375"/>
+        <PeriodCount value="11"/>
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
+        <WhichLocation Value="TargetUnit"/>
+        <TimeScaleSource Value="Caster"/>
+        <Flags index="Channeled" value="1"/>
+        <PeriodicEffectArray value="PurifierColossus_Weapon@Search"/>
+        <PeriodicOffsetArray value="-1.25,0,0"/>
+        <PeriodicOffsetArray value="-1,0,0"/>
+        <PeriodicOffsetArray value="-0.75,0,0"/>
+        <PeriodicOffsetArray value="-0.5,0,0"/>
+        <PeriodicOffsetArray value="-0.25,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="0.25,0,0"/>
+        <PeriodicOffsetArray value="0.5,0,0"/>
+        <PeriodicOffsetArray value="0.75,0,0"/>
+        <PeriodicOffsetArray value="1,0,0"/>
+        <PeriodicOffsetArray value="1.25,0,0"/>
+        <PeriodicPeriodArray value="0.0312"/>
+        <ExpireEffect value="PurifierColossus_Weapon@Damage"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="PurifierColossus_Weapon@Reverse">
+        <EditorCategories value="Race:Protoss"/>
+        <ExpireDelay value="0.375"/>
+        <PeriodCount value="11"/>
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
+        <WhichLocation Value="TargetUnit"/>
+        <TimeScaleSource Value="Caster"/>
+        <Flags index="Channeled" value="1"/>
+        <PeriodicEffectArray value="PurifierColossus_Weapon@SearchReverse"/>
+        <PeriodicOffsetArray value="1.25,0,0"/>
+        <PeriodicOffsetArray value="1,0,0"/>
+        <PeriodicOffsetArray value="0.75,0,0"/>
+        <PeriodicOffsetArray value="0.5,0,0"/>
+        <PeriodicOffsetArray value="0.25,0,0"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicOffsetArray value="-0.25,0,0"/>
+        <PeriodicOffsetArray value="-0.5,0,0"/>
+        <PeriodicOffsetArray value="-0.75,0,0"/>
+        <PeriodicOffsetArray value="-1,0,0"/>
+        <PeriodicOffsetArray value="-1.25,0,0"/>
+        <PeriodicPeriodArray value="0.0312"/>
+        <ExpireEffect value="PurifierColossus_Weapon@Damage"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="PurifierColossus_Weapon@Search">
+        <EditorCategories value="Race:Protoss"/>
+        <SearchFilters value="Ground;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="0.15" Effect="PurifierColossus_Weapon@DamageDelay"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+        <ExcludeArray Value="Target"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="PurifierColossus_Weapon@SearchReverse">
+        <EditorCategories value="Race:Protoss"/>
+        <SearchFilters value="Ground;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="0.15" Effect="PurifierColossus_Weapon@DamageDelay"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+        <ExcludeArray Value="Target"/>
+    </CEffectEnumArea>
+    <CEffectCreatePersistent id="PurifierColossus_Weapon@DamageDelay">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetUnit"/>
+        <ExpireDelay value="0.25"/>
+        <FinalEffect value="PurifierColossus_Weapon@Damage"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="PurifierColossus_Weapon@Damage" parent="DU_WEAP">
+        <EditorCategories value="Race:Protoss"/>
+        <Visibility value="Visible"/>
+        <Kind value="Splash"/>
+        <KindSplash value="Splash"/>
+        <Amount value="20"/>
+        <ValidatorArray value="PurifierColossus_WeaponCliffLevel"/>
+        <ValidatorArray value="NotHidden"/>
+        <ValidatorArray value="noMarkers"/>
+        <Death value="Fire"/>
+    </CEffectDamage>
+    <!-- Fire beam effects setup, currently on Colossus Aiur -->
+    <CEffectCreatePersistent id="PurifierColossus_Weapon@FireBeam">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetUnit"/>
+        <TimeScaleSource Value="Caster"/>
+        <ExpireDelay value="0.375"/>
+        <PeriodCount value="4"/>
+        <PeriodicEffectArray value="PurifierColossus_Weapon@FireBeamCP"/>
+        <PeriodicOffsetArray value="-1.5,0,0"/>
+        <PeriodicOffsetArray value="1.5,0,0"/>
+        <PeriodicOffsetArray value="-0.5,0,0"/>
+        <PeriodicOffsetArray value="0.5,0,0"/>
+        <PeriodicPeriodArray value="0.125"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0"/>
+        <ValidatorArray value="IsNotLaserTentacle"/>
+        <ValidatorArray value="IsNotVoidCrystal"/>
+        <ValidatorArray value="IsNotOmniaClaw"/>
+        <ValidatorArray value="IsNotAnimaSpike"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="PurifierColossus_Weapon@FireBeamCP">
+        <EditorCategories value="Race:Protoss"/>
+        <TimeScaleSource Value="Caster"/>
+        <PeriodCount value="10"/>
+        <PeriodicEffectArray value="PurifierColossus_Weapon@FireBeamSearch"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicPeriodArray value="0.5"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="PurifierColossus_Weapon@FireBeamSearch">
+        <SearchFilters value="Ground;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="0.5" Effect="PurifierColossus_Weapon@FireBeamAB"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+        <AINotifyFlags index="HurtEnemy" value="1"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="PurifierColossus_Weapon@FireBeamAB">
+        <EditorCategories value="Race:Zerg"/>
+        <Behavior value="PurifierColossus_Weapon@FireBeam"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="PurifierColossus_Weapon@FireBeamDamage">
+        <EditorCategories value="Race:Protoss"/>
+        <Visibility value="Hidden"/>
+        <Amount value="10"/>
+        <Death value="Fire"/>
+    </CEffectDamage>
+    
+    <CBehaviorBuff id="PurifierColossus_Weapon@FireBeam">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-techupgrade-terran-bearclawnozzles.dds"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <TimeScaleSource Value="Global"/>
+        <Duration value="0.625"/>
+        <Period value="0.5"/>
+        <PeriodicEffect value="PurifierColossus_Weapon@FireBeamDamage"/>
+    </CBehaviorBuff>
+    
+    <CActorSite id="PurifierColossus_Weapon@LaunchSite" parent="SiteUNIT">
+        <Aliases value="_LaunchGuide"/>
+        <HostSiteOps Ops="SOpAttachWeapon02"/>
+    </CActorSite>
+    <CActorSiteMover id="PurifierColossus_Weapon@ImpactSite">
+        <Terms value="Cap 1"/>
+        <Sharing value="PerEffectTree"/>
+        <Acceleration value="40.000000"/>
+        <Deceleration value="40.000000"/>
+        <Speed value="2.000000"/>
+        <SpeedMax value="4.100000"/>
+        <HostSiteOps Ops="SOpShadow"/>
+        <On Terms="Effect.PurifierColossus_Weapon@Search.Impact" Send="Create"/>
+        <On Terms="Effect.PurifierColossus_Weapon@Search.Impact; At Effect" Send="MoverSetDestination2D"/>
+        <On Terms="MoverArrived" Target="PurifierColossus_Weapon@AttackBeam" Send="Signal Arrival"/>
+    </CActorSiteMover>
+    <CActorBeamSimple id="PurifierColossus_Weapon@AttackBeam">
+        <Terms value="Cap 1"/>
+        <HostLaunch Subject="PurifierColossus_Weapon@LaunchSite" Scope="Caster" Actor="Create"/>
+        <HostImpact Subject="PurifierColossus_Weapon@ImpactSite"/>
+        <On Terms="ActorCreation" Send="Create PurifierColossus_Weapon@AttackBeamImpact"/>
+        <On Terms="ActorCreation" Send="Create PurifierColossus_Weapon@AttackLaunchSound"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="Signal.*.Arrival" Send="AnimBracketStop BSD"/>
+        <On Terms="AnimBracketState.*.AfterOpening; AnimName BSD" Target="PurifierColossus_Weapon@ImpactSite" Send="MoverMove"/>
+        <On Terms="AnimBracketState.*.AfterClosing; AnimName BSD" Send="Destroy"/>
+        <On Terms="Effect.PurifierColossus_Weapon@Search.Impact" Send="Create"/>
+    </CActorBeamSimple>
+    <CActorModel id="PurifierColossus_Weapon@AttackBeamImpact">
+        <Host Subject="PurifierColossus_Weapon@ImpactSite"/>
+        <Supporter Subject="::Creator"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="ActorCreation" Send="Create PurifierColossus_Weapon@AttackImpactSound"/>
+        <On Terms="SupporterDestruction" Send="AnimBracketStop BSD"/>
+        <On Terms="AnimBracketState.*.AfterClosing; AnimName BSD" Send="Destroy"/>
+    </CActorModel>
+    <CActorSound id="PurifierColossus_Weapon@AttackLaunchSound" parent="SoundOneShot">
+        <Host Subject="PurifierColossus"/>
+        <Layers>
+            <Sound value="SOASolarLanceLaunch"/>
+            <PitchSource value="Actor"/>
+            <PlayDelaySource value="Actor"/>
+            <VolumeSource value="Actor"/>
+            <Chance value="100"/>
+            <Pitch value="2.000000,2.000000"/>
+            <PlayDelay value="200,220"/>
+            <Volume value="-11.000000,-11.000000"/>
+        </Layers>
+    </CActorSound>
+    <CActorSound id="PurifierColossus_Weapon@AttackImpactSound" parent="SoundOneShot">
+        <Host Subject="PurifierColossus"/>
+        <Layers>
+            <Sound value="Moebius02_Reactor_Fire_Flare"/>
+            <PitchSource value="Actor"/>
+            <PlayDelaySource value="Actor"/>
+            <VolumeSource value="Actor"/>
+            <Chance value="100"/>
+            <Pitch value="6.000000,6.000000"/>
+            <PlayDelay value="100,150"/>
+            <Volume value="-14.000000,-14.000000"/>
+        </Layers>
+    </CActorSound>
+    <!-- Reverse -->
+    <CActorSite id="PurifierColossus_Weapon@LaunchSiteReverse" parent="SiteUNIT">
+        <Aliases value="_LaunchGuide"/>
+        <HostSiteOps Ops="SOpAttachWeapon03"/>
+    </CActorSite>
+    <CActorSiteMover id="PurifierColossus_Weapon@ImpactSiteReverse">
+        <Terms value="Cap 1"/>
+        <Sharing value="PerEffectTree"/>
+        <Acceleration value="40.000000"/>
+        <Deceleration value="40.000000"/>
+        <Speed value="2.000000"/>
+        <SpeedMax value="4.100000"/>
+        <HostSiteOps Ops="SOpShadow"/>
+        <On Terms="Effect.PurifierColossus_Weapon@SearchReverse.Impact" Send="Create"/>
+        <On Terms="Effect.PurifierColossus_Weapon@SearchReverse.Impact; At Effect" Send="MoverSetDestination2D"/>
+        <On Terms="MoverArrived" Target="PurifierColossus_Weapon@AttackBeamReverse" Send="Signal Arrival"/>
+    </CActorSiteMover>
+    <CActorBeamSimple id="PurifierColossus_Weapon@AttackBeamReverse">
+        <Model value="PurifierColossus_Weapon@AttackBeam"/>
+        <Terms value="Cap 1"/>
+        <HostLaunch Subject="PurifierColossus_Weapon@LaunchSiteReverse" Scope="Caster" Actor="Create"/>
+        <HostImpact Subject="PurifierColossus_Weapon@ImpactSiteReverse"/>
+        <On Terms="ActorCreation" Send="Create PurifierColossus_Weapon@AttackBeamImpactReverse"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="Signal.*.Arrival" Send="AnimBracketStop BSD"/>
+        <On Terms="AnimBracketState.*.AfterOpening; AnimName BSD" Target="PurifierColossus_Weapon@ImpactSiteReverse" Send="MoverMove"/>
+        <On Terms="AnimBracketState.*.AfterClosing; AnimName BSD" Send="Destroy"/>
+        <On Terms="Effect.PurifierColossus_Weapon@SearchReverse.Impact" Send="Create"/>
+    </CActorBeamSimple>
+    <CActorModel id="PurifierColossus_Weapon@AttackBeamImpactReverse">
+        <Model value="PurifierColossus_Weapon@AttackBeamImpact"/>
+        <Host Subject="PurifierColossus_Weapon@ImpactSiteReverse"/>
+        <Supporter Subject="::Creator"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="SupporterDestruction" Send="AnimBracketStop BSD"/>
+        <On Terms="AnimBracketState.*.AfterClosing; AnimName BSD" Send="Destroy"/>
+    </CActorModel>
+    <CActorModel id="PurifierColossus_Weapon@AttackBeamUnitImpact" parent="ModelAnimationStyleContinuous">
+        <On Terms="Behavior.PurifierColossus_Weapon@FireBeam.On" Send="Create"/>
+        <On Terms="Behavior.PurifierColossus_Weapon@FireBeam.Off" Send="AnimBracketStop BSD"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <AutoScaleFactor value="1.000000"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+    </CActorModel>
+    <!-- -->
+    <CActorAction id="PurifierColossus_Weapon@AttackShieldHitter" parent="AoEAttackShieldHitter" effectHit="PurifierColossus_Weapon@Damage">
+        <LaunchRequest Subject="PurifierColossus_Weapon@LaunchSite" Scope="Caster"/>
+        <ActionFlags index="VictimRevealsAttacker" value="1"/>
+    </CActorAction>
+    <CActorSiteOpForward id="PurifierColossus_Weapon@SOpFireBeam">
+        <HostForward Subject="_PurifierColossus_Weapon@TargetModel" Scope="Target"/>
+        <HostForwardSiteOps Ops="SOpAttachCenter"/>
+    </CActorSiteOpForward>
+    <CActorModel id="PurifierColossus_Weapon@TargetModel" parent="ModelAnimationStyleContinuous">
+        <Model value="Invisible"/>
+        <On Terms="Effect.PurifierColossus_Weapon@FireBeam.Start; At Target" Send="Create"/>
+        <On Terms="Effect.PurifierColossus_Weapon@FireBeam.Stop; FromEffectTreeDescendant" Send="Destroy"/>
+        <HostSiteOps Ops="SOpShadow"/>
+        <Host Subject="_Unit"/>
+        <Aliases value="_PurifierColossus_Weapon@TargetModel"/>
+    </CActorModel>
+    <CActorModel id="PurifierColossus_Weapon@FireModel" parent="ModelAnimationStyleContinuous">
+        <On Terms="Effect.PurifierColossus_Weapon@FireBeamCP.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.500000"/>
+        <On Terms="Effect.PurifierColossus_Weapon@FireBeamCP.Stop" Send="Destroy"/>
+        <HostSiteOps Ops="PurifierColossus_Weapon@SOpFireBeam SOp90" HoldPosition="1" HoldRotation="1"/>
+    </CActorModel>
+    
+    <CModel id="PurifierColossus_Weapon@AttackBeam" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Protoss\Colossus_FireBeam\Colossus_FireBeam.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <RadiusLoose value="1.000000"/>
+    </CModel>
+    <CModel id="PurifierColossus_Weapon@AttackBeamImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Protoss\Colossus_FireBeam_Impact\Colossus_FireBeam_Impact.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+    <CModel id="PurifierColossus_Weapon@AttackBeamUnitImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Protoss\Colossus_FireBeam_Unit_Impact\Colossus_FireBeam_Unit_Impact.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+    <CModel id="PurifierColossus_Weapon@FireModel" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Protoss\Colossus_FireBeam_GroundFire\Colossus_FireBeam_GroundFire.m3"/>
+        <Occlusion value="Show"/>
+    </CModel>
+    
+    <CSound id="PurifierColossus_Weapon@AttackLaunchSound" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Beam_AttackImpact01_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Beam_AttackImpact02_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Beam_AttackImpact03_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Beam_AttackImpact04_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Beam_AttackImpact05_1ch.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="3"/>
+        <Pitch value="-2.000000,1.000000"/>
+        <Volume value="-8.000000,-8.000000"/>
+        <PlayDelay value="0,60"/>
+    </CSound>
+    <CSound id="PurifierColossus_Weapon@AttackImpactSound" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Beam_AttackLaunch01_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Beam_AttackLaunch02_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Beam_AttackLaunch03_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Beam_AttackLaunch04_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\ColossusTaldarim_Beam_AttackLaunch05_1ch.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="3"/>
+        <Pitch value="-2.000000,1.000000"/>
+        <SustainFade index="1" Time="2500"/>
+        <Volume value="-5.200000,-5.200000"/>
+    </CSound>
+</Catalog>

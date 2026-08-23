@@ -1,0 +1,11 @@
+Unit/Name/PurifierColossus=Колосс
+
+Button/Name/PurifierColossus=Вызвать колосса
+Button/Tooltip/PurifierColossus=Чистильщики<n/>Шагающий робот, наносящий высокий урон по площади. Может свободно преодолевать уступы. Воспламеняет участки земли, нанося урон вражеским отрядам.
+Button/Name/PurifierColossus_Weapon@Passive_FireBeam=Огненный луч
+Button/Tooltip/PurifierColossus_Weapon@Passive_FireBeam=Атаки воспламеняют землю, дополнительно нанося наземным противникам в области поражения <d ref="Effect,PurifierColossus_Weapon@FireBeamDamage,Amount*Effect,PurifierColossus_Weapon@FireBeamCP,PeriodCount"/> урона в течение <d time="[d ref='Effect,PurifierColossus_Weapon@FireBeamCP,PeriodCount*Effect,PurifierColossus_Weapon@FireBeamCP,PeriodicPeriodArray[0]'/]"/>
+
+Behavior/Tooltip/PurifierColossus_Weapon@FireBeam=Горение
+Behavior/Tooltip/PurifierColossus_Weapon@FireBeam=Эта боевая единица получает дополнительный периодический урон.
+
+Weapon/Name/PurifierColossus_Weapon=Разрушительное копье

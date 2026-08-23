@@ -1,0 +1,60 @@
+Actor/Name/PurifierColossus=Purifier Colossus
+
+Model/Name/PurifierColossus=Purifier Colossus
+Model/Name/PurifierColossus@Death=Death
+Model/Name/PurifierColossus@Placement=Placement
+Model/Name/PurifierColossus@WarpIn=WarpIn
+Model/Name/PurifierColossus@Portrait=Portrait
+
+Sound/Name/PurifierColossus@Death=Death
+Sound/Name/PurifierColossus@Help=Help
+Sound/Name/PurifierColossus@Ready=Ready
+Sound/Name/PurifierColossus@What=What
+Sound/Name/PurifierColossus@Yes=Yes
+Sound/Name/PurifierColossus@Pissed=Pissed
+
+Light/Name/PurifierColossus@Portrait=Portrait
+
+Requirement/Name/PurifierColossus=Purifier Colossus
+
+Validator/Name/PurifierColossus@Is=Caster Is Unit
+Validator/Name/PurifierColossus@Target=Target Is Unit
+Validator/Name/PurifierColossus@Not=Caster Not Unit
+Validator/Name/PurifierColossus@NotTarget=Target Not Unit
+
+Effect/Name/PurifierColossus_Weapon=Set
+Effect/Name/PurifierColossus_Weapon@Forward=Forward
+Effect/Name/PurifierColossus_Weapon@Reverse=Reverse
+Effect/Name/PurifierColossus_Weapon@Search=Search
+Effect/Name/PurifierColossus_Weapon@SearchReverse=Search Reverse
+Effect/Name/PurifierColossus_Weapon@DamageDelay=Damage Delay
+Effect/Name/PurifierColossus_Weapon@Damage=Damage
+Effect/Name/PurifierColossus_Weapon@FireBeam=Fire Beam
+Effect/Name/PurifierColossus_Weapon@FireBeamCP=CP (FireBeam)
+Effect/Name/PurifierColossus_Weapon@FireBeamSearch=Search (FireBeam)
+Effect/Name/PurifierColossus_Weapon@FireBeamAB=AB (FireBeam)
+Effect/Name/PurifierColossus_Weapon@FireBeamDamage=Damage (FireBeam)
+
+Actor/Name/PurifierColossus_Weapon@LaunchSite=Launch Site
+Actor/Name/PurifierColossus_Weapon@ImpactSite=Impact Site
+Actor/Name/PurifierColossus_Weapon@AttackBeam=Attack Beam
+Actor/Name/PurifierColossus_Weapon@AttackBeamImpact=Attack Beam Impact
+Actor/Name/PurifierColossus_Weapon@AttackLaunchSound=Attack Launch Sound
+Actor/Name/PurifierColossus_Weapon@AttackImpactSound=Attack Impact Sound
+Actor/Name/PurifierColossus_Weapon@LaunchSiteReverse=Launch Site (Reverse)
+Actor/Name/PurifierColossus_Weapon@ImpactSiteReverse=Impact Site (Reverse)
+Actor/Name/PurifierColossus_Weapon@AttackBeamReverse=Attack Beam (Reverse)
+Actor/Name/PurifierColossus_Weapon@AttackBeamImpactReverse=Attack Beam Impact (Reverse)
+Actor/Name/PurifierColossus_Weapon@AttackBeamUnitImpact=Attack Beam Unit Impact
+Actor/Name/PurifierColossus_Weapon@AttackShieldHitter=Attack Shield Hitter
+Actor/Name/PurifierColossus_Weapon@SOpFireBeam=SOp Fire Beam
+Actor/Name/PurifierColossus_Weapon@TargetModel=Target Model
+Actor/Name/PurifierColossus_Weapon@FireModel=Fire Model
+
+Model/Name/PurifierColossus_Weapon@AttackBeam=Attack Beam
+Model/Name/PurifierColossus_Weapon@AttackBeamImpact=Attack Beam Impact
+Model/Name/PurifierColossus_Weapon@AttackBeamUnitImpact=Attack Beam Unit Impact
+Model/Name/PurifierColossus_Weapon@FireModel=Fire Model
+
+Sound/Name/PurifierColossus_Weapon@AttackLaunchSound=Attack Launch Sound
+Sound/Name/PurifierColossus_Weapon@AttackImpactSound=Attack Impact Sound
