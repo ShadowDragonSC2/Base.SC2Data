@@ -33,7 +33,7 @@
         <SubgroupPriority value="11"/>
         <Sight value="10"/>
         <AbilArray Link="Instigator_Blink"/>
-        <CardLayouts index = "0">
+        <CardLayouts index="0">
             <LayoutButtons Face="Instigator_Blink" Type="AbilCmd" AbilCmd="Instigator_Blink,Execute" Row="2" Column="0"/>
         </CardLayouts>
         <Attributes index="Armored" value="1"/>
@@ -42,12 +42,12 @@
         <GlossaryPriority value="30"/>
         <CostResource index="Minerals" value="125"/>
         <CostResource index="Vespene" value="50"/>
-        <GlossaryStrongArray index="0" value="Reaper"/>
-        <GlossaryStrongArray index="1" value="Mutalisk"/>
-        <GlossaryStrongArray index="2" value="VoidRay"/>
-        <GlossaryWeakArray index="0" value="Marauder"/>
-        <GlossaryWeakArray index="1" value="Zergling"/>
-        <GlossaryWeakArray index="2" value="Immortal"/>
+        <GlossaryStrongArray value="Reaper"/>
+        <GlossaryStrongArray value="Mutalisk"/>
+        <GlossaryStrongArray value="VoidRay"/>
+        <GlossaryWeakArray value="Marauder"/>
+        <GlossaryWeakArray value="Zergling"/>
+        <GlossaryWeakArray value="Immortal"/>
         <MinimapRadius value="0.625"/>
         <Fidget>
             <ChanceArray index="Anim" value="5"/>
@@ -83,18 +83,18 @@
         <Model value="Assets\Units\Protoss\Stalker_Purifier\Stalker_Purifier.m3"/>
         <RequiredAnims value="Assets\Units\Protoss\Stalker_SwarmAnims\Stalker_SwarmAnims.m3a"/>
         <Occlusion value="Show"/>
-        <ScaleMax value="0.690000,0.690000,0.690000"/>
-        <ScaleMin value="0.690000,0.690000,0.690000"/>
-        <SelectionRadius value="1.087000"/>
-        <Tipability value="0.750000"/>
-        <TipabilityWidth value="0.800000"/>
-        <TipabilityLength value="0.800000"/>
+        <ScaleMax value="0.69,0.69,0.69"/>
+        <ScaleMin value="0.69,0.69,0.69"/>
+        <SelectionRadius value="1.087"/>
+        <Tipability value="0.75"/>
+        <TipabilityWidth value="0.8"/>
+        <TipabilityLength value="0.8"/>
         <SquibTypeDefault value="Metal"/>
-        <Radius value="0.850000"/>
+        <Radius value="0.85"/>
         <TechPurchaseCamera value="Star2CameraHigh10"/>
         <UnitGlossaryCamera value="Star2CameraHigh10"/>
         <PlanetPanelCamera value="Star2CameraHigh10"/>
-        <ShadowRadius value="1.087000"/>
+        <ShadowRadius value="1.087"/>
     </CModel>
     <CModel id="Instigator@Death" parent="UnitDeath">
         <EditorCategories value="Race:Purifier"/>
@@ -476,7 +476,7 @@
         <Inherits index="Scale" value="1"/>
         <On Terms="Effect.Instigator_Blink@Teleport.Stop; At Source" Send="Create"/>
         <Host Subject="_Selectable"/>
-        <HostSiteOps Ops="SOpAttachOrigin"/>
+        <HostSiteOps Ops="SOpAttachOriginStationary"/>
     </CActorModel>
     <CActorSound id="Instigator_Blink@ImpactSound" parent="SoundOneShot">
         <On Terms="Effect.Instigator_Blink@Teleport.Stop; At Source" Send="Create"/>
