@@ -40,21 +40,23 @@
         <CreepHeightClass value="Small"/>
         <BarWidth value="135"/>
         <UnitFlags index="ShowBlobShadow" value="0"/>
-        <UnitIcon value="Assets\Textures\btn-building-protoss-pylon-forged.dds"/>
-        <HeroIcon value="Assets\Textures\btn-building-protoss-pylon-forged.dds"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-pylon.dds"/>
+        <HeroIcon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-pylon.dds"/>
         <LifeArmorIcon value="Assets\Textures\protossbuildingarmor.dds"/>
         <PlacementActorModel value="PylonPlacementModel"/>
+        <BarWidth value="75"/>
+        <BarOffset value="90"/>
         <GroupIcon>
-            <Image value="Assets\Textures\btn-building-protoss-pylon-forged.dds"/>
+            <Image value="Assets\Textures\btn-unit-protoss-alarak-taldarim-pylon.dds"/>
         </GroupIcon>
         <NameOffset value="110"/>
         <Wireframe>
-            <Image value="Assets\Textures\btn-building-protoss-pylon-forged.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-Pylon-Taldarim.dds"/>
         </Wireframe>
         <WireframeShield>
-            <Image value="Assets\Textures\Wireframe-Protoss-Pylon-Shield01.dds"/>
-            <Image value="Assets\Textures\Wireframe-Protoss-Pylon-Shield02.dds"/>
-            <Image value="Assets\Textures\Wireframe-Protoss-Pylon-Shield03.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-Pylon-Taldarim-Shield00.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-Pylon-Taldarim-Shield01.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-Pylon-Taldarim-Shield02.dds"/>
         </WireframeShield>
     </CActorUnit>
     
