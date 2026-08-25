@@ -6,7 +6,7 @@
     </CButton>
     
     <CUnit id="Sentinel" parent="Generic_Protoss_Unit_Ground" race="Puri">
-        <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
         <AbilArray Link="Sentinel_Charge"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Sentinel_Charge" Type="AbilCmd" AbilCmd="Sentinel_Charge,Execute" Row="2"/>

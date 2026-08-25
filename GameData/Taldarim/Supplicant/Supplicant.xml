@@ -13,6 +13,7 @@
     </CButton>
     
     <CUnit id="Supplicant" parent="Generic_Protoss_Unit_Ground" race="Tald">
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
         <Mob value="Campaign"/>
         <Attributes index="Light" value="1"/>
         <Attributes index="Biological" value="1"/>
@@ -27,19 +28,16 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="75"/>
         <EffectArray index="Birth" value="SupplicantBirth"/>
-        <EffectArray index="Death" value="AlarakTheStrongestSurvivePrestigeMechBuffSearch"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="AdeptPhaseShiftCancel,Execute" Row="2" Column="4"/>
             <LayoutButtons Face="AlarakACMyLifefortheHighlord" Type="Passive" Row="2" Column="0"/>
-            <LayoutButtons Face="Supplicant_BloodShields" Type="Passive" Requirements="Supplicant_SoulAugmentation@Have" Row="2" Column="2"/>
+            <LayoutButtons Face="Supplicant_BloodShields" Type="Passive" Requirements="Supplicant_BloodShields@Have" Row="2" Column="2"/>
             <LayoutButtons Face="Supplicant_SoulAugmentation" Type="Passive" Requirements="Supplicant_SoulAugmentation@Have" Row="2" Column="1"/>
             <LayoutButtons Face="AlarakSupplicantSacrificeCDR" Type="Passive" Requirements="HaveAlarakSupplicantSacrificeCDR" Row="2" Column="3"/>
-            <LayoutButtons Face="SupplicantSacrificeCDRLocked" Type="Passive" Requirements="AlarakLevel15" Row="2" Column="3"/>
         </CardLayouts>
         <InnerRadius value="0.375"/>
         <CargoSize value="2"/>
         <SubgroupPriority value="104"/>
-        <EditorCategories value="ObjectType:Unit,ObjectFamily:FactionTaldarim"/>
         <GlossaryPriority value="20"/>
         <GlossaryStrongArray value="Zergling"/>
         <GlossaryStrongArray value="Stalker"/>
@@ -319,13 +317,6 @@
         <Race value="Prot"/>
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:Taldarim"/>
     </CUnit>
-
-    <CWeaponLegacy id="SupplcantOrbWeap">
-        <EditorCategories value="Race:Taldarim"/>
-    </CWeaponLegacy>
-    <CDataCollectionUnit id="SupplcantOrbWeap">
-        <EditorCategories value="DataGroup:Weapon,DataFamily:Melee,Race:Taldarim,ObjectType:Projectile"/>
-    </CDataCollectionUnit>
 
     <CDataCollectionUnit id="Supplicant_Weapon" parent="Weapon_Missile">
         <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:Taldarim,ObjectType:Projectile"/>

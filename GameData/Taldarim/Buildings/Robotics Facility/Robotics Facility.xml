@@ -6,6 +6,7 @@
     </CButton>
     
     <CUnit id="TaldarimRoboticsFacility" parent="Generic_Protoss_Structure" race="Tald">
+        <EditorCategories value="ObjectType:Structure,ObjectFamily:Campaign"/>
         <DeathRevealRadius value="3"/>
         <Facing value="315"/>
         <Mob value="Campaign"/>
@@ -55,6 +56,7 @@
         <DeathCustoms ModelLink="RoboticsFacilityConstructionDeath" SoundLink="RoboticsFacilty_Explode" Name="Variation9"/>
         <BarOffset value="110"/>
         <BarWidth value="160"/>
+        <UnitIcon value="Assets/Textures/btn-unit-protoss-alarak-taldarim-roboticsfacility.dds"/>
         <GroupIcon>
             <Image value="Assets\Textures\Wireframe-Protoss-RoboticsFacility.dds"/>
         </GroupIcon>

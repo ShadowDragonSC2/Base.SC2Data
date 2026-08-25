@@ -1,7 +1,7 @@
 Actor/Name/TaldarimMothership=Taldarim Mothership
-Actor/Name/TaldarimMothership@@DeathModel=Death Model
-Actor/Name/TaldarimMothership@@DeathRagdoll=Death Ragdoll
-Actor/Name/TaldarimMothership@@RagdollDetonationForce=Ragdoll Detonation Force
+Actor/Name/TaldarimMothership@DeathModel=Death Model
+Actor/Name/TaldarimMothership@DeathRagdoll=Death Ragdoll
+Actor/Name/TaldarimMothership@RagdollDetonationForce=Ragdoll Detonation Force
 
 Model/NameTaldarimMothership=Taldarim Mothership
 Model/NameTaldarimMothership@DeathRagdoll=Death Ragdoll
@@ -39,3 +39,9 @@ Model/Name/TaldarimMothership_Weapon@AttackImpact=Attack Impact
 Sound/Name/TaldarimMothership_Weapon@AttackLoop=Attack Loop
 Sound/Name/TaldarimMothership_Weapon@AttackImpact=Attack Impact
 Sound/Name/TaldarimMothership_Weapon@AttackLaunch=Attack Launch
+
+DataCollection/EditorPrefix/TaldarimMothership=Войска талдаримов -
+DataCollection/EditorPrefix/TaldarimMothership_Weapon=Войска талдаримов -
+DataCollection/EditorPrefix/TaldarimMothership_Blink=Способность талдаримов -
+DataCollection/EditorPrefix/TaldarimMothership_ThermalLance=Способность талдаримов -
+DataCollection/EditorPrefix/TaldarimMothership_BlackHole=Способность талдаримов -

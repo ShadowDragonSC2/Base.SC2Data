@@ -6,7 +6,7 @@
     </CButton>
     
     <CUnit id="TaldarimCyberneticsCore" parent="Generic_Protoss_Structure" race="Tald">
-        <EditorCategories value="ObjectType:Structure,ObjectFamily:Melee"/>
+        <EditorCategories value="ObjectType:Structure,ObjectFamily:Campaign"/>
         <Facing value="315"/>
         <Mob value="Campaign"/>
         <LifeStart value="550"/>

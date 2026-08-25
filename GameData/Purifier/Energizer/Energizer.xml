@@ -11,6 +11,7 @@
     </CButton>
     
     <CUnit id="Energizer" parent="Generic_Protoss_Unit_Ground" race="Puri">
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
         <LifeStart value="40"/>
         <LifeMax value="40"/>
         <LifeArmor value="1"/>

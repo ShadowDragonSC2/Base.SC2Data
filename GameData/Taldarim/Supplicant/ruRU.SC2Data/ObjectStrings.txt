@@ -30,6 +30,11 @@ Sound/Name/Supplicant_Weapon@AttackLaunch=Attack Launch
 Sound/Name/Supplicant_Weapon@AttackImpact=Attack Impact
 Mover/Name/Supplicant_Weapon@AttackMissile=Attack Missile
 
+DataCollection/EditorPrefix/Supplicant=Войска талдаримов -
+DataCollection/EditorPrefix/Supplicant_Weapon=Оружие талдаримов -
+DataCollection/EditorPrefix/Supplicant_BloodShields=Улучшение талдаримов -
+DataCollection/EditorPrefix/Supplicant_SoulAugmentation=Улучшение талдаримов -
+
 DataCollectionPattern/Name/Supplicant_SoulAugmentationPattern/StartShields=+К начальному щиту
 DataCollectionPattern/Name/Supplicant_SoulAugmentationPattern/MaxShields=+К макс. щиту
 DataCollectionPattern/Name/Supplicant_SoulAugmentationPattern/RequirementHave=Требование

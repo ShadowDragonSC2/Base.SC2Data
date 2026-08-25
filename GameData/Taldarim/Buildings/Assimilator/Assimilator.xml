@@ -6,6 +6,7 @@
     </CButton>
     
     <CUnit id="TaldarimAssimilator" parent="Generic_Protoss_Structure" race="Tald">
+        <EditorCategories value="ObjectType:Structure,ObjectFamily:Campaign"/>
         <Facing value="315"/>
         <Mob value="Campaign"/>
         <ResourceState value="Harvestable"/>

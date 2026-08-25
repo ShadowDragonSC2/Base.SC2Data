@@ -9,6 +9,7 @@
     </CButton>
     
     <CUnit id="TaldarimForge" parent="Generic_Protoss_Structure" race="Tald">
+        <EditorCategories value="ObjectType:Structure,ObjectFamily:Campaign"/>
         <Facing value="315"/>
         <Mob value="Campaign"/>
         <LifeStart value="550"/>
@@ -24,7 +25,6 @@
         <SubgroupPriority value="2"/>
         <MinimapRadius value="1.5"/>
         <BuildTime value="45"/>
-        <EditorCategories value="ObjectType:Structure,ObjectFamily:Campaign"/>
         <AbilArray Link="que5"/>
         <AbilArray Link="TaldarimForgeResearch"/>
         <BehaviorArray Link="PowerUserQueue"/>

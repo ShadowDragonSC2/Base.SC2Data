@@ -1,0 +1,3 @@
+
+DataCollection/EditorPrefix/Destroyer=Войска талдаримов -
+DataCollection/EditorPrefix/Destroyer_Weapon=Оружие талдаримов -

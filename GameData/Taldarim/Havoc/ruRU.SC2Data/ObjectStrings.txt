@@ -11,9 +11,9 @@ Behavior/Name/Havoc_ForceField@TimedLife=Timed Life
 Behavior/Name/Havoc_SquadSight@Aura=Aura
 Behavior/Name/Havoc_SquadSight@Buff=Buff
 
-DataCollection/EditorPrefix/Havoc=Талдаримы -
-DataCollection/EditorPrefix/Havoc_ForceField=Талдаримы -
-DataCollection/EditorPrefix/Havoc_SquadSight=Талдаримы -
+DataCollection/EditorPrefix/Havoc=Войска талдаримов -
+DataCollection/EditorPrefix/Havoc_ForceField=Способность талдаримов -
+DataCollection/EditorPrefix/Havoc_SquadSight=Способность талдаримов -
 
 Effect/Name/Havoc_ForceField@CU=CU
 Effect/Name/Havoc_ForceField@Placement=Placement

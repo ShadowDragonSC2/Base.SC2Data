@@ -6,6 +6,7 @@
     </CButton>
     
     <CUnit id="TaldarimPylon" parent="Generic_Protoss_Structure" race="Tald">
+        <EditorCategories value="ObjectType:Structure,ObjectFamily:Campaign"/>
         <Facing value="270"/>
         <BehaviorArray index="0" Link="PowerSource"/>
         <Mob value="Campaign"/>
@@ -24,7 +25,6 @@
         <SubgroupPriority value="2"/>
         <MinimapRadius value="1.5"/>
         <BuildTime value="25"/>
-        <EditorCategories value="ObjectType:Structure,ObjectFamily:Melee"/>
         <Sight value="7"/>
         <GlossaryPriority value="10"/>
         <CostCategory value="Technology"/>

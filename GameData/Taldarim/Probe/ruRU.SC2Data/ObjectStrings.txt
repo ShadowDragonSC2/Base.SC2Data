@@ -1,0 +1,4 @@
+
+DataCollection/EditorPrefix/TaldarimProbe=Войска талдаримов -
+DataCollection/EditorPrefix/TaldarimProbe_Weapon=Оружие талдаримов -
+DataCollection/EditorPrefix/TaldarimProbe_Build=Способность талдаримов -

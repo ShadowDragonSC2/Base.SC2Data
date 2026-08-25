@@ -44,3 +44,7 @@ Sound/Name/BloodHunter@Yes=Yes
 Sound/Name/BloodHunter_VoidStasis@ImpactSound=Impact Sound
 Sound/Name/BloodHunter_VoidStasis@LaunchSound=Launch Sound
 
+DataCollection/EditorPrefix/BloodHunter=Войска талдаримов -
+DataCollection/EditorPrefix/BloodHunter_Weapon=Оружие талдаримов -
+DataCollection/EditorPrefix/BloodHunter_VoidStasis=Способность талдаримов -
+

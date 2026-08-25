@@ -34,3 +34,6 @@ Sound/Name/Wrathwalker@Pissed=Pissed
 Sound/Name/Wrathwalker@Ready=Ready
 Sound/Name/Wrathwalker@What=What
 Sound/Name/Wrathwalker@Yes=Yes
+
+DataCollection/EditorPrefix/Wrathwalker=Войска талдаримов -
+DataCollection/EditorPrefix/Wrathwalker_Weapon=Оружие талдаримов -

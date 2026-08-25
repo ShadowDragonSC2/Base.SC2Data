@@ -64,7 +64,7 @@
         <Model value="Assets\Units\Protoss\Stalker_Taldarim_WarpIn\Stalker_Taldarim_WarpIn.m3"/>
     </CModel>
 
-    <CSound id="Slayer@Attack" parent="ProtossAck">
+    <CSound id="Slayer@Attack" parent="Voice">
         <Flags index="Download" value="0"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Stalker\Stalker_Attack00.ogg"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Stalker\Stalker_Attack01.ogg"/>
@@ -106,7 +106,7 @@
         <EditorCategories value="Race:Taldarim"/>
         <Volume value="1.000000,1.000000"/>
     </CSound>
-    <CSound id="Slayer@What" parent="ProtossAck">
+    <CSound id="Slayer@What" parent="Voice">
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Stalker\Stalker_What00.ogg"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Stalker\Stalker_What01.ogg"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Stalker\Stalker_What02.ogg"/>
@@ -115,7 +115,7 @@
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Stalker\Stalker_What05.ogg"/>
         <Volume value="-2.000000,-2.000000"/>
     </CSound>
-    <CSound id="Slayer@Yes" parent="ProtossAck">
+    <CSound id="Slayer@Yes" parent="Voice">
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Stalker\Stalker_Yes00.ogg"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Stalker\Stalker_Yes01.ogg"/>
         <AssetArray File="LocalizedData\Sounds\ProtossUnitVO\Stalker\Stalker_Yes02.ogg"/>
@@ -127,6 +127,38 @@
         <Volume value="-2.000000,-2.000000"/>
     </CSound>
 
+    <CRequirement id="Slayer"/>
+    <CRequirement id="Slayer@Have"/>
+
+    <CValidatorUnitType id="Slayer@Is" parent="IsUnit_Default" unit="Slayer"/>
+    <CValidatorUnitType id="Slayer@Target" parent="TargetIsUnit_Default" unit="Slayer"/>
+    <CValidatorUnitType id="Slayer@Not" parent="NotUnit_Default" unit="Slayer"/>
+    <CValidatorUnitType id="Slayer@NotTarget" parent="TargetNotUnit_Default" unit="Slayer"/>
+
+    <CDataCollectionUnit id="Slayer" parent="UnitGround">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Taldarim,ObjectType:Unit"/>
+        <DataRecord Entry="Button,Slayer"/>
+        <DataRecord Entry="Unit,Slayer"/>
+        <DataRecord Entry="Actor,Slayer"/>
+        <DataRecord Entry="Model,Slayer"/>
+        <DataRecord Entry="Model,Slayer@Death"/>
+        <DataRecord Entry="Model,Slayer@Portrait"/>
+        <DataRecord Entry="Model,Slayer@WarpIn"/>
+        <DataRecord Entry="Sound,Slayer@Attack"/>
+        <DataRecord Entry="Sound,Slayer@Help"/>
+        <DataRecord Entry="Sound,Slayer@Pissed"/>
+        <DataRecord Entry="Sound,Slayer@Yes"/>
+        <DataRecord Entry="Sound,Slayer@What"/>
+        <DataRecord Entry="Sound,Slayer@Ready"/>
+        <DataRecord Entry="Requirement,Slayer"/>
+        <DataRecord Entry="Requirement,Slayer@Have"/>
+        <DataRecord Entry="Light,Slayer@Portrait"/>
+        <DataRecord Entry="Validator,Slayer@Is"/>
+        <DataRecord Entry="Validator,Slayer@Target"/>
+        <DataRecord Entry="Validator,Slayer@Not"/>
+        <DataRecord Entry="Validator,Slayer@NotTarget"/>
+    </CDataCollectionUnit>
+
     <!-- ========= Behaviors ========== -->
     
     <!-- Phasing Armor -->
@@ -135,6 +167,9 @@
     <CBehaviorBuff id="Slayer_PhasingArmor@Response"></CBehaviorBuff>
     <CBehaviorBuff id="Slayer_PhasingArmor"></CBehaviorBuff>
     
+    <CDataCollectionUnit id="Slayer_PhasingArmor">
+        <EditorCategories value="DataGroup:Buff,DataFamily:Campaign,Race:Taldarim,ObjectType:Permanent"/>
+    </CDataCollectionUnit>
 
     <!-- ========= Weapons ========== -->
     
@@ -203,6 +238,10 @@
     </CSound>
 
     <CMoverMissile id="Slayer_Weapon@AttackMissile" parent="MissileDefault"/>
+    
+    <CDataCollectionUnit id="Slayer_Weapon">
+        <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:Taldarim,ObjectType:Projectile"/>
+    </CDataCollectionUnit>
     
     <!-- ========= Abilities ========== -->
     
@@ -311,11 +350,15 @@
         <EditorCategories value="Race:Taldarim"/>
     </CSound>
     
-    <CRequirement id="UseBlinkSlayer">
+    <CRequirement id="Slayer_PhaseBlink">
         <EditorCategories value="Race:Taldarim"/>
         <NodeArray index="Use" Link="CountUpgradeBlinkTechCompleteOnly296509780TechTreeCheat"/>
         <NodeArray index="Show" Link="CountUpgradeAlarakCommanderCompleteOnly"/>
     </CRequirement>
+    
+    <CDataCollectionUnit id="Slayer_PhaseBlink">
+        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Taldarim,ObjectType:Spell"/>
+    </CDataCollectionUnit>
     
 
 </Catalog>

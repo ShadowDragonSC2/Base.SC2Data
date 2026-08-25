@@ -6,6 +6,7 @@
     </CButton>
 
     <CUnit id="TaldarimGateway" parent="Generic_Protoss_Structure" race="Tald">
+        <EditorCategories value="ObjectType:Structure,ObjectFamily:Campaign"/>
         <Mob value="Campaign"/>
         <LifeStart value="500"/>
         <LifeMax value="500"/>
@@ -20,7 +21,6 @@
         <SubgroupPriority value="2"/>
         <MinimapRadius value="1.75"/>
         <BuildTime value="65"/>
-        <EditorCategories value="ObjectType:Structure,ObjectFamily:Melee"/>
         <AbilArray Link="que5"/>
         <AbilArray Link="Rally"/>
         <AbilArray Link="TaldarimGateway_Train"/>

@@ -6,6 +6,7 @@
     </CButton>
 
     <CUnit id="TaldarimNexus" parent="Generic_Protoss_Structure" race="Tald">
+        <EditorCategories value="ObjectType:Structure,ObjectFamily:Campaign"/>
         <DeathRevealRadius value="3"/>
         <Facing value="315"/>
         <Mob value="Campaign"/>
@@ -26,7 +27,6 @@
         <ScoreResult value="BuildOrder"/>
         <SubgroupPriority value="2"/>
         <MinimapRadius value="2.5"/>
-        <EditorCategories value="ObjectType:Structure,ObjectFamily:Melee"/>
         <ResourceDropOff index="Minerals" value="1"/>
         <ResourceDropOff index="Vespene" value="1"/>
         <ResourceDropOff index="Terrazine" value="1"/>

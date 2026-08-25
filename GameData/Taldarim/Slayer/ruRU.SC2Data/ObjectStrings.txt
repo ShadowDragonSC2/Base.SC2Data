@@ -1,0 +1,5 @@
+
+DataCollection/EditorPrefix/Slayer=Войска талдаримов -
+DataCollection/EditorPrefix/Slayer_Weapon=Оружие талдаримов -
+DataCollection/EditorPrefix/Slayer_PhasingArmor=Усиление талдаримов -
+DataCollection/EditorPrefix/Slayer_PhaseBlink=Способность талдаримов -

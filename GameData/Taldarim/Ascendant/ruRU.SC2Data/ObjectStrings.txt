@@ -106,3 +106,9 @@ Validator/Name/Ascendant@Is=Caster Is Unit
 Validator/Name/Ascendant@Target=Target Is Unit
 Validator/Name/Ascendant@Not=Caster Is Not Unit
 Validator/Name/Ascendant@NotTarget=Target Is Not Unit
+
+DataCollection/EditorPrefix/Ascendant=Войска талдаримов -
+DataCollection/EditorPrefix/Ascendant_Weapon=Оружие талдаримов -
+DataCollection/EditorPrefix/Ascendant_MindBlast=Способность талдаримов -
+DataCollection/EditorPrefix/Ascendant_PsiOrb=Способность талдаримов -
+DataCollection/EditorPrefix/Ascendant_Sacrifice=Способность талдаримов -
