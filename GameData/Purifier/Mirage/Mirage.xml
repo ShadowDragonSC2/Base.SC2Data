@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+
+    <CButton id="Mirage" parent="UnitButton_OnlyAir">
+        <EditorCategories value="Race:Purifier"/>
+        <Icon value=""/>
+    </CButton>
+    
+    <CUnit id="Mirage" parent="Generic_Protoss_Unit_Air" race="Puri">
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+        <Mob value="Campaign"/>
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Mechanical" value="1"/>
+        <LifeStart value="120"/>
+        <LifeMax value="120"/>
+        <ShieldsStart value="60"/>
+        <ShieldsMax value="60"/>
+        <Speed value="4.25"/>
+        <Acceleration value="3.25"/>
+        <StationaryTurningRate value="1499.9414"/>
+        <TurningRate value="1499.9414"/>
+        <Sight value="10"/>
+        <Food value="-2"/>
+        <CostResource index="Minerals" value="150"/>
+        <CostResource index="Vespene" value="100"/>
+        <AbilArray Link="GravitonBeam"/>
+        <AbilArray Link="GravitonBeamVoidCampaign"/>
+        <BehaviorArray Link="Mirage_PhaseArmor"/>
+        <WeaponArray index="0" Turret="Phoenix"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="GravitonBeamVoidCampaign" Type="AbilCmd" AbilCmd="GravitonBeamVoidCampaign,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="GravitonBeam" Type="AbilCmd" AbilCmd="GravitonBeam,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="Mirage_PhaseArmor" Type="Passive" Row="2" Column="1"/>
+        </CardLayouts>
+        <Radius value="0.75"/>
+        <SeparationRadius value="0.75"/>
+        <ScoreMake value="250"/>
+        <ScoreKill value="250"/>
+        <SubgroupPriority value="12"/>
+        <MinimapRadius value="0.75"/>
+        <GlossaryPriority value="125"/>
+        <GlossaryStrongArray value="Battlecruiser"/>
+        <GlossaryStrongArray value="BroodLord"/>
+        <GlossaryWeakArray value="VikingFighter"/>
+        <GlossaryWeakArray value="Goliath"/>
+        <GlossaryWeakArray value="MissileTurret"/>
+        <GlossaryWeakArray value="Mutalisk"/>
+    </CUnit>
+    
+    <CActorUnit id="Mirage" parent="AdvancedUnitStandard" unitName="Mirage">
+        <Aliases value="_UnitLarge"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Mirage_Land"/>
+        <BarWidth value="66"/>
+        <BarOffset value="50"/>
+        <NameOffset value="50"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-phoenix-purifier.dds"/>
+        <HeroIcon value="Assets\Textures\btn-unit-protoss-phoenix-purifier.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-airarmorlevel0.dds"/>
+        <WireframeShield>
+            <Image value="Assets\Textures\Wireframe-protoss-phoenix-purifier-shield01.dds"/>
+            <Image value="Assets\Textures\Wireframe-protoss-phoenix-purifier-shield02.dds"/>
+            <Image value="Assets\Textures\Wireframe-protoss-phoenix-purifier-shield03.dds"/>
+        </WireframeShield>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-protoss-phoenix-purifier.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-protoss-phoenix-purifier.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    
+    <CModel id="Mirage" parent="Unit">
+        <EditorCategories value="Race:Purifier"/>
+        <Model value="Assets\Units\Protoss\Phoenix_Purifier\Phoenix_Purifier.m3"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.850000,0.850000,0.850000"/>
+        <ScaleMin value="0.850000,0.850000,0.850000"/>
+        <SelectionOffset value="0.000000,0.000000,-0.400000"/>
+        <SelectionRadius value="0.882000"/>
+        <SquibTypeDefault value="Metal"/>
+        <AttachProps Id="Ref_Weapon 01">
+            <Keys index="Air" value="0"/>
+        </AttachProps>
+        <AttachProps Id="Ref_Weapon 03">
+            <Keys index="Air" value="0"/>
+        </AttachProps>
+        <Radius value="0.750000"/>
+        <TechPurchaseCamera value="Star2CameraLow05"/>
+        <UnitGlossaryCamera value="Star2CameraLow05"/>
+        <PlanetPanelCamera value="Star2CameraLow05"/>
+        <ShadowRadius value="0.882000"/>
+    </CModel>
+    <CModel id="Mirage@Death" parent="UnitDeath">
+        <EditorCategories value="Race:Purifier"/>
+        <Model value="Assets\Units\Protoss\Phoenix_Purifier_Death\Phoenix_Purifier_Death.m3"/>
+        <Occlusion value="Show"/>
+        <LowQualityModel value="ProtossMediumUnitDeathLow"/>
+        <SelectionRadius value="0.588100"/>
+        <ShadowRadius value="0.588100"/>
+    </CModel>
+    <CModel id="Mirage@Placement" parent="Placement">
+        <EditorCategories value="Race:Purifier"/>
+        <Model value="Assets\Units\Protoss\Phoenix_Purifier_Placement\Phoenix_Purifier_Placement.m3"/>
+        <ScaleMax value="0.850000,0.850000,0.850000"/>
+        <ScaleMin value="0.850000,0.850000,0.850000"/>
+        <Occlusion value="Show"/>
+    </CModel>
+    <CModel id="Mirage@Portrait" parent="Portrait">
+        <EditorCategories value="Race:Purifier"/>
+        <Model value="Assets\Portraits\Protoss\PhoenixPortrait_Purifier\PhoenixPortrait_Purifier.m3"/>
+        <Image value="Assets\Textures\Mirageportrait_static.dds"/>
+    </CModel>
+    <CModel id="Mirage@WarpIn" parent="OneShotSpellFX">
+        <EditorCategories value="Race:Purifier"/>
+        <Model value="Assets\Effects\Protoss\Phoenix_Purifier_WarpIn\Phoenix_Purifier_WarpIn.m3"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.850000,0.850000,0.850000"/>
+        <ScaleMin value="0.850000,0.850000,0.850000"/>
+        <EditorCategories value="Race:Purifier"/>
+        <SquibTypeDefault value="Metal"/>
+        <LowQualityModel value="ProtossUnitBirth"/>
+        <SelectionOffset value="0.000000,0.000000,-0.400000"/>
+        <SelectionRadius value="0.882000"/>
+        <ShadowRadius value="0.882000"/>
+    </CModel>
+    <CModel id="Mirage@WarpInStargate" parent="PersistentSpellFX">
+        <EditorCategories value="Race:Purifier"/>
+        <Model value="Assets\Units\Protoss\Phoenix_Purifier_WarpIn_StarGate\Phoenix_Purifier_WarpIn_StarGate.m3"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.850000,0.850000,0.850000"/>
+        <ScaleMin value="0.850000,0.850000,0.850000"/>
+        <SelectionOffset value="0.000000,0.000000,-0.400000"/>
+        <SelectionRadius value="0.882000"/>
+        <SquibTypeDefault value="Metal"/>
+        <Radius value="0.750000"/>
+        <ShadowRadius value="0.882000"/>
+        <EditorCategories value="Race:Purifier"/>
+    </CModel>
+    
+    <CSound id="Mirage@Death" parent="Protoss_ExplosionMedium">
+        <EditorCategories value="Race:Purifier"/>
+    </CSound>
+    <CSound id="Mirage@Attack" parent="Voice">
+        <EditorCategories value="Race:Purifier"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Mirage_Attack00.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Mirage_Attack01.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Mirage_Attack02.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Mirage_Attack03.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Mirage_Attack04.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Mirage_Attack05.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Mirage_Attack06.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Mirage@Help" parent="Alert">
+        <EditorCategories value="Race:Purifier"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Mirage_Help00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="Mirage@Land" parent="FlyingUnit_Land">
+        <EditorCategories value="Race:Purifier"/>
+        <AssetArray File="Assets\Sounds\Phoenix_Land_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Phoenix_Land_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Phoenix_Land_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Phoenix_Land_04.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-7.000000,-5.000000"/>
+    </CSound>
+    <CSound id="Mirage@Movement" parent="Movement">
+        <EditorCategories value="Race:Purifier"/>
+        <AssetArray File="Assets\Sounds\Protoss\Phoenix\Phoenix_Movement01.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Phoenix\Phoenix_Movement02.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Phoenix\Phoenix_Movement03.wav"/>
+        <Pitch value="-3.000000,-2.000000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Mirage@Pissed" parent="Pissed">
+        <EditorCategories value="Race:Purifier"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Mirage_Pissed00.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Mirage_Pissed01.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Mirage_Pissed02.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Mirage_Pissed03.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Mirage_Pissed04.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Mirage_Pissed05.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Mirage_Pissed06.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Mirage_Pissed07.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Mirage_Pissed08.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Mirage_Pissed09.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Mirage@Ready" parent="Ready">
+        <EditorCategories value="Race:Purifier"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Mirage_Ready00.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Mirage@What" parent="Voice">
+        <EditorCategories value="Race:Purifier"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Mirage_What00.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Mirage_What01.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Mirage_What02.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Mirage_What03.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Mirage_What04.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Mirage_What05.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Mirage_What06.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    <CSound id="Mirage@Yes" parent="Voice">
+        <EditorCategories value="Race:Purifier"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Mirage_Yes00.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Mirage_Yes01.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Mirage_Yes02.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Mirage_Yes03.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Mirage_Yes04.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Mirage_Yes05.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Mirage_Yes06.ogg"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+    </CSound>
+    
+    <CLight id="Mirage@Portrait" parent="default">
+        <ToDInfoArray index="0" Id="Mirage@Portrait" AmbientColor="0.184314,0.125490,0.090196">
+            <Param index="HDRExposure" value="1.480000"/>
+            <Param index="HDRBloomThreshold" value="1.350000"/>
+            <DirectionalLight index="Key">
+                <Color value="0.784314,0.768628,0.749020"/>
+                <ColorMultiplier value="1.365000"/>
+                <SpecularColor value="0.992157,0.949020,0.811765"/>
+                <SpecColorMultiplier value="2.512000"/>
+                <Direction value="0.619311,-0.202901,-0.758476"/>
+            </DirectionalLight>
+            <DirectionalLight index="Fill" Color="0.243137,0.450980,0.941177" ColorMultiplier="0.661000" Direction="-0.770999,-0.418792,-0.479764"/>
+            <DirectionalLight index="Back" Color="0.992157,0.596078,0.000000" ColorMultiplier="2.210000" Direction="-0.470323,-0.522530,0.711168"/>
+        </ToDInfoArray>
+        <EditorCategories value="LightGroup:PortraitsUnitsProtoss"/>
+    </CLight>
+    
+    <CRequirement id="Mirage"/>
+    
+    <CValidatorUnitType id="Mirage@Is" parent="IsUnit_Default" unit="Mirage"/>
+    <CValidatorUnitType id="Mirage@Target" parent="TargetIsUnit_Default" unit="Mirage"/>
+    <CValidatorUnitType id="Mirage@Not" parent="NotUnit_Default" unit="Mirage"/>
+    <CValidatorUnitType id="Mirage@NotTarget" parent="TargetNotUnit_Default" unit="Mirage"/>
+    
+    <CDataCollectionUnit id="Mirage" parent="UnitAir">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Purifier,ObjectType:Unit"/>
+        <DataRecord Entry="Button,Mirage"/>
+        <DataRecord Entry="Unit,Mirage"/>
+        <DataRecord Entry="Actor,Mirage"/>
+        <DataRecord Entry="Model,Mirage"/>
+        <DataRecord Entry="Model,Mirage@Death"/>
+        <DataRecord Entry="Model,Mirage@Placement"/>
+        <DataRecord Entry="Model,Mirage@WarpIn"/>
+        <DataRecord Entry="Model,Mirage@Portrait"/>
+        <DataRecord Entry="Light,Mirage@Portrait"/>
+        <DataRecord Entry="Requirement,Mirage"/>
+        <DataRecord Entry="Validator,Mirage@Is"/>
+        <DataRecord Entry="Validator,Mirage@Target"/>
+        <DataRecord Entry="Validator,Mirage@Not"/>
+        <DataRecord Entry="Validator,Mirage@NotTarget"/>
+    </CDataCollectionUnit>
+
+    <!-- ========= Weapons ========== -->
+    
+    <!-- Ion Cannon -->
+    <CWeaponLegacy id="Mirage_Weapon">
+        <EditorCategories value="Race:Purifier"/>
+        <Options index="OnlyFireWhileInAttackOrder" value="0"/>
+        <Options index="OnlyFireAtAttackOrderTarget" value="0"/>
+        <Effect value="Mirage_Weapon@CP"/>
+        <DisplayEffect value="Mirage_Weapon@Damage"/>
+        <DisplayAttackCount value="2"/>
+        <AllowedMovement value="Moving"/>
+        <MinScanRange value="4"/>
+        <Period value="1.1"/>
+        <Arc value="4.9987"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-airweaponslevel0.dds"/>
+        <TargetFilters value="Air,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+
+    <CEffectCreatePersistent id="Mirage_Weapon@CP">
+        <EditorCategories value="Race:Purifier"/>
+        <WhichLocation Value="TargetUnit"/>
+        <PeriodCount value="2"/>
+        <PeriodicEffectArray value="Mirage_Weapon@LMLeft"/>
+        <PeriodicEffectArray value="Mirage_Weapon@LMRight"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectLaunchMissile id="Mirage_Weapon@LMLeft">
+        <EditorCategories value="Race:Purifier"/>
+        <ImpactEffect value="Mirage_Weapon@Damage"/>
+        <AmmoUnit value="Mirage_Weapon@AttackMissile"/>
+        <Movers Link="Mirage_Weapon@AttackLeft" IfRangeLTE="6"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="Mirage_Weapon@LMRight">
+        <EditorCategories value="Race:Purifier"/>
+        <ImpactEffect value="Mirage_Weapon@Damage"/>
+        <AmmoUnit value="Mirage_Weapon@AttackMissile"/>
+        <Movers Link="Mirage_Weapon@AttackRight" IfRangeLTE="6"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="Mirage_Weapon@Damage" parent="DU_WEAP_MISSILE">
+        <EditorCategories value="Race:Purifier"/>
+        <AttributeBonus index="Light" value="5"/>
+        <Visibility value="Visible"/>
+        <Amount value="5"/>
+        <Death value="Blast"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Air;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectDamage>
+
+    <CActorAction id="Mirage_Weapon@AttackLeft" parent="GenericAttack" effectImpact="Mirage_Weapon@Damage" effectLaunch="Mirage_Weapon@LMLeft">
+        <LaunchAttachQuery Methods="Weapon 1"/>
+        <LaunchAssets Sound="Mirage_Weapon@LaunchSound"/>
+        <Missile value="Mirage_Weapon@AttackMissile"/>
+        <ImpactMap index="None" Model="Mirage_Weapon@ImpactModel"/>
+    </CActorAction>
+    <CActorAction id="Mirage_Weapon@AttackRight" parent="GenericAttack" effectImpact="Mirage_Weapon@Damage" effectLaunch="Mirage_Weapon@LMRight">
+        <LaunchAttachQuery Methods="Weapon 3"/>
+        <LaunchAssets Sound="Mirage_Weapon@LaunchSound"/>
+        <Missile value="Mirage_Weapon@AttackMissile"/>
+        <ImpactMap index="None" Model="Mirage_Weapon@ImpactModel"/>
+    </CActorAction>
+    <CActorMissile id="Mirage_Weapon@AttackMissile" parent="GenericAttackMissile" unitName="Mirage_Weapon@AttackMissile"/>
+
+    <CModel id="Mirage_Weapon@AttackMissile" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\PhoenixMissile\PhoenixMissile.m3"/>
+        <EditorCategories value="Race:Purifier"/>
+    </CModel>
+    <CModel id="Mirage_Weapon@ImpactModel" parent="ImpactFX">
+        <Model value="Assets\Effects\Protoss\PhoenixMissileImpact\PhoenixMissileImpact.m3"/>
+        <EditorCategories value="Race:Purifier"/>
+    </CModel>
+
+    <CSound id="Mirage_Weapon@LaunchSound" parent="Combat">
+        <EditorCategories value="Race:Purifier"/>
+        <AssetArray File="Assets\Sounds\Protoss\Phoenix\Phoenix_AttackLaunch0.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Phoenix\Phoenix_AttackLaunch1.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Phoenix\Phoenix_AttackLaunch2.wav"/>
+        <DupeDestroyCount value="6"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="32"/>
+        <Pitch value="-0.890000,0.840000"/>
+        <Volume value="-6.120000,-6.120000"/>
+    </CSound>
+    <CSound id="Mirage_Weapon@ImpactSound" parent="Combat">
+        <EditorCategories value="Race:Purifier"/>
+        <AssetArray File="Assets\Sounds\Protoss\Phoenix\Phoenix_AttackImpact0.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Phoenix\Phoenix_AttackImpact1.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Phoenix\Phoenix_AttackImpact2.wav"/>
+        <DupeDestroyCount value="6"/>
+        <DupeMuteCount value="32"/>
+        <Pitch value="-0.890000,0.840000"/>
+        <Volume value="-6.120000,-6.120000"/>
+    </CSound>
+
+    <CUnit id="Mirage_Weapon@AttackMissile" parent="MISSILE">
+        <Race value="Prot"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
+    </CUnit>
+
+    <CMoverMissile id="Mirage_Weapon@AttackLeft">
+        <MotionPhases>
+            <Driver value="Throw"/>
+            <Speed value="6"/>
+            <MaxSpeed value="6"/>
+            <Outro value="0.4,0.85"/>
+            <ThrowRotationType value="ThrowForward"/>
+            <ThrowVector value="1.75,-1.25,-0.7"/>
+        </MotionPhases>
+        <MotionPhases Outro="1,1.5" ThrowVector="-0.75,-1.25,0.2"/>
+        <MotionPhases>
+            <Driver value="Guidance"/>
+            <Acceleration value="60"/>
+            <MaxSpeed value="40"/>
+            <YawPitchRoll value="MAX"/>
+        </MotionPhases>
+    </CMoverMissile>
+    <CMoverMissile id="Mirage_Weapon@AttackRight">
+        <MotionPhases>
+            <Driver value="Throw"/>
+            <Speed value="6"/>
+            <MaxSpeed value="6"/>
+            <Outro value="0.4,0.85"/>
+            <ThrowRotationType value="ThrowForward"/>
+            <ThrowVector value="-1.75,-1.25,-0.7"/>
+        </MotionPhases>
+        <MotionPhases Outro="1,1.5" ThrowVector="0.75,-1.25,0.2"/>
+        <MotionPhases>
+            <Driver value="Guidance"/>
+            <Acceleration value="60"/>
+            <MaxSpeed value="40"/>
+            <YawPitchRoll value="MAX"/>
+        </MotionPhases>
+    </CMoverMissile>
+
+    <CDataCollectionUnit id="Mirage_Weapon" parent="Weapon_Missile">
+        <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:Purifier,ObjectType:Projectile"/>
+        <DataRecord Entry="Weapon,Mirage_Weapon"/>
+        <DataRecord Entry="Effect,Mirage_Weapon@CP"/>
+        <DataRecord Entry="Effect,Mirage_Weapon@LMLeft"/>
+        <DataRecord Entry="Effect,Mirage_Weapon@LMRight"/>
+        <DataRecord Entry="Effect,Mirage_Weapon@Damage"/>
+        <DataRecord Entry="Effect,Mirage_Weapon@DamageLeft"/>
+        <DataRecord Entry="Effect,Mirage_Weapon@DamageRight"/>
+        <DataRecord Entry="Actor,Mirage_Weapon@AttackLeft"/>
+        <DataRecord Entry="Actor,Mirage_Weapon@AttackRight"/>
+        <DataRecord Entry="Actor,Mirage_Weapon@AttackMissile"/>
+        <DataRecord Entry="Model,Mirage_Weapon@AttackMissile"/>
+        <DataRecord Entry="Model,Mirage_Weapon@ImpactModel"/>
+        <DataRecord Entry="Sound,Mirage_Weapon@LaunchSound"/>
+        <DataRecord Entry="Sound,Mirage_Weapon@ImpactSound"/>
+        <DataRecord Entry="Unit,Mirage_Weapon@AttackMissile"/>
+        <DataRecord Entry="Mover,Mirage_Weapon@AttackMissile"/>
+        <DataRecord Entry="Mover,Mirage_Weapon@AttackLeft"/>
+        <DataRecord Entry="Mover,Mirage_Weapon@AttackRight"/>
+        <TechInfoUpgradeUsed value="ProtossAirWeapons@1"/>
+        <TechInfoUpgradeUsed value="ProtossAirWeapons@2"/>
+        <TechInfoUpgradeUsed value="ProtossAirWeapons@3"/>
+    </CDataCollectionUnit>
+
+    <!-- ========= Behaviors ========== -->
+    
+    <!-- Phase Armor -->
+    <CButton id="Mirage_PhaseArmor">
+        <EditorCategories value="Race:Purifier"/>
+        <Icon value="Assets\Textures\BTN-Ability-Protoss-PhasingArmor.dds"/>
+        <AlertIcon value="Assets\Textures\BTN-Ability-Protoss-PhasingArmor.dds"/>
+    </CButton>
+
+    <CBehaviorBuff id="Mirage_PhaseArmor">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Purifier"/>
+        <DamageResponse Chance="1" Handled="Mirage_PhaseArmor@AB">
+            <Cost>
+                <Cooldown TimeUse="5"/>
+            </Cost>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Mirage_PhaseArmor@Invulnerable">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Purifier"/>
+        <Duration value="2"/>
+        <Modification>
+            <StateFlags index="Invulnerable" value="1"/>
+        </Modification>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-phasingarmor.dds"/>
+    </CBehaviorBuff>
+
+    <CEffectApplyBehavior id="Mirage_PhaseArmor@AB">
+        <EditorCategories value="Race:Purifier"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="Mirage_PhaseArmor@Invulnerable"/>
+    </CEffectApplyBehavior>
+    
+    <CActorModelMaterial id="Mirage_PhaseArmor@Glaze" parent="GlazeParent">
+        <On Terms="Behavior.Mirage_PhaseArmor@Invulnerable.On" Send="Create"/>
+        <On Terms="ActorCreation" Send="ModelMaterialApplyTo ::Main"/>
+        <On Terms="Behavior.Mirage_PhaseArmor@Invulnerable.Off" Send="AnimBracketStop BSD"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModelMaterial>
+    <CActorSound id="Mirage_PhaseArmor@SoundOn" parent="SoundOneShot">
+        <On Terms="Behavior.Mirage_PhaseArmor@Invulnerable.On" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="Mirage_PhaseArmor@SoundOff" parent="SoundOneShot">
+        <On Terms="Behavior.Mirage_PhaseArmor@Invulnerable.Off" Send="Create"/>
+    </CActorSound>
+
+    <CModel id="Mirage_PhaseArmor@Glaze">
+        <EditorCategories value="Race:Purifier"/>
+        <Model value="Assets\Effects\Glaze\Glaze_PhaseArmor\Glaze_PhaseArmor.m3"/>
+    </CModel>
+    
+    <CSound id="Mirage_PhaseArmor@SoundOn" parent="Combat">
+        <EditorCategories value="Race:Purifier"/>
+        <AssetArray File="Assets\Sounds\Mirage_PhoenixPurifier_CloakOn01_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Mirage_PhoenixPurifier_CloakOn02_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Mirage_PhoenixPurifier_CloakOn03_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Mirage_PhoenixPurifier_CloakOn04_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Mirage_PhoenixPurifier_CloakOn05_1ch.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="4"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
+    <CSound id="Mirage_PhaseArmor@SoundOff" parent="Combat">
+        <EditorCategories value="Race:Purifier"/>
+        <AssetArray File="Assets\Sounds\Mirage_PhoenixPurifier_CloakOff01_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Mirage_PhoenixPurifier_CloakOff02_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Mirage_PhoenixPurifier_CloakOff03_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Mirage_PhoenixPurifier_CloakOff04_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Mirage_PhoenixPurifier_CloakOff05_1ch.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="4"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-8.000000,-8.000000"/>
+    </CSound>
+
+    <CDataCollectionUnit id="Mirage_PhaseArmor">
+        <EditorCategories value="DataGroup:Buff,DataFamily:Campaign,Race:Purifier,ObjectType:Permanent"/>
+        <DataRecord Entry="Button,Mirage_PhaseArmor"/>
+        <DataRecord Entry="Behavior,Mirage_PhaseArmor"/>
+        <DataRecord Entry="Behavior,Mirage_PhaseArmor@Invulnerable"/>
+        <DataRecord Entry="Effect,Mirage_PhaseArmor@AB"/>
+        <DataRecord Entry="Actor,Mirage_PhaseArmor@Glaze"/>
+        <DataRecord Entry="Actor,Mirage_PhaseArmor@SoundOn"/>
+        <DataRecord Entry="Actor,Mirage_PhaseArmor@SoundOff"/>
+        <DataRecord Entry="Model,Mirage_PhaseArmor@Glaze"/>
+        <DataRecord Entry="Sound,Mirage_PhaseArmor@SoundOn"/>
+        <DataRecord Entry="Sound,Mirage_PhaseArmor@SoundOff"/>
+    </CDataCollectionUnit>
+
+    <!-- ========= Abilities ========== -->
+    
+    <!-- Graviton Beam -->
+    <CAbilEffectTarget id="GravitonBeam">
+        <AbilSetId value="Graviton"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="ReExecutable" value="1"/>
+        <Cost>
+            <Cooldown TimeUse="30"/>
+        </Cost>
+        <TargetFilters value="Ground,Visible;Self,Neutral,Massive,Structure,Heroic,Destructible,Invulnerable"/>
+        <Range value="4"/>
+        <CancelableArray index="Channel" value="1"/>
+        <UninterruptibleArray index="Channel" value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="GravitonBeam">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <RangeSlop value="4"/>
+    </CAbilEffectTarget>
+    
+    <CEffectCreatePersistent id="GravitonBeam">
+        <ValidatorArray value="NotFrenzied"/>
+        <ValidatorArray value="NoGravitonBeamInProgress"/>
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetUnit"/>
+        <TimeScaleSource Value="Caster"/>
+        <Flags index="Channeled" value="1"/>
+        <InitialEffect value="GravitonBeamInitialSet"/>
+        <PeriodCount value="80"/>
+        <PeriodicValidator value="GravitonBeamValidators"/>
+        <PeriodicPeriodArray value="0.125"/>
+        <PeriodicEffectArray value="GravitonBeamPeriodicSet"/>
+    </CEffectCreatePersistent>
+
+    <CEffectSet id="GravitonBeamInitialSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="DisableCasterWeaponsApplyBehavior"/>
+        <EffectArray value="InstantUnburrow"/>
+        <EffectArray value="GravitonBeamHeightBehavior"/>
+        <EffectArray value="GravitonBeamHaltTerranBuild"/>
+        <!-- Adding a stop order -->
+        <EffectArray value="AttackCancel"/>
+    </CEffectSet>
+    <CEffectSet id="GravitonBeamPeriodicSet">
+        <EffectArray value="GravitonBeamDummy"/>
+        <EffectArray value="GravitonBeamBehavior"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="GravitonBeamHeightBehavior">
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="GravitonBeamHeight"/>
+    </CEffectApplyBehavior>
+    <CEffectIssueOrder id="GravitonBeamHaltTerranBuild">
+        <EditorCategories value="Race:Protoss"/>
+        <Abil value="TerranBuild"/>
+        <AbilCmdIndex value="30"/>
+    </CEffectIssueOrder>
+    <CEffectApplyBehavior id="GravitonBeamBehavior">
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="GravitonBeam"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="GravitonBeamDummy">
+        <EditorCategories value="Race:Protoss"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <Visibility value="Visible"/>
+        <Flags index="Notification" value="1"/>
+        <Flags index="NoBehaviorResponse" value="1"/>
+        <Flags index="NoDamageTimerReset" value="1"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+    </CEffectDamage>
+
+</Catalog>
