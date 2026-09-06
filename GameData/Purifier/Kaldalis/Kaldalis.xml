@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    <!-- Requires: Button:UnitButton_OnlyGround[base.xml] -->
+    <!-- Requires: Unit:Generic_Protoss_Unit_Ground[protoss.xml] -->
+    <!-- Requires: Actor:AdvancedStandard_Ground[base.xml] -->
+    <!-- Requires: DataCollection:UnitGround[base.xml] -->
+    <!-- Requires: Actor:GlazeFenixChampionUnit[Purifier.xml] -->
+    <!-- Requires: Model:GlazeFenixChampionUnit[Purifier.xml] -->
+
+    <CButton id="Kaldalis" parent="UnitButton_OnlyGround">
+        <Icon value="Assets\Textures\btn-unit-protoss-champion-zealot-purifier.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-protoss-champion-zealot-purifier.dds"/>
+    </CButton>
+    
+    <CUnit id="Kaldalis" parent="Generic_Protoss_Unit_Ground" race="Puri">
+        <DeathTime value="-1"/>
+        <Mob value="Campaign"/>
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Mechanical" value="1"/>
+        <Attributes index="Heroic" value="1"/>
+        <LifeStart value="400"/>
+        <LifeMax value="400"/>
+        <LifeArmor value="2"/>
+        <ShieldsStart value="200"/>
+        <ShieldsMax value="200"/>
+        <ShieldArmor value="1"/>
+        <Speed value="3"/>
+        <Food value="-3"/>
+        <CostResource index="Minerals" value="200"/>
+        <CostResource index="Vespene" value="100"/>
+        <AbilArray Link="Kaldalis_Engage"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Kaldalis_Engage" Type="AbilCmd" AbilCmd="Kaldalis_Engage,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="Kaldalis_EmpoweredBlades" Type="Passive" Requirements="Kaldalis_EmpoweredBlades" Row="2" Column="1"/>
+        </CardLayouts>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+        <CargoSize value="2"/>
+        <ScoreMake value="100"/>
+        <ScoreKill value="100"/>
+        <SubgroupPriority value="106"/>
+        <MinimapRadius value="0.375"/>
+        <EditorCategories value="ObjectType:Hero,ObjectFamily:FactionPurifier"/>
+        <GlossaryPriority value="4"/>
+        <GlossaryStrongArray value="Marauder"/>
+        <GlossaryStrongArray value="Immortal"/>
+        <GlossaryStrongArray value="Hydralisk"/>
+        <GlossaryWeakArray value="Hellion"/>
+        <GlossaryWeakArray value="Colossus"/>
+        <GlossaryWeakArray value="Baneling"/>
+        <Fidget>
+            <ChanceArray index="Anim" value="20"/>
+            <ChanceArray index="Idle" value="70"/>
+            <ChanceArray index="Turn" value="10"/>
+        </Fidget>
+        <TauntDuration index="Cheer" value="5"/>
+        <TauntDuration index="Dance" value="5"/>
+        <RepairTime value="50"/>
+        <SelectAlias value="Sentinel"/>
+        <EffectArray index="Death" value="FenixAIChampionDeathZealot"/>
+    </CUnit>
+    
+    <CActorUnit id="Kaldalis" parent="AdvancedStandard_Ground" unitName="Kaldalis">
+        <Aliases value="_UnitSmall"/>
+        <Macros value="ChargingAnim"/>
+        <On Terms="AbilMorph.*.Finish; MorphFrom Sentinel; MorphTo Kaldalis" Send="Create"/>
+        <On Terms="ActorCreation" Send="Create Kaldalis@Champion"/>
+        <On Terms="ActorCreation" Send="Create Kaldalis@Glaze"/>
+        <On Terms="Behavior.Charging.On" Send="ModelSuddenMotionStart"/>
+        <On Terms="Behavior.Charging.Off" Send="ModelSuddenMotionStop"/>
+        <On Terms="Upgrade.Kaldalis_EmpoweredBlades.Add" Send="Create Kaldalis@AttackModel"/>
+        <On Terms="Upgrade.Kaldalis_EmpoweredBlades.Add" Send="AnimGroupApply C"/>
+        <On Terms="ActorCreation; ValidatePlayer Kaldalis_EmpoweredBlades" Send="Create Kaldalis@AttackModel"/>
+        <On Terms="ActorCreation; ValidatePlayer Kaldalis_EmpoweredBlades" Send="AnimGroupApply C"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart Cover Cover,Start Cover"/>
+        <On Terms="WeaponStart.*.AttackStart; ValidatePlayer Kaldalis_EmpoweredBlades" Send="Create Kaldalis@AttackModel"/>
+        
+        <On Terms="Effect.Kaldalis_Engage@LM.Start; At Caster" Send="HostSiteOpsSet ::Host {SOpBasicScopeFollow SOp2DRotation}"/>
+        <On Terms="Effect.Kaldalis_Engage@LM.Start; At Caster" Send="AnimBracketStart Jump Jump,Start Jump Jump,End"/>
+        <On Terms="Effect.Kaldalis_Engage@LM.Start; At Caster" Send="AnimGroupApply D"/>
+        <On Terms="Effect.Kaldalis_Engage@LM.Start; At Caster" Send="AnimGroupRemove C"/>
+
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Zealot_Land"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Templar_LandSweetener"/>
+        <On Terms="UnitHeightUpdate.*.Land" Target="Kaldalis_Engage@Model" Send="AnimBracketStop BSD"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="AnimBracketStop Jump"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="TimerSet 0.600000 AnimGroupD"/>
+
+        <On Terms="TimerExpired; TimerName AnimGroupD" Send="AnimGroupRemove D"/>
+        <On Terms="TimerExpired; TimerName AnimGroupD; ValidatePlayer Kaldalis_EmpoweredBlades" Send="AnimGroupApply C"/>
+        <BarWidth value="42"/>
+        <BarOffset value="45"/>
+        <AbilSoundArray AbilCmd="FenixKaldalisZealotCharge,Execute" Sound="Kaldalis_EngageRangedVO"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-champion-zealot-purifier.dds"/>
+        <HeroIcon value="Assets\Textures\btn-unit-protoss-champion-zealot-purifier.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
+        <WireframeShield>
+            <Image value="Assets\Textures\wireframe-protoss-zealot-Purifier-Champion-shield00.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-zealot-Purifier-Champion-shield01.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-zealot-Purifier-Champion-shield02.dds"/>
+        </WireframeShield>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-protoss-zealot-Purifier-Champion.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-protoss-zealot-Purifier-Champion.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorModel id="Kaldalis@AttackModel" parent="ModelAnimationStyleContinuous">
+        <On Terms="WeaponStart.*.AttackStart" Send="AnimHookSet AttackLink ::Main Attack"/>
+        <On Terms="WeaponStart.*.AttackStart" Send="StatusSet Hooked 1"/>
+        <On Terms="WeaponStop.*.AttackStop; IsStatus Hooked 1" Send="AnimHookClear AttackLink"/>
+        <On Terms="WeaponStop.*.AttackStop" Send="StatusSet Hooked 0"/>
+        <On Terms="Abil.attack.ReadyStop" Send="AnimBracketStop BSD"/>
+        <HostForProps Subject="_Selectable"/>
+    </CActorModel>
+    <CActorModelMaterial id="Kaldalis@Glaze">
+        <On Terms="ActorCreation" Send="ModelMaterialApplyTo ::Main"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death ContentPlayOnce"/>
+        <On Terms="AnimBracketState.*.AfterClosing; AnimName BSD" Send="ModelMaterialRemoveFrom ::Main"/>
+        <On Terms="AnimBracketState.*.AfterClosing; AnimName BSD" Send="Destroy"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModelMaterial>
+    <CActorModel id="Kaldalis@Champion" parent="ModelAnimationStyleContinuous">
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="CloakEffect" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <On Terms="AnimBracketState.*.BeforeClosing; AnimName BSD" Send="RefClear ::Host"/>
+        <On Terms="UnitDeath" Send="AnimBracketStop BSD"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachHardPoint01"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModel>
+    
+    <CModel id="Kaldalis" parent="Unit">
+        <Model value="Assets\Units\Protoss\Zealot_Purifier_Collection\Zealot_Purifier_Collection.m3"/>
+        <ScaleMax value="1.440000,1.440000,1.440000"/>
+        <ScaleMin value="1.440000,1.440000,1.440000"/>
+        <AnimAliases Anim="Attack,00" Alias="Attack,C,00"/>
+        <AnimAliases Anim="Attack,01" Alias="Attack,C,00"/>
+        <AnimAliases Anim="Attack,02" Alias="Attack,D,00"/>
+        <Occlusion value="Show"/>
+        <SelectionRadius value="0.416500"/>
+        <SquibTypeDefault value="Metal"/>
+        <Radius value="0.375000"/>
+        <TechPurchaseCamera value="Star2CameraMid05"/>
+        <UnitGlossaryCamera value="Star2CameraMid05"/>
+        <PlanetPanelCamera value="Star2CameraMid05"/>
+        <ShadowRadius value="0.416500"/>
+        <TextureDeclares Prefix="zealot_">
+            <Adaptions TriggerOnSubstring="_Diffuse" Slot="main"/>
+        </TextureDeclares>
+        <Events>
+            <Anim value="Jump,Start,00"/>
+            <Name value="FenixKaldalisZealot_Jump"/>
+            <Type value="Sound"/>
+            <Time value="0.006000"/>
+            <Payload value="FenixKaldalisZealot_Jump"/>
+        </Events>
+        <Events>
+            <Anim value="Jump,End,00"/>
+            <Name value="FenixKaldalisZealot_Land"/>
+            <Type value="Sound"/>
+            <Time value="0.022000"/>
+            <Payload value="FenixKaldalisZealot_Land"/>
+        </Events>
+    </CModel>
+    <CModel id="Kaldalis@Death" parent="UnitDeath">
+        <Model value="Assets\Units\Protoss\Zealot_Purifier_Collection_Death\Zealot_Purifier_Collection_Death.m3"/>
+        <Occlusion value="Show"/>
+        <LowQualityModel value="ProtossSpiritDeathLow"/>
+        <SelectionRadius value="0.555400"/>
+        <ShadowRadius value="0.555400"/>
+        <VariationCount value="2"/>
+    </CModel>
+    <CModel id="Kaldalis@Placement" parent="Placement">
+        <Model value="Assets\Units\Protoss\Zealot_Purifier_Placement\Zealot_Purifier_Placement.m3"/>
+        <Radius value="-1.000000"/>
+        <Lighting value="Zealot"/>
+        <Occlusion value="Show"/>
+        <SelectionRadius value="0.416500"/>
+        <ShadowRadius value="0.416500"/>
+    </CModel>
+    <CModel id="Kaldalis@WarpIn" parent="OneShotSpellFX">
+        <Model value="Assets\Units\Protoss\Zealot_Purifier_WarpIn\Zealot_Purifier_WarpIn.m3"/>
+        <Occlusion value="Show"/>
+        <EditorCategories value="Race:Purifier"/>
+        <LowQualityModel value="ProtossUnitBirth"/>
+        <SelectionRadius value="0.555400"/>
+        <ShadowRadius value="0.555400"/>
+    </CModel>
+    <CModel id="Kaldalis@Portrait" parent="Portrait">
+        <Model value="Assets\Portraits\Protoss\Zealot_Purifier_Collection_Kaldalis_Portrait\Zealot_Purifier_Collection_Kaldalis_Portrait.m3"/>
+        <Image value="Assets\Textures\zealot_purifier_collection_kaldalis_static.dds"/>
+    </CModel>
+    <CModel id="Kaldalis@AttackModel" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Protoss\Zealot_Purifier_Collection_Cleave\Zealot_Purifier_Collection_Cleave.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+    <CModel id="Kaldalis@Glaze" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Glaze\Glaze_Fenix_AI_Champion\Glaze_Fenix_AI_Champion.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+    <CModel id="Kaldalis@Champion" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Protoss\AI_Champion_Ground_Coop_WarpIn\AI_Champion_Ground_Coop_WarpIn.m3"/>
+        <Occlusion value="Show"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.800000,0.800000,0.800000"/>
+        <ScaleMin value="0.800000,0.800000,0.800000"/>
+        <Flags index="CloakedUndetectedIsHidden" value="1"/>
+        <Events Anim="Birth" Name="Kaldalis@ChampionLaunch" Type="Sound" Payload="Kaldalis@ChampionLaunch"/>
+        <Events Anim="Birth" Name="Kaldalis@ChampionImpact" Type="Sound" Payload="Kaldalis@ChampionImpact"/>
+    </CModel>
+    
+    <CSound id="Kaldalis@Attack" parent="Voice">
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Kaldalis_Attack00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Kaldalis_Attack01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Kaldalis_Attack02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Kaldalis_Attack03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Kaldalis_Attack04.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Kaldalis_Attack05.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Kaldalis_Attack06.ogg"/>
+        <Volume value="-5.000000,-5.000000"/>
+        <Exclusivity value="Kaldalis"/>
+    </CSound>
+    <CSound id="Kaldalis@DeathVoice" parent="DeathVoice">
+        <EditorCategories value="Race:Purifier"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Kaldalis_Death00.wav"/>
+    </CSound>
+    <CSound id="Kaldalis@Death" parent="Death">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_Death01.wav" Pitch="-1.000000,1.000000" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_Death02.wav" Pitch="-1.000000,1.000000" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_Death03.wav" Pitch="-1.000000,1.000000" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\ZealotNerazim_Death04.wav" Pitch="-1.000000,1.000000" FacialGroup=""/>
+    </CSound>
+    <CSound id="Kaldalis@Help" parent="Alert">
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Kaldalis_Help00.ogg"/>
+        <Volume value="-3.000000,-3.000000"/>
+        <Exclusivity value="Kaldalis"/>
+    </CSound>
+    <CSound id="Kaldalis@Pissed" parent="Pissed">
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Kaldalis_Pissed01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Kaldalis_Pissed02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Kaldalis_Pissed03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Kaldalis_Pissed04.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Kaldalis_Pissed05.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Kaldalis_Pissed06.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Kaldalis_Pissed07.ogg"/>
+        <Volume value="-4.000000,-4.000000"/>
+        <Exclusivity value="Kaldalis"/>
+    </CSound>
+    <CSound id="Kaldalis@Ready" parent="Ready">
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Kaldalis_Ready00.ogg"/>
+        <Volume value="-1.000000,-1.000000"/>
+        <Exclusivity value="Kaldalis"/>
+    </CSound>
+    <CSound id="Kaldalis@What" parent="Voice">
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Kaldalis_What00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Kaldalis_What01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Kaldalis_What02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Kaldalis_What03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Kaldalis_What04.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Kaldalis_What05.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Kaldalis_What06.ogg"/>
+        <Volume value="-4.000000,-4.000000"/>
+        <Exclusivity value="Kaldalis"/>
+    </CSound>
+    <CSound id="Kaldalis@Yes" parent="Voice">
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Kaldalis_Yes00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Kaldalis_Yes01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Kaldalis_Yes02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Kaldalis_Yes03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Kaldalis_Yes04.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Kaldalis_Yes05.ogg"/>
+        <Volume value="-4.000000,-4.000000"/>
+        <Exclusivity value="Kaldalis"/>
+    </CSound>
+    <CSound id="Kaldalis@ChampionLaunch" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\WarHawk_LaserBeamCharge_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarHawk_LaserBeamCharge_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarHawk_LaserBeamCharge_03.wav" FacialGroup=""/>
+        <DupeDestroyCount value="6"/>
+        <DupeMuteCount value="6"/>
+        <Pitch value="-6.000000,-4.000000"/>
+        <Volume value="-10.000000,-10.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="25.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="Kaldalis@ChampionImpact" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\HybridThrasher_2DImpactElectric_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HybridThrasher_2DImpactElectric_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HybridThrasher_2DImpactElectric_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HybridThrasher_2DImpactElectric_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HybridThrasher_2DImpactElectric_05.wav" FacialGroup=""/>
+        <DupeDestroyCount value="6"/>
+        <DupeMuteCount value="6"/>
+        <Pitch value="-8.000000,-6.000000"/>
+        <Volume value="-12.000000,-12.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="25.000000" Volume="-96.000000"/>
+    </CSound>
+    
+    <CSoundExclusivity id="Kaldalis">
+        <Group value="1040"/>
+        <Priority value="50000.000000"/>
+        <CollideWithLower value="Fail"/>
+        <CollideWithEqual value="Fail"/>
+        <CollideWithHigher value="Fail"/>
+        <QTimeout value="1000"/>
+        <InterruptFade/>
+        <InterruptFade Time="250" Volume="-96.000000"/>
+    </CSoundExclusivity>
+    
+    <CLight id="Kaldalis@Portrait" parent="default">
+        <ToDInfoArray index="0" Id="Kaldalis@Portrait" AmbientColor="0.160784,0.007843,0.000000" Colorize="1">
+            <Param index="HDRExposure" value="1.480000"/>
+            <Param index="HDRBloomThreshold" value="1.950000"/>
+            <Param index="HDRSpecMultiplier" value="3.680000"/>
+            <Param index="ColorizationContrast" value="1.060000"/>
+            <Param index="ColorizationHue" value="0.080000"/>
+            <Param index="ColorizationSaturation" value="0.220000"/>
+            <Param index="ColorizationBlend" value="0.300000"/>
+            <DirectionalLight index="Key">
+                <Color value="0.992157,0.701961,0.411765"/>
+                <ColorMultiplier value="31.261000"/>
+                <SpecColorMultiplier value="3.273000"/>
+                <Direction value="0.000000,-0.829037,-0.559193"/>
+            </DirectionalLight>
+            <DirectionalLight index="Fill" Color="1.000000,0.882353,0.800000" ColorMultiplier="0.724000" Direction="-0.662406,-0.094628,-0.743145"/>
+            <DirectionalLight index="Back" Color="0.211765,0.376471,0.937255" ColorMultiplier="0.631000" Direction="0.201653,0.967788,-0.150743"/>
+        </ToDInfoArray>
+        <EditorCategories value="LightGroup:PortraitsUnitsProtoss"/>
+    </CLight>
+
+    <CEffectEnumArea id="Kaldalis@Champion">
+        <AreaArray Effect="Kaldalis@Champion_Issue" Radius="1000"/>
+        <SearchFilters value="Visible;Invulnerable,Missile,Hidden,Ally,Enemy,Neutral"/>
+        <MaxCount value="1"/>
+    </CEffectEnumArea>
+    <CEffectIssueOrder id="Kaldalis@Champion_Issue">
+        <ValidatorArray value="Sentinel@Target"/>
+    </CEffectIssueOrder>
+    
+    <CRequirement id="Kaldalis"/>
+    
+    <CValidatorUnitType id="Kaldalis@Is" parent="IsUnit_Default" unit="Kaldalis"/>
+    <CValidatorUnitType id="Kaldalis@Target" parent="TargetIsUnit_Default" unit="Kaldalis"/>
+    <CValidatorUnitType id="Kaldalis@Not" parent="NotUnit_Default" unit="Kaldalis"/>
+    <CValidatorUnitType id="Kaldalis@NotTarget" parent="TargetNotUnit_Default" unit="Kaldalis"/>
+    
+    <CDataCollectionUnit id="Kaldalis" parent="UnitGround">
+        <DataRecord Entry="Button,Kaldalis"/>
+        <DataRecord Entry="Unit,Kaldalis"/>
+        <DataRecord Entry="Actor,Kaldalis"/>
+        <DataRecord Entry="Model,Kaldalis"/>
+        <DataRecord Entry="Model,Kaldalis@Death"/>
+        <DataRecord Entry="Model,Kaldalis@Placement"/>
+        <DataRecord Entry="Model,Kaldalis@WarpIn"/>
+        <DataRecord Entry="Model,Kaldalis@Portrait"/>
+        <DataRecord Entry="Light,Kaldalis@Portrait"/>
+        <DataRecord Entry="Requirement,Kaldalis"/>
+        <DataRecord Entry="Validator,Kaldalis@Is"/>
+        <DataRecord Entry="Validator,Kaldalis@Target"/>
+        <DataRecord Entry="Validator,Kaldalis@Not"/>
+        <DataRecord Entry="Validator,Kaldalis@NotTarget"/>
+        <TechInfoUpgradeUsed value="ProtossGroundArmors@1"/>
+        <TechInfoUpgradeUsed value="ProtossGroundArmors@2"/>
+        <TechInfoUpgradeUsed value="ProtossGroundArmors@3"/>
+        <TechInfoUpgradeUsed value="ProtossShields@1"/>
+        <TechInfoUpgradeUsed value="ProtossShields@2"/>
+        <TechInfoUpgradeUsed value="ProtossShields@3"/>
+    </CDataCollectionUnit>
+
+    <!-- ========= Weapons ========== -->
+    
+    <!-- Psi Blades -->
+    <CWeaponLegacy id="Kaldalis_Weapon">
+        <EditorCategories value="Race:Protoss"/>
+        <Options index="Melee" value="1"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
+        <DisplayAttackCount value="2"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="0.1"/>
+        <Period value="0.8"/>
+        <DamagePoint value="0"/>
+        <DisplayEffect value="Kaldalis_Weapon@Damage"/>
+        <Effect value="Kaldalis_Weapon@CP"/>
+        <MinScanRange value="6.5"/>
+    </CWeaponLegacy>
+    
+    <CEffectDamage id="Kaldalis_Weapon@Damage" parent="DU_WEAP">
+        <EditorCategories value="Race:Purifier"/>
+        <Amount value="18"/>
+        <Death value="Eviscerate"/>
+        <AreaArray Arc="100" Radius="1.25" Fraction="0.5" Validator="Kaldalis_EmpoweredBlades"/>
+        <SearchFilters value="Ground;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <ExcludeArray Value="Target"/>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="Kaldalis_Weapon@CP">
+        <EditorCategories value="Race:Purifier"/>
+        <PeriodCount value="2"/>
+        <WhichLocation Value="TargetUnit"/>
+        <TimeScaleSource Value="Caster"/>
+        <Flags index="Channeled" value="1"/>
+        <PeriodicEffectArray value="Kaldalis_Weapon@Damage"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0.28"/>
+    </CEffectCreatePersistent>
+    
+    <CActorAction id="Kaldalis_Weapon@Attack" parent="GenericAttack" effectAttack="Kaldalis_Weapon@Damage">
+        <Terms value="Cap 1"/>
+        <ShieldFlashType value="Header"/>
+    </CActorAction>
+
+    <CSound id="Kaldalis_Weapon@AttackImpact" parent="Protoss_AttackImpactMediumSlice"/>
+    <CSound id="Kaldalis_Weapon@AttackLaunch" parent="Combat">
+        <Pitch value="-0.890000,1.640000"/>
+        <Volume value="-10.480000,-10.480000"/>
+        <VariationMinimum value="8"/>
+        <AssetArray File="Assets\Sounds\Protoss\Zealot\Zealot_AttackLaunch0.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Zealot\Zealot_AttackLaunch1.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Zealot\Zealot_AttackLaunch2.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Zealot\Zealot_AttackLaunch3.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Zealot\Zealot_AttackLaunch4.wav"/>
+        <AssetArray File="Assets\Sounds\Protoss\Zealot\Zealot_AttackLaunch5.wav"/>
+        <EditorCategories value="Race:Protoss"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="4"/>
+        <DupePrioritization value="Oldest"/>
+        <DupeThresholdPoints/>
+        <DupeThresholdPoints Count="4" Volume="-3.000000"/>
+    </CSound>
+    
+    <CDataCollectionUnit id="Kaldalis_Weapon" parent="Weapon_Instant">
+        <DataRecord Entry="Weapon,Kaldalis_Weapon"/>
+        <DataRecord Entry="Effect,Kaldalis_Weapon@Damage"/>
+        <DataRecord Entry="Effect,Kaldalis_Weapon@CP"/>
+        <DataRecord Entry="Actor,Kaldalis_Weapon@Attack"/>
+        <DataRecord Entry="Sound,Kaldalis_Weapon@AttackImpact"/>
+        <DataRecord Entry="Sound,Kaldalis_Weapon@AttackLaunch"/>
+        <UpgradeInfoWeapon index="0" DamagePerDice="2"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@1"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@2"/>
+        <TechInfoUpgradeUsed value="ProtossGroundWeapons@3"/>
+    </CDataCollectionUnit>
+
+    <!-- ========= Abilities ========== -->
+    
+    <!-- Engage -->
+    <CButton id="Kaldalis_Engage">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-fenix-zealotchampionengage.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-protoss-fenix-zealotchampionengage.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+
+    <CAbilAugment id="Kaldalis_Engage">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Kaldalis_Engage"/>
+        <AbilCmd value="attack,Execute"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Cost>
+            <Cooldown Link="Charge" Location="Unit" TimeUse="5"/>
+        </Cost>
+        <AutoCastValidatorArray value="CasterNotHoldingPosition"/>
+        <Effect value="Kaldalis_Engage@LM"/>
+        <Alignment value="Negative"/>
+    </CAbilAugment>
+    
+    <CEffectLaunchMissile id="Kaldalis_Engage@LM">
+        <DeathType value="Unknown"/>
+        <EditorCategories value="Race:Protoss"/>
+        <LaunchLocation Value="CasterUnit"/>
+        <Movers Link="Kaldalis_Engage"/>
+        <Flags index="2D" value="1"/>
+        <Flags index="Placement" value="1"/>
+        <Flags index="PlacementIgnoreCliffTest" value="1"/>
+        <Flags index="PointFallback" value="0"/>
+        <PlacementRange value="3"/>
+        <FinishEffect value="Kaldalis_Engage@Set"/>
+        <ValidatorArray index="0" value="Kaldalis_Engage@MinDistance"/>
+        <ValidatorArray value="Kaldalis_Engage@MaxDistance"/>
+    </CEffectLaunchMissile>
+    <CEffectSet id="Kaldalis_Engage@Set">
+        <EditorCategories value="Race:Protoss"/>
+    </CEffectSet>
+
+    <CMoverMissile id="Kaldalis_Engage">
+        <MotionPhases>
+            <Driver value="Ballistic"/>
+            <Acceleration value="-1"/>
+            <Gravity value="45"/>
+            <ClearanceLookahead value="3"/>
+            <RotationActorType value="Upright"/>
+            <YawPitchRoll value="MAX"/>
+            <FlightTime value="0.5"/>
+        </MotionPhases>
+    </CMoverMissile>
+    
+    <CActorModel id="Kaldalis_Engage@ImpactModel" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.Kaldalis_Engage@Set.Start" Send="Create"/>
+    </CActorModel>
+    <CActorModel id="Kaldalis_Engage@Model" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.Kaldalis_Engage@LM.Start" Send="Create"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachHardPoint01"/>
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="CloakEffect" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModel>
+    
+    <CModel id="Kaldalis_Engage@ImpactModel" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\Zealot_Purifier_Collection_Charge_GroundBlast\Zealot_Purifier_Collection_Charge_GroundBlast.m3"/>
+        <Occlusion value="Show"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+    <CModel id="Kaldalis_Engage@Model" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\Zealot_Purifier_Collection_Charge_Thrust\Zealot_Purifier_Collection_Charge_Thrust.m3"/>
+        <Occlusion value="Show"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+    
+    <CValidatorLocationCompareRange id="Kaldalis_Engage@MaxDistance">
+        <WhichLocation Value="SourceUnit"/>
+        <Value Value="TargetUnit"/>
+        <Compare value="LT"/>
+        <Range value="7"/>
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <Pathing value="1"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorUnitCompareOrderTargetRange id="Kaldalis_Engage@MinDistance">
+        <ResultFailed value="TargetIsTooClose"/>
+        <WhichUnit Value="Caster"/>
+        <OtherUnit Value="Target"/>
+        <Compare value="GT"/>
+        <AbilLink value="attack"/>
+        <Value value="2"/>
+    </CValidatorUnitCompareOrderTargetRange>
+
+    <CDataCollectionUnit id="Kaldalis_Engage" parent="AbilityBase">
+        <DataRecord Entry="Button,Kaldalis_Engage"/>
+        <DataRecord Entry="Abil,Kaldalis_Engage"/>
+        <DataRecord Entry="Effect,Kaldalis_Engage@LM"/>
+        <DataRecord Entry="Effect,Kaldalis_Engage@Set"/>
+        <DataRecord Entry="Mover,Kaldalis_Engage"/>
+        <DataRecord Entry="Actor,Kaldalis_Engage@ImpactModel"/>
+        <DataRecord Entry="Actor,Kaldalis_Engage@Model"/>
+        <DataRecord Entry="Model,Kaldalis_Engage@ImpactModel"/>
+        <DataRecord Entry="Model,Kaldalis_Engage@Model"/>
+        <DataRecord Entry="Validator,Kaldalis_Engage@MaxDistance"/>
+        <DataRecord Entry="Validator,Kaldalis_Engage@MinDistance"/>
+    </CDataCollectionUnit>
+
+    <!-- ========= Upgrades ========== -->
+    
+    <!-- Empowered Blades -->
+    <CButton id="Kaldalis_EmpoweredBlades">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-fenix-zealotcleave.dds"/>
+    </CButton>
+
+    <CUpgrade id="Kaldalis_EmpoweredBlades">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-fenix-zealotcleave.dds"/>
+        <AffectedUnitArray value="Kaldalis"/>
+    </CUpgrade>
+
+    <CRequirement id="Kaldalis_EmpoweredBlades">
+        <NodeArray index="Use" Link="Kaldalis_EmpoweredBlades@CU"/>
+    </CRequirement>
+    <CRequirementCountUpgrade id="Kaldalis_EmpoweredBlades@CU">
+        <Count Link="Kaldalis_EmpoweredBlades" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+
+    <CValidatorPlayerRequirement id="Kaldalis_EmpoweredBlades">
+        <Find value="1"/>
+        <Value value="Kaldalis_EmpoweredBlades"/>
+    </CValidatorPlayerRequirement>
+
+    <CDataCollectionUnit id="Kaldalis_EmpoweredBlades" parent="UpgradeStatsBase">
+        <DataRecord Entry="Button,Kaldalis_EmpoweredBlades"/>
+        <DataRecord Entry="Upgrade,Kaldalis_EmpoweredBlades"/>
+        <DataRecord Entry="Requirement,Kaldalis_EmpoweredBlades"/>
+        <DataRecord Entry="RequirementNode,Kaldalis_EmpoweredBlades"/>
+        <DataRecord Entry="Validator,Kaldalis_EmpoweredBlades"/>
+    </CDataCollectionUnit>
+</Catalog>
