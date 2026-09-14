@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    
+    <CButton id="TrooperBomb" parent="UnitButton_OnlyGround">
+        <Icon value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel0.dds"/>
+    </CButton>
+
+    <CUnit id="TrooperBomb" parent="Generic_Unit_Ground" race="Meng">
+        <DeathRevealRadius value="3"/>
+        <DeathRevealDuration value="6"/>
+        <DeathRevealType value="Vision"/>
+        <Mob value="Campaign"/>
+        <FlagArray index="AlwaysThreatens" value="1"/>
+        <FlagArray index="AIThreatGround" value="1"/>
+        <FlagArray index="AIThreatAir" value="1"/>
+        <FlagArray index="AISplash" value="1"/>
+        <FlagArray index="Unselectable" value="1"/>
+        <FlagArray index="Uncommandable" value="1"/>
+        <FlagArray index="Unstoppable" value="1"/>
+        <FlagArray index="Untargetable" value="1"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <EffectArray index="Death" value="TrooperBomb_Weapon@Damage"/>
+        <LifeStart value="90"/>
+        <LifeMax value="90"/>
+        <Speed value="6.5"/>
+        <StationaryTurningRate value="2292.8906"/>
+        <Sight value="3"/>
+        <BehaviorArray Link="TrooperBomb@TimedLife"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="3" Face="AcquireMove" Type="AbilCmd" AbilCmd="move,AcquireMove"/>
+        </CardLayouts>
+        <SubgroupPriority value="149"/>
+        <KillDisplay value="Always"/>
+        <RankDisplay value="Always"/>
+        <GlossaryPriority value="40"/>
+        <Radius value="0"/>
+    </CUnit>
+    
+    <CActorUnit id="TrooperBomb" parent="AdvancedStandard_Ground" unitName="TrooperBomb">
+        <Aliases value="_UnitSmall"/>
+        <DeathArray index="Normal" SoundLink="Terran_ExplosionSmall"/>
+        <BarWidth value="42"/>
+        <BarOffset value="35"/>
+        <NameOffset value="10"/>
+        <PortraitModel value="WidowMinePortrait"/>
+        <PlacementModel value="SpiderMinePlacement"/>
+        <WalkAnimMoveSpeed value="2.8125"/>
+        <UnitIcon value="Assets\Textures\btn-unit-collection-widowmine-junker.dds"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-terran-widowmine.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-terran-widowmine.dds"/>
+        </Wireframe>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel0.dds"/>
+    </CActorUnit>
+    
+    <CModel id="TrooperBomb" parent="Unit">
+        <Model value="Assets\Units\Terran\WidowMine_Umojan\WidowMine_Umojan.m3"/>
+        <ScaleMax value="0.350000,0.350000,0.350000"/>
+        <ScaleMin value="0.350000,0.350000,0.350000"/>
+        
+        <Occlusion value="Show"/>
+        <SelectionRadius value="0.750000"/>
+        <TechPurchaseCamera value="Star2CameraMid06"/>
+        <UnitGlossaryCamera value="Star2CameraMid06"/>
+        <PlanetPanelCamera value="Star2CameraMid06"/>
+        <Tipability value="0.750000"/>
+        <TipabilityWidth value="0.375000"/>
+        <TipabilityLength value="0.375000"/>
+    </CModel>
+    <CModel id="TrooperBomb@Death">
+        <Model value="Assets\Units\Terran\WidowMine_Umojan_Death\WidowMine_Umojan_Death.m3"/>
+        <LowQualityModel value="TerranSmallUnitDeathLow"/>
+        <Occlusion value="Show"/>
+    </CModel>
+    <CModel id="TrooperBomb@DeathRagdoll" parent="UnitDeathRagdoll">
+        <Model value="Assets\Units\Terran\WidowMine_Umojan_DeathRagdoll\WidowMine_Umojan_DeathRagdoll.m3"/>
+    </CModel>
+
+    <CSound id="TrooperBomb@Attack" parent="Combat">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\WidowMine_Attack00.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WidowMine_Attack01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WidowMine_Attack02.ogg" FacialGroup=""/>
+        <Volume value="3.000000,3.000000"/>
+        <Pitch value="0.000000,1.000000"/>
+    </CSound>
+    <CSound id="TrooperBomb@Pissed" parent="Pissed">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\WidowMine_Pissed00.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WidowMine_Pissed01.ogg" Volume="-5.000000,-5.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WidowMine_Pissed02.ogg" Volume="-2.000000,-2.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WidowMine_Pissed03.ogg" Volume="-2.000000,-2.000000" FacialGroup=""/>
+        <Volume value="-4.000000,-4.000000"/>
+        <Pitch value="-2.000000,2.000000"/>
+    </CSound>
+    <CSound id="TrooperBomb@Ready" parent="Ready">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\WidowMine_Ready01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WidowMine_Ready02.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WidowMine_Ready02.ogg" FacialGroup=""/>
+        <Pitch value="-2.000000,2.000000"/>
+        <Volume value="1.000000,1.000000"/>
+    </CSound>
+    <CSound id="TrooperBomb@What" parent="Voice">
+        <AssetArray File="Assets\Sounds\WidowMine__What01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WidowMine__What02.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WidowMine_What00.ogg" FacialGroup=""/>
+        <Pitch value="-2.000000,3.000000"/>
+        <Volume value="3.000000,3.000000"/>
+    </CSound>
+    <CSound id="TrooperBomb@Yes" parent="Voice">
+        <AssetArray File="Assets\Sounds\WidowMine_Yes00.ogg" Volume="-3.000000,-3.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WidowMine_Yes01.ogg" FacialGroup=""/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="1.000000,1.000000"/>
+    </CSound>
+
+    <CBehaviorBuff id="TrooperBomb@TimedLife" parent="TimedLife">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="2"/>
+        <Modification MoveSpeedMinimum="6.5">
+            <StateFlags index="SuppressCollision" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    
+    <CEffectCreateUnit id="TrooperBomb@CU">
+        <SpawnUnit value="TrooperBomb"/>
+        <WhichLocation Value="CasterPoint"/>
+    </CEffectCreateUnit>
+
+    <CValidatorUnitType id="TrooperBomb@Is" parent="IsUnit_Default" unit="TrooperBomb"/>
+    <CValidatorUnitType id="TrooperBomb@Target" parent="TargetIsUnit_Default" unit="TrooperBomb"/>
+    <CValidatorUnitType id="TrooperBomb@Not" parent="NotUnit_Default" unit="TrooperBomb"/>
+    <CValidatorUnitType id="TrooperBomb@NotTarget" parent="TargetNotUnit_Default" unit="TrooperBomb"/>
+
+    <CDataCollectionUnit id="TrooperBomb" parent="UnitGround">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Mengsk,ObjectType:Unit"/>
+        <DataRecord Entry="Button,TrooperBomb"/>
+        <DataRecord Entry="Unit,TrooperBomb"/>
+        <DataRecord Entry="Actor,TrooperBomb"/>
+        <DataRecord Entry="Model,TrooperBomb"/>
+        <DataRecord Entry="Model,TrooperBomb@Death"/>
+        <DataRecord Entry="Model,TrooperBomb@Portrait"/>
+        <DataRecord Entry="Sound,TrooperBomb@Attack"/>
+        <DataRecord Entry="Sound,TrooperBomb@Pissed"/>
+        <DataRecord Entry="Sound,TrooperBomb@Yes"/>
+        <DataRecord Entry="Sound,TrooperBomb@What"/>
+        <DataRecord Entry="Sound,TrooperBomb@Ready"/>
+        <DataRecord Entry="Behavior,TrooperBomb@TimedLife"/>
+        <DataRecord Entry="Effect,TrooperBomb@CU"/>
+        <DataRecord Entry="Requirement,TrooperBomb"/>
+        <DataRecord Entry="Light,TrooperBomb@Portrait"/>
+        <DataRecord Entry="Validator,TrooperBomb@Is"/>
+        <DataRecord Entry="Validator,TrooperBomb@Target"/>
+        <DataRecord Entry="Validator,TrooperBomb@Not"/>
+        <DataRecord Entry="Validator,TrooperBomb@NotTarget"/>
+    </CDataCollectionUnit>
+
+    <!-- ========= Weapons ========== -->
+    
+    <!-- TrooperBomb_Weapon -->
+    <CWeaponLegacy id="TrooperBomb_Weapon">
+        <EditorCategories value="Race:Mengsk"/>
+        <TargetFilters value="Visible;Self,Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Destructible,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <MinScanRange value="12"/>
+        <Range value="0.1"/>
+        <Period value="0.0625"/>
+        <DamagePoint value="0"/>
+        <Backswing value="0"/>
+        <Effect value="Suicide"/>
+        <RandomDelayMin value="0"/>
+        <RandomDelayMax value="0"/>
+    </CWeaponLegacy>
+
+    <CEffectDamage id="TrooperBomb_Weapon@Damage">
+        <EditorCategories value="Race:Terran"/>
+        <AINotifyFlags index="HurtFriend" value="1"/>
+        <AINotifyFlags index="HurtEnemy" value="1"/>
+        <AINotifyFlags index="MajorDanger" value="1"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <AttributeBonus index="Structure" value="100"/>
+        <Amount value="150"/>
+        <Death value="Fire"/>
+        <AreaArray Radius="1.5" Fraction="1"/>
+        <AreaArray Radius="2" Fraction="0.5"/>
+        <SearchFilters value="-;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+        <SearchFlags index="SameCliff" value="0"/>
+    </CEffectDamage>  
+
+    <CActorModel id="TrooperBomb_Weapon@ImpactModel">
+        <On Terms="Effect.TrooperBomb_Weapon@Damage.Start; At Target" Send="Create"/>
+        <HostSiteOps Ops="SOpShadow"/>
+    </CActorModel>
+    <CActorSquib id="TrooperBomb_Weapon@Model">
+        <On Terms="Effect.TrooperBomb_Weapon@Damage.Start; At Effect" Send="Create"/>
+        <HostSiteOps Ops="SOpTargetPointStationary SOpShadow"/>
+        <Map index="None" Sound="TrooperBomb_Weapon@ImpactSound"/>
+        <FogVisibility value="Visible"/>
+    </CActorSquib>
+    <CActorAction id="TrooperBomb_Weapon@ShieldHitter" parent="AoESplashShieldHitter" effectHit="TrooperBomb_Weapon@Damage"/>
+    
+    <CModel id="TrooperBomb_Weapon@Model" parent="OneShotSpellFX">
+        <Model value="Assets\COOP\Mengsk\Effects\Ghost_Mengsk_COOP_MiniNuke_Impact\Ghost_Mengsk_COOP_MiniNuke_Impact.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <RadiusLoose value="1.000000"/>
+        <AnimSpeed value="2.000000"/>
+        <ScaleMax value="0.500000,0.500000,0.500000"/>
+        <ScaleMin value="0.500000,0.500000,0.500000"/>
+    </CModel>
+    <CModel id="TrooperBomb_Weapon@ImpactModel" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Terran\FireImpact\FireImpact.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <ScaleMax value="0.400000,0.400000,0.400000"/>
+        <ScaleMin value="0.400000,0.400000,0.400000"/>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="NukeBig_Mengsk_FireCloud_Sweet"/>
+            <Type value="Sound"/>
+            <Time value="0.030000"/>
+            <Attachment value="Ref_Head"/>
+            <Payload value="NukeBig_Mengsk_FireCloud_Sweet"/>
+        </Events>
+    </CModel>
+    
+    <CSound id="TrooperBomb_Weapon@ImpactSound">
+        <AssetArray File="Assets\Sounds\Nuke_Explo_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Nuke_Explo_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Nuke_Explo_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Nuke_Explo_05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Nuke_Explo_06.wav" FacialGroup=""/>
+        <Spread value="45.000000"/>
+        <Volume value="-2.000000,-2.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="60.000000" Volume="-96.000000"/>
+        <SpeakerMix index="LFE" value="0.250000"/>
+    </CSound>
+
+    <CDataCollectionUnit id="TrooperBomb_Weapon" parent="Weapon_Instant">
+        <DataRecord Entry="Weapon,TrooperBomb_Weapon"/>
+        <DataRecord Entry="Effect,TrooperBomb_Weapon"/>
+        <DataRecord Entry="Behavior,TrooperBomb_Weapon"/>
+        <DataRecord Entry="Actor,TrooperBomb_Weapon@ImpactModel"/>
+        <DataRecord Entry="Actor,TrooperBomb_Weapon@Model"/>
+        <DataRecord Entry="Actor,TrooperBomb_Weapon@ShieldHitter"/>
+        <DataRecord Entry="Model,TrooperBomb_Weapon@Model"/>
+        <DataRecord Entry="Model,TrooperBomb_Weapon@ImpactModel"/>
+        <DataRecord Entry="Sound,TrooperBomb_Weapon@ImpactSound"/>
+    </CDataCollectionUnit>
+      
+
+</Catalog>
