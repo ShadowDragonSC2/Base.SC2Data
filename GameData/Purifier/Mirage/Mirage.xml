@@ -15,7 +15,7 @@
         <LifeMax value="120"/>
         <ShieldsStart value="60"/>
         <ShieldsMax value="60"/>
-        <Speed value="4.25"/>
+        <Speed value="3.5"/>
         <Acceleration value="3.25"/>
         <StationaryTurningRate value="1499.9414"/>
         <TurningRate value="1499.9414"/>
@@ -23,13 +23,11 @@
         <Food value="-2"/>
         <CostResource index="Minerals" value="150"/>
         <CostResource index="Vespene" value="100"/>
-        <AbilArray Link="GravitonBeam"/>
-        <AbilArray Link="GravitonBeamVoidCampaign"/>
+        <AbilArray Link="Mirage_GravitonBeam"/>
         <BehaviorArray Link="Mirage_PhaseArmor"/>
         <WeaponArray index="0" Turret="Phoenix"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="GravitonBeamVoidCampaign" Type="AbilCmd" AbilCmd="GravitonBeamVoidCampaign,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="GravitonBeam" Type="AbilCmd" AbilCmd="GravitonBeam,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="GravitonBeam" Type="AbilCmd" AbilCmd="Mirage_GravitonBeam,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="Mirage_PhaseArmor" Type="Passive" Row="2" Column="1"/>
         </CardLayouts>
         <Radius value="0.75"/>
@@ -315,15 +313,15 @@
 
     <CActorAction id="Mirage_Weapon@AttackLeft" parent="GenericAttack" effectImpact="Mirage_Weapon@Damage" effectLaunch="Mirage_Weapon@LMLeft">
         <LaunchAttachQuery Methods="Weapon 1"/>
-        <LaunchAssets Sound="Mirage_Weapon@LaunchSound"/>
+        <LaunchAssets Sound="Mirage_Weapon@AttackLaunch"/>
+        <ImpactMap index="None" Model="Mirage_Weapon@AttackImpact" Sound="Mirage_Weapon@AttackImpact"/>
         <Missile value="Mirage_Weapon@AttackMissile"/>
-        <ImpactMap index="None" Model="Mirage_Weapon@ImpactModel"/>
     </CActorAction>
     <CActorAction id="Mirage_Weapon@AttackRight" parent="GenericAttack" effectImpact="Mirage_Weapon@Damage" effectLaunch="Mirage_Weapon@LMRight">
         <LaunchAttachQuery Methods="Weapon 3"/>
-        <LaunchAssets Sound="Mirage_Weapon@LaunchSound"/>
+        <LaunchAssets Sound="Mirage_Weapon@AttackLaunch"/>
+        <ImpactMap index="None" Model="Mirage_Weapon@AttackImpact" Sound="Mirage_Weapon@AttackImpact"/>
         <Missile value="Mirage_Weapon@AttackMissile"/>
-        <ImpactMap index="None" Model="Mirage_Weapon@ImpactModel"/>
     </CActorAction>
     <CActorMissile id="Mirage_Weapon@AttackMissile" parent="GenericAttackMissile" unitName="Mirage_Weapon@AttackMissile"/>
 
@@ -331,12 +329,12 @@
         <Model value="Assets\Effects\Protoss\PhoenixMissile\PhoenixMissile.m3"/>
         <EditorCategories value="Race:Purifier"/>
     </CModel>
-    <CModel id="Mirage_Weapon@ImpactModel" parent="ImpactFX">
+    <CModel id="Mirage_Weapon@AttackImpact" parent="ImpactFX">
         <Model value="Assets\Effects\Protoss\PhoenixMissileImpact\PhoenixMissileImpact.m3"/>
         <EditorCategories value="Race:Purifier"/>
     </CModel>
 
-    <CSound id="Mirage_Weapon@LaunchSound" parent="Combat">
+    <CSound id="Mirage_Weapon@AttackLaunch" parent="Combat">
         <EditorCategories value="Race:Purifier"/>
         <AssetArray File="Assets\Sounds\Protoss\Phoenix\Phoenix_AttackLaunch0.wav"/>
         <AssetArray File="Assets\Sounds\Protoss\Phoenix\Phoenix_AttackLaunch1.wav"/>
@@ -347,7 +345,7 @@
         <Pitch value="-0.890000,0.840000"/>
         <Volume value="-6.120000,-6.120000"/>
     </CSound>
-    <CSound id="Mirage_Weapon@ImpactSound" parent="Combat">
+    <CSound id="Mirage_Weapon@AttackImpact" parent="Combat">
         <EditorCategories value="Race:Purifier"/>
         <AssetArray File="Assets\Sounds\Protoss\Phoenix\Phoenix_AttackImpact0.wav"/>
         <AssetArray File="Assets\Sounds\Protoss\Phoenix\Phoenix_AttackImpact1.wav"/>
@@ -411,9 +409,9 @@
         <DataRecord Entry="Actor,Mirage_Weapon@AttackRight"/>
         <DataRecord Entry="Actor,Mirage_Weapon@AttackMissile"/>
         <DataRecord Entry="Model,Mirage_Weapon@AttackMissile"/>
-        <DataRecord Entry="Model,Mirage_Weapon@ImpactModel"/>
-        <DataRecord Entry="Sound,Mirage_Weapon@LaunchSound"/>
-        <DataRecord Entry="Sound,Mirage_Weapon@ImpactSound"/>
+        <DataRecord Entry="Model,Mirage_Weapon@AttackImpact"/>
+        <DataRecord Entry="Sound,Mirage_Weapon@AttackLaunch"/>
+        <DataRecord Entry="Sound,Mirage_Weapon@AttackImpact"/>
         <DataRecord Entry="Unit,Mirage_Weapon@AttackMissile"/>
         <DataRecord Entry="Mover,Mirage_Weapon@AttackMissile"/>
         <DataRecord Entry="Mover,Mirage_Weapon@AttackLeft"/>
@@ -514,72 +512,48 @@
     </CDataCollectionUnit>
 
     <!-- ========= Abilities ========== -->
+
+    <CButton id="Mirage_GravitonBeam">
+        <Icon value=""/>
+    </CButton>
     
     <!-- Graviton Beam -->
-    <CAbilEffectTarget id="GravitonBeam">
+    <CAbilEffectTarget id="Mirage_GravitonBeam">
         <AbilSetId value="Graviton"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Flags index="AllowMovement" value="1"/>
         <Flags index="NoDeceleration" value="1"/>
         <Flags index="ReExecutable" value="1"/>
+        <TargetFilters value="Ground,Visible;Self,Neutral,Massive,Structure,Heroic,Destructible,Invulnerable"/>
+        <Range value="4"/>
+        <RangeSlop value="4"/>
+        <Effect index="0" value="Mirage_GravitonBeam@Set"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Mirage_GravitonBeam">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
         <Cost>
             <Cooldown TimeUse="30"/>
         </Cost>
-        <TargetFilters value="Ground,Visible;Self,Neutral,Massive,Structure,Heroic,Destructible,Invulnerable"/>
-        <Range value="4"/>
-        <CancelableArray index="Channel" value="1"/>
-        <UninterruptibleArray index="Channel" value="1"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="GravitonBeam">
-            <Flags index="ToSelection" value="1"/>
-        </CmdButtonArray>
-        <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel">
-            <Flags index="ToSelection" value="1"/>
-        </CmdButtonArray>
-        <RangeSlop value="4"/>
     </CAbilEffectTarget>
     
-    <CEffectCreatePersistent id="GravitonBeam">
-        <ValidatorArray value="NotFrenzied"/>
-        <ValidatorArray value="NoGravitonBeamInProgress"/>
-        <EditorCategories value="Race:Protoss"/>
-        <WhichLocation Value="TargetUnit"/>
-        <TimeScaleSource Value="Caster"/>
-        <Flags index="Channeled" value="1"/>
-        <InitialEffect value="GravitonBeamInitialSet"/>
-        <PeriodCount value="80"/>
-        <PeriodicValidator value="GravitonBeamValidators"/>
-        <PeriodicPeriodArray value="0.125"/>
-        <PeriodicEffectArray value="GravitonBeamPeriodicSet"/>
-    </CEffectCreatePersistent>
-
-    <CEffectSet id="GravitonBeamInitialSet">
-        <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="DisableCasterWeaponsApplyBehavior"/>
-        <EffectArray value="InstantUnburrow"/>
-        <EffectArray value="GravitonBeamHeightBehavior"/>
-        <EffectArray value="GravitonBeamHaltTerranBuild"/>
-        <!-- Adding a stop order -->
+    <CEffectSet id="Mirage_GravitonBeam@Set">
+        <EffectArray value="Mirage_GravitonBeam@AB"/>
+        <EffectArray value="Mirage_GravitonBeam@HaltBuild"/>
+        <EffectArray value="Mirage_GravitonBeam@CallHelp"/>
         <EffectArray value="AttackCancel"/>
-    </CEffectSet>
-    <CEffectSet id="GravitonBeamPeriodicSet">
-        <EffectArray value="GravitonBeamDummy"/>
-        <EffectArray value="GravitonBeamBehavior"/>
+        <!-- <ValidatorArray value="Mirage_GravitonBeam@HasBehavior"/> -->
         <EditorCategories value="Race:Protoss"/>
     </CEffectSet>
-    <CEffectApplyBehavior id="GravitonBeamHeightBehavior">
-        <EditorCategories value="Race:Protoss"/>
-        <Behavior value="GravitonBeamHeight"/>
-    </CEffectApplyBehavior>
-    <CEffectIssueOrder id="GravitonBeamHaltTerranBuild">
+    <CEffectIssueOrder id="Mirage_GravitonBeam@HaltBuild">
         <EditorCategories value="Race:Protoss"/>
         <Abil value="TerranBuild"/>
         <AbilCmdIndex value="30"/>
     </CEffectIssueOrder>
-    <CEffectApplyBehavior id="GravitonBeamBehavior">
+    <CEffectApplyBehavior id="Mirage_GravitonBeam@AB">
         <EditorCategories value="Race:Protoss"/>
-        <Behavior value="GravitonBeam"/>
+        <Behavior value="Mirage_GravitonBeam"/>
     </CEffectApplyBehavior>
-    <CEffectDamage id="GravitonBeamDummy">
+    <CEffectDamage id="Mirage_GravitonBeam@CallHelp">
         <EditorCategories value="Race:Protoss"/>
         <ResponseFlags index="Acquire" value="1"/>
         <ResponseFlags index="Flee" value="1"/>
@@ -589,5 +563,115 @@
         <Flags index="NoDamageTimerReset" value="1"/>
         <SearchFlags index="CallForHelp" value="1"/>
     </CEffectDamage>
+
+    <CBehaviorBuff id="Mirage_GravitonBeam">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-gravitonbeam.dds"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <TimeScaleSource Value="Global"/>
+        <Duration value="15"/>
+        <Modification Height="3.75">
+            <HeightTime index="Start" value="1"/>
+            <HeightTime index="Stop" value="0.25"/>
+            <PlaneDelta index="Ground" value="-1"/>
+            <PlaneDelta index="Air" value="1"/>
+            <ModifyFlags index="DisableAbils" value="1"/>
+            <ModifyFlags index="SuppressMoving" value="1"/>
+            <ModifyFlags index="SuppressTurning" value="1"/>
+            <StateFlags index="Stun" value="1"/>
+            <StateFlags index="SuppressAttack" value="1"/>
+            <StateFlags index="SuppressCloak" value="1"/>
+            <StateFlags index="SuppressCollision" value="1"/>
+            <StateFlags index="SuppressDetection" value="1"/>
+            <StateFlags index="SuppressPassenger" value="1"/>
+            <StateFlags index="SuppressRadar" value="1"/>
+            <StateFlags index="Uncommandable" value="1"/>
+            <BehaviorClassDisableArray index="CBehaviorCreepSource" value="1"/>
+            <BehaviorClassDisableArray index="CBehaviorPowerSource" value="1"/>
+            <BehaviorClassDisableArray index="CBehaviorResource" value="1"/>
+            <BehaviorClassDisableArray index="CBehaviorSpawn" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+
+    <CActorRange id="Mirage_GravitonBeam@Range" parent="RangeAbil" abil="Mirage_GravitonBeam"/>
+    <CActorModel id="Mirage_GravitonBeam@Rocks" parent="ModelAnimationStyleContinuous">
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachOrigin SOpShadow"/>
+        <On Terms="Behavior.Mirage_GravitonBeam.On" Send="Create"/>
+        <On Terms="Behavior.Mirage_GravitonBeam.Off" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CActorModel id="Mirage_GravitonBeam@Impact" parent="ModelAnimationStyleContinuous">
+        <AutoScaleFactor value="0.700000"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <On Terms="Behavior.Mirage_GravitonBeam.On" Send="Create"/>
+        <On Terms="Behavior.Mirage_GravitonBeam.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="AnimClear Attack"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="AnimClear AttackReady"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="AnimClear AttackLeft"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="AnimClear AttackRight"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="AnimPlay GravitonFlail Flail PlayForever,RandomStartOffset 0.1 0.1"/>
+        <On Terms="Behavior.Mirage_GravitonBeam.Off" Target="_Unit" Send="AnimClear GravitonFlail"/>
+    </CActorModel>
+    <CActorSiteRocker id="Mirage_GravitonBeam@Rocker">
+        <Elevation value="0.100000,0.050000"/>
+        <ElevationPeriod value="2.500000,1.000000"/>
+        <Pitch value="11.997,5.9985"/>
+        <PitchPeriod value="3.500000,10.000000"/>
+        <Roll value="4.9987,4.9987"/>
+        <RollPeriod value="2.500000,1.000000"/>
+        <On Terms="ActorCreation" Target="::Main" Send="RefSetFromMsg ::Host ::Sender"/>
+        <On Terms="Behavior.Mirage_GravitonBeam.On" Send="Create"/>
+        <On Terms="Behavior.Mirage_GravitonBeam.Off" Send="Transition Out 1.000000"/>
+        <On Terms="Behavior.Mirage_GravitonBeam.Off" Send="TimerSet 1.000000 DelayDestroy"/>
+        <On Terms="TimerExpired; TimerName DelayDestroy" Send="Destroy"/>
+    </CActorSiteRocker>
+    <CActorSound id="Mirage_GravitonBeam@Start" parent="SoundOneShot">
+        <On Terms="Behavior.Mirage_GravitonBeam.On" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="Mirage_GravitonBeam@Stop" parent="SoundOneShot">
+        <On Terms="Behavior.Mirage_GravitonBeam.Off" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="Mirage_GravitonBeam@Loop" parent="SoundContinuous">
+        <On Terms="Behavior.Mirage_GravitonBeam.On" Send="Create"/>
+        <On Terms="Behavior.Mirage_GravitonBeam.Off" Send="Destroy"/>
+    </CActorSound>
+    
+    <CModel id="Mirage_GravitonBeam@Impact" parent="ImpactFX">
+        <Model value="Assets\Effects\Protoss\TractorBeamImpactBubble\TractorBeamImpactBubble.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="1.500000,1.500000,1.500000"/>
+        <ScaleMin value="1.500000,1.500000,1.500000"/>
+        <SelectionRadius value="0.333200"/>
+        <ShadowRadius value="0.333200"/>
+    </CModel>
+    <CModel id="Mirage_GravitonBeam@Rocks" parent="ImpactFX">
+        <Model value="Assets\Effects\Protoss\AntiGravUnitImpact\AntiGravUnitImpact.m3"/>
+        <ScaleMax value="1.200000,1.200000,1.200000"/>
+        <ScaleMin value="1.200000,1.200000,1.200000"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Lighting value="AntiGrav"/>
+        <SelectionRadius value="0.416500"/>
+        <ShadowRadius value="0.416500"/>
+    </CModel>
+
+    <CSound id="Mirage_GravitonBeam@Start" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Protoss\Phoenix\Phoenix_AntiGravStart0.wav"/>
+    </CSound>
+    <CSound id="Mirage_GravitonBeam@End" parent="Spell">
+        <AssetArray File="Assets\Sounds\Protoss\Phoenix\Phoenix_AntiGravEnd0.wav"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Pitch value="-3.000000,-2.000000"/>
+    </CSound>
+    <CSound id="Mirage_GravitonBeam@Loop" parent="Spell">
+        <AssetArray File="Assets\Sounds\Protoss\Phoenix\Phoenix_AntiGravLoop0.wav"/>
+        <EditorCategories value="Race:Protoss"/>
+        <LoopCount value="-1"/>
+    </CSound>
+
+    <CValidatorUnitCompareBehaviorCount id="Mirage_GravitonBeam@HasBehavior">
+        <Behavior value="Mirage_GravitonBeam"/>
+    </CValidatorUnitCompareBehaviorCount>
 
 </Catalog>
