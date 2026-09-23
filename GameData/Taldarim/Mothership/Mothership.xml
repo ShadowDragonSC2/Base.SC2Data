@@ -364,19 +364,13 @@
         <EditorCategories value="Race:Taldarim"/>
     </CEffectModifyUnit>
 
-    <CActorAction id="TaldarimMothership_Weapon@Attack" parent="GenericAttackBase">
-        <On Terms="Effect.TaldarimMothership_Weapon@Beam.Start" Send="Create"/>
-        <On Terms="Effect.TaldarimMothership_Weapon@Damage.Start; FromEffectTreeDescendant" Send="ActionDamage"/>
-        <On Terms="Effect.TaldarimMothership_Weapon@Beam.Stop" Send="Destroy WhenReady"/>
+    <CActorAction id="TaldarimMothership_Weapon@Attack" parent="GenericAttack" effectLaunch="TaldarimMothership_Weapon@Beam" effectImpact="TaldarimMothership_Weapon@Damage">
         <LaunchAttachQuery Methods="AMFilterWeaponSetA0 AMClosest2ToTarget TaldarimMothership_Weapon@AMPattern"/>
         <ActionFlags index="AlignedImpactsAndDamages" value="1"/>
         <ActionFlags index="ImpactMonitorsTeleports" value="1"/>
         <Lifetime value="-1.000000"/>
     </CActorAction>
-    <CActorAction id="TaldarimMothership_Weapon@Attack_Secondary" parent="GenericAttackBase">
-        <On Terms="Effect.TaldarimMothership_Weapon@Beam_Secondary.Start" Send="Create"/>
-        <On Terms="Effect.TaldarimMothership_Weapon@Damage.Start; FromEffectTreeDescendant" Send="ActionDamage"/>
-        <On Terms="Effect.TaldarimMothership_Weapon@Beam.Stop" Send="Destroy WhenReady"/>
+    <CActorAction id="TaldarimMothership_Weapon@Attack_Secondary" parent="GenericAttack" effectLaunch="TaldarimMothership_Weapon@Beam_Secondary" effectImpact="TaldarimMothership_Weapon@Damage">
         <LaunchAttachQuery Methods="AMFilterWeaponSetA0 AMClosest2ToTarget TaldarimMothership_Weapon@AMPattern"/>
         <ActionFlags index="AlignedImpactsAndDamages" value="1"/>
         <ActionFlags index="ImpactMonitorsTeleports" value="1"/>
@@ -390,6 +384,7 @@
     <CActorBeamSimple id="TaldarimMothership_Weapon@Attack_SecondaryBeam" parent="BeamSimpleAnimationStyleContinuous">
         <On Terms="Effect.TaldarimMothership_Weapon@Beam_Secondary.Stop" Send="AnimBracketStop BSD"/>
         <Macros value="ActionTargetTeleportDestroy"/>
+        <Model value="TaldarimMothership_Weapon@AttackBeam"/>
     </CActorBeamSimple>
     <CActorSound id="TaldarimMothership_Weapon@AttackLoop" parent="SoundContinuous">
         <On Terms="Effect.TaldarimMothership_Weapon@Damage.Start; EffectExecuteIndex 1" Send="Create"/>

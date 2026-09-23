@@ -2,6 +2,8 @@ Button/Name/Vanguard_Weapon=Кассетная пушка
 Button/Name/Vanguard=Вызвать ревнителя
 Button/Tooltip/Vanguard=Талдаримы<n/>Штурмовой шагающий робот. Наносит урон в области вокруг основной цели.
 Button/Tooltip/Vanguard_Weapon=Атаки наносят урон указанной наземной боевой единице противника, а также другим находящимся рядом с ней наземным войскам.
+Button/Tooltip/Havoc_TargetLock=Увеличивает получаемый целью урон на <d ref="Behavior,Havoc_TargetLock@Target,Modification.DamageTakenFraction[Splash]*100"/>%. Эффект действует, пока разрушитель наведен на цель.
+Behavior/Tooltip/Havoc_TargetLock@Target=Получаемый урон увеличен.
 Unit/Name/Vanguard=Ревнитель
 Unit/Name/Vanguard_Weapon@AttackMissile=Снаряд
 Weapon/Name/Vanguard_Weapon=Кассетная пушка

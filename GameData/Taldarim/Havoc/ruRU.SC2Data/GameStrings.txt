@@ -1,6 +1,14 @@
 Button/Name/Havoc=Вызвать разрушителя
 Button/Name/Havoc_ForceField=Силовое поле
 Button/Name/Havoc_SquadSight=Системы наведения
+Button/Name/Havoc_TargetLock=Наведение на цель
+Button/Tooltip/Havoc_TargetLock=Увеличивает получаемый целью урон на <d ref="Behavior,Havoc_TargetLock@Target,Modification.DamageTakenFraction[Splash]*100"/>%. Эффект действует, пока разрушитель наведен на цель.
+Button/Tooltip/Havoc_ForceField=Создает мощное силовое заграждение, которое препятствует перемещению наземных войск. Время действия – <d time="[d ref='Behavior,Havoc_ForceField@TimedLife,Duration'/]"/>.<n/><n/><c val="#ColorAttackInfo">Крупные боевые единицы разрушают силовые поля, проходя через них.</c>
+
+Behavior/Name/Havoc_TargetLock@Target=Наведение на цель
+Behavior/Tooltip/Havoc_TargetLock@Target=Получаемый урон увеличен.
+
+Error/Havoc_TargetLock=Захват этой цели уже осуществлен.
 
 Unit/Name/Havoc=Разрушитель
 Unit/Name/Havoc_ForceField=Силовое поле

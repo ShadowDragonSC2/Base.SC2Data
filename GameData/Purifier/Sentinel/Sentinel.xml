@@ -8,8 +8,10 @@
     <CUnit id="Sentinel" parent="Generic_Protoss_Unit_Ground" race="Puri">
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
         <AbilArray Link="Sentinel_Charge"/>
+        <AbilArray Link="Sentinel_ToKaldalis"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Sentinel_Charge" Type="AbilCmd" AbilCmd="Sentinel_Charge,Execute" Row="2"/>
+            <LayoutButtons Face="Sentinel_ToKaldalis" Type="AbilCmd" AbilCmd="Sentinel_ToKaldalis,Execute" Column="1" Row="2"/>
         </CardLayouts>
         <LifeStart value="100"/>
         <LifeMax value="100"/>
@@ -56,6 +58,7 @@
         <Macros value="TerrainSquibAnimations"/>
         <On Terms="Behavior.Hallucination.On" Send="Create HallucinationBirthSoundSmall"/>
         <On Terms="UnitHeightUpdate.*.Land" Send="Create Zealot_Land"/>
+        <On Terms="AbilMorph.*.Start; MorphTo Kaldalis" Send="Destroy"/>
         
         <BarWidth value="42"/>
         <BarOffset value="45"/>
@@ -225,6 +228,11 @@
         </ToDInfoArray>
         <EditorCategories value="LightGroup:PortraitsUnitsProtoss"/>
     </CLight>
+
+    <CValidatorUnitType id="Sentinel@Is" parent="IsUnit_Default" unit="Sentinel"/>
+    <CValidatorUnitType id="Sentinel@Target" parent="TargetIsUnit_Default" unit="Sentinel"/>
+    <CValidatorUnitType id="Sentinel@Not" parent="NotUnit_Default" unit="Sentinel"/>
+    <CValidatorUnitType id="Sentinel@NotTarget" parent="TargetNotUnit_Default" unit="Sentinel"/>
     
     <CDataCollectionUnit id="Sentinel" parent="UnitGround">
         <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Purifier,ObjectType:Unit"/>
@@ -316,6 +324,7 @@
 
     <!-- =========== Abilities =========== -->
 
+    <!-- Charge -->
     <CButton id="Sentinel_Charge">
         <Icon value="Assets\Textures\btn-ability-protoss-charge-color.dds"/>
         <AlertIcon value="Assets\Textures\btn-ability-protoss-charge-color.dds"/>
@@ -373,4 +382,19 @@
         <Volume value="-7.960000,-7.960000"/>
         <SustainFade index="1" Time="300"/>
     </CSound>
+
+    <!-- Morph Champion -->
+    <CButton id="Sentinel_ToKaldalis">
+        <Icon />
+    </CButton>
+
+    <CAbilMorph id="Sentinel_ToKaldalis">
+        <CmdButtonArray index="Execute" DefaultButtonFace="Sentinel_ToKaldalis"/>
+        <InfoArray Unit="Kaldalis"/>
+        <Flags index="IgnoreFacing" value="1"/>
+        <Flags index="IgnoreFood" value="1"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <Flags index="WaitUntilStopped" value="0"/>
+    </CAbilMorph>
 </Catalog>

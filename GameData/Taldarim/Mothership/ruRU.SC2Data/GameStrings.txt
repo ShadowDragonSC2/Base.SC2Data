@@ -1,15 +1,21 @@
-Button/Name/TaldarimMothership=Вызвать материнский корабль
 Unit/Name/TaldarimMothership=Материнский корабль
+Unit/Name/TaldarimMothership_ThermalLance@AttackMissile=Снаряд
+
+Abil/Name/TaldarimMothership_BlackHole=Чёрная дыра
+Abil/Name/TaldarimMothership_ThermalLance=Термальный луч
+Abil/Name/TaldarimMothership_Blink=Скачок
+
+Button/Name/TaldarimMothership=Вызвать материнский корабль
+Button/Name/TaldarimMothership_ThermalLance=Термальный луч
+Button/Name/TaldarimMothership_Blink=Скачок
+Button/Name/TaldarimMothership_BlackHole=Чёрная дыра
+
+Button/Tooltip/TaldarimMothership=Талдаримы<n/>Вершина кораблестроения протоссов. Может использовать способности «<d stringref="Button,TaldarimMothership_BlackHole,Name"/>», «<d stringref="Button,TaldarimMothership_Blink,Name"/>» и «<d stringref="Button,TaldarimMothership_ThermalLance,Name"/>».
+Button/Tooltip/TaldarimMothership_ThermalLance=Наносит <d ref="Effect,TaldarimMothership_ThermalLance@Damage,Amount"/> ед. урона противникам, находящимся на одной линии на расстоянии до 10.
+Button/Tooltip/TaldarimMothership_Blink=Материнский корабль телепортируется в указанную точку.
+Button/Tooltip/TaldarimMothership_BlackHole=Оглушает противников в указанной области на <d time="[d ref='Effect,TaldarimMothership_BlackHole@CP,PeriodCount*Effect,TaldarimMothership_BlackHole@CP,PeriodicPeriodArray[0]'/]"/>
+
+Behavior/Name/TaldarimMothership_BlackHole=Чёрная дыра
 
 Weapon/Name/TaldarimMothership_Weapon=Термальный луч
 
-Button/Name/TaldarimMothership_Blink=Скачок
-Abil/Name/TaldarimMothership_Blink=Скачок
-
-Button/Name/TaldarimMothership_ThermalLance=Термальный луч
-Abil/Name/TaldarimMothership_ThermalLance=Термальный луч
-Unit/Name/TaldarimMothership_ThermalLance@AttackMissile=Снаряд
-
-Button/Name/TaldarimMothership_BlackHole=Чёрная дыра
-Abil/Name/TaldarimMothership_BlackHole=Чёрная дыра
-Behavior/Name/TaldarimMothership_BlackHole=Чёрная дыра

@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    
+    <CButton id="TrooperMengsk" parent="unitButton_GroundAir">
+        <Icon value="Assets\Textures\btn-unit-terran-troopermengsk.dds"/>
+    </CButton>
+    
+    <CUnit id="TrooperMengsk" parent="Generic_Unit_Ground" race="Meng">
+        <Mob value="Campaign"/>
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="45"/>
+        <LifeMax value="45"/>
+        <Speed value="2.9492"/>
+        <Food value="-1"/>
+        <CostResource index="Minerals" value="40"/>
+        <RepairTime value="20"/>
+        <WeaponArray Link="TrooperMengsk"/>
+        <Radius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+        <CargoSize value="1"/>
+        <SubgroupPriority value="111"/>
+        <MinimapRadius value="0.375"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
+        <GlossaryPriority value="21"/>
+        <Fidget>
+            <ChanceArray index="Anim" value="33"/>
+            <ChanceArray index="Idle" value="33"/>
+            <ChanceArray index="Turn" value="33"/>
+        </Fidget>
+        <TauntDuration index="Cheer" value="5"/>
+        <TauntDuration index="Dance" value="5"/>
+        <AcquireLeashRadius value="500"/>
+    </CUnit>
+    
+    <CActorUnit id="TrooperMengsk" parent="AdvancedStandard_Ground" unitName="TrooperMengsk">
+        <Macros value="MengskUnitColorMacro"/>
+        <Aliases value="_UnitSmall"/>
+        <OverkillByDamagePastRemainingHealth Value="30" TestType="PercentageOfMaxLifePlusShields"/>
+        <OverkillByDamageOverInterval Value="70" Interval="1" TestType="PercentageOfMaxLifePlusShields"/>
+        <PhysicsMatchKeysOrdered value="Basic"/>
+        <StandAnimTurnTime value="4"/>
+        <BarOffset value="40"/>
+        <BarWidth value="36"/>
+        <GlossaryAnim value="Spell"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-terran-troopermengsk.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-unit-terran-troopermengsk.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-mengsk-engineeringbay-dominionarmorlevel0.dds"/>
+        <ShieldArmorIcon value="Assets\Textures\btn-upgrade-protoss-shieldslevel0.dds"/>
+        <StatusTextInfo>
+            <Offset value="0,16"/>
+            <Attachment value="Ref_StatusBar"/>
+            <FontSize value="16"/>
+            <BackgroundColor value="255,255,255,255"/>
+            <BackgroundImage value="Assets\Textures\ui_ingame_workercount_bg.dds"/>
+        </StatusTextInfo>
+        <UnitFlags index="StandAnimBirthVariation" value="1"/>
+        <UnitIcon value="Assets\Textures\btn-unit-terran-troopermengsk.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-terran-troopermengsk.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    
+    <CModel id="TrooperMengsk" parent="Unit">
+        <EditorCategories value="Race:Mengsk"/>
+        <Model value="Assets/COOP/Mengsk/Units/Trooper_Mengsk_COOP/Trooper_Mengsk_COOP.m3"/>
+        <Radius value="0.375000"/>
+        <SelectionRadius value="0.375000"/>
+        <ShadowRadius value="0.375000"/>
+    </CModel>
+    <CModel id="TrooperMengsk@Death" parent="UnitDeath_COOP" COOP="Mengsk" Race="Terran">
+        <EditorCategories value="Race:Mengsk"/>
+        <Model value="Assets/COOP/Mengsk/Units/Trooper_Mengsk_COOP_Death/Trooper_Mengsk_COOP_Death.m3"/>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Trooper_Death_BodyFall_A"/>
+            <Type value="Sound"/>
+            <Time value="0.964000"/>
+            <Payload value="Trooper_Death_BodyFall_A"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Trooper_Death_BodySplit"/>
+            <Type value="Sound"/>
+            <Time value="0.033000"/>
+            <Payload value="Trooper_Death_BodySplit"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Trooper_Death_BodySplit"/>
+            <Type value="Sound"/>
+            <Time value="0.041000"/>
+            <Payload value="Trooper_Death_BodySplit"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Trooper_Death_BodyFall_B"/>
+            <Type value="Sound"/>
+            <Time value="0.435000"/>
+            <Payload value="Trooper_Death_BodyFall_B"/>
+        </Events>
+        <Events>
+            <Anim value="Death,02"/>
+            <Name value="Trooper_Death_BodySplit"/>
+            <Type value="Sound"/>
+            <Time value="0.041000"/>
+            <Payload value="Trooper_Death_BodySplit"/>
+        </Events>
+        <Events>
+            <Anim value="Death,02"/>
+            <Name value="Trooper_Death_BodyFall_D"/>
+            <Type value="Sound"/>
+            <Time value="0.020000"/>
+            <Payload value="Trooper_Death_BodyFall_D"/>
+        </Events>
+        <Events>
+            <Anim value="Death,02"/>
+            <Name value="Trooper_Death_BodyFall_C"/>
+            <Type value="Sound"/>
+            <Time value="0.358000"/>
+            <Payload value="Trooper_Death_BodyFall_C"/>
+        </Events>
+        <Events>
+            <Anim value="Death,02"/>
+            <Name value="Trooper_Death_BodyFall_B"/>
+            <Type value="Sound"/>
+            <Time value="1.991000"/>
+            <Payload value="Trooper_Death_BodyFall_B"/>
+        </Events>
+    </CModel>
+    <CModel id="TrooperMengsk@DeathAcid" parent="UnitDeath_COOP" COOP="Mengsk" Race="Terran">
+        <EditorCategories value="Race:Mengsk"/>
+        <Model value="Assets/COOP/Mengsk/Units/Trooper_Mengsk_COOP_DeathAcid/Trooper_Mengsk_COOP_DeathAcid.m3"/>
+    </CModel>
+    <CModel id="TrooperMengsk@DeathFire" parent="UnitDeath_COOP" COOP="Mengsk" Race="Terran">
+        <EditorCategories value="Race:Mengsk"/>
+        <Model value="Assets/COOP/Mengsk/Units/Trooper_Mengsk_COOP_DeathFire/Trooper_Mengsk_COOP_DeathFire.m3"/>
+    </CModel>
+    <CModel id="TrooperMengsk@DeathRagdoll" parent="UnitDeath_COOP" COOP="Mengsk" Race="Terran">
+        <EditorCategories value="Race:Mengsk"/>
+        <Model value="Assets/COOP/Mengsk/Units/Trooper_Mengsk_COOP_DeathRagdoll/Trooper_Mengsk_COOP_DeathRagdoll.m3"/>
+    </CModel>
+    <CModel id="TrooperMengsk@Portrait" parent="MarinePortraitBase">
+        <Model value="Assets\COOP\Mengsk\Portraits\Trooper_Mengsk_COOP_Portrait\Trooper_Mengsk_COOP_Portrait.m3"/>
+        <Image value="Assets\Textures\trooper_mengsk_coop_portrait_static.dds"/>
+        <Lighting value="MarinePortrait"/>
+    </CModel>
+    
+    <CSound id="TrooperMengsk@Attack" parent="Combat">
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Attack00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Attack01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Attack02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Attack03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Attack04.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Attack05.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Attack06.ogg"/>
+    </CSound>
+    <CSound id="TrooperMengsk@Attack_MoraleHigh" parent="Voice">
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Attack_MoraleHigh00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Attack_MoraleHigh01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Attack_MoraleHigh02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Attack_MoraleHigh03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Attack_MoraleHigh04.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Attack_MoraleHigh05.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Attack_MoraleHigh06.ogg"/>
+    </CSound>
+    <CSound id="TrooperMengsk@Attack_MoraleLow" parent="Voice">
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Attack_MoraleLow00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Attack_MoraleLow01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Attack_MoraleLow02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Attack_MoraleLow03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Attack_MoraleLow04.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Attack_MoraleLow05.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Attack_MoraleLow06.ogg"/>
+    </CSound>
+    <CSound id="TrooperMengsk@DeathVoice" parent="DeathVoice">
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Death00.wav"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Death01.wav"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Death02.wav"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Death03.wav"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Death04.wav"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Death05.wav"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Death06.wav"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Death07.wav" Weight="1"/>
+        <PanLevel value="0.750000"/>
+        <Volume value="-8.000000,-6.000000"/>
+        <Select value="Random"/>
+    </CSound>
+    <CSound id="TrooperMengsk@Help" parent="Alert">
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Help00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Help01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Help02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Help03.ogg"/>
+        <PanLevel value="0.750000"/>
+        <Volume value="2.000000,2.000000"/>
+    </CSound>
+    <CSound id="TrooperMengsk@NeedMoreFood" parent="Alert">
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_NeedMoreFood00.ogg" FacialFile="LocalizedData\Sounds\VO\Terran\TrooperMengsk_NeedMoreFood00.fxe"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_NeedMoreFood01.ogg" FacialFile="LocalizedData\Sounds\VO\Terran\TrooperMengsk_NeedMoreFood01.fxe"/>
+    </CSound>
+    <CSound id="TrooperMengsk@Pissed" parent="Pissed">
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Pissed00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Pissed01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Pissed02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Pissed03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Pissed04.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Pissed05.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Pissed06.ogg"/>
+    </CSound>
+    <CSound id="TrooperMengsk@Ready" parent="Ready">
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Ready00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Ready01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Ready02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Ready03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_Ready04.ogg"/>
+        <PanLevel value="0.750000"/>
+    </CSound>
+    <CSound id="TrooperMengsk@What" parent="Voice">
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_What00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_What01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_What02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_What03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Terran\TrooperMengsk_What04.ogg"/>
+    </CSound>
+
+    <CValidatorUnitType id="TrooperMengsk@Is" parent="IsUnit_Default" unit="TrooperMengsk"/>
+    <CValidatorUnitType id="TrooperMengsk@Target" parent="TargetIsUnit_Default" unit="TrooperMengsk"/>
+    <CValidatorUnitType id="TrooperMengsk@Not" parent="NotUnit_Default" unit="TrooperMengsk"/>
+    <CValidatorUnitType id="TrooperMengsk@NotTarget" parent="TargetNotUnit_Default" unit="TrooperMengsk"/>
+
+    <CDataCollectionUnit id="TrooperMengsk" parent="UnitGround">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Mengsk,ObjectType:Unit"/>
+        <DataRecord Entry="Button,TrooperMengsk"/>
+        <DataRecord Entry="Unit,TrooperMengsk"/>
+        <DataRecord Entry="Actor,TrooperMengsk"/>
+        <DataRecord Entry="Model,TrooperMengsk"/>
+        <DataRecord Entry="Model,TrooperMengsk@Death"/>
+        <DataRecord Entry="Model,TrooperMengsk@Portrait"/>
+        <DataRecord Entry="Sound,TrooperMengsk@Attack"/>
+        <DataRecord Entry="Sound,TrooperMengsk@Help"/>
+        <DataRecord Entry="Sound,TrooperMengsk@Pissed"/>
+        <DataRecord Entry="Sound,TrooperMengsk@Yes"/>
+        <DataRecord Entry="Sound,TrooperMengsk@What"/>
+        <DataRecord Entry="Sound,TrooperMengsk@Ready"/>
+        <DataRecord Entry="Requirement,TrooperMengsk@Use"/>
+        <DataRecord Entry="Light,TrooperMengsk@Portrait"/>
+        <DataRecord Entry="AttachMethod,TrooperMengsk@AMPattern"/>
+        <DataRecord Entry="Validator,TrooperMengsk@Is"/>
+        <DataRecord Entry="Validator,TrooperMengsk@Target"/>
+        <DataRecord Entry="Validator,TrooperMengsk@Not"/>
+        <DataRecord Entry="Validator,TrooperMengsk@NotTarget"/>
+    </CDataCollectionUnit>
+
+    <!-- ========= Weapons ========== -->
+    
+    <!-- TrooperMengsk_Weapon -->
+    <CWeaponLegacy id="TrooperMengsk_Weapon">
+        <EditorCategories value="Race:Terran"/>
+        <Icon value="Assets\Textures\btn-upgrade-mengsk-engineeringbay-dominionweaponslevel0.dds"/>
+        <DisplayEffect value="TrooperMengsk_Weapon@Damage"/>
+        <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <MinScanRange value="5.5"/>
+        <Period value="0.8608"/>
+        <DamagePoint value="0.05"/>
+        <Backswing value="0.75"/>
+        <Effect value="TrooperMengsk_Weapon@Damage"/>
+    </CWeaponLegacy>
+
+    <CEffectDamage id="TrooperMengsk_Weapon@Damage" parent="DU_WEAP">
+        <EditorCategories value="Race:Mengsk"/>
+        <Kind value="Ranged"/>
+        <Amount value="6"/>
+    </CEffectDamage>
+
+    <CActorAction id="TrooperMengsk_Weapon@Attack" parent="GenericAttack" effectAttack="TrooperMengsk_Weapon@Damage">
+        <ImpactMap index="Flesh" ModelReaction="BloodTargetImpact"/>
+        <ImpactPhysics Name="BulletImpact" MatchKeys="Basic" Physics="MarineAttackDeathForce"/>
+        <AcquisitionYawHalfArc value="10.000000"/>
+        <AcquisitionPitchHalfArc value="15.000000"/>
+        <AccuracyHalfArc value="5.000000"/>
+    </CActorAction>
+
+    <CModel id="TrooperMengsk_Weapon@AttackImpact" parent="LaunchFX">
+        <Model value="Assets\Effects\Terran\MarineWeaponImpact\MarineWeaponImpact.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+    <CModel id="TrooperMengsk_Weapon@AttackLaunch" parent="LaunchFX">
+        <Model value="Assets\Effects\Terran\MarineWeaponLaunch\MarineWeaponLaunch.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+    <CModel id="TrooperMengsk_Weapon@BunkerAttackLaunch" parent="TrooperMengsk_Weapon@AttackLaunch"/>
+    
+    <CSound id="TrooperMengsk_Weapon@AttackImpact" parent="Terran_MultipleBulletAttackImpact">
+        <DupeDestroyCount value="4"/>
+        <DupeMuteCount value="4"/>
+    </CSound>
+    <CSound id="TrooperMengsk_Weapon@AttackLaunch" parent="Combat">
+        <DupeDestroyCount value="5"/>
+        <DupeMuteCount value="5"/>
+        <Flags index="VariationFallback" value="0"/>
+        <Pitch value="-0.890000,0.840000"/>
+        <VariationMinimum value="8"/>
+        <Volume value="-9.000000,-6.000000"/>
+        <AssetArray File="Assets\Sounds\Terran\Marine\Marine_AttackLaunch0.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\Marine\Marine_AttackLaunch1.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\Marine\Marine_AttackLaunch2.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\Marine\Marine_AttackLaunch3.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\Marine\Marine_AttackLaunch4.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\Marine\Marine_AttackLaunch5.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\Marine\Marine_AttackLaunch6.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\Marine\Marine_AttackLaunch7.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\Marine\Marine_AttackLaunch8.wav"/>
+        <EditorCategories value="Race:Terran"/>
+        <DupeMaximumMethod value="Replace"/>
+    </CSound>
+
+    <CDataCollectionUnit id="TrooperMengsk_Weapon" parent="Weapon_Instant">
+        <DataRecord Entry="Weapon,TrooperMengsk_Weapon"/>
+        <DataRecord Entry="Effect,TrooperMengsk_Weapon@Damage"/>
+        <DataRecord Entry="Actor,TrooperMengsk_Weapon@Attack"/>
+        <DataRecord Entry="Model,TrooperMengsk_Weapon@AttackImpact"/>
+        <DataRecord Entry="Model,TrooperMengsk_Weapon@AttackLaunch"/>
+        <DataRecord Entry="Model,TrooperMengsk_Weapon@BunkerAttackLaunch"/>
+        <DataRecord Entry="Sound,TrooperMengsk_Weapon@AttackImpact"/>
+        <DataRecord Entry="Sound,TrooperMengsk_Weapon@AttackLaunch"/>
+    </CDataCollectionUnit>
+
+</Catalog>

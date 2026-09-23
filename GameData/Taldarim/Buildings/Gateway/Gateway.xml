@@ -148,8 +148,15 @@
     <!-- Taldarim Warpgate -->
     
     <CUnit id="TaldarimWarpgate" parent="TaldarimGateway">
+        <AbilArray index="3" Link="TaldarimWarpgate_WarpTrain"/>
         <AbilArray index="4" Link="TaldarimWarpgate_MorphToGateway"/>
         <CardLayouts index="0">
+            <LayoutButtons index="1" Face="Supplicant" Type="AbilCmd" AbilCmd="TaldarimWarpgate_WarpTrain,Train1"/>
+            <LayoutButtons index="2" Face="Slayer" Type="AbilCmd" AbilCmd="TaldarimWarpgate_WarpTrain,Train2"/>
+            <LayoutButtons index="3" Face="Havoc" Type="AbilCmd" AbilCmd="TaldarimWarpgate_WarpTrain,Train3"/>
+            <LayoutButtons index="4" Face="Ascendant" Type="AbilCmd" AbilCmd="TaldarimWarpgate_WarpTrain,Train4"/>
+            <LayoutButtons index="5" Face="BloodHunter" Type="AbilCmd" AbilCmd="TaldarimWarpgate_WarpTrain,Train5"/>
+
             <LayoutButtons index="9" Face="TaldarimWarpgate_MorphToGateway" Type="AbilCmd" AbilCmd="TaldarimWarpgate_MorphToGateway,Execute" Row="2" Column="0"/>
         </CardLayouts>
     </CUnit>
@@ -210,23 +217,88 @@
             <Unit value="Supplicant"/>
         </InfoArray>
         <InfoArray index="Train2">
-            <Button DefaultButtonFace="Slayer" Requirements="HaveCyberneticsCore"/>
+            <Button DefaultButtonFace="Slayer"/>
             <Unit value="Slayer"/>
         </InfoArray>
         <InfoArray index="Train3">
-            <Button DefaultButtonFace="Havoc" Requirements="HaveCyberneticsCore"/>
+            <Button DefaultButtonFace="Havoc"/>
             <Unit value="Havoc"/>
         </InfoArray>
         <InfoArray index="Train4">
-            <Button DefaultButtonFace="Ascendant" Requirements="HaveTemplarArchives"/>
+            <Button DefaultButtonFace="Ascendant"/>
             <Unit value="Ascendant"/>
         </InfoArray>
         <InfoArray index="Train5">
-            <Button DefaultButtonFace="BloodHunter" Requirements="HaveDarkShrine"/>
+            <Button DefaultButtonFace="BloodHunter"/>
             <Unit value="BloodHunter"/>
         </InfoArray>
         <Activity value="UI/Warping"/>
     </CAbilTrain>
+
+    <!-- Warp Train -->
+    <CAbilWarpTrain id="TaldarimWarpgate_WarpTrain">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Structures"/>
+        <InfoArray index="Train1" Time="5" Unit="SupplicantCreator">
+            <Charge>
+                <CountMax value="1"/>
+                <CountStart value="1"/>
+                <CountUse value="1"/>
+                <Link value="WarpGateTrain"/>
+                <TimeUse value="21"/>
+                <Flags index="EnableChargeTimeQueuing" value="1"/>
+            </Charge>
+            <Cooldown Link="WarpGateTrain"/>
+            <Button DefaultButtonFace="Supplicant"/>
+        </InfoArray>
+        <InfoArray index="Train2" Time="5" Unit="Slayer">
+            <Charge>
+                <CountMax value="1"/>
+                <CountStart value="1"/>
+                <CountUse value="1"/>
+                <Link value="WarpGateTrain"/>
+                <TimeUse value="21"/>
+                <Flags index="EnableChargeTimeQueuing" value="1"/>
+            </Charge>
+            <Cooldown Link="WarpGateTrain"/>
+            <Button DefaultButtonFace="Slayer"/>
+        </InfoArray>
+        <InfoArray index="Train3" Time="5" Unit="Havoc">
+            <Charge>
+                <CountMax value="1"/>
+                <CountStart value="1"/>
+                <CountUse value="1"/>
+                <Link value="WarpGateTrain"/>
+                <TimeUse value="21"/>
+                <Flags index="EnableChargeTimeQueuing" value="1"/>
+            </Charge>
+            <Cooldown Link="WarpGateTrain"/>
+            <Button DefaultButtonFace="Havoc"/>
+        </InfoArray>
+        <InfoArray index="Train4" Time="5" Unit="Ascendant">
+            <Charge>
+                <CountMax value="1"/>
+                <CountStart value="1"/>
+                <CountUse value="1"/>
+                <Link value="WarpGateTrain"/>
+                <TimeUse value="21"/>
+                <Flags index="EnableChargeTimeQueuing" value="1"/>
+            </Charge>
+            <Cooldown Link="WarpGateTrain"/>
+            <Button DefaultButtonFace="Ascendant"/>
+        </InfoArray>
+        <InfoArray index="Train5" Time="5" Unit="BloodHunter">
+            <Charge>
+                <CountMax value="1"/>
+                <CountStart value="1"/>
+                <CountUse value="1"/>
+                <Link value="WarpGateTrain"/>
+                <TimeUse value="21"/>
+                <Flags index="EnableChargeTimeQueuing" value="1"/>
+            </Charge>
+            <Cooldown Link="WarpGateTrain"/>
+            <Button DefaultButtonFace="BloodHunter"/>
+        </InfoArray>
+    </CAbilWarpTrain>
 
     <!-- Morph To Warpgate -->
     <CButton id="TaldarimGateway_MorphToWarpgate">

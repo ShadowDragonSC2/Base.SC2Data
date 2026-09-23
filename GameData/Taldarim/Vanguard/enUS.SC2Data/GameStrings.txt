@@ -1,0 +1,7 @@
+Button/Name/Vanguard_Weapon=Scatter Cannon
+Button/Name/Vanguard=Warp in Vanguard
+Button/Tooltip/Vanguard=Tal'darim Faction<n/>Assault Strider. Attacks deal damage in an area around target enemy unit.
+Button/Tooltip/Vanguard_Weapon=Attacks deal damage to target enemy ground unit and other enemy ground units near it.<n/><n/><c val="ffff8a">Damages enemy ground units only.</c>
+Unit/Name/Vanguard=Vanguard
+Unit/Name/Vanguard_Weapon@AttackMissile=Missile
+Weapon/Name/Vanguard_Weapon=Scatter Cannon

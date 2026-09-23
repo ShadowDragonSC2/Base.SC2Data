@@ -184,10 +184,21 @@
 
     <CWeaponLegacy id="Havoc_Weapon">
         <EditorCategories value="Race:Taldarim"/>
-        <Range value="6"/>
-        <Period value="0.79"/>
+        <Range value="7"/>
+        <Period value="3"/>
         <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
+        <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <ChaseFilters value="-;Neutral,Enemy"/>
+        <AcquireCallForHelpFilters value="-;Player,Ally,Neutral,Enemy"/>
+        <Arc value="0.9997"/>
+        <Cost>
+            <Cooldown Link="Abil/Havoc_TargetLock" Location="Unit" TimeUse="2.9"/>
+        </Cost>
     </CWeaponLegacy>
+
+    <CEffectSet id="Havoc_Weapon">
+        <ValidatorArray value="NotInterceptor"/>
+    </CEffectSet>
 
     <!-- ============= Abilities ============= -->
     <!-- TARGET LOCK -->
@@ -203,12 +214,15 @@
         <TargetFilters value="Visible;Player,Ally,Neutral,Missile,Stasis,Dead,Invulnerable"/>
         <Flags index="AutoCast" value="1"/>
         <Range value="8"/>
+        <Cost>
+            <Cooldown Location="Unit" TimeUse="3"/>
+        </Cost>
         <AutoCastRange value="8"/>
         <CastOutroTime value="0.5"/>
         <Flags index="AutoCastOn" value="1"/>
         <Flags index="Smart" value="1"/>
         <SmartPriority value="8"/>
-        <AutoCastValidatorArray value="NotHaveTargetLock"/>
+        <AutoCastValidatorArray value="Havoc_TargetLock@NotTargetLocks_Caster"/>
         <AutoCastValidatorArray value="NotInterceptor"/>
         <TargetSorts>
             <SortArray value="TSLifeLargestFirst"/>
@@ -226,7 +240,6 @@
             <DamageTakenFraction index="Splash" value="0.3"/>
             <DamageTakenFraction index="NoProc" value="0.3"/>
         </Modification>
-        <MaxStackCount value="3"/>
         <InfoIcon value="Assets\Textures\btn-ability-protoss-targetlock.dds"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Havoc_TargetLock@Caster">
@@ -243,7 +256,7 @@
         <WhichLocation Value="TargetUnit"/>
         <PeriodicValidator value="Havoc_TargetLock@Checks"/>
         <ValidatorArray value="Havoc_TargetLock@NotTargetLock"/>
-        <ValidatorArray value="CasterNotMaxTargetLocks"/>
+        <ValidatorArray value="Havoc_TargetLock@NotTargetLocks_Caster"/>
     </CEffectCreatePersistent>
 
     <CEffectSet id="Havoc_TargetLock@Set_Start">
@@ -274,7 +287,12 @@
     
     <CValidatorUnitCompareBehaviorCount id="Havoc_TargetLock@NotTargetLock">
         <Behavior value="Havoc_TargetLock@Target"/>
-        <ResultFailed value="Error,Error\Havoc_TargetLock"/>
+        <ResultFailed value="Error,Error/Havoc_TargetLock"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="Havoc_TargetLock@NotTargetLocks_Caster">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="Havoc_TargetLock@Caster"/>
+        <ResultFailed value="Error,Error/Havoc_TargetLock"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareField id="Havoc_TargetLock@RadiusLarge">
         <Compare value="GE"/>

@@ -14,6 +14,7 @@
     
     <CUnit id="Kaldalis" parent="Generic_Protoss_Unit_Ground" race="Puri">
         <DeathTime value="-1"/>
+        <Race value="Prot"/>
         <Mob value="Campaign"/>
         <Attributes index="Light" value="1"/>
         <Attributes index="Mechanical" value="1"/>
@@ -63,22 +64,12 @@
     <CActorUnit id="Kaldalis" parent="AdvancedStandard_Ground" unitName="Kaldalis">
         <Aliases value="_UnitSmall"/>
         <Macros value="ChargingAnim"/>
+        <Macros value="Kaldalis_Engage@Animation"/>
+        <Macros value="Kaldalis_EmpoweredBlades@Animation"/>
         <On Terms="AbilMorph.*.Finish; MorphFrom Sentinel; MorphTo Kaldalis" Send="Create"/>
         <On Terms="ActorCreation" Send="Create Kaldalis@Champion"/>
         <On Terms="ActorCreation" Send="Create Kaldalis@Glaze"/>
-        <On Terms="Behavior.Charging.On" Send="ModelSuddenMotionStart"/>
-        <On Terms="Behavior.Charging.Off" Send="ModelSuddenMotionStop"/>
-        <On Terms="Upgrade.Kaldalis_EmpoweredBlades.Add" Send="Create Kaldalis@AttackModel"/>
-        <On Terms="Upgrade.Kaldalis_EmpoweredBlades.Add" Send="AnimGroupApply C"/>
-        <On Terms="ActorCreation; ValidatePlayer Kaldalis_EmpoweredBlades" Send="Create Kaldalis@AttackModel"/>
-        <On Terms="ActorCreation; ValidatePlayer Kaldalis_EmpoweredBlades" Send="AnimGroupApply C"/>
         <On Terms="ActorCreation" Send="AnimBracketStart Cover Cover,Start Cover"/>
-        <On Terms="WeaponStart.*.AttackStart; ValidatePlayer Kaldalis_EmpoweredBlades" Send="Create Kaldalis@AttackModel"/>
-        
-        <On Terms="Effect.Kaldalis_Engage@LM.Start; At Caster" Send="HostSiteOpsSet ::Host {SOpBasicScopeFollow SOp2DRotation}"/>
-        <On Terms="Effect.Kaldalis_Engage@LM.Start; At Caster" Send="AnimBracketStart Jump Jump,Start Jump Jump,End"/>
-        <On Terms="Effect.Kaldalis_Engage@LM.Start; At Caster" Send="AnimGroupApply D"/>
-        <On Terms="Effect.Kaldalis_Engage@LM.Start; At Caster" Send="AnimGroupRemove C"/>
 
         <On Terms="UnitHeightUpdate.*.Land" Send="Create Zealot_Land"/>
         <On Terms="UnitHeightUpdate.*.Land" Send="Create Templar_LandSweetener"/>
@@ -87,7 +78,6 @@
         <On Terms="UnitHeightUpdate.*.Land" Send="TimerSet 0.600000 AnimGroupD"/>
 
         <On Terms="TimerExpired; TimerName AnimGroupD" Send="AnimGroupRemove D"/>
-        <On Terms="TimerExpired; TimerName AnimGroupD; ValidatePlayer Kaldalis_EmpoweredBlades" Send="AnimGroupApply C"/>
         <BarWidth value="42"/>
         <BarOffset value="45"/>
         <AbilSoundArray AbilCmd="FenixKaldalisZealotCharge,Execute" Sound="Kaldalis_EngageRangedVO"/>
@@ -516,6 +506,12 @@
         <ModelFlags index="AllowHitTest" value="0"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
     </CActorModel>
+    <CActorEventMacro id="Kaldalis_Engage@Animation">
+        <On Terms="Effect.Kaldalis_Engage@LM.Start; At Caster" Send="HostSiteOpsSet ::Host {SOpBasicScopeFollow SOp2DRotation}"/>
+        <On Terms="Effect.Kaldalis_Engage@LM.Start; At Caster" Send="AnimBracketStart Jump Jump,Start Jump Jump,End"/>
+        <On Terms="Effect.Kaldalis_Engage@LM.Start; At Caster" Send="AnimGroupApply D"/>
+        <On Terms="Effect.Kaldalis_Engage@LM.Start; At Caster" Send="AnimGroupRemove C"/>
+    </CActorEventMacro>
     
     <CModel id="Kaldalis_Engage@ImpactModel" parent="OneShotSpellFX">
         <Model value="Assets\Effects\Protoss\Zealot_Purifier_Collection_Charge_GroundBlast\Zealot_Purifier_Collection_Charge_GroundBlast.m3"/>
@@ -577,6 +573,15 @@
     <CRequirementCountUpgrade id="Kaldalis_EmpoweredBlades@CU">
         <Count Link="Kaldalis_EmpoweredBlades" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+
+    <CActorEventMacro id="Kaldalis_EmpoweredBlades@Animation">
+        <On Terms="ActorCreation; ValidatePlayer Kaldalis_EmpoweredBlades" Send="Create Kaldalis@AttackModel"/>
+        <On Terms="ActorCreation; ValidatePlayer Kaldalis_EmpoweredBlades" Send="AnimGroupApply C"/>
+        <On Terms="Upgrade.Kaldalis_EmpoweredBlades.Add" Send="Create Kaldalis@AttackModel"/>
+        <On Terms="Upgrade.Kaldalis_EmpoweredBlades.Add" Send="AnimGroupApply C"/>
+        <On Terms="WeaponStart.*.AttackStart; ValidatePlayer Kaldalis_EmpoweredBlades" Send="Create Kaldalis@AttackModel"/>
+        <On Terms="TimerExpired; TimerName AnimGroupD; ValidatePlayer Kaldalis_EmpoweredBlades" Send="AnimGroupApply C"/>
+    </CActorEventMacro>
 
     <CValidatorPlayerRequirement id="Kaldalis_EmpoweredBlades">
         <Find value="1"/>

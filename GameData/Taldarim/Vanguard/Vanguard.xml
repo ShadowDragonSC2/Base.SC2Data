@@ -5,6 +5,7 @@
     <!-- Requires: Unit:Generic_Protoss_Unit_Ground[protoss.xml] -->
 
     <CButton id="Vanguard" parent="UnitButton_OnlyGround">
+        <EditorCategories value="Race:Taldarim"/>
         <Icon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-immortal.dds"/>
         <AlertIcon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-immortal.dds"/>
     </CButton>
@@ -55,29 +56,14 @@
         <TauntDuration index="Dance" value="5"/>
     </CUnit>
 
-    <CActorUnit id="Vanguard" parent="GenericUnitStandard" unitName="Vanguard">
+    <CActorUnit id="Vanguard" parent="AdvancedStandard_Ground" unitName="Vanguard">
         <Aliases value="_UnitLarge"/>
-
-        <DeathArray index="Normal">
-            <ModelLink value="Vanguard@Death"/>
-            <VoiceLink value="Vanguard@Death"/>
-        </DeathArray>
-        <SoundArray index="Attack" value="Vanguard@Attack"/>
-        <SoundArray index="Ready" value="Vanguard@Ready"/>
-        <SoundArray index="Yes" value="Vanguard@Yes"/>
-        <SoundArray index="What" value="Vanguard@What"/>
-        <SoundArray index="Pissed" value="Vanguard@Pissed"/>
-        <SoundArray index="Help" value="Vanguard@Help"/>
-        
-        <PortraitModel value="Vanguard@Portrait"/>
-        <PlacementModel value="Vanguard@Placement"/>
-
         <WalkAnimMoveSpeed value="1.25"/>
         <BarWidth value="90"/>
         <BarOffset value="80"/>
-
-        <UnitIcon value="Assets\Textures\BTN-Unit-Protoss-Immortal-Taldarim.dds"/>
         <HeroIcon value="Assets\Textures\BTN-Unit-Protoss-Immortal.dds"/>
+        <UnitIcon value="Assets\Textures\BTN-Unit-Protoss-Immortal-Taldarim.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
         <WireframeShield>
             <Image value="Assets\Textures\Wireframe-Protoss-Immortal-Taldarim-Shield01.dds"/>
             <Image value="Assets\Textures\Wireframe-Protoss-Immortal-Taldarim-Shield02.dds"/>
@@ -89,19 +75,10 @@
         <Wireframe>
             <Image value="Assets\Textures\wireframe-protoss-immortal-taldarim.dds"/>
         </Wireframe>
-        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
-        <TerrainSquibs>
-            <MovementDistance value="0.150000,0.150000"/>
-            <IdlePeriod value="0.100000,0.250000"/>
-            <RangeUp value="0.600000"/>
-            <RangeDown value="1.000000"/>
-            <AttachQuery Methods="AMFilterCenter"/>
-            <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleImmortal"/>
-        </TerrainSquibs>
-
     </CActorUnit>
 
     <CModel id="Vanguard" parent="ImmortalBase">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Units\Protoss\Immortal_Taldarim\Immortal_Taldarim.m3"/>
         <RequiredAnims value="Assets\Units\Protoss\Immortal_SwarmAnims\Immortal_SwarmAnims.m3a"/>
         <UnitGlossaryCamera value="Star2CameraHigh09"/>
@@ -113,6 +90,7 @@
         </AttachProps>
     </CModel>
     <CModel id="Vanguard@Death" parent="UnitDeath">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Units\Protoss\Immortal_Taldarim_Death\Immortal_Taldarim_Death.m3"/>
         <Occlusion value="Show"/>
         <LowQualityModel value="ProtossLargeTaldarimUnitDeathLow"/>
@@ -220,11 +198,13 @@
             <Payload value="Immortal_Explode"/>
         </Events>
     </CModel>
-    <CModel id="Vanguard@Portrait" parent="Portrait" Race="Protoss">
+    <CModel id="Vanguard@Portrait" parent="Portrait">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Portraits\Protoss\Immortal_TalDarim_Portrait\Immortal_TalDarim_Portrait.m3"/>
         <Image value="Assets\Textures\taldarimimmortalportrait_static.dds"/>
     </CModel>
-    <CModel id="Vanguard@Placement" parent="Placement" Race="Protoss">
+    <CModel id="Vanguard@Placement" parent="Placement">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Units\Protoss\ImmortalTaldarim_Placement\ImmortalTaldarim_Placement.m3"/>
         <Radius value="-1.000000"/>
         <Lighting value="Immortal"/>
@@ -236,7 +216,7 @@
     </CModel>
     <CModel id="Vanguard@WarpIn" parent="OneShotSpellFX">
         <Model value="Assets\Units\Protoss\Immortal_Taldarim_WarpIn\Immortal_Taldarim_WarpIn.m3"/>
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Taldarim"/>
         <Occlusion value="Show"/>
         <ScaleMax value="0.750000,0.750000,0.750000"/>
         <ScaleMin value="0.750000,0.750000,0.750000"/>
@@ -245,73 +225,66 @@
         <ShadowRadius value="0.666500"/>
     </CModel>
 
-    <CSound id="Vanguard@Attack" parent="ProtossAck_Void">
-        <AssetArray TemplateParam="Vanguard_Attack00"/>
-        <AssetArray TemplateParam="Vanguard_Attack01"/>
-        <AssetArray TemplateParam="Vanguard_Attack02"/>
-        <AssetArray TemplateParam="Vanguard_Attack03"/>
-        <AssetArray TemplateParam="Vanguard_Attack04"/>
-        <AssetArray TemplateParam="Vanguard_Attack05"/>
-        <AssetArray TemplateParam="Vanguard_Attack06"/>
-        <Flags index="NeedsUpdate" value="1"/>
-        <Flags index="NeedsTTS" value="1"/>
+    <CSound id="Vanguard@Attack" parent="Voice">
+        <EditorCategories value="Race:Taldarim"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Vanguard_Attack00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Vanguard_Attack01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Vanguard_Attack02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Vanguard_Attack03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Vanguard_Attack04.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Vanguard_Attack05.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Vanguard_Attack06.ogg"/>
         <Volume value="-1.000000,-1.000000"/>
     </CSound>
-    <CSound id="Vanguard@Death" parent="ProtossDeath">
-        <AssetArray TemplateParam="Vanguard_Death00"/>
-        <AssetArray TemplateParam="Vanguard_Death01"/>
-        <Flags index="NeedsUpdate" value="1"/>
-        <Flags index="NeedsTTS" value="1"/>
+    <CSound id="Vanguard@Death" parent="Death">
+        <EditorCategories value="Race:Taldarim"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Vanguard_Death00.wav"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Vanguard_Death01.wav"/>
         <Volume value="-1.000000,-1.000000"/>
     </CSound>
-    <CSound id="Vanguard@Help" parent="ProtossHelp">
-        <AssetArray TemplateParam="Vanguard_Help00"/>
-        <Flags index="NeedsUpdate" value="1"/>
-        <Flags index="NeedsTTS" value="1"/>
+    <CSound id="Vanguard@Help" parent="Alert">
+        <EditorCategories value="Race:Taldarim"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Vanguard_Help00.ogg"/>
         <Volume value="0.000000,0.000000"/>
     </CSound>
-    <CSound id="Vanguard@Pissed" parent="ProtossPissed">
-        <AssetArray TemplateParam="Vanguard_Pissed00"/>
-        <AssetArray TemplateParam="Vanguard_Pissed01"/>
-        <AssetArray TemplateParam="Vanguard_Pissed02"/>
-        <AssetArray TemplateParam="Vanguard_Pissed03"/>
-        <AssetArray TemplateParam="Vanguard_Pissed04"/>
-        <AssetArray TemplateParam="Vanguard_Pissed05"/>
-        <AssetArray TemplateParam="Vanguard_Pissed06"/>
-        <Flags index="NeedsUpdate" value="1"/>
-        <Flags index="NeedsTTS" value="1"/>
+    <CSound id="Vanguard@Pissed" parent="Pissed">
+        <EditorCategories value="Race:Taldarim"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Vanguard_Pissed00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Vanguard_Pissed01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Vanguard_Pissed02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Vanguard_Pissed03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Vanguard_Pissed04.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Vanguard_Pissed05.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Vanguard_Pissed06.ogg"/>
         <Volume value="-1.000000,-1.000000"/>
     </CSound>
-    <CSound id="Vanguard@Ready" parent="ProtossReady">
-        <AssetArray TemplateParam="Vanguard_Ready00"/>
-        <Flags index="NeedsUpdate" value="1"/>
-        <Flags index="NeedsTTS" value="1"/>
+    <CSound id="Vanguard@Ready" parent="Ready">
+        <EditorCategories value="Race:Taldarim"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Vanguard_Ready00.ogg"/>
         <Volume value="2.000000,2.000000"/>
     </CSound>
-    <CSound id="Vanguard@What" parent="ProtossAck_Void">
-        <AssetArray TemplateParam="Vanguard_What00"/>
-        <AssetArray TemplateParam="Vanguard_What01"/>
-        <AssetArray TemplateParam="Vanguard_What02"/>
-        <AssetArray TemplateParam="Vanguard_What03"/>
-        <AssetArray TemplateParam="Vanguard_What04"/>
-        <AssetArray TemplateParam="Vanguard_What05"/>
-        <AssetArray TemplateParam="Vanguard_What06"/>
-        <AssetArray TemplateParam="Vanguard_What07"/>
-        <Flags index="NeedsUpdate" value="1"/>
-        <Flags index="NeedsTTS" value="1"/>
+    <CSound id="Vanguard@What" parent="Voice">
+        <EditorCategories value="Race:Taldarim"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Vanguard_What00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Vanguard_What01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Vanguard_What02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Vanguard_What03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Vanguard_What04.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Vanguard_What05.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Vanguard_What06.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Vanguard_What07.ogg"/>
         <Volume value="-1.000000,-1.000000"/>
     </CSound>
-    <CSound id="Vanguard@Yes" parent="ProtossAck_Void">
-        <AssetArray TemplateParam="Vanguard_Yes00"/>
-        <AssetArray TemplateParam="Vanguard_Yes01"/>
-        <AssetArray TemplateParam="Vanguard_Yes02"/>
-        <AssetArray TemplateParam="Vanguard_Yes03"/>
-        <AssetArray TemplateParam="Vanguard_Yes04"/>
-        <AssetArray TemplateParam="Vanguard_Yes05"/>
-        <AssetArray TemplateParam="Vanguard_Yes06"/>
-        <AssetArray TemplateParam="Vanguard_Yes07"/>
-        <Flags index="NeedsUpdate" value="1"/>
-        <Flags index="NeedsTTS" value="1"/>
+    <CSound id="Vanguard@Yes" parent="Voice">
+        <EditorCategories value="Race:Taldarim"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Vanguard_Yes00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Vanguard_Yes01.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Vanguard_Yes02.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Vanguard_Yes03.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Vanguard_Yes04.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Vanguard_Yes05.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Vanguard_Yes06.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\VO\Protoss\Vanguard_Yes07.ogg"/>
         <Volume value="-1.000000,-1.000000"/>
     </CSound>
 
@@ -346,7 +319,7 @@
     <CValidatorUnitType id="Vanguard@NotTarget" parent="TargetNotUnit_Default" unit="Vanguard"/>
 
     <CDataCollectionUnit id="Vanguard" parent="UnitGround">
-        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Protoss,ObjectType:Unit"/>
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Taldarim,ObjectType:Unit"/>
         <DataRecord Entry="Button,Vanguard"/>
         <DataRecord Entry="Unit,Vanguard"/>
         <DataRecord Entry="Actor,Vanguard"/>
@@ -381,10 +354,11 @@
     <CButton id="Vanguard_Weapon">
         <Icon value="Assets\Textures\BTN-Ability-Protoss-ScatterCannon.dds"/>
         <AlertIcon value="Assets\Textures\BTN-Ability-Protoss-ScatterCannon.dds"/>
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Taldarim"/>
     </CButton>
 
     <CWeaponLegacy id="Vanguard_Weapon">
+        <EditorCategories value="Race:Taldarim"/>
         <Arc value="360"/>
         <DisplayEffect value="Vanguard_Weapon@Damage"/>
         <Effect value="Vanguard_Weapon@CP"/>
@@ -409,7 +383,7 @@
         <ValidatorArray index="0" value="TargetRadiusLE0Dot125"/>
     </CEffectLaunchMissile>
     <CEffectCreatePersistent id="Vanguard_Weapon@CP">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Taldarim"/>
 
         <PeriodicOffsetArray value="-0.75,0,0"/>
         <PeriodicOffsetArray value="-0.85,0,0"/>
@@ -432,10 +406,6 @@
         <IncludeArray Effect="Vanguard_Weapon@CP" Value="Target"/>
         <SearchFilters value="Ground;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectEnumArea>
-    <CEffectSet id="Vanguard_Weapon@Set">
-        <EffectArray value="Vanguard_Weapon@Damage"/>
-        <!-- <EffectArray value="Vanguard_Weapon@Damage"/> -->
-    </CEffectSet>
 
     <CActorAction id="Vanguard_Weapon@Attack" parent="GenericAttack" effectImpact="Vanguard_Weapon@Search" effectLaunch="Vanguard_Weapon@LM">
         <LaunchAttachQuery Methods="Vanguard_Weapon@AMPattern"/>
@@ -448,13 +418,16 @@
     </CActorSimple>
 
     <CModel id="Vanguard_Weapon@AttackLaunch">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Effects\Protoss\ScatterCannonLaunch\ScatterCannonLaunch.m3"/>
     </CModel>
     <CModel id="Vanguard_Weapon@AttackImpact">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Effects\Protoss\ScatterCannonMissileImpact\ScatterCannonMissileImpact.m3"/>
     </CModel>
     
     <CSound id="Vanguard_Weapon@AttackLaunch" parent="Combat">
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray File="Assets\Sounds\Vanguard_ScatterCannon_LaunchAttack01_1ch.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\Vanguard_ScatterCannon_LaunchAttack02_1ch.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\Vanguard_ScatterCannon_LaunchAttack03_1ch.wav" FacialGroup=""/>
@@ -470,6 +443,7 @@
         <DupePrioritization value="Oldest"/>
     </CSound>
     <CSound id="Vanguard_Weapon@AttackImpact" parent="Combat">
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray File="Assets\Sounds\Vanguard_ScatterCannon_Impact01_1ch.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\Vanguard_ScatterCannon_Impact02_1ch.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\Vanguard_ScatterCannon_Impact03_1ch.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
@@ -484,6 +458,7 @@
     </CUnit>
     <CActorMissile id="Vanguard_Weapon@AttackMissile" parent="GenericAttackMissile" unitName="Vanguard_Weapon@AttackMissile"/>
     <CModel id="Vanguard_Weapon@AttackMissile" parent="MissileFX">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Effects\Protoss\ScatterCannonMissile\ScatterCannonMissile.m3"/>
     </CModel>
     <CMoverMissile id="Vanguard_Weapon@AttackMissile">
@@ -505,16 +480,13 @@
     </CAttachMethodPattern>
 
     <CDataCollectionUnit id="Vanguard_Weapon" parent="Weapon_Missile">
-        <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:Protoss,ObjectType:Projectile"/>
+        <EditorCategories value="DataGroup:Weapon,DataFamily:Campaign,Race:Taldarim,ObjectType:Projectile"/>
         <DataRecord Entry="Button,Vanguard_Weapon"/>
         <DataRecord Entry="Weapon,Vanguard_Weapon"/>
         <DataRecord Entry="Effect,Vanguard_Weapon@Damage"/>
         <DataRecord Entry="Effect,Vanguard_Weapon@LM"/>
         <DataRecord Entry="Effect,Vanguard_Weapon@CP"/>
         <DataRecord Entry="Effect,Vanguard_Weapon@Search"/>
-        <DataRecord Entry="Effect,Vanguard_Weapon@RB"/>
-        <DataRecord Entry="Effect,Vanguard_Weapon@Set"/>
-        <DataRecord Entry="Effect,Vanguard_Weapon@Set@LM"/>
         <DataRecord Entry="Actor,Vanguard_Weapon@Attack"/>
         <DataRecord Entry="Actor,Vanguard_Weapon@Animation"/>
         <DataRecord Entry="Model,Vanguard_Weapon@AttackLaunch"/>

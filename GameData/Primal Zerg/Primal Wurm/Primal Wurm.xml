@@ -68,6 +68,10 @@
     </CUnit>
     
     <CActorUnit id="PrimalWurm" parent="AdvancedStandard_Ground" unitName="PrimalWurm">
+        <On Terms="WeaponStart.*.AttackStart; WeaponTargetElevation GE 20.000000" Send="AnimBracketStart AttackSuperior Attack,Superior"/>
+        <On Terms="WeaponStart.*.AttackStart; WeaponTargetElevation LE -20.000000" Send="AnimBracketStart AttackInferior Attack,Inferior"/>
+        <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop AttackSuperior"/>
+        <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop AttackInferior"/>
         <On Terms="ActorCreation" Send="Create PrimalWurm@Base"/>
         <Macros value="BuildingFlattenTerrainMacro"/>
         <Macros value="PrimalWurm_DeepTunnel@Animation"/>

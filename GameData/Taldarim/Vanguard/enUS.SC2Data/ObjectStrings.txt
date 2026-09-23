@@ -44,5 +44,5 @@ Mover/Name/Vanguard_Weapon@AttackMissile=Attack Missile
 
 AttachMethod/Name/Vanguard_Weapon@AMPattern=AM Pattern
 
-DataCollection/EditorPrefix/Vanguard=Войска талдаримов -
-DataCollection/EditorPrefix/Vanguard_Weapon=Оружие талдаримов -
+DataCollection/EditorPrefix/Vanguard=Taldarim Forces -
+DataCollection/EditorPrefix/Vanguard_Weapon=Weapon Taldarim -

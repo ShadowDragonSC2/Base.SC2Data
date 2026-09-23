@@ -1,0 +1,3 @@
+Button/Hotkey/TaldarimMothership_BlackHole=Q
+Button/Hotkey/TaldarimMothership_ThermalLance=W
+Button/Hotkey/TaldarimMothership_Blink=E

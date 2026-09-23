@@ -178,6 +178,21 @@ class Validate:
         
         return self
     
+    # проверки требований
+    
+    def check_exist_unit_requirement(self):
+        if self.root.find(f".//CRequirement[@id='{self.unit_id}]'") is None:
+            self.__add_error(f'не создано требование <CRequirement id="{self.unit_id}"/>')
+        return self
+        
+    def check_exist_unit_requirement_have(self):
+        req = self.root.find(f".//CRequirement[@id='{self.unit_id}@Have']")
+        if req is None: 
+            self.__add_error(f'не создано требование <CRequirement id="{self.unit_id}@Have"/>')
+        
+        
+        return self
+    
     # проверки наличия коллекций данных
     
     def check_exist_datacollection_unit(self):

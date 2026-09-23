@@ -69,6 +69,50 @@
             <Image value="Assets\Textures\wireframe-protoss-supplicant-taldarim-shield03.dds"/>
         </WireframeShield>
     </CActorUnit>
+    <CActorModel id="Supplicant@PlacementLeft">
+        <HostSiteOps Ops="Supplicant@SOpPlacementLeft SOpTipabilityFloorScope"/>
+        <FogVisibility value="Visible"/>
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <Aliases value="_Main"/>
+        <Aliases value="_Unit"/>
+        <Aliases value="_Selectable"/>
+        <On Terms="ActorCreation; ModelIsLowQuality" Send="SetOpacity 0.300000"/>
+        <On Terms="ActorCreation" Send="AnimGroupApply Placement"/>
+        <On Terms="ActorCreation" Send="$Stand PlayForever"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="Signal.*.HidePlacement" Send="SetVisibility"/>
+        <On Terms="Signal.*.ShowPlacement" Send="SetVisibility 1"/>
+        <On Terms="ActorCreation" Send="Create Supplicant@PlacementRight"/>
+        <Model value="Supplicant@Placement"/>
+    </CActorModel>
+    <CActorModel id="Supplicant@PlacementRight">
+        <HostSiteOps Ops="SOpBasicScopeFollow Supplicant@SOpPlacementRight SOpTipabilityFloorScope"/>
+        <FogVisibility value="Visible"/>
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <Aliases value="_Unit"/>
+        <Aliases value="_Selectable"/>
+        <On Terms="ActorCreation; ModelIsLowQuality" Send="SetOpacity 0.300000"/>
+        <On Terms="ActorCreation" Send="AnimGroupApply Placement"/>
+        <On Terms="ActorCreation" Send="$Stand PlayForever"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="Signal.*.HidePlacement" Send="SetVisibility"/>
+        <On Terms="Signal.*.ShowPlacement" Send="SetVisibility 1"/>
+        <On Terms="SupporterDestruction" Send="Destroy"/>
+        <Model value="Supplicant@Placement"/>
+        <Inherits index="Opacity" value="1"/>
+        <Inherits index="TintColor" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <Supporter Subject="Supplicant@PlacementLeft"/>
+        <HostForProps Subject="Supplicant@PlacementLeft"/>
+    </CActorModel>
+    <CActorSiteOpLocalOffset id="Supplicant@SOpPlacementLeft">
+        <LocalOffset value="-0.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="Supplicant@SOpPlacementRight">
+        <LocalOffset value="0.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
     
     <CModel id="Supplicant" parent="Unit" Race="Protoss">
         <EditorCategories value="Race:Taldarim"/>
@@ -217,7 +261,9 @@
         <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Taldarim,ObjectType:Unit"/>
         <DataRecord Entry="Button,Supplicant"/>
         <DataRecord Entry="Unit,Supplicant"/>
+        <DataRecord Entry="Unit,Supplicant@Creator"/>
         <DataRecord Entry="Actor,Supplicant"/>
+        <DataRecord Entry="Actor,Supplicant@Creator"/>
         <DataRecord Entry="Model,Supplicant"/>
         <DataRecord Entry="Model,Supplicant@Death"/>
         <DataRecord Entry="Model,Supplicant@Placement"/>
@@ -333,6 +379,82 @@
         <DataRecord Entry="Mover,Supplicant_Weapon@AttackMissile"/>
         <DataRecord Entry="Unit,Supplicant_Weapon@AttackMissile"/>
     </CDataCollectionUnit>
+
+    <!-- Warp Supplicant (Hidden) -->
+    <CAbilWarpTrain id="SupplicantCreator_Train">
+        <InfoArray index="Train1" Time="5" Unit="Supplicant">
+            <Button DefaultButtonFace="Supplicant">
+                <Flags index="IgnoreUser" value="1"/>
+            </Button>
+        </InfoArray>
+        <Flags index="WarpTrainersButton" value="0"/>
+    </CAbilWarpTrain>
+    
+    <CEffectModifyUnit id="SupplicantCreator_Train@RefundResource">
+        <EditorCategories value="Race:Protoss"/>
+        <SalvageFactor>
+            <Resource index="Minerals" value="-1"/>
+            <Resource index="Vespene" value="-1"/>
+            <Resource index="Terrazine" value="-1"/>
+            <Resource index="Custom" value="-1"/>
+        </SalvageFactor>
+        <ModifyFlags index="Salvage" value="1"/>
+    </CEffectModifyUnit>
+    <CEffectCreatePersistent id="SupplicantCreator_Train@Offset">
+        <PeriodCount value="2"/>
+        <InitialEffect value="SupplicantCreator_Train@RefundResource"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicEffectArray value="SupplicantCreator_Train@Issue"/>
+        <PeriodicOffsetArray value="-0.5,0,0"/>
+        <PeriodicOffsetArray value="0.5,0,0"/>
+        <FinalEffect value="Suicide"/>
+        <WhichLocation Value="TargetPoint"/>
+    </CEffectCreatePersistent>
+    <CEffectIssueOrder id="SupplicantCreator_Train@Issue">
+        <Abil value="SupplicantCreator_Train"/>
+        <AbilCmdIndex value="1"/>
+        <Target Value="TargetPoint"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectIssueOrder>
+    <CEffectEnumArea id="testarea">
+        <AreaArray Radius="2"/>
+        <DebugTrace value="1"/>
+    </CEffectEnumArea>
+    
+    <CUnit id="SupplicantCreator">
+        <Race value="Prot"/>
+        <FlagArray index="Uncommandable" value="1"/>
+        <FlagArray index="Uncursorable" value="1"/>
+        <FlagArray index="NoDraw" value="1"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FlagArray index="NoDeathEvent" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <Collide index="Locust" value="1"/>
+        <Collide index="Small" value="1"/>
+        <Food value="-4"/>
+        <CostResource index="Minerals" value="150"/>
+        <EffectArray index="Create" value="SupplicantCreator_Train@Offset"/>
+        <BuildTime value="5"/>
+        <Radius value="1"/>
+        <InnerRadius value="0.75"/>
+        <EditorCategories value="ObjectType:Other,ObjectFamily:FactionTaldarim"/>
+        <AbilArray Link="Warpable"/>
+        <AbilArray Link="SupplicantCreator_Train"/>
+        <CardLayouts>
+            <LayoutButtons Face="Supplicant" Type="AbilCmd" AbilCmd="SupplicantCreator_Train,Train1" Row="0" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+
+    <CActorUnit id="SupplicantCreator" parent="GenericUnitMinimal" unitName="SupplicantCreator">
+        <Model value="Invisible"/>
+        <HighlightTooltip value="Unit/Name/SupplicantWarpTrainCreator"/>
+        <PlacementModel value="Supplicant@Placement"/>
+        <Model value="Invisible"/>
+        <BuildModel value="Invisible"/>
+        <PlacementActorModel value="Supplicant@PlacementLeft"/>
+        <PlaceholderActorModel value="Supplicant@PlacementLeft"/>
+    </CActorUnit>
 
     <!-- ========= Upgrades ========== -->
     
