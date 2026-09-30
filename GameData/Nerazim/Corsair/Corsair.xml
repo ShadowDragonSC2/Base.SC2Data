@@ -288,7 +288,7 @@
         <Flags index="AllowMovement" value="1"/>
         <Flags index="NoDeceleration" value="1"/>
         <Cost>
-            <Cooldown TimeUse="8"/>
+            <Cooldown TimeUse="30"/>
         </Cost>
         <Range value="9"/>
         <CursorEffect value="Corsair_DisruptionWeb@Search"/>
