@@ -64,7 +64,7 @@
         </Wireframe>
     </CActorUnit>
     
-    <CModel id="Corsair" parent="Unit">
+    <CModel id="Corsair" parent="Unit"> 
         <EditorCategories value="Race:Nerazim"/>
         <Model value="Assets\Units\Protoss\Corsair_Void\Corsair_Void.m3"/>
         <Occlusion value="Show"/>
@@ -113,23 +113,71 @@
     <CSound id="Corsair@DeathVoice" parent="DeathVoice">
         <EditorCategories value="Race:Nerazim"/>
     </CSound>
+    <CSound id="Corsair@Death" parent="Combat">
+        <EditorCategories value="Race:Nerazim"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionLarge0.wav" Pitch="-3.000000,3.000000"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionLarge1.wav" Pitch="-3.000000,3.000000"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionLarge2.wav" Pitch="-3.000000,3.000000"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionLarge3.wav" Pitch="-3.000000,3.000000"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionLarge4.wav" Pitch="-3.000000,3.000000"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionLarge5.wav" Pitch="-3.000000,3.000000"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionLarge6.wav" Pitch="-3.000000,3.000000"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionLarge7.wav" Pitch="-3.000000,3.000000"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionLarge8.wav" Pitch="-3.000000,3.000000"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionLarge9.wav" Pitch="-3.000000,3.000000"/>
+        <DupeDestroyCount value="5"/>
+        <Pitch value="5.000000,7.000000"/>
+        <Volume value="-4.000000,-2.000000"/>
+    </CSound>
     <CSound id="Corsair@Attack" parent="Voice">
         <EditorCategories value="Race:Nerazim"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Corsair_Attack00.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Corsair_Attack01.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Corsair_Attack02.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Corsair_Attack03.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Corsair_Attack04.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Corsair_Attack05.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Corsair_Attack06.ogg"/>
     </CSound>
     <CSound id="Corsair@Help" parent="Alert">
         <EditorCategories value="Race:Nerazim"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Corsair_Help00.ogg"/>
+        <Volume value="-2.000000,-2.000000"/>
     </CSound>
     <CSound id="Corsair@Pissed" parent="Pissed">
         <EditorCategories value="Race:Nerazim"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Corsair_Pissed00.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Corsair_Pissed01.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Corsair_Pissed02.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Corsair_Pissed03.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Corsair_Pissed04.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Corsair_Pissed05.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Corsair_Pissed06.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Corsair_Pissed07.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Corsair_Pissed08_ALT.ogg" FacialGroup=""/>
     </CSound>
     <CSound id="Corsair@Yes" parent="Voice">
         <EditorCategories value="Race:Nerazim"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Corsair_Yes00.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Corsair_Yes01.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Corsair_Yes02.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Corsair_Yes03.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Corsair_Yes04.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Corsair_Yes05.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Corsair_Yes06.ogg"/>
     </CSound>
     <CSound id="Corsair@What" parent="Voice">
         <EditorCategories value="Race:Nerazim"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Corsair_What00.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Corsair_What01.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Corsair_What02.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Corsair_What03.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Corsair_What04.ogg"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Corsair_What05.ogg"/>
     </CSound>
     <CSound id="Corsair@Ready" parent="Ready">
         <EditorCategories value="Race:Nerazim"/>
+        <AssetArray File="LocalizedData/Sounds/VO/Protoss/Corsair_Ready00.ogg"/>
     </CSound>
 
     <CLight id="Corsair@Portrait" parent="default"/>
@@ -180,7 +228,12 @@
         <AttributeBonus index="Light" value="5"/>
     </CEffectDamage>
 
-    <CActorAction id="Corsair_Weapon@Attack" parent="GenericAttack" effectAttack="Corsair_Weapon@Damage"/>
+    <CActorAction id="Corsair_Weapon@Attack" parent="GenericAttack" effectAttack="Corsair_Weapon@Damage">
+        <LaunchModel value="Corsair_Weapon@AttackLaunchModel"/>
+    </CActorAction>
+    <CActorModel id="Corsair_Weapon@AttackLaunchModel" parent="GenericAttackLaunchModel">
+        <On Terms="ActorCreation" Send="SetTintColor {32,32,255 2.000000}"/>
+    </CActorModel>
 
     <CModel id="Corsair_Weapon@AttackImpact" parent="ImpactFX">
         <Model value="Assets\Effects\Protoss\PhoenixMissileImpact\PhoenixMissileImpact.m3"/>
@@ -210,6 +263,7 @@
         <DataRecord Entry="Weapon,Corsair_Weapon"/>
         <DataRecord Entry="Effect,Corsair_Weapon@Damage"/>
         <DataRecord Entry="Actor,Corsair_Weapon@Attack"/>
+        <DataRecord Entry="Actor,Corsair_Weapon@AttackLaunchModel"/>
         <DataRecord Entry="Sound,Corsair_Weapon@AttackLaunch"/>
         <DataRecord Entry="Sound,Corsair_Weapon@AttackImpact"/>
         <DataRecord Entry="Model,Corsair_Weapon@AttackLaunch"/>
@@ -223,12 +277,158 @@
 
     <!-- Disruption Web -->
     <CButton id="Corsair_DisruptionWeb">
+        <EditorCategories value="Race:Nerazim"/>
         <Icon value="Assets\Textures\btn-ability-protoss-disruptionweb.dds"/>
         <AlertIcon value="Assets\Textures\btn-ability-protoss-disruptionweb.dds"/>
     </CButton>
 
     <CAbilEffectTarget id="Corsair_DisruptionWeb">
-        
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="Corsair_DisruptionWeb@CP"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Cost>
+            <Cooldown TimeUse="8"/>
+        </Cost>
+        <Range value="9"/>
+        <CursorEffect value="Corsair_DisruptionWeb@Search"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Corsair_DisruptionWeb"/>
     </CAbilEffectTarget>
+    
+    <CEffectApplyBehavior id="Corsair_DisruptionWeb@AB">
+        <EditorCategories value="Race:Nerazim"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <Behavior value="Corsair_DisruptionWeb"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="Corsair_DisruptionWeb@CP">
+        <EditorCategories value="Race:Nerazim"/>
+        <PeriodCount value="40"/>
+        <InitialEffect value="Corsair_DisruptionWeb@Search"/>
+        <PeriodicEffectArray value="Corsair_DisruptionWeb@Search"/>
+        <PeriodicPeriodArray value="0.25"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumTransport id="Corsair_DisruptionWeb@ET">
+        <EditorCategories value="Race:Nerazim"/>
+        <Effect value="Corsair_DisruptionWeb@AB"/>
+    </CEffectEnumTransport>
+    <CEffectEnumArea id="Corsair_DisruptionWeb@Search">
+        <EditorCategories value="Race:Nerazim"/>
+        <SearchFilters value="Ground;Player,Ally,Item,Dead,Hidden"/>
+        <AreaArray Radius="3" Effect="Corsair_DisruptionWeb@Set"/>
+    </CEffectEnumArea>
+    <CEffectSet id="Corsair_DisruptionWeb@Set">
+        <EditorCategories value="Race:Nerazim"/>
+        <EffectArray value="Corsair_DisruptionWeb@AB"/>
+        <EffectArray value="Corsair_DisruptionWeb@ET"/>
+    </CEffectSet>
+    
+    <CBehaviorBuff id="Corsair_DisruptionWeb">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Nerazim"/>
+        <Duration value="0.3"/>
+        <Modification>
+            <StateFlags index="SuppressAttack" value="1"/>
+            <AbilClassDisableArray index="CAbilAttack" value="1"/>
+        </Modification>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-disruptionweb.dds"/>
+        <Alignment value="Negative"/>
+    </CBehaviorBuff>
+    
+    <CActorModel id="Corsair_DisruptionWeb@LaunchModel" parent="ModelAnimationStyleOneShot">
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachWeapon"/>
+        <On Terms="Abil.Corsair_DisruptionWeb.SourceFinishStart" Send="Create"/>
+    </CActorModel>
+    <CActorModel id="Corsair_DisruptionWeb@ImpactModel" parent="ModelAnimationStyleContinuous">
+        <On Terms="Effect.Corsair_DisruptionWeb@CP.Start" Send="Create"/>
+        <On Terms="Effect.Corsair_DisruptionWeb@CP.Stop" Send="AnimBracketStop BSD"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModel>
+    <CActorSound id="Corsair_DisruptionWeb@LaunchSound" parent="SoundOneShot">
+        <On Terms="Effect.Corsair_DisruptionWeb@CP.Start" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="Corsair_DisruptionWeb@LoopSound" parent="SoundOneShot">
+        <On Terms="Effect.Corsair_DisruptionWeb@CP.Start" Send="Create"/>
+        <On Terms="Effect.Corsair_DisruptionWeb@CP.Stop" Send="Destroy"/>
+    </CActorSound>
+    <CActorSplat id="Corsair_DisruptionWeb@Cursor" parent="ProtossCursorSplat" abil="Corsair_DisruptionWeb"/>
+    <CActorRange id="Corsair_DisruptionWeb@Range" parent="RangeAbil" abil="Corsair_DisruptionWeb">
+        <Icon value="Assets\Textures\RadarIcon2.dds"/>
+        <IconArcLength value="3.250000"/>
+    </CActorRange>
+    
+    <CModel id="Corsair_DisruptionWeb@LaunchModel" parent="LaunchFX">
+        <EditorCategories value="Race:Nerazim"/>
+        <Model value="Assets\Effects\Protoss\Corsair_DisruptionWeb_Cast\Corsair_DisruptionWeb_Cast.m3"/>
+    </CModel>
+    <CModel id="Corsair_DisruptionWeb@ImpactModel" parent="RacePersistentSpellFX" Race="Protoss">
+        <EditorCategories value="Race:Nerazim"/>
+        <Model value="Assets\Effects\Protoss\Corsair_DisruptionWeb\Corsair_DisruptionWeb.m3"/>
+    </CModel>
+
+    <CSound id="Corsair_DisruptionWeb@LaunchSound" parent="Spell">
+        <EditorCategories value="Race:Nerazim"/>
+        <AssetArray File="Assets\Sounds\CorsairMP_DisruptionWebLaunch01_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\CorsairMP_DisruptionWebLaunch02_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\CorsairMP_DisruptionWebLaunch03_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\CorsairMP_DisruptionWebLaunch04_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\CorsairMP_DisruptionWebLaunch05_1ch.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\CorsairMP_DisruptionWebLaunch06_1ch.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="3"/>
+        <Spread value="60.000000"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <DupeThresholdPoints/>
+        <DupeThresholdPoints Count="3" Volume="-3.000000"/>
+        <DupePrioritization value="Oldest"/>
+    </CSound>
+    <CSound id="Corsair_DisruptionWeb@LoopSound" parent="Spell">
+        <EditorCategories value="Race:Nerazim"/>
+        <AssetArray>
+            <File value="Assets\Sounds\CorsairMP_DisruptionWebLoop01_1ch.wav"/>
+            <LoopCount value="-1"/>
+            <Pitch value="-1.000000,1.000000"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="Assets\Sounds\CorsairMP_DisruptionWebLoop02_1ch.wav"/>
+            <LoopCount value="-1"/>
+            <Pitch value="-1.000000,1.000000"/>
+        </AssetArray>
+        <AssetArray>
+            <File value="Assets\Sounds\CorsairMP_DisruptionWebLoop03_1ch.wav"/>
+            <LoopCount value="-1"/>
+            <Pitch value="-1.000000,1.000000"/>
+        </AssetArray>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="3"/>
+        <Spread value="10.000000"/>
+        <Volume value="-18.000000,-18.000000"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <DupeThresholdPoints/>
+        <DupeThresholdPoints Count="3" Volume="-3.000000"/>
+        <OffsetFadeIn Volume="-96.000000"/>
+        <OffsetFadeIn Time="500" Volume="-0.120000"/>
+    </CSound>
+
+    <CDataCollectionUnit id="Corsair_DisruptionWeb" parent="AbilityBase">
+        <DataRecord Entry="Button,Corsair_DisruptionWeb"/>
+        <DataRecord Entry="Abil,Corsair_DisruptionWeb"/>
+        <DataRecord Entry="Effect,Corsair_DisruptionWeb@AB"/>
+        <DataRecord Entry="Effect,Corsair_DisruptionWeb@CP"/>
+        <DataRecord Entry="Effect,Corsair_DisruptionWeb@ET"/>
+        <DataRecord Entry="Effect,Corsair_DisruptionWeb@Search"/>
+        <DataRecord Entry="Effect,Corsair_DisruptionWeb@Set"/>
+        <DataRecord Entry="Behavior,Corsair_DisruptionWeb"/>
+        <DataRecord Entry="Actor,Corsair_DisruptionWeb@LaunchModel"/>
+        <DataRecord Entry="Actor,Corsair_DisruptionWeb@ImpactModel"/>
+        <DataRecord Entry="Actor,Corsair_DisruptionWeb@LaunchSound"/>
+        <DataRecord Entry="Actor,Corsair_DisruptionWeb@LoopSound"/>
+        <DataRecord Entry="Actor,Corsair_DisruptionWeb@Cursor"/>
+        <DataRecord Entry="Actor,Corsair_DisruptionWeb@Range"/>
+        <DataRecord Entry="Model,Corsair_DisruptionWeb@LaunchModel"/>
+        <DataRecord Entry="Model,Corsair_DisruptionWeb@ImpactModel"/>
+        <DataRecord Entry="Sound,Corsair_DisruptionWeb@LaunchSound"/>
+        <DataRecord Entry="Sound,Corsair_DisruptionWeb@LoopSound"/>
+    </CDataCollectionUnit>
+
     
 </Catalog>

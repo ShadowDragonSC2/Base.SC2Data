@@ -1,0 +1,12 @@
+Unit/Name/Corsair=Корсар
+
+Button/Name/Corsair=Вызвать корсара
+Button/Tooltip/Corsair=Неразимы<n/>Мощный истребитель. Может использовать способность «<d stringref="Button,Corsair_DisruptionWeb,Name"/>».
+
+Button/Name/Corsair_DisruptionWeb=Дестабилизирующая сеть
+Button/Tooltip/Corsair_DisruptionWeb=Создает на поверхности энергетическую сеть, не позволяющую попавшим под нее отрядам атаковать в течение <d time="[d ref='Effect,Corsair_DisruptionWeb@CP,PeriodCount*Effect,Corsair_DisruptionWeb@CP,PeriodicPeriodArray[0]'/]"/>
+
+Behavior/Name/Corsair_DisruptionWeb=Дестабилизирующая сеть
+Behavior/Tooltip/Corsair_DisruptionWeb=Эта боевая единица не может атаковать.
+
+Weapon/Name/Corsair_Weapon=Нейтронная вспышка
