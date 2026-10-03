@@ -16,6 +16,9 @@ body:
     required: true
 - type: textarea
   attributes:
+    label: About info
+- type: textarea
+  attributes:
     label: Weapons
     description: A list of weapons your unit should have
 - type: textarea
