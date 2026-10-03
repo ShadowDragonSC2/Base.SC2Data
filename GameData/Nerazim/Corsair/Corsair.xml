@@ -28,7 +28,6 @@
         <CostResource index="Vespene" value="100"/>
         <KillXP value="80"/>
         <AbilArray Link="Corsair_DisruptionWeb"/>
-        <WeaponArray Link="Corsair_Weapon"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Corsair_DisruptionWeb" Type="AbilCmd" AbilCmd="Corsair_DisruptionWeb,Execute" Row="2" Column="0"/>
         </CardLayouts>
