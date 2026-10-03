@@ -18,6 +18,7 @@ body:
   id: locale
   attributes:
     label: Locale
+    description: You can choose several options.
     multiple: true
     options:
       - enUS
