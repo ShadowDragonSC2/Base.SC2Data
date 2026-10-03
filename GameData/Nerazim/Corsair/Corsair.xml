@@ -95,7 +95,7 @@
         <SelectionRadius value="0.750000"/>
         <ShadowRadius value="0.750000"/>
     </CModel>
-    <CModel id="Corsair@WarpIn" parent="OneShotSpellFX">
+    <CModel id="Corsair@Build" parent="OneShotSpellFX">
         <Model value="Assets\Units\Protoss\Corsair_WarpIn\Corsair_WarpIn.m3"/>
         <Occlusion value="Show"/>
         <EditorCategories value="Race:Nerazim"/>
@@ -112,21 +112,8 @@
     <CSound id="Corsair@DeathVoice" parent="DeathVoice">
         <EditorCategories value="Race:Nerazim"/>
     </CSound>
-    <CSound id="Corsair@Death" parent="Combat">
+    <CSound id="Corsair@Death" parent="Protoss_ExplosionMedium">
         <EditorCategories value="Race:Nerazim"/>
-        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionLarge0.wav" Pitch="-3.000000,3.000000"/>
-        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionLarge1.wav" Pitch="-3.000000,3.000000"/>
-        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionLarge2.wav" Pitch="-3.000000,3.000000"/>
-        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionLarge3.wav" Pitch="-3.000000,3.000000"/>
-        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionLarge4.wav" Pitch="-3.000000,3.000000"/>
-        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionLarge5.wav" Pitch="-3.000000,3.000000"/>
-        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionLarge6.wav" Pitch="-3.000000,3.000000"/>
-        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionLarge7.wav" Pitch="-3.000000,3.000000"/>
-        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionLarge8.wav" Pitch="-3.000000,3.000000"/>
-        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionLarge9.wav" Pitch="-3.000000,3.000000"/>
-        <DupeDestroyCount value="5"/>
-        <Pitch value="5.000000,7.000000"/>
-        <Volume value="-4.000000,-2.000000"/>
     </CSound>
     <CSound id="Corsair@Attack" parent="Voice">
         <EditorCategories value="Race:Nerazim"/>
@@ -177,6 +164,17 @@
     <CSound id="Corsair@Ready" parent="Ready">
         <EditorCategories value="Race:Nerazim"/>
         <AssetArray File="LocalizedData/Sounds/VO/Protoss/Corsair_Ready00.ogg"/>
+    </CSound>
+    <CSound id="Corsair@Movement" parent="Movement">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Corsair_MoveStart01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Corsair_MoveStart02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Corsair_MoveStart03.wav" FacialGroup=""/>
+        <DupeMuteCount value="4"/>
+        <DupeThresholdPoints/>
+        <DupeThresholdPoints Count="3" Volume="-3.000000"/>
+        <Pitch value="-2.000000,0.000000"/>
+        <Volume value="-8.000000,-7.000000"/>
     </CSound>
 
     <CLight id="Corsair@Portrait" parent="default"/>
@@ -283,12 +281,19 @@
 
     <CAbilEffectTarget id="Corsair_DisruptionWeb">
         <EditorCategories value="AbilityorEffectType:Units"/>
-        <Effect index="0" value="Corsair_DisruptionWeb@CP"/>
+        <Flags index="AutoCast" value="1"/>
         <Flags index="AllowMovement" value="1"/>
         <Flags index="NoDeceleration" value="1"/>
+        <AutoCastRange value="9"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral"/>
+        <AutoCastValidatorArray value="Corsair_DisruptionWeb@NotHave"/>
+        <AutoCastValidatorArray value="TargetIsGround"/>
+        <AutoCastValidatorArray value="TargetCanAttack"/>
+        <AutoCastValidatorArray value="Corsair_DisruptionWeb@Combine"/>
         <Cost>
             <Cooldown TimeUse="30"/>
         </Cost>
+        <Effect index="0" value="Corsair_DisruptionWeb@CP"/>
         <Range value="9"/>
         <CursorEffect value="Corsair_DisruptionWeb@Search"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Corsair_DisruptionWeb"/>
@@ -407,6 +412,14 @@
         <OffsetFadeIn Volume="-96.000000"/>
         <OffsetFadeIn Time="500" Volume="-0.120000"/>
     </CSound>
+
+    <CValidatorCombine id="Corsair_DisruptionWeb@Combine">
+        <CombineArray value="TargetAttacksAir"/>
+        <CombineArray value="TargetAttacksGround"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="Corsair_DisruptionWeb@NotHave">
+        <Behavior value="Corsair_DisruptionWeb"/>
+    </CValidatorUnitCompareBehaviorCount>
 
     <CDataCollectionUnit id="Corsair_DisruptionWeb" parent="AbilityBase">
         <DataRecord Entry="Button,Corsair_DisruptionWeb"/>

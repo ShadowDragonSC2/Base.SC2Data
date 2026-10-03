@@ -1,0 +1,2 @@
+Button/Hotkey/Corsair=O
+Button/Hotkey/Corsair_DisruptionWeb=Q

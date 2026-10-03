@@ -1,0 +1,12 @@
+Unit/Name/Corsair=Corsair
+
+Button/Name/Corsair=Warp in Corsair
+Button/Tooltip/Corsair=Nerazim Faction<n/>Air superiority starfighter. Can use «<d stringref="Button,Corsair_DisruptionWeb,Name"/>».
+
+Button/Name/Corsair_DisruptionWeb=Disruption Web
+Button/Tooltip/Corsair_DisruptionWeb=Creates a web of energy on the ground that prevents enemy structures and ground units from attacking for <d time="[d ref='Effect,Corsair_DisruptionWeb@CP,PeriodCount*Effect,Corsair_DisruptionWeb@CP,PeriodicPeriodArray[0]'/]"/>
+
+Behavior/Name/Corsair_DisruptionWeb=Disruption Web
+Behavior/Tooltip/Corsair_DisruptionWeb=This unit cannot attack.
+
+Weapon/Name/Corsair_Weapon=Neutron Flare

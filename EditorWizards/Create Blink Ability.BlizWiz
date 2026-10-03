@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Blink Ability Wizard
+    Generates a Blink (teleport) ability template based on the
+    Tal'darim Slayer "Phase Blink" chain:
+    CAbilEffectTarget -> CEffectSet -> CEffectTeleport (+ CEffectApplyBehavior -> CBehaviorBuff)
+    Visuals: CActorModel BlinkOut/BlinkIn + CActorSound, driven by Effect.Teleport.Start/Stop terms.
+-->
+<wizardfile>
+    <wizard id="BlinkAbilityWizard">
+        <name>Скачок (Blink) — шаблон способности</name>
+        <category>Data/Abilities</category>
+        <objecttypes create="Abil;Effect;Behavior;Button;Actor;Model;Sound" load="Unit"/>
+
+        <instructions page="1">
+Создаёт способность «Скачок» (Blink) по образцу Phase Blink у талдаримского Slayer'а:
+юнит мгновенно телепортируется в указанную точку (с проверкой обрыва/клиффа),
+в точке старта и прибытия проигрываются эффекты BlinkOut/BlinkIn и звук.
+Опционально: затраты энергии, бонус-бафф после скачка, прикрепление способности к юниту.
+        </instructions>
+        <instructions page="2">
+Визуальная часть и прикрепление к юниту.
+Модели и звук по умолчанию взяты от сталкера (как у Slayer'а).
+        </instructions>
+
+        <!-- ========= Inputs: Page 1 — core parameters ========= -->
+        <input id="AbilityID" type="CString">
+            <name>ID способности (основа для всех записей)</name>
+            <default value="MyBlink"/>
+            <layout page="1" column="1"/>
+        </input>
+        <input id="DisplayName" type="CString">
+            <name>Отображаемое имя</name>
+            <default value="Скачок"/>
+            <layout page="1" column="1"/>
+        </input>
+        <input id="Tooltip" type="CString">
+            <name>Тултип кнопки</name>
+            <default value="Мгновенно телепортирует юнита в указанную точку."/>
+            <layout page="1" column="1"/>
+        </input>
+        <input id="IconPath" type="CImagePath">
+            <name>Иконка</name>
+            <default value="Assets\Textures\btn-ability-protoss-blink-color.dds"/>
+            <layout page="1" column="1"/>
+        </input>
+        <input id="Hotkey" type="CString">
+            <name>Горячая клавиша</name>
+            <default value="B"/>
+            <layout page="1" column="1"/>
+        </input>
+        <input id="Range" type="real32">
+            <name>Дальность скачка</name>
+            <default value="8"/>
+            <layout page="1" column="2"/>
+        </input>
+        <input id="Cooldown" type="real32">
+            <name>Перезарядка (сек)</name>
+            <default value="8"/>
+            <layout page="1" column="2"/>
+        </input>
+        <input id="CooldownLink" type="CString">
+            <name>Группа кулдауна (Link)</name>
+            <default value="Blink"/>
+            <layout page="1" column="2"/>
+        </input>
+        <input id="UseEnergyCost" type="WizardCheckbox">
+            <name>Затраты энергии</name>
+            <default value="0"/>
+            <layout page="1" column="2"/>
+        </input>
+        <input id="EnergyCost" type="real32">
+            <name>Стоимость энергии</name>
+            <default value="25"/>
+            <layout page="1" column="2"/>
+        </input>
+        <input id="TestCliff" type="WizardCheckbox">
+            <name>Проверять обрывы (TestCliff)</name>
+            <default value="1"/>
+            <layout page="1" column="2"/>
+        </input>
+        <input id="CreateBuff" type="WizardCheckbox">
+            <name>Бонус-бафф после скачка (как у Slayer)</name>
+            <default value="1"/>
+            <layout page="1" column="2"/>
+        </input>
+        <input id="BuffDuration" type="real32">
+            <name>Длительность баффа (сек)</name>
+            <default value="8"/>
+            <layout page="1" column="2"/>
+        </input>
+
+        <!-- ========= Inputs: Page 2 — visuals and attach ========= -->
+        <input id="LaunchModelPath" type="CModelPath">
+            <name>Модель в точке старта (BlinkOut)</name>
+            <default value="Assets\Effects\Protoss\BlinkOut\BlinkOut.m3"/>
+            <layout page="2" column="1"/>
+        </input>
+        <input id="ImpactModelPath" type="CModelPath">
+            <name>Модель в точке прибытия (BlinkIn)</name>
+            <default value="Assets\Effects\Protoss\BlinkIn\BlinkIn.m3"/>
+            <layout page="2" column="1"/>
+        </input>
+        <input id="SoundPath" type="CString">
+            <name>Файл звука скачка</name>
+            <default value="Assets\Sounds\Protoss\Stalker\Stalker_Blink0.wav"/>
+            <layout page="2" column="1"/>
+        </input>
+        <input id="AttachToUnit" type="WizardCheckbox">
+            <name>Прикрепить способность к юниту</name>
+            <default value="0"/>
+            <layout page="2" column="2"/>
+        </input>
+        <input id="TargetUnit" type="CUnitLink">
+            <name>Юнит-носитель</name>
+            <layout page="2" column="2"/>
+        </input>
+
+        <!-- ========= Conditions ========= -->
+        <condition id="HasEnergy" input="UseEnergyCost" value="1"/>
+        <condition id="HasBuff" input="CreateBuff" value="1"/>
+        <condition id="CliffOn" input="TestCliff" value="1"/>
+        <condition id="AttachEnabled" input="AttachToUnit" value="1"/>
+
+        <!-- ========= Validation ========= -->
+        <validate type="error">
+            <condition input="AbilityID" empty="0"/>
+            <text>Укажите ID способности — он используется для всех создаваемых записей.</text>
+        </validate>
+        <validate type="error">
+            <condition input="Range" value="0" operator="greater"/>
+            <text>Дальность скачка должна быть больше нуля.</text>
+        </validate>
+        <validate type="warning">
+            <condition input="LaunchModelPath" empty="1"/>
+            <text>Не задана модель в точке старта — визуальный эффект исчезновения не появится.</text>
+        </validate>
+        <validate type="warning">
+            <condition input="ImpactModelPath" empty="1"/>
+            <text>Не задана модель в точке прибытия — визуальный эффект появления не появится.</text>
+        </validate>
+        <validate type="warning">
+            <condition input="TargetUnit" empty="1"/>
+            <text>Если включено «Прикрепить способность к юниту» — выберите юнита-носителя.</text>
+        </validate>
+
+        <!-- ========= Macros ========= -->
+        <macro id="AbilCount">ref=Unit,^TargetUnit^,AbilArray#</macro>
+        <macro id="ButtonCount">ref=Unit,^TargetUnit^,CardLayouts[0].LayoutButtons#</macro>
+        <macro id="NextButtonIndex">^ButtonCount^-1</macro>
+
+        <!-- ========= Entries ========= -->
+
+        <!-- Button -->
+        <entry catalog="Button" type="CButton">
+            <id>^AbilityID^</id>
+            <field id="Name">
+                <value>^DisplayName^</value>
+            </field>
+            <field id="Icon">
+                <value>^IconPath^</value>
+            </field>
+            <field id="AlertIcon">
+                <value>^IconPath^</value>
+            </field>
+            <field id="Hotkey">
+                <value>^Hotkey^</value>
+            </field>
+            <field id="Tooltip">
+                <stringid>Button/Tooltip/^AbilityID^</stringid>
+                <value>^Tooltip^</value>
+            </field>
+        </entry>
+
+        <!-- Ability container (like Slayer_PhaseBlink) -->
+        <entry catalog="Abil" type="CAbilEffectTarget">
+            <id>^AbilityID^</id>
+            <field id="Effect">
+                <index>0</index>
+                <value>^AbilityID^@Set</value>
+            </field>
+            <field id="Range">
+                <value>^Range^</value>
+            </field>
+            <field id="Arc">
+                <value>360</value>
+            </field>
+            <field id="AbilSetId">
+                <value>Blnk</value>
+            </field>
+            <field id="CmdButtonArray_DefaultButtonFace">
+                <index>Execute</index>
+                <value>^AbilityID^</value>
+            </field>
+            <field id="Cost_Cooldown_Link">
+                <index>0</index>
+                <value>^CooldownLink^</value>
+            </field>
+            <field id="Cost_Cooldown_TimeUse">
+                <index>0</index>
+                <value>^Cooldown^</value>
+            </field>
+            <field id="Cost_Vital">
+                <index>0;Energy</index>
+                <value>^EnergyCost^</value>
+                <condition id="HasEnergy"/>
+            </field>
+        </entry>
+
+        <!-- Root effect set: Teleport (+ optional buff) -->
+        <entry catalog="Effect" type="CEffectSet">
+            <id>^AbilityID^@Set</id>
+            <field id="EffectArray">
+                <index>0</index>
+                <value>^AbilityID^@Teleport</value>
+            </field>
+            <field id="EffectArray">
+                <index>1</index>
+                <value>^AbilityID^@AB</value>
+                <condition id="HasBuff"/>
+            </field>
+            <field id="TargetLocationType">
+                <value>Point</value>
+            </field>
+        </entry>
+
+        <!-- Teleport itself -->
+        <entry catalog="Effect" type="CEffectTeleport">
+            <id>^AbilityID^@Teleport</id>
+            <field id="WhichUnit">
+                <value>Caster</value>
+            </field>
+            <field id="TargetLocation">
+                <value>TargetPoint</value>
+            </field>
+            <field id="Range">
+                <value>^Range^</value>
+            </field>
+            <field id="PlacementAround">
+                <value>CasterUnit</value>
+            </field>
+            <field id="PlacementRange">
+                <value>^Range^</value>
+            </field>
+            <field id="ClearQueuedOrders">
+                <value>0</value>
+            </field>
+            <field id="TeleportFlags">
+                <index>TestCliff</index>
+                <value>1</value>
+                <condition id="CliffOn"/>
+            </field>
+        </entry>
+
+        <!-- Apply post-blink buff to caster (optional) -->
+        <entry catalog="Effect" type="CEffectApplyBehavior">
+            <id>^AbilityID^@AB</id>
+            <condition id="HasBuff"/>
+            <field id="WhichUnit">
+                <value>Caster</value>
+            </field>
+            <field id="Behavior">
+                <value>^AbilityID^@Buff</value>
+            </field>
+        </entry>
+
+        <!-- The buff itself (optional) -->
+        <entry catalog="Behavior" type="CBehaviorBuff">
+            <id>^AbilityID^@Buff</id>
+            <condition id="HasBuff"/>
+            <field id="Name">
+                <value>^DisplayName^</value>
+            </field>
+            <field id="Alignment">
+                <value>Positive</value>
+            </field>
+            <field id="InfoIcon">
+                <value>^IconPath^</value>
+            </field>
+            <field id="Duration">
+                <value>^BuffDuration^</value>
+            </field>
+        </entry>
+
+        <!-- Actor: VFX at departure point (BlinkOut), fires on Teleport.Start -->
+        <entry catalog="Actor" type="CActorModel">
+            <id>^AbilityID^@LaunchModel</id>
+            <parentid>ModelAnimationStyleOneShot</parentid>
+            <field id="InheritType">
+                <value>OneShot</value>
+            </field>
+            <field id="Host_Subject">
+                <value>_Selectable</value>
+            </field>
+            <field id="HostSiteOps_Ops">
+                <value>SOpAttachOriginStationary</value>
+            </field>
+            <field id="On_Terms">
+                <index>3</index>
+                <value>Effect.^AbilityID^@Teleport.Start; At Source</value>
+            </field>
+            <field id="On_Send">
+                <index>3</index>
+                <value>Create</value>
+            </field>
+            <field id="ModelFlags">
+                <index>AllowHitTest</index>
+                <value>0</value>
+            </field>
+        </entry>
+
+        <!-- Actor: VFX at arrival point (BlinkIn), fires on Teleport.Stop -->
+        <entry catalog="Actor" type="CActorModel">
+            <id>^AbilityID^@ImpactModel</id>
+            <parentid>ModelAnimationStyleOneShot</parentid>
+            <field id="InheritType">
+                <value>OneShot</value>
+            </field>
+            <field id="Host_Subject">
+                <value>_Selectable</value>
+            </field>
+            <field id="HostSiteOps_Ops">
+                <value>SOpAttachOrigin</value>
+            </field>
+            <field id="On_Terms">
+                <index>3</index>
+                <value>Effect.^AbilityID^@Teleport.Stop; At Source</value>
+            </field>
+            <field id="On_Send">
+                <index>3</index>
+                <value>Create</value>
+            </field>
+        </entry>
+
+        <!-- Actor: blink sound at arrival point -->
+        <entry catalog="Actor" type="CActorSound">
+            <id>^AbilityID^@ImpactSound</id>
+            <parentid>SoundOneShot</parentid>
+            <field id="Host_Subject">
+                <value>_Selectable</value>
+            </field>
+            <field id="HostSiteOps_Ops">
+                <value>SOpAttachOrigin</value>
+            </field>
+            <field id="On_Terms">
+                <index>3</index>
+                <value>Effect.^AbilityID^@Teleport.Stop; At Source</value>
+            </field>
+            <field id="On_Send">
+                <index>3</index>
+                <value>Create</value>
+            </field>
+        </entry>
+
+        <!-- Models (auto-linked to actors by matching IDs) -->
+        <entry catalog="Model" type="CModel">
+            <id>^AbilityID^@LaunchModel</id>
+            <parentid>OneShotSpellFX</parentid>
+            <field id="Model">
+                <value>^LaunchModelPath^</value>
+            </field>
+        </entry>
+        <entry catalog="Model" type="CModel">
+            <id>^AbilityID^@ImpactModel</id>
+            <parentid>OneShotSpellFX</parentid>
+            <field id="Model">
+                <value>^ImpactModelPath^</value>
+            </field>
+        </entry>
+
+        <!-- Sound (auto-linked to CActorSound by matching ID) -->
+        <entry catalog="Sound" type="CSound">
+            <id>^AbilityID^@ImpactSound</id>
+            <parentid>Spell</parentid>
+            <field id="AssetArray">
+                <index>0</index>
+                <value>^SoundPath^</value>
+            </field>
+        </entry>
+
+        <!-- Attach ability to an existing unit (optional) -->
+        <entry catalog="Unit" type="CUnit">
+            <id>^TargetUnit^</id>
+            <allowmodify/>
+            <condition id="AttachEnabled"/>
+            <field id="AbilArray_Link">
+                <index>^AbilCount^</index>
+                <value>^AbilityID^</value>
+            </field>
+            <field id="CardLayouts_LayoutButtons_Face">
+                <index>^NextButtonIndex^</index>
+                <value>^AbilityID^</value>
+            </field>
+            <field id="CardLayouts_LayoutButtons_Type">
+                <index>^NextButtonIndex^</index>
+                <value>AbilCmd</value>
+            </field>
+            <field id="CardLayouts_LayoutButtons_AbilCmd">
+                <index>^NextButtonIndex^</index>
+                <value>^AbilityID^,Execute</value>
+            </field>
+        </entry>
+    </wizard>
+</wizardfile>
