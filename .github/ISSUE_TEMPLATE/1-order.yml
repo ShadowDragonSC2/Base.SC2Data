@@ -14,9 +14,20 @@ body:
       - Hero
   validations:
     required: true
+- type: dropdown
+  id: locale
+  attributes:
+    label: Locale
+    multiple: true
+    options:
+      - enUS
+      - ruRU
+  validations:
+    required: true
 - type: textarea
   attributes:
     label: About info
+    description: Anything you’d like to say about your order or your unit.
 - type: textarea
   attributes:
     label: Weapons
