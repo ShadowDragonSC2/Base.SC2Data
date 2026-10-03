@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    
+    <CUnit id="QueenOfBlades" parent="Generic_Zerg_Unit_Ground" race="Zerg">
+        <Mob value="Campaign"/>
+        <FlagArray index="Hero" value="1"/>
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <Attributes index="Psionic" value="1"/>
+        <Attributes index="Heroic" value="1"/>
+        <LifeStart value="1000"/>
+        <LifeMax value="1000"/>
+        <LifeArmor value="1"/>
+        <EnergyStart value="250"/>
+        <EnergyMax value="250"/>
+        <EnergyRegenRate value="0.5625"/>
+        <Speed value="2.8125"/>
+        <LateralAcceleration value="46"/>
+        <TurningRate value="494.2968"/>
+        <Sight value="12"/>
+        <VisionHeight value="4"/>
+        <KillXP value="30"/>
+        <WeaponArray Link="QueenOfBlades_RazorTalons"/>
+        <AbilArray Link="Implosion"/>
+        <AbilArray Link="OmegaStorm"/>
+        <AbilArray Link="Val03QueenOfBladesDeepTunnel"/>
+        <AbilArray Link="Val03QueenOfBladesBurrow"/>
+        <BehaviorArray Link="OnCreep"/>
+        <BehaviorArray Link="ForceShieldSpell"/>
+        <BehaviorArray Link="ForceShield"/>
+        <BehaviorArray Link="Detector10"/>
+        <CardLayouts>
+            <LayoutButtons Face="Implosion" Type="AbilCmd" AbilCmd="Implosion,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="QueenOfBlades_RazorSwarm" Type="AbilCmd" AbilCmd="QueenOfBlades_RazorSwarm,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="Val03QueenOfBladesBurrow,Execute" Row="2" Column="4"/>
+            <LayoutButtons Face="DeepTunnel" Type="AbilCmd" AbilCmd="DeepTunnel,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="Detector" Type="Passive" Row="2" Column="3"/>
+        </CardLayouts>
+        <Radius value="0.75"/>
+        <SeparationRadius value="0.75"/>
+        <InnerRadius value="0.5"/>
+        <CargoSize value="4"/>
+        <ScoreMake value="150"/>
+        <ScoreKill value="300"/>
+        <SubgroupPriority value="59"/>
+        <MinimapRadius value="0.75"/>
+        <EditorCategories value="ObjectType:Hero,ObjectFamily:Campaign"/>
+        <GlossaryPriority value="400"/>
+        <Fidget>
+            <ChanceArray index="Anim" value="33"/>
+            <ChanceArray index="Idle" value="33"/>
+            <ChanceArray index="Turn" value="33"/>
+        </Fidget>
+        <PushPriority value="11"/>
+    </CUnit>
+
+    <CActorUnit id="QueenOfBlades" parent="AdvancedUnitStandard_Ground_NoAttackAnim" unitName="QueenOfBlades">
+        <Aliases value="_UnitLarge"/>
+        <AnimBlendTime value="0.250000"/>
+        <DeathArray index="Normal" ModelLink="QueenOfBlades"/>
+        <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
+        <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
+        <On Terms="Abil.QueenOfBlades_RazorSwarm.SourceCastStart" Send="$Spell"/>
+        <!-- <On Terms="UnitBirth.KerriganCharBurrowed" Send="Create"/>
+        <On Terms="UnitBirth.KerriganCharBurrowed" Send="AnimBracketStart Burrow Burrow IGNORE Unburrow ClosingFull,OpeningPlayForever,Instant"/>
+        <On Terms="Abil.Implosion.SourceCastStart" Send="$Spell"/>
+        <On Terms="Behavior.KerriganWalk.On" Send="AnimGroupApply Victory"/>
+        <On Terms="Behavior.KerriganWalk.Off" Send="AnimGroupRemove Victory"/>
+        <On Terms="Behavior.KerriganWalk.On" Send="SetWalkAnimMoveSpeed 0.7968"/>
+        <On Terms="Behavior.KerriganWalk.Off" Send="SetWalkAnimMoveSpeed 1.1992"/>
+        
+        <On Terms="Abil.Val03QueenOfBladesDeepTunnel.SourceCastStart" Send="AnimBracketStart Burrow Burrow IGNORE Unburrow ClosingFull,OpeningPlayForever"/>
+        <On Terms="Abil.Val03QueenOfBladesDeepTunnel.SourceCastStop; ValidateUnit IsNotBuried" Send="AnimBracketStop Burrow"/> -->
+        <EventDataSound Name="KerriganAttackLaunch" Actor="UnitSound" Sound="QueenOfBladesAttackLaunch"/>
+        <EventDataSound Name="KerriganAttackImpact" Actor="UnitSound" Sound="QueenOfBladesAttackImpact"/>
+        <WalkAnimMoveSpeed value="1.1992"/>
+        <Macros value="ZergBurrowStandardAnimMacro"/>
+        <Macros value="ZergLargeBurrowEffects"/>
+        <Macros value="QueenOfBlades_Weapon@Animation"/>
+        <Macros value="QueenOfBlades_RazorTalons@Animation"/>
+        <BarWidth value="78"/>
+        <BarOffset value="60"/>
+        <UnitKillRank Text="UnitKillRank/Kerrigan"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level0.dds"/>
+        <UnitIcon value="Assets\Textures\btn-unit-zerg-kerrigan.dds"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-zerg-kerrigan.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-zerg-kerrigan.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    
+    <CModel id="QueenOfBlades" parent="Unit">
+        <EditorCategories value="Race:Zerg"/>
+        <Model value="Assets\Units\Zerg\Kerrigan\Kerrigan.m3"/>
+        <Radius value="0.750000"/>
+        <ScaleMax value="1.900000,1.900000,1.900000"/>
+        <ScaleMin value="1.900000,1.900000,1.900000"/>
+        <SelectionRadius value="0.531200"/>
+        <ShadowRadius value="0.531200"/>
+        <Events>
+            <Anim value="Attack,00"/>
+            <Name value="QueenOfBlades_RazorTalons@AttackLaunch"/>
+            <Payload value="QueenOfBlades_RazorTalons@AttackLaunch"/>
+            <Type value="Sound"/>
+            <Time value="0.220000"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,01"/>
+            <Name value="QueenOfBlades_RazorTalons@AttackLaunch"/>
+            <Payload value="QueenOfBlades_RazorTalons@AttackLaunch"/>
+            <Type value="Sound"/>
+            <Time value="0.200000"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,01"/>
+            <Name value="QueenOfBlades_RazorTalons@AttackLaunch"/>
+            <Payload value="QueenOfBlades_RazorTalons@AttackLaunch"/>
+            <Type value="Sound"/>
+            <Time value="0.480000"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,00"/>
+            <Name value="QueenOfBlades_RazorTalons@AttackImpact"/>
+            <Payload value="QueenOfBlades_RazorTalons@AttackImpact"/>
+            <Type value="Sound"/>
+            <Time value="0.250000"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,01"/>
+            <Name value="QueenOfBlades_RazorTalons@AttackImpact"/>
+            <Payload value="QueenOfBlades_RazorTalons@AttackImpact"/>
+            <Type value="Sound"/>
+            <Time value="0.250000"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,01"/>
+            <Name value="QueenOfBlades_RazorTalons@AttackImpact"/>
+            <Payload value="QueenOfBlades_RazorTalons@AttackImpact"/>
+            <Type value="Sound"/>
+            <Time value="0.530000"/>
+        </Events>
+        <TechPurchaseCamera value="Star2CameraMid12"/>
+        <UnitGlossaryCamera value="Star2CameraMid12"/>
+        <PlanetPanelCamera value="Star2CameraMid12"/>
+    </CModel>
+    <CModel id="QueenOfBlades@Portrait" parent="FXAPortrait">
+        <Model value="Assets\Portraits\Zerg\KerriganPortrait\KerriganPortrait.m3"/>
+        <FacialController value="LocalizedData\Facial\KerriganPortrait.fxa"/>
+    </CModel>
+    
+    <CLight id="QueenOfBlades@Portrait" parent="default">
+        <ToDInfoArray index="0" Id="QueenOfBlades@Portrait" AmbientColor="0.403922,0.301961,0.345098" Colorize="1">
+            <Param index="HDRExposure" value="1.480000"/>
+            <Param index="HDRBloomThreshold" value="1.950000"/>
+            <Param index="ColorizationContrast" value="1.060000"/>
+            <Param index="ColorizationHue" value="0.080000"/>
+            <Param index="ColorizationSaturation" value="0.220000"/>
+            <Param index="ColorizationBlend" value="0.300000"/>
+            <DirectionalLight index="Key">
+                <Color value="0.011765,0.494118,0.886275"/>
+                <ColorMultiplier value="4.470000"/>
+                <SpecularColor value="0.447059,0.756863,1.000000"/>
+                <SpecColorMultiplier value="4.320000"/>
+                <Direction value="-0.079162,-0.192251,-0.978148"/>
+            </DirectionalLight>
+            <DirectionalLight index="Fill">
+                <Color value="0.403922,0.458824,0.792157"/>
+                <ColorMultiplier value="0.992157"/>
+                <SpecularColor value="0.000000,0.000000,0.000000"/>
+                <Direction value="0.000000,0.000000,1.000000"/>
+            </DirectionalLight>
+            <DirectionalLight index="Back">
+                <Color value="-0.095539,0.626544,0.773508"/>
+                <ColorMultiplier value="1.060000"/>
+                <SpecularColor value="0.964706,0.592157,0.184314"/>
+                <SpecColorMultiplier value="1.020000"/>
+                <Direction value="0.577350,0.577350,0.577350"/>
+            </DirectionalLight>
+        </ToDInfoArray>
+        <EditorCategories value="LightGroup:PortraitsUnitsZerg"/>
+    </CLight>
+    
+    <CSound id="QueenOfBlades@Attack" parent="Voice">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="LocalizedData\Sounds\ZergVO\CampaignUnits\Kerrigan\Kerrigan_Attack00.ogg" FacialAnim="Kerrigan_Attack00"/>
+        <AssetArray File="LocalizedData\Sounds\ZergVO\CampaignUnits\Kerrigan\Kerrigan_Attack01.ogg" FacialAnim="Kerrigan_Attack01"/>
+        <AssetArray File="LocalizedData\Sounds\ZergVO\CampaignUnits\Kerrigan\Kerrigan_Attack02.ogg" FacialAnim="Kerrigan_Attack02"/>
+        <AssetArray File="LocalizedData\Sounds\ZergVO\CampaignUnits\Kerrigan\Kerrigan_Attack03.ogg" FacialAnim="Kerrigan_Attack03"/>
+        <AssetArray File="LocalizedData\Sounds\ZergVO\CampaignUnits\Kerrigan\Kerrigan_Attack04.ogg" FacialAnim="Kerrigan_Attack04"/>
+        <AssetArray File="LocalizedData\Sounds\ZergVO\CampaignUnits\Kerrigan\Kerrigan_Attack05.ogg" FacialAnim="Kerrigan_Attack05"/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="QueenOfBlades@Death" parent="Death">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="LocalizedData\Sounds\ZergVO\CampaignUnits\Kerrigan\Kerrigan_Death00.wav"/>
+        <AssetArray File="LocalizedData\Sounds\ZergVO\CampaignUnits\Kerrigan\Kerrigan_Death01.wav"/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="QueenOfBlades@Help" parent="Voice">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="LocalizedData\Sounds\ZergVO\CampaignUnits\Kerrigan\Kerrigan_Help00.ogg" FacialAnim="Kerrigan_Help00"/>
+        <AssetArray File="LocalizedData\Sounds\ZergVO\CampaignUnits\Kerrigan\Kerrigan_Help01.ogg" FacialAnim="Kerrigan_Help01"/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="QueenOfBlades@Pissed" parent="Pissed">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="LocalizedData\Sounds\ZergVO\CampaignUnits\Kerrigan\Kerrigan_Pissed00.ogg" FacialAnim="Kerrigan_Pissed00"/>
+        <AssetArray File="LocalizedData\Sounds\ZergVO\CampaignUnits\Kerrigan\Kerrigan_Pissed01.ogg" FacialAnim="Kerrigan_Pissed01"/>
+        <AssetArray File="LocalizedData\Sounds\ZergVO\CampaignUnits\Kerrigan\Kerrigan_Pissed02.ogg" FacialAnim="Kerrigan_Pissed02"/>
+        <AssetArray File="LocalizedData\Sounds\ZergVO\CampaignUnits\Kerrigan\Kerrigan_Pissed03.ogg" FacialAnim="Kerrigan_Pissed03"/>
+        <AssetArray File="LocalizedData\Sounds\ZergVO\CampaignUnits\Kerrigan\Kerrigan_Pissed04.ogg" FacialAnim="Kerrigan_Pissed04"/>
+        <AssetArray File="LocalizedData\Sounds\ZergVO\CampaignUnits\Kerrigan\Kerrigan_Pissed05.ogg" FacialAnim="Kerrigan_Pissed05"/>
+        <AssetArray File="LocalizedData\Sounds\ZergVO\CampaignUnits\Kerrigan\Kerrigan_Pissed06.ogg" FacialAnim="Kerrigan_Pissed06"/>
+        <AssetArray File="LocalizedData\Sounds\ZergVO\CampaignUnits\Kerrigan\Kerrigan_Pissed07.ogg" FacialAnim="Kerrigan_Pissed07"/>
+        <AssetArray File="LocalizedData\Sounds\ZergVO\CampaignUnits\Kerrigan\Kerrigan_Pissed08.ogg" FacialAnim="Kerrigan_Pissed08"/>
+        <Volume value="-3.000000,-3.000000"/>
+        <Flags index="Download" value="1"/>
+        <Flags index="VariationFallback" value="0"/>
+    </CSound>
+    <CSound id="QueenOfBlades@Ready" parent="Ready">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="LocalizedData\Sounds\ZergVO\CampaignUnits\Kerrigan\Kerrigan_Ready00.ogg" FacialAnim="Kerrigan_Ready00"/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="QueenOfBlades@What" parent="Voice">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="LocalizedData\Sounds\ZergVO\CampaignUnits\Kerrigan\Kerrigan_What00.ogg" FacialAnim="Kerrigan_What00"/>
+        <AssetArray File="LocalizedData\Sounds\ZergVO\CampaignUnits\Kerrigan\Kerrigan_What01.ogg" FacialAnim="Kerrigan_What01"/>
+        <AssetArray File="LocalizedData\Sounds\ZergVO\CampaignUnits\Kerrigan\Kerrigan_What02.ogg" FacialAnim="Kerrigan_What02"/>
+        <AssetArray File="LocalizedData\Sounds\ZergVO\CampaignUnits\Kerrigan\Kerrigan_What03.ogg" FacialAnim="Kerrigan_What03"/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="QueenOfBlades@Yes" parent="Voice">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="LocalizedData\Sounds\ZergVO\CampaignUnits\Kerrigan\Kerrigan_Yes00.ogg" FacialAnim="Kerrigan_Yes00"/>
+        <AssetArray File="LocalizedData\Sounds\ZergVO\CampaignUnits\Kerrigan\Kerrigan_Yes01.ogg" FacialAnim="Kerrigan_Yes01"/>
+        <AssetArray File="LocalizedData\Sounds\ZergVO\CampaignUnits\Kerrigan\Kerrigan_Yes02.ogg" FacialAnim="Kerrigan_Yes02"/>
+        <AssetArray File="LocalizedData\Sounds\ZergVO\CampaignUnits\Kerrigan\Kerrigan_Yes03.ogg" FacialAnim="Kerrigan_Yes03"/>
+        <AssetArray File="LocalizedData\Sounds\ZergVO\CampaignUnits\Kerrigan\Kerrigan_Yes04.ogg" FacialAnim="Kerrigan_Yes04"/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+
+    <CRequirement id="QueenOfBlades"/>
+    
+    <CValidatorUnitType id="QueenOfBlades@Is" parent="IsUnit_Default" unit="QueenOfBlades"/>
+    <CValidatorUnitType id="QueenOfBlades@Target" parent="TargetIsUnit_Default" unit="QueenOfBlades"/>
+    <CValidatorUnitType id="QueenOfBlades@Not" parent="NotUnit_Default" unit="QueenOfBlades"/>
+    <CValidatorUnitType id="QueenOfBlades@NotTarget" parent="TargetNotUnit_Default" unit="QueenOfBlades"/>
+
+    <CDataCollectionUnit id="QueenOfBlades" parent="UnitGround">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Zerg,ObjectType:Unit"/>
+        <DataRecord Entry="Button,QueenOfBlades"/>
+        <DataRecord Entry="Unit,QueenOfBlades"/>
+        <DataRecord Entry="Actor,QueenOfBlades"/>
+        <DataRecord Entry="Model,QueenOfBlades"/>
+        <DataRecord Entry="Model,QueenOfBlades@Death"/>
+        <DataRecord Entry="Model,QueenOfBlades@Portrait"/>
+        <DataRecord Entry="Sound,QueenOfBlades@Attack"/>
+        <DataRecord Entry="Sound,QueenOfBlades@Help"/>
+        <DataRecord Entry="Sound,QueenOfBlades@Pissed"/>
+        <DataRecord Entry="Sound,QueenOfBlades@Yes"/>
+        <DataRecord Entry="Sound,QueenOfBlades@What"/>
+        <DataRecord Entry="Sound,QueenOfBlades@Ready"/>
+        <DataRecord Entry="Requirement,QueenOfBlades"/>
+        <DataRecord Entry="Light,QueenOfBlades@Portrait"/>
+        <DataRecord Entry="Validator,QueenOfBlades@Is"/>
+        <DataRecord Entry="Validator,QueenOfBlades@Target"/>
+        <DataRecord Entry="Validator,QueenOfBlades@Not"/>
+        <DataRecord Entry="Validator,QueenOfBlades@NotTarget"/>
+    </CDataCollectionUnit>
+
+    <!-- ========= Weapons ========== -->
+    
+    <!-- Psi Blast -->
+    
+    <CWeaponLegacy id="QueenOfBlades_Weapon">
+        <EditorCategories value="Race:Zerg"/>
+        <Icon value="Assets\Textures\btn-upgrade-zerg-missileattacks-level0.dds"/>
+        <DisplayEffect value="QueenOfBlades_Weapon@Damage"/>
+        <DisplayAttackCount value="1"/>
+        <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="4"/>
+        <MinimumRange value="2"/>
+        <Period value="1.5"/>
+        <Effect value="QueenOfBlades_Weapon@LM"/>
+    </CWeaponLegacy>
+    
+    <CEffectLaunchMissile id="QueenOfBlades_Weapon@LM">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactEffect value="QueenOfBlades_Weapon@Damage"/>
+        <AmmoUnit value="QueenOfBlades_Weapon@AttackMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="QueenOfBlades_Weapon@Damage" parent="DU_WEAP_MISSILE">
+        <EditorCategories value="Race:Zerg"/>
+        <Amount value="75"/>
+        <AttributeBonus index="Structure" value="75"/>
+        <Death value="Eviscerate"/>
+    </CEffectDamage>
+
+    <CActorAction id="QueenOfBlades_Weapon@Attack" parent="GenericAttack" effectImpact="QueenOfBlades_Weapon@Damage" effectLaunch="QueenOfBlades_Weapon@LM">
+        <LaunchAttachQuery Methods="Weapon"/>
+    </CActorAction>
+    <CActorMissile id="QueenOfBlades_Weapon@AttackMissile" parent="GenericAttackMissile" unitName="QueenOfBlades_Weapon@AttackMissile"/>
+    <CActorEventMacro id="QueenOfBlades_Weapon@Animation" parent="GenericAttackAnimMacro" weapon="QueenOfBlades_Weapon" anim="Spell"/>
+    
+    <CModel id="QueenOfBlades_Weapon@AttackMissile" parent="MissileFX">
+        <Model value="Assets\Effects\Zerg\ZergBioEnergyMissile\ZergBioEnergyMissile.m3"/>
+        <EditorCategories value="Race:Zerg"/>
+    </CModel>
+    <CModel id="QueenOfBlades_Weapon@AttackImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Zerg\ZergBioEnergyMissileImpact\ZergBioEnergyMissileImpact.m3"/>
+        <EditorCategories value="Race:Zerg"/>
+        <ScaleMax value="0.750000,0.750000,0.750000"/>
+        <ScaleMin value="0.750000,0.750000,0.750000"/>
+    </CModel>
+    
+    <CUnit id="QueenOfBlades_Weapon@AttackMissile" parent="MISSILE">
+        <Race value="Zerg"/>
+        <Mover value="MissileDefault"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
+        <TacticalAI value="Val03QueenOfBladesWeapon"/>
+    </CUnit>
+    
+    <CSound id="QueenOfBlades_Weapon@AttackLaunch" parent="Combat">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Zerg\QueenOfBlades\QueenOfBlades_RangedAttackLaunch0.wav"/>
+        <Pitch value="-1.000000,2.000000"/>
+    </CSound>
+    <CSound id="QueenOfBlades_Weapon@AttackImpact" parent="Protoss_ExplosionMedium">
+        <EditorCategories value="Race:Zerg"/>
+        <Pitch value="6.000000,7.000000"/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
+    
+    <CDataCollectionUnit id="QueenOfBlades_Weapon" parent="Weapon_Misssile">
+        <DataRecord Entry="Weapon,QueenOfBlades_Weapon"/>
+        <DataRecord Entry="Effect,QueenOfBlades_Weapon@Damage"/>
+        <DataRecord Entry="Actor,QueenOfBlades_Weapon@Attack"/>
+        <DataRecord Entry="Model,QueenOfBlades_Weapon@AttackLaunch"/>
+        <DataRecord Entry="Model,QueenOfBlades_Weapon@AttackImpact"/>
+        <DataRecord Entry="Sound,QueenOfBlades_Weapon@AttackLaunch"/>
+        <DataRecord Entry="Sound,QueenOfBlades_Weapon@AttackImpact"/>
+    </CDataCollectionUnit>
+
+    <!-- Razor Taloons -->
+    
+    <CWeaponLegacy id="QueenOfBlades_RazorTalons">
+        <EditorCategories value="Race:Zerg"/>
+        <Options index="Melee" value="1"/>
+        <Icon value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level0.dds"/>
+        <DisplayEffect value="QueenOfBlades_Weapon@Damage"/>
+        <DisplayAttackCount value="2"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="1"/>
+        <Period value="1.5"/>
+        <Effect value="QueenOfBlades_RazorTalons@CP"/>
+    </CWeaponLegacy>
+
+    <CEffectDamage id="QueenOfBlades_RazorTalons@Damage">
+        <EditorCategories value="Race:Zerg"/>
+        <Amount value="25"/>
+        <Kind value="Melee"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <Flags index="Notification" value="1"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+        <SearchFlags index="OffsetByUnitRadius" value="1"/>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="QueenOfBlades_RazorTalons@CP">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="TargetUnit"/>
+        <Flags index="Channeled" value="1"/>
+        <PeriodCount value="2"/>
+        <PeriodicEffectArray value="QueenOfBlades_RazorTalons@Damage"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0.3"/>
+    </CEffectCreatePersistent>
+    
+    <CActorAction id="QueenOfBlades_RazorTalons@Attack" parent="GenericAttack" effectLaunch="QueenOfBlades_RazorTalons@CP" effectImpact="QueenOfBlades_RazorTalons@Damage">
+        <ShieldFlashType value="Header"/>
+        <ImpactMap index="None" Sound=""/>
+        <LaunchAssets Sound=""/>
+    </CActorAction>
+    <CActorEventMacro id="QueenOfBlades_RazorTalons@Animation" parent="GenericAttackAnimMacro" weapon="QueenOfBlades_RazorTalons" anim="Attack"/>
+    
+    <CSound id="QueenOfBlades_RazorTalons@AttackImpact" parent="Combat">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Zerg\Queen\Queen_AttackImpactRanged0.wav"/>
+        <AssetArray File="Assets\Sounds\Zerg\Queen\Queen_AttackImpactRanged1.wav"/>
+        <AssetArray File="Assets\Sounds\Zerg\Queen\Queen_AttackImpactRanged2.wav"/>
+        <AssetArray File="Assets\Sounds\Zerg\Queen\Queen_AttackImpactRanged3.wav"/>
+        <AssetArray File="Assets\Sounds\Zerg\Queen\Queen_AttackImpactRanged4.wav"/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="QueenOfBlades_RazorTalons@AttackLaunch" parent="Combat">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Zerg\SharedEffects\Attacks\Zerg_AttackLaunchSmallSwing0.wav"/>
+        <AssetArray File="Assets\Sounds\Zerg\SharedEffects\Attacks\Zerg_AttackLaunchSmallSwing1.wav"/>
+        <AssetArray File="Assets\Sounds\Zerg\SharedEffects\Attacks\Zerg_AttackLaunchSmallSwing2.wav"/>
+        <AssetArray File="Assets\Sounds\Zerg\SharedEffects\Attacks\Zerg_AttackLaunchSmallSwing3.wav"/>
+        <DupeDestroyCount value="5"/>
+        <Pitch value="-3.000000,-3.000000"/>
+        <Volume value="-4.000000,-3.000000"/>
+    </CSound>
+
+    <!-- ========= Abilities ========== -->
+    
+    <!-- Razor Swarm -->
+    
+    <CButton id="QueenOfBlades_RazorSwarm">
+        <Icon value="Assets\Textures\btn-ability-protoss-psistorm-color.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-psistorm-color.dds"/>
+        <EditorCategories value="Race:Zerg"/>
+    </CButton>
+    
+    <CAbilEffectTarget id="QueenOfBlades_RazorSwarm">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Effect index="0" value="QueenOfBlades_RazorSwarm@CP"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Cost>
+            <Vital index="Energy" value="75"/>
+            <Cooldown TimeUse="2"/>
+        </Cost>
+        <Range value="10"/>
+        <CastOutroTime value="0.5"/>
+        <CursorEffect value="QueenOfBlades_RazorSwarm@Search"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="QueenOfBlades_RazorSwarm"/>
+        <Alignment value="Negative"/>
+    </CAbilEffectTarget>
+    
+    <CEffectCreatePersistent id="QueenOfBlades_RazorSwarm@CP">
+        <ValidatorArray value="HasVision"/>
+        <EditorCategories value="Race:Zerg"/>
+        <InitialEffect value="QueenOfBlades_RazorSwarm@Search"/>
+        <PeriodCount value="12"/>
+        <PeriodicEffectArray value="QueenOfBlades_RazorSwarm@Search"/>
+        <PeriodicPeriodArray value="0.5712"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="QueenOfBlades_RazorSwarm@Damage">
+        <EditorCategories value="Race:Zerg"/>
+        <Visibility value="Hidden"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <Flags index="Notification" value="1"/>
+        <Amount value="12"/>
+        <AttributeBonus index="Structure" value="9"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="QueenOfBlades_RazorSwarm@Search">
+        <EditorCategories value="Race:Zerg"/>
+        <SearchFilters value="-;Missile,Destructible,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="2.5" Effect="QueenOfBlades_RazorSwarm@Damage"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+    </CEffectEnumArea>
+    
+    <CActorAction id="QueenOfBlades_RazorSwarm@ShieldHitter" parent="AoEAttackBase">
+        <Lifetime value="2.600000"/>
+        <On Terms="Effect.QueenOfBlades_RazorSwarm@Damage.Start" Send="Create"/>
+        <On Terms="Effect.QueenOfBlades_RazorSwarm@Damage.Start; At Effect" Send="ActionDamage"/>
+        <On Terms="Effect.QueenOfBlades_RazorSwarm@Damage.Start; At Effect" Send="Destroy"/>
+    </CActorAction>
+    <CActorModel id="QueenOfBlades_RazorSwarm@Model" parent="ModelAnimationStyleContinuous">
+        <On Terms="Effect.QueenOfBlades_RazorSwarm@CP.Start" Send="Create"/>
+        <On Terms="Effect.QueenOfBlades_RazorSwarm@CP.Stop" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CActorSound id="QueenOfBlades_RazorSwarm@Sound" parent="SoundContinuous">
+        <On Terms="Effect.QueenOfBlades_RazorSwarm@CP.Start" Send="Create"/>
+        <On Terms="Effect.QueenOfBlades_RazorSwarm@CP.Stop" Send="Destroy"/>
+    </CActorSound>
+    <CActorSplat id="QueenOfBlades_RazorSwarm@Cursor" parent="ProtossCursorSplat" abil="QueenOfBlades_RazorSwarm"/>
+    <CActorRange id="QueenOfBlades_RazorSwarm@Splat" parent="RangeAbil" abil="QueenOfBlades_RazorSwarm"/>
+    
+    <CModel id="QueenOfBlades_RazorSwarm@Model" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Zerg\RazorPlague\RazorPlague.m3"/>
+        <EditorCategories value="Race:Zerg"/>
+        <SelectionRadius value="0.312500"/>
+        <ShadowRadius value="0.312500"/>
+    </CModel>
+    
+    <CSound id="QueenOfBlades_RazorSwarm@Sound" parent="Spell">
+        <AssetArray File="Assets\Sounds\Zerg\Queen\Queen_SwarmInfestationLaunch0.wav"/>
+        <AssetArray File="Assets\Sounds\Zerg\Queen\Queen_SwarmInfestationLaunch1.wav"/>
+        <AssetArray File="Assets\Sounds\Zerg\Queen\Queen_SwarmInfestationLaunch2.wav"/>
+        <AssetArray File="Assets\Sounds\Zerg\Queen\Queen_SwarmInfestationLaunch3.wav"/>
+        <AssetArray File="Assets\Sounds\Zerg\Queen\Queen_SwarmInfestationLaunch4.wav"/>
+        <AssetArray File="Assets\Sounds\Zerg\Queen\Queen_SwarmInfestationLaunch5.wav"/>
+        <AssetArray File="Assets\Sounds\Zerg\Queen\Queen_SwarmInfestationLaunch6.wav"/>
+        <AssetArray File="Assets\Sounds\Zerg\Queen\Queen_SwarmInfestationLaunch7.wav"/>
+        <AssetArray File="Assets\Sounds\Zerg\Queen\Queen_SwarmInfestationLaunch8.wav"/>
+        <EditorCategories value="Race:Zerg"/>
+    </CSound>
+
+</Catalog>

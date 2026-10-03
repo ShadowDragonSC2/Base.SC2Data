@@ -302,6 +302,12 @@
         <Macros value="PhysicsDeathsVoidGround"/>
         <Macros value="TerrainSquibAnimations"/>
     </CActorUnit>
+    <CActorEventMacro default="1" id="GenericAttackAnimMacro">
+        <?token id="weapon" type="CWeaponLink" value="Bogus"?>
+        <?token id="anim" type="AnimProps" value="Attack"?>
+        <On Terms="WeaponStart.##weapon##.AttackStart" Send="AnimBracketStart Attack ##anim##"/>
+        <On Terms="WeaponStop.##weapon##.AttackStop" Send="AnimBracketStop Attack"/>
+    </CActorEventMacro>
 
     <!-- Buttons -->
 
