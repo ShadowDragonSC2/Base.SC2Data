@@ -21,16 +21,16 @@
         <VisionHeight value="4"/>
         <KillXP value="30"/>
         <WeaponArray Link="QueenOfBlades_RazorTalons"/>
-        <AbilArray Link="Implosion"/>
-        <AbilArray Link="OmegaStorm"/>
+        <AbilArray Link="QueenOfBlades_Implosion"/>
+        <AbilArray Link="QueenOfBlades_RazorSwarm"/>
         <AbilArray Link="Val03QueenOfBladesDeepTunnel"/>
         <AbilArray Link="Val03QueenOfBladesBurrow"/>
         <BehaviorArray Link="OnCreep"/>
         <BehaviorArray Link="ForceShieldSpell"/>
         <BehaviorArray Link="ForceShield"/>
         <BehaviorArray Link="Detector10"/>
-        <CardLayouts>
-            <LayoutButtons Face="Implosion" Type="AbilCmd" AbilCmd="Implosion,Execute" Row="2" Column="1"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="QueenOfBlades_Implosion" Type="AbilCmd" AbilCmd="QueenOfBlades_Implosion,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="QueenOfBlades_RazorSwarm" Type="AbilCmd" AbilCmd="QueenOfBlades_RazorSwarm,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="Val03QueenOfBladesBurrow,Execute" Row="2" Column="4"/>
             <LayoutButtons Face="DeepTunnel" Type="AbilCmd" AbilCmd="DeepTunnel,Execute" Row="2" Column="2"/>
@@ -58,24 +58,17 @@
         <Aliases value="_UnitLarge"/>
         <AnimBlendTime value="0.250000"/>
         <DeathArray index="Normal" ModelLink="QueenOfBlades"/>
-        <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
-        <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
         <On Terms="Abil.QueenOfBlades_RazorSwarm.SourceCastStart" Send="$Spell"/>
+        <On Terms="Abil.QueenOfBlades_Implosion.SourceCastStart" Send="$Spell"/>
         <!-- <On Terms="UnitBirth.KerriganCharBurrowed" Send="Create"/>
         <On Terms="UnitBirth.KerriganCharBurrowed" Send="AnimBracketStart Burrow Burrow IGNORE Unburrow ClosingFull,OpeningPlayForever,Instant"/>
-        <On Terms="Abil.Implosion.SourceCastStart" Send="$Spell"/>
-        <On Terms="Behavior.KerriganWalk.On" Send="AnimGroupApply Victory"/>
-        <On Terms="Behavior.KerriganWalk.Off" Send="AnimGroupRemove Victory"/>
-        <On Terms="Behavior.KerriganWalk.On" Send="SetWalkAnimMoveSpeed 0.7968"/>
-        <On Terms="Behavior.KerriganWalk.Off" Send="SetWalkAnimMoveSpeed 1.1992"/>
         
         <On Terms="Abil.Val03QueenOfBladesDeepTunnel.SourceCastStart" Send="AnimBracketStart Burrow Burrow IGNORE Unburrow ClosingFull,OpeningPlayForever"/>
         <On Terms="Abil.Val03QueenOfBladesDeepTunnel.SourceCastStop; ValidateUnit IsNotBuried" Send="AnimBracketStop Burrow"/> -->
-        <EventDataSound Name="KerriganAttackLaunch" Actor="UnitSound" Sound="QueenOfBladesAttackLaunch"/>
-        <EventDataSound Name="KerriganAttackImpact" Actor="UnitSound" Sound="QueenOfBladesAttackImpact"/>
         <WalkAnimMoveSpeed value="1.1992"/>
         <Macros value="ZergBurrowStandardAnimMacro"/>
         <Macros value="ZergLargeBurrowEffects"/>
+        <Macros value="QueenOfBlades@Walk_Animation"/>
         <Macros value="QueenOfBlades_Weapon@Animation"/>
         <Macros value="QueenOfBlades_RazorTalons@Animation"/>
         <BarWidth value="78"/>
@@ -90,6 +83,12 @@
             <Image value="Assets\Textures\Wireframe-zerg-kerrigan.dds"/>
         </Wireframe>
     </CActorUnit>
+    <CActorEventMacro id="QueenOfBlades@Walk_Animation">
+        <On Terms="Behavior.QueenOfBlades@Walk.On" Send="AnimGroupApply Victory"/>
+        <On Terms="Behavior.QueenOfBlades@Walk.Off" Send="AnimGroupRemove Victory"/>
+        <On Terms="Behavior.QueenOfBlades@Walk.On" Send="SetWalkAnimMoveSpeed 0.7968"/>
+        <On Terms="Behavior.QueenOfBlades@Walk.Off" Send="SetWalkAnimMoveSpeed 1.1992"/>
+    </CActorEventMacro>
     
     <CModel id="QueenOfBlades" parent="Unit">
         <EditorCategories value="Race:Zerg"/>
@@ -241,6 +240,11 @@
         <AssetArray File="LocalizedData\Sounds\ZergVO\CampaignUnits\Kerrigan\Kerrigan_Yes04.ogg" FacialAnim="Kerrigan_Yes04"/>
         <Volume value="-3.000000,-3.000000"/>
     </CSound>
+    
+    <CBehaviorBuff id="QueenOfBlades@Walk">
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification MoveSpeedMultiplier="0.5"/>
+    </CBehaviorBuff>
 
     <CRequirement id="QueenOfBlades"/>
     
@@ -254,6 +258,7 @@
         <DataRecord Entry="Button,QueenOfBlades"/>
         <DataRecord Entry="Unit,QueenOfBlades"/>
         <DataRecord Entry="Actor,QueenOfBlades"/>
+        <DataRecord Entry="Actor,QueenOfBlades@Walk_Animation"/>
         <DataRecord Entry="Model,QueenOfBlades"/>
         <DataRecord Entry="Model,QueenOfBlades@Death"/>
         <DataRecord Entry="Model,QueenOfBlades@Portrait"/>
@@ -263,6 +268,7 @@
         <DataRecord Entry="Sound,QueenOfBlades@Yes"/>
         <DataRecord Entry="Sound,QueenOfBlades@What"/>
         <DataRecord Entry="Sound,QueenOfBlades@Ready"/>
+        <DataRecord Entry="Behavior,QueenOfBlades@Walk"/>
         <DataRecord Entry="Requirement,QueenOfBlades"/>
         <DataRecord Entry="Light,QueenOfBlades@Portrait"/>
         <DataRecord Entry="Validator,QueenOfBlades@Is"/>
@@ -489,6 +495,91 @@
         <AssetArray File="Assets\Sounds\Zerg\Queen\Queen_SwarmInfestationLaunch7.wav"/>
         <AssetArray File="Assets\Sounds\Zerg\Queen\Queen_SwarmInfestationLaunch8.wav"/>
         <EditorCategories value="Race:Zerg"/>
+    </CSound>
+
+    <!-- QueenOfBlades_Implosion -->
+    
+    <CButton id="QueenOfBlades_Implosion">
+        <Icon value="Assets\Textures\btn-ability-zerg-explode-color.dds"/>
+        <EditorCategories value="Race:Zerg"/>
+    </CButton>
+    
+    <CAbilEffectTarget id="QueenOfBlades_Implosion">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Effect index="0" value="QueenOfBlades_Implosion@CP"/>
+        <Cost>
+            <Vital index="Energy" value="75"/>
+            <Cooldown TimeUse="2"/>
+        </Cost>
+        <TargetFilters value="Mechanical,Visible;Player,Ally,Neutral,Structure,Worker,Invulnerable"/>
+        <Range value="10"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="QueenOfBlades_Implosion"/>
+        <Alignment value="Negative"/>
+    </CAbilEffectTarget>
+
+    <CEffectApplyBehavior id="QueenOfBlades_Implosion@AB">
+        <EditorCategories value="Race:Zerg"/>
+        <Behavior value="QueenOfBlades_Implosion"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="QueenOfBlades_Implosion@CP">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="TargetUnit"/>
+        <InitialEffect value="QueenOfBlades_Implosion@Set"/>
+        <ExpireDelay value="0.125"/>
+        <FinalEffect value="QueenOfBlades_Implosion@Kill"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="QueenOfBlades_Implosion@Drop"/>
+        <PeriodicPeriodArray value="3.125"/>
+    </CEffectCreatePersistent>
+    <CEffectModifyUnit id="QueenOfBlades_Implosion@Height">
+        <EditorCategories value="Race:Zerg"/>
+        <Height value="2.5"/>
+        <HeightTime value="2"/>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="QueenOfBlades_Implosion@Drop">
+        <EditorCategories value="Race:Zerg"/>
+        <Height value="-2.5"/>
+        <HeightTime value="0.25"/>
+    </CEffectModifyUnit>
+    <CEffectDamage id="QueenOfBlades_Implosion@Kill">
+        <EditorCategories value="Race:Zerg"/>
+        <Flags index="Kill" value="1"/>
+    </CEffectDamage>
+    <CEffectSet id="QueenOfBlades_Implosion@Set">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="QueenOfBlades_Implosion@AB"/>
+        <EffectArray value="QueenOfBlades_Implosion@Height"/>
+    </CEffectSet>
+    
+    <CBehaviorBuff id="QueenOfBlades_Implosion">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <ModifyFlags index="DisableAbils" value="1"/>
+            <ModifyFlags index="SuppressMoving" value="1"/>
+            <ModifyFlags index="SuppressTurning" value="1"/>
+            <StateFlags index="Invulnerable" value="1"/>
+        </Modification>
+        <Alignment value="Negative"/>
+    </CBehaviorBuff>
+        
+    <CActorModel id="QueenOfBlades_Implosion" parent="ModelAnimationStyleOneShot">
+        <On Terms="Behavior.QueenOfBlades_Implosion.On" Send="Create"/>
+        <On Terms="ActorCreation" Send="SetTintColor 60,0,120"/>
+    </CActorModel>
+    
+    <CModel id="QueenOfBlades_Implosion" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\BeingCrushed\BeingCrushed.m3"/>
+        <EditorCategories value="Race:Zerg"/>
+        <ScaleMax value="1.250000,1.250000,1.250000"/>
+        <ScaleMin value="1.250000,1.250000,1.250000"/>
+        <SelectionRadius value="0.400000"/>
+        <ShadowRadius value="0.400000"/>
+        <Events Anim="Stand" Type="Sound" Payload="QueenOfBlades_Implosion@Sound" Name="QueenOfBlades_Implosion@Sound"/>
+    </CModel>
+    
+    <CSound id="QueenOfBlades_Implosion@Sound" parent="Spell">
+        <AssetArray File="Assets\Sounds\Protoss\Phoenix\Phoenix_Overload0.wav" Pitch="14.000000,14.000000"/>
     </CSound>
 
 </Catalog>
