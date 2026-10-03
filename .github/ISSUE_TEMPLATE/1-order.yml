@@ -29,6 +29,8 @@ body:
   attributes:
     label: About info
     description: Anything you’d like to say about your order or your unit.
+  validations:
+    required: true
 - type: textarea
   attributes:
     label: Weapons
