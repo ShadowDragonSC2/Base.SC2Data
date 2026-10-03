@@ -305,8 +305,10 @@
     <CActorEventMacro default="1" id="GenericAttackAnimMacro">
         <?token id="weapon" type="CWeaponLink" value="Bogus"?>
         <?token id="anim" type="AnimProps" value="Attack"?>
+        <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
         <On Terms="WeaponStart.##weapon##.AttackStart" Send="AnimBracketStart Attack ##anim##"/>
         <On Terms="WeaponStop.##weapon##.AttackStop" Send="AnimBracketStop Attack"/>
+        <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
     </CActorEventMacro>
 
     <!-- Buttons -->
