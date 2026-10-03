@@ -1,12 +1,12 @@
 name: Order
 description: Ask to create any existing unit from the campaign or a completely new unit concept.
-title: [Заказ] - <Write your title>
+title: "[Заказ] - <Write your title>"
 labels: [order]
 body:
 - type: dropdown
   id: unittype
   attributes:
-    label: 
+    label: Type of unit
     multiple: false
     options:
       - Unit
@@ -17,8 +17,8 @@ body:
 - type: textarea
   attributes:
     label: Weapons
-    description: A list weapons your unit
+    description: A list of weapons your unit should have
 - type: textarea
   attributes:
     label: Abilities
-    description: A list abilities your unit
+    description: A list of abilities your unit should have
