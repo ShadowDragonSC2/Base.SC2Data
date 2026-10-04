@@ -340,7 +340,7 @@
         <Volume value="-6.000000,-6.000000"/>
     </CSound>
     
-    <CDataCollectionUnit id="QueenOfBlades_Weapon" parent="Weapon_Misssile">
+    <CDataCollectionUnit id="QueenOfBlades_Weapon" parent="Weapon_Missile">
         <DataRecord Entry="Weapon,QueenOfBlades_Weapon"/>
         <DataRecord Entry="Effect,QueenOfBlades_Weapon@Damage"/>
         <DataRecord Entry="Actor,QueenOfBlades_Weapon@Attack"/>
