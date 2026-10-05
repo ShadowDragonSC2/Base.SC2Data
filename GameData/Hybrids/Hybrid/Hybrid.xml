@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    
+    <CUnit id="Hybrid" parent="Generic_Unit_Ground" race="Hybr">
+        <Mob value="Campaign"/>
+        <Collide index="ForceField" value="0"/>
+        <LifeStart value="1600"/>
+        <LifeMax value="1600"/>
+        <LifeRegenRate value="0.25"/>
+        <LifeArmor value="1"/>
+        <Speed value="2.8125"/>
+        <Acceleration value="6.25"/>
+        <LateralAcceleration value="46"/>
+        <KillXP value="80"/>
+        <AbilArray Link="ConsumeDNA"/>
+        <AbilArray Link="HybridFAoEStun"/>
+        <CardLayouts>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+            <LayoutButtons Face="ConsumeDNA" Type="AbilCmd" AbilCmd="ConsumeDNA,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="HybridFAoEStun" Type="AbilCmd" AbilCmd="HybridFAoEStun,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="Detector" Type="Passive" Row="2" Column="3"/>
+        </CardLayouts>
+        <Radius value="0.9375"/>
+        <InnerRadius value="0.8125"/>
+        <CargoSize value="4"/>
+        <ScoreKill value="1600"/>
+        <SubgroupPriority value="15"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+        <Attributes index="Biological" value="1"/>
+        <Attributes index="Massive" value="1"/>
+        <BehaviorArray Link="Detector10"/>
+        <BehaviorArray Link="DamageTakenNone"/>
+        <GlossaryPriority value="390"/>
+    </CUnit>
+
+    <CActorUnit id="Hybrid" parent="AdvancedStandard_Ground" unitName="Hybrid">
+        <Aliases value="_UnitHuge"/>
+        <On Terms="Abil.ConsumeDNA.SourceCastStart" Send="$Spell,00"/>
+        <On Terms="Abil.HybridFAoEStun.SourceCastStart" Send="AnimPlay Spell Stand,Work"/>
+        <UnitKillRank Text="UnitKillRank/Hybrid"/>
+        <AnimBlendTime value="0.200000"/>
+        <BarWidth value="66"/>
+        <BarOffset value="120"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level0.dds"/>
+        <UnitIcon value="Assets\Textures\BTN-Unit-xelnaga-viper.dds"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Hybrid-Viper.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Hybrid-Viper.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    
+    <CModel id="Hybrid" parent="Unit">
+        <EditorCategories value="Race:Hybrid"/>
+        <Model value="Assets\Units\Zerg\HybridZerg\HybridZerg.m3"/>
+        <Occlusion value="Show"/>
+        <SelectionRadius value="1.250000"/>
+        <Radius value="1.000000"/>
+        <ScaleMax value="0.800000,0.800000,0.800000"/>
+        <ScaleMin value="0.800000,0.800000,0.800000"/>
+        <Flags index="AutoUnload" value="1"/>
+        <ShadowRadius value="1.250000"/>
+        <TechPurchaseCamera value="Star2CameraHigher14"/>
+        <UnitGlossaryCamera value="Star2CameraHigher14"/>
+        <PlanetPanelCamera value="Star2CameraHigher14"/>
+        <Events>
+            <Anim value="Attack,00"/>
+            <Name value="Hybrid@AttackLaunch"/>
+            <Type value="Sound"/>
+            <Time value="0.100000"/>
+            <Payload value="Hybrid@AttackLaunch"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,00"/>
+            <Name value="Hybrid@AttackLaunch"/>
+            <Type value="Sound"/>
+            <Time value="0.200000"/>
+            <Payload value="Hybrid@AttackLaunch"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,00"/>
+            <Name value="Hybrid@AttackImpact"/>
+            <Type value="Sound"/>
+            <Time value="0.390000"/>
+            <Payload value="Hybrid@AttackImpact"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,00"/>
+            <Name value="Hybrid@AttackImpact"/>
+            <Type value="Sound"/>
+            <Time value="0.530000"/>
+            <Payload value="Hybrid@AttackImpact"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Angry,00"/>
+            <Name value="HybridSounds"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="HybridF_Roar"/>
+        </Events>
+    </CModel>
+    <CModel id="Hybrid@Death" parent="UnitDeath">
+        <EditorCategories value="Race:Hybrid"/>
+        <Model value="Assets\Units\Zerg\HybridZergDeathEx1\HybridZergDeathEx1.m3"/>
+        <LowQualityModel value="ZergLargeUnitDeathLow"/>
+        <SelectionRadius value="0.625000"/>
+        <ShadowRadius value="0.625000"/>
+    </CModel>
+    <CModel id="Hybrid@Build" parent="Unit">
+        <Model value="Assets\Effects\Zerg\HybridBlinkIn\HybridBlinkIn.m3"/>
+        <EditorCategories value="Race:Hybrid"/>
+        <SelectionRadius value="0.600000"/>
+        <ShadowRadius value="0.600000"/>
+    </CModel>
+    <CModel id="Hybrid@Portrait" parent="Portrait">
+        <EditorCategories value="Race:Hybrid"/>
+        <Model value="Assets\Portraits\Zerg\HybridZergPortrait\HybridZergPortrait.m3"/>
+    </CModel>
+    
+    <CSound id="Hybrid@Birth" parent="Archon_Birth">
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="Hybrid@Death" parent="Archon_Death">
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="Hybrid@Pissed" parent="Archon_Pissed">
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="Hybrid@Ready" parent="Archon_Ready">
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="Hybrid@What" parent="Archon_What">
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="Hybrid@Yes" parent="Archon_Yes">
+        <Volume value="-2.000000,-2.000000"/>
+    </CSound>
+    <CSound id="Hybrid@AttackImpact" parent="Combat">
+        <Volume value="-0.920000,-0.920000"/>
+        <AssetArray File="Assets\Sounds\Zerg\Ultralisk\Ultralisk_AttackImpact0.wav"/>
+        <AssetArray File="Assets\Sounds\Zerg\Ultralisk\Ultralisk_AttackImpact1.wav"/>
+        <AssetArray File="Assets\Sounds\Zerg\Ultralisk\Ultralisk_AttackImpact2.wav"/>
+        <AssetArray File="Assets\Sounds\Zerg\Ultralisk\Ultralisk_AttackImpact3.wav"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Flags index="Temporary" value="1"/>
+    </CSound>
+    <CSound id="Hybrid@AttackLaunch" parent="Combat">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Zerg\SharedEffects\Attacks\Zerg_AttackLaunchSmallSwing0.wav"/>
+        <AssetArray File="Assets\Sounds\Zerg\SharedEffects\Attacks\Zerg_AttackLaunchSmallSwing1.wav"/>
+        <AssetArray File="Assets\Sounds\Zerg\SharedEffects\Attacks\Zerg_AttackLaunchSmallSwing2.wav"/>
+        <AssetArray File="Assets\Sounds\Zerg\SharedEffects\Attacks\Zerg_AttackLaunchSmallSwing3.wav"/>
+        <DupeDestroyCount value="5"/>
+        <Pitch value="-9.000000,-8.000000"/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+
+    <!-- ========= Weapons ========== -->
+    
+    <!-- Hybrid Claws -->
+    <CWeaponLegacy id="Hybrid_Weapon">
+        <DisplayEffect value="Hybrid_Weapon@Damage"/>
+        <Effect value="Hybrid_Weapon@Damage"/>
+        <Period value="2"/>
+        <DamagePoint value="0.5"/>
+        <Range value="0.8608"/>
+        
+        <Icon value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level0.dds"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Options index="Melee" value="1"/>
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
+    </CWeaponLegacy>
+
+    <CEffectDamage id="Hybrid_Weapon@Damage" parent="DU_WEAP">
+        <Death value="Eviscerate"/>
+        <Amount value="30"/>
+        <AreaArray Arc="270" Radius="1.5" Fraction="0.83"/>
+        <SearchFilters value="Ground;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <ExcludeArray Value="Target"/>
+        <DebugTrace value="1"/>
+    </CEffectDamage>
+
+    <CActorAction id="Hybrid_Weapon@Attack" parent="GenericAttack" effectAttack="Hybrid_Weapon@Damage"/>
+</Catalog>
