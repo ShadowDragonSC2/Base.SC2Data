@@ -1,0 +1,62 @@
+Abil/Name/Aberration_Burrow=Burrow
+Abil/Name/Aberration_Unburrow=Unburrow
+
+Actor/Name/Aberration=Aberration
+Actor/Name/Aberration@BurrowedSplat=Burrowed Splat
+Actor/Name/Aberration@Land=Land
+Actor/Name/Aberration_Weapon@Attack=Attack
+Actor/Name/Aberration_Weapon@AttackForce00=Attack Force 00
+Actor/Name/Aberration_Weapon@AttackForce01=Attack Force 01
+
+Behavior/Name/Aberration_ArmorAura=Armor Aura
+Behavior/Name/Aberration_ArmorAura@Target=Armor Aura Target
+Behavior/Name/Aberration_BanelingIncubation=Baneling Incubation
+Behavior/Name/Aberration_BanelingIncubation@BirthHeight=Birth Height
+
+Effect/Name/Aberration_ArmorAura@Aura=Aura
+Effect/Name/Aberration_ArmorAura@AB=Apply Behavior
+Effect/Name/Aberration_BanelingIncubation@Set=Set
+Effect/Name/Aberration_BanelingIncubation@CU=Create Unit
+Effect/Name/Aberration_BanelingIncubation@Birth=Birth
+Effect/Name/Aberration_BanelingIncubation@BirthAB=Birth Apply Behavior
+Effect/Name/Aberration_Weapon@Damage=Damage
+
+Light/Name/Aberration@Portrait=Portrait
+
+Model/Name/Aberration=Aberration
+Model/Name/Aberration@Death=Death
+Model/Name/Aberration@Placement=Placement
+Model/Name/Aberration@Portrait=Portrait
+
+Requirement/Name/Aberration@Use=Use
+Requirement/Name/Aberration_ArmorAura@Use=Armor Aura
+Requirement/Name/Aberration_BanelingIncubation@Use=Baneling Incubation
+RequirementNode/Name/Aberration_ArmorAura@Use@AllowUnit=Use @ Allow Unit
+RequirementNode/Name/Aberration_BanelingIncubation@Use@AllowUnit=Show @ Allow Unit
+
+Sound/Name/Aberration@Attack=Attack
+Sound/Name/Aberration@Ready=Ready
+Sound/Name/Aberration@What=What
+Sound/Name/Aberration@Yes=Yes
+Sound/Name/Aberration@Death=Death
+Sound/Name/Aberration@Explode=Explode
+Sound/Name/Aberration_Weapon@AttackLaunch=Attack Launch
+Sound/Name/Aberration_Weapon@AttackImpact=Attack Impact
+
+Upgrade/Name/Aberration_ArmorAura=Armor Aura
+Upgrade/Name/Aberration_BanelingIncubation=Baneling Incubation
+
+Validator/Name/Aberration@Is=Caster Is Unit
+Validator/Name/Aberration@Target=Target Is Unit
+Validator/Name/Aberration@Not=Caster Is Not Unit
+Validator/Name/Aberration@NotTarget=Target Is Not Unit
+Validator/Name/Aberration_ArmorAura@Use=Have Armor Aura
+Validator/Name/Aberration_ArmorAura@TargetValidator=Target Validator
+Validator/Name/Aberration_BanelingIncubation@Use=Have Baneling Incubation
+Validator/Name/Aberration_BanelingIncubation@WildMutation=Wild Mutation
+
+DataCollection/EditorPrefix/Aberration=Войска Загары -
+DataCollection/EditorPrefix/Aberration_Weapon=Оружие Загары -
+DataCollection/EditorPrefix/Aberration_Burrow=Способность Загары -
+DataCollection/EditorPrefix/Aberration_ArmorAura=Способность Загары -
+DataCollection/EditorPrefix/Aberration_BanelingIncubation=Способность Загары -

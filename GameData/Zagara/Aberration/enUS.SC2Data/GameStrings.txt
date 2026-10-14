@@ -1,0 +1,18 @@
+Button/Name/Aberration=Spawn Aberration
+Button/Tooltip/Aberration=Infested<n/>Heavy melee assault unit. Deals bonus damage to armored targets.
+
+Unit/Name/Aberration=Aberration
+
+Button/Name/Aberration_Weapon=Aberration Claws
+Button/Tooltip/Aberration_Weapon=Deals heavy melee damage to a single ground target. Deals bonus damage to armored targets.
+
+Button/Name/Aberration_ArmorAura=Protective Cover
+Button/Tooltip/Aberration_ArmorAura=The Aberration grants nearby ground units a protective cover that reduces incoming damage.
+
+Button/Name/Aberration_BanelingIncubation=Baneling Incubation
+Button/Tooltip/Aberration_BanelingIncubation=On death, the Aberration spawns two banelings.
+
+Weapon/Name/Aberration_Weapon=Aberration Claws
+
+DataCollection/Name/Aberration=Aberration
+DataCollection/Name/Aberration_Weapon=Aberration Claws

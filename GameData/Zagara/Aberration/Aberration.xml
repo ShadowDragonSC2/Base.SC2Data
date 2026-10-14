@@ -1,0 +1,581 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    <!-- Requires: Unit:Generic_Zerg_Unit_Ground[zerg.xml] -->
+    <!-- Requires: Actor:GenericBurrowerStandard[base.xml] -->
+    <!-- Requires: Actor:BurrowedSplat[base.xml] -->
+    <!-- Requires: Button:UnitButton_OnlyGround[base.xml] -->
+    <!-- Requires: Behavior:Generic_Aura[base.xml] -->
+    <!-- Requires: DataCollectionUnit:UnitGround[base.xml] -->
+    <!-- Requires: DataCollectionUnit:Weapon_Instant[base.xml] -->
+    <!-- Requires: DataCollectionUnit:AbilityBase[base.xml] -->
+    <!-- Requires: Validator:IsUnit_Default[base.xml] -->
+
+    <!-- ========== Unit ========== -->
+
+    <CButton id="Aberration" parent="UnitButton_OnlyGround">
+        <EditorCategories value="Race:Zerg"/>
+        <Icon value="Assets\Textures\btn-unit-zerg-aberration.dds"/>
+    </CButton>
+
+    <CUnit id="Aberration" parent="Generic_Zerg_Unit_Ground" race="Zerg">
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:FactionEvolved"/>
+        <GlossaryPriority value="125"/>
+        <GlossaryStrongArray value="Firebat"/>
+        <GlossaryStrongArray value="Marauder"/>
+        <GlossaryWeakArray value="Marine"/>
+        <GlossaryWeakArray value="SiegeTank"/>
+        <LifeStart value="275"/>
+        <LifeMax value="275"/>
+        <LifeArmor value="0"/>
+        <Speed value="2.9531"/>
+        <Sight value="8"/>
+        <TurningRate value="359.2968"/>
+        <StationaryTurningRate value="359.2968"/>
+        <LateralAcceleration value="46.0625"/>
+        <KillXP value="0"/>
+        <ScoreMake value="0"/>
+        <ScoreKill value="0"/>
+        <Radius value="0.875"/>
+        <SeparationRadius value="0.875"/>
+        <InnerRadius value="0.75"/>
+        <CargoSize value="4"/>
+        <Food value="-3"/>
+        <CostResource index="Minerals" value="200"/>
+        <CostResource index="Vespene" value="75"/>
+        <SubgroupPriority value="109"/>
+        <MinimapRadius value="1"/>
+        <Collide index="Ground" value="0"/>
+        <Collide index="Small" value="0"/>
+        <Collide index="ForceField" value="0"/>
+        <Collide index="Colossus" value="1"/>
+        <Attributes index="Light" value="0"/>
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Massive" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <AbilArray Link="Aberration_Burrow"/>
+        <BehaviorArray Link="Aberration_ArmorAura"/>
+        <BehaviorArray Link="Aberration_BanelingIncubation"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Aberration_ArmorAura" Type="Passive" Requirements="Aberration_ArmorAura@Use" Row="2" Column="1"/>
+            <LayoutButtons Face="Aberration_BanelingIncubation" Type="Passive" Requirements="Aberration_BanelingIncubation@Use" Row="2" Column="2"/>
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="Aberration_Burrow,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+        <Fidget>
+            <ChanceArray index="Anim" value="50"/>
+            <ChanceArray index="Idle" value="50"/>
+        </Fidget>
+    </CUnit>
+    <CUnit id="Aberration@Burrowed" parent="Aberration">
+        <Mover value="Burrowed"/>
+        <FlagArray index="Movable" value="0"/>
+        <Sight value="4"/>
+        <TurningRate value="0"/>
+        <StationaryTurningRate value="0"/>
+        <SeparationRadius value="0"/>
+        <Collide index="Burrow" value="1"/>
+        <Collide index="Ground" value="0"/>
+        <Collide index="Small" value="0"/>
+        <WeaponArray index="0" removed="1"/>
+        <AbilArray index="3" Link="Aberration_Unburrow"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="7" Face="BurrowUp" Type="AbilCmd" AbilCmd="Aberration_Unburrow,Execute"/>
+        </CardLayouts>
+        <LeaderAlias value="Aberration"/>
+        <HotkeyAlias value="Aberration"/>
+    </CUnit>
+
+    <CActorUnit id="Aberration" parent="AdvancedStandard_Ground" unitName="Aberration">
+        <On Terms="AbilMorph.*.Start; MorphTo Aberration@Burrowed" Send="AnimPlay Burrow Burrow PlayForever,NonLooping"/>
+        <On Terms="AbilMorph.*.Start; MorphTo Aberration" Send="AnimPlay Burrow Unburrow"/>
+        <On Terms="UnitMovementUpdate.*.Walk; AnimPlaying Birth" Send="AnimClear Birth"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Aberration@Land"/>
+        <On Terms="UnitBirth.Aberration" Send="TerrainSquibActivateGroup RippleStandard"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo Aberration" Send="TerrainSquibActivateGroup RippleStandard"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo Aberration@Burrowed" Send="TerrainSquibDeactivate"/>
+        <Macros value="ZergBurrowStandardAnimMacro"/>
+        <Macros value="ZergLargeBurrowEffects"/>
+        <Aliases value="_UnitLarge"/>
+        <AnimBlendTime value="0.300000"/>
+        <WalkAnimMoveSpeed value="2.9375"/>
+        <BarWidth value="102"/>
+        <BarOffset value="120"/>
+        <WireframeShieldColor value="255,0,128,0"/>
+        <UnitIcon value="Assets\Textures\btn-unit-zerg-aberration.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level0.dds"/>
+        <ShieldArmorIcon value="Assets\Textures\btn-upgrade-zerg-swarmfrenzy.dds"/>
+        <VitalNames index="Shields" value="Vital/ZergShields"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Zerg-Aberration.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Zerg-Aberration.dds"/>
+        </Wireframe>
+        <StatusColors index="Shields">
+            <ColorArray index="0" value="255,0,128,0"/>
+        </StatusColors>
+        <VitalColors index="Shields">
+            <ColorArray value="255,0,128,0"/>
+        </VitalColors>
+        <TerrainSquibs>
+            <GroupName value="RippleStandard"/>
+            <MovementDistance value="0.150000,0.150000"/>
+            <IdlePeriod value="0.100000,0.250000"/>
+            <RangeUp value="2.000000"/>
+            <RangeDown value="2.000000"/>
+            <AttachQuery Methods="AMFilterCenter"/>
+            <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleInfestor"/>
+        </TerrainSquibs>
+    </CActorUnit>
+    <CActorSplat id="Aberration@BurrowedSplat" parent="BurrowedSplat" unitName="Aberration"/>
+    <CActorSound id="Aberration@Land" parent="SoundOneShot"/>
+
+    <CModel id="Aberration" parent="Unit">
+        <Model value="Assets\Units\Zerg\Aberration\Aberration.m3"/>
+        <RequiredAnims value="Assets\Units\Zerg\Aberration_SwarmAnims\Aberration_SwarmAnims.m3a"/>
+        <Radius value="0.875000"/>
+        <ScaleMax value="1.100000,1.100000,1.100000"/>
+        <ScaleMin value="1.100000,1.100000,1.100000"/>
+        <SelectionRadius value="0.972100"/>
+        <ShadowRadius value="0.972100"/>
+        <Tipability value="0.750000"/>
+        <TipabilityWidth value="0.400000"/>
+        <TipabilityLength value="0.800000"/>
+        <TechPurchaseCamera value="Star2CameraHigh08"/>
+        <UnitGlossaryCamera value="Star2CameraHigh08"/>
+        <PlanetPanelCamera value="Star2CameraHigh08"/>
+        <EditorCategories value="Race:Zerg"/>
+    </CModel>
+    <CModel id="Aberration@Death" parent="UnitDeath">
+        <Model value="Assets\Units\Zerg\AberrationDeath\AberrationDeath.m3"/>
+        <LowQualityModel value="ZergLargeUnitDeathLow"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="AberrationExplosion"/>
+            <Type value="Sound"/>
+            <Time value="0.550000"/>
+            <Attachment value="Ref_Origin"/>
+            <Payload value="Aberration@Explode"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="AberrationExplosion"/>
+            <Type value="Sound"/>
+            <Time value="1.500000"/>
+            <Attachment value="Ref_Origin"/>
+            <Payload value="Aberration@Explode"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="AberrationExplosion"/>
+            <Type value="Sound"/>
+            <Time value="2.550000"/>
+            <Attachment value="Ref_Origin"/>
+            <Payload value="Aberration@Explode"/>
+        </Events>
+    </CModel>
+    <CModel id="Aberration@Placement" parent="Placement">
+        <Model value="Assets\Units\Zerg\Hologram_Skin_Aberration\Hologram_Skin_Aberration.m3"/>
+        <EditorCategories value="Race:Zerg"/>
+    </CModel>
+    <CModel id="Aberration@Portrait" parent="Portrait">
+        <Model value="Assets\Portraits\Zerg\AberrationPortrait\AberrationPortrait.m3"/>
+        <Image value="Assets\Textures\aberrationportrait_static.dds"/>
+        <FacialController value="LocalizedData\Facial\AberrationPortrait.fxa"/>
+        <Flags index="Facial" value="1"/>
+        <Lighting value="Aberration@Portrait"/>
+        <EditorCategories value="Race:Zerg"/>
+    </CModel>
+
+    <CSound id="Aberration@Attack" parent="Voice">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Aberration_Attack_00.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Aberration_Attack_01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Aberration_Attack_02.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Aberration_Attack_03.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Aberration_Attack_04.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Aberration_Attack_05.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Aberration_Attack_06.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Aberration_Attack_07.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Aberration_Attack_08.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="Aberration@Ready" parent="Ready">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Aberration_Ready_00.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Aberration_Ready_01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Aberration_Ready_02.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="Aberration@What" parent="Voice">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Aberration_What_00.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Aberration_What_01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Aberration_What_02.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Aberration_What_03.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Aberration_What_04.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Aberration_What_05.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="Aberration@Yes" parent="Voice">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Aberration_Yes_00.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Aberration_Yes_01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Aberration_Yes_02.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Aberration_Yes_03.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Aberration_Yes_04.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Aberration_Yes_05.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Aberration_Yes_06.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Aberration_Yes_07.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Aberration_Yes_08.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Aberration_Yes_09.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="Aberration@Death" parent="Death">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Aberration_Death_00.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Aberration_Death_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Aberration_Death_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Aberration_Death_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Aberration_Death_04.wav" FacialGroup=""/>
+        <Chance value="25"/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="Aberration@Explode" parent="Zerg_ExplosionMedium">
+        <EditorCategories value="Race:Zerg"/>
+    </CSound>
+
+    <CLight id="Aberration@Portrait" parent="default">
+        <ToDInfoArray index="0" AmbientColor="0.219608,0.137255,0.156863">
+            <Param index="HDRExposure" value="1.480000"/>
+            <Param index="HDRBloomThreshold" value="1.950000"/>
+            <Param index="HDREmisMultiplier" value="2.000000"/>
+            <Param index="CreepSpecularExp" value="40.000000"/>
+            <Param index="CreepHDRSpecMultiplier" value="5.900000"/>
+            <DirectionalLight index="Key">
+                <Color value="0.992157,0.964706,0.874510"/>
+                <ColorMultiplier value="0.920000"/>
+                <SpecColorMultiplier value="1.429000"/>
+                <Direction value="-0.054711,0.666890,0.743145"/>
+            </DirectionalLight>
+            <DirectionalLight index="Fill" Color="0.003922,0.329412,0.686275" ColorMultiplier="1.700000" Direction="-0.888682,-0.329086,0.319290"/>
+            <DirectionalLight index="Back" Color="0.219608,0.392157,0.984314" ColorMultiplier="2.140000" Direction="0.381720,-0.754369,-0.534057"/>
+        </ToDInfoArray>
+        <EditorCategories value="LightGroup:PortraitsUnitsZerg"/>
+    </CLight>
+
+    <CRequirement id="Aberration@Use"/>
+
+    <CRequirement id="Aberration_BanelingIncubation@Use">
+        <EditorCategories value="Race:Zerg,TechType:Ability"/>
+        <NodeArray index="Show" Link="Aberration_BanelingIncubation@Use@AllowUnit"/>
+    </CRequirement>
+    <CRequirementCountUpgrade id="Aberration_BanelingIncubation@Use@AllowUnit">
+        <Count Link="Aberration_BanelingIncubation" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+
+    <CValidatorUnitType id="Aberration@Is" parent="IsUnit_Default" unit="Aberration"/>
+    <CValidatorUnitType id="Aberration@Is_Burrowed" parent="IsUnit_Default" unit="Aberration@Burrowed"/>
+    <CValidatorUnitType id="Aberration@Target" parent="TargetIsUnit_Default" unit="Aberration"/>
+    <CValidatorUnitType id="Aberration@Not" parent="NotUnit_Default" unit="Aberration"/>
+    <CValidatorUnitType id="Aberration@NotTarget" parent="TargetNotUnit_Default" unit="Aberration"/>
+    <CValidatorCombine id="Aberration_BanelingIncubation@WildMutation">
+        <CombineArray value="Aberration@Is"/>
+        <CombineArray value="Aberration@Is_Burrowed"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareField id="Aberration_ArmorAura@TargetValidator">
+        <Field value="Collide[Land5]"/>
+        <Value value="0"/>
+    </CValidatorUnitCompareField>
+    <CValidatorPlayerRequirement id="Aberration_BanelingIncubation@Use">
+        <ResultNoPlayer value="Error"/>
+        <Find value="1"/>
+        <Value value="Aberration_BanelingIncubation@Use"/>
+    </CValidatorPlayerRequirement>
+
+    <CDataCollectionUnit id="Aberration" parent="UnitGround">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Coop,Race:Zerg,ObjectType:Unit"/>
+        <DataRecord Entry="Button,Aberration"/>
+        <DataRecord Entry="Unit,Aberration"/>
+        <DataRecord Entry="Unit,Aberration@Burrowed"/>
+        <DataRecord Entry="Actor,Aberration"/>
+        <DataRecord Entry="Actor,Aberration@BurrowedSplat"/>
+        <DataRecord Entry="Actor,Aberration@Land"/>
+        <DataRecord Entry="Model,Aberration"/>
+        <DataRecord Entry="Model,Aberration@Death"/>
+        <DataRecord Entry="Model,Aberration@Placement"/>
+        <DataRecord Entry="Model,Aberration@Portrait"/>
+        <DataRecord Entry="Sound,Aberration@Attack"/>
+        <DataRecord Entry="Sound,Aberration@Ready"/>
+        <DataRecord Entry="Sound,Aberration@What"/>
+        <DataRecord Entry="Sound,Aberration@Yes"/>
+        <DataRecord Entry="Sound,Aberration@Death"/>
+        <DataRecord Entry="Sound,Aberration@Explode"/>
+        <DataRecord Entry="Light,Aberration@Portrait"/>
+        <DataRecord Entry="Requirement,Aberration@Use"/>
+        <DataRecord Entry="Validator,Aberration@Is"/>
+        <DataRecord Entry="Validator,Aberration@Is_Burrowed"/>
+        <DataRecord Entry="Validator,Aberration@Target"/>
+        <DataRecord Entry="Validator,Aberration@Not"/>
+        <DataRecord Entry="Validator,Aberration@NotTarget"/>
+    </CDataCollectionUnit>
+
+    <!-- ========== Weapons ========== -->
+
+    <CButton id="Aberration_Weapon">
+        <EditorCategories value="Race:Zerg"/>
+        <Icon value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level0.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level0.dds"/>
+    </CButton>
+
+    <CWeaponLegacy id="Aberration_Weapon">
+        <EditorCategories value="Race:Zerg"/>
+        <Icon value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level0.dds"/>
+        <Effect value="Aberration_Weapon@Damage"/>
+        <DisplayEffect value="Aberration_Weapon@Damage"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AcquirePrioritization value="ByAngle"/>
+        <Range value="1.5"/>
+        <Period value="1.2"/>
+        <DamagePoint value="0.3332"/>
+        <Options index="Melee" value="1"/>
+    </CWeaponLegacy>
+
+    <CEffectDamage id="Aberration_Weapon@Damage" parent="DU_WEAP">
+        <EditorCategories value="Race:Zerg"/>
+        <Amount value="20"/>
+        <AttributeBonus index="Armored" value="20"/>
+        <Death value="Eviscerate"/>
+    </CEffectDamage>
+
+    <CActorAction id="Aberration_Weapon@Attack" parent="GenericAttack" effectAttack="Aberration_Weapon@Damage">
+        <ShieldFlashType value="Header"/>
+        <ImpactPhysics Name="Attack00" MatchKeys="Basic" AttackAnimProps="00" Physics="Aberration_Weapon@AttackForce00"/>
+        <ImpactPhysics Name="Attack01" MatchKeys="Basic" AttackAnimProps="01" Physics="Aberration_Weapon@AttackForce01"/>
+    </CActorAction>
+    <CActorForceSphere id="Aberration_Weapon@AttackForce00">
+        <Receiver Subject="::Main"/>
+        <Host Subject="::Main" Scope="Target"/>
+        <HostSiteOps Ops="SOpAttachCenter SOpForwardCasterCenter SOpMoveByDot15 SOpRandomPointInCrossbarDot25GaussInv"/>
+        <Magnitude value="20.000000,7.500000"/>
+        <Radius value="1.000000,0.500000"/>
+        <Duration value="0.150000"/>
+        <ForceFlags index="FallOff" value="0"/>
+    </CActorForceSphere>
+    <CActorForceCylinder id="Aberration_Weapon@AttackForce01">
+        <Receiver Subject="::Main"/>
+        <Host Subject="Aberration" Scope="Caster"/>
+        <HostEnd Subject="_ImpactGuide"/>
+        <HostEndSiteOps Ops="SOpForwardCasterPointInverted SOpMoveBy1 SOpMoveUpBy1" HoldPosition="1" HoldRotation="1"/>
+        <Magnitude value="50.000000,5.000000"/>
+        <Radius value="1.000000,0.150000"/>
+        <Duration value="0.150000"/>
+    </CActorForceCylinder>
+
+    <CSound id="Aberration_Weapon@AttackLaunch" parent="Zerg_AttackLaunchLargeSwing">
+        <EditorCategories value="Race:Zerg"/>
+    </CSound>
+    <CSound id="Aberration_Weapon@AttackImpact" parent="Zerg_AttackImpactLargeSlice">
+        <EditorCategories value="Race:Zerg"/>
+    </CSound>
+
+    <CDataCollectionUnit id="Aberration_Weapon" parent="Weapon_Instant">
+        <EditorCategories value="DataGroup:Weapon,DataFamily:Coop,Race:Zerg,ObjectType:Other"/>
+        <DataRecord Entry="Button,Aberration_Weapon"/>
+        <DataRecord Entry="Weapon,Aberration_Weapon"/>
+        <DataRecord Entry="Effect,Aberration_Weapon@Damage"/>
+        <DataRecord Entry="Actor,Aberration_Weapon@Attack"/>
+        <DataRecord Entry="Actor,Aberration_Weapon@AttackForce00"/>
+        <DataRecord Entry="Actor,Aberration_Weapon@AttackForce01"/>
+        <DataRecord Entry="Sound,Aberration_Weapon@AttackLaunch"/>
+        <DataRecord Entry="Sound,Aberration_Weapon@AttackImpact"/>
+    </CDataCollectionUnit>
+
+    <!-- ========== Abilities ========== -->
+
+    <CAbilMorph id="Aberration_Burrow">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:MorphsandBurrows"/>
+        <AbilSetId value="BrwD"/>
+        <ActorKey value="BurrowDown"/>
+        <InfoArray Unit="Aberration@Burrowed" RandomDelayMax="0.25">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="2"/>
+            </SectionArray>
+            <SectionArray index="Mover">
+                <DurationArray index="Delay" value="0.5556"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="0.5556"/>
+            </SectionArray>
+        </InfoArray>
+        <CmdButtonArray index="Execute" DefaultButtonFace="BurrowDown">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <Flags index="SuppressMovement" value="1"/>
+        <Flags index="IgnoreFacing" value="1"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+    </CAbilMorph>
+    <CAbilMorph id="Aberration_Unburrow">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:MorphsandBurrows"/>
+        <AbilSetId value="BrwU"/>
+        <ActorKey value="BurrowUp"/>
+        <InfoArray Unit="Aberration" RandomDelayMax="0.5">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="2"/>
+            </SectionArray>
+            <SectionArray index="Mover">
+                <DurationArray index="Delay" value="0.0556"/>
+            </SectionArray>
+        </InfoArray>
+        <CmdButtonArray index="Execute" DefaultButtonFace="BurrowUp">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <Flags index="SuppressMovement" value="1"/>
+        <Flags index="IgnoreFacing" value="1"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+    </CAbilMorph>
+
+    <CDataCollectionUnit id="Aberration_Burrow" parent="AbilityBase">
+        <EditorCategories value="DataGroup:Ability,DataFamily:Coop,Race:Zerg,ObjectType:Other"/>
+        <DataRecord Entry="Abil,Aberration_Burrow"/>
+        <DataRecord Entry="Abil,Aberration_Unburrow"/>
+    </CDataCollectionUnit>
+
+    <!-- ========== Behaviors ========== -->
+
+    <!-- Armor Aura -->
+    <CButton id="Aberration_ArmorAura">
+        <EditorCategories value="Race:Zerg"/>
+        <Icon value="Assets\Textures\btn-upgrade-zagara-aberrationarmorcover.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-zagara-aberrationarmorcover.dds"/>
+    </CButton>
+
+    <CBehaviorBuff id="Aberration_ArmorAura" parent="Generic_Aura">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Period value="0.25"/>
+        <DisableValidatorArray value="Aberration_ArmorAura@Use"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Aberration_ArmorAura@Target">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-upgrade-zagara-aberrationarmorcover.dds"/>
+        <Duration value="0.375"/>
+        <DamageResponse ModifyFraction="0.5">
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+
+    <CEffectEnumArea id="Aberration_ArmorAura@Aura">
+        <SearchFilters value="Ground,Visible;Self,Neutral,Enemy,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="2.5" Effect="Aberration_ArmorAura@AB"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="Aberration_ArmorAura@AB">
+        <EditorCategories value="Race:Zerg"/>
+        <Behavior value="Aberration_ArmorAura@Target"/>
+        <ValidatorArray value="Aberration_ArmorAura@TargetValidator"/>
+    </CEffectApplyBehavior>
+    
+    <CRequirement id="Aberration_ArmorAura@Use">
+        <EditorCategories value="Race:Zerg,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="Aberration_ArmorAura@Use@AllowUnit"/>
+    </CRequirement>
+    <CRequirementCountUpgrade id="Aberration_ArmorAura@Use@AllowUnit">
+        <Count Link="Aberration_ArmorAura" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CValidatorPlayerRequirement id="Aberration_ArmorAura@Use">
+        <Find value="1"/>
+        <Value value="Aberration_ArmorAura@Use"/>
+    </CValidatorPlayerRequirement>
+    
+    <CDataCollectionUnit id="Aberration_ArmorAura" parent="AbilityBase">
+        <EditorCategories value="DataGroup:Ability,DataFamily:Coop,Race:Zerg,ObjectType:Other"/>
+        <DataRecord Entry="Button,Aberration_ArmorAura"/>
+        <DataRecord Entry="Behavior,Aberration_ArmorAura"/>
+        <DataRecord Entry="Effect,Aberration_ArmorAura@Aura"/>
+        <DataRecord Entry="Effect,Aberration_ArmorAura@AB"/>
+        <DataRecord Entry="Behavior,Aberration_ArmorAura@Target"/>
+        <DataRecord Entry="Requirement,Aberration_ArmorAura@Use"/>
+        <DataRecord Entry="RequirementNode,Aberration_ArmorAura@Use@AllowUnit"/>
+        <DataRecord Entry="Validator,Aberration_ArmorAura@Use"/>
+        <DataRecord Entry="Validator,Aberration_ArmorAura@TargetValidator"/>
+    </CDataCollectionUnit>
+
+    <!-- Baneling Incubation -->
+    <CButton id="Aberration_BanelingIncubation">
+        <EditorCategories value="Race:Zerg"/>
+        <Icon value="Assets\Textures\btn-upgrade-zerg-rupture.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-zerg-rupture.dds"/>
+    </CButton>
+
+    <CBehaviorBuff id="Aberration_BanelingIncubation">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification>
+            <DeathResponse Chance="1" Effect="Aberration_BanelingIncubation@Set"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Aberration_BanelingIncubation@BirthHeight">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Duration value="0.625"/>
+        <Modification Height="1.5">
+            <StateFlags index="Invulnerable" value="1"/>
+            <StateFlags index="Stun" value="1"/>
+            <HeightTime index="Start" value="0.25"/>
+            <HeightTime index="Stop" value="0.25"/>
+        </Modification>
+    </CBehaviorBuff>
+
+    <CEffectSet id="Aberration_BanelingIncubation@Set">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="Aberration_BanelingIncubation@CU"/>
+        <ValidatorArray value="Aberration_BanelingIncubation@WildMutation"/>
+        <ValidatorArray value="Aberration_BanelingIncubation@Use"/>
+    </CEffectSet>
+    <CEffectCreateUnit id="Aberration_BanelingIncubation@CU">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="SourcePoint"/>
+        <SpawnUnit value="Baneling"/>
+        <SpawnCount value="2"/>
+        <SpawnRange value="1"/>
+        <SpawnEffect value="Aberration_BanelingIncubation@Birth"/>
+    </CEffectCreateUnit>
+    <CEffectSet id="Aberration_BanelingIncubation@Birth">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="Aberration_BanelingIncubation@BirthAB"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="Aberration_BanelingIncubation@BirthAB">
+        <EditorCategories value="Race:Zerg"/>
+        <Behavior value="Aberration_BanelingIncubation@BirthHeight"/>
+    </CEffectApplyBehavior>
+
+    <CDataCollectionUnit id="Aberration_BanelingIncubation" parent="AbilityBase">
+        <EditorCategories value="DataGroup:Ability,DataFamily:Coop,Race:Zerg,ObjectType:Other"/>
+        <DataRecord Entry="Button,Aberration_BanelingIncubation"/>
+        <DataRecord Entry="Behavior,Aberration_BanelingIncubation"/>
+        <DataRecord Entry="Effect,Aberration_BanelingIncubation@Set"/>
+        <DataRecord Entry="Effect,Aberration_BanelingIncubation@CU"/>
+        <DataRecord Entry="Effect,Aberration_BanelingIncubation@Birth"/>
+        <DataRecord Entry="Effect,Aberration_BanelingIncubation@BirthAB"/>
+        <DataRecord Entry="Behavior,Aberration_BanelingIncubation@BirthHeight"/>
+        <DataRecord Entry="Requirement,Aberration_BanelingIncubation@Use"/>
+        <DataRecord Entry="RequirementNode,Aberration_BanelingIncubation@Use@AllowUnit"/>
+        <DataRecord Entry="Validator,Aberration_BanelingIncubation@Use"/>
+        <DataRecord Entry="Validator,Aberration_BanelingIncubation@WildMutation"/>
+    </CDataCollectionUnit>
+
+    <!-- ========== Upgrades ========== -->
+
+    <CUpgrade id="Aberration_ArmorAura">
+        <Flags index="UpgradeCheat" value="0"/>
+        <Icon value="Assets\Textures\btn-upgrade-zagara-aberrationarmorcover.dds"/>
+        <EditorCategories value="Race:Zerg,UpgradeType:SpellResearch"/>
+        <AffectedUnitArray value="Aberration"/>
+        <AffectedUnitArray value="Aberration@Burrowed"/>
+    </CUpgrade>
+    <CUpgrade id="Aberration_BanelingIncubation">
+        <Flags index="UpgradeCheat" value="0"/>
+        <EditorCategories value="Race:Zerg,UpgradeType:Talents"/>
+        <LeaderAlias value=""/>
+    </CUpgrade>
+</Catalog>
