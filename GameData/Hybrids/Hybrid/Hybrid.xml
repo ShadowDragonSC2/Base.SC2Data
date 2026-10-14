@@ -8,20 +8,15 @@
         <LifeMax value="1600"/>
         <LifeRegenRate value="0.25"/>
         <LifeArmor value="1"/>
-        <Speed value="2.8125"/>
+        <Speed value="2.3125"/>
         <Acceleration value="6.25"/>
         <LateralAcceleration value="46"/>
         <KillXP value="80"/>
-        <AbilArray Link="ConsumeDNA"/>
-        <AbilArray Link="HybridFAoEStun"/>
-        <CardLayouts>
-            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
-            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
-            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
-            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
-            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
-            <LayoutButtons Face="ConsumeDNA" Type="AbilCmd" AbilCmd="ConsumeDNA,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="HybridFAoEStun" Type="AbilCmd" AbilCmd="HybridFAoEStun,Execute" Row="2" Column="1"/>
+        <AbilArray Link="Hybrid_ConsumeDNA"/>
+        <AbilArray Link="Hybrid_ConstrictingSlime"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Hybrid_ConsumeDNA" Type="AbilCmd" AbilCmd="Hybrid_ConsumeDNA,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="Hybrid_ConstrictingSlime" Type="AbilCmd" AbilCmd="Hybrid_ConstrictingSlime,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="Detector" Type="Passive" Row="2" Column="3"/>
         </CardLayouts>
         <Radius value="0.9375"/>
@@ -39,12 +34,13 @@
 
     <CActorUnit id="Hybrid" parent="AdvancedStandard_Ground" unitName="Hybrid">
         <Aliases value="_UnitHuge"/>
-        <On Terms="Abil.ConsumeDNA.SourceCastStart" Send="$Spell,00"/>
-        <On Terms="Abil.HybridFAoEStun.SourceCastStart" Send="AnimPlay Spell Stand,Work"/>
+        <On Terms="Abil.Hybrid_ConsumeDNA.SourceCastStart" Send="$Spell,00"/>
+        <On Terms="Abil.Hybrid_ConstrictingSlime.SourceCastStart" Send="AnimPlay Spell Stand,Work"/>
         <UnitKillRank Text="UnitKillRank/Hybrid"/>
         <AnimBlendTime value="0.200000"/>
         <BarWidth value="66"/>
         <BarOffset value="120"/>
+        <WalkAnimMoveSpeed value="2.8"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level0.dds"/>
         <UnitIcon value="Assets\Textures\BTN-Unit-xelnaga-viper.dds"/>
         <GroupIcon>
@@ -146,11 +142,11 @@
         <AssetArray File="Assets\Sounds\Zerg\Ultralisk\Ultralisk_AttackImpact1.wav"/>
         <AssetArray File="Assets\Sounds\Zerg\Ultralisk\Ultralisk_AttackImpact2.wav"/>
         <AssetArray File="Assets\Sounds\Zerg\Ultralisk\Ultralisk_AttackImpact3.wav"/>
-        <EditorCategories value="Race:Zerg"/>
+        <EditorCategories value="Race:Hybrid"/>
         <Flags index="Temporary" value="1"/>
     </CSound>
     <CSound id="Hybrid@AttackLaunch" parent="Combat">
-        <EditorCategories value="Race:Zerg"/>
+        <EditorCategories value="Race:Hybrid"/>
         <AssetArray File="Assets\Sounds\Zerg\SharedEffects\Attacks\Zerg_AttackLaunchSmallSwing0.wav"/>
         <AssetArray File="Assets\Sounds\Zerg\SharedEffects\Attacks\Zerg_AttackLaunchSmallSwing1.wav"/>
         <AssetArray File="Assets\Sounds\Zerg\SharedEffects\Attacks\Zerg_AttackLaunchSmallSwing2.wav"/>
@@ -188,4 +184,234 @@
     </CEffectDamage>
 
     <CActorAction id="Hybrid_Weapon@Attack" parent="GenericAttack" effectAttack="Hybrid_Weapon@Damage"/>
+
+    <!-- ========= Abilities ========== -->
+    
+    <!-- Constricting Slime -->
+    <CButton id="Hybrid_ConstrictingSlime">
+        <Icon value="Assets\Textures\btn-ability-zerg-sporecloud.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-zerg-sporecloud.dds"/>
+        <EditorCategories value="Race:Hybrid"/>
+    </CButton>
+    
+    <CAbilEffectInstant id="Hybrid_ConstrictingSlime">
+        <Flags index="Transient" value="1"/>
+        <EditorCategories value="Race:Hybrid,AbilityorEffectType:Units"/>
+        <Effect index="0" value="Hybrid_ConstrictingSlime@Search"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Hybrid_ConstrictingSlime"/>
+        <Cost>
+            <Cooldown TimeUse="15"/>
+        </Cost>
+    </CAbilEffectInstant>
+    
+    <CEffectEnumArea id="Hybrid_ConstrictingSlime@Search">
+        <EditorCategories value="Race:Hybrid"/>
+        <SearchFilters value="Visible;Self,Player,Ally,Neutral,Missile,Buried,Dead,Invulnerable"/>
+        <AreaArray Radius="6" Effect="Hybrid_ConstrictingSlime@AB"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="Hybrid_ConstrictingSlime@AB">
+        <EditorCategories value="Race:Hybrid"/>
+        <Behavior value="Hybrid_ConstrictingSlime"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="Hybrid_ConstrictingSlime@Damage" parent="DU_WEAP">
+        <EditorCategories value="Race:Hybrid"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <AttributeBonus index="Armored" value="1"/>
+        <Amount value="1"/>
+    </CEffectDamage>
+    
+    <CBehaviorBuff id="Hybrid_ConstrictingSlime">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-zerg-corruption.dds"/>
+        <EditorCategories value="Race:Hybrid,AbilityorEffectType:Units"/>
+        <Duration value="5"/>
+        <Modification MoveSpeedMultiplier="0.5"/>
+        <TimeScaleSource Value="Global"/>
+        <RemoveValidatorArray value="NotFrenzied"/>
+    </CBehaviorBuff>
+    
+    <CActorModel id="Hybrid_ConstrictingSlime@ImpactModel" parent="ModelAdditionStatic">
+        <On Terms="Behavior.Hybrid_ConstrictingSlime.On" Send="Create"/>
+        <On Terms="Behavior.Hybrid_ConstrictingSlime.Off" Send="$Death"/>
+        <On Terms="AnimDone; AnimName Death" Send="Destroy"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <AutoScaleFactor value="2.000000"/>
+        <Inherits index="BaseModelScale" value="0"/>
+        <Inherits index="Scale" value="0"/>
+    </CActorModel>
+    <CActorSound id="Hybrid_ConstrictingSlime@LaunchSound" parent="SoundOneShot">
+        <On Terms="Effect.Hybrid_ConstrictingSlime@Search.Start" Send="Create"/>
+    </CActorSound>
+    <CActorModel id="Hybrid_ConstrictingSlime@Model" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.Hybrid_ConstrictingSlime@Search.Start" Send="Create"/>
+    </CActorModel>
+    <CActorSound id="Hybrid_ConstrictingSlime@ImpactSound" parent="SoundOneShot">
+        <On Terms="Behavior.Hybrid_ConstrictingSlime.On" Send="Create"/>
+    </CActorSound>
+    
+    <CModel id="Hybrid_ConstrictingSlime@Model">
+        <Model value="Assets\Effects\Zerg\ConstrictingSlimeLaunch\ConstrictingSlimeLaunch.m3"/>
+        <EditorCategories value="Race:Hybrid"/>
+        <ScaleMin value="2.800000,2.800000,0.800000"/>
+        <ScaleMax value="2.800000,2.800000,0.800000"/>
+        <SelectionRadius value="0.178400"/>
+        <ShadowRadius value="0.178400"/>
+    </CModel>
+    <CModel id="Hybrid_ConstrictingSlime@ImpactModel" parent="Unit" Race="Zerg">
+        <Model value="Assets\Effects\Zerg\FungalGrowth\FungalGrowth.m3"/>
+        <Radius value="0.800000"/>
+        <SelectionOffset value="0.000000,0.000000,-0.750000"/>
+        <SelectionRadius value="1.000000"/>
+        <ScaleMax value="0.800000,0.800000,0.800000"/>
+        <ScaleMin value="0.800000,0.800000,0.800000"/>
+        <ShadowRadius value="1.000000"/>
+    </CModel>
+    
+    <CSound id="Hybrid_ConstrictingSlime@ImpactSound" parent="Spell">
+        <AssetArray File="Assets\Sounds\Zerg\Corruptor\Corruptor_AttackImpact0.wav"/>
+        <AssetArray File="Assets\Sounds\Zerg\Corruptor\Corruptor_AttackImpact1.wav"/>
+        <AssetArray File="Assets\Sounds\Zerg\Corruptor\Corruptor_AttackImpact2.wav"/>
+        <AssetArray File="Assets\Sounds\Zerg\Corruptor\Corruptor_AttackImpact3.wav"/>
+        <EditorCategories value="Race:Hybrid"/>
+        <Category value="Combat"/>
+        <DupeDestroyCount value="6"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-4.000000,-3.000000"/>
+    </CSound>
+    <CSound id="Hybrid_ConstrictingSlime@LaunchSound" parent="Spell">
+        <EditorCategories value="Race:Hybrid"/>
+        <AssetArray File="Assets\Sounds\Zerg\HybridF\HybridF_ConstrictingSlimeLaunch0.wav"/>
+        <AssetArray File="Assets\Sounds\Zerg\HybridF\HybridF_ConstrictingSlimeLaunch1.wav"/>
+        <AssetArray File="Assets\Sounds\Zerg\HybridF\HybridF_ConstrictingSlimeLaunch2.wav"/>
+        <DupeMuteCount value="4"/>
+        <Pitch value="-0.500000,0.500000"/>
+        <Volume value="-4.000000,-3.000000"/>
+    </CSound>
+
+    <!-- Consume DNA -->
+    
+    <CButton id="Hybrid_ConsumeDNA">
+        <Icon value="Assets\Textures\btn-ability-zerg-plague.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-zerg-plague.dds"/>
+        <EditorCategories value="Race:Hybrid"/>
+    </CButton>
+    
+    <CAbilEffectTarget id="Hybrid_ConsumeDNA">
+        <EditorCategories value="Race:Hybrid,AbilityorEffectType:Units"/>
+        <Effect index="0" value="Hybrid_ConsumeDNA@Set"/>
+        <TargetFilters value="-;Self,Structure,Missile,Uncommandable,Stasis,Dead,Hidden,Hallucination,Invulnerable"/>
+        <Range value="5"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Hybrid_ConsumeDNA"/>
+        <Cost>
+            <Cooldown TimeUse="1"/>
+        </Cost>
+        <UninterruptibleArray index="Approach" value="1"/>
+        <UninterruptibleArray index="Prep" value="1"/>
+        <UninterruptibleArray index="Cast" value="1"/>
+        <UninterruptibleArray index="Channel" value="1"/>
+        <UninterruptibleArray index="Finish" value="1"/>
+    </CAbilEffectTarget>
+    
+    <CEffectSet id="Hybrid_ConsumeDNA@Set">
+        <ValidatorArray value="NotDead"/>
+        <EditorCategories value="Race:Hybrid"/>
+        <EffectArray value="Hybrid_ConsumeDNA@CP"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="Hybrid_ConsumeDNA@CP">
+        <EditorCategories value="Race:Hybrid"/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <Flags index="Channeled" value="1"/>
+        <PeriodCount value="10"/>
+        <PeriodicEffectArray value="Hybrid_ConsumeDNA@Set_Feedback"/>
+        <PeriodicPeriodArray value="0.1"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="Hybrid_ConsumeDNA@Set_Feedback">
+        <ValidatorArray value="NotDead"/>
+        <EditorCategories value="Race:Hybrid"/>
+        <EffectArray value="Hybrid_ConsumeDNA@LM"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="Hybrid_ConsumeDNA@LM">
+        <EditorCategories value="Race:Hybrid"/>
+        <AmmoUnit value="Hybrid_ConsumeDNA@AttackMissile"/>
+        <LaunchLocation Value="TargetUnitOrPoint"/>
+        <ImpactLocation Value="CasterUnit"/>
+        <LaunchEffect value="Hybrid_ConsumeDNA@Damage"/>
+        <ImpactEffect value="Hybrid_ConsumeDNA@Impact"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="Hybrid_ConsumeDNA@Damage">
+        <EditorCategories value="Race:Hybrid"/>
+        <Amount value="20"/>
+        <Kind value="Ranged"/>
+    </CEffectDamage>
+    <CEffectModifyUnit id="Hybrid_ConsumeDNA@Impact">
+        <EditorCategories value="Race:Hybrid"/>
+        <TransferUnit Value="Target"/>
+        <VitalArray index="Life" Change="10"/>
+        <ImpactUnit Value="Caster"/>
+    </CEffectModifyUnit>
+    
+    <CActorAction id="Hybrid_ConsumeDNA@Attack" parent="GenericAttackBase">
+        <On Terms="Effect.Hybrid_ConsumeDNA@Impact.Start; FromEffectTreeDescendant" Send="ActionImpact"/>
+        <On Terms="Effect.Hybrid_ConsumeDNA@Impact.Stop; FromEffectTreeDescendant" Send="ActionImpactPhysics"/>
+        <On Terms="Effect.Hybrid_ConsumeDNA@LM.Start; At Caster" Send="Create"/>
+        <ImpactSiteOps Ops="SOpAttachHarness"/>
+        <!-- <LaunchAttachQuery Methods="Center"/> -->
+        <ImpactAttachQuery Methods="Center"/>
+        <ShieldFlashType value="Full"/>
+        <ForceCommencementFrom value="Hybrid_ConsumeDNA@LM"/>
+    </CActorAction>
+    <CActorMissile id="Hybrid_ConsumeDNA@AttackMissile" parent="GenericAttackMissile" unitName="Hybrid_ConsumeDNA@AttackMissile"/>
+    <!-- <CActorSound id="Hybrid_ConsumeDNA@Launch" parent="SoundOneShot">
+        <On Terms="Abil.Hybrid_ConsumeDNA@.SourceCastStart" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="Hybrid_ConsumeDNA@Impact" parent="SoundOneShot">
+        <On Terms="Effect.Hybrid_ConsumeDNA@CP.Start" Send="Create"/>
+    </CActorSound> -->
+    
+    <CModel id="Hybrid_ConsumeDNA@AttackMissile">
+        <Model value="Assets\Effects\Zerg\HybridConsumeMissile\HybridConsumeMissile.m3"/>
+        <ScaleMax value="1.000000,1.000000,1.000000"/>
+        <ScaleMin value="1.000000,1.000000,1.000000"/>
+    </CModel>
+    
+    <CSound id="Hybrid_ConsumeDNA@AttackImpact" parent="Spell">
+        <EditorCategories value="Race:Hybrid"/>
+        <AssetArray File="Assets\Sounds\Terran\Tosh\Tosh_ConsumptionImpact0.wav"/>
+    </CSound>
+    <CSound id="Hybrid_ConsumeDNA@AttackLaunch" parent="Spell">
+        <EditorCategories value="Race:Hybrid"/>
+        <AssetArray File="Assets\Sounds\Terran\Tosh\Tosh_ConsumptionLaunch0.wav"/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
+    
+    <CUnit id="Hybrid_ConsumeDNA@AttackMissile" parent="MISSILE">
+        <Race value="Zerg"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CMoverMissile id="Hybrid_ConsumeDNA@AttackMissile">
+        <MotionPhases>
+            <Driver value="Throw"/>
+            <Acceleration value="3200"/>
+            <MaxSpeed value="7"/>
+            <ArrivalTestType value="2D"/>
+            <BlendType value="Linear"/>
+            <Outro value="4,4.5"/>
+            <ThrowVector value="0,-1,0"/>
+            <ThrowBandYaw value="180,-180,14.9963,-14.9963"/>
+            <ThrowBandPitch value="90,4.9987"/>
+        </MotionPhases>
+        <MotionPhases>
+            <Driver value="Guidance"/>
+            <Acceleration value="3200"/>
+            <MaxSpeed value="10"/>
+            <TurnType value="Optimal"/>
+            <ArrivalTestType value="2D"/>
+            <BlendType value="Linear"/>
+            <RotationActorType value="LookAtTarget"/>
+            <YawPitchRoll value="MAX"/>
+        </MotionPhases>
+    </CMoverMissile>
+
+
 </Catalog>
