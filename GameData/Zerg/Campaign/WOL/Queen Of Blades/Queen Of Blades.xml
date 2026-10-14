@@ -23,17 +23,17 @@
         <WeaponArray Link="QueenOfBlades_RazorTalons"/>
         <AbilArray Link="QueenOfBlades_Implosion"/>
         <AbilArray Link="QueenOfBlades_RazorSwarm"/>
-        <AbilArray Link="Val03QueenOfBladesDeepTunnel"/>
-        <AbilArray Link="Val03QueenOfBladesBurrow"/>
-        <BehaviorArray Link="OnCreep"/>
+        <AbilArray Link="QueenOfBlades_DeepTunnel"/>
+        <AbilArray Link="QueenOfBlades_Burrow"/>
+        <!-- <BehaviorArray Link="OnCreep"/>
         <BehaviorArray Link="ForceShieldSpell"/>
-        <BehaviorArray Link="ForceShield"/>
+        <BehaviorArray Link="ForceShield"/> -->
         <BehaviorArray Link="Detector10"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="QueenOfBlades_Implosion" Type="AbilCmd" AbilCmd="QueenOfBlades_Implosion,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="QueenOfBlades_RazorSwarm" Type="AbilCmd" AbilCmd="QueenOfBlades_RazorSwarm,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="Val03QueenOfBladesBurrow,Execute" Row="2" Column="4"/>
-            <LayoutButtons Face="DeepTunnel" Type="AbilCmd" AbilCmd="DeepTunnel,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="QueenOfBlades_Implosion" Type="AbilCmd" AbilCmd="QueenOfBlades_Implosion,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="QueenOfBlades_DeepTunnel" Type="AbilCmd" AbilCmd="QueenOfBlades_DeepTunnel,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="QueenOfBlades_Burrow" Type="AbilCmd" AbilCmd="QueenOfBlades_Burrow,Execute" Row="2" Column="3"/>
             <LayoutButtons Face="Detector" Type="Passive" Row="2" Column="3"/>
         </CardLayouts>
         <Radius value="0.75"/>
@@ -53,18 +53,26 @@
         </Fidget>
         <PushPriority value="11"/>
     </CUnit>
+    <CUnit id="QueenOfBlades@Burrowed" parent="QueenOfBlades">
+        <Speed value="0"/>
+        <WeaponArray index="0" removed="1"/>
+        <AbilArray Link="QueenOfBlades_Unburrow"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="8" Face="QueenOfBlades_Unburrow" AbilCmd="QueenOfBlades_Unburrow,Execute"/>
+        </CardLayouts>
+    </CUnit>
 
     <CActorUnit id="QueenOfBlades" parent="AdvancedUnitStandard_Ground_NoAttackAnim" unitName="QueenOfBlades">
         <Aliases value="_UnitLarge"/>
         <AnimBlendTime value="0.250000"/>
         <DeathArray index="Normal" ModelLink="QueenOfBlades"/>
+        <On Terms="UnitBirth.QueenOfBlades@Burrowed" Send="Create"/>
+        <On Terms="UnitBirth.QueenOfBlades@Burrowed" Send="AnimBracketStart Burrow Burrow IGNORE Unburrow ClosingFull,OpeningPlayForever,Instant"/>
         <On Terms="Abil.QueenOfBlades_RazorSwarm.SourceCastStart" Send="$Spell"/>
         <On Terms="Abil.QueenOfBlades_Implosion.SourceCastStart" Send="$Spell"/>
-        <!-- <On Terms="UnitBirth.KerriganCharBurrowed" Send="Create"/>
-        <On Terms="UnitBirth.KerriganCharBurrowed" Send="AnimBracketStart Burrow Burrow IGNORE Unburrow ClosingFull,OpeningPlayForever,Instant"/>
+        <On Terms="Abil.QueenOfBlades_DeepTunnel.SourceCastStart" Send="AnimBracketStart Burrow Burrow IGNORE Unburrow ClosingFull,OpeningPlayForever"/>
+        <On Terms="Abil.QueenOfBlades_DeepTunnel.SourceCastStop; ValidateUnit IsNotBuried" Send="AnimBracketStop Burrow"/>
         
-        <On Terms="Abil.Val03QueenOfBladesDeepTunnel.SourceCastStart" Send="AnimBracketStart Burrow Burrow IGNORE Unburrow ClosingFull,OpeningPlayForever"/>
-        <On Terms="Abil.Val03QueenOfBladesDeepTunnel.SourceCastStop; ValidateUnit IsNotBuried" Send="AnimBracketStop Burrow"/> -->
         <WalkAnimMoveSpeed value="1.1992"/>
         <Macros value="ZergBurrowStandardAnimMacro"/>
         <Macros value="ZergLargeBurrowEffects"/>
@@ -83,6 +91,14 @@
             <Image value="Assets\Textures\Wireframe-zerg-kerrigan.dds"/>
         </Wireframe>
     </CActorUnit>
+    <CActorSplat id="QueenOfBlades@BurrowedSplat" parent="BurrowedSplatBase">
+        <On Terms="UnitBirth.QueenOfBlades@Burrowed" Send="Create"/>
+        <On Terms="AbilMorph.*.Start; MorphTo QueenOfBlades@Burrowed" Send="Create"/>
+        <On Terms="AbilMorph.*.Finish; MorphFrom QueenOfBlades@Burrowed" Send="RefClear ::Host"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom QueenOfBlades@Burrowed" Send="TimerSet 4.000000,2.000000 DelayDestroy"/>
+        <On Terms="TimerExpired; TimerName DelayDestroy" Send="Destroy"/>
+        <HostSiteOps Ops="SOpShadow"/>
+    </CActorSplat>
     <CActorEventMacro id="QueenOfBlades@Walk_Animation">
         <On Terms="Behavior.QueenOfBlades@Walk.On" Send="AnimGroupApply Victory"/>
         <On Terms="Behavior.QueenOfBlades@Walk.Off" Send="AnimGroupRemove Victory"/>
@@ -581,5 +597,103 @@
     <CSound id="QueenOfBlades_Implosion@Sound" parent="Spell">
         <AssetArray File="Assets\Sounds\Protoss\Phoenix\Phoenix_Overload0.wav" Pitch="14.000000,14.000000"/>
     </CSound>
+
+    <!-- Deep Tunnel -->
+    <CButton id="QueenOfBlades_DeepTunnel">
+        <Icon value="Assets\Textures\BTN-Ability-Zerg-Burrow.dds"/>
+        <AlertIcon value="Assets\Textures\BTN-Ability-Zerg-Burrow.dds"/>
+        <TintRacially value="1"/>
+    </CButton>
+    
+    <CAbilEffectTarget id="QueenOfBlades_DeepTunnel">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Effect index="0" value="QueenOfBlades_DeepTunnel@CP"/>
+        <Range value="500"/>
+        <CastIntroTime value="1"/>
+        <CastOutroTime value="1"/>
+        <UninterruptibleArray index="Cast" value="1"/>
+        <UninterruptibleArray index="Channel" value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="QueenOfBlades_DeepTunnel"/>
+    </CAbilEffectTarget>
+    
+    <CEffectCreatePersistent id="QueenOfBlades_DeepTunnel@CP">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <InitialEffect value="QueenOfBlades_DeepTunnel@Teleport"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="QueenOfBlades_DeepTunnel@Unburrow"/>
+        <PeriodicPeriodArray value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectTeleport id="QueenOfBlades_DeepTunnel@Teleport">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichUnit Value="Caster"/>
+        <ClearQueuedOrders value="0"/>
+        <TargetLocation Value="TargetUnitOrPoint"/>
+    </CEffectTeleport>
+    <CEffectIssueOrder id="QueenOfBlades_DeepTunnel@Unburrow">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichUnit Value="Caster"/>
+        <Abil value="QueenOfBlades_Unburrow"/>
+        <CmdFlags index="Queued" value="1"/>
+    </CEffectIssueOrder>
+    
+    <CActorSplat id="QueenOfBlades_DeepTunnel@Splat" parent="BurrowedSplatBase">
+        <On Terms="Abil.QueenOfBlades_DeepTunnel.Start" Send="Create"/>
+        <On Terms="Effect.QueenOfBlades_DeepTunnel@Teleport.Stop" Send="Create"/>
+        <On Terms="Effect.QueenOfBlades_DeepTunnel@Teleport.Stop" Send="HostSiteOpsSet _Unit SOpTargetPoint"/>
+        <On Terms="Abil.QueenOfBlades_DeepTunnel.Start" Send="TimerSet 4.000000,2.000000 DelayDestroy"/>
+        <On Terms="Effect.QueenOfBlades_DeepTunnel@Teleport.Stop; At Effect" Send="TimerSet 4.000000,2.000000 DelayDestroy"/>
+        <On Terms="TimerExpired; TimerName DelayDestroy" Send="Destroy"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpCasterPoint"/>
+    </CActorSplat>
+
+    <!-- -->
+    <CButton id="QueenOfBlades_Burrow" parent="BurrowDown"></CButton>
+    <CButton id="QueenOfBlades_Unburrow" parent="BurrowUp"></CButton>
+    
+    <CAbilMorph id="QueenOfBlades_Burrow">
+        <AbilSetId value="BrwD"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:MorphsandBurrows"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="QueenOfBlades_Burrow">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <ActorKey value="BurrowDown"/>
+        <Flags index="IgnoreFacing" value="1"/>
+        <Flags index="SuppressMovement" value="1"/>
+        <InfoArray Unit="QueenOfBlades@Burrowed" RandomDelayMax="0.37">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="1.333"/>
+            </SectionArray>
+            <SectionArray index="Mover">
+                <DurationArray index="Delay" value="0.5556"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="1"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="QueenOfBlades_Unburrow">
+        <AbilSetId value="BrwU"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:MorphsandBurrows"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="BurrowUp">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <ActorKey value="BurrowUp"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="IgnoreFacing" value="1"/>
+        <Flags index="SuppressMovement" value="1"/>
+        <InfoArray Unit="QueenOfBlades" RandomDelayMax="0.5">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="1.333"/>
+            </SectionArray>
+            <SectionArray index="Mover">
+                <DurationArray index="Delay" value="0.0556"/>
+            </SectionArray>
+        </InfoArray>
+        <AutoCastFilters value="Ground,Visible;Player,Ally,Neutral,Air,Missile,Stasis,Dead,Hidden"/>
+        <AutoCastRange value="2"/>
+        <AutoCastCountMin value="1"/>
+    </CAbilMorph>
 
 </Catalog>
