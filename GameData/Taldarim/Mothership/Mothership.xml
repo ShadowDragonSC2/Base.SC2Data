@@ -493,7 +493,7 @@
         <HostSiteOps Ops="SOpAttachCenter"/>
     </CActorSound>
     <CActorSound id="TaldarimMothership_Blink@LaunchSound" parent="SoundOneShot">
-        <On Terms="Effect.TaldarimMothership_Blink@Teleport.Start: At Source" Send="Create"/>
+        <On Terms="Effect.TaldarimMothership_Blink@Teleport.Start; At Source" Send="Create"/>
         <Host Subject="_Unit"/>
         <HostSiteOps Ops="SOpAttachOriginStationary"/>
     </CActorSound>
