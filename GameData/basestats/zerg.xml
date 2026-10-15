@@ -12,6 +12,13 @@
     </CUnit>
     <CUnit default="1" id="Generic_Zerg_Unit_Ground" parent="Generic_Zerg_Unit">
         <SpeedBonusCreep value="1.3"/>
+        <Collide index="Small" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <Collide index="Locust" value="1"/>
+        <DeathRevealRadius value="3"/>
+        <Name value="Unit/Name/##id##"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <CUnit default="1" id="Generic_Zerg_Unit_Structure" parent="Generic_Structure">
         <LifeRegenRate value="0.2734"/>

@@ -12,6 +12,11 @@
 
     <!-- ========== Unit ========== -->
 
+    <CButton id="Aberration_Towering">
+        <Icon value="Assets\Textures\BTN-Ability-Zerg-Towering.dds"/>
+        <AlertIcon value="Assets\Textures\BTN-Ability-Zerg-Towering.dds"/>
+        <EditorCategories value="Race:ZZerg"/>
+    </CButton>
     <CButton id="Aberration" parent="UnitButton_OnlyGround">
         <EditorCategories value="Race:ZZerg"/>
         <Icon value="Assets\Textures\btn-unit-zerg-aberration.dds"/>
@@ -57,6 +62,7 @@
         <BehaviorArray Link="Aberration_ArmorAura"/>
         <BehaviorArray Link="Aberration_BanelingIncubation"/>
         <CardLayouts index="0">
+            <LayoutButtons Face="Aberration_Towering" Type="Passive" Row="2" Column="0"/>
             <LayoutButtons Face="Aberration_ArmorAura" Type="Passive" Requirements="Aberration_ArmorAura@Use" Row="2" Column="1"/>
             <LayoutButtons Face="Aberration_BanelingIncubation" Type="Passive" Requirements="Aberration_BanelingIncubation@Use" Row="2" Column="2"/>
             <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="Aberration_Burrow,Execute" Row="2" Column="4"/>
@@ -79,7 +85,7 @@
         <WeaponArray index="0" removed="1"/>
         <AbilArray index="3" Link="Aberration_Unburrow"/>
         <CardLayouts index="0">
-            <LayoutButtons index="7" Face="BurrowUp" Type="AbilCmd" AbilCmd="Aberration_Unburrow,Execute"/>
+            <LayoutButtons index="8" Face="BurrowUp" Type="AbilCmd" AbilCmd="Aberration_Unburrow,Execute"/>
         </CardLayouts>
         <LeaderAlias value="Aberration"/>
         <HotkeyAlias value="Aberration"/>
@@ -556,6 +562,18 @@
         <EditorCategories value="Race:ZZerg"/>
         <Behavior value="Aberration_BanelingIncubation@BirthHeight"/>
     </CEffectApplyBehavior>
+
+    <CActorSimple id="Aberration_BanelingIncubation@Animation">
+        <On Terms="Behavior.Aberration_BanelingIncubation@BirthHeight.On" Send="Create"/>
+        <On Terms="Behavior.Aberration_BanelingIncubation@BirthHeight.Off" Send="Destroy"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="SetScale 0.000500"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="SetOpacity"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.125000 DelayScale"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="AnimBracketStart Birth Birth,Walk Walk,Superior,Start Walk,Superior"/>
+        <On Terms="TimerExpired; TimerName DelayScale" Target="_Unit" Send="SetScale 1.000000 0.250000"/>
+        <On Terms="TimerExpired; TimerName DelayScale" Target="_Unit" Send="SetOpacity 1.000000 0.125000"/>
+        <On Terms="ActorDestruction" Target="_Unit" Send="AnimBracketStop Birth 0 0.312500 AsDuration"/>
+    </CActorSimple>
 
     <CValidatorCombine id="Aberration_BanelingIncubation@WildMutation">
         <CombineArray value="Aberration@Is"/>
