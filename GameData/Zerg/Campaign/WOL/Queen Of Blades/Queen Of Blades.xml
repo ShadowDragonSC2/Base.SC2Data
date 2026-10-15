@@ -65,7 +65,6 @@
     <CActorUnit id="QueenOfBlades" parent="AdvancedUnitStandard_Ground_NoAttackAnim" unitName="QueenOfBlades">
         <Aliases value="_UnitLarge"/>
         <AnimBlendTime value="0.250000"/>
-        <DeathArray index="Normal" ModelLink="QueenOfBlades"/>
         <On Terms="UnitBirth.QueenOfBlades@Burrowed" Send="Create"/>
         <On Terms="UnitBirth.QueenOfBlades@Burrowed" Send="AnimBracketStart Burrow Burrow IGNORE Unburrow ClosingFull,OpeningPlayForever,Instant"/>
         <On Terms="Abil.QueenOfBlades_RazorSwarm.SourceCastStart" Send="$Spell"/>
@@ -160,8 +159,14 @@
         <UnitGlossaryCamera value="Star2CameraMid12"/>
         <PlanetPanelCamera value="Star2CameraMid12"/>
     </CModel>
+    <CModel id="QueenOfBlades@Death" parent="UnitDeath">
+        <EditorCategories value="Race:Zerg"/>
+        <Model value="Assets\Units\Zerg\Kerrigan\Kerrigan.m3"/>
+    </CModel>
     <CModel id="QueenOfBlades@Portrait" parent="FXAPortrait">
+        <EditorCategories value="Race:Zerg"/>
         <Model value="Assets\Portraits\Zerg\KerriganPortrait\KerriganPortrait.m3"/>
+        <Image value="Assets\Textures\kerriganportrait_static.dds"/>
         <FacialController value="LocalizedData\Facial\KerriganPortrait.fxa"/>
     </CModel>
     
@@ -213,7 +218,7 @@
         <AssetArray File="LocalizedData\Sounds\ZergVO\CampaignUnits\Kerrigan\Kerrigan_Death01.wav"/>
         <Volume value="-3.000000,-3.000000"/>
     </CSound>
-    <CSound id="QueenOfBlades@Help" parent="Voice">
+    <CSound id="QueenOfBlades@Help" parent="Alert">
         <EditorCategories value="Race:Zerg"/>
         <AssetArray File="LocalizedData\Sounds\ZergVO\CampaignUnits\Kerrigan\Kerrigan_Help00.ogg" FacialAnim="Kerrigan_Help00"/>
         <AssetArray File="LocalizedData\Sounds\ZergVO\CampaignUnits\Kerrigan\Kerrigan_Help01.ogg" FacialAnim="Kerrigan_Help01"/>
@@ -258,6 +263,7 @@
     </CSound>
     
     <CBehaviorBuff id="QueenOfBlades@Walk">
+        <EditorCategories value="Race:Zerg"/>
         <InfoFlags index="Hidden" value="1"/>
         <Modification MoveSpeedMultiplier="0.5"/>
     </CBehaviorBuff>
@@ -357,6 +363,7 @@
     </CSound>
     
     <CDataCollectionUnit id="QueenOfBlades_Weapon" parent="Weapon_Missile">
+        <EditorCategories value="DataFamily:Campaign,DataGroup:Weapon,Race:Zerg,ObjectType:Projectile"/>
         <DataRecord Entry="Weapon,QueenOfBlades_Weapon"/>
         <DataRecord Entry="Effect,QueenOfBlades_Weapon@Damage"/>
         <DataRecord Entry="Actor,QueenOfBlades_Weapon@Attack"/>
@@ -426,6 +433,17 @@
         <Pitch value="-3.000000,-3.000000"/>
         <Volume value="-4.000000,-3.000000"/>
     </CSound>
+
+    <CDataCollectionUnit id="QueenOfBlades_RazorTalons" parent="Weapon_Missile">
+        <EditorCategories value="DataFamily:Campaign,DataGroup:Weapon,Race:Zerg,ObjectType:Projectile"/>
+        <DataRecord Entry="Weapon,QueenOfBlades_RazorTalons"/>
+        <DataRecord Entry="Effect,QueenOfBlades_RazorTalons@Damage"/>
+        <DataRecord Entry="Effect,QueenOfBlades_RazorTalons@CP"/>
+        <DataRecord Entry="Actor,QueenOfBlades_RazorTalons@Attack"/>
+        <DataRecord Entry="Actor,QueenOfBlades_RazorTalons@Animation"/>
+        <DataRecord Entry="Sound,QueenOfBlades_RazorTalons@AttackImpact"/>
+        <DataRecord Entry="Sound,QueenOfBlades_RazorTalons@AttackLaunch"/>
+    </CDataCollectionUnit>
 
     <!-- ========= Abilities ========== -->
     
@@ -595,11 +613,13 @@
     </CModel>
     
     <CSound id="QueenOfBlades_Implosion@Sound" parent="Spell">
+        <EditorCategories value="Race:Zerg"/>
         <AssetArray File="Assets\Sounds\Protoss\Phoenix\Phoenix_Overload0.wav" Pitch="14.000000,14.000000"/>
     </CSound>
 
     <!-- Deep Tunnel -->
     <CButton id="QueenOfBlades_DeepTunnel">
+        <EditorCategories value="Race:Zerg"/>
         <Icon value="Assets\Textures\BTN-Ability-Zerg-Burrow.dds"/>
         <AlertIcon value="Assets\Textures\BTN-Ability-Zerg-Burrow.dds"/>
         <TintRacially value="1"/>
@@ -649,8 +669,12 @@
     </CActorSplat>
 
     <!-- -->
-    <CButton id="QueenOfBlades_Burrow" parent="BurrowDown"></CButton>
-    <CButton id="QueenOfBlades_Unburrow" parent="BurrowUp"></CButton>
+    <CButton id="QueenOfBlades_Burrow" parent="BurrowDown">
+        <EditorCategories value="Race:Zerg"/>
+    </CButton>
+    <CButton id="QueenOfBlades_Unburrow" parent="BurrowUp">
+        <EditorCategories value="Race:Zerg"/>
+    </CButton>
     
     <CAbilMorph id="QueenOfBlades_Burrow">
         <AbilSetId value="BrwD"/>
