@@ -19,10 +19,6 @@ on:
 permissions:
   contents: read
 
-env:
-  # список файлов передаётся между шагами через файл в служебной папке раннера
-  CHANGED_LIST: ${{ runner.temp }}/changed-gamedata.txt
-
 concurrency:
   group: validate-gamedata-${{ github.ref }}
   cancel-in-progress: true
@@ -51,6 +47,8 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
           BASE_REF: ${{ github.base_ref }}
           BEFORE_SHA: ${{ github.event.before }}
+          # список файлов передаётся между шагами через файл в служебной папке раннера
+          CHANGED_LIST: ${{ runner.temp }}/changed-gamedata.txt
         run: |
           base=""
           if [ "$EVENT_NAME" = "pull_request" ]; then
@@ -85,6 +83,8 @@ jobs:
           cat "$CHANGED_LIST"
 
       - name: Проверить файлы
+        env:
+          CHANGED_LIST: ${{ runner.temp }}/changed-gamedata.txt
         run: |
           if [ ! -s "$CHANGED_LIST" ]; then
             echo "В GameData нет изменённых XML-файлов — проверять нечего."
