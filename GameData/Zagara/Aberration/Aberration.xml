@@ -268,7 +268,7 @@
         <Pitch value="-2.000000,2.000000"/>
         <Volume value="-3.000000,-3.000000"/>
         <DupeDestroyCount value="5"/>
-        <EditorCategories value="Race:Zagara"/>
+        <EditorCategories value="Race:ZZerg"/>
     </CSound>
 
     <CLight id="Aberration@Portrait" parent="default">
