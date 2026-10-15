@@ -39,8 +39,19 @@ PARENTS = {
             ]
     }
 
+# корень мода: сам скрипт лежит в scripts/actions/
+BASE_DIR = path.dirname(path.dirname(path.dirname(path.abspath(__file__))))
+GAMEDATA_DIR = path.join(BASE_DIR, "GameData")
+SKIP_DIRS = {"basestats"}
+
+USAGE = ("Допустимые аргументы командной строки:\n\n"
+         "- 'filepath' — Передать конкретный путь до файла (можно несколько путей)\n"
+         "- gamedata — Проверить все файла в директории 'GameData'\n")
+
+
 class Validate:
     def __init__(self, root: Element, file):
+
         self.filecontent = ""
         with open(file, "r", encoding="UTF-8") as open_file:
             self.filecontent = open_file.read()
@@ -52,11 +63,16 @@ class Validate:
         self.weapons: list[Element] = self.root.findall("CWeaponLegacy")
         
         # в случае если не найдено ни одной единицы, в таком случае id и race будут None
-        self.unit_id: str = self.unit.get("id") if self.unit is not None else None
-        self.attr_race = self.unit.get("race") if self.unit is not None else None
+        self.unit_id: str | None = self.unit.get("id") if self.unit is not None else None
+        self.attr_race: str | None = self.__extract_race()
         
         self.unit_collection = self.root.find(f"CDataCollectionUnit[@id='{self.unit_id}']")
-        self.weap_collection = self.root.find(f"CDataCollectionUnit[@id='{self.unit_id}_Weapon']")
+
+        # коллекции данных оружия ищутся по id самого оружия, а не по "<unit_id>_Weapon"
+        self.weap_collections: dict[str, Element | None] = {
+            weap.get("id"): self.root.find(f".//CDataCollectionUnit[@id='{weap.get('id')}']")
+            for weap in self.weapons
+        }
         
         self.blocks_data: dict[str, list[Element]] = {
             "Units": [],
@@ -75,8 +91,9 @@ class Validate:
         
         
     def check_no_exist_hotkey_category(self):
+        if self.unit is None: return self
         if self.unit.find("HotkeyCategory") is not None: 
-            self.__add_error("с родителем, категория горячих клавиш не должна указываться!")
+            self.__add_error("при указанном родителе категория горячих клавиш не должна задаваться!")
         return self
 
     def check_static_unit_portrait(self):
@@ -89,8 +106,11 @@ class Validate:
     def check_unit_models(self):
         for model, elem in self.models.items():
             if elem is None:
-                self.__add_error(f'не найдена модель "{self.unit_id}@{model}"!')
+                # для основной модели суффикс "@<model>" не используется
+                model_id = self.unit_id if model == "Unit" else f"{self.unit_id}@{model}"
+                self.__add_error(f'не найдена модель "{model_id}"!')
         return self
+
     
     def check_unit_sound_voices(self):
         sounds = {
@@ -120,17 +140,24 @@ class Validate:
         return self
     
     def check_correctly_lightportrait(self):
-        model = self.models["Unit"]
-        if model.find("Lighting"): self.__add_error("освещение портрета освещение портрета не должно переопределяться в CModel")
+        model = self.models["Portrait"]
+        if model is None: return self
+        # find() возвращает Element, а пустой Element является "ложным" при проверке на истинность
+        if model.find("Lighting") is not None: 
+            self.__add_error("освещение портрета не должно переопределяться в CModel")
         return self
+
     
     def check_race_editorcategories(self):
         """Проверяет корректность, указанной для объекта данных, категории редактора "Race".
-            Для успешной проверки, категория расы для объекта должна соответствовать идентификатору расы, который обычно прописывается в атрибуте race:
+            Для успешной проверки, категория расы для объекта должна соответствовать идентификатору расы, который прописывается атрибутом race или элементом <Race>:
             <CUnit id="..." race="Prot">
+            <CUnit id="..."><Race value="Prot"/></CUnit>
             
-            Например, если у CUnit указано 'race="Tald"', значит во всех следующих объектах категория расы должна быть "Race:Taldarim"
+            Например, если у CUnit указано 'race="Tald"', значит во всех следующих объектах категория расы должна быть "Race:Taldarim" или "Race:Tald"
         """
+        
+        if self.attr_race is None: return self
         
         objects = self.root.findall("CModel")
         objects += self.root.findall("CSound")
@@ -139,15 +166,16 @@ class Validate:
         objects += self.root.findall("CWeaponLegacy")
         objects += self.root.findall("CDataCollectionUnit")
         objects += self.root.findall("CUpgrade")
-        if self.attr_race is None: return self
         
+
         for object in objects:
             ec = object.find(".//EditorCategories")
             if ec is None: 
                 self.__add_error(f'объект <{object.tag} id="{object.get("id")}"> не имеет категорию редактора!')
                 continue
-            if self.attr_race not in ec.get("value"):
+            if self.attr_race not in (ec.get("value") or ""):
                 self.__add_error(f'объект <{object.tag} id="{object.get("id")}"> имеет не корректную категорию редактора!')
+
         return self
     
     # проверки парентов
@@ -162,28 +190,33 @@ class Validate:
             return self
             
         if self.attr_race is None:
-            self.__add_error(f'не указан атрибут "race"!')
+            self.__add_error(f'не указана раса (атрибут "race" или элемент <Race value="..."/>)!')
             return self
         
         return self
+
     
     def check_parent_in_requires(self):
-        weap_collection_id = self.weap_collection.get("id")
-        weap_collection_parent = self.weap_collection.get("parent")
-        
-        if weap_collection_parent is None:
-            self.__add_error(f'коллекция данных оружия "{weap_collection_id}" не имеет родителя!')
-        elif weap_collection_parent not in PARENTS["DataCollection"]:
-            self.__add_error(f'', title=f'Коллекция оружия "{weap_collection_id}" имеет нестандартного родителя "{weap_collection_parent}"')
+        for weap_id, collection in self.weap_collections.items():
+            # отсутствие самой коллекции проверяется в check_exist_datacollection_weap
+            if collection is None: continue
+            
+            collection_parent = collection.get("parent")
+            
+            if collection_parent is None:
+                self.__add_error(f'коллекция данных оружия "{weap_id}" не имеет родителя!')
+            elif collection_parent not in PARENTS["DataCollection"]:
+                self.__add_error(f'', title=f'Коллекция оружия "{weap_id}" имеет нестандартного родителя "{collection_parent}"')
         
         return self
     
     # проверки требований
     
     def check_exist_unit_requirement(self):
-        if self.root.find(f".//CRequirement[@id='{self.unit_id}]'") is None:
+        if self.root.find(f".//CRequirement[@id='{self.unit_id}']") is None:
             self.__add_error(f'не создано требование <CRequirement id="{self.unit_id}"/>')
         return self
+
         
     def check_exist_unit_requirement_have(self):
         req = self.root.find(f".//CRequirement[@id='{self.unit_id}@Have']")
@@ -202,22 +235,33 @@ class Validate:
     
     def check_exist_datacollection_weap(self):
         if len(self.weapons) == 0: return self # если единица не имеет оружие, тогда надо игнорировать эту ошибку
-        for weap in self.weapons:
-            if self.root.find(f".//CDataCollectionUnit[@id='{weap.get("id")}']") is None:
-                self.__add_error(f'не имеет коллекции данных <CDataCollectionUnit id="{weap.get("id")}" parent="...">', title=f"Оружие '{weap.get("id")}'")
+        for weap_id, collection in self.weap_collections.items():
+            if collection is None:
+                self.__add_error(f'не имеет коллекции данных <CDataCollectionUnit id="{weap_id}" parent="...">', title=f'Оружие "{weap_id}"')
 
         return self
     
     # Internal
     
+    def __extract_race(self) -> str | None:
+        """Раса берётся из атрибута race="..." либо из дочернего элемента <Race value="..."/>."""
+        if self.unit is None: return None
+        
+        return self.unit.get("race") or (self.unit.find("Race").get("value") if self.unit.find("Race") is not None else None)
+        
+        # race_element = self.unit.find("Race")
+        # return race_element.get("value") if race_element is not None else None
+    
     def __extract_requires(self) -> list:
+
         pattern = r"Requires:\s*(?P<type>\w+):(?P<id>[\w@]+)\[(?P<file>[\w.]+)]"
         matches = re.finditer(pattern, self.filecontent)
 
         result = {}
         for m in matches:
-            result[f"{m.group("id")}"] = (f"{m.group("type")}", f"{m.group("file")}")
+            result[m.group("id")] = (m.group("type"), m.group("file"))
         return result
+
             
     def __add_error(self, message: str, title: str = ""):
         title = title if title != "" else f'Для единицы "{self.unit_id}"'
@@ -226,33 +270,43 @@ class Validate:
 
 if __name__ == "__main__":
     
+    args = sys.argv[1:]
     listpath = []
     listerrors = []
     
-    if len(sys.argv) < 2:
-        print("Допустимые аргументы командной строки:\n\n"
-              "- 'filepath' — Передать конкретный путь до файла\n"
-              "- gamedata — Проверить все файла в директории 'GameData'\n")
+    if not args:
+        print(USAGE)
         sys.exit(1)
     
-    if sys.argv[1] == "gamedata":
-        for faction in os.listdir("GameData"):
-            if faction in ("basestats"): continue
-            for dir in os.listdir(f"GameData/{faction}"):
-                for file in os.listdir(f"GameData/{faction}/{dir}"):
-                    if not file.endswith(".xml"): continue
-                    listpath.append(f"GameData/{faction}/{dir}/{file}")     
-    elif path.exists(sys.argv[1]):
-        listpath.append(sys.argv[1])
+    if args[0] == "gamedata":
+        # os.walk вместо ручного обхода: файлы могут лежать на любой глубине вложенности
+        # сортировка нужна для одинакового порядка вывода при каждом запуске
+        for current_dir, dirnames, filenames in os.walk(GAMEDATA_DIR):
+            dirnames[:] = sorted(d for d in dirnames if d not in SKIP_DIRS)
+            for filename in sorted(filenames):
+                if not filename.endswith(".xml"): continue
+                listpath.append(path.join(current_dir, filename))
     else:
-        print("Допустимые аргументы командной строки:\n\n"
-              "- 'filepath' — Передать конкретный путь до файла\n"
-              "- gamedata — Проверить все файла в директории 'GameData'\n")
-        sys.exit(1)
+        # принимается любое количество путей до файлов
+        listpath = sorted({arg for arg in args if path.exists(arg)})
+        missing = sorted({arg for arg in args if not path.exists(arg)})
+        if missing:
+            for arg in missing:
+                print(f'Файл не найден: {arg}')
+            sys.exit(1)
+        if not listpath:
+            print(USAGE)
+            sys.exit(1)
         
     for file in listpath:    
 
-        tree = ET.parse(file)
+
+        try:
+            tree = ET.parse(file)
+        except ET.ParseError as error:
+            listerrors.append(f'{path.relpath(file, BASE_DIR)}: не удалось разобрать XML — {error}')
+            continue
+
         ROOT = tree.getroot()
 
         validator = Validate(ROOT, file)
@@ -274,11 +328,17 @@ if __name__ == "__main__":
         # проверка оружий
         validator.check_exist_datacollection_weap()
         
-        listerrors += validator.errors
+        # путь до файла добавляется к каждой ошибке, чтобы было понятно, где искать
+        listerrors += [f'{path.relpath(file, BASE_DIR)}: {error}' for error in validator.errors]
 
     for error in listerrors:
         print(error)
 
-    if not listerrors: print("✅ | Замечаний нет!")
+    if not listerrors:
+        print(f"✅ | Замечаний нет! Проверено файлов: {len(listpath)}")
+    else:
+        print(f"❌ | Проверено файлов: {len(listpath)}, замечаний: {len(listerrors)}")
 
     sys.exit(1 if listerrors else 0)
+
+

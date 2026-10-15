@@ -1,0 +1,95 @@
+name: Validate GameData
+
+# Проверяются только те XML-файлы, которые были изменены в коммите или в пулл-реквесте.
+# Полный прогон по всем файлам пока невозможен: в GameData есть замечания,
+# накопившиеся до появления этой проверки, и он всегда завершался бы с ошибкой.
+
+on:
+  pull_request:
+    paths:
+      - "GameData/**"
+      - "scripts/actions/test.py"
+  push:
+    branches: [main]
+    paths:
+      - "GameData/**"
+      - "scripts/actions/test.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  # список файлов передаётся между шагами через файл в служебной папке раннера
+  CHANGED_LIST: ${{ runner.temp }}/changed-gamedata.txt
+
+concurrency:
+  group: validate-gamedata-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Проверка XML
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # нужна полная история, иначе не с чем сравнивать изменения
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Проверить синтаксис скрипта
+        run: python -m py_compile scripts/actions/test.py
+
+      - name: Собрать список изменённых XML-файлов
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BASE_REF: ${{ github.base_ref }}
+          BEFORE_SHA: ${{ github.event.before }}
+        run: |
+          base=""
+          if [ "$EVENT_NAME" = "pull_request" ]; then
+            base="origin/$BASE_REF"
+          elif [ "$EVENT_NAME" = "push" ]; then
+            base="$BEFORE_SHA"
+          fi
+
+          # если базовая ревизия недоступна (например, первый push), сравниваем с предыдущим коммитом
+          if [ -z "$base" ] || ! git rev-parse --verify --quiet "$base^{commit}" > /dev/null; then
+            if git rev-parse --verify --quiet "HEAD^" > /dev/null; then
+              echo "::warning::Базовая ревизия '$base' недоступна, сравнение с HEAD^"
+              base="HEAD^"
+            else
+              base=""
+            fi
+          fi
+
+          if [ -z "$base" ]; then
+            echo "::warning::Не удалось определить базу сравнения — проверяется вся директория GameData"
+            printf 'gamedata\n' > "$CHANGED_LIST"
+          else
+            # basestats — файлы-шаблоны, скрипт их не проверяет (см. SKIP_DIRS).
+            # Три точки: сравнение идёт от общего предка, иначе в PR попадут
+            # изменения, сделанные в main после ответвления ветки.
+            git -c core.quotepath=false diff --name-only --diff-filter=d "$base"...HEAD \
+              | grep -E '^GameData/.*\.xml$' \
+              | grep -v '^GameData/basestats/' > "$CHANGED_LIST" || true
+          fi
+
+          echo "Изменённые XML-файлы:"
+          cat "$CHANGED_LIST"
+
+      - name: Проверить файлы
+        run: |
+          if [ ! -s "$CHANGED_LIST" ]; then
+            echo "В GameData нет изменённых XML-файлов — проверять нечего."
+            exit 0
+          fi
+
+          mapfile -t files < "$CHANGED_LIST"
+          python scripts/actions/test.py "${files[@]}"
