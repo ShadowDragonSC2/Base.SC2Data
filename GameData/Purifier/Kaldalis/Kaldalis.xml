@@ -449,7 +449,7 @@
     </CButton>
 
     <CAbilAugment id="Kaldalis_Engage">
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <EditorCategories value="Race:Purifier,AbilityorEffectType:Units"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Kaldalis_Engage"/>
         <AbilCmd value="attack,Execute"/>
         <Flags index="AutoCast" value="1"/>

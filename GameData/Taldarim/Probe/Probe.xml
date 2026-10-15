@@ -270,7 +270,7 @@
     <!-- Build -->
 
     <CAbilBuild id="TaldarimProbe_Build">
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <EditorCategories value="Race:Taldarim,AbilityorEffectType:Units"/>
         <FlagArray index="PeonMaintained" value="0"/>
         <FlagArray index="PeonDisableCollision" value="1"/>
         <FlagArray index="IgnoreUnitBuildTime" value="0"/>

@@ -103,7 +103,7 @@
     </CModel>
     <CModel id="TaldarimGateway@Splat" parent="Splat">
         <Model value="Assets\Splats\Splat_Gateway\Splat_Gateway.m3"/>
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Taldarim"/>
         <ScaleMax value="0.800000,0.800000,0.800000"/>
         <ScaleMin value="0.800000,0.800000,0.800000"/>
     </CModel>
@@ -122,23 +122,23 @@
     <CSound id="TaldarimGateway@Death" parent="Protoss_ExplosionLarge"/>
     <CSound id="TaldarimGateway@What" parent="Voice">
         <AssetArray File="Assets\Sounds\Protoss\Gateway\Gateway_What.ogg"/>
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Taldarim"/>
         <Volume value="-4.500000,-4.500000"/>
     </CSound>
     <CSound id="TaldarimGateway@Ready" parent="Ready">
         <AssetArray File="Assets\Sounds\Protoss\Gateway\Gateway_What.ogg"/>
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Taldarim"/>
         <Volume value="-4.500000,-4.500000"/>
     </CSound>
     <CSound id="TaldarimGateway@MorphToWarpgate" parent="Build">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray File="Assets\Sounds\Protoss\Gateway\Gateway_MorphToWarpGate0.wav"/>
         <AssetArray File="Assets\Sounds\Protoss\Gateway\Gateway_MorphToWarpGate1.wav"/>
         <DupeDestroyCount value="3"/>
         <Volume value="-3.000000,-3.000000"/>
     </CSound>
     <CSound id="TaldarimGateway@MorphToGateway" parent="Build">
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Taldarim"/>
         <AssetArray File="Assets\Sounds\Protoss\WarpGate\WarpGate_MorphToGateway0.wav"/>
         <AssetArray File="Assets\Sounds\Protoss\WarpGate\WarpGate_MorphToGateway1.wav"/>
         <AssetArray File="Assets\Sounds\Protoss\WarpGate\WarpGate_MorphToGateway2.wav"/>
@@ -209,7 +209,7 @@
     
     <!-- Train -->
     <CAbilTrain id="TaldarimGateway_Train">
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Structures"/>
+        <EditorCategories value="Race:Taldarim,AbilityorEffectType:Structures"/>
         <Flags index="IgnoreUnitBuildTime" value="0"/>
         <InfoArray index="Train1">
             <Button DefaultButtonFace="Supplicant"/>
@@ -237,7 +237,7 @@
 
     <!-- Warp Train -->
     <CAbilWarpTrain id="TaldarimWarpgate_WarpTrain">
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Structures"/>
+        <EditorCategories value="Race:Taldarim,AbilityorEffectType:Structures"/>
         <InfoArray index="Train1" Time="5" Unit="SupplicantCreator">
             <Charge>
                 <CountMax value="1"/>
@@ -308,6 +308,7 @@
         <Icon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-gateway.dds"/>
     </CButton>
     <CAbilMorph id="TaldarimGateway_MorphToWarpgate">
+        <EditorCategories value="Race:Taldarim,AbilityorEffectType:MorphsandBurrows"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="TaldarimGateway_MorphToWarpgate" State="Restricted" Requirements="UseWarpGate"/>
         <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel"/>
         <Flags index="BestUnit" value="1"/>
@@ -329,7 +330,7 @@
         </InfoArray>
     </CAbilMorph>
     <CAbilMorph id="TaldarimWarpgate_MorphToGateway">
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:MorphsandBurrows"/>
+        <EditorCategories value="Race:Taldarim,AbilityorEffectType:MorphsandBurrows"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="TaldarimWarpgate_MorphToGateway"/>
         <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel"/>
         <Flags index="BestUnit" value="1"/>

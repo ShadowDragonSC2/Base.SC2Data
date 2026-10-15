@@ -313,6 +313,7 @@
     </CButton>
 
     <CAbilEffectTarget id="BloodHunter_VoidStasis">
+        <EditorCategories value="Race:Taldarim"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="BloodHunter_VoidStasis"/>
         <Effect index="0" value="BloodHunter_VoidStasis@AB"/>
         <Range value="6"/>

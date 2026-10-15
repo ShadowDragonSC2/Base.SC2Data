@@ -332,7 +332,7 @@
     </CButton>
 
     <CAbilAugment id="Sentinel_Charge">
-        <EditorCategories value="Race:Khalai,AbilityorEffectType:Units"/>
+        <EditorCategories value="Race:Purifier,AbilityorEffectType:Units"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Sentinel_Charge"/>
         <AbilCmd value="attack,Execute"/>
         <Flags index="AutoCast" value="1"/>

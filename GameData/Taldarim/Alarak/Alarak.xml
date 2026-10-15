@@ -411,6 +411,7 @@
     </CButton>
 
     <CAbilEffectTarget id="Alarak_DestructionWave">
+        <EditorCategories value="Race:Taldarim"/>
         <Range value="6"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Alarak_DestructionWave"/>
         <Effect index="0" value="Alarak_DestructionWave@CP"/>

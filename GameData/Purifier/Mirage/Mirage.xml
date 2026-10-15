@@ -514,13 +514,15 @@
     <!-- ========= Abilities ========== -->
 
     <CButton id="Mirage_GravitonBeam">
-        <Icon value=""/>
+        <EditorCategories value="Race:Purifier"/>
+        <Icon value="Assets\Textures\btn-ability-protoss-gravitonbeam-color.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-gravitonbeam-color.dds"/>
     </CButton>
     
     <!-- Graviton Beam -->
     <CAbilEffectTarget id="Mirage_GravitonBeam">
         <AbilSetId value="Graviton"/>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <EditorCategories value="Race:Purifier,AbilityorEffectType:Units"/>
         <Flags index="AllowMovement" value="1"/>
         <Flags index="NoDeceleration" value="1"/>
         <Flags index="ReExecutable" value="1"/>

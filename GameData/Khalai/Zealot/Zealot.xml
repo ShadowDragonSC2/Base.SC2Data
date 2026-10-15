@@ -364,7 +364,7 @@
     </CButton>
 
     <CAbilEffectInstant id="KhalaiZealot_Whirlwind">
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <EditorCategories value="Race:Khalai,AbilityorEffectType:Units"/>
         <Effect index="0" value="KhalaiZealot_Whirlwind@Set"/>
         <Flags index="AutoCast" value="1"/>
         <Flags index="AutoCastOn" value="1"/>
