@@ -348,7 +348,6 @@
         <Race value="Zerg"/>
         <Mover value="MissileDefault"/>
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
-        <TacticalAI value="Val03QueenOfBladesWeapon"/>
     </CUnit>
     
     <CSound id="QueenOfBlades_Weapon@AttackLaunch" parent="Combat">
@@ -531,8 +530,23 @@
         <EditorCategories value="Race:Zerg"/>
     </CSound>
 
+    <CDataCollectionUnit id="QueenOfBlades_RazorSwarm" parent="AbilityBase">
+        <EditorCategories value="DataFamily:Campaign,DataGroup:Ability,ObjectType:Spell,Race:Zerg"/>
+        <DataRecord Entry="Button,QueenOfBlades_RazorSwarm"/>
+        <DataRecord Entry="Abil,QueenOfBlades_RazorSwarm"/>
+        <DataRecord Entry="Effect,QueenOfBlades_RazorSwarm@CP"/>
+        <DataRecord Entry="Effect,QueenOfBlades_RazorSwarm@Damage"/>
+        <DataRecord Entry="Effect,QueenOfBlades_RazorSwarm@Search"/>
+        <DataRecord Entry="Actor,QueenOfBlades_RazorSwarm@ShieldHitter"/>
+        <DataRecord Entry="Actor,QueenOfBlades_RazorSwarm@Model"/>
+        <DataRecord Entry="Actor,QueenOfBlades_RazorSwarm@Sound"/>
+        <DataRecord Entry="Actor,QueenOfBlades_RazorSwarm@Cursor"/>
+        <DataRecord Entry="Actor,QueenOfBlades_RazorSwarm@Splat"/>
+        <DataRecord Entry="Model,QueenOfBlades_RazorSwarm@Model"/>
+        <DataRecord Entry="Sound,QueenOfBlades_RazorSwarm@Sound"/>
+    </CDataCollectionUnit>
+
     <!-- QueenOfBlades_Implosion -->
-    
     <CButton id="QueenOfBlades_Implosion">
         <Icon value="Assets\Textures\btn-ability-zerg-explode-color.dds"/>
         <EditorCategories value="Race:Zerg"/>
@@ -597,25 +611,41 @@
         <Alignment value="Negative"/>
     </CBehaviorBuff>
         
-    <CActorModel id="QueenOfBlades_Implosion" parent="ModelAnimationStyleOneShot">
+    <CActorModel id="QueenOfBlades_Implosion@ImpactModel" parent="ModelAnimationStyleOneShot">
         <On Terms="Behavior.QueenOfBlades_Implosion.On" Send="Create"/>
         <On Terms="ActorCreation" Send="SetTintColor 60,0,120"/>
     </CActorModel>
     
-    <CModel id="QueenOfBlades_Implosion" parent="OneShotSpellFX">
+    <CModel id="QueenOfBlades_Implosion@ImpactModel" parent="OneShotSpellFX">
         <Model value="Assets\Effects\Protoss\BeingCrushed\BeingCrushed.m3"/>
         <EditorCategories value="Race:Zerg"/>
         <ScaleMax value="1.250000,1.250000,1.250000"/>
         <ScaleMin value="1.250000,1.250000,1.250000"/>
         <SelectionRadius value="0.400000"/>
         <ShadowRadius value="0.400000"/>
-        <Events Anim="Stand" Type="Sound" Payload="QueenOfBlades_Implosion@Sound" Name="QueenOfBlades_Implosion@Sound"/>
+        <Events Anim="Stand" Type="Sound" Payload="QueenOfBlades_Implosion@LaunchSound" Name="QueenOfBlades_Implosion@LaunchSound"/>
     </CModel>
     
-    <CSound id="QueenOfBlades_Implosion@Sound" parent="Spell">
+    <CSound id="QueenOfBlades_Implosion@LaunchSound" parent="Spell">
         <EditorCategories value="Race:Zerg"/>
         <AssetArray File="Assets\Sounds\Protoss\Phoenix\Phoenix_Overload0.wav" Pitch="14.000000,14.000000"/>
     </CSound>
+
+    <CDataCollectionUnit id="QueenOfBlades_Implosion" parent="AbilityBase">
+        <EditorCategories value="DataFamily:Campaign,DataGroup:Ability,ObjectType:Spell,Race:Zerg"/>
+        <DataRecord Entry="Button,QueenOfBlades_Implosion"/>
+        <DataRecord Entry="Abil,QueenOfBlades_Implosion"/>
+        <DataRecord Entry="Effect,QueenOfBlades_Implosion@AB"/>
+        <DataRecord Entry="Effect,QueenOfBlades_Implosion@CP"/>
+        <DataRecord Entry="Effect,QueenOfBlades_Implosion@Height"/>
+        <DataRecord Entry="Effect,QueenOfBlades_Implosion@Drop"/>
+        <DataRecord Entry="Effect,QueenOfBlades_Implosion@Kill"/>
+        <DataRecord Entry="Effect,QueenOfBlades_Implosion@Set"/>
+        <DataRecord Entry="Behavior,QueenOfBlades_Implosion"/>
+        <DataRecord Entry="Actor,QueenOfBlades_Implosion@ImpactModel"/>
+        <DataRecord Entry="Model,QueenOfBlades_Implosion@ImpactModel"/>
+        <DataRecord Entry="Sound,QueenOfBlades_Implosion@LaunchSound"/>
+    </CDataCollectionUnit>
 
     <!-- Deep Tunnel -->
     <CButton id="QueenOfBlades_DeepTunnel">
@@ -656,19 +686,17 @@
         <Abil value="QueenOfBlades_Unburrow"/>
         <CmdFlags index="Queued" value="1"/>
     </CEffectIssueOrder>
-    
-    <CActorSplat id="QueenOfBlades_DeepTunnel@Splat" parent="BurrowedSplatBase">
-        <On Terms="Abil.QueenOfBlades_DeepTunnel.Start" Send="Create"/>
-        <On Terms="Effect.QueenOfBlades_DeepTunnel@Teleport.Stop" Send="Create"/>
-        <On Terms="Effect.QueenOfBlades_DeepTunnel@Teleport.Stop" Send="HostSiteOpsSet _Unit SOpTargetPoint"/>
-        <On Terms="Abil.QueenOfBlades_DeepTunnel.Start" Send="TimerSet 4.000000,2.000000 DelayDestroy"/>
-        <On Terms="Effect.QueenOfBlades_DeepTunnel@Teleport.Stop; At Effect" Send="TimerSet 4.000000,2.000000 DelayDestroy"/>
-        <On Terms="TimerExpired; TimerName DelayDestroy" Send="Destroy"/>
-        <Host Subject="_Unit"/>
-        <HostSiteOps Ops="SOpCasterPoint"/>
-    </CActorSplat>
 
-    <!-- -->
+    <CDataCollectionUnit id="QueenOfBlades_DeepTunnel" parent="AbilityBase">
+        <EditorCategories value="DataFamily:Campaign,DataGroup:Ability,ObjectType:Other,Race:Zerg"/>
+        <DataRecord Entry="Button,QueenOfBlades_DeepTunnel"/>
+        <DataRecord Entry="Abil,QueenOfBlades_DeepTunnel"/>
+        <DataRecord Entry="Effect,QueenOfBlades_DeepTunnel@CP"/>
+        <DataRecord Entry="Effect,QueenOfBlades_DeepTunnel@Teleport"/>
+        <DataRecord Entry="Effect,QueenOfBlades_DeepTunnel@Unburrow"/>
+    </CDataCollectionUnit>
+
+    <!-- Burrow -->
     <CButton id="QueenOfBlades_Burrow" parent="BurrowDown">
         <EditorCategories value="Race:Zerg"/>
     </CButton>
@@ -719,5 +747,16 @@
         <AutoCastRange value="2"/>
         <AutoCastCountMin value="1"/>
     </CAbilMorph>
+
+    <CDataCollectionUnit id="QueenOfBlades_Burrow">
+        <EditorCategories value="DataFamily:Campaign,DataGroup:Ability,ObjectType:Other,Race:Zerg"/>
+        <DataRecord Entry="Button,QueenOfBlades_Burrow"/>
+        <DataRecord Entry="Abil,QueenOfBlades_Burrow"/>
+    </CDataCollectionUnit>
+    <CDataCollectionUnit id="QueenOfBlades_Unburrow">
+        <EditorCategories value="DataFamily:Campaign,DataGroup:Ability,ObjectType:Other,Race:Zerg"/>
+        <DataRecord Entry="Button,QueenOfBlades_Unburrow"/>
+        <DataRecord Entry="Abil,QueenOfBlades_Unburrow"/>
+    </CDataCollectionUnit>
 
 </Catalog>
