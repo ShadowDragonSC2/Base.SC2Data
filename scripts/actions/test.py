@@ -83,7 +83,7 @@ class Validate:
         self.models = {
             "Unit": self.root.find(f"CModel[@id='{self.unit_id}']"),
             "Death": self.root.find(f"CModel[@id='{self.unit_id}@Death']"),
-            "Placement": self.root.find(f"CModel[@id='{self.unit_id}@Placement']"),
+            # "Placement": self.root.find(f"CModel[@id='{self.unit_id}@Placement']"),
             "Portrait": self.root.find(f"CModel[@id='{self.unit_id}@Portrait']"),
         }
         self.errors = []
