@@ -1,0 +1,24 @@
+Button/Name/QueenOfBlades=Summon queen of blades
+Button/Tooltip/QueenOfBlades=Kerrigan is a class 12 psionic. She commands god-like powers and cannot be killed with conventional weapons.
+Unit/Name/QueenOfBlades=Kerrigan
+Behavior/Name/QueenOfBlades@Walk=Walk
+UnitKillRank/QueenOfBlades=Queen of Blades
+
+Button/Name/QueenOfBlades_RazorSwarm=Razor Swarm
+Button/Tooltip/QueenOfBlades_RazorSwarm=Summons a storm that deals damage to enemies in an area.
+Button/Name/QueenOfBlades_Implosion=Implosion
+Button/Tooltip/QueenOfBlades_Implosion=Creates a localized gravity well that telekinetically crushes the target.
+Button/Name/QueenOfBlades_DeepTunnel=Deep Tunnel
+Button/Tooltip/QueenOfBlades_DeepTunnel=The Queen tunnels deep underground and surfaces at target Zerg structure.
+
+Behavior/Name/QueenOfBlades_Implosion=Implosion
+
+Abil/Name/QueenOfBlades_RazorSwarm=Razor Swarm
+Abil/Name/QueenOfBlades_Implosion=Implosion
+Abil/Name/QueenOfBlades_DeepTunnel=Deep Tunnel
+
+Abil/Name/QueenOfBlades_Burrow=Burrow
+Abil/Name/QueenOfBlades_Unburrow=Unburrow
+
+Weapon/Name/QueenOfBlades_Weapon=Psi blast
+Weapon/Name/QueenOfBlades_RazorTalons=Razor Talons

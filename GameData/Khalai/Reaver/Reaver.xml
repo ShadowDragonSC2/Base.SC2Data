@@ -74,38 +74,6 @@
         <On Terms="UnitHeightUpdate.*.Land" Send="Create Reaver_Land"/>
         <On Terms="Effect.ReaverAiur_Weapon@PersistentInitial.Start; At Caster" Send="StatusSet Cover 1"/>
         <On Terms="TimerExpired; TimerName CoverDelay" Send="AnimBracketStop Cover"/>
-        <ModelFlags index="OutlineEmitter" value="1"/>
-        <DeathCustoms index="0" ModelLink="ZergSmallUnitDeathLow" Name="AntiGravGeneric"/>
-        <DeathCustoms index="1" ModelLink="ProtossSmallUnitDeathLow" Name="AntiGravProtoss"/>
-        <DeathCustoms index="2" ModelLink="TerranSmallUnitDeathLow" Name="AntiGravTerran"/>
-        <DeathCustoms index="3" ModelLink="ZergSmallUnitDeathLow" Name="AntiGravZerg"/>
-        <DeathCustoms index="4" ModelLink="Invisible" Name="Vortex"/>
-        <DeathCustoms ModelLink="ProtossLargeUnitDeathLow" Name="AntiGravProtoss"/>
-        <DeathCustoms ModelLink="ReaverAiur@DeathRagdoll" Name="RagdollBasic">
-            <BodySquibs Name="Basic" Model="ProtossRobotSquibDeathRagdoll"/>
-            <BodySquibs Name="BloodReduced" Model="ProtossRobotBloodSquibDeathRagdoll"/>
-        </DeathCustoms>
-        <DeathCustoms Name="RagdollSiegeTank" InheritsFrom="RagdollBasic"/>
-        <DeathCustoms Name="RagdollNuke" InheritsFrom="RagdollBasic">
-            <BodySquibs Name="Fire"/>
-        </DeathCustoms>
-        <DeathCustoms Name="RagdollFire" InheritsFrom="RagdollBasic">
-            <BodySquibs Name="Fire"/>
-        </DeathCustoms>
-        <DeathCustoms Name="RagdollAcid" InheritsFrom="RagdollBasic">
-            <BodySquibs Name="Acid"/>
-        </DeathCustoms>
-        <DeathCustoms Name="RagdollBaneling" InheritsFrom="RagdollBasic">
-            <BodySquibs Name="Acid"/>
-        </DeathCustoms>
-        <TerrainSquibs>
-            <MovementDistance value="0.150000,0.150000"/>
-            <IdlePeriod value="0.100000,0.250000"/>
-            <RangeUp value="0.600000"/>
-            <RangeDown value="1.000000"/>
-            <AttachQuery Methods="AMFilterCenter"/>
-            <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleImmortal"/>
-        </TerrainSquibs>
         <WalkAnimMoveSpeed value="1.875"/>
         <BarOffset value="70"/>
         <GroupIcon>
@@ -124,7 +92,6 @@
         </WireframeShield>
     </CActorUnit>
 
-    <!-- Модели -->
     <CModel id="ReaverAiur" parent="Unit" Race="Protoss">
         <Model value="Assets\Units\Protoss\Reaver\Reaver.m3"/>
         <AttachProps>
@@ -368,31 +335,25 @@
         <EffectArray value="ReaverAiur_Weapon@ApplyReveal"/>
         <EffectArray value="ReaverAiur_Weapon@UseMagazine"/>
     </CEffectSet>
-
     <CEffectApplyBehavior id="ReaverAiur_Weapon@ApplyReveal">
         <Behavior value="ReaverAiurScarab@Reveal"/>
     </CEffectApplyBehavior>
-
     <CEffectUseMagazine id="ReaverAiur_Weapon@UseMagazine">
         <EditorCategories value="Race:Protoss"/>
         <AmmoEffect value="ReaverAiur_Weapon@LaunchSet"/>
     </CEffectUseMagazine>
-
     <CEffectSet id="ReaverAiur_Weapon@LaunchSet">
         <EffectArray value="ReaverAiur_Weapon@TimedLife"/>
         <EffectArray value="ReaverAiur_Weapon@LM"/>
     </CEffectSet>
-
     <CEffectApplyBehavior id="ReaverAiur_Weapon@TimedLife">
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="ReaverAiurScarab@TimedLife"/>
     </CEffectApplyBehavior>
-
     <CEffectModifyUnit id="ReaverAiur_Weapon@LaunchDummy">
         <EditorCategories value="Race:Protoss"/>
         <WhichUnit Value="Caster"/>
     </CEffectModifyUnit>
-
     <CEffectLaunchMissile id="ReaverAiur_Weapon@LM">
         <EditorCategories value="Race:Protoss"/>
         <LaunchEffect value="ReaverAiur_Weapon@LaunchDummy"/>
@@ -402,21 +363,18 @@
         <Movers Link="ReaverAiurScarabWeapon"/>
         <ImpactRange value="1"/>
     </CEffectLaunchMissile>
-
     <CEffectSet id="ReaverAiurScarab@Explode">
         <ValidatorArray value="CasterIsNotHidden"/>
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="ReaverAiurScarab@Damage"/>
         <EffectArray value="ReaverAiurScarab@Suicide"/>
     </CEffectSet>
-
     <CEffectDamage id="ReaverAiurScarab@Damage" parent="DU_WEAP">
         <AttributeBonus index="Structure" value="50"/>
         <Kind value="Ranged"/>
         <KindSplash value="Splash"/>
         <Amount value="100"/>
         <Death value="Blast"/>
-        <WhichLocation Value="TargetUnit"/>
         <AreaArray Radius="0.25" Fraction="0.8"/>
         <AreaArray Radius="0.5" Fraction="0.6"/>
         <AreaArray Radius="1" Fraction="0.5"/>
@@ -424,13 +382,11 @@
         <ExcludeArray Value="Target"/>
         <SearchFilters value="Ground;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectDamage>
-
     <CEffectDamage id="ReaverAiurScarab@Suicide">
         <ImpactLocation Value="SourceUnit"/>
         <Flags index="Kill" value="1"/>
         <Flags index="NoKillCredit" value="1"/>
     </CEffectDamage>
-
     <CEffectDamage id="ReaverAiur_Weapon@Damage" parent="DU_WEAP">
         <AttributeBonus index="Structure" value="50"/>
         <Kind value="Ranged"/>
@@ -438,7 +394,7 @@
         <Amount value="100"/>
         <Death value="Blast"/>
     </CEffectDamage>
-
+    
     <CActorAction id="ReaverAiur_Weapon@Attack" parent="GenericAttack" effectLaunch="ReaverAiur_Weapon@LM" effectImpact="ReaverAiurScarab@Explode">
         <LaunchSiteOps Ops="SOpAttachCenter SOpMoveByDot15"/>
         <Missile value="ReaverAiur_Weapon@MissileActor"/>

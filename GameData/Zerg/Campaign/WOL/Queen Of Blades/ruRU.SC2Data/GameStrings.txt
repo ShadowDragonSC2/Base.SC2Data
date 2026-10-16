@@ -1,0 +1,24 @@
+Button/Name/QueenOfBlades=Призвать королеву клинков
+Button/Tooltip/QueenOfBlades=Керриган – псионик 12-го класса. Она неуязвима практически для всех видов оружия и наделена сверхъестественными способностями.
+Unit/Name/QueenOfBlades=Керриган
+Behavior/Name/QueenOfBlades@Walk=Ходьба
+UnitKillRank/QueenOfBlades=Королева клинков
+
+Button/Name/QueenOfBlades_RazorSwarm=Стригущий рой
+Button/Tooltip/QueenOfBlades_RazorSwarm=Вызов шторма, который наносит урон противникам в выбранной области.
+Button/Name/QueenOfBlades_Implosion=Внутренний взрыв
+Button/Tooltip/QueenOfBlades_Implosion=Создает гравитационный колодец, который телекинетически сжимает цель.
+Button/Name/QueenOfBlades_DeepTunnel=Глубинный тоннель
+Button/Tooltip/QueenOfBlades_DeepTunnel=Королева роет тоннель глубоко под землей и выкапывается у выбранного строения зергов.
+
+Behavior/Name/QueenOfBlades_Implosion=Внутренний взрыв
+
+Abil/Name/QueenOfBlades_RazorSwarm=Стригущий рой
+Abil/Name/QueenOfBlades_Implosion=Внутренний взрыв
+Abil/Name/QueenOfBlades_DeepTunnel=Глубинный тоннель
+
+Abil/Name/QueenOfBlades_Burrow=Закопаться
+Abil/Name/QueenOfBlades_Unburrow=Выкопаться
+
+Weapon/Name/QueenOfBlades_Weapon=Пси-взрыв
+Weapon/Name/QueenOfBlades_RazorTalons=Заточенные когти

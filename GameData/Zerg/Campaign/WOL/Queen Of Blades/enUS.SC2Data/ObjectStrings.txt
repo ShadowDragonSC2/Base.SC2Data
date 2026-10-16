@@ -1,0 +1,68 @@
+Unit/EditorSuffix/QueenOfBlades=(закопн.)
+
+Actor/Name/QueenOfBlades=Queen of Blades
+Actor/Name/QueenOfBlades@BurrowedSplat=Burrowed Splat
+Actor/Name/QueenOfBlades@Walk_Animation=Walk Animation
+Model/Name/QueenOfBlades=Queen of Blades
+Model/Name/QueenOfBlades@Death=Death
+Model/Name/QueenOfBlades@Portrait=Portrait
+Light/Name/QueenOfBlades@Portrait=Portrait
+Sound/Name/QueenOfBlades@Attack=Attack
+Sound/Name/QueenOfBlades@Death=Death
+Sound/Name/QueenOfBlades@Help=Help
+Sound/Name/QueenOfBlades@Pissed=Pissed
+Sound/Name/QueenOfBlades@Ready=Ready
+Sound/Name/QueenOfBlades@What=What
+Sound/Name/QueenOfBlades@Yes=Yes
+Requirement/Name/QueenOfBlades=Use
+Validator/Name/QueenOfBlades@Is=Is Unit
+Validator/Name/QueenOfBlades@Target=Target Unit
+Validator/Name/QueenOfBlades@Not=Not Unit
+Validator/Name/QueenOfBlades@NotTarget=Not Target Unit
+
+Effect/Name/QueenOfBlades_Weapon@LM=LM
+Effect/Name/QueenOfBlades_Weapon@Damage=Damage
+Actor/Name/QueenOfBlades_Weapon@Attack=Attack
+Actor/Name/QueenOfBlades_Weapon@AttackMissile=Attack Missile
+Actor/Name/QueenOfBlades_Weapon@Animation=Animation
+Model/Name/QueenOfBlades_Weapon@AttackMissile=Attack Missile
+Model/Name/QueenOfBlades_Weapon@AttackImpact=Attack Impact
+Unit/Name/QueenOfBlades_Weapon@AttackMissile=Attack Missile
+Sound/Name/QueenOfBlades_Weapon@AttackLaunch=Attack Launch
+Sound/Name/QueenOfBlades_Weapon@AttackImpact=Attack Impact
+
+Effect/Name/QueenOfBlades_RazorTalons@Damage=Damage
+Effect/Name/QueenOfBlades_RazorTalons@CP=CP
+Actor/Name/QueenOfBlades_RazorTalons@Attack=Attack
+Actor/Name/QueenOfBlades_RazorTalons@Animation=Animation
+Sound/Name/QueenOfBlades_RazorTalons@AttackImpact=Attack Impact
+Sound/Name/QueenOfBlades_RazorTalons@AttackLaunch=Attack Launch
+
+Effect/Name/QueenOfBlades_RazorSwarm@CP=CP
+Effect/Name/QueenOfBlades_RazorSwarm@Damage=Damage
+Effect/Name/QueenOfBlades_RazorSwarm@Search=Search
+Actor/Name/QueenOfBlades_RazorSwarm@ShieldHitter=Shield Hitter
+Actor/Name/QueenOfBlades_RazorSwarm@Model=Model
+Actor/Name/QueenOfBlades_RazorSwarm@Sound=Sound
+Actor/Name/QueenOfBlades_RazorSwarm@Cursor=Cursor
+Actor/Name/QueenOfBlades_RazorSwarm@Splat=Splat
+Model/Name/QueenOfBlades_RazorSwarm@Model=Model
+Sound/Name/QueenOfBlades_RazorSwarm@Sound=Sound
+
+Effect/Name/QueenOfBlades_Implosion@AB=AB
+Effect/Name/QueenOfBlades_Implosion@CP=CP
+Effect/Name/QueenOfBlades_Implosion@Height=Height
+Effect/Name/QueenOfBlades_Implosion@Drop=Drop
+Effect/Name/QueenOfBlades_Implosion@Kill=Kill
+Effect/Name/QueenOfBlades_Implosion@Set=Set
+Behavior/Name/QueenOfBlades_Implosion=Invulnerable Stun
+Actor/Name/QueenOfBlades_Implosion@ImpactModel=Impact Model
+Model/Name/QueenOfBlades_Implosion@ImpactModel=Impact Model
+Sound/Name/QueenOfBlades_Implosion@LaunchSound=Launch Sound
+
+Effect/Name/QueenOfBlades_DeepTunnel@CP=CP
+Effect/Name/QueenOfBlades_DeepTunnel@Teleport=Teleport
+Effect/Name/QueenOfBlades_DeepTunnel@Unburrow=Unburrow
+
+Abil/EditorPrefix/QueenOfBlades_Burrow=(Королева клинков)
+Abil/EditorPrefix/QueenOfBlades_Unburrow=(Королева клинков)

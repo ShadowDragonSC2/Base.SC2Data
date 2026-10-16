@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Catalog>
+
+    <CButton id="QueenOfBlades" parent="UnitButton_GroundAir">
+        <EditorCategories value="Race:Zerg"/>
+        <Icon value="Assets\Textures\btn-unit-zerg-kerrigan.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-zerg-kerrigan.dds"/>
+    </CButton>
     
     <CUnit id="QueenOfBlades" parent="Generic_Zerg_Unit_Ground" race="Zerg">
         <Mob value="Campaign"/>
@@ -25,8 +31,8 @@
         <AbilArray Link="QueenOfBlades_RazorSwarm"/>
         <AbilArray Link="QueenOfBlades_DeepTunnel"/>
         <AbilArray Link="QueenOfBlades_Burrow"/>
-        <!-- <BehaviorArray Link="OnCreep"/>
-        <BehaviorArray Link="ForceShieldSpell"/>
+        <BehaviorArray Link="OnCreep"/>
+        <!-- <BehaviorArray Link="ForceShieldSpell"/>
         <BehaviorArray Link="ForceShield"/> -->
         <BehaviorArray Link="Detector10"/>
         <CardLayouts index="0">
@@ -80,7 +86,7 @@
         <Macros value="QueenOfBlades_RazorTalons@Animation"/>
         <BarWidth value="78"/>
         <BarOffset value="60"/>
-        <UnitKillRank Text="UnitKillRank/Kerrigan"/>
+        <UnitKillRank Text="UnitKillRank/QueenOfBlades"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level0.dds"/>
         <UnitIcon value="Assets\Textures\btn-unit-zerg-kerrigan.dds"/>
         <GroupIcon>
@@ -280,11 +286,13 @@
         <DataRecord Entry="Button,QueenOfBlades"/>
         <DataRecord Entry="Unit,QueenOfBlades"/>
         <DataRecord Entry="Actor,QueenOfBlades"/>
+        <DataRecord Entry="Actor,QueenOfBlades@BurrowedSplat"/>
         <DataRecord Entry="Actor,QueenOfBlades@Walk_Animation"/>
         <DataRecord Entry="Model,QueenOfBlades"/>
         <DataRecord Entry="Model,QueenOfBlades@Death"/>
         <DataRecord Entry="Model,QueenOfBlades@Portrait"/>
         <DataRecord Entry="Sound,QueenOfBlades@Attack"/>
+        <DataRecord Entry="Sound,QueenOfBlades@Death"/>
         <DataRecord Entry="Sound,QueenOfBlades@Help"/>
         <DataRecord Entry="Sound,QueenOfBlades@Pissed"/>
         <DataRecord Entry="Sound,QueenOfBlades@Yes"/>

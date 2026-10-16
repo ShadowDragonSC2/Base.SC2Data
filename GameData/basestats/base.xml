@@ -311,9 +311,13 @@
         <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
     </CActorEventMacro>
 
-    <!-- Buttons -->
+    <!-- Races -->
 
     <CRace id="Tald"/>
+    <CRace id="ZZerg"/>
+    <CRace id="Nera"/>
+
+    <!-- Buttons -->
 
     <CButton default="1" id="Button_AppenderIndent">
         <TooltipAppender Text="Button/Tooltip/Appender/Indent"/>

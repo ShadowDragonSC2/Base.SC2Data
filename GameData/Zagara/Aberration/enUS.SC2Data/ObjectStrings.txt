@@ -4,6 +4,7 @@ Abil/Name/Aberration_Unburrow=Unburrow
 Actor/Name/Aberration=Aberration
 Actor/Name/Aberration@BurrowedSplat=Burrowed Splat
 Actor/Name/Aberration@Land=Land
+Actor/Name/Aberration_BanelingIncubation@Animation=Animation
 Actor/Name/Aberration_Weapon@Attack=Attack
 Actor/Name/Aberration_Weapon@AttackForce00=Attack Force 00
 Actor/Name/Aberration_Weapon@AttackForce01=Attack Force 01
@@ -35,6 +36,8 @@ RequirementNode/Name/Aberration_ArmorAura@Use@AllowUnit=Use @ Allow Unit
 RequirementNode/Name/Aberration_BanelingIncubation@Use@AllowUnit=Show @ Allow Unit
 
 Sound/Name/Aberration@Attack=Attack
+Sound/Name/Aberration@AttackLaunch=Attack Launch
+Sound/Name/Aberration@Burrow=Burrow
 Sound/Name/Aberration@Ready=Ready
 Sound/Name/Aberration@What=What
 Sound/Name/Aberration@Yes=Yes
@@ -47,14 +50,13 @@ Upgrade/Name/Aberration_ArmorAura=Armor Aura
 Upgrade/Name/Aberration_BanelingIncubation=Baneling Incubation
 
 Validator/Name/Aberration@Is=Caster Is Unit
+Validator/Name/Aberration@Is_Burrowed=Caster Is Unit (Burrowed)
 Validator/Name/Aberration@Target=Target Is Unit
 Validator/Name/Aberration@Not=Caster Is Not Unit
 Validator/Name/Aberration@NotTarget=Target Is Not Unit
 Validator/Name/Aberration_ArmorAura@Use=Have Armor Aura
 Validator/Name/Aberration_ArmorAura@TargetValidator=Target Validator
 Validator/Name/Aberration_BanelingIncubation@Use=Have Baneling Incubation
-Validator/Name/Aberration_BanelingIncubation@IsAberration=Is Aberration
-Validator/Name/Aberration_BanelingIncubation@IsAberrationBurrowed=Is Aberration Burrowed
 Validator/Name/Aberration_BanelingIncubation@WildMutation=Wild Mutation
 
 DataCollection/EditorPrefix/Aberration=Zagara Units -

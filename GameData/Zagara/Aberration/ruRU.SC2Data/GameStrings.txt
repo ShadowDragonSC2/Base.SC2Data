@@ -1,10 +1,7 @@
-Button/Name/Aberration=Вызвать аберрацию
+Button/Name/Aberration=Породить аберрацию
 Button/Tooltip/Aberration=Аберрация – крайне выносливое существо, наносящее высокий урон.
 
 Unit/Name/Aberration=Аберрация
-
-Button/Name/Aberration_Weapon=Когти аберрации
-Button/Tooltip/Aberration_Weapon=Наносит значительный урон одиночной наземной цели в ближнем бою. Наносит увеличенный урон бронированным целям.
 
 Button/Name/Aberration_ArmorAura=Защитный панцирь
 Button/Tooltip/Aberration_ArmorAura=Аберрация даёт находящимся рядом наземным войскам защитный панцирь, снижающий получаемый урон.
@@ -12,7 +9,7 @@ Button/Tooltip/Aberration_ArmorAura=Аберрация даёт находящи
 Button/Name/Aberration_BanelingIncubation=Инкубация гиблингов
 Button/Tooltip/Aberration_BanelingIncubation=После смерти аберрация выпускает двух гиблингов.
 
-Weapon/Name/Aberration_Weapon=Когти аберрации
+Weapon/Name/Aberration_Weapon=Заражающий удар
 
 DataCollection/Name/Aberration=Аберрация
 DataCollection/Name/Aberration_Weapon=Когти аберрации
