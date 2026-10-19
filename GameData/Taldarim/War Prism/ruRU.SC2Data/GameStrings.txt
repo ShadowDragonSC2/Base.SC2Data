@@ -9,3 +9,6 @@ Button/Name/WarpPrismTaldarim_WarConfiguration=Боевая конфигурац
 Button/Tooltip/WarpPrismTaldarim_WarConfiguration=Увеличивает скорость трансформации и радиус энергетического поля. Позволяет боевой призме атаковать наземные и воздушные цели в режиме транспортировки.
 Card/Name/WarpPrismTaldarim=Талдаримы
 Weapon/Name/WarpPrismTaldarim_Weapon=Фазовый бластер
+Abil/Name/WarpPrismTaldarim_Cargo=Загрузить
+Abil/Name/WarpPrismTaldarim_Phasing=Перейти в Фазовый режим
+Abil/Name/WarpPrismTaldarim_Transport=Перейти в режим транспорта

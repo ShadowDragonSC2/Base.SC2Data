@@ -440,7 +440,7 @@
 
     <CAbilMorph id="WarpPrismTaldarim_Transport">
         <EditorCategories value="Race:Taldarim,AbilityorEffectType:MorphsandBurrows"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="WarpPrismTaldarim@Transport"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="WarpPrismTaldarim_Transport"/>
         <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel"/>
         <Flags index="IgnoreFacing" value="1"/>
         <Flags index="WaitUntilStopped" value="0"/>
