@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+    <CButton id="WarpPrismTaldarim" parent="UnitButton_GroundAir">
+        <Icon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-warpprism.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-warpprism.dds"/>
+        <EditorCategories value="Race:Taldarim"/>
+    </CButton>  
+    <CButton id="WarpPrismTaldarim_WarConfiguration">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-alarak-graviticdrive.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-protoss-alarak-graviticdrive.dds"/>
+        <EditorCategories value="Race:Taldarim"/>
+    </CButton>
+    
+    <CUnit id="WarpPrismTaldarim" parent="Generic_Protoss_Unit_Air" race="Tald">
+        <Mob value="Campaign"/>
+        <FlagArray index="AISupport" value="1"/>
+        <FlagArray index="ArmySelect" value="1"/>
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Mechanical" value="1"/>
+        <Attributes index="Psionic" value="1"/>
+        <LifeStart value="100"/>
+        <LifeMax value="100"/>
+        <ShieldsStart value="100"/>
+        <ShieldsMax value="100"/>
+        <Speed value="3.379"/>
+        <Acceleration value="2.125"/>
+        <LateralAcceleration value="57"/>
+        <Sight value="10"/>
+        <Food value="-2"/>
+        <CostCategory value="Army"/>
+        <CostResource index="Minerals" value="200"/>
+        <RepairTime value="25"/>
+        <AbilArray Link="WarpPrismTaldarim_Phasing"/>
+        <AbilArray Link="WarpPrismTaldarim_Cargo"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="WarpPrismLoad" Type="AbilCmd" AbilCmd="WarpPrismTaldarim_Cargo,Load" Row="2" Column="2"/>
+            <LayoutButtons Face="WarpPrismUnloadAll" Type="AbilCmd" AbilCmd="WarpPrismTaldarim_Cargo,UnloadAt" Row="2" Column="3"/>
+            <LayoutButtons Face="WarpPrismTaldarim_Phasing" Type="AbilCmd" AbilCmd="WarpPrismTaldarim_Phasing,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="WarpPrismTaldarim_WarConfiguration" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <Radius value="0.875"/>
+        <SeparationRadius value="0.875"/>
+        <SubgroupPriority value="113"/>
+        <MinimapRadius value="0.875"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:FactionTaldarim"/>
+        <AIEvalFactor value="0"/>
+        <TechAliasArray value="Alias_WarpPrism"/>
+        <Level value="17"/>
+    </CUnit>
+    <CUnit id="WarpPrismTaldarim@Morph" parent="WarpPrismTaldarim">
+        <FlagArray index="Movable" value="0"/>
+        <FlagArray index="Turnable" value="0"/>
+        <AbilArray index="5" Link="WarpPrismTaldarim_Transport"/>
+        <WeaponArray index="0" Link=""/>
+        <BehaviorArray Link="WarpPrismTaldarim@PowerSource"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="8" Face="WarpPrismTaldarim_Transport" AbilCmd="WarpPrismTaldarim_Transport,Execute"/>
+        </CardLayouts>
+    </CUnit>
+        
+    <CActorUnit id="WarpPrismTaldarim" parent="AdvancedUnitStandard" unitName="WarpPrismTaldarim">
+        <On Terms="AbilMorph.*.Start; MorphFrom WarpPrismTaldarim; MorphTo WarpPrismTaldarim@Morph" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom WarpPrismTaldarim@Morph; MorphTo WarpPrismTaldarim" Send="Create"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom WarpPrismTaldarim@Morph; MorphTo WarpPrismTaldarim" Send="AnimPlay Work Work,End 0 0.000000"/>
+        <Aliases value="_UnitLarge"/>
+        <Macros value="PhysicsDeathsSwarmAir"/>
+        <Macros value="PhysicsDeathsVoidAir"/>
+        <DeathCustoms Name="RagdollMidair" InheritsFrom="RagdollBasic"/>
+        <GlossaryAnim value="GLstand,A"/>
+        <PhysicsMatchKeysOrdered value="BasicAir,Basic"/>
+        <BarOffset value="55"/>
+        <BarWidth value="78"/>
+        <NameOffset value="60"/>
+        <HeroIcon value="Assets\Textures\btn-unit-protoss-warpprism.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-airarmorlevel0.dds"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-warpprism.dds"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Protoss-WarpPrism00.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Protoss-WarpPrism00.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image value="Assets\Textures\Wireframe-Protoss-WarpPrism00-Shield01.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-WarpPrism00-Shield02.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-WarpPrism00-Shield03.dds"/>
+        </WireframeShield>
+    </CActorUnit>
+    <CActorUnit id="WarpPrismTaldarim@Morph" parent="AdvancedUnitStandard" unitName="WarpPrismTaldarim@Morph">
+        <On Terms="AbilMorph.*.Start; MorphFrom WarpPrismTaldarim@Morph; MorphTo WarpPrismTaldarim" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom WarpPrismTaldarim; MorphTo WarpPrismTaldarim@Morph" Send="Create"/>
+        <On Terms="UnitBirth.WarpPrismTaldarim@Morph" Send="AnimBracketStart Phasing Work,Start Work Work,End Instant"/>
+        <On Terms="AbilMorph.*.Start; MorphTo WarpPrismTaldarim@Morph" Send="AnimBracketStart Phasing Work,Start Work Work,End"/>
+        <On Terms="AbilMorph.*.Start; MorphTo WarpPrismTaldarim" Send="AnimBracketStop Phasing"/>
+        <Aliases value="_UnitLarge"/>
+        <Macros value="PhysicsDeathsSwarmAir"/>
+        <Macros value="PhysicsDeathsVoidAir"/>
+        <DeathArray index="Normal" ModelLink="WarpPrismTaldarim@DeathOpen" SoundLink="WarpPrismTaldarim@Death"/>
+        <PhysicsMatchKeysOrdered value="BasicAir,Basic"/>
+        <PortraitModel value="WarpPrismTaldarim@Portrait"/>
+        <Model value="WarpPrismTaldarim"/>
+        <BuildModel value="WarpPrismTaldarim"/>
+        <PlacementModel value="WarpPrismTaldarim"/>
+        <SoundArray index="Ready" value="WarpPrismTaldarim@Ready"/>
+        <SoundArray index="What" value="WarpPrismTaldarim@What"/>
+        <SoundArray index="Yes" value="WarpPrismTaldarim@Yes"/>
+        <SoundArray index="Pissed" value="WarpPrismTaldarim@Pissed"/>
+        <BarOffset value="55"/>
+        <BarWidth value="78"/>
+        <HeroIcon value="Assets\Textures\btn-unit-protoss-warpprismstationary.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-airarmorlevel0.dds"/>
+        <NameOffset value="60"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-warpprismstationary.dds"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Protoss-WarpPrism01.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Protoss-WarpPrism01.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image value="Assets\Textures\Wireframe-Protoss-WarpPrism01-Shield01.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-WarpPrism01-Shield02.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-WarpPrism01-Shield03.dds"/>
+        </WireframeShield>
+    </CActorUnit>
+    <CActorPower id="WarpPrismTaldarim@Power">
+        <On Terms="Behavior.WarpPrismTaldarim@PowerSource.Create; !Option Model Low" Send="Create"/>
+        <On Terms="Behavior.WarpPrismTaldarim@PowerSource.Destroy; !Option Model Low" Send="Destroy"/>
+        <PowerSource value="WarpPrismTaldarim@PowerSource"/>
+        <VisualArray value="WarpPrismTaldarim@UnpoweredVisual"/>
+        <VisualArray value="WarpPrismTaldarim@PowerVisual"/>
+    </CActorPower>
+    <CActorPower id="WarpPrismTaldarim@PowerLow">
+        <On Terms="Behavior.WarpPrismTaldarim@PowerSource.Create; Option Model Low" Send="Create"/>
+        <On Terms="Behavior.WarpPrismTaldarim@PowerSource.Destroy; Option Model Low" Send="Destroy"/>
+        <PowerSource value="WarpPrismTaldarim@PowerSource"/>
+        <VisualArray value="WarpPrismTaldarim@UnpoweredVisualLow"/>
+        <VisualArray value="WarpPrismTaldarim@PowerVisualLow"/>
+    </CActorPower>
+    <CActorSplat id="WarpPrismTaldarim@PowerVisual">
+        <FogVisibility value="Visible"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpShadow"/>
+        <FadeIn value="0.000000"/>
+        <FadeOut value="0.000000"/>
+        <HoldTime value="-1.000000"/>
+        <Layer value="PowerLayer"/>
+    </CActorSplat>
+    <CActorSplat id="WarpPrismTaldarim@UnpoweredVisual">
+        <FogVisibility value="Visible"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpShadow"/>
+        <FadeIn value="0.000000"/>
+        <FadeOut value="0.000000"/>
+        <HoldTime value="-1.000000"/>
+        <Layer value="PowerLayer"/>
+    </CActorSplat>
+    <CActorRange id="WarpPrismTaldarim@UnpoweredVisualLow">
+        <Behavior value="WarpPrismTaldarim@PowerSource"/>
+        <Icon value="Assets\Textures\PylonLowRingSplatGrey.dds"/>
+        <IconArcLength value="0.750000"/>
+    </CActorRange>
+    <CActorRange id="WarpPrismTaldarim@PowerVisualLow">
+        <Behavior value="WarpPrismTaldarim@PowerSource"/>
+        <Icon value="Assets\Textures\PylonLowRingSplat.dds"/>
+        <IconArcLength value="0.750000"/>
+    </CActorRange>
+    
+    <CModel id="WarpPrismTaldarim" parent="WarpPrismBase">
+        <Model value="Assets\Units\Protoss\WarpPrism_Taldarim\WarpPrism_Taldarim.m3"/>
+        <Events Anim="Stand,Work,Start" Name="ToPhasing" Payload="WarpPrismTaldarim@MorphToPhasing" Type="Sound"/>
+        <Events Anim="Stand,Work,End" Name="ToTransport" Payload="WarpPrismTaldarim@MorphToTransport" Type="Sound"/>
+    </CModel>
+    <CModel id="WarpPrismTaldarim@Death" parent="WarpPrismDeathBase">
+        <Model value="Assets\Units\Protoss\WarpPrism_Taldarim_Death\WarpPrism_Taldarim_Death.m3"/>
+    </CModel>
+    <CModel id="WarpPrismTaldarim@Portrait" parent="Portrait">
+        <Model value="Assets\Portraits\Protoss\TalDarim_WarpPrismPortrait\TalDarim_WarpPrismPortrait.m3"/>
+    </CModel>
+    <CModel id="WarpPrismTaldarim@DeathOpen" parent="UnitDeath">
+        <Model value="Assets\Units\Protoss\WarpPrism_Taldarim_OpenDeath\WarpPrism_Taldarim_OpenDeath.m3"/>
+    </CModel>
+    <CModel id="WarpPrismTaldarim@DeathRagdoll" parent="UnitDeathRagdoll">
+        <Model value="Assets\Units\Protoss\WarpPrism_Taldarim_Collection_DeathRagdoll\WarpPrism_Taldarim_Collection_DeathRagdoll.m3"/>
+    </CModel>
+    <CModel id="WarpPrismTaldarim@WarpIn" parent="OneShotSpellFX">
+        <Model value="Assets\Units\Protoss\WarpPrism_Taldarim_Collection_WarpIn\WarpPrism_Taldarim_Collection_WarpIn.m3"/>
+    </CModel>
+    <CModel id="WarpPrismTaldarim@UnpoweredVisual" parent="UI">
+        <Model value="Assets\UI\Feedback\PylonRadiusUnpowered\PylonRadiusUnpowered.m3"/>
+        <ScaleMax value="0.500000,0.500000,0.500000"/>
+        <ScaleMin value="0.500000,0.500000,0.500000"/>
+        <SelectionRadius value="1.000000"/>
+        <ShadowRadius value="1.000000"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+    <CModel id="WarpPrismTaldarim@PowerVisual" parent="UI">
+        <Model value="Assets\UI\Feedback\WarpPrism_WarpIn_Radius\WarpPrism_WarpIn_Radius.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Lighting value="WarpPrismPowerVisual"/>
+        <ScaleMax value="0.821053,0.821053,0.821053"/>
+        <ScaleMin value="0.821053,0.821053,0.821053"/>
+        <SelectionRadius value="1.000000"/>
+        <ShadowRadius value="1.000000"/>
+    </CModel>
+
+    <CLight id="WarpPrismTaldarim@Portrait" parent="default">
+        <ToDInfoArray index="0" Id="WarpPrismTaldarim@Portrait" AmbientColor="0.176471,0.000000,0.094118">
+            <Param index="HDRExposure" value="1.480000"/>
+            <Param index="HDRBloomThreshold" value="1.950000"/>
+            <Param index="HDRSpecMultiplier" value="15.580000"/>
+            <DirectionalLight index="Key">
+                <Color value="0.956863,0.827451,0.650980"/>
+                <ColorMultiplier value="1.350000"/>
+                <SpecColorMultiplier value="1.000000"/>
+                <Direction value="-0.258168,0.314299,-0.913545"/>
+            </DirectionalLight>
+            <DirectionalLight index="Fill" ColorMultiplier="0.390000" Direction="-0.314456,0.917928,-0.241922"/>
+            <DirectionalLight index="Back" Color="0.439216,0.070588,0.003922" ColorMultiplier="0.500000" Direction="-0.738852,0.475064,-0.477925"/>
+        </ToDInfoArray>
+        <EditorCategories value="LightGroup:PortraitsUnitsProtoss"/>
+    </CLight>
+
+    <CSound id="WarpPrismTaldarim@Pissed" parent="Pissed">
+        <EditorCategories value="Race:Taldarim"/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_Pissed00.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_Pissed01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_Pissed02.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_Pissed03.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_Pissed04.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="WarpPrismTaldarim@Ready" parent="Ready">
+        <EditorCategories value="Race:Taldarim"/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_Ready00.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_Ready01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_Ready02.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_Ready03.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_Ready04.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="WarpPrismTaldarim@What" parent="Voice">
+        <EditorCategories value="Race:Taldarim"/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_What00.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_What01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_What02.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_What03.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_What04.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_What05.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="WarpPrismTaldarim@Yes" parent="Voice">
+        <EditorCategories value="Race:Taldarim"/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_Yes00.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_Yes01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_Yes02.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_Yes03.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_Yes04.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_Yes05.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_Yes06.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_Yes07.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="WarpPrismTaldarim@MorphToPhasing" parent="Spell">
+        <Volume value="-2.520000,-2.520000"/>
+        <AssetArray File="Assets\Sounds\Protoss\PhasePrism\PhasePrism_MorphToPhasing.wav"/>
+        <EditorCategories value="Race:Taldarim"/>
+    </CSound>
+    <CSound id="WarpPrismTaldarim@MorphToTransport" parent="Spell">
+        <Volume value="-2.520000,-2.520000"/>
+        <AssetArray File="Assets\Sounds\Protoss\PhasePrism\PhasePrism_MorphToTransport.wav"/>
+        <EditorCategories value="Race:Taldarim"/>
+    </CSound>
+
+    <CRequirement id="WarpPrismTaldarim"/>
+
+    <CBehaviorPowerSource id="WarpPrismTaldarim@PowerSource">
+        <PowerLink value="PowerSource"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Structures"/>
+        <Radius value="6.5"/>
+    </CBehaviorPowerSource>
+
+    <CValidatorUnitType id="WarpPrismTaldarim@Is" parent="IsUnit_Default" unit="WarpPrismTaldarim"/>
+    <CValidatorUnitType id="WarpPrismTaldarim@Target" parent="TargetIsUnit_Default" unit="WarpPrismTaldarim"/>
+    <CValidatorUnitType id="WarpPrismTaldarim@Not" parent="NotUnit_Default" unit="WarpPrismTaldarim"/>
+    <CValidatorUnitType id="WarpPrismTaldarim@NotTarget" parent="TargetNotUnit_Default" unit="WarpPrismTaldarim"/>
+
+    <CDataCollectionUnit id="WarpPrismTaldarim" parent="UnitGround">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Coop,Race:Taldarim,ObjectType:Unit"/>
+        <DataRecord Entry="Button,WarpPrismTaldarim"/>
+        <DataRecord Entry="Unit,WarpPrismTaldarim"/>
+        <DataRecord Entry="Actor,WarpPrismTaldarim"/>
+        <DataRecord Entry="Actor,WarpPrismTaldarim@Morph"/>
+        <DataRecord Entry="Actor,WarpPrismTaldarim@Power"/>
+        <DataRecord Entry="Actor,WarpPrismTaldarim@PowerLow"/>
+        <DataRecord Entry="Actor,WarpPrismTaldarim@PowerVisual"/>
+        <DataRecord Entry="Actor,WarpPrismTaldarim@UnpoweredVisual"/>
+        <DataRecord Entry="Actor,WarpPrismTaldarim@UnpoweredVisualLow"/>
+        <DataRecord Entry="Actor,WarpPrismTaldarim@PowerVisualLow"/>
+        <DataRecord Entry="Model,WarpPrismTaldarim"/>
+        <DataRecord Entry="Model,WarpPrismTaldarim@Death"/>
+        <DataRecord Entry="Model,WarpPrismTaldarim@Portrait"/>
+        <DataRecord Entry="Model,WarpPrismTaldarim@DeathOpen"/>
+        <DataRecord Entry="Model,WarpPrismTaldarim@DeathRagdoll"/>
+        <DataRecord Entry="Model,WarpPrismTaldarim@WarpIn"/>
+        <DataRecord Entry="Model,WarpPrismTaldarim@UnpoweredVisual"/>
+        <DataRecord Entry="Model,WarpPrismTaldarim@PowerVisual"/>
+        <DataRecord Entry="Light,WarpPrismTaldarim@Portrait"/>
+        <DataRecord Entry="Sound,WarpPrismTaldarim@Pissed"/>
+        <DataRecord Entry="Sound,WarpPrismTaldarim@Yes"/>
+        <DataRecord Entry="Sound,WarpPrismTaldarim@What"/>
+        <DataRecord Entry="Sound,WarpPrismTaldarim@Ready"/>
+        <DataRecord Entry="Sound,WarpPrismTaldarim@MorphToPhasing"/>
+        <DataRecord Entry="Sound,WarpPrismTaldarim@MorphToTransport"/>
+        <DataRecord Entry="Requirement,WarpPrismTaldarim"/>
+        <DataRecord Entry="Behavior,WarpPrismTaldarim@PowerSource"/>
+        <DataRecord Entry="Validator,WarpPrismTaldarim@Is"/>
+        <DataRecord Entry="Validator,WarpPrismTaldarim@Target"/>
+        <DataRecord Entry="Validator,WarpPrismTaldarim@Not"/>
+        <DataRecord Entry="Validator,WarpPrismTaldarim@NotTarget"/>
+    </CDataCollectionUnit>
+
+    <!-- ========= Weapons ========== -->
+    
+    <!-- Phase Bluster -->
+    
+    <CWeaponLegacy id="WarpPrismTaldarim_Weapon">
+        <EditorCategories value="Race:Taldarim"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-airweaponslevel0.dds"/>
+        <DisplayEffect value="WarpPrismTaldarim_Weapon@Damage"/>
+        <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <MinScanRange value="7.5"/>
+        <Range value="7"/>
+        <Period value="2"/>
+        <Effect value="WarpPrismTaldarim_Weapon@LM"/>
+        <AllowedMovement value="Slowing"/>
+    </CWeaponLegacy>
+    
+    <CEffectLaunchMissile id="WarpPrismTaldarim_Weapon@LM">
+        <EditorCategories value="Race:Taldarim"/>
+        <ImpactEffect value="WarpPrismTaldarim_Weapon@Damage"/>
+        <AmmoUnit value="WarpPrismTaldarim_Weapon@AttackMissile"/>
+        <Movers Link="MissileDefault" IfRangeLTE="1"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="WarpPrismTaldarim_Weapon@Damage" parent="DU_WEAP">
+        <EditorCategories value="Race:Taldarim"/>
+        <Kind value="Ranged"/>
+        <Amount value="10"/>
+        <Visibility value="Visible"/>
+    </CEffectDamage>
+    
+    <CActorAction id="WarpPrismTaldarim_Weapon@Attack" parent="GenericAttack" effectImpact="WarpPrismTaldarim_Weapon@Damage" effectLaunch="WarpPrismTaldarim_Weapon@LM"/>
+    <CActorMissile id="WarpPrismTaldarim_Weapon@AttackMissile" parent="GenericAttackMissile" unitName="WarpPrismTaldarim_Weapon@AttackMissile">
+        <On Terms="ActorCreation" Send="SetTintColor 255,0,0"/>
+        <!-- <On Terms="ActorCreation" Send="Create WarpPrismTaldarim_AttackLaunchSound"/> -->
+    </CActorMissile>
+    
+    <CModel id="WarpPrismTaldarim_Weapon@AttackImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Protoss\PhotonCannonMissileImpact\PhotonCannonMissileImpact.m3"/>
+        <EditorCategories value="Race:Taldarim"/>
+    </CModel>
+    <CModel id="WarpPrismTaldarim_Weapon@AttackLaunch" parent="LaunchFX">
+        <Model value="Assets\Effects\Protoss\Arbiter_Purifier_Coop_Missile_Launch\Arbiter_Purifier_Coop_Missile_Launch.m3"/>
+        <EditorCategories value="Race:Taldarim"/>
+    </CModel>
+    <CModel id="WarpPrismTaldarim_Weapon@AttackMissile" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\PhotonMissile\PhotonMissile.m3"/>
+        <EditorCategories value="Race:Taldarim"/>
+        <ScaleMax value="1.500000,1.500000,1.500000"/>
+        <ScaleMin value="1.500000,1.500000,1.500000"/>
+    </CModel>
+    
+    <CSound id="WarpPrismTaldarim_Weapon@AttackLaunch" parent="Combat">
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_AttackLaunch01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_AttackLaunch02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_AttackLaunch03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_AttackLaunch04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_AttackLaunch05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_AttackLaunch06.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-2.000000,-2.000000"/>
+        <EditorCategories value="Race:Taldarim"/>
+        <DupeDestroyCount value="3"/>
+        <DupeMuteCount value="3"/>
+    </CSound>
+    <CSound id="WarpPrismTaldarim_Weapon@AttackImpact" parent="Combat">
+        <Pitch value="-2.000000,0.000000"/>
+        <Volume value="-9.000000,-9.000000"/>
+        <EditorCategories value="Race:Taldarim"/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_AttackImpact01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_AttackImpact02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_AttackImpact03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_AttackImpact04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_AttackImpact05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\WarpPrismTaldarim_AttackImpact06.wav" FacialGroup=""/>
+        <DupeDestroyCount value="3"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="3"/>
+    </CSound>
+
+    <CMoverMissile id="WarpPrismTaldarim_Weapon@AttackMissile">
+        <MotionPhases>
+            <Driver value="Guidance"/>
+            <Acceleration value="3200"/>
+            <MaxSpeed value="20"/>
+            <YawPitchRoll value="MAX"/>
+        </MotionPhases>
+    </CMoverMissile>
+    
+    <CUnit id="WarpPrismTaldarim_Weapon@AttackMissile" parent="MISSILE">
+        <Race value="Tald"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
+    </CUnit>
+
+    <CDataCollectionUnit id="WarpPrismTaldarim_Weapon" parent="Weapon_Missile">
+        <EditorCategories value="DataFamily:Coop,DataGroup:Weapon,ObjectType:Projectile,Race:Taldarim"/>
+        <DataRecord Entry="Weapon,WarpPrismTaldarim_Weapon"/>
+        <DataRecord Entry="Effect,WarpPrismTaldarim_Weapon@LM"/>
+        <DataRecord Entry="Effect,WarpPrismTaldarim_Weapon@Damage"/>
+        <DataRecord Entry="Actor,WarpPrismTaldarim_Weapon@Attack"/>
+        <DataRecord Entry="Actor,WarpPrismTaldarim_Weapon@AttackMissile"/>
+        <DataRecord Entry="Model,WarpPrismTaldarim_Weapon@AttackImpact"/>
+        <DataRecord Entry="Model,WarpPrismTaldarim_Weapon@AttackLaunch"/>
+        <DataRecord Entry="Model,WarpPrismTaldarim_Weapon@AttackMissile"/>
+        <DataRecord Entry="Sound,WarpPrismTaldarim_Weapon@AttackLaunch"/>
+        <DataRecord Entry="Sound,WarpPrismTaldarim_Weapon@AttackImpact"/>
+        <DataRecord Entry="Mover,WarpPrismTaldarim_Weapon@AttackMissile"/>
+        <DataRecord Entry="Unit,WarpPrismTaldarim_Weapon@AttackMissile"/>
+    </CDataCollectionUnit>
+
+    <!-- ========= Abilities ========== -->
+    
+    <!-- Transport -->
+    <CButton id="WarpPrismTaldarim_Transport">
+        <Icon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-warpprism.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-warpprism.dds"/>
+        <EditorCategories value="Race:Taldarim"/>
+    </CButton>
+
+    <CAbilMorph id="WarpPrismTaldarim_Transport">
+        <EditorCategories value="Race:Taldarim,AbilityorEffectType:MorphsandBurrows"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="WarpPrismTaldarim@Transport"/>
+        <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel"/>
+        <Flags index="IgnoreFacing" value="1"/>
+        <Flags index="WaitUntilStopped" value="0"/>
+        <InfoArray Unit="WarpPrismTaldarim">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0.75"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Duration" value="0.75"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    
+    <CDataCollectionUnit id="WarpPrismTaldarim_Transport" parent="AbilityBase">
+        <EditorCategories value="DataFamily:Coop,DataGroup:Ability,ObjectType:Unit,Race:Taldarim"/>
+        <DataRecord Entry="Button,WarpPrismTaldarim_Transport"/>
+        <DataRecord Entry="Abil,WarpPrismTaldarim_Transport"/>
+    </CDataCollectionUnit>
+
+    <!-- Phasing -->
+    <CButton id="WarpPrismTaldarim_Phasing">
+        <Icon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-warpprismstationary.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-warpprismstationary.dds"/>
+        <EditorCategories value="Race:Taldarim"/>
+    </CButton>
+
+    <CAbilMorph id="WarpPrismTaldarim_Phasing">
+        <EditorCategories value="Race:Taldarim,AbilityorEffectType:MorphsandBurrows"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="WarpPrismTaldarim_Phasing"/>
+        <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="IgnoreFacing" value="1"/>
+        <Flags index="WaitUntilStopped" value="0"/>
+        <InfoArray Unit="WarpPrismTaldarim@Morph">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0.75"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Duration" value="0.75"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    
+    <CDataCollectionUnit id="WarpPrismTaldarim_Phasing" parent="AbilityBase">
+        <EditorCategories value="DataFamily:Coop,DataGroup:Ability,ObjectType:Unit,Race:Taldarim"/>
+        <DataRecord Entry="Button,WarpPrismTaldarim_Phasing"/>
+        <DataRecord Entry="Abil,WarpPrismTaldarim_Phasing"/>
+    </CDataCollectionUnit>
+
+    <!-- Load/Unload -->
+    <CAbilTransport id="WarpPrismTaldarim_Cargo">
+        <Range value="6"/>
+        <EditorCategories value="Race:Taldarim,AbilityorEffectType:Units"/>
+        <MaxCargoCount value="8"/>
+        <MaxCargoSize value="8"/>
+        <TotalCargoSpace value="8"/>
+        <UnloadPeriod value="1"/>
+        <TargetFilters value="Visible;Ally,Neutral,Enemy,Buried,UnderConstruction,Dead,Hidden"/>
+        <CmdButtonArray index="Load" DefaultButtonFace="MedivacLoad"/>
+        <CmdButtonArray index="UnloadAll" DefaultButtonFace="BunkerUnloadAll">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="UnloadAt" DefaultButtonFace="MedivacUnloadAll"/>
+        <CmdButtonArray index="UnloadUnit">
+            <Flags index="Hidden" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="LoadAll">
+            <Flags index="Hidden" value="1"/>
+        </CmdButtonArray>
+        <AbilSetId value="ULdM"/>
+    </CAbilTransport>
+    
+    <CActorModel id="WarpPrismTaldarim_Cargo@LoadModel" parent="ModelAnimationStyleOneShot">
+        <On Terms="AbilTransport.WarpPrismTaldarim_Cargo.CargoLoad" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOriginStationary"/>
+    </CActorModel>
+    <CActorSound id="WarpPrismTaldarim_Cargo@LoadSound" parent="SoundOneShot">
+        <On Terms="AbilTransport.WarpPrismTaldarim_Cargo.TransportLoad" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOriginStationary"/>
+    </CActorSound>
+    <CActorModel id="WarpPrismTaldarim_Cargo@UnloadModel" parent="ModelAnimationStyleOneShot">
+        <On Terms="Abil.WarpPrismTaldarim_Cargo.CargoUnload" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOrigin"/>
+    </CActorModel>
+    <CActorSound id="WarpPrismTaldarim_Cargo@UnloadSound" parent="SoundOneShot">
+        <On Terms="AbilTransport.WarpPrismTaldarim_Cargo.TransportUnload" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOrigin"/>
+    </CActorSound>
+    
+    <CModel id="WarpPrismTaldarim_Cargo@LoadModel" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\BlinkIn\BlinkIn.m3"/>
+        <EditorCategories value="Race:Taldarim"/>
+    </CModel>
+    <CModel id="WarpPrismTaldarim_Cargo@UnloadModel" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\BlinkIn\BlinkIn.m3"/>
+        <EditorCategories value="Race:Taldarim"/>
+    </CModel>
+
+    <CSound id="WarpPrismTaldarim_Cargo@LoadSound" parent="Spell">
+        <AssetArray File="Assets\Sounds\Protoss\PhasePrism\PhasePrism_Load0.wav"/>
+        <EditorCategories value="Race:Taldarim"/>
+        <Pitch value="-2.000000,-1.000000"/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
+    <CSound id="WarpPrismTaldarim_Cargo@UnloadSound" parent="Spell">
+        <AssetArray File="Assets\Sounds\Protoss\PhasePrism\PhasePrism_Unload0.wav"/>
+        <EditorCategories value="Race:Taldarim"/>
+        <Pitch value="-1.500000,1.500000"/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+
+    <CDataCollectionUnit id="WarpPrismTaldarim_Cargo" parent="AbilityBase">
+        <EditorCategories value="DataFamily:Coop,DataGroup:Ability,ObjectType:Unit,Race:Taldarim"/>
+        <DataRecord Entry="Abil,WarpPrismTaldarim_Cargo"/>
+        <DataRecord Entry="Actor,WarpPrismTaldarim_Cargo@LoadModel"/>
+        <DataRecord Entry="Actor,WarpPrismTaldarim_Cargo@LoadSound"/>
+        <DataRecord Entry="Actor,WarpPrismTaldarim_Cargo@UnloadModel"/>
+        <DataRecord Entry="Actor,WarpPrismTaldarim_Cargo@UnloadSound"/>
+        <DataRecord Entry="Model,WarpPrismTaldarim_Cargo@LoadModel"/>
+        <DataRecord Entry="Model,WarpPrismTaldarim_Cargo@UnloadModel"/>
+        <DataRecord Entry="Sound,WarpPrismTaldarim_Cargo@LoadSound"/>
+        <DataRecord Entry="Sound,WarpPrismTaldarim_Cargo@UnloadSound"/>
+    </CDataCollectionUnit>
+
+</Catalog>

@@ -1,0 +1,11 @@
+Unit/Name/WarpPrismTaldarim=Боевая призма
+Button/Name/WarpPrismTaldarim=Вызвать боевую призму
+Button/Tooltip/WarpPrismTaldarim=Воздушное транспортное средство. Войска можно загружать в призму и выгружать из нее. В развернутом состоянии создает энергетическое поле.
+Button/Name/WarpPrismTaldarim_Transport=Режим транспортировки
+Button/Tooltip/WarpPrismTaldarim_Transport=Переводит боевую призму в режим транспортировки. В этом режиме призма может передвигаться и атаковать.
+Button/Name/WarpPrismTaldarim_Phasing=Фазовый режим
+Button/Tooltip/WarpPrismTaldarim_Phasing=Переводит боевую призму в фазовый режим. В этом режиме призма создает энергетическое поле, подобное полю пилона, но не может ни перемещаться, ни атаковать.
+Button/Name/WarpPrismTaldarim_WarConfiguration=Боевая конфигурация
+Button/Tooltip/WarpPrismTaldarim_WarConfiguration=Увеличивает скорость трансформации и радиус энергетического поля. Позволяет боевой призме атаковать наземные и воздушные цели в режиме транспортировки.
+Card/Name/WarpPrismTaldarim=Талдаримы
+Weapon/Name/WarpPrismTaldarim_Weapon=Фазовый бластер
