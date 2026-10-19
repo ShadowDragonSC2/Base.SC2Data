@@ -167,23 +167,30 @@
     </CActorRange>
     
     <CModel id="WarpPrismTaldarim" parent="WarpPrismBase">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Units\Protoss\WarpPrism_Taldarim\WarpPrism_Taldarim.m3"/>
         <Events Anim="Stand,Work,Start" Name="ToPhasing" Payload="WarpPrismTaldarim@MorphToPhasing" Type="Sound"/>
         <Events Anim="Stand,Work,End" Name="ToTransport" Payload="WarpPrismTaldarim@MorphToTransport" Type="Sound"/>
     </CModel>
     <CModel id="WarpPrismTaldarim@Death" parent="WarpPrismDeathBase">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Units\Protoss\WarpPrism_Taldarim_Death\WarpPrism_Taldarim_Death.m3"/>
     </CModel>
     <CModel id="WarpPrismTaldarim@Portrait" parent="Portrait">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Portraits\Protoss\TalDarim_WarpPrismPortrait\TalDarim_WarpPrismPortrait.m3"/>
+        <Image value="Assets\Textures\taldarimwarpprismportrait_static.dds"/>
     </CModel>
     <CModel id="WarpPrismTaldarim@DeathOpen" parent="UnitDeath">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Units\Protoss\WarpPrism_Taldarim_OpenDeath\WarpPrism_Taldarim_OpenDeath.m3"/>
     </CModel>
     <CModel id="WarpPrismTaldarim@DeathRagdoll" parent="UnitDeathRagdoll">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Units\Protoss\WarpPrism_Taldarim_Collection_DeathRagdoll\WarpPrism_Taldarim_Collection_DeathRagdoll.m3"/>
     </CModel>
     <CModel id="WarpPrismTaldarim@WarpIn" parent="OneShotSpellFX">
+        <EditorCategories value="Race:Taldarim"/>
         <Model value="Assets\Units\Protoss\WarpPrism_Taldarim_Collection_WarpIn\WarpPrism_Taldarim_Collection_WarpIn.m3"/>
     </CModel>
     <CModel id="WarpPrismTaldarim@UnpoweredVisual" parent="UI">
@@ -192,11 +199,11 @@
         <ScaleMin value="0.500000,0.500000,0.500000"/>
         <SelectionRadius value="1.000000"/>
         <ShadowRadius value="1.000000"/>
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Taldarim"/>
     </CModel>
     <CModel id="WarpPrismTaldarim@PowerVisual" parent="UI">
         <Model value="Assets\UI\Feedback\WarpPrism_WarpIn_Radius\WarpPrism_WarpIn_Radius.m3"/>
-        <EditorCategories value="Race:Protoss"/>
+        <EditorCategories value="Race:Taldarim"/>
         <Lighting value="WarpPrismPowerVisual"/>
         <ScaleMax value="0.821053,0.821053,0.821053"/>
         <ScaleMin value="0.821053,0.821053,0.821053"/>
@@ -277,7 +284,7 @@
     <CBehaviorPowerSource id="WarpPrismTaldarim@PowerSource">
         <PowerLink value="PowerSource"/>
         <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Structures"/>
+        <EditorCategories value="Race:Taldarim,AbilityorEffectType:Structures"/>
         <Radius value="6.5"/>
     </CBehaviorPowerSource>
 
